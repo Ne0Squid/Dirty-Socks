@@ -1,0 +1,195 @@
+{
+  "generated": "2026-11-12T02:34:30.766Z",
+  "guild": {
+    "name": "Dirty Socks",
+    "faction": "Horde"
+  },
+  "roster": [
+    {
+      "name": "Scott",
+      "surname": "Frost",
+      "level": 34,
+      "cls": "Paladin",
+      "color": "#f58cba",
+      "rank": 0
+    },
+    {
+      "name": "Needmore",
+      "surname": "Beers",
+      "level": 36,
+      "cls": "Warrior",
+      "color": "#c79c6e",
+      "rank": 1
+    },
+    {
+      "name": "Orken",
+      "surname": "Magorken",
+      "level": 36,
+      "cls": "Shaman",
+      "color": "#0070de",
+      "rank": 1
+    },
+    {
+      "name": "Squid",
+      "surname": "Zero",
+      "level": 34,
+      "cls": "Druid",
+      "color": "#ff7d0a",
+      "rank": 1
+    },
+    {
+      "name": "Plucky",
+      "surname": "Recks",
+      "level": 30,
+      "cls": "Mage",
+      "color": "#3fc7eb",
+      "rank": 1
+    },
+    {
+      "name": "Capo",
+      "surname": "Shoots",
+      "level": 24,
+      "cls": "Hunter",
+      "color": "#abd473",
+      "rank": 1
+    },
+    {
+      "name": "Emo",
+      "surname": "Erling",
+      "level": 15,
+      "cls": "Priest",
+      "color": "#c8c8c8",
+      "rank": 1
+    },
+    {
+      "name": "Rowdy",
+      "surname": "Highland",
+      "level": 13,
+      "cls": "Warrior",
+      "color": "#c79c6e",
+      "rank": 1
+    },
+    {
+      "name": "Mr",
+      "surname": "Capo",
+      "level": 12,
+      "cls": "Mage",
+      "color": "#3fc7eb",
+      "rank": 1
+    },
+    {
+      "name": "Mrs",
+      "surname": "Capo",
+      "level": 12,
+      "cls": "Hunter",
+      "color": "#abd473",
+      "rank": 1
+    },
+    {
+      "name": "Capos",
+      "surname": "Bank",
+      "level": 1,
+      "cls": "Warrior",
+      "color": "#c79c6e",
+      "rank": 1
+    },
+    {
+      "name": "Zimmy",
+      "surname": "Zambony",
+      "level": 29,
+      "cls": "Paladin",
+      "color": "#f58cba",
+      "rank": 3
+    },
+    {
+      "name": "Ember",
+      "surname": "Highland",
+      "level": 13,
+      "cls": "Hunter",
+      "color": "#abd473",
+      "rank": 4
+    },
+    {
+      "name": "Parttimedad",
+      "surname": "Parttimedad",
+      "level": 5,
+      "cls": "Druid",
+      "color": "#ff7d0a",
+      "rank": 4
+    }
+  ],
+  "raw": {
+    "guild": {
+      "_links": {
+        "self": {
+          "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks?namespace=profile-forever-us"
+        }
+      },
+      "id": 39870,
+      "name": "Dirty Socks",
+      "faction": {
+        "type": "HORDE",
+        "name": "Horde"
+      },
+      "achievement_points": 0,
+      "member_count": 14,
+      "roster": {
+        "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks/roster?namespace=profile-forever-us"
+      },
+      "achievements": {
+        "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks/achievements?namespace=profile-forever-us"
+      },
+      "created_timestamp": 1793984794000,
+      "activity": {
+        "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks/activity?namespace=profile-forever-us"
+      },
+      "slug": "dirty-socks",
+      "ruleset": {
+        "key": {
+          "href": "https://us.api.blizzard.com/data/wow/ruleset/2?namespace=dynamic-forever-us"
+        },
+        "name": "Normal",
+        "id": 2
+      },
+      "name_search": "Dirty Socks"
+    },
+    "activity": {
+      "_links": {
+        "self": {
+          "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks/activity?namespace=profile-forever-us"
+        }
+      },
+      "guild": {
+        "key": {
+          "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks?namespace=profile-forever-us"
+        },
+        "name": "Dirty Socks",
+        "id": 39870,
+        "faction": {
+          "type": "HORDE",
+          "name": "Horde"
+        },
+        "slug": "dirty-socks"
+      }
+    },
+    "achievements": {
+      "_links": {
+        "self": {
+          "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks/achievements?namespace=profile-forever-us"
+        }
+      },
+      "guild": {
+        "key": {
+          "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks?namespace=profile-forever-us"
+        },
+        "name": "Dirty Socks",
+        "id": 39870,
+        "faction": {
+          "type": "HORDE",
+          "name": "Horde"
+        },
+        "slug": "dirty-socks"
+      }
+    }
+  }
+}
