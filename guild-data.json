@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T19:44:19.352Z",
+  "generated": "2026-11-12T20:38:33.984Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -14,19 +14,19 @@
       "rank": 0
     },
     {
-      "name": "Needmore",
-      "surname": "Beers",
-      "level": 37,
-      "cls": "Warrior",
-      "color": "#c79c6e",
-      "rank": 1
-    },
-    {
       "name": "Orken",
       "surname": "Magorken",
       "level": 38,
       "cls": "Shaman",
       "color": "#0070de",
+      "rank": 1
+    },
+    {
+      "name": "Needmore",
+      "surname": "Beers",
+      "level": 37,
+      "cls": "Warrior",
+      "color": "#c79c6e",
       "rank": 1
     },
     {
