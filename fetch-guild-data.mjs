@@ -75,6 +75,21 @@ const members = (roster?.members ?? []).map((m) => {
   };
 }).sort((a, b) => (a.rank ?? 99) - (b.rank ?? 99) || (b.level ?? 0) - (a.level ?? 0));
 
+// Roster levels can lag behind each character's own profile, so check the profile too
+// and keep the higher level. Characters only have profiles from level 10 after logging out.
+const slugOf = (m) => `${m.name}-${m.surname ?? ""}`.toLowerCase().replace(/['’]/g, "").replace(/\s+/g, "-");
+let checked = 0, raised = 0, unavailable = 0;
+for (let i = 0; i < members.length; i += 5) {
+  await Promise.all(members.slice(i, i + 5).map(async (m) => {
+    if (!m.surname) return;
+    const p = await get(`/profile/wow/character/${encodeURIComponent(slugOf(m))}`, accessToken);
+    if (!p || typeof p.level !== "number") { unavailable++; return; }
+    checked++;
+    if (p.level > (m.level ?? 0)) { m.level = p.level; raised++; }
+  }));
+}
+console.log(`Profile levels: ${checked} checked, ${raised} higher than the roster, ${unavailable} unavailable`);
+
 const out = {
   generated: new Date().toISOString(),
   guild: { name: guild?.name ?? "Dirty Socks", faction: guild?.faction?.name ?? null },
