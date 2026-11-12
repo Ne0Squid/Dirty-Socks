@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dirty Socks – WoW Forever Guild</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
+a{color:var(--accent)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface)}
+nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)}
+nav a:hover{color:var(--accent)}
+.hero{background:var(--hero);text-align:center;padding:72px 20px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(2.2rem,8vw,4rem);color:var(--accent);letter-spacing:.04em}
+.hero p{color:var(--muted);max-width:520px;margin:12px auto 26px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:10px 22px;border-radius:6px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-size:.95rem}
+section{padding:44px 0}
+h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.stat{text-align:center}.stat b{display:block;font-family:Cinzel,Georgia,serif;font-size:2rem;color:var(--accent)}
+.muted{color:var(--muted);font-size:.9rem}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filters button{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:20px;padding:6px 16px;cursor:pointer;font-size:.88rem}
+.filters button.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.member{display:flex;align-items:center;gap:10px}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}
+.tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right}
+.sched{width:100%;border-collapse:collapse}
+.sched td{padding:10px 8px;border-bottom:1px solid var(--line)}
+footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<nav><a href="#about">About</a><a href="#stats">Guild Stats</a><a href="#roster">Roster</a><a href="#schedule">Play Times</a><a href="#join">Join Us</a></nav>
+
+<header class="hero">
+  <h1>Dirty Socks</h1>
+  <p>A Horde guild in WoW Forever. Friendly, laid-back, and always up for a dungeon run.</p>
+  <a class="btn" href="#join">Join the Guild</a>
+</header>
+
+<main class="wrap">
+<section id="about">
+  <h2>About Us</h2>
+  <div class="card"><p>Dirty Socks is a Horde guild on WoW Forever (North America). Tell visitors here what makes the guild special: your playstyle, goals, and the kind of players you’re looking for.</p></div>
+</section>
+
+<section id="stats">
+  <h2>Guild Stats</h2>
+  <div class="grid" id="statcards"></div>
+  <p class="muted" id="updated" style="margin-top:12px"></p>
+</section>
+
+<section id="roster">
+  <h2>Roster</h2>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="members"></div>
+</section>
+
+<section id="schedule">
+  <h2>Play Times</h2>
+  <div class="card"><table class="sched" id="sched"></table><p class="muted">Edit these to match your group’s schedule.</p></div>
+</section>
+
+<section id="join">
+  <h2>Join Us</h2>
+  <div class="card">
+    <p>New players of any level are welcome. Drop into our Discord, say hello, and tell us what you play.</p>
+    <a class="btn" href="#">Join our Discord</a>
+  </div>
+</section>
+</main>
+
+<footer>© <span id="yr"></span> Dirty Socks · Not affiliated with Blizzard Entertainment.</footer>
+
+<script>
+// Fallback data, used only if guild-data.json can't be loaded.
+const fallback={generated:"2026-11-12T02:17:13.558Z",founded:1793984794000,roster:[
+ {name:"Scott",surname:"Frost",level:34,cls:"Paladin",color:"#f58cba",rank:0},
+ {name:"Needmore",surname:"Beers",level:36,cls:"Warrior",color:"#c79c6e",rank:1},
+ {name:"Orken",surname:"Magorken",level:36,cls:"Shaman",color:"#0070de",rank:1},
+ {name:"Squid",surname:"Zero",level:34,cls:"Druid",color:"#ff7d0a",rank:1},
+ {name:"Plucky",surname:"Recks",level:30,cls:"Mage",color:"#3fc7eb",rank:1},
+ {name:"Capo",surname:"Shoots",level:24,cls:"Hunter",color:"#abd473",rank:1},
+ {name:"Emo",surname:"Erling",level:15,cls:"Priest",color:"#c8c8c8",rank:1},
+ {name:"Rowdy",surname:"Highland",level:13,cls:"Warrior",color:"#c79c6e",rank:1},
+ {name:"Mr",surname:"Capo",level:12,cls:"Mage",color:"#3fc7eb",rank:1},
+ {name:"Mrs",surname:"Capo",level:12,cls:"Hunter",color:"#abd473",rank:1},
+ {name:"Capos",surname:"Bank",level:1,cls:"Warrior",color:"#c79c6e",rank:1},
+ {name:"Zimmy",surname:"Zambony",level:29,cls:"Paladin",color:"#f58cba",rank:3},
+ {name:"Ember",surname:"Highland",level:13,cls:"Hunter",color:"#abd473",rank:4},
+ {name:"Parttimedad",surname:"Parttimedad",level:5,cls:"Druid",color:"#ff7d0a",rank:4}
+]};
+// ===== EDIT THESE BY HAND =====
+const rankNames={0:"Guild Master"}; // Blizzard returns numbers only; add titles like 1:"Officer"
+const schedule=[["Evenings","Most nights, casual groups"],["Weekends","Dungeon runs and leveling together"]];
+// ==============================
+
+const fmt=d=>new Date(d).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
+const fEl=document.getElementById("filters"),mEl=document.getElementById("members");
+let sorted=[],tabs=[];
+function show(c){
+  fEl.innerHTML=tabs.map(t=>`<button class="${t===c?"on":""}" data-c="${t}">${t}</button>`).join("");
+  mEl.innerHTML=sorted.filter(m=>c==="All"||m.cls===c).map(m=>`<div class="card member"><span class="dot" style="background:${m.color}"></span><div><strong>${m.name} ${m.surname||""}</strong><div class="muted">Level ${m.level} ${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
+}
+fEl.addEventListener("click",e=>{const b=e.target.closest("button");if(b)show(b.dataset.c)});
+function render(d){
+  const roster=d.roster, maxLevel=Math.max(...roster.map(m=>m.level));
+  const classes=[...new Set(roster.map(m=>m.cls))].sort();
+  document.getElementById("statcards").innerHTML=[
+    [roster.length,"Members"],[maxLevel,"Highest level"],[classes.length,"Classes represented"],[fmt(d.founded),"Founded"]
+  ].map(s=>`<div class="card stat"><b>${s[0]}</b><span class="muted">${s[1]}</span></div>`).join("");
+  document.getElementById("updated").textContent="Roster last updated "+fmt(d.generated)+".";
+  sorted=[...roster].sort((a,b)=>a.rank-b.rank||b.level-a.level);
+  tabs=["All",...classes];
+  show("All");
+}
+document.getElementById("sched").innerHTML=schedule.map(s=>`<tr><td><strong>${s[0]}</strong></td><td>${s[1]}</td></tr>`).join("");
+document.getElementById("yr").textContent=new Date().getFullYear();
+fetch("guild-data.json",{cache:"no-cache"})
+  .then(r=>r.ok?r.json():Promise.reject())
+  .then(j=>render({generated:j.generated,founded:(j.raw&&j.raw.guild&&j.raw.guild.created_timestamp)||fallback.founded,roster:j.roster}))
+  .catch(()=>render(fallback));
+</script>
+</body>
+</html>
