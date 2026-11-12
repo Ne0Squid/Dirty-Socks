@@ -38,6 +38,22 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .leader{text-align:center}.leader h3{font-size:1.4rem;margin-top:4px}.leader a{color:inherit;text-decoration:none}.leader a:hover{color:var(--accent);text-decoration:underline}
 .lvl{font-family:Cinzel,Georgia,serif;font-size:2.4rem;color:var(--accent);line-height:1.2;margin-top:6px}
 .bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin:12px 0 6px}.bar span{display:block;height:100%;background:var(--accent)}
+.raid-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}.raid-head h3{font-size:1.2rem}
+.dgrid{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));margin-top:14px}
+.dung{display:flex;align-items:center;gap:10px;padding:8px 12px;background:var(--surface);border:1px solid var(--line);border-radius:8px;font-size:.9rem}
+.dung .chk{width:18px;height:18px;border:2px solid var(--line);border-radius:50%;flex:none;display:grid;place-items:center;font-size:.65rem;font-style:normal;line-height:1}
+.dung.done{border-color:var(--accent)}.dung.done .chk{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+.dn small{display:block;color:var(--muted);font-size:.75rem;line-height:1.2}
+.dung .new{margin-left:auto;font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.raid-title{font-size:1.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.crow{display:grid;grid-template-columns:110px 1fr 24px;align-items:center;gap:10px;margin:9px 0;font-size:.9rem}
+.ctrack{height:14px;background:var(--bg);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.ctrack span{display:block;height:100%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18)}
+.cnum{text-align:right;font-weight:600}
+.pager{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.pager button{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer;font-size:.88rem;min-width:36px}
+.pager button.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.pager button:disabled{opacity:.4;cursor:default}
 .dot{width:12px;height:12px;border-radius:50%;flex:none}
 .tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right}
 .sched{width:100%;border-collapse:collapse}
@@ -46,7 +62,7 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 </style>
 </head>
 <body>
-<nav><a href="#about">About</a><a href="#stats">Guild Stats</a><a href="#race">Race to 60</a><a href="#roster">Roster</a></nav>
+<nav><a href="#about">About</a><a href="#stats">Guild Stats</a><a href="#race">Race to 60</a><a href="#roster">Roster</a><a href="#dungeons">Dungeons</a><a href="#raidprog">Raid Progression</a></nav>
 
 <header class="hero">
   <h1>Dirty Socks</h1>
@@ -74,9 +90,23 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
   <h2>Roster</h2>
   <div class="filters" id="filters"></div>
   <div class="grid" id="members"></div>
+  <div class="pager" id="pager"></div>
   <p class="muted" style="margin-top:12px">Character Armory links become available once a character reaches level 10.</p>
+  <div class="card" style="margin-top:20px"><h3 style="font-size:1.2rem;margin-bottom:6px">Classes in the Guild</h3><div id="classbars"></div></div>
 </section>
 
+<section id="dungeons">
+  <h2>Dungeon Checklist</h2>
+  <div class="card"><div class="raid-head"><h3 id="dungtitle"></h3><span class="muted" id="dungsub"></span></div><div class="bar"><span id="dungbar"></span></div></div>
+  <div class="dgrid" id="dunglist"></div>
+  <p class="muted" style="margin-top:12px">Listed by starting level, with suggested level ranges. Dungeons marked “New” were added in WoW Forever.</p>
+</section>
+
+<section id="raidprog">
+  <h2>Raid Progression</h2>
+  <div class="grid" id="raids"></div>
+  <p class="muted" style="margin-top:12px">All three raids unlock for level 60 characters on December 9, 2026.</p>
+</section>
 </main>
 
 <footer>© <span id="yr"></span> Dirty Socks · Not affiliated with Blizzard Entertainment.</footer>
@@ -100,7 +130,7 @@ const fallback={generated:"2026-11-12T02:17:13.558Z",founded:1793984794000,roste
  {name:"Parttimedad",surname:"Parttimedad",level:5,cls:"Druid",color:"#ff7d0a",rank:4}
 ]};
 // ===== EDIT THESE BY HAND =====
-const rankNames={0:"Guild Master"}; // Blizzard returns numbers only; add titles like 1:"Officer"
+const rankNames={0:"Guild Master",1:"Officer"}; // Blizzard returns numbers only; add titles like 1:"Officer"
 // ==============================
 
 const fmt=d=>new Date(d).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
@@ -109,11 +139,23 @@ let sorted=[],tabs=[];
 const armoryUrl=m=>"https://worldofwarcraft.blizzard.com/en-us/forever/us/armory/character/"+encodeURIComponent((m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-"));
 // Armory pages only exist for characters level 10 and up, so lower levels stay plain text.
 const nameLink=m=>{const t=m.name+" "+(m.surname||"");return m.level>=10?`<a href="${armoryUrl(m)}" target="_blank" rel="noopener">${t}</a>`:t};
-function show(c){
+const PER_PAGE=15;let curClass="All";
+function show(c,pg){
+  curClass=c;
+  const list=sorted.filter(m=>c==="All"||m.cls===c);
+  const pages=Math.max(1,Math.ceil(list.length/PER_PAGE));
+  const cur=Math.min(Math.max(1,pg||1),pages);
   fEl.innerHTML=tabs.map(t=>`<button class="${t===c?"on":""}" data-c="${t}">${t}</button>`).join("");
-  mEl.innerHTML=sorted.filter(m=>c==="All"||m.cls===c).map(m=>`<div class="card member"><span class="dot" style="background:${m.color}"></span><div><strong>${nameLink(m)}</strong><div class="muted">Level ${m.level} ${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
+  mEl.innerHTML=list.slice((cur-1)*PER_PAGE,cur*PER_PAGE).map(m=>`<div class="card member"><span class="dot" style="background:${m.color}"></span><div><strong>${nameLink(m)}</strong><div class="muted">Level ${m.level} ${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
+  const pagerEl=document.getElementById("pager");
+  if(pages<=1){pagerEl.innerHTML="";return}
+  let h=`<button data-p="${cur-1}" ${cur===1?"disabled":""}>‹ Prev</button>`;
+  for(let i=1;i<=pages;i++)h+=`<button data-p="${i}" class="${i===cur?"on":""}">${i}</button>`;
+  h+=`<button data-p="${cur+1}" ${cur===pages?"disabled":""}>Next ›</button>`;
+  pagerEl.innerHTML=h;
 }
-fEl.addEventListener("click",e=>{const b=e.target.closest("button");if(b)show(b.dataset.c)});
+fEl.addEventListener("click",e=>{const b=e.target.closest("button");if(b)show(b.dataset.c,1)});
+document.getElementById("pager").addEventListener("click",e=>{const b=e.target.closest("button");if(b&&!b.disabled)show(curClass,+b.dataset.p)});
 function render(d){
   const roster=d.roster, maxLevel=Math.max(...roster.map(m=>m.level));
   const classes=[...new Set(roster.map(m=>m.cls))].sort();
@@ -121,6 +163,10 @@ function render(d){
     [roster.length,"Members"],[maxLevel,"Top level"],[classes.length,"Classes"],[new Date(d.founded).toLocaleDateString("en-US",{month:"short",year:"numeric"}),"Founded"]
   ].map(s=>`<div class="card stat"><b>${s[0]}</b><span class="muted">${s[1]}</span></div>`).join("");
   document.getElementById("updated").textContent="Roster last updated "+fmt(d.generated)+".";
+  const counts={};
+  roster.forEach(m=>{(counts[m.cls]=counts[m.cls]||{n:0,color:m.color}).n++});
+  const maxN=Math.max(...Object.values(counts).map(c=>c.n));
+  document.getElementById("classbars").innerHTML=Object.entries(counts).sort((a,b)=>b[1].n-a[1].n||a[0].localeCompare(b[0])).map(([c,v])=>`<div class="crow"><span>${c}</span><div class="ctrack"><span style="width:${v.n/maxN*100}%;background:${v.color}"></span></div><span class="cnum">${v.n}</span></div>`).join("");
   const leaders=roster.filter(m=>m.level===maxLevel);
   document.getElementById("leaders").innerHTML=leaders.map(m=>`<div class="card leader" style="border-top:4px solid ${m.color}"><div class="muted">${m.level>=60?"Reached 60!":leaders.length>1?"Tied for the lead":"Leading the race"}</div><h3>${nameLink(m)}</h3><div class="muted">${m.cls}</div><div class="lvl">Level ${m.level}</div><div class="bar"><span style="width:${Math.min(100,m.level/60*100)}%"></span></div><span class="muted">${m.level>=60?"Max level":(60-m.level)+" levels to go"}</span></div>`).join("");
   sorted=[...roster].sort((a,b)=>a.rank-b.rank||b.level-a.level);
@@ -128,6 +174,40 @@ function render(d){
   show("All");
 }
 document.getElementById("yr").textContent=new Date().getFullYear();
+// ===== DUNGEON CHECKLIST: add a dungeon’s name to "cleared" once the guild has beaten it =====
+const cleared=["Ragefire Chasm","Wailing Caverns","Shadowfang Keep","Blackfathom Deeps","Excavation Site: Wetlands","City of Dalaran","Gnomeregan"];
+const dungeons=[ // [name, lowest level, highest level, new in Forever?]
+ ["Ragefire Chasm",13,18],["Hall of Thanes",13,18,1],["Ruins of Lordaeron",15,20,1],["The Deadmines",17,20],
+ ["Wailing Caverns",18,24],["Shadowfang Keep",21,26],["Blackfathom Deeps",23,28],["Excavation Site: Wetlands",24,29,1],
+ ["The Stockade",25,29],["City of Dalaran",28,33,1],["Gnomeregan",29,34],["Razorfen Kraul",30,38],
+ ["Scarlet Monastery",30,46],["The Drowned City",35,40,1],["Uldaman",37,45],["Razorfen Downs",37,45],
+ ["Zul’Farrak",40,47],["Krol’dok Stronghold",40,45,1],["Maraudon",45,51],["Alcaz Prison",48,53,1],
+ ["Sunken Temple",50,55],["Blackrock Depths",52,60],["Blackmaw Hold",55,60,1],["Blackrock Spire",57,60],
+ ["Shaper’s Terrace",58,60,1],["Dire Maul",58,60],["Stratholme",58,60],["Scholomance",58,60]
+];
+// ==========================================================================================
+(function(){
+  const list=dungeons.map(([name,min,max,isNew])=>({name,min,max,isNew:!!isNew})).sort((a,b)=>a.min-b.min||a.max-b.max);
+  const done=list.filter(d=>cleared.includes(d.name)).length;
+  document.getElementById("dungtitle").textContent=done+" / "+list.length+" dungeons cleared";
+  document.getElementById("dungsub").textContent=done===list.length?"All cleared!":"Keep going!";
+  document.getElementById("dungbar").style.width=(done/list.length*100)+"%";
+  document.getElementById("dunglist").innerHTML=list.map(d=>{const ok=cleared.includes(d.name);return `<div class="dung${ok?" done":""}"><i class="chk">${ok?"✓":""}</i><span class="dn">${d.name}<small>Level ${d.min}–${d.max}</small></span>${d.isNew?'<span class="new">New</span>':""}</div>`}).join("");
+})();
+
+// ===== RAID PROGRESS: change "killed" by hand after each boss kill =====
+const raids=[
+ {name:"The Barrow Deeps",size:10,bosses:8,killed:0},
+ {name:"Hyjal Summit",size:20,bosses:13,killed:0},
+ {name:"Onyxia’s Lair",size:40,bosses:1,killed:0,note:"Requires the Drakefire Amulet to enter"}
+];
+const raidsOpen=new Date("2026-12-09T00:00:00");
+// =====================================================================
+document.getElementById("raids").innerHTML=raids.map(r=>{
+  const status=new Date()<raidsOpen?"Opens December 9":r.killed>=r.bosses?"Cleared":r.killed>0?"In progress":"Not started";
+  const pct=Math.min(100,r.killed/r.bosses*100);
+  return `<div class="card"><h3 class="raid-title">${r.name}</h3><div class="muted">${r.size}-player · ${r.bosses} ${r.bosses===1?"boss":"bosses"}</div><div class="bar"><span style="width:${pct}%"></span></div><span class="muted">${r.killed} / ${r.bosses} defeated</span><div class="muted" style="margin-top:6px">${status}</div>${r.note?`<div class="muted" style="margin-top:6px">${r.note}</div>`:""}</div>`;
+}).join("");
 fetch("guild-data.json",{cache:"no-cache"})
   .then(r=>r.ok?r.json():Promise.reject())
   .then(j=>render({generated:j.generated,founded:(j.raw&&j.raw.guild&&j.raw.guild.created_timestamp)||fallback.founded,roster:j.roster}))
