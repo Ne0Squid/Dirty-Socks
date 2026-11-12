@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T18:40:15.011Z",
+  "generated": "2026-11-12T19:44:19.352Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -8,7 +8,7 @@
     {
       "name": "Scott",
       "surname": "Frost",
-      "level": 35,
+      "level": 36,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 0
@@ -24,7 +24,7 @@
     {
       "name": "Orken",
       "surname": "Magorken",
-      "level": 37,
+      "level": 38,
       "cls": "Shaman",
       "color": "#0070de",
       "rank": 1
