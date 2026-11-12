@@ -57,6 +57,9 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .banner{padding:0;line-height:0}
 .banner img{display:block;width:100%;height:clamp(110px,25vw,480px);object-fit:cover;object-position:center}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.addon-link{display:block;max-width:640px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid var(--line);transition:transform .15s}
+.addon-link:hover{transform:translateY(-2px)}
+.addon-link img{display:block;width:100%;height:auto}
 .dot{width:12px;height:12px;border-radius:50%;flex:none}
 .tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right}
 .sched{width:100%;border-collapse:collapse}
@@ -65,7 +68,7 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 </style>
 </head>
 <body>
-<nav><a href="#about">About</a><a href="#stats">Guild Stats</a><a href="#race">Race to 60</a><a href="#roster">Roster</a><a href="#dungeons">Dungeons</a><a href="#raidprog">Raid Progression</a></nav>
+<nav><a href="#about">About</a><a href="#stats">Guild Stats</a><a href="#race">Race to 60</a><a href="#roster">Roster</a><a href="#dungeons">Dungeons</a><a href="#raidprog">Raid Progression</a><a href="#waypath">Waypath+ Addon</a></nav>
 
 <header class="hero banner">
   <h1 class="sr">Dirty Socks</h1>
@@ -109,6 +112,10 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
   <h2>Raid Progression</h2>
   <div class="grid" id="raids"></div>
   <p class="muted" style="margin-top:12px">All three raids unlock for level 60 characters on December 9, 2026.</p>
+</section>
+<section id="waypath">
+  <h2>Waypath+ addon</h2>
+  <a class="addon-link" href="https://www.curseforge.com/wow/addons/waypath" target="_blank" rel="noopener"><img src="waypath-button.svg" alt="Click here for the Waypath+ addon"></a>
 </section>
 </main>
 
