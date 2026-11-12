@@ -27,13 +27,17 @@ section{padding:44px 0}
 h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
 .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.stat{text-align:center}.stat b{display:block;font-family:Cinzel,Georgia,serif;font-size:2rem;color:var(--accent)}
+#statcards{grid-template-columns:repeat(4,1fr);gap:10px}
+.stat{text-align:center;padding:14px 6px}.stat b{display:block;font-family:Cinzel,Georgia,serif;font-size:clamp(1.1rem,4.5vw,2rem);color:var(--accent)}.stat span{font-size:clamp(.68rem,2.4vw,.9rem)}
 .muted{color:var(--muted);font-size:.9rem}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .filters button{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:20px;padding:6px 16px;cursor:pointer;font-size:.88rem}
 .filters button.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
 .member{display:flex;align-items:center;gap:10px}
 .member a{color:inherit;text-decoration:none}.member a:hover{color:var(--accent);text-decoration:underline}
+.leader{text-align:center}.leader h3{font-size:1.4rem;margin-top:4px}.leader a{color:inherit;text-decoration:none}.leader a:hover{color:var(--accent);text-decoration:underline}
+.lvl{font-family:Cinzel,Georgia,serif;font-size:2.4rem;color:var(--accent);line-height:1.2;margin-top:6px}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin:12px 0 6px}.bar span{display:block;height:100%;background:var(--accent)}
 .dot{width:12px;height:12px;border-radius:50%;flex:none}
 .tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right}
 .sched{width:100%;border-collapse:collapse}
@@ -42,12 +46,11 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 </style>
 </head>
 <body>
-<nav><a href="#about">About</a><a href="#stats">Guild Stats</a><a href="#roster">Roster</a><a href="#schedule">Play Times</a><a href="#join">Join Us</a></nav>
+<nav><a href="#about">About</a><a href="#stats">Guild Stats</a><a href="#race">Race to 60</a><a href="#roster">Roster</a></nav>
 
 <header class="hero">
   <h1>Dirty Socks</h1>
-  <p>A Horde guild in WoW Forever. Friendly, laid-back, and always up for a dungeon run.</p>
-  <a class="btn" href="#join">Join the Guild</a>
+  <p>Socks aren’t clean</p>
 </header>
 
 <main class="wrap">
@@ -62,24 +65,18 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
   <p class="muted" id="updated" style="margin-top:12px"></p>
 </section>
 
+<section id="race">
+  <h2>Race to 60</h2>
+  <div class="grid" id="leaders"></div>
+</section>
+
 <section id="roster">
   <h2>Roster</h2>
   <div class="filters" id="filters"></div>
   <div class="grid" id="members"></div>
+  <p class="muted" style="margin-top:12px">Character Armory links become available once a character reaches level 10.</p>
 </section>
 
-<section id="schedule">
-  <h2>Play Times</h2>
-  <div class="card"><table class="sched" id="sched"></table><p class="muted">Edit these to match your group’s schedule.</p></div>
-</section>
-
-<section id="join">
-  <h2>Join Us</h2>
-  <div class="card">
-    <p>New players of any level are welcome. Drop into our Discord, say hello, and tell us what you play.</p>
-    <a class="btn" href="#">Join our Discord</a>
-  </div>
-</section>
 </main>
 
 <footer>© <span id="yr"></span> Dirty Socks · Not affiliated with Blizzard Entertainment.</footer>
@@ -104,7 +101,6 @@ const fallback={generated:"2026-11-12T02:17:13.558Z",founded:1793984794000,roste
 ]};
 // ===== EDIT THESE BY HAND =====
 const rankNames={0:"Guild Master"}; // Blizzard returns numbers only; add titles like 1:"Officer"
-const schedule=[["Evenings","Most nights, casual groups"],["Weekends","Dungeon runs and leveling together"]];
 // ==============================
 
 const fmt=d=>new Date(d).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
@@ -122,14 +118,15 @@ function render(d){
   const roster=d.roster, maxLevel=Math.max(...roster.map(m=>m.level));
   const classes=[...new Set(roster.map(m=>m.cls))].sort();
   document.getElementById("statcards").innerHTML=[
-    [roster.length,"Members"],[maxLevel,"Highest level"],[classes.length,"Classes represented"],[fmt(d.founded),"Founded"]
+    [roster.length,"Members"],[maxLevel,"Top level"],[classes.length,"Classes"],[new Date(d.founded).toLocaleDateString("en-US",{month:"short",year:"numeric"}),"Founded"]
   ].map(s=>`<div class="card stat"><b>${s[0]}</b><span class="muted">${s[1]}</span></div>`).join("");
   document.getElementById("updated").textContent="Roster last updated "+fmt(d.generated)+".";
+  const leaders=roster.filter(m=>m.level===maxLevel);
+  document.getElementById("leaders").innerHTML=leaders.map(m=>`<div class="card leader" style="border-top:4px solid ${m.color}"><div class="muted">${m.level>=60?"Reached 60!":leaders.length>1?"Tied for the lead":"Leading the race"}</div><h3>${nameLink(m)}</h3><div class="muted">${m.cls}</div><div class="lvl">Level ${m.level}</div><div class="bar"><span style="width:${Math.min(100,m.level/60*100)}%"></span></div><span class="muted">${m.level>=60?"Max level":(60-m.level)+" levels to go"}</span></div>`).join("");
   sorted=[...roster].sort((a,b)=>a.rank-b.rank||b.level-a.level);
   tabs=["All",...classes];
   show("All");
 }
-document.getElementById("sched").innerHTML=schedule.map(s=>`<tr><td><strong>${s[0]}</strong></td><td>${s[1]}</td></tr>`).join("");
 document.getElementById("yr").textContent=new Date().getFullYear();
 fetch("guild-data.json",{cache:"no-cache"})
   .then(r=>r.ok?r.json():Promise.reject())
