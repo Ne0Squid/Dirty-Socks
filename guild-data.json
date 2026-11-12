@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T05:07:48.252Z",
+  "generated": "2026-11-12T05:09:48.107Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -8,7 +8,7 @@
     {
       "name": "Scott",
       "surname": "Frost",
-      "level": 34,
+      "level": 35,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 0
@@ -16,7 +16,7 @@
     {
       "name": "Needmore",
       "surname": "Beers",
-      "level": 36,
+      "level": 37,
       "cls": "Warrior",
       "color": "#c79c6e",
       "rank": 1
@@ -24,7 +24,7 @@
     {
       "name": "Orken",
       "surname": "Magorken",
-      "level": 36,
+      "level": 37,
       "cls": "Shaman",
       "color": "#0070de",
       "rank": 1
@@ -48,7 +48,7 @@
     {
       "name": "Capo",
       "surname": "Shoots",
-      "level": 24,
+      "level": 26,
       "cls": "Hunter",
       "color": "#abd473",
       "rank": 1
@@ -96,7 +96,7 @@
     {
       "name": "Zimmy",
       "surname": "Zambony",
-      "level": 29,
+      "level": 30,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 3
