@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T05:48:29.441Z",
+  "generated": "2026-11-13T06:53:36.086Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -16,7 +16,7 @@
     {
       "name": "Needmore",
       "surname": "Beers",
-      "level": 39,
+      "level": 40,
       "cls": "Warrior",
       "color": "#c79c6e",
       "rank": 1
