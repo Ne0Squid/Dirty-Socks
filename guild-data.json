@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T23:30:33.690Z",
+  "generated": "2026-11-13T00:41:21.623Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -14,19 +14,19 @@
       "rank": 0
     },
     {
+      "name": "Needmore",
+      "surname": "Beers",
+      "level": 38,
+      "cls": "Warrior",
+      "color": "#c79c6e",
+      "rank": 1
+    },
+    {
       "name": "Orken",
       "surname": "Magorken",
       "level": 38,
       "cls": "Shaman",
       "color": "#0070de",
-      "rank": 1
-    },
-    {
-      "name": "Needmore",
-      "surname": "Beers",
-      "level": 37,
-      "cls": "Warrior",
-      "color": "#c79c6e",
       "rank": 1
     },
     {
@@ -110,6 +110,14 @@
       "rank": 4
     },
     {
+      "name": "Hotdog",
+      "surname": "Nomustard",
+      "level": 10,
+      "cls": "Hunter",
+      "color": "#abd473",
+      "rank": 4
+    },
+    {
       "name": "Parttimedad",
       "surname": "Parttimedad",
       "level": 5,
@@ -132,7 +140,7 @@
         "name": "Horde"
       },
       "achievement_points": 0,
-      "member_count": 14,
+      "member_count": 15,
       "roster": {
         "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks/roster?namespace=profile-forever-us"
       },
