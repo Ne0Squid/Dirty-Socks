@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T08:05:30.451Z",
+  "generated": "2026-11-13T08:10:14.390Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -12,7 +12,7 @@
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 0,
-      "spec": null
+      "spec": "Retribution"
     },
     {
       "name": "Needmore",
@@ -21,7 +21,7 @@
       "cls": "Warrior",
       "color": "#c79c6e",
       "rank": 1,
-      "spec": null
+      "spec": "Protection"
     },
     {
       "name": "Orken",
@@ -30,7 +30,7 @@
       "cls": "Shaman",
       "color": "#0070de",
       "rank": 1,
-      "spec": null
+      "spec": "Enhancement"
     },
     {
       "name": "Squid",
@@ -39,7 +39,7 @@
       "cls": "Druid",
       "color": "#ff7d0a",
       "rank": 1,
-      "spec": null
+      "spec": "Feral Combat"
     },
     {
       "name": "Plucky",
@@ -48,7 +48,7 @@
       "cls": "Mage",
       "color": "#3fc7eb",
       "rank": 1,
-      "spec": null
+      "spec": "Frost"
     },
     {
       "name": "Capo",
@@ -57,7 +57,7 @@
       "cls": "Hunter",
       "color": "#abd473",
       "rank": 1,
-      "spec": null
+      "spec": "Beast Mastery"
     },
     {
       "name": "Emo",
@@ -66,7 +66,7 @@
       "cls": "Priest",
       "color": "#c8c8c8",
       "rank": 1,
-      "spec": null
+      "spec": "Holy"
     },
     {
       "name": "Rowdy",
@@ -75,7 +75,7 @@
       "cls": "Warrior",
       "color": "#c79c6e",
       "rank": 1,
-      "spec": null
+      "spec": "Arms"
     },
     {
       "name": "Mr",
@@ -84,7 +84,7 @@
       "cls": "Mage",
       "color": "#3fc7eb",
       "rank": 1,
-      "spec": null
+      "spec": "Frost"
     },
     {
       "name": "Mrs",
@@ -93,7 +93,7 @@
       "cls": "Hunter",
       "color": "#abd473",
       "rank": 1,
-      "spec": null
+      "spec": "Marksmanship"
     },
     {
       "name": "Capos",
@@ -110,7 +110,7 @@
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 3,
-      "spec": null
+      "spec": "Protection"
     },
     {
       "name": "Ember",
@@ -119,7 +119,7 @@
       "cls": "Hunter",
       "color": "#abd473",
       "rank": 4,
-      "spec": null
+      "spec": "Beast Mastery"
     },
     {
       "name": "Hotdog",
@@ -137,690 +137,6 @@
       "cls": "Druid",
       "color": "#ff7d0a",
       "rank": 4
-    }
-  ],
-  "specSamples": [
-    {
-      "character": "scott-frost",
-      "response": {
-        "_links": {
-          "self": {
-            "href": "https://us.api.blizzard.com/profile/wow/character/scott-frost/specializations?namespace=profile-forever-us"
-          }
-        },
-        "character": {
-          "key": {
-            "href": "https://us.api.blizzard.com/profile/wow/character/scott-frost?namespace=profile-forever-us"
-          },
-          "name": "Scott",
-          "id": 3667674,
-          "surname": "Frost",
-          "slug": "scott-frost"
-        },
-        "specialization_groups": [
-          {
-            "is_active": true,
-            "specializations": [
-              {
-                "specialization": {
-                  "key": {
-                    "href": "https://us.api.blizzard.com/data/wow/playable-specialization/184?namespace=static-1.60.1_70399-forever-us"
-                  },
-                  "name": "Retribution",
-                  "id": 184
-                },
-                "talents": [
-                  {
-                    "talent": {
-                      "name": "Benediction",
-                      "id": 135236
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Benediction",
-                        "id": 20101
-                      },
-                      "description": "Reduces the Mana cost of all instant cast spells and abilities by 10%.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 5
-                  },
-                  {
-                    "talent": {
-                      "name": "Improved Judgement",
-                      "id": 135235
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Improved Judgement",
-                        "id": 25956
-                      },
-                      "description": "Decreases the cooldown of your Judgement ability by 2 sec.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 2
-                  },
-                  {
-                    "talent": {
-                      "name": "Conviction",
-                      "id": 135233
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Conviction",
-                        "id": 20117
-                      },
-                      "description": "Improves your chance to get a critical strike with all spells and attacks by 6%.",
-                      "cast_time": "Passive",
-                      "power_cost": null
-                    },
-                    "talent_rank": 3
-                  },
-                  {
-                    "talent": {
-                      "name": "Sanctified Judgement",
-                      "id": 135231
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Sanctified Judgement",
-                        "id": 1311074
-                      },
-                      "description": "Gives your Judgement ability a 100% chance to return 60% of the Mana cost of the judged seal.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 3
-                  },
-                  {
-                    "talent": {
-                      "name": "Seal of Command",
-                      "id": 135226
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Seal of Command",
-                        "id": 20375
-                      },
-                      "description": "Gives the Paladin a chance to deal additional Holy damage equal to 70% of normal weapon damage.  Only one Seal can be active on the Paladin at any one time.  Lasts 30 sec.\r\n\r\nUnleashing this Seal's energy will judge an enemy, instantly causing 77 to 82 Holy damage, 154 to 163 if the target is stunned or incapacitated.",
-                      "cast_time": "Instant",
-                      "power_cost": "58 Mana"
-                    },
-                    "talent_rank": 1
-                  },
-                  {
-                    "talent": {
-                      "name": "Pursuit of Justice",
-                      "id": 135229
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Pursuit of Justice",
-                        "id": 26022
-                      },
-                      "description": "Increases movement speed and mounted movement speed by 15%.  This does not stack with other movement speed increasing effects.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 2
-                  },
-                  {
-                    "talent": {
-                      "name": "Eye for an Eye",
-                      "id": 135228
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Eye for an Eye",
-                        "id": 9799
-                      },
-                      "description": "All critical strikes against you cause 5% of the damage taken to the attacker as well. The damage caused by Eye for an Eye will not exceed 50% of the Paladin's total health.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 1
-                  },
-                  {
-                    "talent": {
-                      "name": "Sacred Arbiter",
-                      "id": 135230
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Sacred Arbiter",
-                        "id": 1311087
-                      },
-                      "description": "Increases the damage of your Holy Strike ability by 20% and causes it to refresh all Judgement effects on the target.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 1
-                  },
-                  {
-                    "talent": {
-                      "name": "Two-Handed Weapon Specialization",
-                      "id": 135227
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Two-Handed Weapon Specialization",
-                        "id": 20111
-                      },
-                      "description": "Increases the Physical and Holy damage you deal by 6%, and reduces all threat you generate by 20% while a two-handed melee weapon is equipped.",
-                      "cast_time": "Passive",
-                      "power_cost": null
-                    },
-                    "talent_rank": 3
-                  },
-                  {
-                    "talent": {
-                      "name": "Repentance",
-                      "id": 135224
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Repentance",
-                        "id": 20066
-                      },
-                      "description": "Puts the enemy target in a state of meditation, incapacitating them for up to 6 sec. Any damage caused will awaken the target. Only works against Humanoids.",
-                      "cast_time": "Instant",
-                      "power_cost": "54 Mana",
-                      "range": "20 yd range",
-                      "cooldown": "1 min cooldown"
-                    },
-                    "talent_rank": 1
-                  },
-                  {
-                    "talent": {
-                      "name": "Vengeance",
-                      "id": 135223
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Vengeance",
-                        "id": 20049
-                      },
-                      "description": "Increases your Physical and Holy damage dealt by 3% for 30 sec after landing a non-periodic critical strike.  Stacks up to 5 times.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 3
-                  },
-                  {
-                    "talent": {
-                      "name": "Champion of the Light",
-                      "id": 142634
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Champion of the Light",
-                        "id": 1311084
-                      },
-                      "description": "Increases your spell damage by up to 36% of your Intellect, and reduces the cast time of your Hammer of Wrath by 0.6 sec.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 3
-                  }
-                ],
-                "specialization_name": "Retribution",
-                "spent_points": 28
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "character": "needmore-beers",
-      "response": {
-        "_links": {
-          "self": {
-            "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers/specializations?namespace=profile-forever-us"
-          }
-        },
-        "character": {
-          "key": {
-            "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers?namespace=profile-forever-us"
-          },
-          "name": "Needmore",
-          "id": 3676751,
-          "surname": "Beers",
-          "slug": "needmore-beers"
-        },
-        "specialization_groups": [
-          {
-            "is_active": true,
-            "specializations": [
-              {
-                "specialization": {
-                  "key": {
-                    "href": "https://us.api.blizzard.com/data/wow/playable-specialization/257?namespace=static-1.60.1_70399-forever-us"
-                  },
-                  "name": "Protection",
-                  "id": 257
-                },
-                "talents": [
-                  {
-                    "talent": {
-                      "name": "Shield Specialization",
-                      "id": 135507
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Shield Specialization",
-                        "id": 12298
-                      },
-                      "description": "Increases your chance to Block attacks with your shield by 5% and grants you a 100% chance to generate 5 Rage when you Block.",
-                      "cast_time": "Passive",
-                      "power_cost": null
-                    },
-                    "talent_rank": 5
-                  },
-                  {
-                    "talent": {
-                      "name": "Anticipation",
-                      "id": 135506
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Anticipation",
-                        "id": 12297
-                      },
-                      "description": "Increases your Defense Skill by 20.",
-                      "cast_time": "Passive",
-                      "power_cost": null
-                    },
-                    "talent_rank": 5
-                  },
-                  {
-                    "talent": {
-                      "name": "Improved Revenge",
-                      "id": 135500
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Improved Revenge",
-                        "id": 12797
-                      },
-                      "description": "Increases damage dealt by your Revenge ability by 60%.",
-                      "cast_time": "Passive",
-                      "power_cost": null
-                    },
-                    "talent_rank": 3
-                  },
-                  {
-                    "talent": {
-                      "name": "Last Stand",
-                      "id": 135501
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Last Stand",
-                        "id": 12975
-                      },
-                      "description": "When activated, this ability temporarily grants you 30% of your maximum health for 20 sec. After the effect expires, the health is lost.",
-                      "cast_time": "Instant",
-                      "power_cost": null,
-                      "cooldown": "3 min cooldown"
-                    },
-                    "talent_rank": 1
-                  },
-                  {
-                    "talent": {
-                      "name": "Master of Defense",
-                      "id": 135502
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Master of Defense",
-                        "id": 1310316
-                      },
-                      "description": "Grants you a 100% chance to generate 5 Rage when you Dodge or Parry while a shield is equipped.",
-                      "cast_time": "Passive",
-                      "power_cost": null
-                    },
-                    "talent_rank": 2
-                  },
-                  {
-                    "talent": {
-                      "name": "Defiance",
-                      "id": 142602
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Defiance",
-                        "id": 12792
-                      },
-                      "description": "Increases all threat generated in Defensive stance by an additional 20% while a shield is equipped.",
-                      "cast_time": "Passive",
-                      "power_cost": null
-                    },
-                    "talent_rank": 3
-                  },
-                  {
-                    "talent": {
-                      "name": "Improved Sunder Armor",
-                      "id": 135499
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Improved Sunder Armor",
-                        "id": 12308
-                      },
-                      "description": "Reduces the Rage cost of your Sunder Armor ability by 3.",
-                      "cast_time": "Passive",
-                      "power_cost": null
-                    },
-                    "talent_rank": 3
-                  },
-                  {
-                    "talent": {
-                      "name": "Vanguard",
-                      "id": 135497
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Vanguard",
-                        "id": 1310317
-                      },
-                      "description": "Your Charge ability is now usable while in Defensive Stance.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 1
-                  },
-                  {
-                    "talent": {
-                      "name": "Improved Shield Wall",
-                      "id": 135495
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Improved Shield Wall",
-                        "id": 12312
-                      },
-                      "description": "Reduces the cooldown of your Shield Wall ability by 11.0 min.",
-                      "cast_time": "Passive",
-                      "power_cost": null
-                    },
-                    "talent_rank": 2
-                  },
-                  {
-                    "talent": {
-                      "name": "Concussion Blow",
-                      "id": 135496
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Concussion Blow",
-                        "id": 12809
-                      },
-                      "description": "Stuns the target for 5 sec.",
-                      "cast_time": "Instant",
-                      "power_cost": "10 Rage",
-                      "range": "Melee Range",
-                      "cooldown": "45 sec cooldown"
-                    },
-                    "talent_rank": 1
-                  },
-                  {
-                    "talent": {
-                      "name": "Bastion",
-                      "id": 135493
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Bastion",
-                        "id": 16538
-                      },
-                      "description": "Increases all damage you deal by 8% while a shield is equipped.",
-                      "cast_time": "Passive",
-                      "power_cost": null
-                    },
-                    "talent_rank": 4
-                  },
-                  {
-                    "talent": {
-                      "name": "Shield Slam",
-                      "id": 135490
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Shield Slam",
-                        "id": 23922
-                      },
-                      "description": "Slam the target with your shield, causing 454 to 475 damage, increased by your Block Value, and has a 50% chance of dispelling 1 magic effect on the target. Causes a very high amount of threat.",
-                      "cast_time": "Instant",
-                      "power_cost": "20 Rage",
-                      "range": "Melee Range",
-                      "cooldown": "6 sec cooldown"
-                    },
-                    "talent_rank": 1
-                  }
-                ],
-                "specialization_name": "Protection",
-                "spent_points": 31
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "character": "squid-zero",
-      "response": {
-        "_links": {
-          "self": {
-            "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero/specializations?namespace=profile-forever-us"
-          }
-        },
-        "character": {
-          "key": {
-            "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero?namespace=profile-forever-us"
-          },
-          "name": "Squid",
-          "id": 2690011,
-          "surname": "Zero",
-          "slug": "squid-zero"
-        },
-        "specialization_groups": [
-          {
-            "is_active": true,
-            "specializations": [
-              {
-                "specialization": {
-                  "key": {
-                    "href": "https://us.api.blizzard.com/data/wow/playable-specialization/134?namespace=static-1.60.1_70399-forever-us"
-                  },
-                  "name": "Feral Combat",
-                  "id": 134
-                },
-                "talents": [
-                  {
-                    "talent": {
-                      "name": "Ferocity",
-                      "id": 134399
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Ferocity",
-                        "id": 16934
-                      },
-                      "description": "Reduces the cost of your Maul, Primal Bite, Swipe, Claw, and Rake abilities by 5 Rage or Energy.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 5
-                  },
-                  {
-                    "talent": {
-                      "name": "Furor",
-                      "id": 134400
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Furor",
-                        "id": 17056
-                      },
-                      "description": "Gives you a 60% chance to gain 10 Rage when shapeshifting into Bear Form or Dire Bear Form. Shapeshifting into Cat Form restores 60% of the Energy you had when last in Cat Form, plus 6 Energy per second spent outside Bear Form or Dire Bear Form, up to 60 Energy.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 3
-                  },
-                  {
-                    "talent": {
-                      "name": "Feral Swiftness",
-                      "id": 134404
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Feral Swiftness",
-                        "id": 17002
-                      },
-                      "description": "Increases your movement speed while in Cat Form by 30%, and increases your chance to Dodge by 4%.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 2
-                  },
-                  {
-                    "talent": {
-                      "name": "Shredding Attacks",
-                      "id": 134406
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Shredding Attacks",
-                        "id": 16966
-                      },
-                      "description": "Reduces the Energy cost of your Shred ability by 18 and reduces the Rage cost of your Lacerate ability by 3.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 3
-                  },
-                  {
-                    "talent": {
-                      "name": "Savage Fury",
-                      "id": 134409
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Savage Fury",
-                        "id": 16998
-                      },
-                      "description": "Increases the damage caused by your Claw, Rake, Shred, Maul, and Swipe abilities by 10%.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 2
-                  },
-                  {
-                    "talent": {
-                      "name": "Feral Charge",
-                      "id": 134405
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Feral Charge",
-                        "id": 1238122
-                      },
-                      "description": "Requires Bear Form, Dire Bear Form\r\nCharge an enemy, immobilizing them and interrupting any spell they are casting for 4 sec.\r\n\r\n",
-                      "cast_time": "Instant",
-                      "power_cost": "5 Rage",
-                      "range": "8-25 yd range",
-                      "cooldown": "15 sec cooldown"
-                    },
-                    "talent_rank": 1
-                  },
-                  {
-                    "talent": {
-                      "name": "Sharpened Claws",
-                      "id": 134407
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Sharpened Claws",
-                        "id": 16942
-                      },
-                      "description": "Increases your critical strike chance while in Bear Form, Dire Bear Form, or Cat Form by 6%.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 2
-                  },
-                  {
-                    "talent": {
-                      "name": "Predatory Strikes",
-                      "id": 134413
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Predatory Strikes",
-                        "id": 16972
-                      },
-                      "description": "Increases your melee Attack Power in Cat Form, Bear Form, and Dire Bear Form by 150% of your level.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 3
-                  },
-                  {
-                    "talent": {
-                      "name": "Blood Frenzy",
-                      "id": 134408
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Blood Frenzy",
-                        "id": 16958
-                      },
-                      "description": "Gives you a 100% chance to gain an additional 5 Rage any time you get a critical strike while in Bear Form or Dire Bear Form. In addition, your non-periodic critical strikes from Cat Form abilities that generate Combo Points have a 100% chance to add an additional Combo Point.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 2
-                  },
-                  {
-                    "talent": {
-                      "name": "Leader of the Pack",
-                      "id": 134416
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Leader of the Pack",
-                        "id": 17007
-                      },
-                      "description": "While in Cat Form, Bear Form, or Dire Bear Form, the Leader of the Pack increases the Critical Strike chance of all party or raid members within 45 yards by 3%.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 1
-                  },
-                  {
-                    "talent": {
-                      "name": "Natural Instinct",
-                      "id": 134411
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Natural Instinct",
-                        "id": 1223242
-                      },
-                      "description": "Increases the critical strike damage bonus of your melee abilities by 20% and increases your spell healing by 25% of your Intellect.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 2
-                  },
-                  {
-                    "talent": {
-                      "name": "Rend and Tear",
-                      "id": 134414
-                    },
-                    "spell_tooltip": {
-                      "spell": {
-                        "name": "Rend and Tear",
-                        "id": 1223246
-                      },
-                      "description": "Increases damage done by your melee abilities on Bleeding targets by 9%.",
-                      "cast_time": "Passive"
-                    },
-                    "talent_rank": 3
-                  }
-                ],
-                "specialization_name": "Feral Combat",
-                "spent_points": 29
-              }
-            ]
-          }
-        ]
-      }
     }
   ],
   "raw": {
