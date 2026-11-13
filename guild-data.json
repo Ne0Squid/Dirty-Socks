@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T22:34:32.254Z",
+  "generated": "2026-11-13T23:30:00.738Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -69,6 +69,15 @@
       "spec": "Holy"
     },
     {
+      "name": "Mrs",
+      "surname": "Capo",
+      "level": 13,
+      "cls": "Hunter",
+      "color": "#abd473",
+      "rank": 1,
+      "spec": "Marksmanship"
+    },
+    {
       "name": "Rowdy",
       "surname": "Highland",
       "level": 13,
@@ -87,15 +96,6 @@
       "spec": "Frost"
     },
     {
-      "name": "Mrs",
-      "surname": "Capo",
-      "level": 13,
-      "cls": "Hunter",
-      "color": "#abd473",
-      "rank": 1,
-      "spec": "Marksmanship"
-    },
-    {
       "name": "Capos",
       "surname": "Bank",
       "level": 1,
@@ -106,7 +106,7 @@
     {
       "name": "Zimmy",
       "surname": "Zambony",
-      "level": 30,
+      "level": 32,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 3,
