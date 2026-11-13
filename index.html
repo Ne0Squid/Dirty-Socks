@@ -162,7 +162,7 @@ function show(c,pg){
   const pages=Math.max(1,Math.ceil(list.length/PER_PAGE));
   const cur=Math.min(Math.max(1,pg||1),pages);
   fEl.innerHTML=tabs.map(t=>`<button class="${t===c?"on":""}" data-c="${t}">${t}</button>`).join("");
-  mEl.innerHTML=list.slice((cur-1)*PER_PAGE,cur*PER_PAGE).map(m=>`<div class="card member"><span class="dot" style="background:${m.color}"></span><div><strong>${nameLink(m)}</strong><div class="muted">Level ${m.level} ${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
+  mEl.innerHTML=list.slice((cur-1)*PER_PAGE,cur*PER_PAGE).map(m=>`<div class="card member"><span class="dot" style="background:${m.color}"></span><div><strong>${nameLink(m)}</strong><div class="muted">Level ${m.level} ${m.spec?m.spec+" ":""}${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
   const pagerEl=document.getElementById("pager");
   if(pages<=1){pagerEl.innerHTML="";return}
   let h=`<button data-p="${cur-1}" ${cur===1?"disabled":""}>‹ Prev</button>`;
