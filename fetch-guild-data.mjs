@@ -78,8 +78,21 @@ const members = (roster?.members ?? []).map((m) => {
 // Roster levels can lag behind each character's own profile, so check the profile too
 // and keep the higher level. Characters only have profiles from level 10 after logging out.
 const slugOf = (m) => `${m.name}-${m.surname ?? ""}`.toLowerCase().replace(/['’]/g, "").replace(/\s+/g, "-");
+// Forever returns specialization_groups[]; the group with is_active:true holds the current spec.
+// If that group lists more than one spec, use the one with the most talent points spent.
+function activeSpec(sp) {
+  const groups = sp?.specialization_groups ?? [];
+  const group = groups.find((g) => g.is_active) ?? (groups.length === 1 ? groups[0] : null);
+  const specs = group?.specializations ?? [];
+  if (specs.length === 1) return specs[0].specialization?.name ?? null;
+  let best = null, bestPoints = 0;
+  for (const s of specs) {
+    const points = (s.talents ?? []).reduce((n, t) => n + (t.talent_rank ?? 0), 0);
+    if (points > bestPoints) { best = s.specialization?.name ?? null; bestPoints = points; }
+  }
+  return best;
+}
 let checked = 0, raised = 0, unavailable = 0, specFound = 0, specMissing = 0;
-const specSamples = []; // a few raw responses, so the Forever response shape can be confirmed
 for (let i = 0; i < members.length; i += 5) {
   await Promise.all(members.slice(i, i + 5).map(async (m) => {
     if (!m.surname) return;
@@ -87,24 +100,18 @@ for (let i = 0; i < members.length; i += 5) {
     if (!p || typeof p.level !== "number") { unavailable++; return; }
     checked++;
     if (p.level > (m.level ?? 0)) { m.level = p.level; raised++; }
-    // Active specialization: Forever's responses aren't documented yet, so try the likely fields.
-    m.spec = p.active_spec?.name ?? null;
     const sp = await get(`/profile/wow/character/${encodeURIComponent(slugOf(m))}/specializations`, accessToken);
-    if (sp) {
-      m.spec = m.spec ?? sp.active_specialization?.name ?? null;
-      if (specSamples.length < 3) specSamples.push({ character: slugOf(m), response: sp });
-    }
-    if (m.spec) specFound++; else if (sp) specMissing++;
+    m.spec = sp ? activeSpec(sp) : null;
+    if (m.spec) specFound++; else specMissing++;
   }));
 }
-console.log(`Specializations: ${specFound} found, ${specMissing} returned data without an active spec (see specSamples in guild-data.json)`);
+console.log(`Specializations: ${specFound} found, ${specMissing} without a spec`);
 console.log(`Profile levels: ${checked} checked, ${raised} higher than the roster, ${unavailable} unavailable`);
 
 const out = {
   generated: new Date().toISOString(),
   guild: { name: guild?.name ?? "Dirty Socks", faction: guild?.faction?.name ?? null },
   roster: members,
-  specSamples,
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
   raw: { guild, activity, achievements },
 };
