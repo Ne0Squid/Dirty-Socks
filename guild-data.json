@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T06:42:31.340Z",
+  "generated": "2026-11-14T07:50:16.104Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -15,6 +15,15 @@
       "spec": "Retribution"
     },
     {
+      "name": "Needmore",
+      "surname": "Beers",
+      "level": 41,
+      "cls": "Warrior",
+      "color": "#c79c6e",
+      "rank": 1,
+      "spec": "Protection"
+    },
+    {
       "name": "Orken",
       "surname": "Magorken",
       "level": 41,
@@ -24,18 +33,9 @@
       "spec": "Enhancement"
     },
     {
-      "name": "Needmore",
-      "surname": "Beers",
-      "level": 40,
-      "cls": "Warrior",
-      "color": "#c79c6e",
-      "rank": 1,
-      "spec": "Protection"
-    },
-    {
       "name": "Squid",
       "surname": "Zero",
-      "level": 39,
+      "level": 40,
       "cls": "Druid",
       "color": "#ff7d0a",
       "rank": 1,
@@ -44,7 +44,7 @@
     {
       "name": "Plucky",
       "surname": "Recks",
-      "level": 34,
+      "level": 35,
       "cls": "Mage",
       "color": "#3fc7eb",
       "rank": 1,
