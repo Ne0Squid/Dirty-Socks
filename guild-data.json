@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T02:38:32.081Z",
+  "generated": "2026-11-14T03:38:30.658Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -8,11 +8,20 @@
     {
       "name": "Scott",
       "surname": "Frost",
-      "level": 38,
+      "level": 39,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 0,
       "spec": "Retribution"
+    },
+    {
+      "name": "Orken",
+      "surname": "Magorken",
+      "level": 41,
+      "cls": "Shaman",
+      "color": "#0070de",
+      "rank": 1,
+      "spec": "Enhancement"
     },
     {
       "name": "Needmore",
@@ -22,15 +31,6 @@
       "color": "#c79c6e",
       "rank": 1,
       "spec": "Protection"
-    },
-    {
-      "name": "Orken",
-      "surname": "Magorken",
-      "level": 40,
-      "cls": "Shaman",
-      "color": "#0070de",
-      "rank": 1,
-      "spec": "Enhancement"
     },
     {
       "name": "Squid",
@@ -106,7 +106,7 @@
     {
       "name": "Zimmy",
       "surname": "Zambony",
-      "level": 32,
+      "level": 33,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 3,
