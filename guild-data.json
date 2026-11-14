@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-14T18:27:02.809Z",
+  "generated": "2026-11-14T19:32:09.407Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -13,6 +13,15 @@
       "color": "#f58cba",
       "rank": 0,
       "spec": "Retribution"
+    },
+    {
+      "name": "Squid",
+      "surname": "Zero",
+      "level": 41,
+      "cls": "Druid",
+      "color": "#ff7d0a",
+      "rank": 1,
+      "spec": "Feral Combat"
     },
     {
       "name": "Needmore",
@@ -33,15 +42,6 @@
       "spec": "Enhancement"
     },
     {
-      "name": "Squid",
-      "surname": "Zero",
-      "level": 41,
-      "cls": "Druid",
-      "color": "#ff7d0a",
-      "rank": 1,
-      "spec": "Feral Combat"
-    },
-    {
       "name": "Plucky",
       "surname": "Recks",
       "level": 35,
@@ -60,13 +60,13 @@
       "spec": "Beast Mastery"
     },
     {
-      "name": "Emo",
-      "surname": "Erling",
+      "name": "Mr",
+      "surname": "Capo",
       "level": 15,
-      "cls": "Priest",
-      "color": "#c8c8c8",
+      "cls": "Mage",
+      "color": "#3fc7eb",
       "rank": 1,
-      "spec": "Holy"
+      "spec": "Frost"
     },
     {
       "name": "Mrs",
@@ -78,6 +78,15 @@
       "spec": "Marksmanship"
     },
     {
+      "name": "Emo",
+      "surname": "Erling",
+      "level": 15,
+      "cls": "Priest",
+      "color": "#c8c8c8",
+      "rank": 1,
+      "spec": "Holy"
+    },
+    {
       "name": "Rowdy",
       "surname": "Highland",
       "level": 13,
@@ -85,15 +94,6 @@
       "color": "#c79c6e",
       "rank": 1,
       "spec": "Arms"
-    },
-    {
-      "name": "Mr",
-      "surname": "Capo",
-      "level": 13,
-      "cls": "Mage",
-      "color": "#3fc7eb",
-      "rank": 1,
-      "spec": "Frost"
     },
     {
       "name": "Capos",
@@ -106,7 +106,7 @@
     {
       "name": "Zimmy",
       "surname": "Zambony",
-      "level": 33,
+      "level": 34,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 3,
