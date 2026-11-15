@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-15T07:55:47.987Z",
+  "generated": "2026-11-15T08:41:38.098Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -44,7 +44,7 @@
     {
       "name": "Plucky",
       "surname": "Recks",
-      "level": 35,
+      "level": 36,
       "cls": "Mage",
       "color": "#3fc7eb",
       "rank": 1,
