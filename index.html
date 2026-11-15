@@ -60,6 +60,9 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .addon-link{display:block;max-width:640px;margin:0 auto;border-radius:12px;overflow:hidden;border:1px solid var(--line);transition:transform .15s}
 .addon-link:hover{transform:translateY(-2px)}
 .addon-link img{display:block;width:100%;height:auto}
+.leader{border-color:#e0b24a;box-shadow:0 0 16px rgba(224,178,74,.55),0 0 3px rgba(224,178,74,.9);animation:goldglow 2.8s ease-in-out infinite}
+@keyframes goldglow{0%,100%{box-shadow:0 0 12px rgba(224,178,74,.4),0 0 3px rgba(224,178,74,.8)}50%{box-shadow:0 0 28px rgba(224,178,74,.8),0 0 6px rgba(224,178,74,1)}}
+@media (prefers-reduced-motion:reduce){.leader{animation:none}}
 .dot{width:12px;height:12px;border-radius:50%;flex:none}
 .tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right}
 .sched{width:100%;border-collapse:collapse}
