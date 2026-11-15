@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-15T22:26:55.233Z",
+  "generated": "2026-11-15T23:34:57.517Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -29,7 +29,8 @@
       "level": 42,
       "cls": "Druid",
       "color": "#ff7d0a",
-      "rank": 1
+      "rank": 1,
+      "spec": "Feral Combat"
     },
     {
       "name": "Orken",
