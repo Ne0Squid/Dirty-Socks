@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T02:17:29.075Z",
+  "generated": "2026-11-16T03:55:39.968Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -8,7 +8,7 @@
     {
       "name": "Scott",
       "surname": "Frost",
-      "level": 42,
+      "level": 43,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 0,
@@ -17,11 +17,20 @@
     {
       "name": "Needmore",
       "surname": "Beers",
-      "level": 43,
+      "level": 44,
       "cls": "Warrior",
       "color": "#c79c6e",
       "rank": 1,
       "spec": "Protection"
+    },
+    {
+      "name": "Orken",
+      "surname": "Magorken",
+      "level": 43,
+      "cls": "Shaman",
+      "color": "#0070de",
+      "rank": 1,
+      "spec": "Enhancement"
     },
     {
       "name": "Squid",
@@ -31,15 +40,6 @@
       "color": "#ff7d0a",
       "rank": 1,
       "spec": "Feral Combat"
-    },
-    {
-      "name": "Orken",
-      "surname": "Magorken",
-      "level": 42,
-      "cls": "Shaman",
-      "color": "#0070de",
-      "rank": 1,
-      "spec": "Enhancement"
     },
     {
       "name": "Plucky",
@@ -106,11 +106,20 @@
     {
       "name": "Zimmy",
       "surname": "Zambony",
-      "level": 36,
+      "level": 37,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 3,
       "spec": "Protection"
+    },
+    {
+      "name": "The",
+      "surname": "Parttimedad",
+      "level": 19,
+      "cls": "Hunter",
+      "color": "#abd473",
+      "rank": 4,
+      "spec": "Survival"
     },
     {
       "name": "Ember",
@@ -129,6 +138,15 @@
       "color": "#abd473",
       "rank": 4,
       "spec": "Marksmanship"
+    },
+    {
+      "name": "Thick",
+      "surname": "Hogs",
+      "level": 11,
+      "cls": "Mage",
+      "color": "#3fc7eb",
+      "rank": 4,
+      "spec": "Arcane"
     },
     {
       "name": "Parttimedad",
@@ -153,7 +171,7 @@
         "name": "Horde"
       },
       "achievement_points": 0,
-      "member_count": 15,
+      "member_count": 17,
       "roster": {
         "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks/roster?namespace=profile-forever-us"
       },
