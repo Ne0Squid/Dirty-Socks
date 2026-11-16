@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T20:39:46.278Z",
+  "generated": "2026-11-16T21:39:27.320Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -24,15 +24,6 @@
       "spec": "Restoration"
     },
     {
-      "name": "Needmore",
-      "surname": "Beers",
-      "level": 44,
-      "cls": "Warrior",
-      "color": "#c79c6e",
-      "rank": 1,
-      "spec": "Protection"
-    },
-    {
       "name": "Orken",
       "surname": "Magorken",
       "level": 45,
@@ -40,6 +31,15 @@
       "color": "#0070de",
       "rank": 1,
       "spec": "Enhancement"
+    },
+    {
+      "name": "Needmore",
+      "surname": "Beers",
+      "level": 44,
+      "cls": "Warrior",
+      "color": "#c79c6e",
+      "rank": 1,
+      "spec": "Protection"
     },
     {
       "name": "Plucky",
@@ -140,6 +140,14 @@
       "spec": "Marksmanship"
     },
     {
+      "name": "Neo",
+      "surname": "Squid",
+      "level": 6,
+      "cls": "Warlock",
+      "color": "#8788ee",
+      "rank": 4
+    },
+    {
       "name": "Parttimedad",
       "surname": "Parttimedad",
       "level": 5,
@@ -162,7 +170,7 @@
         "name": "Horde"
       },
       "achievement_points": 0,
-      "member_count": 16,
+      "member_count": 17,
       "roster": {
         "href": "https://us.api.blizzard.com/data/wow/guild/dirty-socks/roster?namespace=profile-forever-us"
       },
