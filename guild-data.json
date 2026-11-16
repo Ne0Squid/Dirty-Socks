@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T08:06:42.234Z",
+  "generated": "2026-11-16T10:31:05.377Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -35,7 +35,7 @@
     {
       "name": "Squid",
       "surname": "Zero",
-      "level": 43,
+      "level": 44,
       "cls": "Druid",
       "color": "#ff7d0a",
       "rank": 1,
