@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T21:39:27.320Z",
+  "generated": "2026-11-16T22:37:47.799Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -21,7 +21,7 @@
       "cls": "Druid",
       "color": "#ff7d0a",
       "rank": 1,
-      "spec": "Restoration"
+      "spec": "Feral Combat"
     },
     {
       "name": "Orken",
@@ -44,7 +44,7 @@
     {
       "name": "Plucky",
       "surname": "Recks",
-      "level": 37,
+      "level": 38,
       "cls": "Mage",
       "color": "#3fc7eb",
       "rank": 1,
