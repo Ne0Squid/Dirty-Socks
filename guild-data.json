@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T18:43:16.880Z",
+  "generated": "2026-11-16T19:47:07.464Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -8,7 +8,7 @@
     {
       "name": "Scott",
       "surname": "Frost",
-      "level": 43,
+      "level": 44,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 0,
@@ -21,7 +21,7 @@
       "cls": "Druid",
       "color": "#ff7d0a",
       "rank": 1,
-      "spec": "Feral Combat"
+      "spec": "Restoration"
     },
     {
       "name": "Needmore",
@@ -35,7 +35,7 @@
     {
       "name": "Orken",
       "surname": "Magorken",
-      "level": 44,
+      "level": 45,
       "cls": "Shaman",
       "color": "#0070de",
       "rank": 1,
