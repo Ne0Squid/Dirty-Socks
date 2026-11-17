@@ -38,6 +38,18 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .chip{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:2px 10px;font-size:.8rem}
 .chip b{margin-left:6px;color:var(--accent)}
 .hf .btn{margin-top:12px}
+.grp{padding:8px 0;border-top:1px dashed var(--line)}
+.grp:first-of-type{border-top:0}
+.grp-h{display:flex;justify-content:space-between;gap:10px;font-size:.92rem}
+.chip.k-buff{border-color:#2e8b57;color:#2e8b57}
+.chip.k-nerf{border-color:#c0392b;color:#c0392b}
+.chip.k-change{border-color:#b7791f;color:#b7791f}
+.chip.k-fix{color:var(--muted)}
+.chip.k-buff,.chip.k-nerf,.chip.k-change{font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.tally{font-size:.85rem;color:var(--muted)}
+.tally b{font-weight:600}
+.tally .b{color:#2e8b57}.tally .n{color:#c0392b}
 footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
 </style>
 </head>
@@ -55,6 +67,10 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
   <div class="card">
     <p style="margin:0">A quick-read summary of Blizzard’s official WoW: Forever hotfix notes, newest first. Each day shows how many changes landed in each area and which classes and dungeons were touched. Use the button on any day to read the full notes on Blizzard’s site.</p>
     <p class="muted" id="updated" style="margin:10px 0 0"></p>
+    <div class="legend muted">Class and race changes are tagged:
+      <span class="chip k-buff">▲ Buff</span><span class="chip k-nerf">▼ Nerf</span><span class="chip k-change">● Other change</span><span class="chip k-fix">✓ Fix</span>
+      <span style="flex-basis:100%">Tags are read automatically from the wording of each note, so an occasional one may be off. The full notes on Blizzard’s site are the final word.</span>
+    </div>
   </div>
   <div id="entries"></div>
 </section>
@@ -74,12 +90,26 @@ function render(d){
   document.getElementById("updated").textContent="Last checked "+fmtTime(d.generated)+" ("+ago(d.generated)+"). The page checks Blizzard automatically twice a day.";
   document.getElementById("entries").innerHTML=d.entries.map(e=>{
     const isNew=e.firstSeen&&Date.now()-new Date(e.firstSeen)<72*36e5;
+    const SYM={buff:"▲",nerf:"▼",change:"●",fix:"✓"};
+    const kindsTotal={};
     const cats=e.categories.map(c=>{
       const g=c.groups||[];
+      const detailed=g.some(x=>x.changes);
+      if(detailed){
+        g.forEach(x=>Object.entries(x.kinds||{}).forEach(([k,n])=>kindsTotal[k]=(kindsTotal[k]||0)+n));
+        const rows=g.map(x=>{
+          const k=x.kinds||{};
+          const tal=[k.buff?`<b class="b">▲ ${k.buff}</b>`:"",k.nerf?`<b class="n">▼ ${k.nerf}</b>`:"",k.fix?`${k.fix} ${k.fix===1?"fix":"fixes"}`:"",k.change?`${k.change} other`:""].filter(Boolean).join(" · ");
+          const chips=(x.changes||[]).map(ch=>`<span class="chip k-${esc(ch.kind)}">${SYM[ch.kind]||"●"} ${esc(ch.name)}</span>`).join("");
+          return `<div class="grp"><div class="grp-h"><strong>${esc(x.name)}</strong><span class="tally">${tal}</span></div>${chips?`<div class="chips">${chips}</div>`:""}</div>`;
+        }).join("");
+        return `<div class="cat"><div class="cat-h"><strong>${esc(c.name)}</strong><span class="count">${c.count} ${c.count===1?"change":"changes"}</span></div>${rows}</div>`;
+      }
       const chips=g.length?`<div class="chips">${g.slice(0,14).map(x=>`<span class="chip">${esc(x.name)}<b>${x.count}</b></span>`).join("")}${g.length>14?`<span class="chip">+${g.length-14} more</span>`:""}</div>`:"";
       return `<div class="cat"><div class="cat-h"><strong>${esc(c.name)}</strong><span class="count">${c.count} ${c.count===1?"change":"changes"}</span></div>${chips}</div>`;
     }).join("");
-    return `<article class="card hf"><div class="hf-head"><h3>${esc(e.label)}</h3>${isNew?'<span class="badge">New</span>':""}<span class="muted">${e.total} ${e.total===1?"change":"changes"}</span></div>${cats}<a class="btn" href="${esc(src)}" target="_blank" rel="noopener">Read the full notes on Blizzard.com</a></article>`;
+    const tally=(kindsTotal.buff||kindsTotal.nerf)?`<span class="tally"><b class="b">▲ ${kindsTotal.buff||0} buffs</b> · <b class="n">▼ ${kindsTotal.nerf||0} nerfs</b></span>`:"";
+    return `<article class="card hf"><div class="hf-head"><h3>${esc(e.label)}</h3>${isNew?'<span class="badge">New</span>':""}<span class="muted">${e.total} ${e.total===1?"change":"changes"}</span>${tally}</div>${cats}<a class="btn" href="${esc(src)}" target="_blank" rel="noopener">Read the full notes on Blizzard.com</a></article>`;
   }).join("");
 }
 fetch("hotfixes.json",{cache:"no-cache"})

@@ -119,6 +119,79 @@ def bold_only(p):
     return bool(clean(bold)) and not clean(rest)
 
 
+# ---------- buff / nerf / ability names ----------
+DETAIL_CATS = {"Classes", "Races"}
+FIX_RE = re.compile(r"^(fixed|fixes|resolved|corrected|addressed)\b|\b(bug|incorrect(?:ly)?|correctly|tooltip|typo|visual effect|sound)\b", re.I)
+UP_RE = re.compile(r"\b(increas\w*|rais\w*|improv\w*|boost\w*|extended)\b", re.I)
+DOWN_RE = re.compile(r"\b(reduc\w*|lower\w*|decreas\w*|shorten\w*)\b", re.I)
+COST_RE = re.compile(r"(mana cost|\bcost\b|cooldown|cast time|casting time|threat)", re.I)
+WAS_RE = re.compile(r"\(was ([\d.]+(?:/[\d.]+)*)")
+BUFF_PHRASE_RE = re.compile(r"\bnow also\b|\bnow grants\b", re.I)
+
+
+def first_number(text):
+    m = re.search(r"(\d+(?:\.\d+)?(?:/\d+(?:\.\d+)?)*)[^\d]*$", text)
+    return float(m.group(1).split("/")[0]) if m else None
+
+
+def classify(line):
+    """Best-effort label: buff, nerf, fix or change. Based on wording and (was X) numbers."""
+    if FIX_RE.search(line):
+        return "fix"
+    results = []
+    for m in WAS_RE.finditer(line):
+        old = float(m.group(1).split("/")[0])
+        before = line[max(0, m.start() - 90):m.start()]
+        new = first_number(before)
+        if new is None or new == old:
+            continue
+        inverted = bool(COST_RE.search(before[-60:]))
+        results.append("buff" if ((new > old) != inverted) else "nerf")
+    if results:
+        return results[0] if len(set(results)) == 1 else "change"
+    if BUFF_PHRASE_RE.search(line):
+        return "buff"
+    up, down = UP_RE.search(line), DOWN_RE.search(line)
+    hit = up or down
+    if hit and not (up and down):
+        inverted = bool(COST_RE.search(line[max(0, hit.start() - 60):hit.start()]))
+        return "buff" if ((hit is up) != inverted) else "nerf"
+    return "change"
+
+
+CLASSES = {"Druid", "Hunter", "Mage", "Paladin", "Priest", "Rogue", "Shaman", "Warlock", "Warrior", "Death Knight",
+           "Orc", "Tauren", "Troll", "Undead", "Human", "Dwarf", "Gnome", "Night Elf", "Blood Elf", "Draenei"}
+LEAD = {"Fixed", "Fixes", "Resolved", "Corrected", "Addressed", "Increased", "Reduced", "Lowered", "Updated", "Changed",
+        "Rank", "Ranks", "The", "A", "An", "Now", "All", "Players", "Player", "Pets", "Pet", "Rogue", "Developers",
+        "When", "While", "With", "Only", "Both", "If", "Each", "Any", "This", "That", "It", "Its", "Their"}
+SOLO = {"Holy", "Fire", "Frost", "Nature", "Shadow", "Arcane", "Physical", "Mana", "Rage", "Energy", "Health", "Intellect",
+        "Strength", "Agility", "Stamina", "Spirit", "Melee", "Ranged", "Spell", "Weapon", "Attack", "Power", "Combo",
+        "Cooldown", "Manager", "Legacy", "Perk", "Main", "Hand", "Hit", "Critical", "Crowd", "Control"}
+EXCLUDE = {"Ranged Attack", "Melee Attack", "Legacy Perk", "Cooldown Manager", "Main Hand", "Off Hand", "Combo Points", "Attack Power", "Spell Power"}
+NAME_RE = re.compile(r"[A-Z][A-Za-z'’\-]+(?:(?:\s+(?:of|the|for|an)\s+|\s+)[A-Z][A-Za-z'’\-]+)*")
+
+
+def extract_names(line, limit=4):
+    line = WAS_RE.sub("", line)
+    out = []
+    for m in NAME_RE.finditer(line):
+        words = m.group(0).split()
+        while words and (words[0] in LEAD or words[0] in CLASSES or words[0].islower()):
+            words.pop(0)
+        while words and (words[-1] in LEAD or words[-1].islower()):
+            words.pop()
+        name = " ".join(words)
+        if len(name) < 4 or name in EXCLUDE or name in CLASSES or (len(words) == 1 and words[0] in SOLO):
+            continue
+        if name not in out:
+            out.append(name)
+    return out[:limit]
+
+
+def leaves(li):
+    return [e for e in elements(li) if e.tag == "li" and not is_note(e) and not real_lis(e)]
+
+
 # ---------- parsing ----------
 def parse(html):
     b = Builder()
@@ -135,7 +208,7 @@ def parse(html):
         for c in cur["categories"]:
             if c["name"] == name:
                 return c
-        c = {"name": name, "count": 0, "groups": {}}
+        c = {"name": name, "count": 0, "groups": {}, "detail": {}}
         cur["categories"].append(c)
         return c
 
@@ -163,11 +236,29 @@ def parse(html):
                 name = own_text(li)
                 if real_lis(li) and 0 < len(name) <= 40:
                     cat["groups"][name] = cat["groups"].get(name, 0) + n
+                    if cat["name"] in DETAIL_CATS:
+                        d = cat["detail"].setdefault(name, {"kinds": {}, "changes": {}})
+                        for leaf in leaves(li):
+                            line = own_text(leaf)
+                            kind = classify(line)
+                            d["kinds"][kind] = d["kinds"].get(kind, 0) + 1
+                            for nm in extract_names(line):
+                                d["changes"].setdefault((nm, kind), True)
 
     out = []
     for en in entries:
+        order = {"nerf": 0, "buff": 1, "change": 2, "fix": 3}
+
+        def group_out(c, k, v):
+            g = {"name": k, "count": v}
+            d = c["detail"].get(k)
+            if d:
+                g["kinds"] = d["kinds"]
+                g["changes"] = [{"name": n, "kind": kd} for (n, kd) in sorted(d["changes"], key=lambda t: order[t[1]])][:16]
+            return g
+
         cats = [{"name": c["name"], "count": c["count"],
-                 "groups": [{"name": k, "count": v} for k, v in c["groups"].items()]}
+                 "groups": [group_out(c, k, v) for k, v in c["groups"].items()]}
                 for c in en["categories"] if c["count"] > 0]
         out.append({"date": en["date"], "label": en["label"],
                     "total": sum(c["count"] for c in cats), "categories": cats})
