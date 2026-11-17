@@ -46,6 +46,9 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .chip.k-change{border-color:#b7791f;color:#b7791f}
 .chip.k-fix{color:var(--muted)}
 .chip.k-buff,.chip.k-nerf,.chip.k-change{font-weight:600}
+.embed-box{margin-top:18px}
+.embed-box iframe{display:block;width:100%;height:80vh;min-height:500px;border:1px solid var(--line);border-radius:8px;margin-top:14px;background:#fff}
+button.btn{border:0;cursor:pointer;font-family:inherit}
 .legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
 .tally{font-size:.85rem;color:var(--muted)}
 .tally b{font-weight:600}
@@ -73,6 +76,15 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
     </div>
   </div>
   <div id="entries"></div>
+  <div class="card embed-box">
+    <h3 style="font-size:1.2rem;margin-bottom:6px">Full notes from Blizzard</h3>
+    <p class="muted" style="margin:0 0 12px">Want the complete text? Load Blizzard’s official hotfix page right here. It’s shown directly from Blizzard’s website.</p>
+    <button class="btn" id="embedbtn" type="button">Show Blizzard’s full notes here</button>
+    <div id="embedwrap" hidden>
+      <iframe id="embedframe" title="Blizzard WoW: Forever hotfix notes" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+      <p class="muted" style="margin:10px 0 0">If the box above stays blank, Blizzard doesn’t allow its page to be shown on other sites. <a href="https://worldofwarcraft.blizzard.com/en-us/news/24315281" target="_blank" rel="noopener">Open the notes on Blizzard’s site instead.</a></p>
+    </div>
+  </div>
 </section>
 </main>
 
@@ -84,6 +96,11 @@ const ago=t=>{const m=Math.max(0,Math.round((Date.now()-new Date(t))/6e4));retur
 const fmtTime=d=>new Date(d).toLocaleString("en-US",{month:"long",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit",timeZoneName:"short"});
 const FALLBACK_LINK="https://worldofwarcraft.blizzard.com/en-us/news/24315281";
 document.getElementById("yr").textContent=new Date().getFullYear();
+document.getElementById("embedbtn").addEventListener("click",()=>{
+  const wrap=document.getElementById("embedwrap"),frame=document.getElementById("embedframe"),btn=document.getElementById("embedbtn");
+  if(wrap.hidden){ if(!frame.src) frame.src=FALLBACK_LINK; wrap.hidden=false; btn.textContent="Hide Blizzard’s full notes"; }
+  else { wrap.hidden=true; btn.textContent="Show Blizzard’s full notes here"; }
+});
 
 function render(d){
   const src=/^https:\/\/worldofwarcraft\.blizzard\.com\//.test(d.source||"")?d.source:FALLBACK_LINK;
