@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T17:10:14+00:00",
+  "generated": "2026-11-17T17:23:16+00:00",
   "source": "https://worldofwarcraft.blizzard.com/en-us/news/24315281",
   "title": "WoW: Forever Hotfixes - November 16, 2026",
   "entries": [
@@ -19,23 +19,155 @@
           "groups": [
             {
               "name": "Druid",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 2
+              },
+              "changes": [
+                {
+                  "name": "Wild Growth",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Genesis",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Pounce's",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Priest",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 1,
+                "nerf": 1
+              },
+              "changes": [
+                {
+                  "name": "Vampiric Embrace",
+                  "kind": "nerf"
+                },
+                {
+                  "name": "Dark Inspiration",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Rogue",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "change": 1,
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Poison",
+                  "kind": "change"
+                },
+                {
+                  "name": "Shank",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Boot Knife",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Shaman",
-              "count": 6
+              "count": 6,
+              "kinds": {
+                "fix": 6
+              },
+              "changes": [
+                {
+                  "name": "Windfury Totem",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Mutilate",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Execute",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Shield Slam",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Shield Bash",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Shieldworn",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Holy Strikes",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Maelstrom Weapon",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Thundering Strikes",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Warrior",
-              "count": 5
+              "count": 5,
+              "kinds": {
+                "fix": 4,
+                "change": 1
+              },
+              "changes": [
+                {
+                  "name": "Reckless Swings",
+                  "kind": "change"
+                },
+                {
+                  "name": "Revered Champion",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Legacy of Valor",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Warriors",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Unbridled Wrath",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Cleave",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Heroic Strike",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Flurry",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Reckless Swings",
+                  "kind": "fix"
+                }
+              ]
             }
           ]
         },
@@ -82,31 +214,111 @@
           "groups": [
             {
               "name": "Druid",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 1,
+                "buff": 1
+              },
+              "changes": [
+                {
+                  "name": "Wild Growth",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Wild Growth",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Mage",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Frost Nova",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Blizzard",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Paladin",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "change": 1
+              },
+              "changes": [
+                {
+                  "name": "Judgement of Command",
+                  "kind": "change"
+                }
+              ]
             },
             {
               "name": "Priest",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Legacy Perk The Quick",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Dead",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Divine Spirit",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Shaman",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Windfury Totem",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Warlock",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "change": 1
+              },
+              "changes": [
+                {
+                  "name": "Siphon Life",
+                  "kind": "change"
+                }
+              ]
             },
             {
               "name": "Warrior",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Berserker Rage",
+                  "kind": "fix"
+                }
+              ]
             }
           ]
         },
@@ -167,23 +379,100 @@
           "groups": [
             {
               "name": "Druid",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "change": 1
+              },
+              "changes": [
+                {
+                  "name": "Rend",
+                  "kind": "change"
+                },
+                {
+                  "name": "Tear",
+                  "kind": "change"
+                },
+                {
+                  "name": "Pounce Bleed",
+                  "kind": "change"
+                }
+              ]
             },
             {
               "name": "Hunter",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 2
+              },
+              "changes": [
+                {
+                  "name": "Volley",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Paladin",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "change": 2
+              },
+              "changes": [
+                {
+                  "name": "Judgement",
+                  "kind": "change"
+                },
+                {
+                  "name": "Paladin's Ranged Hit",
+                  "kind": "change"
+                },
+                {
+                  "name": "Windfury Totem",
+                  "kind": "change"
+                },
+                {
+                  "name": "Holy Strike",
+                  "kind": "change"
+                },
+                {
+                  "name": "Unsealed Fury",
+                  "kind": "change"
+                }
+              ]
             },
             {
               "name": "Priest",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 2
+              },
+              "changes": [
+                {
+                  "name": "Confounding Flash",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Shadowform",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Twilight Focus",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Shaman",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Flametongue Totem",
+                  "kind": "fix"
+                }
+              ]
             }
           ]
         },
@@ -236,31 +525,214 @@
           "groups": [
             {
               "name": "Druid",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 1,
+                "buff": 1
+              },
+              "changes": [
+                {
+                  "name": "Nature's Swiftness",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Wild Growth",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Omen of Clarity",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Hunter",
-              "count": 4
+              "count": 4,
+              "kinds": {
+                "fix": 1,
+                "change": 2,
+                "buff": 1
+              },
+              "changes": [
+                {
+                  "name": "Hawk",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Arcane Shot",
+                  "kind": "change"
+                },
+                {
+                  "name": "Summon Hawk Mana",
+                  "kind": "change"
+                },
+                {
+                  "name": "Summon Hawk",
+                  "kind": "change"
+                }
+              ]
             },
             {
               "name": "Paladin",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "change": 1
+              },
+              "changes": [
+                {
+                  "name": "Redoubt",
+                  "kind": "change"
+                }
+              ]
             },
             {
               "name": "Priest",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 2
+              },
+              "changes": [
+                {
+                  "name": "Revelation",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Vampiric Embrace",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Holy Nova",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Shaman",
-              "count": 6
+              "count": 6,
+              "kinds": {
+                "change": 2,
+                "nerf": 3,
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Stormstrike",
+                  "kind": "nerf"
+                },
+                {
+                  "name": "Mental Dexterity",
+                  "kind": "nerf"
+                },
+                {
+                  "name": "Maelstrom Weapon",
+                  "kind": "nerf"
+                },
+                {
+                  "name": "Maelstrom Weapon",
+                  "kind": "change"
+                },
+                {
+                  "name": "Maelstrom Weapon",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Shaman's",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Main Hand Weapon's",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Warlock",
-              "count": 10
+              "count": 10,
+              "kinds": {
+                "fix": 2,
+                "buff": 6,
+                "nerf": 1,
+                "change": 1
+              },
+              "changes": [
+                {
+                  "name": "Wrack",
+                  "kind": "nerf"
+                },
+                {
+                  "name": "Imp's Firebolt",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Imp Health",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Voidwalker",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Incubus",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Succubus",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Soul Siphon",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Drain Life",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Drain Soul",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Wrack",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Warlock's",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Wrack",
+                  "kind": "change"
+                },
+                {
+                  "name": "Siphon Life",
+                  "kind": "change"
+                },
+                {
+                  "name": "Corruption",
+                  "kind": "change"
+                },
+                {
+                  "name": "Bane of Agony",
+                  "kind": "change"
+                },
+                {
+                  "name": "Succubus",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Warrior",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "change": 1
+              },
+              "changes": [
+                {
+                  "name": "Sweeping Strikes",
+                  "kind": "change"
+                }
+              ]
             }
           ]
         },
@@ -328,35 +800,191 @@
           "groups": [
             {
               "name": "Druid",
-              "count": 5
+              "count": 5,
+              "kinds": {
+                "fix": 4,
+                "change": 1
+              },
+              "changes": [
+                {
+                  "name": "Idol of Ferocity",
+                  "kind": "change"
+                },
+                {
+                  "name": "Mangle",
+                  "kind": "change"
+                },
+                {
+                  "name": "Berserk",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Lacerate",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Feral Charge",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Natural Instinct",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Pounce",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Pounce Stun",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Hunter",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "change": 1,
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Vulgara the Insatiable",
+                  "kind": "change"
+                },
+                {
+                  "name": "Shrieklings of Zephras",
+                  "kind": "change"
+                },
+                {
+                  "name": "Hunters",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Mage",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 2
+              },
+              "changes": [
+                {
+                  "name": "Flamestirke's",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Arcane Concentration's",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Paladin",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 2
+              },
+              "changes": [
+                {
+                  "name": "Consecration",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Seals",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Priest",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "change": 1,
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Shadowform",
+                  "kind": "change"
+                },
+                {
+                  "name": "Fear Ward",
+                  "kind": "change"
+                },
+                {
+                  "name": "Power Infusion",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Shaman",
-              "count": 3
+              "count": 3,
+              "kinds": {
+                "fix": 2,
+                "change": 1
+              },
+              "changes": [
+                {
+                  "name": "Lightning Overload",
+                  "kind": "change"
+                },
+                {
+                  "name": "Lightning Bolt",
+                  "kind": "change"
+                },
+                {
+                  "name": "Lightning Mastery",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Improved Ghost Wolf",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Night Watchman's Torch",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Warlock",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 2
+              },
+              "changes": [
+                {
+                  "name": "Completing",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Summon Felsteed",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Incinerate",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Destruction",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Warrior",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "change": 1
+              },
+              "changes": [
+                {
+                  "name": "Thunderclap",
+                  "kind": "change"
+                }
+              ]
             }
           ]
         },
@@ -416,7 +1044,16 @@
           "groups": [
             {
               "name": "Tauren",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Cultivation",
+                  "kind": "fix"
+                }
+              ]
             }
           ]
         },
@@ -439,27 +1076,126 @@
           "groups": [
             {
               "name": "Cooldown Manager",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "fix": 1
+              },
+              "changes": []
             },
             {
               "name": "Druid",
-              "count": 4
+              "count": 4,
+              "kinds": {
+                "fix": 4
+              },
+              "changes": [
+                {
+                  "name": "Bloom",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Bear Form",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Ravage",
+                  "kind": "fix"
+                },
+                {
+                  "name": "There",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Swiftmend",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Mage",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "fix": 2
+              },
+              "changes": [
+                {
+                  "name": "Mages",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Research",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Study",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Arcane Blast",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Rogue",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "change": 1,
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Shank",
+                  "kind": "change"
+                },
+                {
+                  "name": "Boot Knife",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Shank",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Warlock",
-              "count": 2
+              "count": 2,
+              "kinds": {
+                "buff": 1,
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Voidwalker",
+                  "kind": "buff"
+                },
+                {
+                  "name": "Soul Siphon",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Wrack",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Warrior",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Reckless Swings",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Gore Drinker",
+                  "kind": "fix"
+                }
+              ]
             }
           ]
         },
@@ -499,11 +1235,37 @@
           "groups": [
             {
               "name": "Night Elf",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Shadowmelded Druids",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Ravage",
+                  "kind": "fix"
+                },
+                {
+                  "name": "Pounce",
+                  "kind": "fix"
+                }
+              ]
             },
             {
               "name": "Orc",
-              "count": 1
+              "count": 1,
+              "kinds": {
+                "fix": 1
+              },
+              "changes": [
+                {
+                  "name": "Command",
+                  "kind": "fix"
+                }
+              ]
             }
           ]
         },
