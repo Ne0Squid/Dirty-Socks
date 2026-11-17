@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T18:46:22.074Z",
+  "generated": "2026-11-17T19:54:56.656Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -8,7 +8,7 @@
     {
       "name": "Scott",
       "surname": "Frost",
-      "level": 45,
+      "level": 46,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 0,
@@ -35,7 +35,7 @@
     {
       "name": "Orken",
       "surname": "Magorken",
-      "level": 45,
+      "level": 46,
       "cls": "Shaman",
       "color": "#0070de",
       "rank": 1,
@@ -151,7 +151,7 @@
     {
       "name": "Neo",
       "surname": "Squid",
-      "level": 10,
+      "level": 11,
       "cls": "Warlock",
       "color": "#8788ee",
       "rank": 4,
