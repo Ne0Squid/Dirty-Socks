@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Patch Notes – Dirty Socks</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
+a{color:var(--accent)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface)}
+nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)}
+nav a:hover,nav a.here{color:var(--accent)}
+.hero{background:var(--hero);border-bottom:1px solid var(--line)}
+.banner{padding:0;line-height:0}
+.banner img{display:block;width:100%;height:clamp(110px,25vw,480px);object-fit:cover;object-position:center}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+section{padding:44px 0}
+h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.muted{color:var(--muted);font-size:.9rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem}
+#entries{display:grid;gap:16px;margin-top:18px}
+.hf-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.hf-head h3{font-size:1.25rem}
+.badge{background:var(--accent);color:var(--accent-text);font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 9px;border-radius:20px}
+.cat{padding:10px 0;border-top:1px solid var(--line)}
+.cat-h{display:flex;justify-content:space-between;gap:10px}
+.count{color:var(--muted);font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:2px 10px;font-size:.8rem}
+.chip b{margin-left:6px;color:var(--accent)}
+.hf .btn{margin-top:12px}
+footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<nav><a href="index.html">← Guild Home</a><a class="here" href="hotfixes.html">Patch Notes</a></nav>
+
+<header class="hero banner">
+  <h1 class="sr">Dirty Socks</h1>
+  <a href="index.html"><img src="Banner.png" alt="Dirty Socks – back to the guild page"></a>
+</header>
+
+<main class="wrap">
+<section>
+  <h2>Patch Notes &amp; Hotfixes</h2>
+  <div class="card">
+    <p style="margin:0">A quick-read summary of Blizzard’s official WoW: Forever hotfix notes, newest first. Each day shows how many changes landed in each area and which classes and dungeons were touched. Use the button on any day to read the full notes on Blizzard’s site.</p>
+    <p class="muted" id="updated" style="margin:10px 0 0"></p>
+  </div>
+  <div id="entries"></div>
+</section>
+</main>
+
+<footer>© <span id="yr"></span> Dirty Socks · Not affiliated with Blizzard Entertainment.</footer>
+
+<script>
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ago=t=>{const m=Math.max(0,Math.round((Date.now()-new Date(t))/6e4));return m<1?"just now":m<60?m+" min ago":m<1440?Math.round(m/60)+" hr ago":Math.round(m/1440)+" days ago"};
+const fmtTime=d=>new Date(d).toLocaleString("en-US",{month:"long",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit",timeZoneName:"short"});
+const FALLBACK_LINK="https://worldofwarcraft.blizzard.com/en-us/news/24315281";
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+function render(d){
+  const src=/^https:\/\/worldofwarcraft\.blizzard\.com\//.test(d.source||"")?d.source:FALLBACK_LINK;
+  document.getElementById("updated").textContent="Last checked "+fmtTime(d.generated)+" ("+ago(d.generated)+"). The page checks Blizzard automatically twice a day.";
+  document.getElementById("entries").innerHTML=d.entries.map(e=>{
+    const isNew=e.firstSeen&&Date.now()-new Date(e.firstSeen)<72*36e5;
+    const cats=e.categories.map(c=>{
+      const g=c.groups||[];
+      const chips=g.length?`<div class="chips">${g.slice(0,14).map(x=>`<span class="chip">${esc(x.name)}<b>${x.count}</b></span>`).join("")}${g.length>14?`<span class="chip">+${g.length-14} more</span>`:""}</div>`:"";
+      return `<div class="cat"><div class="cat-h"><strong>${esc(c.name)}</strong><span class="count">${c.count} ${c.count===1?"change":"changes"}</span></div>${chips}</div>`;
+    }).join("");
+    return `<article class="card hf"><div class="hf-head"><h3>${esc(e.label)}</h3>${isNew?'<span class="badge">New</span>':""}<span class="muted">${e.total} ${e.total===1?"change":"changes"}</span></div>${cats}<a class="btn" href="${esc(src)}" target="_blank" rel="noopener">Read the full notes on Blizzard.com</a></article>`;
+  }).join("");
+}
+fetch("hotfixes.json",{cache:"no-cache"})
+  .then(r=>r.ok?r.json():Promise.reject())
+  .then(render)
+  .catch(()=>{document.getElementById("entries").innerHTML=`<div class="card"><p style="margin:0">The hotfix summary hasn’t loaded yet. It appears after the first scheduled update runs. In the meantime, you can read the official notes on <a href="${FALLBACK_LINK}" target="_blank" rel="noopener">Blizzard’s site</a>.</p></div>`});
+</script>
+</body>
+</html>

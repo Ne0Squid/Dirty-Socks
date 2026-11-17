@@ -73,7 +73,7 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 <body>
 <nav>
 <!--<a href="#about">About</a>-->
-<a href="#stats">Guild Stats</a><a href="#race">Race to 60</a><a href="#roster">Roster</a><a href="#dungeons">Dungeons</a><a href="#raidprog">Raid Progression</a><a href="#waypath">Waypath+ Addon</a></nav>
+<a href="#stats">Guild Stats</a><a href="#race">Race to 60</a><a href="#roster">Roster</a><a href="#dungeons">Dungeons</a><a href="#raidprog">Raid Progression</a><a href="#waypath">Waypath+ Addon</a><a href="hotfixes.html">Patch Notes</a></nav>
 
 <header class="hero banner">
   <h1 class="sr">Dirty Socks</h1>
@@ -194,7 +194,7 @@ function render(d){
 }
 document.getElementById("yr").textContent=new Date().getFullYear();
 // ===== DUNGEON CHECKLIST: add a dungeon’s name to "cleared" once the guild has beaten it =====
-const cleared=["Ragefire Chasm","Wailing Caverns","Shadowfang Keep","Blackfathom Deeps","Excavation Site: Wetlands","City of Dalaran","Gnomeregan","Hall of Thanes","Ruins of Lordaeron","The Deadmines","The Stockade","Razorfen Kraul","The Drowned City","Scarlet Monastery","Razorfen Downs","Uldaman"];
+const cleared=["Ragefire Chasm","Wailing Caverns","Shadowfang Keep","Blackfathom Deeps","Excavation Site: Wetlands","City of Dalaran","Gnomeregan","Hall of Thanes","Ruins of Lordaeron","The Deadmines","The Stockade","Razorfen Kraul","The Drowned City","Scarlet Monastery","Razorfen Downs"];
 const dungeons=[ // [name, lowest level, highest level, new in Forever?]
  ["Ragefire Chasm",13,18],["Hall of Thanes",13,18,1],["Ruins of Lordaeron",15,20,1],["The Deadmines",17,20],
  ["Wailing Caverns",18,24],["Shadowfang Keep",21,26],["Blackfathom Deeps",23,28],["Excavation Site: Wetlands",24,29,1],
