@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T19:54:56.656Z",
+  "generated": "2026-11-17T20:42:00.250Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -21,12 +21,12 @@
       "cls": "Druid",
       "color": "#ff7d0a",
       "rank": 1,
-      "spec": "Feral Combat"
+      "spec": "Restoration"
     },
     {
       "name": "Needmore",
       "surname": "Beers",
-      "level": 45,
+      "level": 46,
       "cls": "Warrior",
       "color": "#c79c6e",
       "rank": 1,
