@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T06:56:27.121Z",
+  "generated": "2026-11-17T08:13:13.183Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -151,10 +151,11 @@
     {
       "name": "Neo",
       "surname": "Squid",
-      "level": 7,
+      "level": 10,
       "cls": "Warlock",
       "color": "#8788ee",
-      "rank": 4
+      "rank": 4,
+      "spec": null
     },
     {
       "name": "Parttimedad",
