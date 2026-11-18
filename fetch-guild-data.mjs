@@ -93,12 +93,14 @@ function activeSpec(sp) {
   return best;
 }
 // Professions: Forever's response shape isn't documented yet, so read the classic-style fields defensively.
+const professionHref = {}; // profession name -> its static data link, used to look up icons
 function parseProfessions(pr) {
   const out = [];
   for (const [group, primary] of [[pr?.primaries, true], [pr?.secondaries, false]]) {
     for (const e of group ?? []) {
       const name = e.profession?.name;
       if (!name) continue;
+      if (e.profession?.key?.href) professionHref[name] = e.profession.key.href;
       out.push({
         name,
         skill: e.skill_points ?? e.tiers?.[0]?.skill_points ?? null,
@@ -170,6 +172,21 @@ console.log(`Professions: ${profFound} characters with data`);
 console.log(`Item levels: ${ilvlFound} characters with a value`);
 console.log(`Profile levels: ${checked} checked, ${raised} higher than the roster, ${unavailable} unavailable`);
 
+// Profession icons: Blizzard's media endpoint gives each profession's icon URL.
+// Built from the profession's own data link so the right game-version namespace is used.
+const professionIcons = {};
+await Promise.all(Object.entries(professionHref).map(async ([name, href]) => {
+  try {
+    const u = new URL(href);
+    u.pathname = u.pathname.replace("/data/wow/profession/", "/data/wow/media/profession/");
+    const res = await fetch(u, { headers: { Authorization: `Bearer ${accessToken}` } });
+    if (!res.ok) { console.warn(`  icon for ${name} -> ${res.status}`); return; }
+    const url = (await res.json()).assets?.find((a) => a.key === "icon")?.value;
+    if (url) professionIcons[name] = url;
+  } catch (e) { console.warn(`  icon for ${name} failed: ${e.message}`); }
+}));
+console.log(`Profession icons: ${Object.keys(professionIcons).length} of ${Object.keys(professionHref).length}`);
+
 // Level history: one snapshot per day (the latest run of that day), kept for 35 days.
 // It lives inside guild-data.json so the workflow needs no changes.
 const outPath = new URL("./guild-data.json", import.meta.url);
@@ -186,6 +203,7 @@ const out = {
   guild: { name: guild?.name ?? "Dirty Socks", faction: guild?.faction?.name ?? null },
   roster: members,
   history: { days },
+  professionIcons,
   bossKills, // dungeon/raid boss kills combined across the guild
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
   raw: { guild, activity, achievements },
