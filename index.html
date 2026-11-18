@@ -120,7 +120,7 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
   <div class="grid" id="members"></div>
   <div class="pager" id="pager"></div>
   <p class="muted" style="margin-top:12px">Characters below level 10 are hidden from the roster and will appear once they reach level 10.</p>
-  <div class="card" style="margin-top:20px"><h3 style="font-size:1.2rem;margin-bottom:6px">Classes in the Guild</h3><div id="classbars"></div></div>
+  <div class="card" hidden style="margin-top:20px"><!-- Class chart temporarily hidden: remove the hidden attribute to bring it back --><h3 style="font-size:1.2rem;margin-bottom:6px">Classes in the Guild</h3><div id="classbars"></div></div>
 </section>
 
 <section id="professions" hidden>
@@ -202,7 +202,7 @@ document.getElementById("pager").addEventListener("click",e=>{const b=e.target.c
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const slugOf=m=>(m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-");
 const fmtDayUTC=k=>new Date(k+"T00:00:00Z").toLocaleDateString("en-US",{month:"short",day:"numeric",timeZone:"UTC"});
-let lvlHistory=null,lbMode="level";
+let lvlHistory=null,lbMode="gain";
 function weeklyGains(list){
   const days=lvlHistory&&lvlHistory.days?Object.keys(lvlHistory.days).sort():[];
   if(days.length<2)return null;
@@ -223,9 +223,11 @@ function weeklyGains(list){
 }
 function drawBoard(){
   if(!sorted.length)return;
-  const modes=[["level","Highest level"],["gain","Gained this week"]];
+  const SHOW_LEVEL_TAB=false; // temporarily hidden; set to true to bring back the Highest level tab
+  const modes=[["gain","Gained this week"]];
+  if(SHOW_LEVEL_TAB)modes.unshift(["level","Highest level"]);
   if(sorted.some(m=>m.ilvl))modes.push(["ilvl","Item level"]);
-  if(!modes.some(x=>x[0]===lbMode))lbMode="level";
+  if(!modes.some(x=>x[0]===lbMode))lbMode=modes[0][0];
   document.getElementById("lbcard").hidden=false;
   document.getElementById("lbtabs").innerHTML=modes.map(([k,l])=>`<button class="${k===lbMode?"on":""}" data-b="${k}">${l}</button>`).join("");
   let rows=[],note="",fmtv=v=>v;
