@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T06:55:32.831Z",
+  "generated": "2026-11-18T08:09:47.583Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -35,16 +35,16 @@
     {
       "name": "Squid",
       "surname": "Zero",
-      "level": 46,
+      "level": 47,
       "cls": "Druid",
       "color": "#ff7d0a",
       "rank": 1,
-      "spec": "Restoration"
+      "spec": "Feral Combat"
     },
     {
       "name": "Plucky",
       "surname": "Recks",
-      "level": 39,
+      "level": 40,
       "cls": "Mage",
       "color": "#3fc7eb",
       "rank": 1,
