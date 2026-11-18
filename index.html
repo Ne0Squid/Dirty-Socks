@@ -305,6 +305,7 @@ function render(d){
 document.getElementById("yr").textContent=new Date().getFullYear();
 // ===== DUNGEON CHECKLIST: add a dungeon’s name to "cleared" once the guild has beaten it =====
 const cleared=["Hall of Thanes","Excavation Site: Wetlands","The Stockade","The Drowned City","Krol’dok Stronghold"]; // dungeons Blizzard’s statistics don’t track; everything else is checked automatically
+const clearedOn={"Krol’dok Stronghold":"Nov 17"}; // optional dates for hand-ticked dungeons
 const dungeons=[ // [name, lowest level, highest level, new in Forever?]
  ["Ragefire Chasm",13,18],["Hall of Thanes",13,18,1],["Ruins of Lordaeron",15,20,1],["The Deadmines",17,20],
  ["Wailing Caverns",18,24],["Shadowfang Keep",21,26],["Blackfathom Deeps",23,28],["Excavation Site: Wetlands",24,29,1],
@@ -329,7 +330,7 @@ function fmtKill(t){if(t==null)return"";const d=new Date(t),y=d.getFullYear()!==
 function drawDungeons(bk){
   const auto=autoCleared(bk);
   const list=dungeons.map(([name,min,max,isNew])=>({name,min,max,isNew:!!isNew})).sort((a,b)=>a.min-b.min||a.max-b.max);
-  const when=d=>{const t=killTime(bk,n=>{const m=n.match(/\(([^)]+)\)\s*$/);return m&&dkey(m[1])===dkey(d.name)});return t==null?"":`<small>Cleared ${fmtKill(t)}</small>`};
+  const when=d=>{const t=killTime(bk,n=>{const m=n.match(/\(([^)]+)\)\s*$/);return m&&dkey(m[1])===dkey(d.name)});const txt=t!=null?fmtKill(t):clearedOn[d.name];return txt?`<small>Cleared ${txt}</small>`:""};
   const isDone=d=>cleared.includes(d.name)||auto.has(dkey(d.name));
   const done=list.filter(isDone).length;
   document.getElementById("dungtitle").textContent=done+" / "+list.length+" dungeons cleared";
