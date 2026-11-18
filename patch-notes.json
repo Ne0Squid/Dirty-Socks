@@ -1,0 +1,279 @@
+{
+  "generated": "2026-11-18T00:32:44+00:00",
+  "source": "https://foreverchanges.pro/patch-notes/feed.xml",
+  "siteName": "ForeverChanges",
+  "siteUrl": "https://foreverchanges.pro/patch-notes",
+  "title": "ForeverChanges: Patch notes",
+  "entries": [
+    {
+      "id": "foreverchanges-hotfix-2026-11-17",
+      "title": "Hotfix, November 17, 2026",
+      "date": "2026-11-17T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-17",
+      "summary": "Hotfixes to the November 17 client, first seen between 19:19 and 19:45 UTC on November 17 in the caches the launch realms send. Blizzard has posted no notes for them. Whiteout Staff and Crackling Staff, the Alterac Valley staves, now have the same stats, and Depleted Crystal Heart drops for everyone in the party.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70959",
+      "title": "Build 1.60.1.70959, November 17, 2026",
+      "date": "2026-11-17T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#1.60.1.70959",
+      "summary": "The November 17 client, read from its files: Blizzard has posted no notes for it. It writes the server’s hotfixes of November 13 and 16 into the client itself, and no talent, class spell, racial or item reads differently.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-16",
+      "title": "Hotfix, November 16, 2026",
+      "date": "2026-11-16T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-16",
+      "summary": "Blizzard’s notes of November 16, posted at 02:17 UTC on November 17, describe the hotfixes of that day: lures for everyone from the Fishing Rack, Windfury Totem fixes, Cleave and Heroic Strike for Unbridled Wrath, Flurry and Reckless Swings, fixes in The Drowned City and Sunken Temple, and quest fixes. Vampiric Embrace changes with the weekly maintenance on November 17. The hotfix data shows more changes the notes leave out: world buffs are lost when you die, and three Darkmoon Cards, the Onyxia Blood Talisman, the Krol'dok Battlegear, Grimstitch Armor and Escape Plan change.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-14",
+      "title": "Hotfix, November 14, 2026",
+      "date": "2026-11-14T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-14",
+      "summary": "Blizzard’s hotfix of November 14, posted at 01:18 UTC on November 15: enemies in dungeons stop giving experience only when a party member is more than 12 levels above them, instead of whenever they are trivial to one.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-13",
+      "title": "Hotfix, November 13, 2026",
+      "date": "2026-11-13T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-13",
+      "summary": "Blizzard’s notes of November 13, posted at 01:54 UTC on November 14, describe the hotfixes of that day: fixes for eight classes, diminishing returns on stuns between players and creatures, Judgement of Command as a melee attack again, item stats put right, no experience from trivial enemies in dungeons, and many quest fixes. The hotfix data shows two more changes the notes leave out: the three ranks of Wild Growth share one cooldown, and the Wildstalker Armor bonus now works on Multi-Shot.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70938",
+      "title": "Build 1.60.1.70938, November 13, 2026",
+      "date": "2026-11-13T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#1.60.1.70938",
+      "summary": "The November 13 client, read from its files: Blizzard has posted no notes for it. It writes the server’s hotfixes of November 10 and 11 into the client itself, and no talent, class spell, racial or item reads differently. One number differs between the client and the server: Wild Growth’s bonus from healing power.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-12",
+      "title": "Hotfix, November 12, 2026",
+      "date": "2026-11-12T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-12",
+      "summary": "The shaman changes of Blizzard’s November 10 notes were delayed. Blizzard says they went live in all regions on November 12 at 18:45 UTC.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-11",
+      "title": "Hotfix, November 11, 2026",
+      "date": "2026-11-11T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-11",
+      "summary": "Hotfixes to the November 10 client, sent on November 11. Blizzard’s notes of November 11, posted at 00:48 UTC on November 12, describe most of them: fixes for five classes, Judgement as a ranged attack, five bigger Tailoring bags and easier enemies in Riverglades. The hotfix data shows more that the notes leave out, first seen on November 11 and 12: two wands get their damage, Seal of the Dawn and Rune of the Dawn collect Scourgestones, and campsite recipes stop giving skill points sooner.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-10",
+      "title": "Hotfix, November 10, 2026",
+      "date": "2026-11-10T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-10",
+      "summary": "Hotfixes to the November 10 client, sent from 16:51 UTC on November 10 into the night. Blizzard’s notes of November 10, posted at 03:27 UTC on November 11, describe them. Rage of the Storm now gives Strength, Wrack now speeds up Corruption, Siphon Life and Bane of Agony while you channel it, hunter pets drop to 115% health while warlock pets get about 15% more, and most quests of level 48 and higher now reward gold. The notes also announce changes that are not in the game yet: Enhancement shamans move back toward Windfury (Stormstrike, Mental Dexterity and Maelstrom Weapon give less), and the auction house changes come with the maintenance of November 17.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70888",
+      "title": "Build 1.60.1.70888, November 10, 2026",
+      "date": "2026-11-10T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#1.60.1.70888",
+      "summary": "The client of November 10. It holds the server's hotfixes of November 7 to 9, and one change players see: Fear Ward can now be cast in Shadowform. Blizzard's class tuning announced for November 10 is not in it.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-09",
+      "title": "Hotfix, November 9, 2026",
+      "date": "2026-11-09T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-09",
+      "summary": "A hotfix to the November 7 client, first seen on November 9 between 19:26 and 21:43 UTC in the cache the launch realms send. Blizzard’s notes of November 9, posted on November 10, describe it. In the client it brings the Swiftmend tooltip fix that their notes of November 6 listed.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-08",
+      "title": "Hotfix, November 8, 2026",
+      "date": "2026-11-08T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-08",
+      "summary": "Blizzard’s hotfix of November 8, live from about 19:05 UTC: enemies in dungeons give 50% more experience when you kill them.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-07",
+      "title": "Hotfix, November 7, 2026",
+      "date": "2026-11-07T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-07",
+      "summary": "A hotfix to the November 7 client, first seen at about 22:17 UTC on November 7 in the cache the launch realms send. It made Fear Ward castable in Shadowform only, and Blizzard reverted that right away.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70862",
+      "title": "Build 1.60.1.70862, November 7, 2026",
+      "date": "2026-11-07T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#1.60.1.70862",
+      "summary": "The November 7 client, read from its files: Blizzard has posted no notes for it. The Adventurer’s Tent is a rested tent again, Rock on Stick and Bigger Rock on Bigger Stick read their bleed, four quest items get a Use line, and the client now holds five of the new dungeons with their encounters. The rest catches up with the server’s hotfixes the site already shows, among them Gore Drinker, Bear Form, Ravage and the Hyjal flasks.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-06",
+      "title": "Hotfix, November 6, 2026",
+      "date": "2026-11-06T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-06",
+      "summary": "A hotfix to the launch client, which Blizzard’s notes of November 6 describe. In the client it fixes three tooltips: Gore Drinker now names Reckless Swings, Bear Form gives the Health of Classic, and Ravage shows its real bonus damage. What the spells do did not change.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-05",
+      "title": "Hotfix, November 5, 2026",
+      "date": "2026-11-05T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-05",
+      "summary": "Blizzard’s hotfixes of November 5: creature spawns, a druid trainer and tradeskill bags on Zephras Isle, the sell price of Mild Spices, Plainsrunning in battlegrounds and two quests.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-04",
+      "title": "Hotfix, November 4, 2026",
+      "date": "2026-11-04T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-04",
+      "summary": "A hotfix to the launch client, first seen on November 4 in the cache the launch realms send. It brings in two lines of Blizzard’s launch notes that the client files do not carry: Defiance and Defensive Stance now read as the notes say. Chain Lightning keeps the client’s 2.5 sec cast: the launch realms do not send the 2 sec of the notes.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70790",
+      "title": "Build 1.60.1.70790, November 4, 2026",
+      "date": "2026-11-04T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#1.60.1.70790",
+      "summary": "The launch client, out on November 4. It writes the November 3 hotfixes into the client files: the class changes of Blizzard’s launch notes now read from the client in every language. Items did not change.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70755",
+      "title": "Build 1.60.1.70755, November 3, 2026",
+      "date": "2026-11-03T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#1.60.1.70755",
+      "summary": "A technical build: its game data is the same as the 2026-11-02 build's (1.60.1.70753). Talents, spells and items did not change.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-03",
+      "title": "Hotfix, November 3, 2026",
+      "date": "2026-11-03T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-03",
+      "summary": "A hotfix to the November 2 build, first seen on November 3 in the cache the launch realms send, which Blizzard has posted no notes for. It raises the hunter’s damage: Aspect of the Hawk gets back the ranged attack power the October 28 hotfix took away, Trueshot Aura gives up to twice as much, Barrage and Lightning Reflexes are back to Classic’s values, and Aimed Shot, Arcane Shot, Serpent Sting and Sniper Shot deal more damage.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70753",
+      "title": "Build 1.60.1.70753, November 2, 2026",
+      "date": "2026-11-02T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#1.60.1.70753",
+      "summary": "The November 2 build writes the October 30 hotfix into the client files: the druid and paladin trees’ rework, the racial pass and the mage, priest, warlock and hunter changes now read from the client in every language. New in it: Poised, a passive for rogues at level 18 and druids at level 32 that takes 10 Energy off your first ability when you open a fight at full Energy; the Skyborne’s Attuned and Charged last 1 hr instead of 15 min, as Blizzard announced; the last rank of Holy Shield gets its level, cost and cooldown; and the Pouch of Violet Dust, an item for the launch celebration. None of this is confirmed: the build came while the realms are closed before launch, Blizzard has posted no notes for it, and nothing can be checked in game yet.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-10-30",
+      "title": "Hotfix, October 30, 2026",
+      "date": "2026-10-30T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#hotfix-2026-10-30",
+      "summary": "A hotfix to the October 30 build, first seen on October 30 in the cache the launch realms send, which Blizzard has posted no notes for. It reworks the druid and paladin talent trees and brings in the racial pass announced on October 26. Values that flip between hotfixes can come from differences between the NA and EU realms: in that case this page follows the newer hotfix.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70707",
+      "title": "Build 1.60.1.70707, October 30, 2026",
+      "date": "2026-10-30T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#1.60.1.70707",
+      "summary": "The October 30 build puts the server’s hotfixes of October 27 to 29 into the client files: the mage trees’ rework, Ice Lance’s 8 sec cooldown, Blood Fury’s 2 min cooldown and Revenge’s attack power. The Adventurer’s Tent is a cosmetic again. None of this is confirmed: the build came while the realms are closed before launch, Blizzard has posted no notes for it, and nothing can be checked in game yet.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70685",
+      "title": "Build 1.60.1.70685, October 28, 2026",
+      "date": "2026-10-28T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#1.60.1.70685",
+      "summary": "None of this is confirmed: the build came while the realms are closed before launch, Blizzard has posted no notes for it, and nothing can be checked in game yet.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-10-28",
+      "title": "Hotfix, October 28, 2026",
+      "date": "2026-10-28T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#hotfix-2026-10-28",
+      "summary": "A hotfix to the October 28 build, first seen on October 28 in the cache the launch realms send, which Blizzard’s notes do not mention: Aspect of the Hawk and Trueshot Aura give about half their ranged attack power, Blood Fury’s 2 min cooldown announced for launch is in the server’s data, the roots of Entrapment, Counterattack, Improved Wing Clip, Improved Hamstring and Frostbite share one diminishing returns group, and paladins still learn Righteous Fury at level 10. The same data carries the spells of the 2008 zombie plague event, the infection, the zombies’ abilities and the cure, with no event announced.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70658",
+      "title": "Build 1.60.1.70658, October 28, 2026",
+      "date": "2026-10-28T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#1.60.1.70658",
+      "summary": "A build of October 28 that changes only model files: 2 of 137 tables differ from the October 27 build, both creature models, and nothing a page reads. Blizzard has posted no notes for it. The first hotfixes of the launch realms, seen the same night, are below.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70634",
+      "title": "Build 1.60.1.70634, October 27, 2026",
+      "date": "2026-10-27T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#1.60.1.70634",
+      "summary": "Read from the client, Blizzard having posted no notes for it: the server hotfixes of October 16 to 23 are now in the client itself, Eureka!’s tooltip now says its 8 sec, and no talent, class spell or item reads differently. The racial pass Blizzard announced for launch is not in it.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-10-23",
+      "title": "Hotfix, October 23, 2026",
+      "date": "2026-10-23T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#hotfix-2026-10-23",
+      "summary": "A hotfix to the October 22 build, first seen on October 23, which Blizzard’s notes do not mention: paladins learn Righteous Fury at level 10 instead of 16.",
+      "kind": "hotfix",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-1.60.1.70532",
+      "title": "Build 1.60.1.70532, October 22, 2026",
+      "date": "2026-10-22T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#1.60.1.70532",
+      "summary": "The beta moved to the build the live game’s stress test used on October 21. Its game data is the same as the October 16 build’s: talents, spells and items did not change.",
+      "kind": "build",
+      "firstSeen": null
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-10-22",
+      "title": "Hotfix, October 22, 2026",
+      "date": "2026-10-22T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#hotfix-2026-10-22",
+      "summary": "A hotfix to the October 16 build, first seen on October 22, which Blizzard’s notes do not mention: 127 items for the beta only, copies of Molten Core’s loot and its legendary weapons at item level 30 that need level 1, the nine Tier 1 sets with Classic’s bonuses, and elixirs, one of which triples experience for an hour. They say nothing about Molten Core on the live realms. The beta closed on October 23, and Blizzard says they will not be in WoW Forever after launch.",
+      "kind": "hotfix",
+      "firstSeen": null
+    }
+  ]
+}
