@@ -170,39 +170,6 @@ console.log(`Professions: ${profFound} characters with data`);
 console.log(`Item levels: ${ilvlFound} characters with a value`);
 console.log(`Profile levels: ${checked} checked, ${raised} higher than the roster, ${unavailable} unavailable`);
 
-// ===== PROBE (temporary): which dungeon/raid endpoints does Forever answer, and with what? =====
-// Results go to probe-data.json (shown on probe.html) so guild-data.json stays clean.
-function trim(v, depth = 0) {
-  if (Array.isArray(v)) return { _array: v.length, items: depth > 6 ? [] : v.slice(0, 3).map((x) => trim(x, depth + 1)) };
-  if (v && typeof v === "object") {
-    if (depth > 6) return "{…}";
-    return Object.fromEntries(Object.entries(v).filter(([k]) => k !== "_links").map(([k, x]) => [k, trim(x, depth + 1)]));
-  }
-  return typeof v === "string" && v.length > 140 ? v.slice(0, 140) + "…" : v;
-}
-const PROBE_PATHS = ["/encounters", "/encounters/dungeons", "/encounters/raids", "/achievements",
-  "/achievements/statistics", "/statistics", "/mythic-keystone-profile", "/quests/completed"];
-const probeWho = members.filter((m) => m.surname && typeof m.level === "number")
-  .sort((a, b) => b.level - a.level).slice(0, 3).map(slugOf);
-const probe = { generated: new Date().toISOString(), characters: probeWho, results: [] };
-for (const who of probeWho) {
-  const base = `/profile/wow/character/${encodeURIComponent(who)}`;
-  for (const path of PROBE_PATHS) {
-    let status = 0, body = null;
-    try {
-      const res = await fetch(`${API}${base}${path}?locale=en_US`, {
-        headers: { Authorization: `Bearer ${accessToken}`, "Battlenet-Namespace": NAMESPACE },
-      });
-      status = res.status;
-      if (res.ok) body = trim(await res.json());
-    } catch (e) { body = String(e); }
-    probe.results.push({ character: who, path, status, body });
-  }
-}
-writeFileSync(new URL("./probe-data.json", import.meta.url), JSON.stringify(probe, null, 2));
-console.log(`Probe: ${probe.results.filter((r) => r.status === 200).length} of ${probe.results.length} endpoints answered`);
-// ===== END PROBE =====
-
 // Level history: one snapshot per day (the latest run of that day), kept for 35 days.
 // It lives inside guild-data.json so the workflow needs no changes.
 const outPath = new URL("./guild-data.json", import.meta.url);
