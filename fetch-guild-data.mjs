@@ -261,29 +261,6 @@ await Promise.all(Object.entries(professionHref).map(async ([name, href]) => {
 }));
 console.log(`Profession icons: ${Object.keys(professionIcons).length} of ${Object.keys(professionHref).length}`);
 
-// TEMP debug: does Forever expose the adventure journal (dungeon bosses and their loot)?
-const debug = {};
-{
-  const trim = (v, d = 0) => Array.isArray(v) ? { _array: v.length, items: d > 5 ? [] : v.slice(0, 4).map((x) => trim(x, d + 1)) }
-    : v && typeof v === "object" ? (d > 5 ? "{…}" : Object.fromEntries(Object.entries(v).filter(([k]) => k !== "_links").map(([k, x]) => [k, trim(x, d + 1)])))
-    : typeof v === "string" && v.length > 120 ? v.slice(0, 120) + "…" : v;
-  const ns = new URL(Object.values(professionHref)[0]).searchParams.get("namespace");
-  const probe = async (label, path, extra = "") => {
-    try {
-      const res = await fetch(`${API}${path}?namespace=${ns}&locale=en_US${extra}`, { headers: { Authorization: `Bearer ${accessToken}` } });
-      debug[label] = { status: res.status, body: res.ok ? trim(await res.json()) : null };
-      return res.ok ? debug[label] : null;
-    } catch (e) { debug[label] = { error: String(e) }; return null; }
-  };
-  await probe("journal-instance-index", "/data/wow/journal-instance/index");
-  await probe("journal-encounter-index", "/data/wow/journal-encounter/index");
-  await probe("item-9394", "/data/wow/item/9394");
-  await probe("item-search", "/data/wow/search/item", "&name.en_US=Horned&_pageSize=3");
-  await probe("journal-instance-1", "/data/wow/journal-instance/63");
-  await probe("journal-encounter-1", "/data/wow/journal-encounter/1");
-  await probe("loot-tables", "/data/wow/loot-table/index");
-}
-
 // Level history: one snapshot per day (the latest run of that day), kept for 35 days.
 // It lives inside guild-data.json so the workflow needs no changes.
 const outPath = new URL("./guild-data.json", import.meta.url);
@@ -302,7 +279,6 @@ const out = {
   history: { days },
   professionIcons,
   recipes,
-  debug, // TEMP
   unrecognizedKills,
   bossKills, // dungeon/raid boss kills combined across the guild
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
