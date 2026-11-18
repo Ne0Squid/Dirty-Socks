@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T00:47:32.528Z",
+  "generated": "2026-11-18T02:07:56.556Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -35,7 +35,7 @@
     {
       "name": "Orken",
       "surname": "Magorken",
-      "level": 46,
+      "level": 47,
       "cls": "Shaman",
       "color": "#0070de",
       "rank": 1,
@@ -53,7 +53,7 @@
     {
       "name": "Capo",
       "surname": "Shoots",
-      "level": 29,
+      "level": 30,
       "cls": "Hunter",
       "color": "#abd473",
       "rank": 1,
@@ -106,7 +106,7 @@
     {
       "name": "Thick",
       "surname": "Hogs",
-      "level": 14,
+      "level": 15,
       "cls": "Mage",
       "color": "#3fc7eb",
       "rank": 2,
@@ -115,7 +115,7 @@
     {
       "name": "The",
       "surname": "Parttimedad",
-      "level": 22,
+      "level": 23,
       "cls": "Hunter",
       "color": "#abd473",
       "rank": 4,
