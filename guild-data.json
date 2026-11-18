@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T14:08:22.606Z",
+  "generated": "2026-11-18T15:46:56.041Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -142,7 +142,7 @@
     {
       "name": "Hotdog",
       "surname": "Nomustard",
-      "level": 13,
+      "level": 14,
       "cls": "Hunter",
       "color": "#abd473",
       "rank": 4,
