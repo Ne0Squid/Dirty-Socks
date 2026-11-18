@@ -323,15 +323,19 @@ function autoCleared(bk){
   Object.keys(bk||{}).forEach(stat=>{const m=stat.match(/\(([^)]+)\)\s*$/);if(m)out.add(dkey(m[1]))});
   return out;
 }
+// When a dungeon or boss was first cleared: the earliest kill time Blizzard shows, or the first run that noticed the kill.
+function killTime(bk,test){let best=null;for(const n in (bk||{})){if(!test(n))continue;const e=bk[n],t=e.first!=null?e.first:(e.seen?Date.parse(e.seen):null);if(t!=null&&(best==null||t<best))best=t}return best}
+function fmtKill(t){if(t==null)return"";const d=new Date(t),y=d.getFullYear()!==new Date().getFullYear();return d.toLocaleDateString("en-US",y?{month:"short",day:"numeric",year:"numeric"}:{month:"short",day:"numeric"})}
 function drawDungeons(bk){
   const auto=autoCleared(bk);
   const list=dungeons.map(([name,min,max,isNew])=>({name,min,max,isNew:!!isNew})).sort((a,b)=>a.min-b.min||a.max-b.max);
+  const when=d=>{const t=killTime(bk,n=>{const m=n.match(/\(([^)]+)\)\s*$/);return m&&dkey(m[1])===dkey(d.name)});return t==null?"":" · Cleared "+fmtKill(t)};
   const isDone=d=>cleared.includes(d.name)||auto.has(dkey(d.name));
   const done=list.filter(isDone).length;
   document.getElementById("dungtitle").textContent=done+" / "+list.length+" dungeons cleared";
   document.getElementById("dungsub").textContent=done===list.length?"All cleared!":"Keep going!";
   document.getElementById("dungbar").style.width=(done/list.length*100)+"%";
-  document.getElementById("dunglist").innerHTML=list.map(d=>{const ok=isDone(d);return `<div class="dung${ok?" done":""}"><i class="chk">${ok?"✓":""}</i><span class="dn">${d.name}<small>Level ${d.min}–${d.max}</small></span>${d.isNew?'<span class="new">New</span>':""}</div>`}).join("");
+  document.getElementById("dunglist").innerHTML=list.map(d=>{const ok=isDone(d);return `<div class="dung${ok?" done":""}"><i class="chk">${ok?"✓":""}</i><span class="dn">${d.name}<small>Level ${d.min}–${d.max}${when(d)}</small></span>${d.isNew?'<span class="new">New</span>':""}</div>`}).join("");
 }
 drawDungeons(null);
 
@@ -360,11 +364,12 @@ function drawRaids(bk){
   const stats=Object.keys(bk||{}).map(dkey);
   const bossNames=b=>Array.isArray(b)?b:[b];
   const isKilled=b=>{const [n,...alias]=bossNames(b);return raidKilledByHand.includes(n)||[n,...alias].some(w=>stats.some(t=>t.includes(dkey(w))))};
+  const bossWhen=b=>fmtKill(killTime(bk,n=>bossNames(b).some(w=>dkey(n).includes(dkey(w)))));
   document.getElementById("raids").innerHTML=raids.map(r=>{
     const total=r.bosses.length,killed=r.bosses.filter(isKilled).length;
     const status=new Date()<raidsOpen?"Opens December 9":killed>=total?"Cleared":killed>0?"In progress":"Not started";
     const pct=Math.min(100,killed/total*100);
-    const list=r.bosses.map(b=>{const ok=isKilled(b);return `<div class="dung${ok?" done":""}"><i class="chk">${ok?"✓":""}</i><span class="dn">${bossNames(b)[0]}</span></div>`}).join("");
+    const list=r.bosses.map(b=>{const ok=isKilled(b);return `<div class="dung${ok?" done":""}"><i class="chk">${ok?"✓":""}</i><span class="dn">${bossNames(b)[0]}${ok&&bossWhen(b)?`<small>Cleared ${bossWhen(b)}</small>`:""}</span></div>`}).join("");
     return `<div class="card"><h3 class="raid-title">${r.name}</h3><div class="muted">${r.size}-player · ${total} ${total===1?"boss":"bosses"}</div><div class="bar"><span style="width:${pct}%"></span></div><span class="muted">${killed} / ${total} defeated</span><div class="muted" style="margin-top:6px">${status}</div>${r.note?`<div class="muted" style="margin-top:6px">${r.note}</div>`:""}<div class="bosslist">${list}</div></div>`;
   }).join("");
 }

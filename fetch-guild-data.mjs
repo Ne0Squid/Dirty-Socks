@@ -78,6 +78,12 @@ const members = (roster?.members ?? []).map((m) => {
 // Roster levels can lag behind each character's own profile, so check the profile too
 // and keep the higher level. Characters only have profiles from level 10 after logging out.
 const slugOf = (m) => `${m.name}-${m.surname ?? ""}`.toLowerCase().replace(/['’]/g, "").replace(/\s+/g, "-");
+// Last run's data. If Blizzard fails to answer for a character, its last good values are kept
+// instead of going blank, and boss kills are never dropped.
+let prevData = {};
+try { prevData = JSON.parse(readFileSync(new URL("./guild-data.json", import.meta.url), "utf8")); } catch { prevData = {}; }
+const prevBy = Object.fromEntries((prevData.roster ?? []).map((m) => [slugOf(m), m]));
+let carried = 0;
 // Forever returns specialization_groups[]; the group with is_active:true holds the current spec.
 // If that group lists more than one spec, use the one with the most talent points spent.
 function activeSpec(sp) {
@@ -118,7 +124,7 @@ function bossKillStats(st) {
   const found = [];
   const walk = (cat, inside) => {
     const here = inside || /dungeons/i.test(cat.name ?? "");
-    if (here) for (const x of cat.statistics ?? []) if (/kills?\b/i.test(x.name ?? "")) found.push([x.name, x.quantity ?? 0]);
+    if (here) for (const x of cat.statistics ?? []) if (/kills?\b/i.test(x.name ?? "")) found.push([x.name, x.quantity ?? 0, x.last_updated_timestamp ?? null]);
     for (const sub of cat.sub_categories ?? []) walk(sub, here);
   };
   for (const c of st?.categories ?? []) walk(c, false);
@@ -144,7 +150,16 @@ for (let i = 0; i < members.length; i += 5) {
   await Promise.all(members.slice(i, i + 5).map(async (m) => {
     if (!m.surname) return;
     const p = await get(`/profile/wow/character/${encodeURIComponent(slugOf(m))}`, accessToken);
-    if (!p || typeof p.level !== "number") { unavailable++; return; }
+    const old = prevBy[slugOf(m)];
+    if (!p || typeof p.level !== "number") {
+      unavailable++;
+      if (old) { // keep what we had
+        m.level = Math.max(m.level ?? 0, old.level ?? 0) || m.level;
+        m.spec = old.spec ?? null; m.professions = old.professions ?? []; m.ilvl = old.ilvl ?? null;
+        carried++;
+      }
+      return;
+    }
     checked++;
     if (p.level > (m.level ?? 0)) { m.level = p.level; raised++; }
     const base = `/profile/wow/character/${encodeURIComponent(slugOf(m))}`;
@@ -154,23 +169,53 @@ for (let i = 0; i < members.length; i += 5) {
       get(`${base}/equipment`, accessToken),
       get(`${base}/achievements/statistics`, accessToken),
     ]);
-    for (const [name, qty] of bossKillStats(ast)) {
+    for (const [name, qty, ts] of bossKillStats(ast)) {
       if (qty <= 0) continue;
-      const e = (bossKills[name] ??= { total: 0, members: [] });
+      const e = (bossKills[name] ??= { total: 0, members: [], first: null });
       e.total += qty; e.members.push(slugOf(m));
+      // A member with exactly one kill gives that kill's exact time, so the earliest of those is the best "first cleared".
+      if (qty === 1 && ts && (e.first == null || ts < e.first)) e.first = ts;
     }
-    m.spec = sp ? activeSpec(sp) : null;
+    m.spec = sp ? activeSpec(sp) : (old?.spec ?? null);
     if (m.spec) specFound++; else specMissing++;
-    m.professions = pr ? parseProfessions(pr) : [];
+    m.professions = pr ? parseProfessions(pr) : (old?.professions ?? []);
     if (m.professions.length) profFound++;
-    m.ilvl = itemLevel(p, eq);
+    m.ilvl = itemLevel(p, eq) ?? old?.ilvl ?? null;
     if (m.ilvl) ilvlFound++;
+    if (!sp || !pr || !eq || !ast) carried++;
   }));
 }
 console.log(`Specializations: ${specFound} found, ${specMissing} without a spec`);
 console.log(`Professions: ${profFound} characters with data`);
 console.log(`Item levels: ${ilvlFound} characters with a value`);
+console.log(`Kept previous values for ${carried} characters where Blizzard did not answer`);
 console.log(`Profile levels: ${checked} checked, ${raised} higher than the roster, ${unavailable} unavailable`);
+
+// Boss kills only ever go up, so merge with last run: nothing is dropped if a character failed to load,
+// and "seen" records the first run that noticed each kill (null = already there before tracking began).
+const nowIso = new Date().toISOString();
+const prevKills = prevData.bossKills ?? null;
+for (const [name, e] of Object.entries(bossKills)) {
+  const o = prevKills?.[name];
+  e.seen = o ? (o.seen ?? null) : (prevKills ? nowIso : null);
+  if (o) {
+    e.total = Math.max(e.total, o.total ?? 0);
+    e.members = [...new Set([...e.members, ...(o.members ?? [])])];
+    if (o.first != null && (e.first == null || o.first < e.first)) e.first = o.first;
+  }
+}
+for (const [name, o] of Object.entries(prevKills ?? {})) if (!bossKills[name]) bossKills[name] = { first: null, seen: null, ...o };
+
+// Kill statistics that aren't for a dungeon or raid the site knows about, so new names are easy to spot.
+const KNOWN_PLACES = ["Ragefire Chasm", "Hall of Thanes", "Ruins of Lordaeron", "The Deadmines", "Wailing Caverns", "Shadowfang Keep",
+  "Blackfathom Deeps", "Excavation Site: Wetlands", "The Stockade", "City of Dalaran", "Gnomeregan", "Razorfen Kraul", "Scarlet Monastery",
+  "The Drowned City", "Uldaman", "Razorfen Downs", "Zul'Farrak", "Krol'dok Stronghold", "Maraudon", "Alcaz Prison", "Sunken Temple",
+  "Blackrock Depths", "Blackmaw Hold", "Blackrock Spire", "Shaper's Terrace", "Dire Maul", "Stratholme", "Scholomance",
+  "The Barrow Deeps", "Hyjal Summit", "Onyxia's Lair"];
+const placeKey = (n) => String(n).toLowerCase().replace(/[’']/g, "").replace(/^the\s+/, "").trim();
+const known = new Set(KNOWN_PLACES.map(placeKey));
+const unrecognizedKills = Object.keys(bossKills).filter((n) => { const m = n.match(/\(([^)]+)\)\s*$/); return !m || !known.has(placeKey(m[1])); });
+if (unrecognizedKills.length) console.log(`Unrecognized kill statistics: ${unrecognizedKills.join("; ")}`);
 
 // Profession icons: Blizzard's media endpoint gives each profession's icon URL.
 // Built from the profession's own data link so the right game-version namespace is used.
@@ -204,6 +249,7 @@ const out = {
   roster: members,
   history: { days },
   professionIcons,
+  unrecognizedKills,
   bossKills, // dungeon/raid boss kills combined across the guild
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
   raw: { guild, activity, achievements },
