@@ -124,6 +124,8 @@ function bossKillStats(st) {
   for (const c of st?.categories ?? []) walk(c, false);
   return found;
 }
+const DBG_RE = /wetland|drowned|krol|excavation|stronghold|dalaran|thanes|stockade/i; // TEMP debug
+const debug = { stats: {}, achievements: {}, dungeonCategory: {} };
 const bossKills = {}; // statistic name -> { total, members: [slug] }
 
 // Item level: use Blizzard's own figure from the character profile when it has one,
@@ -154,6 +156,22 @@ for (let i = 0; i < members.length; i += 5) {
       get(`${base}/equipment`, accessToken),
       get(`${base}/achievements/statistics`, accessToken),
     ]);
+    { // TEMP debug: everything in the Dungeons category, plus any statistic or achievement naming the missing dungeons
+      const walk = (cat, path, inside) => {
+        const here = inside || /dungeons/i.test(cat.name ?? "");
+        for (const x of cat.statistics ?? []) {
+          if (here) (debug.dungeonCategory[x.name] ??= { path: path + cat.name, total: 0, members: 0 }, debug.dungeonCategory[x.name].total += x.quantity ?? 0, debug.dungeonCategory[x.name].members++);
+          if (DBG_RE.test(x.name ?? "")) (debug.stats[x.name] ??= { path: path + cat.name, total: 0, members: 0 }, debug.stats[x.name].total += x.quantity ?? 0, debug.stats[x.name].members++);
+        }
+        for (const sc of cat.sub_categories ?? []) walk(sc, path + cat.name + " > ", here);
+      };
+      for (const c of ast?.categories ?? []) walk(c, "", false);
+      const ach = await get(`${base}/achievements`, accessToken);
+      for (const a of ach?.achievements ?? []) {
+        const n = a.achievement?.name ?? "";
+        if (DBG_RE.test(n)) (debug.achievements[n] ??= { members: 0 }).members++;
+      }
+    }
     for (const [name, qty] of bossKillStats(ast)) {
       if (qty <= 0) continue;
       const e = (bossKills[name] ??= { total: 0, members: [] });
@@ -204,6 +222,7 @@ const out = {
   roster: members,
   history: { days },
   professionIcons,
+  debug, // TEMP
   bossKills, // dungeon/raid boss kills combined across the guild
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
   raw: { guild, activity, achievements },
