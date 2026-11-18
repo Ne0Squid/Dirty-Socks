@@ -4,7 +4,7 @@
 // Get a client at https://develop.battle.net/access/clients (keep the secret private).
 // Writes guild-data.json next to this script.
 
-import { writeFileSync } from "node:fs";
+import { writeFileSync, readFileSync, existsSync } from "node:fs";
 
 const REGION = "us";
 const GUILD_SLUG = "dirty-socks"; // Forever guilds are realmless, so only the slug is needed
@@ -92,7 +92,40 @@ function activeSpec(sp) {
   }
   return best;
 }
-let checked = 0, raised = 0, unavailable = 0, specFound = 0, specMissing = 0;
+// Professions: Forever's response shape isn't documented yet, so read the classic-style fields defensively.
+function parseProfessions(pr) {
+  const out = [];
+  for (const [group, primary] of [[pr?.primaries, true], [pr?.secondaries, false]]) {
+    for (const e of group ?? []) {
+      const name = e.profession?.name;
+      if (!name) continue;
+      out.push({
+        name,
+        skill: e.skill_points ?? e.tiers?.[0]?.skill_points ?? null,
+        max: e.max_skill_points ?? e.tiers?.[0]?.max_skill_points ?? null,
+        primary,
+      });
+    }
+  }
+  return out;
+}
+
+// Item level: use Blizzard's own figure from the character profile when it has one,
+// otherwise average the equipped items (shirt and tabard don't count).
+const NO_ILVL_SLOTS = new Set(["SHIRT", "TABARD"]);
+function itemLevel(profile, eq) {
+  const given = profile?.equipped_item_level ?? profile?.average_item_level;
+  if (typeof given === "number" && given > 0) return Math.round(given);
+  const levels = (eq?.equipped_items ?? [])
+    .filter((i) => !NO_ILVL_SLOTS.has(i.slot?.type))
+    .map((i) => i.level?.value)
+    .filter((v) => typeof v === "number");
+  return levels.length ? Math.round(levels.reduce((a, b) => a + b, 0) / levels.length) : null;
+}
+
+// A couple of trimmed raw responses, saved under "discovery" so the real shapes can be checked.
+const discovery = { profile: [], professions: [], equipment: [] };
+let checked = 0, raised = 0, unavailable = 0, specFound = 0, specMissing = 0, profFound = 0, ilvlFound = 0;
 for (let i = 0; i < members.length; i += 5) {
   await Promise.all(members.slice(i, i + 5).map(async (m) => {
     if (!m.surname) return;
@@ -100,21 +133,49 @@ for (let i = 0; i < members.length; i += 5) {
     if (!p || typeof p.level !== "number") { unavailable++; return; }
     checked++;
     if (p.level > (m.level ?? 0)) { m.level = p.level; raised++; }
-    const sp = await get(`/profile/wow/character/${encodeURIComponent(slugOf(m))}/specializations`, accessToken);
+    const base = `/profile/wow/character/${encodeURIComponent(slugOf(m))}`;
+    const [sp, pr, eq] = await Promise.all([
+      get(`${base}/specializations`, accessToken),
+      get(`${base}/professions`, accessToken),
+      get(`${base}/equipment`, accessToken),
+    ]);
     m.spec = sp ? activeSpec(sp) : null;
     if (m.spec) specFound++; else specMissing++;
+    m.professions = pr ? parseProfessions(pr) : [];
+    if (m.professions.length) profFound++;
+    m.ilvl = itemLevel(p, eq);
+    if (m.ilvl) ilvlFound++;
+    const who = slugOf(m);
+    if (discovery.profile.length < 2) discovery.profile.push({ character: who, keys: Object.keys(p), equipped_item_level: p.equipped_item_level ?? null, average_item_level: p.average_item_level ?? null });
+    if (pr && discovery.professions.length < 2) discovery.professions.push({ character: who, response: pr });
+    if (eq && discovery.equipment.length < 2) discovery.equipment.push({ character: who, keys: Object.keys(eq), equipped_count: (eq.equipped_items ?? []).length, first_items: (eq.equipped_items ?? []).slice(0, 3) });
   }));
 }
 console.log(`Specializations: ${specFound} found, ${specMissing} without a spec`);
+console.log(`Professions: ${profFound} characters with data`);
+console.log(`Item levels: ${ilvlFound} characters with a value`);
 console.log(`Profile levels: ${checked} checked, ${raised} higher than the roster, ${unavailable} unavailable`);
+
+// Level history: one snapshot per day (the latest run of that day), kept for 35 days.
+// It lives inside guild-data.json so the workflow needs no changes.
+const outPath = new URL("./guild-data.json", import.meta.url);
+let days = {};
+if (existsSync(outPath)) {
+  try { days = JSON.parse(readFileSync(outPath, "utf8")).history?.days ?? {}; } catch { days = {}; }
+}
+days[new Date().toISOString().slice(0, 10)] = Object.fromEntries(
+  members.filter((m) => m.surname && typeof m.level === "number").map((m) => [slugOf(m), m.level]));
+days = Object.fromEntries(Object.keys(days).sort().slice(-35).map((k) => [k, days[k]]));
 
 const out = {
   generated: new Date().toISOString(),
   guild: { name: guild?.name ?? "Dirty Socks", faction: guild?.faction?.name ?? null },
   roster: members,
+  history: { days },
+  discovery, // trimmed sample responses; will be removed once the shapes are confirmed
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
   raw: { guild, activity, achievements },
 };
 
-writeFileSync(new URL("./guild-data.json", import.meta.url), JSON.stringify(out, null, 2));
+writeFileSync(outPath, JSON.stringify(out, null, 2));
 console.log(`Done: ${members.length} members written to guild-data.json`);
