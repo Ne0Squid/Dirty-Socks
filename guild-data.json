@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T04:49:46.093Z",
+  "generated": "2026-11-18T05:53:08.951Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -15,18 +15,9 @@
       "spec": "Retribution"
     },
     {
-      "name": "Squid",
-      "surname": "Zero",
-      "level": 46,
-      "cls": "Druid",
-      "color": "#ff7d0a",
-      "rank": 1,
-      "spec": "Restoration"
-    },
-    {
       "name": "Needmore",
       "surname": "Beers",
-      "level": 46,
+      "level": 47,
       "cls": "Warrior",
       "color": "#c79c6e",
       "rank": 1,
@@ -40,6 +31,15 @@
       "color": "#0070de",
       "rank": 1,
       "spec": "Enhancement"
+    },
+    {
+      "name": "Squid",
+      "surname": "Zero",
+      "level": 46,
+      "cls": "Druid",
+      "color": "#ff7d0a",
+      "rank": 1,
+      "spec": "Restoration"
     },
     {
       "name": "Plucky",
