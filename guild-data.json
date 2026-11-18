@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T23:39:43.452Z",
+  "generated": "2026-11-18T00:47:32.528Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -106,7 +106,7 @@
     {
       "name": "Thick",
       "surname": "Hogs",
-      "level": 12,
+      "level": 14,
       "cls": "Mage",
       "color": "#3fc7eb",
       "rank": 2,
