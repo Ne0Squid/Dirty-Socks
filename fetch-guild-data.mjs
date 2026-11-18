@@ -123,8 +123,6 @@ function itemLevel(profile, eq) {
   return levels.length ? Math.round(levels.reduce((a, b) => a + b, 0) / levels.length) : null;
 }
 
-// A couple of trimmed raw responses, saved under "discovery" so the real shapes can be checked.
-const discovery = { profile: [], professions: [], equipment: [] };
 let checked = 0, raised = 0, unavailable = 0, specFound = 0, specMissing = 0, profFound = 0, ilvlFound = 0;
 for (let i = 0; i < members.length; i += 5) {
   await Promise.all(members.slice(i, i + 5).map(async (m) => {
@@ -145,16 +143,45 @@ for (let i = 0; i < members.length; i += 5) {
     if (m.professions.length) profFound++;
     m.ilvl = itemLevel(p, eq);
     if (m.ilvl) ilvlFound++;
-    const who = slugOf(m);
-    if (discovery.profile.length < 2) discovery.profile.push({ character: who, keys: Object.keys(p), equipped_item_level: p.equipped_item_level ?? null, average_item_level: p.average_item_level ?? null });
-    if (pr && discovery.professions.length < 2) discovery.professions.push({ character: who, response: pr });
-    if (eq && discovery.equipment.length < 2) discovery.equipment.push({ character: who, keys: Object.keys(eq), equipped_count: (eq.equipped_items ?? []).length, first_items: (eq.equipped_items ?? []).slice(0, 3) });
   }));
 }
 console.log(`Specializations: ${specFound} found, ${specMissing} without a spec`);
 console.log(`Professions: ${profFound} characters with data`);
 console.log(`Item levels: ${ilvlFound} characters with a value`);
 console.log(`Profile levels: ${checked} checked, ${raised} higher than the roster, ${unavailable} unavailable`);
+
+// ===== PROBE (temporary): which dungeon/raid endpoints does Forever answer, and with what? =====
+// Results go to probe-data.json (shown on probe.html) so guild-data.json stays clean.
+function trim(v, depth = 0) {
+  if (Array.isArray(v)) return { _array: v.length, items: depth > 6 ? [] : v.slice(0, 3).map((x) => trim(x, depth + 1)) };
+  if (v && typeof v === "object") {
+    if (depth > 6) return "{…}";
+    return Object.fromEntries(Object.entries(v).filter(([k]) => k !== "_links").map(([k, x]) => [k, trim(x, depth + 1)]));
+  }
+  return typeof v === "string" && v.length > 140 ? v.slice(0, 140) + "…" : v;
+}
+const PROBE_PATHS = ["/encounters", "/encounters/dungeons", "/encounters/raids", "/achievements",
+  "/achievements/statistics", "/statistics", "/mythic-keystone-profile", "/quests/completed"];
+const probeWho = members.filter((m) => m.surname && typeof m.level === "number")
+  .sort((a, b) => b.level - a.level).slice(0, 3).map(slugOf);
+const probe = { generated: new Date().toISOString(), characters: probeWho, results: [] };
+for (const who of probeWho) {
+  const base = `/profile/wow/character/${encodeURIComponent(who)}`;
+  for (const path of PROBE_PATHS) {
+    let status = 0, body = null;
+    try {
+      const res = await fetch(`${API}${base}${path}?locale=en_US`, {
+        headers: { Authorization: `Bearer ${accessToken}`, "Battlenet-Namespace": NAMESPACE },
+      });
+      status = res.status;
+      if (res.ok) body = trim(await res.json());
+    } catch (e) { body = String(e); }
+    probe.results.push({ character: who, path, status, body });
+  }
+}
+writeFileSync(new URL("./probe-data.json", import.meta.url), JSON.stringify(probe, null, 2));
+console.log(`Probe: ${probe.results.filter((r) => r.status === 200).length} of ${probe.results.length} endpoints answered`);
+// ===== END PROBE =====
 
 // Level history: one snapshot per day (the latest run of that day), kept for 35 days.
 // It lives inside guild-data.json so the workflow needs no changes.
@@ -172,7 +199,6 @@ const out = {
   guild: { name: guild?.name ?? "Dirty Socks", faction: guild?.faction?.name ?? null },
   roster: members,
   history: { days },
-  discovery, // trimmed sample responses; will be removed once the shapes are confirmed
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
   raw: { guild, activity, achievements },
 };
