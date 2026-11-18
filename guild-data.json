@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T19:48:31.999Z",
+  "generated": "2026-11-18T20:41:12.381Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -8,7 +8,7 @@
     {
       "name": "Scott",
       "surname": "Frost",
-      "level": 46,
+      "level": 47,
       "cls": "Paladin",
       "color": "#f58cba",
       "rank": 0,
@@ -16,7 +16,7 @@
       "professions": [
         {
           "name": "Mining",
-          "skill": 191,
+          "skill": 198,
           "max": 225,
           "primary": true
         },
@@ -45,54 +45,12 @@
           "primary": false
         }
       ],
-      "ilvl": 39
-    },
-    {
-      "name": "Needmore",
-      "surname": "Beers",
-      "level": 47,
-      "cls": "Warrior",
-      "color": "#c79c6e",
-      "rank": 1,
-      "spec": "Protection",
-      "professions": [
-        {
-          "name": "Mining",
-          "skill": 183,
-          "max": 225,
-          "primary": true
-        },
-        {
-          "name": "Blacksmithing",
-          "skill": 150,
-          "max": 225,
-          "primary": true
-        },
-        {
-          "name": "Cooking",
-          "skill": 38,
-          "max": 75,
-          "primary": false
-        },
-        {
-          "name": "Fishing",
-          "skill": 120,
-          "max": 150,
-          "primary": false
-        },
-        {
-          "name": "First Aid",
-          "skill": 269,
-          "max": 300,
-          "primary": false
-        }
-      ],
-      "ilvl": 42
+      "ilvl": 38
     },
     {
       "name": "Orken",
       "surname": "Magorken",
-      "level": 47,
+      "level": 48,
       "cls": "Shaman",
       "color": "#0070de",
       "rank": 1,
@@ -166,6 +124,48 @@
         }
       ],
       "ilvl": 36
+    },
+    {
+      "name": "Needmore",
+      "surname": "Beers",
+      "level": 47,
+      "cls": "Warrior",
+      "color": "#c79c6e",
+      "rank": 1,
+      "spec": "Protection",
+      "professions": [
+        {
+          "name": "Mining",
+          "skill": 183,
+          "max": 225,
+          "primary": true
+        },
+        {
+          "name": "Blacksmithing",
+          "skill": 150,
+          "max": 225,
+          "primary": true
+        },
+        {
+          "name": "Cooking",
+          "skill": 38,
+          "max": 75,
+          "primary": false
+        },
+        {
+          "name": "Fishing",
+          "skill": 120,
+          "max": 150,
+          "primary": false
+        },
+        {
+          "name": "First Aid",
+          "skill": 269,
+          "max": 300,
+          "primary": false
+        }
+      ],
+      "ilvl": 42
     },
     {
       "name": "Plucky",
@@ -482,36 +482,6 @@
       "ilvl": 16
     },
     {
-      "name": "Ember",
-      "surname": "Highland",
-      "level": 13,
-      "cls": "Hunter",
-      "color": "#abd473",
-      "rank": 4,
-      "spec": "Beast Mastery",
-      "professions": [
-        {
-          "name": "Skinning",
-          "skill": 63,
-          "max": 150,
-          "primary": true
-        },
-        {
-          "name": "Cooking",
-          "skill": 11,
-          "max": 75,
-          "primary": false
-        },
-        {
-          "name": "First Aid",
-          "skill": 1,
-          "max": 75,
-          "primary": false
-        }
-      ],
-      "ilvl": 4
-    },
-    {
       "name": "Hotdog",
       "surname": "Nomustard",
       "level": 14,
@@ -540,6 +510,36 @@
         }
       ],
       "ilvl": 6
+    },
+    {
+      "name": "Ember",
+      "surname": "Highland",
+      "level": 13,
+      "cls": "Hunter",
+      "color": "#abd473",
+      "rank": 4,
+      "spec": "Beast Mastery",
+      "professions": [
+        {
+          "name": "Skinning",
+          "skill": 63,
+          "max": 150,
+          "primary": true
+        },
+        {
+          "name": "Cooking",
+          "skill": 11,
+          "max": 75,
+          "primary": false
+        },
+        {
+          "name": "First Aid",
+          "skill": 1,
+          "max": 75,
+          "primary": false
+        }
+      ],
+      "ilvl": 4
     },
     {
       "name": "Neo",
@@ -589,10 +589,10 @@
   "history": {
     "days": {
       "2026-11-18": {
-        "scott-frost": 46,
-        "needmore-beers": 47,
-        "orken-magorken": 47,
+        "scott-frost": 47,
+        "orken-magorken": 48,
         "squid-zero": 47,
+        "needmore-beers": 47,
         "plucky-recks": 40,
         "capo-shoots": 31,
         "mr-capo": 15,
@@ -603,142 +603,155 @@
         "thick-hogs": 15,
         "the-parttimedad": 24,
         "zeik-soulfly": 20,
-        "ember-highland": 13,
         "hotdog-nomustard": 14,
+        "ember-highland": 13,
         "neo-squid": 11,
         "parttimedad-parttimedad": 5
       }
     }
   },
+  "professionIcons": {
+    "Mining": "https://render.worldofwarcraft.com/forever-us/icons/56/136248.jpg",
+    "Leatherworking": "https://render.worldofwarcraft.com/forever-us/icons/56/136247.jpg",
+    "Tailoring": "https://render.worldofwarcraft.com/forever-us/icons/56/136249.jpg",
+    "Blacksmithing": "https://render.worldofwarcraft.com/forever-us/icons/56/136241.jpg",
+    "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg",
+    "Skinning": "https://render.worldofwarcraft.com/forever-us/icons/56/134366.jpg",
+    "Herbalism": "https://render.worldofwarcraft.com/forever-us/icons/56/136246.jpg",
+    "Cooking": "https://render.worldofwarcraft.com/forever-us/icons/56/133971.jpg",
+    "Fishing": "https://render.worldofwarcraft.com/forever-us/icons/56/136245.jpg",
+    "Enchanting": "https://render.worldofwarcraft.com/forever-us/icons/56/136244.jpg",
+    "First Aid": "https://render.worldofwarcraft.com/forever-us/icons/56/135966.jpg"
+  },
   "bossKills": {
+    "Scarlet Commander Mograine kills (Scarlet Monastery)": {
+      "total": 8,
+      "members": [
+        "scott-frost",
+        "needmore-beers",
+        "orken-magorken",
+        "squid-zero"
+      ]
+    },
     "Edwin VanCleef Kills (Deadmines)": {
       "total": 3,
       "members": [
+        "scott-frost",
         "plucky-recks",
-        "needmore-beers",
-        "scott-frost"
+        "needmore-beers"
       ]
     },
     "Rath'mael Kills (Ruins of Lordaeron)": {
       "total": 6,
       "members": [
-        "plucky-recks",
-        "orken-magorken",
-        "needmore-beers",
-        "squid-zero",
         "scott-frost",
+        "plucky-recks",
+        "needmore-beers",
+        "orken-magorken",
+        "squid-zero",
         "the-parttimedad"
       ]
     },
     "Shade of the Archmage Kills (City of Dalaran)": {
       "total": 4,
       "members": [
+        "scott-frost",
         "plucky-recks",
-        "orken-magorken",
         "needmore-beers",
-        "scott-frost"
+        "orken-magorken"
       ]
     },
     "Bazzalan kills (Ragefire Chasm)": {
       "total": 18,
       "members": [
-        "plucky-recks",
-        "orken-magorken",
-        "needmore-beers",
-        "squid-zero",
         "scott-frost",
-        "mrs-capo",
+        "plucky-recks",
+        "needmore-beers",
+        "orken-magorken",
+        "squid-zero",
         "mr-capo",
         "capo-shoots",
-        "the-parttimedad",
-        "zeik-soulfly",
+        "mrs-capo",
         "thick-hogs",
-        "hotdog-nomustard"
+        "zeik-soulfly",
+        "hotdog-nomustard",
+        "the-parttimedad"
       ]
     },
     "Mutanus the Devourer kills (Wailing Caverns)": {
       "total": 13,
       "members": [
-        "plucky-recks",
-        "orken-magorken",
-        "needmore-beers",
-        "squid-zero",
         "scott-frost",
+        "plucky-recks",
+        "needmore-beers",
+        "orken-magorken",
+        "squid-zero",
         "capo-shoots",
-        "the-parttimedad",
-        "zeik-soulfly"
+        "zeik-soulfly",
+        "the-parttimedad"
       ]
     },
     "Archmage Arugal kills (Shadowfang Keep)": {
       "total": 5,
       "members": [
-        "plucky-recks",
-        "orken-magorken",
-        "needmore-beers",
         "scott-frost",
+        "plucky-recks",
+        "needmore-beers",
+        "orken-magorken",
+        "capo-shoots"
+      ]
+    },
+    "Aku'mai kills (Blackfathom Deeps)": {
+      "total": 3,
+      "members": [
+        "scott-frost",
+        "needmore-beers",
         "capo-shoots"
       ]
     },
     "Charlga Razorflank kills (Razorfen Kraul)": {
       "total": 4,
       "members": [
+        "scott-frost",
         "plucky-recks",
-        "orken-magorken",
         "needmore-beers",
-        "scott-frost"
-      ]
-    },
-    "Archaedas kills (Uldaman)": {
-      "total": 16,
-      "members": [
-        "plucky-recks",
-        "orken-magorken",
-        "needmore-beers",
-        "squid-zero",
-        "scott-frost"
-      ]
-    },
-    "Scarlet Commander Mograine kills (Scarlet Monastery)": {
-      "total": 8,
-      "members": [
-        "orken-magorken",
-        "needmore-beers",
-        "squid-zero",
-        "scott-frost"
+        "orken-magorken"
       ]
     },
     "Mekgineer Thermaplugg kills (Gnomeregan)": {
       "total": 3,
       "members": [
-        "orken-magorken",
+        "scott-frost",
         "needmore-beers",
-        "scott-frost"
+        "orken-magorken"
       ]
     },
     "Amnennar the Coldbringer kills (Razorfen Downs)": {
       "total": 4,
       "members": [
-        "orken-magorken",
+        "scott-frost",
         "needmore-beers",
-        "squid-zero",
-        "scott-frost"
+        "orken-magorken",
+        "squid-zero"
       ]
     },
     "High Inquisitor Whitemane kills (Scarlet Monastery)": {
       "total": 8,
       "members": [
-        "orken-magorken",
+        "scott-frost",
         "needmore-beers",
-        "squid-zero",
-        "scott-frost"
+        "orken-magorken",
+        "squid-zero"
       ]
     },
-    "Aku'mai kills (Blackfathom Deeps)": {
-      "total": 3,
+    "Archaedas kills (Uldaman)": {
+      "total": 16,
       "members": [
-        "needmore-beers",
         "scott-frost",
-        "capo-shoots"
+        "plucky-recks",
+        "needmore-beers",
+        "orken-magorken",
+        "squid-zero"
       ]
     }
   },
