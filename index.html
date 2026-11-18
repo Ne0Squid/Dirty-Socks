@@ -310,14 +310,25 @@ const dungeons=[ // [name, lowest level, highest level, new in Forever?]
  ["Shaper’s Terrace",58,60,1],["Dire Maul",58,60],["Stratholme",58,60],["Scholomance",58,60]
 ];
 // ==========================================================================================
-(function(){
+// Dungeons are also checked off automatically when a guild member has killed the final boss
+// (read from the "Dungeons & Raids" statistics saved in guild-data.json). The hand list above still counts.
+const dkey=n=>String(n).toLowerCase().replace(/[’']/g,"").replace(/^the\s+/,"").trim();
+function autoCleared(bk){
+  const out=new Set();
+  Object.keys(bk||{}).forEach(stat=>{const m=stat.match(/\(([^)]+)\)\s*$/);if(m)out.add(dkey(m[1]))});
+  return out;
+}
+function drawDungeons(bk){
+  const auto=autoCleared(bk);
   const list=dungeons.map(([name,min,max,isNew])=>({name,min,max,isNew:!!isNew})).sort((a,b)=>a.min-b.min||a.max-b.max);
-  const done=list.filter(d=>cleared.includes(d.name)).length;
+  const isDone=d=>cleared.includes(d.name)||auto.has(dkey(d.name));
+  const done=list.filter(isDone).length;
   document.getElementById("dungtitle").textContent=done+" / "+list.length+" dungeons cleared";
   document.getElementById("dungsub").textContent=done===list.length?"All cleared!":"Keep going!";
   document.getElementById("dungbar").style.width=(done/list.length*100)+"%";
-  document.getElementById("dunglist").innerHTML=list.map(d=>{const ok=cleared.includes(d.name);return `<div class="dung${ok?" done":""}"><i class="chk">${ok?"✓":""}</i><span class="dn">${d.name}<small>Level ${d.min}–${d.max}</small></span>${d.isNew?'<span class="new">New</span>':""}</div>`}).join("");
-})();
+  document.getElementById("dunglist").innerHTML=list.map(d=>{const ok=isDone(d);return `<div class="dung${ok?" done":""}"><i class="chk">${ok?"✓":""}</i><span class="dn">${d.name}<small>Level ${d.min}–${d.max}</small></span>${d.isNew?'<span class="new">New</span>':""}</div>`}).join("");
+}
+drawDungeons(null);
 
 // ===== RAID PROGRESS: change "killed" by hand after each boss kill =====
 const raids=[
@@ -344,7 +355,7 @@ document.getElementById("raids").innerHTML=raids.map(r=>{
 }).join("");
 fetch("guild-data.json",{cache:"no-cache"})
   .then(r=>r.ok?r.json():Promise.reject())
-  .then(j=>render({generated:j.generated,founded:(j.raw&&j.raw.guild&&j.raw.guild.created_timestamp)||fallback.founded,roster:j.roster,history:j.history}))
+  .then(j=>{render({generated:j.generated,founded:(j.raw&&j.raw.guild&&j.raw.guild.created_timestamp)||fallback.founded,roster:j.roster,history:j.history});drawDungeons(j.bossKills)})
   .catch(()=>render({...fallback,saved:true}));
 </script>
 </body>
