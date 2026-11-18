@@ -187,6 +187,17 @@ await Promise.all(Object.entries(professionHref).map(async ([name, href]) => {
 }));
 console.log(`Profession icons: ${Object.keys(professionIcons).length} of ${Object.keys(professionHref).length}`);
 
+// TEMP debug: can the static game data list every boss-kill statistic Blizzard tracks?
+const debug = {};
+try {
+  const ns = new URL(Object.values(professionHref)[0]).searchParams.get("namespace");
+  for (const id of [14807, 14821]) {
+    const res = await fetch(`${API}/data/wow/achievement-category/${id}?namespace=${ns}&locale=en_US`, { headers: { Authorization: `Bearer ${accessToken}` } });
+    const j = res.ok ? await res.json() : null;
+    debug[id] = { status: res.status, names: (j?.achievements ?? []).map((x) => x.name), keys: j ? Object.keys(j) : null };
+  }
+} catch (e) { debug.error = String(e); }
+
 // Level history: one snapshot per day (the latest run of that day), kept for 35 days.
 // It lives inside guild-data.json so the workflow needs no changes.
 const outPath = new URL("./guild-data.json", import.meta.url);
@@ -204,6 +215,7 @@ const out = {
   roster: members,
   history: { days },
   professionIcons,
+  debug, // TEMP
   bossKills, // dungeon/raid boss kills combined across the guild
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
   raw: { guild, activity, achievements },
