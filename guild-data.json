@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T20:50:56.677Z",
+  "generated": "2026-11-18T20:52:36.927Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -611,147 +611,159 @@
     }
   },
   "professionIcons": {
-    "Leatherworking": "https://render.worldofwarcraft.com/forever-us/icons/56/136247.jpg",
-    "Cooking": "https://render.worldofwarcraft.com/forever-us/icons/56/133971.jpg",
-    "Tailoring": "https://render.worldofwarcraft.com/forever-us/icons/56/136249.jpg",
-    "Herbalism": "https://render.worldofwarcraft.com/forever-us/icons/56/136246.jpg",
-    "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg",
-    "Blacksmithing": "https://render.worldofwarcraft.com/forever-us/icons/56/136241.jpg",
     "Mining": "https://render.worldofwarcraft.com/forever-us/icons/56/136248.jpg",
-    "Enchanting": "https://render.worldofwarcraft.com/forever-us/icons/56/136244.jpg",
-    "First Aid": "https://render.worldofwarcraft.com/forever-us/icons/56/135966.jpg",
+    "Blacksmithing": "https://render.worldofwarcraft.com/forever-us/icons/56/136241.jpg",
     "Skinning": "https://render.worldofwarcraft.com/forever-us/icons/56/134366.jpg",
-    "Fishing": "https://render.worldofwarcraft.com/forever-us/icons/56/136245.jpg"
+    "Fishing": "https://render.worldofwarcraft.com/forever-us/icons/56/136245.jpg",
+    "Cooking": "https://render.worldofwarcraft.com/forever-us/icons/56/133971.jpg",
+    "First Aid": "https://render.worldofwarcraft.com/forever-us/icons/56/135966.jpg",
+    "Tailoring": "https://render.worldofwarcraft.com/forever-us/icons/56/136249.jpg",
+    "Enchanting": "https://render.worldofwarcraft.com/forever-us/icons/56/136244.jpg",
+    "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg",
+    "Leatherworking": "https://render.worldofwarcraft.com/forever-us/icons/56/136247.jpg",
+    "Herbalism": "https://render.worldofwarcraft.com/forever-us/icons/56/136246.jpg"
+  },
+  "debug": {
+    "14807": {
+      "status": 404,
+      "names": [],
+      "keys": null
+    },
+    "14821": {
+      "status": 404,
+      "names": [],
+      "keys": null
+    }
   },
   "bossKills": {
+    "Scarlet Commander Mograine kills (Scarlet Monastery)": {
+      "total": 8,
+      "members": [
+        "needmore-beers",
+        "orken-magorken",
+        "scott-frost",
+        "squid-zero"
+      ]
+    },
     "Edwin VanCleef Kills (Deadmines)": {
       "total": 3,
       "members": [
-        "plucky-recks",
+        "needmore-beers",
         "scott-frost",
-        "needmore-beers"
+        "plucky-recks"
       ]
     },
     "Rath'mael Kills (Ruins of Lordaeron)": {
       "total": 6,
       "members": [
-        "plucky-recks",
-        "squid-zero",
+        "needmore-beers",
         "orken-magorken",
         "scott-frost",
-        "needmore-beers",
+        "squid-zero",
+        "plucky-recks",
         "the-parttimedad"
       ]
     },
     "Shade of the Archmage Kills (City of Dalaran)": {
       "total": 4,
       "members": [
-        "plucky-recks",
+        "needmore-beers",
         "orken-magorken",
         "scott-frost",
-        "needmore-beers"
+        "plucky-recks"
       ]
     },
     "Bazzalan kills (Ragefire Chasm)": {
       "total": 18,
       "members": [
-        "plucky-recks",
-        "squid-zero",
+        "needmore-beers",
         "orken-magorken",
         "scott-frost",
-        "needmore-beers",
+        "squid-zero",
+        "plucky-recks",
         "capo-shoots",
         "mr-capo",
         "mrs-capo",
-        "hotdog-nomustard",
+        "the-parttimedad",
         "thick-hogs",
         "zeik-soulfly",
-        "the-parttimedad"
+        "hotdog-nomustard"
       ]
     },
     "Mutanus the Devourer kills (Wailing Caverns)": {
       "total": 13,
       "members": [
-        "plucky-recks",
-        "squid-zero",
+        "needmore-beers",
         "orken-magorken",
         "scott-frost",
-        "needmore-beers",
+        "squid-zero",
+        "plucky-recks",
         "capo-shoots",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "the-parttimedad",
+        "zeik-soulfly"
       ]
     },
     "Archmage Arugal kills (Shadowfang Keep)": {
       "total": 5,
       "members": [
-        "plucky-recks",
+        "needmore-beers",
         "orken-magorken",
         "scott-frost",
+        "plucky-recks",
+        "capo-shoots"
+      ]
+    },
+    "Aku'mai kills (Blackfathom Deeps)": {
+      "total": 3,
+      "members": [
         "needmore-beers",
+        "scott-frost",
         "capo-shoots"
       ]
     },
     "Charlga Razorflank kills (Razorfen Kraul)": {
       "total": 4,
       "members": [
-        "plucky-recks",
+        "needmore-beers",
         "orken-magorken",
         "scott-frost",
-        "needmore-beers"
-      ]
-    },
-    "Archaedas kills (Uldaman)": {
-      "total": 16,
-      "members": [
-        "plucky-recks",
-        "squid-zero",
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers"
-      ]
-    },
-    "Scarlet Commander Mograine kills (Scarlet Monastery)": {
-      "total": 8,
-      "members": [
-        "squid-zero",
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers"
-      ]
-    },
-    "Amnennar the Coldbringer kills (Razorfen Downs)": {
-      "total": 4,
-      "members": [
-        "squid-zero",
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers"
-      ]
-    },
-    "High Inquisitor Whitemane kills (Scarlet Monastery)": {
-      "total": 8,
-      "members": [
-        "squid-zero",
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers"
+        "plucky-recks"
       ]
     },
     "Mekgineer Thermaplugg kills (Gnomeregan)": {
       "total": 3,
       "members": [
+        "needmore-beers",
         "orken-magorken",
-        "scott-frost",
-        "needmore-beers"
+        "scott-frost"
       ]
     },
-    "Aku'mai kills (Blackfathom Deeps)": {
-      "total": 3,
+    "Amnennar the Coldbringer kills (Razorfen Downs)": {
+      "total": 4,
       "members": [
-        "scott-frost",
         "needmore-beers",
-        "capo-shoots"
+        "orken-magorken",
+        "scott-frost",
+        "squid-zero"
+      ]
+    },
+    "High Inquisitor Whitemane kills (Scarlet Monastery)": {
+      "total": 8,
+      "members": [
+        "needmore-beers",
+        "orken-magorken",
+        "scott-frost",
+        "squid-zero"
+      ]
+    },
+    "Archaedas kills (Uldaman)": {
+      "total": 16,
+      "members": [
+        "needmore-beers",
+        "orken-magorken",
+        "scott-frost",
+        "squid-zero",
+        "plucky-recks"
       ]
     }
   },
