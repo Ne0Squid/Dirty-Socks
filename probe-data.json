@@ -1,0 +1,2031 @@
+{
+  "generated": "2026-11-18T19:09:19.320Z",
+  "characters": [
+    "needmore-beers",
+    "orken-magorken",
+    "squid-zero"
+  ],
+  "results": [
+    {
+      "character": "needmore-beers",
+      "path": "/encounters",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers?namespace=profile-forever-us"
+          },
+          "name": "Needmore",
+          "id": 3676751,
+          "surname": "Beers",
+          "slug": "needmore-beers"
+        },
+        "dungeons": {
+          "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers/encounters/dungeons?namespace=profile-forever-us"
+        },
+        "raids": {
+          "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers/encounters/raids?namespace=profile-forever-us"
+        }
+      }
+    },
+    {
+      "character": "needmore-beers",
+      "path": "/encounters/dungeons",
+      "status": 200,
+      "body": {}
+    },
+    {
+      "character": "needmore-beers",
+      "path": "/encounters/raids",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers?namespace=profile-forever-us"
+          },
+          "name": "Needmore",
+          "id": 3676751,
+          "surname": "Beers",
+          "slug": "needmore-beers"
+        }
+      }
+    },
+    {
+      "character": "needmore-beers",
+      "path": "/achievements",
+      "status": 200,
+      "body": {
+        "total_quantity": 7,
+        "total_points": 0,
+        "achievements": {
+          "_array": 39,
+          "items": [
+            {
+              "id": 61499,
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/61499?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Novice Warrior",
+                "id": 61499
+              },
+              "criteria": {
+                "id": 219255,
+                "is_completed": true
+              },
+              "completed_timestamp": 1794095580000
+            },
+            {
+              "id": 61500,
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/61500?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Experienced Warrior",
+                "id": 61500
+              },
+              "criteria": {
+                "id": 219278,
+                "is_completed": true
+              },
+              "completed_timestamp": 1794872460000
+            },
+            {
+              "id": 62015,
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/62015?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Journeyman Blacksmith",
+                "id": 62015
+              },
+              "criteria": {
+                "id": 221509,
+                "is_completed": true,
+                "child_criteria": {
+                  "_array": 1,
+                  "items": [
+                    {
+                      "id": 221510,
+                      "amount": 150,
+                      "is_completed": true
+                    }
+                  ]
+                }
+              },
+              "completed_timestamp": 1794721320000
+            }
+          ]
+        },
+        "category_progress": {
+          "_array": 7,
+          "items": [
+            {
+              "category": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement-category/15596?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Adventure",
+                "id": 15596
+              },
+              "quantity": 2,
+              "points": 0
+            },
+            {
+              "category": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement-category/15568?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Classes",
+                "id": 15568
+              },
+              "quantity": 2,
+              "points": 0
+            },
+            {
+              "category": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement-category/15593?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Dungeons",
+                "id": 15593
+              },
+              "quantity": 2,
+              "points": 0
+            }
+          ]
+        },
+        "recent_events": {
+          "_array": 7,
+          "items": [
+            {
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/62032?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Experienced Spelunker",
+                "id": 62032
+              },
+              "timestamp": 1794974040000
+            },
+            {
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/61500?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Experienced Warrior",
+                "id": 61500
+              },
+              "timestamp": 1794872460000
+            },
+            {
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/728?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Explore Durotar",
+                "id": 728
+              },
+              "timestamp": 1794806460000
+            }
+          ]
+        },
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers?namespace=profile-forever-us"
+          },
+          "name": "Needmore",
+          "id": 3676751,
+          "surname": "Beers",
+          "slug": "needmore-beers"
+        },
+        "statistics": {
+          "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers/achievements/statistics?namespace=profile-forever-us"
+        }
+      }
+    },
+    {
+      "character": "needmore-beers",
+      "path": "/achievements/statistics",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers?namespace=profile-forever-us"
+          },
+          "name": "Needmore",
+          "id": 3676751,
+          "surname": "Beers",
+          "slug": "needmore-beers"
+        },
+        "categories": {
+          "_array": 9,
+          "items": [
+            {
+              "id": 130,
+              "name": "Character",
+              "sub_categories": {
+                "_array": 3,
+                "items": [
+                  {
+                    "id": 145,
+                    "name": "Consumables",
+                    "statistics": {
+                      "_array": 6,
+                      "items": [
+                        {
+                          "id": 344,
+                          "name": "Bandages used",
+                          "last_updated_timestamp": 1794942950000,
+                          "quantity": 67
+                        },
+                        {
+                          "id": 1125,
+                          "name": "Bandage used most",
+                          "last_updated_timestamp": 1794942950000,
+                          "description": "Heavy Linen Bandage",
+                          "quantity": 30
+                        },
+                        {
+                          "id": 345,
+                          "name": "Health potions consumed",
+                          "last_updated_timestamp": 1794944607000,
+                          "quantity": 55
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": 147,
+                    "name": "Reputation",
+                    "statistics": {
+                      "_array": 3,
+                      "items": [
+                        {
+                          "id": 529,
+                          "name": "Most factions at Honored or higher",
+                          "last_updated_timestamp": 1795021513000,
+                          "quantity": 4
+                        },
+                        {
+                          "id": 926,
+                          "name": "Most Horde factions at Exalted",
+                          "last_updated_timestamp": 1795021513000,
+                          "quantity": 4
+                        },
+                        {
+                          "id": 931,
+                          "name": "Total factions encountered",
+                          "last_updated_timestamp": 1795021513000,
+                          "quantity": 16
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": 191,
+                    "name": "Gear",
+                    "statistics": {
+                      "_array": 1,
+                      "items": [
+                        {
+                          "id": 339,
+                          "name": "Mounts owned",
+                          "last_updated_timestamp": 1795021513000,
+                          "quantity": 2
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "statistics": {
+                "_array": 1,
+                "items": [
+                  {
+                    "id": 64222,
+                    "name": "Times camped",
+                    "last_updated_timestamp": 1794970328000,
+                    "quantity": 80
+                  }
+                ]
+              }
+            },
+            {
+              "id": 21,
+              "name": "Player vs. Player",
+              "sub_categories": {
+                "_array": 1,
+                "items": [
+                  {
+                    "id": 154,
+                    "name": "World",
+                    "statistics": {
+                      "_array": 2,
+                      "items": [
+                        {
+                          "id": 319,
+                          "name": "Duels won",
+                          "last_updated_timestamp": 1794635427000,
+                          "quantity": 2
+                        },
+                        {
+                          "id": 320,
+                          "name": "Duels lost",
+                          "last_updated_timestamp": 1794773988000,
+                          "quantity": 2
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "id": 14807,
+              "name": "Dungeons & Raids",
+              "sub_categories": {
+                "_array": 1,
+                "items": [
+                  {
+                    "id": 14821,
+                    "name": "Boss Kills",
+                    "statistics": {
+                      "_array": 13,
+                      "items": [
+                        {
+                          "id": 1093,
+                          "name": "Scarlet Commander Mograine kills (Scarlet Monastery)",
+                          "last_updated_timestamp": 1794635053000,
+                          "quantity": 2
+                        },
+                        {
+                          "id": 63570,
+                          "name": "Edwin VanCleef Kills (Deadmines)",
+                          "last_updated_timestamp": 1794073195000,
+                          "quantity": 1
+                        },
+                        {
+                          "id": 63571,
+                          "name": "Rath'mael Kills (Ruins of Lordaeron)",
+                          "last_updated_timestamp": 1793941576000,
+                          "quantity": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "statistics": {
+                "_array": 2,
+                "items": [
+                  {
+                    "id": 932,
+                    "name": "Total 5-player dungeons entered",
+                    "last_updated_timestamp": 1794891825000,
+                    "quantity": 30
+                  },
+                  {
+                    "id": 933,
+                    "name": "Total 10-player raids entered",
+                    "last_updated_timestamp": 1794978143000,
+                    "quantity": 2
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "character": "needmore-beers",
+      "path": "/statistics",
+      "status": 200,
+      "body": {
+        "health": 3281,
+        "power": 100,
+        "power_type": {
+          "key": {
+            "href": "https://us.api.blizzard.com/data/wow/power-type/1?namespace=static-1.60.1_70399-forever-us"
+          },
+          "name": "Rage",
+          "id": 1
+        },
+        "speed": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "strength": {
+          "base": 97,
+          "effective": 166
+        },
+        "agility": {
+          "base": 58,
+          "effective": 75
+        },
+        "intellect": {
+          "base": 22,
+          "effective": 22
+        },
+        "stamina": {
+          "base": 86,
+          "effective": 237
+        },
+        "melee_crit": {
+          "rating_bonus": 0,
+          "value": 9.827499,
+          "rating_normalized": 0
+        },
+        "melee_haste": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "mastery": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "bonus_armor": 50,
+        "lifesteal": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "versatility": 0,
+        "versatility_damage_done_bonus": 0,
+        "versatility_healing_done_bonus": 0,
+        "versatility_damage_taken_bonus": 0,
+        "avoidance": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "attack_power": 482,
+        "main_hand_damage_min": 114.85572,
+        "main_hand_damage_max": 153.35573,
+        "main_hand_speed": 1.9,
+        "main_hand_dps": 70.58196,
+        "off_hand_damage_min": 0,
+        "off_hand_damage_max": 0,
+        "off_hand_speed": 2,
+        "off_hand_dps": 0,
+        "spell_power": 7,
+        "spell_penetration": 0,
+        "spell_crit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "mana_regen": 0,
+        "mana_regen_combat": 0,
+        "armor": {
+          "base": 50,
+          "effective": 4079
+        },
+        "dodge": {
+          "rating_bonus": 0,
+          "value": 6.1075,
+          "rating_normalized": 0
+        },
+        "parry": {
+          "rating_bonus": 1,
+          "value": 7.1712465,
+          "rating_normalized": 15
+        },
+        "block": {
+          "rating_bonus": 0,
+          "value": 11.24,
+          "rating_normalized": 0
+        },
+        "ranged_crit": {
+          "rating_bonus": 0,
+          "value": 2.4275,
+          "rating_normalized": 0
+        },
+        "ranged_haste": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "spell_haste": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers?namespace=profile-forever-us"
+          },
+          "name": "Needmore",
+          "id": 3676751,
+          "surname": "Beers",
+          "slug": "needmore-beers"
+        },
+        "spirit": {
+          "base": 40,
+          "effective": 41
+        },
+        "defense": {
+          "base": 233,
+          "effective": 266
+        },
+        "fire_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "shadow_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "nature_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "arcane_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "frost_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "movement_speed": 100,
+        "ranged_attack_power": 206,
+        "ranged_damage_min": 93.827156,
+        "ranged_damage_max": 130.02716,
+        "expertise": 0,
+        "off_hand_expertise": 0,
+        "armor_penetration": 0,
+        "spell_healing": 7,
+        "melee_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "off_hand_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "ranged_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "spell_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        }
+      }
+    },
+    {
+      "character": "needmore-beers",
+      "path": "/mythic-keystone-profile",
+      "status": 200,
+      "body": {
+        "current_period": {
+          "period": {
+            "key": {
+              "href": "https://us.api.blizzard.com/data/wow/mythic-keystone/period/1090?namespace=dynamic-forever-us"
+            },
+            "id": 1090
+          }
+        },
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers?namespace=profile-forever-us"
+          },
+          "name": "Needmore",
+          "id": 3676751,
+          "surname": "Beers",
+          "slug": "needmore-beers"
+        }
+      }
+    },
+    {
+      "character": "needmore-beers",
+      "path": "/quests/completed",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/needmore-beers?namespace=profile-forever-us"
+          },
+          "name": "Needmore",
+          "id": 3676751,
+          "surname": "Beers",
+          "slug": "needmore-beers"
+        },
+        "quests": {
+          "_array": 529,
+          "items": [
+            {
+              "key": {
+                "href": "https://us.api.blizzard.com/data/wow/quest/94668?namespace=static-1.60.1_70399-forever-us"
+              },
+              "name": "Bloodmaster's Ring",
+              "id": 94668
+            },
+            {
+              "key": {
+                "href": "https://us.api.blizzard.com/data/wow/quest/95992?namespace=static-1.60.1_70399-forever-us"
+              },
+              "name": "WANTED: Ghostmaw",
+              "id": 95992
+            },
+            {
+              "key": {
+                "href": "https://us.api.blizzard.com/data/wow/quest/95775?namespace=static-1.60.1_70399-forever-us"
+              },
+              "name": "The Drowned City",
+              "id": 95775
+            }
+          ]
+        }
+      }
+    },
+    {
+      "character": "orken-magorken",
+      "path": "/encounters",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/orken-magorken?namespace=profile-forever-us"
+          },
+          "name": "Orken",
+          "id": 5282495,
+          "surname": "Magorken",
+          "slug": "orken-magorken"
+        },
+        "dungeons": {
+          "href": "https://us.api.blizzard.com/profile/wow/character/orken-magorken/encounters/dungeons?namespace=profile-forever-us"
+        },
+        "raids": {
+          "href": "https://us.api.blizzard.com/profile/wow/character/orken-magorken/encounters/raids?namespace=profile-forever-us"
+        }
+      }
+    },
+    {
+      "character": "orken-magorken",
+      "path": "/encounters/dungeons",
+      "status": 200,
+      "body": {}
+    },
+    {
+      "character": "orken-magorken",
+      "path": "/encounters/raids",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/orken-magorken?namespace=profile-forever-us"
+          },
+          "name": "Orken",
+          "id": 5282495,
+          "surname": "Magorken",
+          "slug": "orken-magorken"
+        }
+      }
+    },
+    {
+      "character": "orken-magorken",
+      "path": "/achievements",
+      "status": 200,
+      "body": {
+        "total_quantity": 5,
+        "total_points": 0,
+        "achievements": {
+          "_array": 35,
+          "items": [
+            {
+              "id": 62006,
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/62006?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Novice Shaman",
+                "id": 62006
+              },
+              "criteria": {
+                "id": 221491,
+                "is_completed": true
+              },
+              "completed_timestamp": 1794019320000
+            },
+            {
+              "id": 62007,
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/62007?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Experienced Shaman",
+                "id": 62007
+              },
+              "criteria": {
+                "id": 221493,
+                "is_completed": true
+              },
+              "completed_timestamp": 1794856020000
+            },
+            {
+              "id": 62024,
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/62024?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Journeyman Leatherworker",
+                "id": 62024
+              },
+              "criteria": {
+                "id": 221527,
+                "is_completed": true,
+                "child_criteria": {
+                  "_array": 1,
+                  "items": [
+                    {
+                      "id": 221528,
+                      "amount": 211,
+                      "is_completed": true
+                    }
+                  ]
+                }
+              },
+              "completed_timestamp": 1794168540000
+            }
+          ]
+        },
+        "category_progress": {
+          "_array": 6,
+          "items": [
+            {
+              "category": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement-category/15596?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Adventure",
+                "id": 15596
+              },
+              "quantity": 2,
+              "points": 0
+            },
+            {
+              "category": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement-category/15568?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Classes",
+                "id": 15568
+              },
+              "quantity": 2,
+              "points": 0
+            },
+            {
+              "category": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement-category/14778?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Kalimdor",
+                "id": 14778
+              },
+              "quantity": 2,
+              "points": 0
+            }
+          ]
+        },
+        "recent_events": {
+          "_array": 5,
+          "items": [
+            {
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/62007?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Experienced Shaman",
+                "id": 62007
+              },
+              "timestamp": 1794856020000
+            },
+            {
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/62024?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Journeyman Leatherworker",
+                "id": 62024
+              },
+              "timestamp": 1794168540000
+            },
+            {
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/846?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Explore Thousand Needles",
+                "id": 846
+              },
+              "timestamp": 1794161810000
+            }
+          ]
+        },
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/orken-magorken?namespace=profile-forever-us"
+          },
+          "name": "Orken",
+          "id": 5282495,
+          "surname": "Magorken",
+          "slug": "orken-magorken"
+        },
+        "statistics": {
+          "href": "https://us.api.blizzard.com/profile/wow/character/orken-magorken/achievements/statistics?namespace=profile-forever-us"
+        }
+      }
+    },
+    {
+      "character": "orken-magorken",
+      "path": "/achievements/statistics",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/orken-magorken?namespace=profile-forever-us"
+          },
+          "name": "Orken",
+          "id": 5282495,
+          "surname": "Magorken",
+          "slug": "orken-magorken"
+        },
+        "categories": {
+          "_array": 9,
+          "items": [
+            {
+              "id": 130,
+              "name": "Character",
+              "sub_categories": {
+                "_array": 3,
+                "items": [
+                  {
+                    "id": 145,
+                    "name": "Consumables",
+                    "statistics": {
+                      "_array": 7,
+                      "items": [
+                        {
+                          "id": 344,
+                          "name": "Bandages used",
+                          "last_updated_timestamp": 1794971746000,
+                          "quantity": 121
+                        },
+                        {
+                          "id": 1125,
+                          "name": "Bandage used most",
+                          "last_updated_timestamp": 1794971746000,
+                          "description": "Heavy Silk Bandage",
+                          "quantity": 56
+                        },
+                        {
+                          "id": 345,
+                          "name": "Health potions consumed",
+                          "last_updated_timestamp": 1794976007000,
+                          "quantity": 26
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": 147,
+                    "name": "Reputation",
+                    "statistics": {
+                      "_array": 3,
+                      "items": [
+                        {
+                          "id": 529,
+                          "name": "Most factions at Honored or higher",
+                          "last_updated_timestamp": 1795010671000,
+                          "quantity": 4
+                        },
+                        {
+                          "id": 926,
+                          "name": "Most Horde factions at Exalted",
+                          "last_updated_timestamp": 1795010671000,
+                          "quantity": 4
+                        },
+                        {
+                          "id": 931,
+                          "name": "Total factions encountered",
+                          "last_updated_timestamp": 1795010671000,
+                          "quantity": 16
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": 191,
+                    "name": "Gear",
+                    "statistics": {
+                      "_array": 1,
+                      "items": [
+                        {
+                          "id": 339,
+                          "name": "Mounts owned",
+                          "last_updated_timestamp": 1795010671000,
+                          "quantity": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "statistics": {
+                "_array": 1,
+                "items": [
+                  {
+                    "id": 64222,
+                    "name": "Times camped",
+                    "last_updated_timestamp": 1794970258000,
+                    "quantity": 80
+                  }
+                ]
+              }
+            },
+            {
+              "id": 21,
+              "name": "Player vs. Player",
+              "sub_categories": {
+                "_array": 1,
+                "items": [
+                  {
+                    "id": 154,
+                    "name": "World",
+                    "statistics": {
+                      "_array": 2,
+                      "items": [
+                        {
+                          "id": 319,
+                          "name": "Duels won",
+                          "last_updated_timestamp": 1794275275000,
+                          "quantity": 3
+                        },
+                        {
+                          "id": 320,
+                          "name": "Duels lost",
+                          "last_updated_timestamp": 1794635427000,
+                          "quantity": 3
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "statistics": {
+                "_array": 2,
+                "items": [
+                  {
+                    "id": 1501,
+                    "name": "Total deaths from other players",
+                    "last_updated_timestamp": 1794616194000,
+                    "quantity": 5
+                  },
+                  {
+                    "id": 318,
+                    "name": "Total deaths from opposite faction",
+                    "last_updated_timestamp": 1794616194000,
+                    "quantity": 4
+                  }
+                ]
+              }
+            },
+            {
+              "id": 14807,
+              "name": "Dungeons & Raids",
+              "sub_categories": {
+                "_array": 1,
+                "items": [
+                  {
+                    "id": 14821,
+                    "name": "Boss Kills",
+                    "statistics": {
+                      "_array": 11,
+                      "items": [
+                        {
+                          "id": 1093,
+                          "name": "Scarlet Commander Mograine kills (Scarlet Monastery)",
+                          "last_updated_timestamp": 1794635053000,
+                          "quantity": 2
+                        },
+                        {
+                          "id": 63571,
+                          "name": "Rath'mael Kills (Ruins of Lordaeron)",
+                          "last_updated_timestamp": 1793941576000,
+                          "quantity": 1
+                        },
+                        {
+                          "id": 63572,
+                          "name": "Shade of the Archmage Kills (City of Dalaran)",
+                          "last_updated_timestamp": 1794368990000,
+                          "quantity": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "statistics": {
+                "_array": 2,
+                "items": [
+                  {
+                    "id": 932,
+                    "name": "Total 5-player dungeons entered",
+                    "last_updated_timestamp": 1794887953000,
+                    "quantity": 25
+                  },
+                  {
+                    "id": 933,
+                    "name": "Total 10-player raids entered",
+                    "last_updated_timestamp": 1794970402000,
+                    "quantity": 1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "character": "orken-magorken",
+      "path": "/statistics",
+      "status": 200,
+      "body": {
+        "health": 1795,
+        "power": 2028,
+        "power_type": {
+          "key": {
+            "href": "https://us.api.blizzard.com/data/wow/power-type/0?namespace=static-1.60.1_70399-forever-us"
+          },
+          "name": "Mana",
+          "id": 0
+        },
+        "speed": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "strength": {
+          "base": 72,
+          "effective": 153
+        },
+        "agility": {
+          "base": 40,
+          "effective": 72
+        },
+        "intellect": {
+          "base": 65,
+          "effective": 75
+        },
+        "stamina": {
+          "base": 76,
+          "effective": 120
+        },
+        "melee_crit": {
+          "rating_bonus": 2,
+          "value": 13.192001,
+          "rating_normalized": 28
+        },
+        "melee_haste": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "mastery": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "bonus_armor": 0,
+        "lifesteal": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "versatility": 0,
+        "versatility_damage_done_bonus": 0,
+        "versatility_healing_done_bonus": 0,
+        "versatility_damage_taken_bonus": 0,
+        "avoidance": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "attack_power": 526,
+        "main_hand_damage_min": 265.01428,
+        "main_hand_damage_max": 329.01428,
+        "main_hand_speed": 3.7,
+        "main_hand_dps": 80.27413,
+        "off_hand_damage_min": 38.07143,
+        "off_hand_damage_max": 38.07143,
+        "off_hand_speed": 2,
+        "off_hand_dps": 19.035715,
+        "spell_power": 22,
+        "spell_penetration": 0,
+        "spell_crit": {
+          "rating_bonus": 2,
+          "value": 10.9725,
+          "rating_normalized": 28
+        },
+        "mana_regen": 93,
+        "mana_regen_combat": 0,
+        "armor": {
+          "base": 0,
+          "effective": 1056
+        },
+        "dodge": {
+          "rating_bonus": 0,
+          "value": 5.7920003,
+          "rating_normalized": 0
+        },
+        "parry": {
+          "rating_bonus": 0,
+          "value": 4.52,
+          "rating_normalized": 0
+        },
+        "block": {
+          "rating_bonus": 0,
+          "value": 4.52,
+          "rating_normalized": 0
+        },
+        "ranged_crit": {
+          "rating_bonus": 2,
+          "value": 7.3120008,
+          "rating_normalized": 28
+        },
+        "ranged_haste": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "spell_haste": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/orken-magorken?namespace=profile-forever-us"
+          },
+          "name": "Orken",
+          "id": 5282495,
+          "surname": "Magorken",
+          "slug": "orken-magorken"
+        },
+        "spirit": {
+          "base": 80,
+          "effective": 100
+        },
+        "defense": {
+          "base": 223,
+          "effective": 223
+        },
+        "fire_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "shadow_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "nature_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "arcane_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "frost_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "movement_speed": 100,
+        "ranged_attack_power": 71,
+        "ranged_damage_min": 19.764288,
+        "ranged_damage_max": 19.764288,
+        "expertise": 0,
+        "off_hand_expertise": 0,
+        "armor_penetration": 0,
+        "spell_healing": 22,
+        "melee_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "off_hand_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "ranged_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "spell_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        }
+      }
+    },
+    {
+      "character": "orken-magorken",
+      "path": "/mythic-keystone-profile",
+      "status": 200,
+      "body": {
+        "current_period": {
+          "period": {
+            "key": {
+              "href": "https://us.api.blizzard.com/data/wow/mythic-keystone/period/1090?namespace=dynamic-forever-us"
+            },
+            "id": 1090
+          }
+        },
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/orken-magorken?namespace=profile-forever-us"
+          },
+          "name": "Orken",
+          "id": 5282495,
+          "surname": "Magorken",
+          "slug": "orken-magorken"
+        }
+      }
+    },
+    {
+      "character": "orken-magorken",
+      "path": "/quests/completed",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/orken-magorken?namespace=profile-forever-us"
+          },
+          "name": "Orken",
+          "id": 5282495,
+          "surname": "Magorken",
+          "slug": "orken-magorken"
+        },
+        "quests": {
+          "_array": 602,
+          "items": [
+            {
+              "key": {
+                "href": "https://us.api.blizzard.com/data/wow/quest/94668?namespace=static-1.60.1_70399-forever-us"
+              },
+              "name": "Bloodmaster's Ring",
+              "id": 94668
+            },
+            {
+              "key": {
+                "href": "https://us.api.blizzard.com/data/wow/quest/95992?namespace=static-1.60.1_70399-forever-us"
+              },
+              "name": "WANTED: Ghostmaw",
+              "id": 95992
+            },
+            {
+              "key": {
+                "href": "https://us.api.blizzard.com/data/wow/quest/95775?namespace=static-1.60.1_70399-forever-us"
+              },
+              "name": "The Drowned City",
+              "id": 95775
+            }
+          ]
+        }
+      }
+    },
+    {
+      "character": "squid-zero",
+      "path": "/encounters",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero?namespace=profile-forever-us"
+          },
+          "name": "Squid",
+          "id": 2690011,
+          "surname": "Zero",
+          "slug": "squid-zero"
+        },
+        "dungeons": {
+          "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero/encounters/dungeons?namespace=profile-forever-us"
+        },
+        "raids": {
+          "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero/encounters/raids?namespace=profile-forever-us"
+        }
+      }
+    },
+    {
+      "character": "squid-zero",
+      "path": "/encounters/dungeons",
+      "status": 200,
+      "body": {}
+    },
+    {
+      "character": "squid-zero",
+      "path": "/encounters/raids",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero?namespace=profile-forever-us"
+          },
+          "name": "Squid",
+          "id": 2690011,
+          "surname": "Zero",
+          "slug": "squid-zero"
+        }
+      }
+    },
+    {
+      "character": "squid-zero",
+      "path": "/achievements",
+      "status": 200,
+      "body": {
+        "total_quantity": 6,
+        "total_points": 0,
+        "achievements": {
+          "_array": 41,
+          "items": [
+            {
+              "id": 61502,
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/61502?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Novice Druid",
+                "id": 61502
+              },
+              "criteria": {
+                "id": 219282,
+                "is_completed": true
+              },
+              "completed_timestamp": 1794085740000
+            },
+            {
+              "id": 61503,
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/61503?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Experienced Druid",
+                "id": 61503
+              },
+              "criteria": {
+                "id": 219284,
+                "is_completed": true
+              },
+              "completed_timestamp": 1794846660000
+            },
+            {
+              "id": 62018,
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/62018?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Journeyman Enchanter",
+                "id": 62018
+              },
+              "criteria": {
+                "id": 221515,
+                "is_completed": false,
+                "child_criteria": {
+                  "_array": 1,
+                  "items": [
+                    {
+                      "id": 221516,
+                      "amount": 11,
+                      "is_completed": false
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "category_progress": {
+          "_array": 5,
+          "items": [
+            {
+              "category": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement-category/15596?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Adventure",
+                "id": 15596
+              },
+              "quantity": 4,
+              "points": 0
+            },
+            {
+              "category": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement-category/15577?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Druid",
+                "id": 15577
+              },
+              "quantity": 2,
+              "points": 0
+            },
+            {
+              "category": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement-category/15568?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Classes",
+                "id": 15568
+              },
+              "quantity": 2,
+              "points": 0
+            }
+          ]
+        },
+        "recent_events": {
+          "_array": 6,
+          "items": [
+            {
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/61503?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Experienced Druid",
+                "id": 61503
+              },
+              "timestamp": 1794846660000
+            },
+            {
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/782?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Explore Swamp of Sorrows",
+                "id": 782
+              },
+              "timestamp": 1794815783000
+            },
+            {
+              "achievement": {
+                "key": {
+                  "href": "https://us.api.blizzard.com/data/wow/achievement/846?namespace=static-1.60.1_70399-forever-us"
+                },
+                "name": "Explore Thousand Needles",
+                "id": 846
+              },
+              "timestamp": 1794328999000
+            }
+          ]
+        },
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero?namespace=profile-forever-us"
+          },
+          "name": "Squid",
+          "id": 2690011,
+          "surname": "Zero",
+          "slug": "squid-zero"
+        },
+        "statistics": {
+          "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero/achievements/statistics?namespace=profile-forever-us"
+        }
+      }
+    },
+    {
+      "character": "squid-zero",
+      "path": "/achievements/statistics",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero?namespace=profile-forever-us"
+          },
+          "name": "Squid",
+          "id": 2690011,
+          "surname": "Zero",
+          "slug": "squid-zero"
+        },
+        "categories": {
+          "_array": 7,
+          "items": [
+            {
+              "id": 130,
+              "name": "Character",
+              "sub_categories": {
+                "_array": 3,
+                "items": [
+                  {
+                    "id": 145,
+                    "name": "Consumables",
+                    "statistics": {
+                      "_array": 5,
+                      "items": [
+                        {
+                          "id": 345,
+                          "name": "Health potions consumed",
+                          "last_updated_timestamp": 1795012084000,
+                          "quantity": 37
+                        },
+                        {
+                          "id": 922,
+                          "name": "Mana potions consumed",
+                          "last_updated_timestamp": 1795013076000,
+                          "quantity": 60
+                        },
+                        {
+                          "id": 923,
+                          "name": "Elixirs consumed",
+                          "last_updated_timestamp": 1794817498000,
+                          "quantity": 4
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": 147,
+                    "name": "Reputation",
+                    "statistics": {
+                      "_array": 3,
+                      "items": [
+                        {
+                          "id": 529,
+                          "name": "Most factions at Honored or higher",
+                          "last_updated_timestamp": 1795019659000,
+                          "quantity": 3
+                        },
+                        {
+                          "id": 926,
+                          "name": "Most Horde factions at Exalted",
+                          "last_updated_timestamp": 1795019659000,
+                          "quantity": 4
+                        },
+                        {
+                          "id": 931,
+                          "name": "Total factions encountered",
+                          "last_updated_timestamp": 1795019659000,
+                          "quantity": 19
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": 191,
+                    "name": "Gear",
+                    "statistics": {
+                      "_array": 1,
+                      "items": [
+                        {
+                          "id": 339,
+                          "name": "Mounts owned",
+                          "last_updated_timestamp": 1795019659000,
+                          "quantity": 2
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "statistics": {
+                "_array": 1,
+                "items": [
+                  {
+                    "id": 64222,
+                    "name": "Times camped",
+                    "last_updated_timestamp": 1794942874000,
+                    "quantity": 92
+                  }
+                ]
+              }
+            },
+            {
+              "id": 14807,
+              "name": "Dungeons & Raids",
+              "sub_categories": {
+                "_array": 1,
+                "items": [
+                  {
+                    "id": 14821,
+                    "name": "Boss Kills",
+                    "statistics": {
+                      "_array": 7,
+                      "items": [
+                        {
+                          "id": 1093,
+                          "name": "Scarlet Commander Mograine kills (Scarlet Monastery)",
+                          "last_updated_timestamp": 1794635053000,
+                          "quantity": 2
+                        },
+                        {
+                          "id": 63571,
+                          "name": "Rath'mael Kills (Ruins of Lordaeron)",
+                          "last_updated_timestamp": 1793941576000,
+                          "quantity": 1
+                        },
+                        {
+                          "id": 15027,
+                          "name": "Bazzalan kills (Ragefire Chasm)",
+                          "last_updated_timestamp": 1793905758000,
+                          "quantity": 1
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "statistics": {
+                "_array": 2,
+                "items": [
+                  {
+                    "id": 932,
+                    "name": "Total 5-player dungeons entered",
+                    "last_updated_timestamp": 1794891825000,
+                    "quantity": 22
+                  },
+                  {
+                    "id": 933,
+                    "name": "Total 10-player raids entered",
+                    "last_updated_timestamp": 1794978138000,
+                    "quantity": 1
+                  }
+                ]
+              }
+            },
+            {
+              "id": 128,
+              "name": "Kills",
+              "sub_categories": {
+                "_array": 3,
+                "items": [
+                  {
+                    "id": 135,
+                    "name": "Creatures",
+                    "statistics": {
+                      "_array": 4,
+                      "items": [
+                        {
+                          "id": 107,
+                          "name": "Creatures killed",
+                          "last_updated_timestamp": 1795013307000,
+                          "quantity": 7477
+                        },
+                        {
+                          "id": 1337,
+                          "name": "Different creature types killed",
+                          "last_updated_timestamp": 1795013307000,
+                          "quantity": 9
+                        },
+                        {
+                          "id": 1336,
+                          "name": "Creature type killed the most",
+                          "last_updated_timestamp": 1795013307000,
+                          "description": "Humanoid",
+                          "quantity": 4194
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": 136,
+                    "name": "Honorable Kills",
+                    "statistics": {
+                      "_array": 3,
+                      "items": [
+                        {
+                          "id": 588,
+                          "name": "Total Honorable Kills",
+                          "last_updated_timestamp": 1795019659000,
+                          "quantity": 3
+                        },
+                        {
+                          "id": 381,
+                          "name": "World Honorable Kills",
+                          "last_updated_timestamp": 1794815546000,
+                          "quantity": 3
+                        },
+                        {
+                          "id": 1458,
+                          "name": "Continent with the most Honorable Kills",
+                          "last_updated_timestamp": 1794815546000,
+                          "description": "Eastern Kingdoms",
+                          "quantity": 3
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": 137,
+                    "name": "Killing Blows",
+                    "statistics": {
+                      "_array": 3,
+                      "items": [
+                        {
+                          "id": 1487,
+                          "name": "Total Killing Blows",
+                          "last_updated_timestamp": 1795013302000,
+                          "quantity": 3609
+                        },
+                        {
+                          "id": 1488,
+                          "name": "World Killing Blows",
+                          "last_updated_timestamp": 1795013302000,
+                          "quantity": 3146
+                        },
+                        {
+                          "id": 1489,
+                          "name": "Continent with the most Killing Blows",
+                          "last_updated_timestamp": 1795013302000,
+                          "description": "Eastern Kingdoms",
+                          "quantity": 1686
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "statistics": {
+                "_array": 2,
+                "items": [
+                  {
+                    "id": 1197,
+                    "name": "Total kills",
+                    "last_updated_timestamp": 1795019659000,
+                    "quantity": 7568
+                  },
+                  {
+                    "id": 1198,
+                    "name": "Total kills that grant experience or honor",
+                    "last_updated_timestamp": 1795019659000,
+                    "quantity": 6824
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "character": "squid-zero",
+      "path": "/statistics",
+      "status": 200,
+      "body": {
+        "health": 1701,
+        "power": 2179,
+        "power_type": {
+          "key": {
+            "href": "https://us.api.blizzard.com/data/wow/power-type/0?namespace=static-1.60.1_70399-forever-us"
+          },
+          "name": "Mana",
+          "id": 0
+        },
+        "speed": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "strength": {
+          "base": 48,
+          "effective": 100
+        },
+        "agility": {
+          "base": 51,
+          "effective": 100
+        },
+        "intellect": {
+          "base": 76,
+          "effective": 97
+        },
+        "stamina": {
+          "base": 56,
+          "effective": 96
+        },
+        "melee_crit": {
+          "rating_bonus": 0,
+          "value": 2.5300004,
+          "rating_normalized": 0
+        },
+        "melee_haste": {
+          "rating_bonus": 0,
+          "value": 1.9999981,
+          "rating_normalized": 0
+        },
+        "mastery": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "bonus_armor": 50,
+        "lifesteal": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "versatility": 0,
+        "versatility_damage_done_bonus": 0,
+        "versatility_healing_done_bonus": 0,
+        "versatility_damage_taken_bonus": 0,
+        "avoidance": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "attack_power": 244,
+        "main_hand_damage_min": 169.74286,
+        "main_hand_damage_max": 223.74286,
+        "main_hand_speed": 3.529,
+        "main_hand_dps": 55.750313,
+        "off_hand_damage_min": 17.928574,
+        "off_hand_damage_max": 17.928574,
+        "off_hand_speed": 1.961,
+        "off_hand_dps": 9.142567,
+        "spell_power": 0,
+        "spell_penetration": 0,
+        "spell_crit": {
+          "rating_bonus": 0,
+          "value": 3.9534,
+          "rating_normalized": 0
+        },
+        "mana_regen": 108,
+        "mana_regen_combat": 0,
+        "armor": {
+          "base": 50,
+          "effective": 920
+        },
+        "dodge": {
+          "rating_bonus": 0,
+          "value": 11.05,
+          "rating_normalized": 0
+        },
+        "parry": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "block": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "ranged_crit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "ranged_haste": {
+          "rating_bonus": 0,
+          "value": 1.9999981,
+          "rating_normalized": 0
+        },
+        "spell_haste": {
+          "rating_bonus": 0,
+          "value": 1.9999981,
+          "rating_normalized": 0
+        },
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero?namespace=profile-forever-us"
+          },
+          "name": "Squid",
+          "id": 2690011,
+          "surname": "Zero",
+          "slug": "squid-zero"
+        },
+        "spirit": {
+          "base": 87,
+          "effective": 123
+        },
+        "defense": {
+          "base": 226,
+          "effective": 226
+        },
+        "fire_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "shadow_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "nature_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "arcane_resistance": {
+          "base": 0,
+          "effective": 0
+        },
+        "frost_resistance": {
+          "base": 9,
+          "effective": 9
+        },
+        "movement_speed": 100,
+        "ranged_attack_power": 64,
+        "ranged_damage_min": 17.457144,
+        "ranged_damage_max": 17.457144,
+        "expertise": 0,
+        "off_hand_expertise": 0,
+        "armor_penetration": 0,
+        "spell_healing": 24,
+        "melee_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "off_hand_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "ranged_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        },
+        "spell_hit": {
+          "rating_bonus": 0,
+          "value": 0,
+          "rating_normalized": 0
+        }
+      }
+    },
+    {
+      "character": "squid-zero",
+      "path": "/mythic-keystone-profile",
+      "status": 200,
+      "body": {
+        "current_period": {
+          "period": {
+            "key": {
+              "href": "https://us.api.blizzard.com/data/wow/mythic-keystone/period/1090?namespace=dynamic-forever-us"
+            },
+            "id": 1090
+          }
+        },
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero?namespace=profile-forever-us"
+          },
+          "name": "Squid",
+          "id": 2690011,
+          "surname": "Zero",
+          "slug": "squid-zero"
+        }
+      }
+    },
+    {
+      "character": "squid-zero",
+      "path": "/quests/completed",
+      "status": 200,
+      "body": {
+        "character": {
+          "key": {
+            "href": "https://us.api.blizzard.com/profile/wow/character/squid-zero?namespace=profile-forever-us"
+          },
+          "name": "Squid",
+          "id": 2690011,
+          "surname": "Zero",
+          "slug": "squid-zero"
+        },
+        "quests": {
+          "_array": 619,
+          "items": [
+            {
+              "key": {
+                "href": "https://us.api.blizzard.com/data/wow/quest/94668?namespace=static-1.60.1_70399-forever-us"
+              },
+              "name": "Bloodmaster's Ring",
+              "id": 94668
+            },
+            {
+              "key": {
+                "href": "https://us.api.blizzard.com/data/wow/quest/95992?namespace=static-1.60.1_70399-forever-us"
+              },
+              "name": "WANTED: Ghostmaw",
+              "id": 95992
+            },
+            {
+              "key": {
+                "href": "https://us.api.blizzard.com/data/wow/quest/95775?namespace=static-1.60.1_70399-forever-us"
+              },
+              "name": "The Drowned City",
+              "id": 95775
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
