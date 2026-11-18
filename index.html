@@ -329,13 +329,13 @@ function fmtKill(t){if(t==null)return"";const d=new Date(t),y=d.getFullYear()!==
 function drawDungeons(bk){
   const auto=autoCleared(bk);
   const list=dungeons.map(([name,min,max,isNew])=>({name,min,max,isNew:!!isNew})).sort((a,b)=>a.min-b.min||a.max-b.max);
-  const when=d=>{const t=killTime(bk,n=>{const m=n.match(/\(([^)]+)\)\s*$/);return m&&dkey(m[1])===dkey(d.name)});return t==null?"":" · Cleared "+fmtKill(t)};
+  const when=d=>{const t=killTime(bk,n=>{const m=n.match(/\(([^)]+)\)\s*$/);return m&&dkey(m[1])===dkey(d.name)});return t==null?"":`<small>Cleared ${fmtKill(t)}</small>`};
   const isDone=d=>cleared.includes(d.name)||auto.has(dkey(d.name));
   const done=list.filter(isDone).length;
   document.getElementById("dungtitle").textContent=done+" / "+list.length+" dungeons cleared";
   document.getElementById("dungsub").textContent=done===list.length?"All cleared!":"Keep going!";
   document.getElementById("dungbar").style.width=(done/list.length*100)+"%";
-  document.getElementById("dunglist").innerHTML=list.map(d=>{const ok=isDone(d);return `<div class="dung${ok?" done":""}"><i class="chk">${ok?"✓":""}</i><span class="dn">${d.name}<small>Level ${d.min}–${d.max}${when(d)}</small></span>${d.isNew?'<span class="new">New</span>':""}</div>`}).join("");
+  document.getElementById("dunglist").innerHTML=list.map(d=>{const ok=isDone(d);return `<div class="dung${ok?" done":""}"><i class="chk">${ok?"✓":""}</i><span class="dn">${d.name}<small>Level ${d.min}–${d.max}</small>${when(d)}</span>${d.isNew?'<span class="new">New</span>':""}</div>`}).join("");
 }
 drawDungeons(null);
 
