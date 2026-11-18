@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T00:44:53+00:00",
+  "generated": "2026-11-18T12:51:15+00:00",
   "source": "https://foreverchanges.pro/patch-notes/feed.xml",
   "siteName": "ForeverChanges",
   "siteUrl": "https://foreverchanges.pro/patch-notes",
@@ -10,7 +10,7 @@
       "title": "Hotfix, November 17, 2026",
       "date": "2026-11-17T12:00:00+00:00",
       "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-17",
-      "summary": "Hotfixes to the November 17 client, first seen between 19:19 and 19:45 UTC on November 17 in the caches the launch realms send. Blizzard has posted no notes for them. Whiteout Staff and Crackling Staff, the Alterac Valley staves, now have the same stats, and Depleted Crystal Heart drops for everyone in the party.",
+      "summary": "Blizzard’s notes of November 17, posted at 03:24 UTC on November 18: Upper Blackrock Spire is back to its intended difficulty, Soulforge Armor has Spell Power instead of Strength, the Battle for Alterac Valley quests require level 58, Bronze Mace is Bind on Equip, and there are fixes to the Cozy Sleeping Bag, world buffs, Flurry, professions and many quests.",
       "kind": "hotfix",
       "firstSeen": null
     },
