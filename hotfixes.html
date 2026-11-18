@@ -6,10 +6,10 @@
 <title>Patch Notes – Dirty Socks</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
 <style>
-:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;color-scheme:light;
+:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;--blue:#2f6fa8;color-scheme:light;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;--blue:#6aa9e0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;--blue:#6aa9e0;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
 h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
@@ -26,33 +26,20 @@ section{padding:44px 0}
 h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
 .muted{color:var(--muted);font-size:.9rem}
-.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem}
-#entries{display:grid;gap:16px;margin-top:18px}
-.hf-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.hf-head h3{font-size:1.25rem}
-.badge{background:var(--accent);color:var(--accent-text);font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 9px;border-radius:20px}
-.cat{padding:10px 0;border-top:1px solid var(--line)}
-.cat-h{display:flex;justify-content:space-between;gap:10px}
-.count{color:var(--muted);font-size:.9rem}
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.chip{background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:2px 10px;font-size:.8rem}
-.chip b{margin-left:6px;color:var(--accent)}
-.hf .btn{margin-top:12px}
-.grp{padding:8px 0;border-top:1px dashed var(--line)}
-.grp:first-of-type{border-top:0}
-.grp-h{display:flex;justify-content:space-between;gap:10px;font-size:.92rem}
-.chip.k-buff{border-color:#2e8b57;color:#2e8b57}
-.chip.k-nerf{border-color:#c0392b;color:#c0392b}
-.chip.k-change{border-color:#b7791f;color:#b7791f}
-.chip.k-fix{color:var(--muted)}
-.chip.k-buff,.chip.k-nerf,.chip.k-change{font-weight:600}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;border:0;cursor:pointer;font-family:inherit}
+#entries{display:grid;gap:14px;margin-top:18px}
+.pn-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.pn-badge{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 10px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
+.pn-hotfix{border-color:var(--accent);color:var(--accent)}
+.pn-build{border-color:var(--blue);color:var(--blue)}
+.pn-new{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.pn-date{margin-left:auto;color:var(--muted);font-size:.9rem}
+.pn-title{font-size:1.15rem;margin:0 0 6px}
+.pn-sum{margin:0 0 10px}
+.pn-credit{margin-top:14px}
+#more{margin:16px auto 0;display:block}
 .embed-box{margin-top:18px}
 .embed-box iframe{display:block;width:100%;height:80vh;min-height:500px;border:1px solid var(--line);border-radius:8px;margin-top:14px;background:#fff}
-button.btn{border:0;cursor:pointer;font-family:inherit}
-.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
-.tally{font-size:.85rem;color:var(--muted)}
-.tally b{font-weight:600}
-.tally .b{color:#2e8b57}.tally .n{color:#c0392b}
 footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
 </style>
 </head>
@@ -68,17 +55,16 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 <section>
   <h2>Patch Notes &amp; Hotfixes</h2>
   <div class="card">
-    <p style="margin:0">A quick-read summary of Blizzard’s official WoW: Forever hotfix notes, newest first. Each day shows how many changes landed in each area and which classes and dungeons were touched. Use the button on any day to read the full notes on Blizzard’s site.</p>
+    <p style="margin:0">The latest WoW: Forever hotfixes and client builds, newest first. Summaries come from the ForeverChanges patch-notes feed, and each entry links to its full write-up there. Blizzard’s official notes are at the bottom of the page.</p>
     <p class="muted" id="updated" style="margin:10px 0 0"></p>
-    <div class="legend muted">Class and race changes are tagged:
-      <span class="chip k-buff">▲ Buff</span><span class="chip k-nerf">▼ Nerf</span><span class="chip k-change">● Other change</span><span class="chip k-fix">✓ Fix</span>
-      <span style="flex-basis:100%">Tags are read automatically from the wording of each note, so an occasional one may be off. The full notes on Blizzard’s site are the final word.</span>
-    </div>
   </div>
   <div id="entries"></div>
+  <button class="btn" id="more" type="button" hidden>Show older entries</button>
+  <p class="muted pn-credit" id="credit" hidden>Summaries by <a id="creditlink" href="https://foreverchanges.pro/patch-notes" target="_blank" rel="noopener">ForeverChanges</a>.</p>
+
   <div class="card embed-box">
     <h3 style="font-size:1.2rem;margin-bottom:6px">Full notes from Blizzard</h3>
-    <p class="muted" style="margin:0 0 12px">Want the complete text? Load Blizzard’s official hotfix page right here. It’s shown directly from Blizzard’s website.</p>
+    <p class="muted" style="margin:0 0 12px">Want Blizzard’s official text? Load their hotfix page right here. It’s shown directly from Blizzard’s website.</p>
     <button class="btn" id="embedbtn" type="button">Show Blizzard’s full notes here</button>
     <div id="embedwrap" hidden>
       <iframe id="embedframe" title="Blizzard WoW: Forever hotfix notes" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
@@ -94,45 +80,44 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const ago=t=>{const m=Math.max(0,Math.round((Date.now()-new Date(t))/6e4));return m<1?"just now":m<60?m+" min ago":m<1440?Math.round(m/60)+" hr ago":Math.round(m/1440)+" days ago"};
 const fmtTime=d=>new Date(d).toLocaleString("en-US",{month:"long",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit",timeZoneName:"short"});
-const FALLBACK_LINK="https://worldofwarcraft.blizzard.com/en-us/news/24315281";
+const fmtDay=d=>new Date(d).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric",timeZone:"UTC"});
+const SITE="https://foreverchanges.pro/";
+const BLIZZ="https://worldofwarcraft.blizzard.com/en-us/news/24315281";
+const KINDS={hotfix:"Hotfix",build:"Client build",other:"Update"};
+const PAGE=10;
+let entries=[],shown=0;
 document.getElementById("yr").textContent=new Date().getFullYear();
-document.getElementById("embedbtn").addEventListener("click",()=>{
-  const wrap=document.getElementById("embedwrap"),frame=document.getElementById("embedframe"),btn=document.getElementById("embedbtn");
-  if(wrap.hidden){ if(!frame.src) frame.src=FALLBACK_LINK; wrap.hidden=false; btn.textContent="Hide Blizzard’s full notes"; }
-  else { wrap.hidden=true; btn.textContent="Show Blizzard’s full notes here"; }
-});
 
-function render(d){
-  const src=/^https:\/\/worldofwarcraft\.blizzard\.com\//.test(d.source||"")?d.source:FALLBACK_LINK;
-  document.getElementById("updated").textContent="Last checked "+fmtTime(d.generated)+" ("+ago(d.generated)+"). The page checks Blizzard automatically twice a day.";
-  document.getElementById("entries").innerHTML=d.entries.map(e=>{
-    const isNew=e.firstSeen&&Date.now()-new Date(e.firstSeen)<72*36e5;
-    const SYM={buff:"▲",nerf:"▼",change:"●",fix:"✓"};
-    const kindsTotal={};
-    const cats=e.categories.map(c=>{
-      const g=c.groups||[];
-      const detailed=g.some(x=>x.changes);
-      if(detailed){
-        g.forEach(x=>Object.entries(x.kinds||{}).forEach(([k,n])=>kindsTotal[k]=(kindsTotal[k]||0)+n));
-        const rows=g.map(x=>{
-          const k=x.kinds||{};
-          const tal=[k.buff?`<b class="b">▲ ${k.buff}</b>`:"",k.nerf?`<b class="n">▼ ${k.nerf}</b>`:"",k.fix?`${k.fix} ${k.fix===1?"fix":"fixes"}`:"",k.change?`${k.change} other`:""].filter(Boolean).join(" · ");
-          const chips=(x.changes||[]).map(ch=>`<span class="chip k-${esc(ch.kind)}">${SYM[ch.kind]||"●"} ${esc(ch.name)}</span>`).join("");
-          return `<div class="grp"><div class="grp-h"><strong>${esc(x.name)}</strong><span class="tally">${tal}</span></div>${chips?`<div class="chips">${chips}</div>`:""}</div>`;
-        }).join("");
-        return `<div class="cat"><div class="cat-h"><strong>${esc(c.name)}</strong><span class="count">${c.count} ${c.count===1?"change":"changes"}</span></div>${rows}</div>`;
-      }
-      const chips=g.length?`<div class="chips">${g.slice(0,14).map(x=>`<span class="chip">${esc(x.name)}<b>${x.count}</b></span>`).join("")}${g.length>14?`<span class="chip">+${g.length-14} more</span>`:""}</div>`:"";
-      return `<div class="cat"><div class="cat-h"><strong>${esc(c.name)}</strong><span class="count">${c.count} ${c.count===1?"change":"changes"}</span></div>${chips}</div>`;
-    }).join("");
-    const tally=(kindsTotal.buff||kindsTotal.nerf)?`<span class="tally"><b class="b">▲ ${kindsTotal.buff||0} buffs</b> · <b class="n">▼ ${kindsTotal.nerf||0} nerfs</b></span>`:"";
-    return `<article class="card hf"><div class="hf-head"><h3>${esc(e.label)}</h3>${isNew?'<span class="badge">New</span>':""}<span class="muted">${e.total} ${e.total===1?"change":"changes"}</span>${tally}</div>${cats}<a class="btn" href="${esc(src)}" target="_blank" rel="noopener">Read the full notes on Blizzard.com</a></article>`;
-  }).join("");
+function card(e){
+  const isNew=e.firstSeen&&Date.now()-new Date(e.firstSeen)<72*36e5;
+  const link=String(e.link||"").startsWith(SITE)?e.link:SITE+"patch-notes";
+  const kind=KINDS[e.kind]?e.kind:"other";
+  return `<article class="card"><div class="pn-top"><span class="pn-badge pn-${kind}">${KINDS[kind]}</span>${isNew?'<span class="pn-badge pn-new">New</span>':""}<span class="pn-date">${fmtDay(e.date)}</span></div><h3 class="pn-title">${esc(e.title)}</h3>${e.summary?`<p class="pn-sum">${esc(e.summary)}</p>`:""}<a href="${esc(link)}" target="_blank" rel="noopener">Read the full entry on ForeverChanges</a></article>`;
 }
-fetch("hotfixes.json",{cache:"no-cache"})
+function showMore(){
+  const next=entries.slice(shown,shown+PAGE);
+  document.getElementById("entries").insertAdjacentHTML("beforeend",next.map(card).join(""));
+  shown+=next.length;
+  document.getElementById("more").hidden=shown>=entries.length;
+}
+function render(d){
+  entries=d.entries||[];
+  document.getElementById("updated").textContent="Last checked "+fmtTime(d.generated)+" ("+ago(d.generated)+"). The page checks for new entries automatically twice a day.";
+  const site=String(d.siteUrl||"").startsWith(SITE)?d.siteUrl:SITE+"patch-notes";
+  document.getElementById("creditlink").href=site;
+  document.getElementById("credit").hidden=false;
+  showMore();
+}
+document.getElementById("more").addEventListener("click",showMore);
+fetch("patch-notes.json",{cache:"no-cache"})
   .then(r=>r.ok?r.json():Promise.reject())
   .then(render)
-  .catch(()=>{document.getElementById("entries").innerHTML=`<div class="card"><p style="margin:0">The hotfix summary hasn’t loaded yet. It appears after the first scheduled update runs. In the meantime, you can read the official notes on <a href="${FALLBACK_LINK}" target="_blank" rel="noopener">Blizzard’s site</a>.</p></div>`});
+  .catch(()=>{document.getElementById("entries").innerHTML=`<div class="card"><p style="margin:0">The patch notes haven’t loaded yet. They appear after the first scheduled update runs. In the meantime, you can read them on <a href="${SITE}patch-notes" target="_blank" rel="noopener">ForeverChanges</a> or on <a href="${BLIZZ}" target="_blank" rel="noopener">Blizzard’s site</a>.</p></div>`});
+document.getElementById("embedbtn").addEventListener("click",()=>{
+  const wrap=document.getElementById("embedwrap"),frame=document.getElementById("embedframe"),btn=document.getElementById("embedbtn");
+  if(wrap.hidden){ if(!frame.src) frame.src=BLIZZ; wrap.hidden=false; btn.textContent="Hide Blizzard’s full notes"; }
+  else { wrap.hidden=true; btn.textContent="Show Blizzard’s full notes here"; }
+});
 </script>
 </body>
 </html>
