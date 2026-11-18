@@ -99,6 +99,23 @@ function activeSpec(sp) {
   return best;
 }
 // Professions: Forever's response shape isn't documented yet, so read the classic-style fields defensively.
+// Every recipe a character knows, per profession (tiers hold the recipe lists).
+function recipeNames(pr) {
+  const out = [];
+  for (const group of [pr?.primaries, pr?.secondaries]) {
+    for (const e of group ?? []) {
+      const prof = e.profession?.name;
+      if (!prof) continue;
+      for (const t of e.tiers ?? []) for (const r of t.known_recipes ?? []) {
+        const name = r.name ?? r.recipe?.name;
+        if (name) out.push([prof, name]);
+      }
+    }
+  }
+  return out;
+}
+const recipes = {}; // profession -> recipe -> [member slugs]
+const recipeFailed = new Set(); // members whose professions didn't load this run
 const professionHref = {}; // profession name -> its static data link, used to look up icons
 function parseProfessions(pr) {
   const out = [];
@@ -153,6 +170,7 @@ for (let i = 0; i < members.length; i += 5) {
     const old = prevBy[slugOf(m)];
     if (!p || typeof p.level !== "number") {
       unavailable++;
+      recipeFailed.add(slugOf(m));
       if (old) { // keep what we had
         m.level = Math.max(m.level ?? 0, old.level ?? 0) || m.level;
         m.spec = old.spec ?? null; m.professions = old.professions ?? []; m.ilvl = old.ilvl ?? null;
@@ -178,6 +196,8 @@ for (let i = 0; i < members.length; i += 5) {
     }
     m.spec = sp ? activeSpec(sp) : (old?.spec ?? null);
     if (m.spec) specFound++; else specMissing++;
+    if (pr) { for (const [prof, name] of recipeNames(pr)) ((recipes[prof] ??= {})[name] ??= []).push(slugOf(m)); }
+    else recipeFailed.add(slugOf(m));
     m.professions = pr ? parseProfessions(pr) : (old?.professions ?? []);
     if (m.professions.length) profFound++;
     m.ilvl = itemLevel(p, eq) ?? old?.ilvl ?? null;
@@ -190,6 +210,15 @@ console.log(`Professions: ${profFound} characters with data`);
 console.log(`Item levels: ${ilvlFound} characters with a value`);
 console.log(`Kept previous values for ${carried} characters where Blizzard did not answer`);
 console.log(`Profile levels: ${checked} checked, ${raised} higher than the roster, ${unavailable} unavailable`);
+
+// For characters that failed to load, keep the recipes they had last time.
+for (const [prof, byName] of Object.entries(prevData.recipes ?? {})) {
+  for (const [name, who] of Object.entries(byName)) {
+    const keep = who.filter((w) => recipeFailed.has(w) && prevBy[w]);
+    if (keep.length) { const list = ((recipes[prof] ??= {})[name] ??= []); for (const w of keep) if (!list.includes(w)) list.push(w); }
+  }
+}
+console.log(`Recipes: ${Object.values(recipes).reduce((n, r) => n + Object.keys(r).length, 0)} distinct recipes across ${Object.keys(recipes).length} professions`);
 
 // Boss kills only ever go up, so merge with last run: nothing is dropped if a character failed to load,
 // and "seen" records the first run that noticed each kill (null = already there before tracking began).
@@ -249,6 +278,7 @@ const out = {
   roster: members,
   history: { days },
   professionIcons,
+  recipes,
   unrecognizedKills,
   bossKills, // dungeon/raid boss kills combined across the guild
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
