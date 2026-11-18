@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T03:44:53.213Z",
+  "generated": "2026-11-18T04:49:46.093Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -53,7 +53,7 @@
     {
       "name": "Capo",
       "surname": "Shoots",
-      "level": 30,
+      "level": 31,
       "cls": "Hunter",
       "color": "#abd473",
       "rank": 1,
