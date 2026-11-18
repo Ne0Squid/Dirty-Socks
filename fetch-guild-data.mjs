@@ -110,6 +110,20 @@ function parseProfessions(pr) {
   return out;
 }
 
+// Boss kills: the "Dungeons & Raids" statistics hold lines like "Bazzalan kills (Ragefire Chasm)".
+// Collected for every member and combined, so the site can tell which dungeon bosses the guild has killed.
+function bossKillStats(st) {
+  const found = [];
+  const walk = (cat, inside) => {
+    const here = inside || /dungeons/i.test(cat.name ?? "");
+    if (here) for (const x of cat.statistics ?? []) if (/kills?\b/i.test(x.name ?? "")) found.push([x.name, x.quantity ?? 0]);
+    for (const sub of cat.sub_categories ?? []) walk(sub, here);
+  };
+  for (const c of st?.categories ?? []) walk(c, false);
+  return found;
+}
+const bossKills = {}; // statistic name -> { total, members: [slug] }
+
 // Item level: use Blizzard's own figure from the character profile when it has one,
 // otherwise average the equipped items (shirt and tabard don't count).
 const NO_ILVL_SLOTS = new Set(["SHIRT", "TABARD"]);
@@ -132,11 +146,17 @@ for (let i = 0; i < members.length; i += 5) {
     checked++;
     if (p.level > (m.level ?? 0)) { m.level = p.level; raised++; }
     const base = `/profile/wow/character/${encodeURIComponent(slugOf(m))}`;
-    const [sp, pr, eq] = await Promise.all([
+    const [sp, pr, eq, ast] = await Promise.all([
       get(`${base}/specializations`, accessToken),
       get(`${base}/professions`, accessToken),
       get(`${base}/equipment`, accessToken),
+      get(`${base}/achievements/statistics`, accessToken),
     ]);
+    for (const [name, qty] of bossKillStats(ast)) {
+      if (qty <= 0) continue;
+      const e = (bossKills[name] ??= { total: 0, members: [] });
+      e.total += qty; e.members.push(slugOf(m));
+    }
     m.spec = sp ? activeSpec(sp) : null;
     if (m.spec) specFound++; else specMissing++;
     m.professions = pr ? parseProfessions(pr) : [];
@@ -199,6 +219,7 @@ const out = {
   guild: { name: guild?.name ?? "Dirty Socks", faction: guild?.faction?.name ?? null },
   roster: members,
   history: { days },
+  bossKills, // dungeon/raid boss kills combined across the guild
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
   raw: { guild, activity, achievements },
 };
