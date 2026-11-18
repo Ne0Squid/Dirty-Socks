@@ -246,7 +246,7 @@ function drawBoard(){
   document.getElementById("lbtabs").innerHTML=modes.map(([k,l])=>`<button class="${k===lbMode?"on":""}" data-b="${k}">${l}</button>`).join("");
   let rows=[],note="",fmtv=v=>v;
   if(lbMode==="level"){rows=sorted.map(m=>({m,val:m.level}));fmtv=v=>"Level "+v}
-  else if(lbMode==="ilvl"){rows=sorted.filter(m=>m.ilvl).map(m=>({m,val:m.ilvl}));fmtv=v=>"Item level "+v;note="Item level is read from each character’s Armory profile."}
+  else if(lbMode==="ilvl"){rows=sorted.filter(m=>m.ilvl).map(m=>({m,val:m.ilvl}));fmtv=v=>"Item level "+v}
   else{
     const g=weeklyGains(sorted);
     if(!g)note="Weekly gains appear once the site has saved a couple of days of levels. Check back tomorrow.";
