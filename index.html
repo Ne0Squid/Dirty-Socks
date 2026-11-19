@@ -326,11 +326,11 @@ function render(d){
 }
 document.getElementById("yr").textContent=new Date().getFullYear();
 // ===== DUNGEON CHECKLIST: add a dungeon’s name to "cleared" once the guild has beaten it =====
-const cleared=["Hall of Thanes","Excavation Site: Wetlands","The Stockade","The Drowned City","Krol’dok Stronghold"]; // dungeons Blizzard’s statistics don’t track; everything else is checked automatically
-const clearedOn={"Hall of Thanes":"Nov 6","Excavation Site: Wetlands":"Nov 10","The Stockade":"Nov 10","Scarlet Monastery":"Nov 12","The Drowned City":"Nov 12","Krol’dok Stronghold":"Nov 17"}; // optional dates for hand-ticked dungeons
+const cleared=["Hall of Thanes","Wetlands","The Stockade","The Drowned City","Krol’dok Stronghold"]; // dungeons Blizzard’s statistics don’t track; everything else is checked automatically
+const clearedOn={"Hall of Thanes":"Nov 6","Wetlands":"Nov 10","The Stockade":"Nov 10","Scarlet Monastery":"Nov 12","The Drowned City":"Nov 12","Krol’dok Stronghold":"Nov 17"}; // optional dates for hand-ticked dungeons
 const dungeons=[ // [name, lowest level, highest level, new in Forever?]
  ["Ragefire Chasm",13,18],["Hall of Thanes",13,18,1],["Ruins of Lordaeron",15,20,1],["The Deadmines",17,20],
- ["Wailing Caverns",18,24],["Shadowfang Keep",21,26],["Blackfathom Deeps",23,28],["Excavation Site: Wetlands",24,29,1],
+ ["Wailing Caverns",18,24],["Shadowfang Keep",21,26],["Blackfathom Deeps",23,28],["Wetlands",24,29,1],
  ["The Stockade",25,29],["City of Dalaran",28,33,1],["Gnomeregan",29,34],["Razorfen Kraul",30,38],
  ["Scarlet Monastery",30,46],["The Drowned City",35,40,1],["Uldaman",37,45],["Razorfen Downs",37,45],
  ["Zul’Farrak",40,47],["Krol’dok Stronghold",40,45,1],["Maraudon",45,51],["Alcaz Prison",48,53,1],
