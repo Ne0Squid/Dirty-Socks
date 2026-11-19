@@ -1,10 +1,19 @@
 {
-  "generated": "2026-11-18T12:51:15+00:00",
+  "generated": "2026-11-19T00:46:41+00:00",
   "source": "https://foreverchanges.pro/patch-notes/feed.xml",
   "siteName": "ForeverChanges",
   "siteUrl": "https://foreverchanges.pro/patch-notes",
   "title": "ForeverChanges: Patch notes",
   "entries": [
+    {
+      "id": "foreverchanges-hotfix-2026-11-18",
+      "title": "Hotfix, November 18, 2026",
+      "date": "2026-11-18T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-18",
+      "summary": "Hotfixes to the November 17 client, first seen between 20:47 and 20:54 UTC on November 18 in the caches the launch realms send. Blizzard has posted no notes for them. Ruzzgot’s Shipment, for “The Big Payback”, now drops for everyone in the party.",
+      "kind": "hotfix",
+      "firstSeen": "2026-11-19T00:46:41+00:00"
+    },
     {
       "id": "foreverchanges-hotfix-2026-11-17",
       "title": "Hotfix, November 17, 2026",
@@ -99,7 +108,7 @@
       "id": "foreverchanges-hotfix-2026-11-09",
       "title": "Hotfix, November 9, 2026",
       "date": "2026-11-09T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-09",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-09",
       "summary": "A hotfix to the November 7 client, first seen on November 9 between 19:26 and 21:43 UTC in the cache the launch realms send. Blizzard’s notes of November 9, posted on November 10, describe it. In the client it brings the Swiftmend tooltip fix that their notes of November 6 listed.",
       "kind": "hotfix",
       "firstSeen": null
@@ -180,7 +189,7 @@
       "id": "foreverchanges-hotfix-2026-11-03",
       "title": "Hotfix, November 3, 2026",
       "date": "2026-11-03T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-03",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#hotfix-2026-11-03",
       "summary": "A hotfix to the November 2 build, first seen on November 3 in the cache the launch realms send, which Blizzard has posted no notes for. It raises the hunter’s damage: Aspect of the Hawk gets back the ranged attack power the October 28 hotfix took away, Trueshot Aura gives up to twice as much, Barrage and Lightning Reflexes are back to Classic’s values, and Aimed Shot, Arcane Shot, Serpent Sting and Sniper Shot deal more damage.",
       "kind": "hotfix",
       "firstSeen": null
