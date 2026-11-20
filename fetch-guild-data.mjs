@@ -261,6 +261,25 @@ await Promise.all(Object.entries(professionHref).map(async ([name, href]) => {
 }));
 console.log(`Profession icons: ${Object.keys(professionIcons).length} of ${Object.keys(professionHref).length}`);
 
+// Class icons: Blizzard's media endpoint gives each class's icon URL (same static namespace as the profession icons).
+const classIcons = {};
+const debug = {}; // TEMP: icon image bytes, so the icons can be previewed
+try {
+  const ns = new URL(Object.values(professionHref)[0]).searchParams.get("namespace");
+  await Promise.all(Object.entries(CLASSES).map(async ([id, [name]]) => {
+    try {
+      const res = await fetch(`${API}/data/wow/media/playable-class/${id}?namespace=${ns}&locale=en_US`, { headers: { Authorization: `Bearer ${accessToken}` } });
+      if (!res.ok) return;
+      const url = (await res.json()).assets?.find((a) => a.key === "icon")?.value;
+      if (!url) return;
+      classIcons[name] = url;
+      const img = await fetch(url);
+      if (img.ok) debug[name] = "data:" + (img.headers.get("content-type") ?? "image/jpeg") + ";base64," + Buffer.from(await img.arrayBuffer()).toString("base64");
+    } catch (e) { console.warn(`  class icon ${name} failed: ${e.message}`); }
+  }));
+} catch (e) { console.warn(`  class icons failed: ${e.message}`); }
+console.log(`Class icons: ${Object.keys(classIcons).length}`);
+
 // Level history: one snapshot per day (the latest run of that day), kept for 35 days.
 // It lives inside guild-data.json so the workflow needs no changes.
 const outPath = new URL("./guild-data.json", import.meta.url);
@@ -279,6 +298,8 @@ const out = {
   history: { days },
   professionIcons,
   recipes,
+  classIcons,
+  debug, // TEMP
   unrecognizedKills,
   bossKills, // dungeon/raid boss kills combined across the guild
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
