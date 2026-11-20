@@ -85,6 +85,7 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .prof-more{margin-top:8px;width:100%;background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px;font:inherit;font-size:.85rem;cursor:pointer}.prof-more:hover{color:var(--accent);border-color:var(--accent)}
 .prow a{color:inherit;text-decoration:none}.prow a:hover{color:var(--accent);text-decoration:underline}
 .cico{width:38px;height:38px;border-radius:8px;border:2px solid;flex:none;object-fit:cover}
+.lbrow .cico{width:30px;height:30px;border-radius:7px}
 .dot{width:12px;height:12px;border-radius:50%;flex:none}
 .tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right;white-space:nowrap}
 .sched{width:100%;border-collapse:collapse}
@@ -265,7 +266,7 @@ function drawBoard(){
     else{rows=g.rows.filter(r=>r.val>0);fmtv=v=>"+"+v+(v===1?" level":" levels");note=(rows.length?"":"No level-ups yet. ")+"Levels gained since "+fmtDayUTC(g.since)+".";}
   }
   rows.sort((a,b)=>b.val-a.val||b.m.level-a.m.level);rows=rows.slice(0,5);
-  document.getElementById("lbbody").innerHTML=rows.map((r,i)=>`<div class="lbrow"><span class="lbpos">${i+1}</span><span class="dot" style="background:${r.m.color}"></span><span><strong>${nameLink(r.m)}</strong><small>${esc(r.m.spec?r.m.spec+" ":"")}${esc(r.m.cls)}</small></span><span class="lbval">${fmtv(r.val)}</span></div>`).join("");
+  document.getElementById("lbbody").innerHTML=rows.map((r,i)=>`<div class="lbrow"><span class="lbpos">${i+1}</span>${cico(r.m)}<span><strong>${nameLink(r.m)}</strong><small>${esc(r.m.spec?r.m.spec+" ":"")}${esc(r.m.cls)}</small></span><span class="lbval">${fmtv(r.val)}</span></div>`).join("");
   document.getElementById("lbnote").textContent=note;
 }
 document.getElementById("lbtabs").addEventListener("click",e=>{const b=e.target.closest("button");if(b){lbMode=b.dataset.b;drawBoard()}});
