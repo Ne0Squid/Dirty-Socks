@@ -2,8 +2,8 @@
 // and swaps the banner. The choice is remembered in the browser. Light/dark still follows the device.
 (function () {
   var KEY = "dirty-socks-faction", root = document.documentElement;
-  // From December 9 (when raids open, same moment as the countdown) the raid-release banners replace the regular ones.
-  var RAIDS_OPEN = new Date("2026-12-09T00:00:00");
+  // From this moment the raid-release banners replace the regular ones (switched early; the countdown date is separate, in index.html).
+  var RAIDS_OPEN = new Date("2026-11-20T00:00:00");
   function banners() {
     return new Date() >= RAIDS_OPEN
       ? { horde: "images/Raid-Horde.jpg", alliance: "images/Raid-Alliance.jpg" }
