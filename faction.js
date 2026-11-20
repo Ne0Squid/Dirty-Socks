@@ -2,7 +2,13 @@
 // and swaps the banner. The choice is remembered in the browser. Light/dark still follows the device.
 (function () {
   var KEY = "dirty-socks-faction", root = document.documentElement;
-  var BANNERS = { horde: null, alliance: "Banner-Alliance.jpg" };
+  // From December 9 (when raids open, same moment as the countdown) the raid-release banners replace the regular ones.
+  var RAIDS_OPEN = new Date("2026-12-09T00:00:00");
+  function banners() {
+    return new Date() >= RAIDS_OPEN
+      ? { horde: "Raid-Horde.jpg", alliance: "Raid-Alliance.jpg" }
+      : { horde: null, alliance: "Banner-Alliance.jpg" };
+  }
   function saved() { try { var v = localStorage.getItem(KEY); return v === "alliance" ? "alliance" : "horde"; } catch (e) { return "horde"; } }
   function save(f) { try { localStorage.setItem(KEY, f); } catch (e) {} }
 
@@ -30,7 +36,7 @@
     var img = document.querySelector(".banner img");
     if (!img) return;
     if (!img.getAttribute("data-horde")) img.setAttribute("data-horde", img.getAttribute("src"));
-    img.src = BANNERS[f] || img.getAttribute("data-horde");
+    img.src = banners()[f] || img.getAttribute("data-horde");
   }
   function apply(f) {
     current = f; root.setAttribute("data-faction", f); save(f); banner(f);
