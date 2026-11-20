@@ -263,7 +263,6 @@ console.log(`Profession icons: ${Object.keys(professionIcons).length} of ${Objec
 
 // Class icons: Blizzard's media endpoint gives each class's icon URL (same static namespace as the profession icons).
 const classIcons = {};
-const debug = {}; // TEMP: icon image bytes, so the icons can be previewed
 try {
   const ns = new URL(Object.values(professionHref)[0]).searchParams.get("namespace");
   await Promise.all(Object.entries(CLASSES).map(async ([id, [name]]) => {
@@ -273,8 +272,6 @@ try {
       const url = (await res.json()).assets?.find((a) => a.key === "icon")?.value;
       if (!url) return;
       classIcons[name] = url;
-      const img = await fetch(url);
-      if (img.ok) debug[name] = "data:" + (img.headers.get("content-type") ?? "image/jpeg") + ";base64," + Buffer.from(await img.arrayBuffer()).toString("base64");
     } catch (e) { console.warn(`  class icon ${name} failed: ${e.message}`); }
   }));
 } catch (e) { console.warn(`  class icons failed: ${e.message}`); }
@@ -299,7 +296,6 @@ const out = {
   professionIcons,
   recipes,
   classIcons,
-  debug, // TEMP
   unrecognizedKills,
   bossKills, // dungeon/raid boss kills combined across the guild
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.
