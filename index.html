@@ -36,6 +36,7 @@ nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20p
 nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)}
 nav a:hover{color:var(--accent)}
 .menu-btn{display:none}
+@media (min-width:1100px){nav{position:relative}nav a.raidroster{position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--accent)}}
 @media (max-width:720px){
   nav{flex-direction:column;align-items:stretch;gap:0;padding:6px 20px}
   .menu-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:none;border:0;color:var(--text);font:inherit;font-weight:600;font-size:.95rem;padding:8px;cursor:pointer}
@@ -120,7 +121,7 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 <body>
 <nav>
 <!--<a href="#about">About</a>-->
-<a href="#stats">Guild Stats</a><a href="#race">Race to 60</a><a href="#roster">Roster</a><a href="#professions" id="profnav" hidden>Professions</a><a href="#dungeons">Dungeons</a><a href="#raidprog">Raid Progression</a><a href="#waypath">Waypath+ Addon</a><a href="hotfixes.html">Patch Notes</a></nav>
+<a href="#stats">Guild Stats</a><a href="#race">Race to 60</a><a href="#roster">Roster</a><a href="#professions" id="profnav" hidden>Professions</a><a href="#dungeons">Dungeons</a><a href="#raidprog">Raid Progression</a><a href="#waypath">Waypath+ Addon</a><a href="hotfixes.html">Patch Notes</a><a class="raidroster" href="raid-roster.html">Raid Roster</a></nav>
 
 <header class="hero banner">
   <h1 class="sr">Dirty Socks</h1>

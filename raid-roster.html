@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raid Roster – Dirty Socks</title>
+<meta name="description" content="The Dirty Socks raid roster.">
+<meta name="theme-color" content="#0f1117">
+<link rel="icon" href="images/favicon.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dirty Socks">
+<meta property="og:title" content="Raid Roster – Dirty Socks">
+<meta property="og:description" content="The Dirty Socks raid roster.">
+<meta property="og:url" content="https://ne0squid.github.io/Dirty-Socks/raid-roster.html">
+<meta property="og:image" content="https://ne0squid.github.io/Dirty-Socks/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Raid Roster – Dirty Socks">
+<meta name="twitter:description" content="The Dirty Socks raid roster.">
+<meta name="twitter:image" content="https://ne0squid.github.io/Dirty-Socks/images/og-image.jpg">
+<script src="faction.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;--blue:#2f6fa8;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;--blue:#6aa9e0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;--blue:#6aa9e0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
+a{color:var(--accent)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface)}
+nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)}
+nav a:hover,nav a.here{color:var(--accent)}
+.hero{background:var(--hero);border-bottom:1px solid var(--line)}
+.banner{padding:0;line-height:0}
+.banner img{display:block;width:100%;height:clamp(110px,30vw,480px);object-fit:cover;object-position:center 35%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+section{padding:44px 0}
+h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.muted{color:var(--muted);font-size:.9rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;border:0;cursor:pointer;font-family:inherit}
+#entries{display:grid;gap:14px;margin-top:18px}
+.pn-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.pn-badge{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 10px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
+.pn-hotfix{border-color:var(--accent);color:var(--accent)}
+.pn-build{border-color:var(--blue);color:var(--blue)}
+.pn-new{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.pn-date{margin-left:auto;color:var(--muted);font-size:.9rem}
+.pn-title{font-size:1.15rem;margin:0 0 6px}
+.pn-sum{margin:0 0 10px}
+.pn-credit{margin-top:14px}
+#more{margin:16px auto 0;display:block}
+.embed-box{margin-top:18px}
+.embed-box iframe{display:block;width:100%;height:80vh;min-height:500px;border:1px solid var(--line);border-radius:8px;margin-top:14px;background:#fff}
+footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+<nav><a href="index.html">← Guild Home</a><a href="hotfixes.html">Patch Notes</a><a class="here" href="raid-roster.html">Raid Roster</a></nav>
+
+<header class="hero banner">
+  <h1 class="sr">Dirty Socks</h1>
+  <a href="index.html"><img src="images/Banner.jpg" alt="Dirty Socks – back to the guild page"></a>
+</header>
+
+<main class="wrap">
+<section>
+  <h2>Raid Roster</h2>
+  <div class="card">
+    <p style="margin:0">The raid roster is coming soon.</p>
+  </div>
+</section>
+</main>
+
+<footer>© <span id="yr"></span> Dirty Socks · Not affiliated with Blizzard Entertainment.</footer>
+
+<script>document.getElementById("yr").textContent=new Date().getFullYear();</script>
+</body>
+</html>
