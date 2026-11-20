@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20T04:35:51.097Z",
+  "generated": "2026-11-20T04:39:08.094Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -695,17 +695,17 @@
     }
   },
   "professionIcons": {
-    "Leatherworking": "https://render.worldofwarcraft.com/forever-us/icons/56/136247.jpg",
-    "Herbalism": "https://render.worldofwarcraft.com/forever-us/icons/56/136246.jpg",
-    "First Aid": "https://render.worldofwarcraft.com/forever-us/icons/56/135966.jpg",
-    "Blacksmithing": "https://render.worldofwarcraft.com/forever-us/icons/56/136241.jpg",
-    "Mining": "https://render.worldofwarcraft.com/forever-us/icons/56/136248.jpg",
-    "Fishing": "https://render.worldofwarcraft.com/forever-us/icons/56/136245.jpg",
-    "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg",
-    "Skinning": "https://render.worldofwarcraft.com/forever-us/icons/56/134366.jpg",
     "Cooking": "https://render.worldofwarcraft.com/forever-us/icons/56/133971.jpg",
-    "Tailoring": "https://render.worldofwarcraft.com/forever-us/icons/56/136249.jpg",
-    "Enchanting": "https://render.worldofwarcraft.com/forever-us/icons/56/136244.jpg"
+    "Leatherworking": "https://render.worldofwarcraft.com/forever-us/icons/56/136247.jpg",
+    "Mining": "https://render.worldofwarcraft.com/forever-us/icons/56/136248.jpg",
+    "Skinning": "https://render.worldofwarcraft.com/forever-us/icons/56/134366.jpg",
+    "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg",
+    "Fishing": "https://render.worldofwarcraft.com/forever-us/icons/56/136245.jpg",
+    "Enchanting": "https://render.worldofwarcraft.com/forever-us/icons/56/136244.jpg",
+    "Blacksmithing": "https://render.worldofwarcraft.com/forever-us/icons/56/136241.jpg",
+    "First Aid": "https://render.worldofwarcraft.com/forever-us/icons/56/135966.jpg",
+    "Herbalism": "https://render.worldofwarcraft.com/forever-us/icons/56/136246.jpg",
+    "Tailoring": "https://render.worldofwarcraft.com/forever-us/icons/56/136249.jpg"
   },
   "recipes": {
     "Leatherworking": {
@@ -986,16 +986,16 @@
       "Skinning": [
         "squid-zero",
         "orken-magorken",
-        "emo-erling",
         "mrs-capo",
+        "emo-erling",
         "capo-shoots",
         "the-parttimedad",
         "ember-highland"
       ],
       "Camp Chair": [
         "orken-magorken",
-        "emo-erling",
         "mrs-capo",
+        "emo-erling",
         "capo-shoots",
         "the-parttimedad"
       ]
@@ -1003,18 +1003,18 @@
     "Cooking": {
       "Charred Wolf Meat": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
-        "emo-erling",
         "mrs-capo",
         "mr-capo",
-        "plucky-recks",
+        "emo-erling",
         "capo-shoots",
-        "thick-hogs",
-        "rowdy-highland",
+        "plucky-recks",
         "zeik-soulfly",
+        "rowdy-highland",
+        "thick-hogs",
         "ember-highland",
         "neo-squid"
       ],
@@ -1023,23 +1023,23 @@
         "orken-magorken",
         "scott-frost",
         "plucky-recks",
-        "rowdy-highland",
-        "zeik-soulfly"
+        "zeik-soulfly",
+        "rowdy-highland"
       ],
       "Roasted Boar Meat": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
-        "emo-erling",
         "mrs-capo",
         "mr-capo",
-        "plucky-recks",
+        "emo-erling",
         "capo-shoots",
-        "thick-hogs",
-        "rowdy-highland",
+        "plucky-recks",
         "zeik-soulfly",
+        "rowdy-highland",
+        "thick-hogs",
         "ember-highland",
         "neo-squid"
       ],
@@ -1055,9 +1055,9 @@
       ],
       "Brilliant Smallfish": [
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
         "plucky-recks"
       ],
       "Longjaw Mud Snapper": [
@@ -1080,37 +1080,40 @@
       ],
       "Herb Baked Egg": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
-        "emo-erling",
         "mrs-capo",
         "mr-capo",
-        "plucky-recks",
+        "emo-erling",
         "capo-shoots",
-        "thick-hogs",
-        "rowdy-highland",
+        "plucky-recks",
         "zeik-soulfly",
+        "rowdy-highland",
+        "thick-hogs",
         "ember-highland",
         "neo-squid"
       ],
       "Basic Campfire": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
-        "emo-erling",
         "mrs-capo",
         "mr-capo",
-        "plucky-recks",
+        "emo-erling",
         "capo-shoots",
-        "thick-hogs",
-        "rowdy-highland",
+        "plucky-recks",
         "zeik-soulfly",
+        "rowdy-highland",
+        "thick-hogs",
         "ember-highland",
         "neo-squid"
+      ],
+      "Crispy Bat Wing": [
+        "canigeta-summon"
       ],
       "Barbecued Buzzard Wing": [
         "orken-magorken"
@@ -1198,18 +1201,15 @@
       ],
       "Baked Salmon": [
         "needmore-beers"
-      ],
-      "Crispy Bat Wing": [
-        "canigeta-summon"
       ]
     },
     "Fishing": {
       "Fishing": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
         "plucky-recks",
         "zeik-soulfly"
       ],
@@ -1219,312 +1219,6 @@
         "scott-frost",
         "needmore-beers",
         "zeik-soulfly"
-      ]
-    },
-    "First Aid": {
-      "Silk Bandage": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "capo-shoots"
-      ],
-      "Heavy Silk Bandage": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Anti-Venom": [
-        "orken-magorken",
-        "zeik-soulfly"
-      ],
-      "Linen Bandage": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "emo-erling",
-        "mrs-capo",
-        "mr-capo",
-        "plucky-recks",
-        "capo-shoots",
-        "rowdy-highland",
-        "zeik-soulfly",
-        "the-parttimedad",
-        "ember-highland",
-        "neo-squid",
-        "hotdog-nomustard"
-      ],
-      "Heavy Linen Bandage": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "plucky-recks",
-        "capo-shoots",
-        "rowdy-highland",
-        "zeik-soulfly",
-        "the-parttimedad"
-      ],
-      "Wool Bandage": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "capo-shoots",
-        "zeik-soulfly"
-      ],
-      "Heavy Wool Bandage": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "capo-shoots"
-      ],
-      "Runecloth Bandage": [
-        "orken-magorken",
-        "scott-frost"
-      ],
-      "Mageweave Bandage": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Heavy Mageweave Bandage": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "First Aid Kit": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "mrs-capo",
-        "mr-capo",
-        "plucky-recks",
-        "capo-shoots",
-        "zeik-soulfly"
-      ],
-      "Minor Healing Potion": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "emo-erling",
-        "zeik-soulfly",
-        "the-parttimedad"
-      ],
-      "Lesser Healing Potion": [
-        "orken-magorken",
-        "scott-frost",
-        "zeik-soulfly"
-      ],
-      "Healing Potion": [
-        "orken-magorken",
-        "scott-frost"
-      ],
-      "Woolen Tourniquet": [
-        "orken-magorken",
-        "scott-frost"
-      ],
-      "Simple Poultice": [
-        "orken-magorken"
-      ],
-      "Major Healing Potion": [
-        "scott-frost"
-      ],
-      "Greater Healing Potion": [
-        "capo-shoots"
-      ]
-    },
-    "Mining": {
-      "Smelt Gold": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Smelt Iron": [
-        "scott-frost",
-        "needmore-beers",
-        "capo-shoots"
-      ],
-      "Smelt Tin": [
-        "scott-frost",
-        "needmore-beers",
-        "capo-shoots",
-        "the-parttimedad"
-      ],
-      "Mining": [
-        "scott-frost",
-        "scott-frost",
-        "needmore-beers",
-        "needmore-beers",
-        "mrs-capo",
-        "capo-shoots",
-        "capo-shoots",
-        "rowdy-highland",
-        "the-parttimedad",
-        "hotdog-nomustard"
-      ],
-      "Smelt Silver": [
-        "scott-frost",
-        "needmore-beers",
-        "capo-shoots",
-        "the-parttimedad"
-      ],
-      "Smelt Bronze": [
-        "scott-frost",
-        "needmore-beers",
-        "capo-shoots",
-        "the-parttimedad"
-      ],
-      "Smelt Steel": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Smelt Copper": [
-        "scott-frost",
-        "needmore-beers",
-        "mrs-capo",
-        "capo-shoots",
-        "rowdy-highland",
-        "the-parttimedad",
-        "hotdog-nomustard"
-      ],
-      "Smelt Mithril": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Lodestone": [
-        "scott-frost",
-        "needmore-beers",
-        "mrs-capo",
-        "capo-shoots",
-        "the-parttimedad"
-      ]
-    },
-    "Blacksmithing": {
-      "Green Iron Bracers": [
-        "scott-frost"
-      ],
-      "Golden Scale Cuirass": [
-        "scott-frost"
-      ],
-      "Polished Steel Boots": [
-        "scott-frost"
-      ],
-      "Rough Weightstone": [
-        "scott-frost",
-        "needmore-beers",
-        "rowdy-highland"
-      ],
-      "Heavy Weightstone": [
-        "scott-frost"
-      ],
-      "Coarse Weightstone": [
-        "scott-frost"
-      ],
-      "Rough Grinding Stone": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Runed Copper Gauntlets": [
-        "scott-frost"
-      ],
-      "Coarse Grinding Stone": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Heavy Grinding Stone": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Rough Copper Vest": [
-        "scott-frost",
-        "needmore-beers",
-        "rowdy-highland"
-      ],
-      "Rough Sharpening Stone": [
-        "scott-frost",
-        "needmore-beers",
-        "rowdy-highland"
-      ],
-      "Copper Bracers": [
-        "scott-frost",
-        "needmore-beers",
-        "rowdy-highland"
-      ],
-      "Coarse Sharpening Stone": [
-        "scott-frost"
-      ],
-      "Runed Copper Belt": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Rough Bronze Leggings": [
-        "scott-frost"
-      ],
-      "Patterned Bronze Bracers": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Heavy Sharpening Stone": [
-        "scott-frost"
-      ],
-      "Shining Silver Breastplate": [
-        "scott-frost"
-      ],
-      "Bronze Shortsword": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Dense Sharpening Stone": [
-        "scott-frost"
-      ],
-      "Thorium Bracers": [
-        "scott-frost"
-      ],
-      "Solid Grinding Stone": [
-        "scott-frost"
-      ],
-      "Mithril Plate Pants": [
-        "scott-frost"
-      ],
-      "Heavy Mithril Pants": [
-        "scott-frost"
-      ],
-      "Heavy Mithril Breastplate": [
-        "scott-frost"
-      ],
-      "Heavy Mithril Boots": [
-        "scott-frost"
-      ],
-      "Bronze Warhammer": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Heavy Mithril Axe": [
-        "scott-frost"
-      ],
-      "Golden Scale Bracers": [
-        "scott-frost"
-      ],
-      "Iron Shield Spike": [
-        "scott-frost"
-      ],
-      "Sharpening Wheel": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Sterling Silver Boots": [
-        "scott-frost"
-      ],
-      "Veteran's Silvered Chain Helm": [
-        "scott-frost"
-      ],
-      "Justicar's Boots": [
-        "scott-frost"
-      ],
-      "Copper Rod": [
-        "scott-frost",
-        "needmore-beers",
-        "rowdy-highland"
-      ],
-      "Silver Rod": [
-        "needmore-beers"
       ]
     },
     "Tailoring": {
@@ -2099,6 +1793,312 @@
         "canigeta-summon"
       ]
     },
+    "First Aid": {
+      "Silk Bandage": [
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots"
+      ],
+      "Heavy Silk Bandage": [
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Anti-Venom": [
+        "orken-magorken",
+        "zeik-soulfly"
+      ],
+      "Linen Bandage": [
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers",
+        "mrs-capo",
+        "mr-capo",
+        "emo-erling",
+        "capo-shoots",
+        "plucky-recks",
+        "zeik-soulfly",
+        "rowdy-highland",
+        "the-parttimedad",
+        "hotdog-nomustard",
+        "ember-highland",
+        "neo-squid"
+      ],
+      "Heavy Linen Bandage": [
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots",
+        "plucky-recks",
+        "zeik-soulfly",
+        "rowdy-highland",
+        "the-parttimedad"
+      ],
+      "Wool Bandage": [
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots",
+        "zeik-soulfly"
+      ],
+      "Heavy Wool Bandage": [
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots"
+      ],
+      "Runecloth Bandage": [
+        "orken-magorken",
+        "scott-frost"
+      ],
+      "Mageweave Bandage": [
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Heavy Mageweave Bandage": [
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "First Aid Kit": [
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers",
+        "mrs-capo",
+        "mr-capo",
+        "capo-shoots",
+        "plucky-recks",
+        "zeik-soulfly"
+      ],
+      "Minor Healing Potion": [
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers",
+        "emo-erling",
+        "zeik-soulfly",
+        "the-parttimedad"
+      ],
+      "Lesser Healing Potion": [
+        "orken-magorken",
+        "scott-frost",
+        "zeik-soulfly"
+      ],
+      "Healing Potion": [
+        "orken-magorken",
+        "scott-frost"
+      ],
+      "Woolen Tourniquet": [
+        "orken-magorken",
+        "scott-frost"
+      ],
+      "Simple Poultice": [
+        "orken-magorken"
+      ],
+      "Major Healing Potion": [
+        "scott-frost"
+      ],
+      "Greater Healing Potion": [
+        "capo-shoots"
+      ]
+    },
+    "Mining": {
+      "Smelt Gold": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Smelt Iron": [
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots"
+      ],
+      "Smelt Tin": [
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots",
+        "the-parttimedad"
+      ],
+      "Mining": [
+        "scott-frost",
+        "scott-frost",
+        "needmore-beers",
+        "needmore-beers",
+        "mrs-capo",
+        "capo-shoots",
+        "capo-shoots",
+        "rowdy-highland",
+        "the-parttimedad",
+        "hotdog-nomustard"
+      ],
+      "Smelt Silver": [
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots",
+        "the-parttimedad"
+      ],
+      "Smelt Bronze": [
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots",
+        "the-parttimedad"
+      ],
+      "Smelt Steel": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Smelt Copper": [
+        "scott-frost",
+        "needmore-beers",
+        "mrs-capo",
+        "capo-shoots",
+        "rowdy-highland",
+        "the-parttimedad",
+        "hotdog-nomustard"
+      ],
+      "Smelt Mithril": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Lodestone": [
+        "scott-frost",
+        "needmore-beers",
+        "mrs-capo",
+        "capo-shoots",
+        "the-parttimedad"
+      ]
+    },
+    "Blacksmithing": {
+      "Green Iron Bracers": [
+        "scott-frost"
+      ],
+      "Golden Scale Cuirass": [
+        "scott-frost"
+      ],
+      "Polished Steel Boots": [
+        "scott-frost"
+      ],
+      "Rough Weightstone": [
+        "scott-frost",
+        "needmore-beers",
+        "rowdy-highland"
+      ],
+      "Heavy Weightstone": [
+        "scott-frost"
+      ],
+      "Coarse Weightstone": [
+        "scott-frost"
+      ],
+      "Rough Grinding Stone": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Runed Copper Gauntlets": [
+        "scott-frost"
+      ],
+      "Coarse Grinding Stone": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Heavy Grinding Stone": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Rough Copper Vest": [
+        "scott-frost",
+        "needmore-beers",
+        "rowdy-highland"
+      ],
+      "Rough Sharpening Stone": [
+        "scott-frost",
+        "needmore-beers",
+        "rowdy-highland"
+      ],
+      "Copper Bracers": [
+        "scott-frost",
+        "needmore-beers",
+        "rowdy-highland"
+      ],
+      "Coarse Sharpening Stone": [
+        "scott-frost"
+      ],
+      "Runed Copper Belt": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Rough Bronze Leggings": [
+        "scott-frost"
+      ],
+      "Patterned Bronze Bracers": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Heavy Sharpening Stone": [
+        "scott-frost"
+      ],
+      "Shining Silver Breastplate": [
+        "scott-frost"
+      ],
+      "Bronze Shortsword": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Dense Sharpening Stone": [
+        "scott-frost"
+      ],
+      "Thorium Bracers": [
+        "scott-frost"
+      ],
+      "Solid Grinding Stone": [
+        "scott-frost"
+      ],
+      "Mithril Plate Pants": [
+        "scott-frost"
+      ],
+      "Heavy Mithril Pants": [
+        "scott-frost"
+      ],
+      "Heavy Mithril Breastplate": [
+        "scott-frost"
+      ],
+      "Heavy Mithril Boots": [
+        "scott-frost"
+      ],
+      "Bronze Warhammer": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Heavy Mithril Axe": [
+        "scott-frost"
+      ],
+      "Golden Scale Bracers": [
+        "scott-frost"
+      ],
+      "Iron Shield Spike": [
+        "scott-frost"
+      ],
+      "Sharpening Wheel": [
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "Sterling Silver Boots": [
+        "scott-frost"
+      ],
+      "Veteran's Silvered Chain Helm": [
+        "scott-frost"
+      ],
+      "Justicar's Boots": [
+        "scott-frost"
+      ],
+      "Copper Rod": [
+        "scott-frost",
+        "needmore-beers",
+        "rowdy-highland"
+      ],
+      "Silver Rod": [
+        "needmore-beers"
+      ]
+    },
     "Alchemy": {
       "Minor Troll's Blood Elixir": [
         "zeik-soulfly"
@@ -2149,16 +2149,38 @@
       ]
     }
   },
+  "classIcons": {
+    "Warrior": "https://render.worldofwarcraft.com/forever-us/icons/56/626008.jpg",
+    "Mage": "https://render.worldofwarcraft.com/forever-us/icons/56/626001.jpg",
+    "Hunter": "https://render.worldofwarcraft.com/forever-us/icons/56/626000.jpg",
+    "Paladin": "https://render.worldofwarcraft.com/forever-us/icons/56/626003.jpg",
+    "Rogue": "https://render.worldofwarcraft.com/forever-us/icons/56/626005.jpg",
+    "Warlock": "https://render.worldofwarcraft.com/forever-us/icons/56/626007.jpg",
+    "Shaman": "https://render.worldofwarcraft.com/forever-us/icons/56/626006.jpg",
+    "Priest": "https://render.worldofwarcraft.com/forever-us/icons/56/626004.jpg",
+    "Druid": "https://render.worldofwarcraft.com/forever-us/icons/56/625999.jpg"
+  },
+  "debug": {
+    "Hunter": "data:image/jpeg;base64,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",
+    "Rogue": "data:image/jpeg;base64,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",
+    "Druid": "data:image/jpeg;base64,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",
+    "Warlock": "data:image/jpeg;base64,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",
+    "Shaman": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAA4ADgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5G8GfscwSeCdF8ceP/HugfD/wlqyGWykvZmu7y6UE7vLtoRubCqTjcDlkHVuN3R9B/Z/0COKO18JeN/iJdOwjgluLhNItbt87CI0j86TGfmGWJyVUqMEks9O02xZNTnhinmh8D2728t4xdY5d4j/dhjhTgN93HIY92z6L8MvEz3vwtsbf4fwwaz8X9MtBbaTo+oEQT2cLJ5lxeWwcBbiUovyIrblT5wMjB/LcxxtaVF1as5NXStGXs4q70cpL3oxX2pc217K9kfqVDK6GGwaxdTqnZKKbdnbV729L7eY3UW13w94y0fwFoXwP8G/DDVJ4o7+O91zT49SvYIdhVJhNcBskGN2AwW3Ic8h88b8VPDvii88baH4R1D4j6prl3qObq4WFFijt1AZmXCYznZ8o4HAOBxVj4MfEvWby98L+BPFuo/8ACa+G9QeS6uLuaR4dV8FzK2LmQTyn9zEuxZHDZRghZQrbtx4Jim+Jnxg8W3thrNpPcRQXH9k6xqgNnaCzjbY90zEgxbYAWIxwWbOCMHGFP6hXnTlFJwjfm1le90nzScpLW9030bTktT0clllmMoXxFO0k43veyind2fmvxHJomj/tU6M/h3Xbaw0H4xacpktdYHk2yeJQvDQzS5AN0RykhBV9pDEZVl+SPE3hjVvBevXui65YT6bqdnIYZra4jZHRh1yCOO3519PvY/Cdbm60GHxre+I/F88jDTtb0i0Ntptpdf8ALJd7yGWRWdFUsIwB5m5WOz5+kt7HSv2q9LHgbx1c/wBmfGrRVkstI8RXZCrqqRf8ud7KGIM42uqTMMEDDEucvpgszeSylJxl9V3acWnTv9qCerpX+JWThurxtb57NcFhMa5SwDuo/LTz7+vT02+Kg20gepAoroPH/gLW/hx4lu9A1+wn07VLWTZLFOhBGQGVhkcgqysD6EUV+n0q0K9ONWlK8WrprZruj4OpSnSk4SWqPp7/AIQHxb4++Hngy88L+H73WrKXTGsr97OE/ejn3GJm6r1/EMSM103xJ+Gvjr4h2kOtDwHFojeHoBJNq2mX6NJDBGpKmR/MIAUISGPPy8EYNfOtx8YPGbaR4e8K6TrmpDS7dd8VhDLIsaSyks21UI3EszYzk5YgdTn7S1/4Va54Q+E1l8N9In0/wlFdLDqvjXxjrUv2WJ3ZGKabCy5N0IxniEum/uhkYV+S4v61l1alCcoe/KfKveuo3u3L3kno0rcru2ku5+vUs0VCH1aPLNJ21Ta3u7Wava/RbnjvjvxL8Qbjw1LBrljpaXuoaesup+PrGBYr7VdMC5jtZyqg7+EQkY3qiKxcAlsXw/dxfBqT4eeJtV8NnWNImttSjvrNJAftCXMMkQiAJ3YCSDd1wTjgnnu/2iPCd/pvxA8H/DuPXP8AhItH1PTNPvIbh7ZbRGDMyExIrsUTbFkq3zZzwflJ4P47+J7PVfHcWm6bPiw0mE2sSRlWjjaJT8vBPU8DPPGOwFaYWNKpQjCjFKE02+W6VmnH1WmiSso2SSVj6zCYHLcRgpqg2oTSV3a9+daWdtmlvq7u72KPhrxxY+Erlh8M/h/pvh25iGRr/iJWv9QidjkSQ7/3aEYKgBW4543GvPYFGrza9rWqzXFwv2ogTKRvuJixMjE4I5PP49a+s/iX4O+GFz4t0/wjpl3eeCfElxotpftrbBLnRpXkgDkTKCrW7BsjcDsGcsM8V4rr37P/AI58D+J/DXgcaQbs3VwF0y8tleW0vi5B8xZcAMo8zJ4G0HkAUsHjsJKWt4VJpP323KUVrdTbfMvJP3U3dROHK6mTUYQqUoSjaMm+dKzlpGNknZpJuT1u3GKe+lj4n+I/EHxk/Z8m1TxxoP2vVPCl5aabp3jmF0DXxlVnbT5nbLXEiIWkzGTt2Evy+6QrT/bb1qw8DWng74U+GrkXmleDYHW7mi+aO81CULJd3BIwSAzKibvuhWAODRX1+R4dU8JfDRUacm2ktEr9l0Td3ZWSvZI/KsyVOGIftHa6TS8mtL+bVn8zxD4NX0PhnxcnimeEXS6HLDPAkuDF5oB8syE9Bu2kEc5Xjnkeiar8fr74qavfS39y2qXFyy4F7/rLVdxY+QASqJ0BA6/z8s8Ba3ouiW3juDWbYSXV7pIgsXlA+STcjAjPfIQ5AJwDyoya5z4c+Y3jLS1RC25yrYBJA2sCfyz+VaV8BSrVJ4ucffhFcr8rXsvnufU5bmNPB18LhoRi/azcZN6yX7xr5b380lfY+6P2qNSfRLz4HeM9Os01S/bS7i1hhtUMjTyQmMQx4UFiCZm7nknGM89P/ZPg/wDZz+HzeCfGdsur+O/G6QXnjVhtlNnH5omSC32MFGzcCzqWBflSdqiOl4A+LujaP8CdG8Yatptjq3iPw9cTJ4dlvtssVjOQieaEJAYqwRlXoCN53Oimvi344eOdS1rxfJdSanJc310TfXV3FOzB5XJICtkttUYAyc/pX55w/ga2Kw/9myvFUpTi5dXacpRt5RTXq/JE1Kzp0HVxD/c02tFa7lK2ny5b+VvM9M/bC8VXGlePGGhaiDpstpZQQTwuGM0MVuMbsd9zMGUgdBkevb/s4ftI+LtA8Ly3djfwXeiwAw3+k3lwBNbTNGY1uLV2G5VVDyFIwP72DXy58QNbbW9N0GSR/wB/5coliyTsIYAAA9BgAj61n6behfh5rNplRvu4HOevAPSvs4ZHh6uVUcJXipcto3a7Plv69br5Eyxqw2ZVMJKXtKMaXMlsrqCqaXvytttNeburh4+8VS+LNbnnDbkM8rI+NryB2BJYDjnGcADGaK5z+JccfMD+tFfa0qcKUFCCskfnWLxdTHV54iu/el93ovJLReRr6xpuryX8rXNhcGcHa2yIsOAB1Gc9OvetjwJqWp+Cdbl1E+Hpr5zaywRR3FozBHdSocehGTyKKKUqcZwdN7EUcVVw9eOIg/eTvffU0L/xX4gPh2w0mOz1CSK1keVbWa3YRQl/vEAYJY4HJ7cVy+p2Wo6pLCY9LvD5dukWBAxPygD0ooqKeHp0tYK2/wCJ0YjMsRiYeyqP3dNEu3X57s6fx1qk3irSPC1rZeEX0650qzeC7uLe1IN5IXJDvhQScBeuT1Hbnk1s9Tg024szpd2GklViWgbgDPHTr0ooqoUoxgoJaL/O5NfF1aleVaT95qz9OXl/Il0fwhq+uahHawWj25PzNNcqUjQDuTj6fnRRRWx55//Z",
+    "Mage": "data:image/jpeg;base64,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",
+    "Priest": "data:image/jpeg;base64,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",
+    "Warrior": "data:image/jpeg;base64,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",
+    "Paladin": "data:image/jpeg;base64,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"
+  },
   "unrecognizedKills": [],
   "bossKills": {
     "Scarlet Commander Mograine kills (Scarlet Monastery)": {
       "total": 9,
       "members": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
-        "needmore-beers",
-        "canigeta-summon"
+        "needmore-beers"
       ],
       "first": 1794550690000,
       "seen": null
@@ -2167,10 +2189,10 @@
       "total": 7,
       "members": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
         "plucky-recks",
         "the-parttimedad"
       ],
@@ -2181,16 +2203,16 @@
       "total": 19,
       "members": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
         "mrs-capo",
         "mr-capo",
-        "plucky-recks",
         "capo-shoots",
-        "thick-hogs",
+        "plucky-recks",
         "zeik-soulfly",
+        "thick-hogs",
         "the-parttimedad",
         "hotdog-nomustard"
       ],
@@ -2201,12 +2223,12 @@
       "total": 15,
       "members": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
-        "plucky-recks",
         "capo-shoots",
+        "plucky-recks",
         "zeik-soulfly",
         "the-parttimedad"
       ],
@@ -2217,10 +2239,10 @@
       "total": 5,
       "members": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
-        "needmore-beers",
-        "canigeta-summon"
+        "needmore-beers"
       ],
       "first": 1794540894000,
       "seen": null
@@ -2229,10 +2251,10 @@
       "total": 9,
       "members": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
-        "needmore-beers",
-        "canigeta-summon"
+        "needmore-beers"
       ],
       "first": 1794550690000,
       "seen": null
@@ -2241,10 +2263,10 @@
       "total": 18,
       "members": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
         "plucky-recks"
       ],
       "first": 1794883170000,
@@ -2254,10 +2276,10 @@
       "total": 10,
       "members": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
-        "needmore-beers",
-        "canigeta-summon"
+        "needmore-beers"
       ],
       "first": null,
       "seen": "2026-11-19T05:51:33.057Z"
@@ -2266,84 +2288,36 @@
       "total": 5,
       "members": [
         "squid-zero",
+        "canigeta-summon",
         "orken-magorken",
         "scott-frost",
-        "needmore-beers",
-        "canigeta-summon"
+        "needmore-beers"
       ],
       "first": 1795115127000,
       "seen": "2026-11-19T19:53:55.057Z"
     },
-    "Shade of the Archmage Kills (City of Dalaran)": {
-      "total": 6,
-      "members": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "canigeta-summon",
-        "plucky-recks",
-        "capo-shoots"
-      ],
-      "first": 1794299959000,
-      "seen": null
-    },
-    "Archmage Arugal kills (Shadowfang Keep)": {
-      "total": 6,
-      "members": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "canigeta-summon",
-        "plucky-recks",
-        "capo-shoots"
-      ],
-      "first": 1793948659000,
-      "seen": null
-    },
-    "Charlga Razorflank kills (Razorfen Kraul)": {
-      "total": 6,
-      "members": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "canigeta-summon",
-        "plucky-recks",
-        "capo-shoots"
-      ],
-      "first": 1794175389000,
-      "seen": null
-    },
-    "Mekgineer Thermaplugg kills (Gnomeregan)": {
-      "total": 4,
-      "members": [
-        "orken-magorken",
-        "scott-frost",
-        "needmore-beers",
-        "canigeta-summon"
-      ],
-      "first": 1794421901000,
-      "seen": null
-    },
     "Edwin VanCleef Kills (Deadmines)": {
       "total": 4,
       "members": [
+        "canigeta-summon",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
         "plucky-recks"
       ],
       "first": 1794073195000,
       "seen": null
     },
-    "Aku'mai kills (Blackfathom Deeps)": {
-      "total": 4,
+    "Shade of the Archmage Kills (City of Dalaran)": {
+      "total": 6,
       "members": [
+        "canigeta-summon",
+        "orken-magorken",
         "scott-frost",
         "needmore-beers",
-        "canigeta-summon",
-        "capo-shoots"
+        "capo-shoots",
+        "plucky-recks"
       ],
-      "first": 1794032583000,
+      "first": 1794299959000,
       "seen": null
     },
     "Lyn the Ignored Kills (City of Dalaran)": {
@@ -2354,6 +2328,54 @@
       ],
       "first": 1794298578000,
       "seen": "2026-11-19T04:52:37.945Z"
+    },
+    "Archmage Arugal kills (Shadowfang Keep)": {
+      "total": 6,
+      "members": [
+        "canigeta-summon",
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots",
+        "plucky-recks"
+      ],
+      "first": 1793948659000,
+      "seen": null
+    },
+    "Aku'mai kills (Blackfathom Deeps)": {
+      "total": 4,
+      "members": [
+        "canigeta-summon",
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots"
+      ],
+      "first": 1794032583000,
+      "seen": null
+    },
+    "Charlga Razorflank kills (Razorfen Kraul)": {
+      "total": 6,
+      "members": [
+        "canigeta-summon",
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers",
+        "capo-shoots",
+        "plucky-recks"
+      ],
+      "first": 1794175389000,
+      "seen": null
+    },
+    "Mekgineer Thermaplugg kills (Gnomeregan)": {
+      "total": 4,
+      "members": [
+        "canigeta-summon",
+        "orken-magorken",
+        "scott-frost",
+        "needmore-beers"
+      ],
+      "first": 1794421901000,
+      "seen": null
     }
   },
   "raw": {
