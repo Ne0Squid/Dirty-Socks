@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20T00:38:03+00:00",
+  "generated": "2026-11-20T11:30:17+00:00",
   "source": "https://foreverchanges.pro/patch-notes/feed.xml",
   "siteName": "ForeverChanges",
   "siteUrl": "https://foreverchanges.pro/patch-notes",
@@ -10,7 +10,7 @@
       "title": "Hotfix, November 19, 2026",
       "date": "2026-11-19T12:00:00+00:00",
       "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-19",
-      "summary": "Hotfixes to the November 17 client, first seen between 19:52 and 20:00 UTC on November 19 in the caches the launch realms send. Blizzard has posted no notes for them. Mote of Unstable Magic is now Bind on Pickup, Simple Dress and Simple Black Dress are now cloth armor, and Squall-breakers Potion can now be destroyed.",
+      "summary": "Blizzard’s notes of November 19, posted at 04:00 UTC on November 20: the Seed Hybridizer is re-enabled with a chance of failure, Two-Handed Weapon Specialization increases all Holy damage, Vitrix’s Poison Shock deals less damage, Motes of Unstable Magic are soulbound, and there are fixes to Cultivation, the Skyborne riding discount and several quests. The game data also shows Shank triggering procs, Ti’ik’s Head dropping for the whole party and Squall-breakers Potion disappearing after 5 minutes.",
       "kind": "hotfix",
       "firstSeen": "2026-11-20T00:38:03+00:00"
     },
@@ -19,7 +19,7 @@
       "title": "Hotfix, November 18, 2026",
       "date": "2026-11-18T12:00:00+00:00",
       "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-18",
-      "summary": "Hotfixes to the November 17 client, first seen between 20:47 and 20:54 UTC on November 18, and at 01:23 UTC on November 19, in the caches the launch realms send. Blizzard has posted no notes for them. Ruzzgot’s Shipment, for “The Big Payback”, now drops for everyone in the party, and the paladin talent Two-Handed Weapon Specialization now works on all your Physical and Holy damage.",
+      "summary": "Hotfixes to the November 17 client, first seen between 20:47 and 20:54 UTC on November 18 in the caches the launch realms send. Blizzard has posted no notes for them. Ruzzgot’s Shipment, for “The Big Payback”, now drops for everyone in the party.",
       "kind": "hotfix",
       "firstSeen": "2026-11-19T00:46:41+00:00"
     },
