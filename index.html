@@ -84,6 +84,7 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .prow{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-top:1px solid var(--line);font-size:.92rem}
 .prof-more{margin-top:8px;width:100%;background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px;font:inherit;font-size:.85rem;cursor:pointer}.prof-more:hover{color:var(--accent);border-color:var(--accent)}
 .prow a{color:inherit;text-decoration:none}.prow a:hover{color:var(--accent);text-decoration:underline}
+.cico{width:38px;height:38px;border-radius:8px;border:2px solid;flex:none;object-fit:cover}
 .dot{width:12px;height:12px;border-radius:50%;flex:none}
 .tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right;white-space:nowrap}
 .sched{width:100%;border-collapse:collapse}
@@ -212,7 +213,7 @@ function show(c,pg){
   const pages=Math.max(1,Math.ceil(list.length/PER_PAGE));
   const cur=Math.min(Math.max(1,pg||1),pages);
   fEl.innerHTML=tabs.map(t=>`<button class="${t===c?"on":""}" data-c="${t}">${t}</button>`).join("");
-  mEl.innerHTML=list.slice((cur-1)*PER_PAGE,cur*PER_PAGE).map(m=>`<div class="card member"><span class="dot" style="background:${m.color}"></span><div><strong>${nameLink(m)}</strong><div class="muted">Level ${m.level}${m.ilvl?" · iLvl "+m.ilvl:""}</div><div class="muted">${m.spec?m.spec+" ":""}${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
+  mEl.innerHTML=list.slice((cur-1)*PER_PAGE,cur*PER_PAGE).map(m=>`<div class="card member">${cico(m)}<div><strong>${nameLink(m)}</strong><div class="muted">Level ${m.level}${m.ilvl?" · iLvl "+m.ilvl:""}</div><div class="muted">${m.spec?m.spec+" ":""}${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
   const pagerEl=document.getElementById("pager");
   if(pages<=1){pagerEl.innerHTML="";return}
   let h=`<button data-p="${cur-1}" ${cur===1?"disabled":""}>‹ Prev</button>`;
@@ -274,7 +275,8 @@ document.getElementById("proflist").addEventListener("click",e=>{
   ex.hidden=!open; b.textContent=open?"Show fewer":"Show "+b.dataset.n+" more";
 });
 const PROF_ICONS={"Mining":"⛏️","Blacksmithing":"🔨","Leatherworking":"🥾","Skinning":"🔪","Herbalism":"🌿","Alchemy":"⚗️","Tailoring":"🧵","Engineering":"⚙️","Enchanting":"✨","Cooking":"🍳","Fishing":"🎣","First Aid":"🩹","Jewelcrafting":"💎","Inscription":"📜","Archaeology":"🏺","Lockpicking":"🗝️"};
-let profIcons={},recipeData={};
+let profIcons={},recipeData={},classIcons={};
+const cico=m=>classIcons[m.cls]?`<img class="cico" src="${esc(classIcons[m.cls])}" alt="${esc(m.cls)}" style="border-color:${m.color}" loading="lazy" onerror="this.outerHTML='<span class=&quot;dot&quot; style=&quot;background:${m.color}&quot;></span>'">`:`<span class="dot" style="background:${m.color}"></span>`;
 function drawCraft(){
   const card=document.getElementById("craftcard"),out=document.getElementById("craftout");
   const all=[];
@@ -304,6 +306,7 @@ function drawProfessions(){
 }
 
 function render(d){
+  classIcons=d.classIcons||{};
   const roster=d.roster, maxLevel=Math.max(...roster.map(m=>m.level));
   const classes=[...new Set(roster.map(m=>m.cls))].sort();
   document.getElementById("statcards").innerHTML=[
@@ -399,7 +402,7 @@ function drawRaids(bk){
 drawRaids(null);
 fetch("guild-data.json",{cache:"no-cache"})
   .then(r=>r.ok?r.json():Promise.reject())
-  .then(j=>{render({generated:j.generated,founded:(j.raw&&j.raw.guild&&j.raw.guild.created_timestamp)||fallback.founded,roster:j.roster,history:j.history,icons:j.professionIcons,recipes:j.recipes});drawDungeons(j.bossKills);drawRaids(j.bossKills)})
+  .then(j=>{render({generated:j.generated,founded:(j.raw&&j.raw.guild&&j.raw.guild.created_timestamp)||fallback.founded,roster:j.roster,history:j.history,icons:j.professionIcons,classIcons:j.classIcons,recipes:j.recipes});drawDungeons(j.bossKills);drawRaids(j.bossKills)})
   .catch(()=>render({...fallback,saved:true}));
 </script>
 </body>
