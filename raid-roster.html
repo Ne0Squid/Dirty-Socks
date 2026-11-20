@@ -66,10 +66,11 @@ details.raid>summary::before{content:"";width:0;height:0;border-left:7px solid v
 details.raid[open]>summary::before{transform:rotate(90deg)}
 details.raid>summary .t{flex:1}
 details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:.85rem;color:var(--muted)}
-.rtable{width:100%;border-collapse:collapse;font-size:.95rem}
+.rtable{width:100%;min-width:480px;white-space:nowrap;border-collapse:collapse;font-size:.95rem}
 .rtable th,.rtable td{text-align:left;padding:9px 18px;border-top:1px solid var(--line)}
 .rtable th{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
 .rtable td.num{width:44px;color:var(--muted);font-variant-numeric:tabular-nums}
+.rwrap{overflow-x:auto}.cls{display:inline-flex;align-items:center;gap:8px;font-weight:600}.cico{width:24px;height:24px;border-radius:6px;border:2px solid;flex:none;object-fit:cover}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
 .rtable .open{color:var(--muted);font-style:italic}
 .role{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.78rem;font-weight:600;border:1px solid var(--line)}
 .role.tank{color:#6aa6ff;border-color:#6aa6ff55}.role.heal{color:#5fd38d;border-color:#5fd38d55}.role.dps{color:#ff7a66;border-color:#ff7a6655}
@@ -95,20 +96,34 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 
 <script>
 document.getElementById("yr").textContent=new Date().getFullYear();
-// Edit the player names here as the raid fills. Leave "" for an open slot.
+// Who fills each slot lives in raid-roster.json (slot number -> character name); everything else comes from the guild data.
 const RAIDS=[
-  {name:"The Barrow Deeps",size:10,slots:[["Main Tank","tank",1],["Main Healer","heal",1],["DPS","dps",8]]},
-  {name:"Hyjal Summit",size:20,slots:[["Main Tank","tank",1],["Off Tank","tank",1],["Healer","heal",2],["DPS","dps",16]]}
+  {id:"barrow",name:"The Barrow Deeps",size:10,slots:[["Main Tank","tank",1],["Main Healer","heal",1],["DPS","dps",8]]},
+  {id:"hyjal",name:"Hyjal Summit",size:20,slots:[["Main Tank","tank",1],["Off Tank","tank",1],["Healer","heal",2],["DPS","dps",16]]}
 ];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-document.getElementById("raids").innerHTML=RAIDS.map((r,ri)=>{
-  let n=0;
-  const rows=r.slots.flatMap(([label,cls,count])=>Array.from({length:count},()=>{
-    n++;return `<tr><td class="num">${n}</td><td><span class="role ${cls}">${esc(label)}</span></td><td class="open">Open</td></tr>`;
-  })).join("");
-  return `<details class="card raid" id="raid${ri}" open><summary><span class="t">${esc(r.name)}</span><span class="n">0 / ${r.size} filled</span></summary>
-  <table class="rtable"><thead><tr><th>#</th><th>Role</th><th>Player</th></tr></thead><tbody>${rows}</tbody></table></details>`;
-}).join("");
+function draw(guild,assign){
+  const roster=guild.roster||[],icons=guild.classIcons||{};
+  const find=n=>roster.find(m=>m.name.toLowerCase()===String(n).trim().toLowerCase());
+  document.getElementById("raids").innerHTML=RAIDS.map((r,ri)=>{
+    let n=0,filled=0;const a=assign[r.id]||{};
+    const rows=r.slots.flatMap(([label,cls,count])=>Array.from({length:count},()=>{
+      n++;const who=a[n],m=who?find(who):null,tag=`<span class="role ${cls}">${esc(label)}</span>`;
+      if(!who)return `<tr><td class="num">${n}</td><td>${tag}</td><td class="open" colspan="4">Open</td></tr>`;
+      filled++;
+      if(!m)return `<tr><td class="num">${n}</td><td>${tag}</td><td><strong>${esc(who)}</strong></td><td class="open" colspan="3">Not found in guild roster</td></tr>`;
+      const ico=icons[m.cls]?`<img class="cico" src="${esc(icons[m.cls])}" alt="" style="border-color:${m.color}" loading="lazy">`:`<span class="dot" style="background:${m.color}"></span>`;
+      return `<tr><td class="num">${n}</td><td>${tag}</td><td><strong>${esc(m.name)}</strong></td><td><span class="cls">${ico}<span style="color:${m.color}">${esc(m.cls)}</span></span></td><td>${esc(m.spec||"–")}</td><td>${m.ilvl||"–"}</td></tr>`;
+    })).join("");
+    const open=document.getElementById("raid"+ri)?document.getElementById("raid"+ri).open:true;
+    return `<details class="card raid" id="raid${ri}"${open?" open":""}><summary><span class="t">${esc(r.name)}</span><span class="n">${filled} / ${r.size} filled</span></summary>
+    <div class="rwrap"><table class="rtable"><thead><tr><th>#</th><th>Role</th><th>Player</th><th>Class</th><th>Spec</th><th>iLvl</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+  }).join("");
+}
+Promise.all([
+  fetch("guild-data.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
+  fetch("raid-roster.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({}))
+]).then(([g,a])=>draw(g,a));
 </script>
 </body>
 </html>
