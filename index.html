@@ -54,11 +54,11 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 #statcards{grid-template-columns:repeat(4,1fr);gap:10px}
 .stat{text-align:center;padding:14px 6px}.stat b{display:block;font-family:Cinzel,Georgia,serif;font-size:clamp(1.1rem,4.5vw,2rem);color:var(--accent)}.stat span{font-size:clamp(.68rem,2.4vw,.9rem)}
 .muted{color:var(--muted);font-size:.9rem}
-#countdown{padding:28px 0}
-.cd{text-align:center}.cd h3{font-size:1.2rem;margin-bottom:12px}
-.cd-units{display:flex;justify-content:center;gap:clamp(8px,3vw,22px)}
-.cd-u{min-width:clamp(58px,17vw,92px)}.cd-u b{display:block;font-family:Cinzel,Georgia,serif;font-size:clamp(1.8rem,8vw,3rem);color:var(--accent);line-height:1.1;font-variant-numeric:tabular-nums}.cd-u span{font-size:clamp(.68rem,2.4vw,.85rem);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-.cd-note{margin-top:12px}
+#countdown{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:2;display:flex;align-items:center;gap:clamp(8px,2vw,16px);white-space:nowrap;padding:7px 16px;line-height:1.2;background:rgba(12,14,20,.66);border:1px solid rgba(255,255,255,.22);border-radius:999px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(0,0,0,.45)}
+#cdtitle{font-family:Cinzel,Georgia,serif;font-size:clamp(.62rem,2.3vw,.9rem);color:#e8e2d2;letter-spacing:.03em}
+.cd-units{display:flex;gap:clamp(6px,1.6vw,12px)}
+.cd-u{display:flex;align-items:baseline;gap:2px}.cd-u b{font-family:Cinzel,Georgia,serif;font-size:clamp(.8rem,3vw,1.2rem);color:var(--accent);font-variant-numeric:tabular-nums}.cd-u span{font-size:clamp(.55rem,2vw,.72rem);color:#c9c4b6;text-transform:lowercase}
+@media (max-width:480px){#countdown{bottom:6px;padding:5px 11px}#cdtitle{display:none}}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
 .filters button{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:20px;padding:6px 16px;cursor:pointer;font-size:.88rem}
 .filters button.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
@@ -125,6 +125,10 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 <header class="hero banner">
   <h1 class="sr">Dirty Socks</h1>
   <img src="images/Banner.jpg" alt="Dirty Socks – Socks aren’t clean">
+  <div class="cd" id="countdown">
+    <span id="cdtitle">Raids open December 9</span>
+    <div class="cd-units" id="cdunits"></div>
+  </div>
 </header>
 
 <main class="wrap">
@@ -138,15 +142,6 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
   <div class="grid" id="statcards"></div>
   <p class="muted" id="updated" style="margin-top:12px"></p>
 </section>
-
-<section id="countdown">
-  <div class="card cd">
-    <h3 id="cdtitle">Raids open December 9</h3>
-    <div class="cd-units" id="cdunits"></div>
-    <div class="muted cd-note" id="cdnote">The Barrow Deeps, Hyjal Summit and Onyxia’s Lair unlock for level 60 characters.</div>
-  </div>
-</section>
-
 <section id="race">
   <h2>Race to 60</h2>
   <div class="grid" id="leaders"></div>
@@ -413,11 +408,11 @@ const raidKilledByHand=[];
 const raidsOpen=new Date("2026-12-09T00:00:00");
 // =====================================================================
 (function(){
-  const units=document.getElementById("cdunits"),title=document.getElementById("cdtitle"),note=document.getElementById("cdnote");
+  const units=document.getElementById("cdunits"),box=document.getElementById("countdown");
   function tick(){
     const ms=raidsOpen-new Date();
-    if(ms<=0){title.textContent="Raids are open!";units.innerHTML="";note.textContent="See the raid progression below.";clearInterval(t);return}
-    const s=Math.floor(ms/1000),v=[["Days",Math.floor(s/86400)],["Hours",Math.floor(s%86400/3600)],["Minutes",Math.floor(s%3600/60)],["Seconds",s%60]];
+    if(ms<=0){box.hidden=true;clearInterval(t);return}
+    const s=Math.floor(ms/1000),v=[["d",Math.floor(s/86400)],["h",Math.floor(s%86400/3600)],["m",Math.floor(s%3600/60)],["s",s%60]];
     units.innerHTML=v.map(([l,n])=>`<div class="cd-u"><b>${String(n).padStart(2,"0")}</b><span>${l}</span></div>`).join("");
   }
   const t=setInterval(tick,1000);tick();
