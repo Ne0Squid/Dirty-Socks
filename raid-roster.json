@@ -1,5 +1,10 @@
 {
   "_help": "Put a character name against a slot number. Names must match the guild roster. Leave a slot out to keep it Open.",
-  "barrow": {},
+  "barrow": {
+    "1": "Needmore",
+    "2": "Squid",
+    "3": "Scott",
+    "4": "Orken"
+  },
   "hyjal": {}
 }
