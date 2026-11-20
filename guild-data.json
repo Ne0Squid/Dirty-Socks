@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20T19:50:27.689Z",
+  "generated": "2026-11-20T20:40:17.151Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -695,17 +695,17 @@
     }
   },
   "professionIcons": {
-    "Tailoring": "https://render.worldofwarcraft.com/forever-us/icons/56/136249.jpg",
-    "Enchanting": "https://render.worldofwarcraft.com/forever-us/icons/56/136244.jpg",
-    "Fishing": "https://render.worldofwarcraft.com/forever-us/icons/56/136245.jpg",
-    "Blacksmithing": "https://render.worldofwarcraft.com/forever-us/icons/56/136241.jpg",
-    "Leatherworking": "https://render.worldofwarcraft.com/forever-us/icons/56/136247.jpg",
-    "Mining": "https://render.worldofwarcraft.com/forever-us/icons/56/136248.jpg",
     "Skinning": "https://render.worldofwarcraft.com/forever-us/icons/56/134366.jpg",
+    "Blacksmithing": "https://render.worldofwarcraft.com/forever-us/icons/56/136241.jpg",
+    "Enchanting": "https://render.worldofwarcraft.com/forever-us/icons/56/136244.jpg",
+    "Tailoring": "https://render.worldofwarcraft.com/forever-us/icons/56/136249.jpg",
+    "Mining": "https://render.worldofwarcraft.com/forever-us/icons/56/136248.jpg",
     "Cooking": "https://render.worldofwarcraft.com/forever-us/icons/56/133971.jpg",
+    "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg",
+    "Leatherworking": "https://render.worldofwarcraft.com/forever-us/icons/56/136247.jpg",
     "First Aid": "https://render.worldofwarcraft.com/forever-us/icons/56/135966.jpg",
     "Herbalism": "https://render.worldofwarcraft.com/forever-us/icons/56/136246.jpg",
-    "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg"
+    "Fishing": "https://render.worldofwarcraft.com/forever-us/icons/56/136245.jpg"
   },
   "recipes": {
     "Leatherworking": {
@@ -1027,9 +1027,9 @@
         "plucky-recks",
         "mrs-capo",
         "capo-shoots",
-        "zeik-soulfly",
         "thick-hogs",
         "rowdy-highland",
+        "zeik-soulfly",
         "ember-highland",
         "neo-squid"
       ],
@@ -1038,8 +1038,8 @@
         "squid-zero",
         "scott-frost",
         "plucky-recks",
-        "zeik-soulfly",
-        "rowdy-highland"
+        "rowdy-highland",
+        "zeik-soulfly"
       ],
       "Roasted Boar Meat": [
         "orken-magorken",
@@ -1052,9 +1052,9 @@
         "plucky-recks",
         "mrs-capo",
         "capo-shoots",
-        "zeik-soulfly",
         "thick-hogs",
         "rowdy-highland",
+        "zeik-soulfly",
         "ember-highland",
         "neo-squid"
       ],
@@ -1118,9 +1118,9 @@
         "plucky-recks",
         "mrs-capo",
         "capo-shoots",
-        "zeik-soulfly",
         "thick-hogs",
         "rowdy-highland",
+        "zeik-soulfly",
         "ember-highland",
         "neo-squid"
       ],
@@ -1135,9 +1135,9 @@
         "plucky-recks",
         "mrs-capo",
         "capo-shoots",
-        "zeik-soulfly",
         "thick-hogs",
         "rowdy-highland",
+        "zeik-soulfly",
         "ember-highland",
         "neo-squid"
       ],
@@ -1252,12 +1252,12 @@
         "plucky-recks",
         "mrs-capo",
         "capo-shoots",
-        "zeik-soulfly",
-        "rowdy-highland",
         "the-parttimedad",
+        "rowdy-highland",
+        "zeik-soulfly",
         "ember-highland",
-        "neo-squid",
-        "hotdog-nomustard"
+        "hotdog-nomustard",
+        "neo-squid"
       ],
       "Heavy Linen Bandage": [
         "orken-magorken",
@@ -1265,9 +1265,9 @@
         "scott-frost",
         "plucky-recks",
         "capo-shoots",
-        "zeik-soulfly",
+        "the-parttimedad",
         "rowdy-highland",
-        "the-parttimedad"
+        "zeik-soulfly"
       ],
       "Wool Bandage": [
         "orken-magorken",
@@ -1311,8 +1311,8 @@
         "needmore-beers",
         "scott-frost",
         "emo-erling",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "the-parttimedad",
+        "zeik-soulfly"
       ],
       "Lesser Healing Potion": [
         "orken-magorken",
@@ -1933,8 +1933,8 @@
         "mrs-capo",
         "capo-shoots",
         "capo-shoots",
-        "rowdy-highland",
         "the-parttimedad",
+        "rowdy-highland",
         "hotdog-nomustard"
       ],
       "Smelt Silver": [
@@ -1958,8 +1958,8 @@
         "scott-frost",
         "mrs-capo",
         "capo-shoots",
-        "rowdy-highland",
         "the-parttimedad",
+        "rowdy-highland",
         "hotdog-nomustard"
       ],
       "Smelt Mithril": [
@@ -2156,15 +2156,15 @@
     }
   },
   "classIcons": {
+    "Paladin": "https://render.worldofwarcraft.com/forever-us/icons/56/626003.jpg",
+    "Priest": "https://render.worldofwarcraft.com/forever-us/icons/56/626004.jpg",
     "Shaman": "https://render.worldofwarcraft.com/forever-us/icons/56/626006.jpg",
-    "Rogue": "https://render.worldofwarcraft.com/forever-us/icons/56/626005.jpg",
+    "Druid": "https://render.worldofwarcraft.com/forever-us/icons/56/625999.jpg",
+    "Mage": "https://render.worldofwarcraft.com/forever-us/icons/56/626001.jpg",
     "Warlock": "https://render.worldofwarcraft.com/forever-us/icons/56/626007.jpg",
     "Warrior": "https://render.worldofwarcraft.com/forever-us/icons/56/626008.jpg",
     "Hunter": "https://render.worldofwarcraft.com/forever-us/icons/56/626000.jpg",
-    "Mage": "https://render.worldofwarcraft.com/forever-us/icons/56/626001.jpg",
-    "Druid": "https://render.worldofwarcraft.com/forever-us/icons/56/625999.jpg",
-    "Paladin": "https://render.worldofwarcraft.com/forever-us/icons/56/626003.jpg",
-    "Priest": "https://render.worldofwarcraft.com/forever-us/icons/56/626004.jpg"
+    "Rogue": "https://render.worldofwarcraft.com/forever-us/icons/56/626005.jpg"
   },
   "unrecognizedKills": [],
   "bossKills": {
@@ -2220,9 +2220,9 @@
         "plucky-recks",
         "mrs-capo",
         "capo-shoots",
-        "zeik-soulfly",
-        "thick-hogs",
         "the-parttimedad",
+        "thick-hogs",
+        "zeik-soulfly",
         "hotdog-nomustard"
       ],
       "first": 1793898057000,
@@ -2238,8 +2238,8 @@
         "scott-frost",
         "plucky-recks",
         "capo-shoots",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "the-parttimedad",
+        "zeik-soulfly"
       ],
       "first": 1794087023000,
       "seen": null
