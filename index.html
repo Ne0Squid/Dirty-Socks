@@ -4,6 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dirty Socks – WoW Forever Guild</title>
+<meta name="description" content="Socks aren’t clean. Roster, dungeon and raid progress for the Dirty Socks Horde guild on WoW Forever.">
+<meta name="theme-color" content="#0f1117">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dirty Socks">
+<meta property="og:title" content="Dirty Socks – WoW Forever Guild">
+<meta property="og:description" content="Socks aren’t clean. Roster, dungeon and raid progress for the Dirty Socks Horde guild on WoW Forever.">
+<meta property="og:url" content="https://ne0squid.github.io/Dirty-Socks/">
+<meta property="og:image" content="https://ne0squid.github.io/Dirty-Socks/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dirty Socks – WoW Forever Guild">
+<meta name="twitter:description" content="Socks aren’t clean. Roster, dungeon and raid progress for the Dirty Socks Horde guild on WoW Forever.">
+<meta name="twitter:image" content="https://ne0squid.github.io/Dirty-Socks/og-image.jpg">
 <script src="faction.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
 <style>
@@ -20,6 +35,14 @@ a{color:var(--accent)}
 nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface)}
 nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)}
 nav a:hover{color:var(--accent)}
+.menu-btn{display:none}
+@media (max-width:720px){
+  nav{flex-direction:column;align-items:stretch;gap:0;padding:6px 20px}
+  .menu-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:none;border:0;color:var(--text);font:inherit;font-weight:600;font-size:.95rem;padding:8px;cursor:pointer}
+  .menu-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  nav a{display:none;padding:11px 4px;border-top:1px solid var(--line);text-align:center;font-size:.95rem}
+  nav.open a:not([hidden]){display:block}
+}
 .hero{background:var(--hero);text-align:center;padding:72px 20px;border-bottom:1px solid var(--line)}
 .hero h1{font-size:clamp(2.2rem,8vw,4rem);color:var(--accent);letter-spacing:.04em}
 .hero p{color:var(--muted);max-width:520px;margin:12px auto 26px}
@@ -101,7 +124,7 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 
 <header class="hero banner">
   <h1 class="sr">Dirty Socks</h1>
-  <img src="Banner.png" alt="Dirty Socks – Socks aren’t clean">
+  <img src="Banner.jpg" alt="Dirty Socks – Socks aren’t clean">
 </header>
 
 <main class="wrap">
@@ -330,6 +353,17 @@ function render(d){
   drawProfessions();drawCraft();
 }
 document.getElementById("yr").textContent=new Date().getFullYear();
+// Mobile menu: the link row collapses behind a Menu button on small screens.
+(function(){
+  const nav=document.querySelector("nav");if(!nav)return;
+  const btn=document.createElement("button");btn.type="button";btn.className="menu-btn";
+  btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Toggle menu");btn.textContent="☰ Menu";
+  nav.insertBefore(btn,nav.firstChild);
+  const set=o=>{nav.classList.toggle("open",o);btn.setAttribute("aria-expanded",String(o));btn.textContent=o?"✕ Close":"☰ Menu"};
+  btn.addEventListener("click",()=>set(!nav.classList.contains("open")));
+  nav.addEventListener("click",e=>{if(e.target.closest("a"))set(false)});
+})();
+
 // ===== DUNGEON CHECKLIST: add a dungeon’s name to "cleared" once the guild has beaten it =====
 const cleared=["Wetlands","The Stockade","The Drowned City","Krol’dok Stronghold"]; // dungeons Blizzard’s statistics don’t track; everything else is checked automatically
 const clearedOn={"Wetlands":"Nov 10","The Stockade":"Nov 10","Scarlet Monastery":"Nov 12","The Drowned City":"Nov 12","Krol’dok Stronghold":"Nov 17"}; // optional dates for hand-ticked dungeons
