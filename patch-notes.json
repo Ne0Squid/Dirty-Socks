@@ -1,10 +1,19 @@
 {
-  "generated": "2026-11-19T12:53:23+00:00",
+  "generated": "2026-11-20T00:38:03+00:00",
   "source": "https://foreverchanges.pro/patch-notes/feed.xml",
   "siteName": "ForeverChanges",
   "siteUrl": "https://foreverchanges.pro/patch-notes",
   "title": "ForeverChanges: Patch notes",
   "entries": [
+    {
+      "id": "foreverchanges-hotfix-2026-11-19",
+      "title": "Hotfix, November 19, 2026",
+      "date": "2026-11-19T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-19",
+      "summary": "Hotfixes to the November 17 client, first seen between 19:52 and 20:00 UTC on November 19 in the caches the launch realms send. Blizzard has posted no notes for them. Mote of Unstable Magic is now Bind on Pickup, Simple Dress and Simple Black Dress are now cloth armor, and Squall-breakers Potion can now be destroyed.",
+      "kind": "hotfix",
+      "firstSeen": "2026-11-20T00:38:03+00:00"
+    },
     {
       "id": "foreverchanges-hotfix-2026-11-18",
       "title": "Hotfix, November 18, 2026",
@@ -99,7 +108,7 @@
       "id": "foreverchanges-1.60.1.70888",
       "title": "Build 1.60.1.70888, November 10, 2026",
       "date": "2026-11-10T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes#1.60.1.70888",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#1.60.1.70888",
       "summary": "The client of November 10. It holds the server's hotfixes of November 7 to 9, and one change players see: Fear Ward can now be cast in Shadowform. Blizzard's class tuning announced for November 10 is not in it.",
       "kind": "build",
       "firstSeen": null
