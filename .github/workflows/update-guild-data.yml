@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 20
       - name: Fetch guild data from Blizzard
-        run: node fetch-guild-data.mjs
+        run: node scripts/fetch-guild-data.mjs
         env:
           BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
           BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}

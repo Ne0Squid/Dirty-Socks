@@ -81,7 +81,7 @@ const slugOf = (m) => `${m.name}-${m.surname ?? ""}`.toLowerCase().replace(/['â€
 // Last run's data. If Blizzard fails to answer for a character, its last good values are kept
 // instead of going blank, and boss kills are never dropped.
 let prevData = {};
-try { prevData = JSON.parse(readFileSync(new URL("./guild-data.json", import.meta.url), "utf8")); } catch { prevData = {}; }
+try { prevData = JSON.parse(readFileSync(new URL("../guild-data.json", import.meta.url), "utf8")); } catch { prevData = {}; }
 const prevBy = Object.fromEntries((prevData.roster ?? []).map((m) => [slugOf(m), m]));
 let carried = 0;
 // Forever returns specialization_groups[]; the group with is_active:true holds the current spec.
@@ -279,7 +279,7 @@ console.log(`Class icons: ${Object.keys(classIcons).length}`);
 
 // Level history: one snapshot per day (the latest run of that day), kept for 35 days.
 // It lives inside guild-data.json so the workflow needs no changes.
-const outPath = new URL("./guild-data.json", import.meta.url);
+const outPath = new URL("../guild-data.json", import.meta.url);
 let days = {};
 if (existsSync(outPath)) {
   try { days = JSON.parse(readFileSync(outPath, "utf8")).history?.days ?? {}; } catch { days = {}; }

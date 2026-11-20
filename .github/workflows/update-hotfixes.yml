@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Read the patch notes feed
-        run: python fetch_feed.py
+        run: python scripts/fetch_feed.py
       - name: Commit updated data
         run: |
           git config user.name "github-actions[bot]"
