@@ -6,7 +6,7 @@
   var RAIDS_OPEN = new Date("2026-11-20T00:00:00");
   function banners() {
     return new Date() >= RAIDS_OPEN
-      ? { horde: "images/Raid-Horde.png", alliance: "images/Raid-Alliance.png" }
+      ? { horde: "images/Raid-Horde.jpg", alliance: "images/Raid-Alliance.jpg" }
       : { horde: null, alliance: "images/Banner-Alliance.jpg" };
   }
   function saved() { try { var v = localStorage.getItem(KEY); return v === "alliance" ? "alliance" : "horde"; } catch (e) { return "horde"; } }
