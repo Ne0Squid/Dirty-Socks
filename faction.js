@@ -35,12 +35,20 @@
   var current = saved();
   root.setAttribute("data-faction", current);
 
-  function banner(f) {
+  var ALLIANCE_POS = "center 55%";
+  function preload() { var b = banners(); for (var k in b) if (b[k]) { var im = new Image(); im.src = b[k]; } }
+  function banner(f, instant) {
     var img = document.querySelector(".banner img");
     if (!img) return;
     if (!img.getAttribute("data-horde")) img.setAttribute("data-horde", img.getAttribute("src"));
-    img.src = banners()[f] || img.getAttribute("data-horde");
+    var target = banners()[f] || img.getAttribute("data-horde"), pos = f === "alliance" ? ALLIANCE_POS : "";
+    function set() { img.src = target; img.style.objectPosition = pos; }
+    if (instant || img.getAttribute("src") === target && img.style.objectPosition === pos) { set(); return; }
+    img.style.transition = "opacity .16s ease"; img.style.opacity = "0";
+    setTimeout(function () { set(); img.style.opacity = "1"; }, 170);
   }
+  window.dsBanner = function () { banner(current, true); };
+  preload();
   function addon(f) {
     var img = document.querySelector(".addon-link img");
     if (!img) return;
