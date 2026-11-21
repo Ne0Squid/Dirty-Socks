@@ -35,7 +35,7 @@
   var current = saved();
   root.setAttribute("data-faction", current);
 
-  var ALLIANCE_POS = "center 55%";
+  var ALLIANCE_POS = "";
   function preload() { var b = banners(); for (var k in b) if (b[k]) { var im = new Image(); im.src = b[k]; } }
   function banner(f, instant) {
     var img = document.querySelector(".banner img");
