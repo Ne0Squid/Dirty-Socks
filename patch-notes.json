@@ -1,10 +1,28 @@
 {
-  "generated": "2026-11-20T12:50:08+00:00",
+  "generated": "2026-11-21T00:40:30+00:00",
   "source": "https://foreverchanges.pro/patch-notes/feed.xml",
   "siteName": "ForeverChanges",
   "siteUrl": "https://foreverchanges.pro/patch-notes",
   "title": "ForeverChanges: Patch notes",
   "entries": [
+    {
+      "id": "foreverchanges-hotfix-2026-11-20",
+      "title": "Hotfix, November 20, 2026",
+      "date": "2026-11-20T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-20",
+      "summary": "Blizzard’s notes of November 20, posted at 00:18 UTC on November 21: Blade Flurry now makes Shank hit an additional target, Demonic Aegis no longer stays on after you unlearn it, each dungeon can be entered 5 times per hour (was 10), Stormshroud Armor’s 3-piece bonus restores less energy, and there are fixes to Blackrock Spire, Toron Rockhoof’s forge and several quests. The game data also shows Chastise working in Shadowform, Feralheart Raiment’s energy return restoring energy and Filcher’s Cowl no longer requiring level 50.",
+      "kind": "hotfix",
+      "firstSeen": "2026-11-21T00:40:30+00:00"
+    },
+    {
+      "id": "foreverchanges-1.60.1.71037",
+      "title": "Build 1.60.1.71037, November 20, 2026",
+      "date": "2026-11-20T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#1.60.1.71037",
+      "summary": "The November 20 client, read from its files: Blizzard has posted no notes for it. It writes the server’s hotfixes up to November 17 into the client itself, and no talent, class spell, racial or item reads differently.",
+      "kind": "build",
+      "firstSeen": "2026-11-21T00:40:30+00:00"
+    },
     {
       "id": "foreverchanges-hotfix-2026-11-19",
       "title": "Hotfix, November 19, 2026",
@@ -90,7 +108,7 @@
       "id": "foreverchanges-hotfix-2026-11-11",
       "title": "Hotfix, November 11, 2026",
       "date": "2026-11-11T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-11",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-11",
       "summary": "Hotfixes to the November 10 client, sent on November 11. Blizzard’s notes of November 11, posted at 00:48 UTC on November 12, describe most of them: fixes for five classes, Judgement as a ranged attack, five bigger Tailoring bags and easier enemies in Riverglades. The hotfix data shows more that the notes leave out, first seen on November 11 and 12: two wands get their damage, Seal of the Dawn and Rune of the Dawn collect Scourgestones, and campsite recipes stop giving skill points sooner.",
       "kind": "hotfix",
       "firstSeen": null
@@ -99,7 +117,7 @@
       "id": "foreverchanges-hotfix-2026-11-10",
       "title": "Hotfix, November 10, 2026",
       "date": "2026-11-10T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-10",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-10",
       "summary": "Hotfixes to the November 10 client, sent from 16:51 UTC on November 10 into the night. Blizzard’s notes of November 10, posted at 03:27 UTC on November 11, describe them. Rage of the Storm now gives Strength, Wrack now speeds up Corruption, Siphon Life and Bane of Agony while you channel it, hunter pets drop to 115% health while warlock pets get about 15% more, and most quests of level 48 and higher now reward gold. The notes also announce changes that are not in the game yet: Enhancement shamans move back toward Windfury (Stormstrike, Mental Dexterity and Maelstrom Weapon give less), and the auction house changes come with the maintenance of November 17.",
       "kind": "hotfix",
       "firstSeen": null
@@ -180,7 +198,7 @@
       "id": "foreverchanges-1.60.1.70790",
       "title": "Build 1.60.1.70790, November 4, 2026",
       "date": "2026-11-04T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes/page/2#1.60.1.70790",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#1.60.1.70790",
       "summary": "The launch client, out on November 4. It writes the November 3 hotfixes into the client files: the class changes of Blizzard’s launch notes now read from the client in every language. Items did not change.",
       "kind": "build",
       "firstSeen": null
@@ -189,7 +207,7 @@
       "id": "foreverchanges-1.60.1.70755",
       "title": "Build 1.60.1.70755, November 3, 2026",
       "date": "2026-11-03T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes/page/2#1.60.1.70755",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#1.60.1.70755",
       "summary": "A technical build: its game data is the same as the 2026-11-02 build's (1.60.1.70753). Talents, spells and items did not change.",
       "kind": "build",
       "firstSeen": null
