@@ -38,8 +38,14 @@
     if (!img.getAttribute("data-horde")) img.setAttribute("data-horde", img.getAttribute("src"));
     img.src = banners()[f] || img.getAttribute("data-horde");
   }
+  function addon(f) {
+    var img = document.querySelector(".addon-link img");
+    if (!img) return;
+    if (!img.getAttribute("data-horde")) img.setAttribute("data-horde", img.getAttribute("src"));
+    img.src = f === "alliance" ? "images/waypath-button-alliance.svg" : img.getAttribute("data-horde");
+  }
   function apply(f) {
-    current = f; root.setAttribute("data-faction", f); save(f); banner(f);
+    current = f; root.setAttribute("data-faction", f); save(f); banner(f); addon(f);
     var btns = document.querySelectorAll(".faction-toggle button");
     for (var i = 0; i < btns.length; i++) btns[i].setAttribute("aria-pressed", String(btns[i].getAttribute("data-f") === f));
   }
