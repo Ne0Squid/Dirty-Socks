@@ -1,10 +1,19 @@
 {
-  "generated": "2026-11-22T12:36:42+00:00",
+  "generated": "2026-11-23T00:38:17+00:00",
   "source": "https://foreverchanges.pro/patch-notes/feed.xml",
   "siteName": "ForeverChanges",
   "siteUrl": "https://foreverchanges.pro/patch-notes",
   "title": "ForeverChanges: Patch notes",
   "entries": [
+    {
+      "id": "foreverchanges-hotfix-2026-11-22",
+      "title": "Hotfix, November 22, 2026",
+      "date": "2026-11-22T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-22",
+      "summary": "Hotfixes to the November 20 client, first seen at 18:03 UTC on November 22 in the caches the launch realms send. Blizzard has posted no notes for them. Lockboxes, junkboxes and other containers now put what’s inside straight into your bags when you open them.",
+      "kind": "hotfix",
+      "firstSeen": "2026-11-23T00:38:17+00:00"
+    },
     {
       "id": "foreverchanges-hotfix-2026-11-21",
       "title": "Hotfix, November 21, 2026",
@@ -99,7 +108,7 @@
       "id": "foreverchanges-1.60.1.70938",
       "title": "Build 1.60.1.70938, November 13, 2026",
       "date": "2026-11-13T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes#1.60.1.70938",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#1.60.1.70938",
       "summary": "The November 13 client, read from its files: Blizzard has posted no notes for it. It writes the server’s hotfixes of November 10 and 11 into the client itself, and no talent, class spell, racial or item reads differently. One number differs between the client and the server: Wild Growth’s bonus from healing power.",
       "kind": "build",
       "firstSeen": null
@@ -189,7 +198,7 @@
       "id": "foreverchanges-hotfix-2026-11-05",
       "title": "Hotfix, November 5, 2026",
       "date": "2026-11-05T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-05",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#hotfix-2026-11-05",
       "summary": "Blizzard’s hotfixes of November 5: creature spawns, a druid trainer and tradeskill bags on Zephras Isle, the sell price of Mild Spices, Plainsrunning in battlegrounds and two quests.",
       "kind": "hotfix",
       "firstSeen": null
