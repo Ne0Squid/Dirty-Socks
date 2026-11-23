@@ -330,8 +330,12 @@ function render(d){
   classIcons=d.classIcons||{};
   const roster=d.roster, maxLevel=Math.max(...roster.map(m=>m.level));
   const classes=[...new Set(roster.map(m=>m.cls))].sort();
+  const lvls=roster.filter(m=>m.level>=10).map(m=>m.level), ilvls=roster.filter(m=>m.level>=10&&m.ilvl>0).map(m=>m.ilvl);
+  const avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):"–";
+  const avgLvl=avg(lvls), avgIlvl=avg(ilvls);
+  const FOUNDED_ON=new Date(2026,10,4), daysFounded=Math.max(0,Math.floor((new Date()-FOUNDED_ON)/864e5));
   document.getElementById("statcards").innerHTML=[
-    [roster.length,"Members"],[maxLevel,"Top level"],[classes.length,"Classes"],[new Date(d.founded).toLocaleDateString("en-US",{month:"short",year:"numeric"}),"Founded"]
+    [roster.length,"Members"],[avgLvl,"Average level"],[avgIlvl,"Average item level"],[daysFounded,"Days since founded"]
   ].map(s=>`<div class="card stat"><b>${s[0]}</b><span class="muted">${s[1]}</span></div>`).join("");
   document.getElementById("updated").textContent=d.saved?"Live roster data couldn’t be loaded, so this is a saved copy from "+fmtTime(d.generated)+".":"Roster last updated "+fmtTime(d.generated)+" ("+ago(d.generated)+").";
   const counts={};
