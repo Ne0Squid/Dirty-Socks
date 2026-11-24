@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-24T00:41:51+00:00",
+  "generated": "2026-11-24T12:54:07+00:00",
   "source": "https://foreverchanges.pro/patch-notes/feed.xml",
   "siteName": "ForeverChanges",
   "siteUrl": "https://foreverchanges.pro/patch-notes",
@@ -10,7 +10,7 @@
       "title": "Hotfix, November 23, 2026",
       "date": "2026-11-23T12:00:00+00:00",
       "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-23",
-      "summary": "Hotfixes to the November 20 client, first seen at 19:07 UTC on November 23 in the caches the launch realms send. Blizzard has posted no notes for them. On November 22 a Blizzard developer called world buffs dropping on loading screens a bug. World buffs no longer drop on loading screens, so they last into dungeons and onto the other continent again. Obsidian Sentinel’s blue items in Uldaman sell to vendors for half as much. Fengus’ Ferocity’s spell damage and healing is halved, and Sayge’s stat fortunes now raise your total stats.",
+      "summary": "Blizzard’s notes of November 23, posted at 02:06 UTC on November 24: world buffs no longer fall off when changing areas, Fengus’ Ferocity and the Darkmoon Faire buffs no longer grant twice as much as intended, warriors can no longer use Mortal Strike without the talent, the Obsidian Sentinel drops loot again, the clam dishes and Murloc Fin Soup give better Well Fed bonuses, and there are fixes to priests, the Feralheart set, Engineering, Leatherworking and Wetlands quests. The Feralheart, Chastise, Intensity and Filcher’s Cowl fixes were already in the game data on November 20. The game data also shows Obsidian Sentinel’s blue items selling for half and Explosive Runeshard slowing attack speed by 1% (was 100%).",
       "kind": "hotfix",
       "firstSeen": "2026-11-24T00:41:51+00:00"
     },
