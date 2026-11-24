@@ -1,16 +1,25 @@
 {
-  "generated": "2026-11-23T12:54:28+00:00",
+  "generated": "2026-11-24T00:41:51+00:00",
   "source": "https://foreverchanges.pro/patch-notes/feed.xml",
   "siteName": "ForeverChanges",
   "siteUrl": "https://foreverchanges.pro/patch-notes",
   "title": "ForeverChanges: Patch notes",
   "entries": [
     {
+      "id": "foreverchanges-hotfix-2026-11-23",
+      "title": "Hotfix, November 23, 2026",
+      "date": "2026-11-23T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-23",
+      "summary": "Hotfixes to the November 20 client, first seen at 19:07 UTC on November 23 in the caches the launch realms send. Blizzard has posted no notes for them. On November 22 a Blizzard developer called world buffs dropping on loading screens a bug. World buffs no longer drop on loading screens, so they last into dungeons and onto the other continent again. Obsidian Sentinel’s blue items in Uldaman sell to vendors for half as much. Fengus’ Ferocity’s spell damage and healing is halved, and Sayge’s stat fortunes now raise your total stats.",
+      "kind": "hotfix",
+      "firstSeen": "2026-11-24T00:41:51+00:00"
+    },
+    {
       "id": "foreverchanges-hotfix-2026-11-22",
       "title": "Hotfix, November 22, 2026",
       "date": "2026-11-22T12:00:00+00:00",
       "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-22",
-      "summary": "Hotfixes to the November 20 client, first seen at 18:03 UTC on November 22 in the caches the launch realms send. Blizzard has posted no notes for them. Lockboxes, junkboxes and other containers now put what’s inside straight into your bags when you open them.",
+      "summary": "Hotfixes to the November 20 client, made at 9:55 a.m. PST on November 22, first seen at 18:03 UTC in the caches the launch realms send and confirmed by Blizzard on November 23. Lockboxes, junkboxes and other containers now put what’s inside straight into your bags when you open them, a temporary measure until Blizzard restores peeking into lockboxes.",
       "kind": "hotfix",
       "firstSeen": "2026-11-23T00:38:17+00:00"
     },
@@ -99,7 +108,7 @@
       "id": "foreverchanges-hotfix-2026-11-13",
       "title": "Hotfix, November 13, 2026",
       "date": "2026-11-13T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-13",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-13",
       "summary": "Blizzard’s notes of November 13, posted at 01:54 UTC on November 14, describe the hotfixes of that day: fixes for eight classes, diminishing returns on stuns between players and creatures, Judgement of Command as a melee attack again, item stats put right, no experience from trivial enemies in dungeons, and many quest fixes. The hotfix data shows two more changes the notes leave out: the three ranks of Wild Growth share one cooldown, and the Wildstalker Armor bonus now works on Multi-Shot.",
       "kind": "hotfix",
       "firstSeen": null
@@ -189,7 +198,7 @@
       "id": "foreverchanges-hotfix-2026-11-06",
       "title": "Hotfix, November 6, 2026",
       "date": "2026-11-06T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-06",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#hotfix-2026-11-06",
       "summary": "A hotfix to the launch client, which Blizzard’s notes of November 6 describe. In the client it fixes three tooltips: Gore Drinker now names Reckless Swings, Bear Form gives the Health of Classic, and Ravage shows its real bonus damage. What the spells do did not change.",
       "kind": "hotfix",
       "firstSeen": null
