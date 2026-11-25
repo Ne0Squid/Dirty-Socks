@@ -2,7 +2,6 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hall of Fame – Dirty Socks</title>
 <meta name="description" content="The Dirty Socks Hall of Fame.">
@@ -110,6 +109,7 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 
 <script>
 document.getElementById("yr").textContent=new Date().getFullYear();
+const full=m=>m.surname&&m.name.length<=3?m.name+" "+m.surname:m.name; // very short first names get their last name too
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const slugOf=m=>(m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-");
 const dfmt=t=>new Date(t).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric",timeZone:"America/New_York"});
@@ -123,10 +123,10 @@ function draw(g){
   const chasers=roster.filter(m=>m.level<60&&!wonSlugs.has(slugOf(m))).sort((a,b)=>b.level-a.level||(b.ilvl||0)-(a.ilvl||0));
   document.getElementById("podium").innerHTML=[0,1,2].map(i=>{
     const [medal,label,col]=MEDALS[i],w=won[i];
-    if(w){const m=bySlug[w.slug]||w;return `<div class="card pod p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div>${ico(m)}<h3>${esc(w.name)}</h3><div class="muted" style="color:${w.color}">${esc(w.cls)}</div><div class="muted when">Reached 60 on ${dfmt(w.at)}</div></div>`}
+    if(w){const m=bySlug[w.slug]||w;return `<div class="card pod p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div>${ico(m)}<h3>${esc(full(m))}</h3><div class="muted" style="color:${w.color}">${esc(w.cls)}</div><div class="muted when">Reached 60 on ${dfmt(w.at)}</div></div>`}
     const c=chasers[i-won.length];
     if(!c)return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div><h3>Unclaimed</h3></div>`;
-    return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label} · unclaimed</div>${ico(c)}<h3>${esc(c.name)}</h3><div class="muted" style="color:${c.color}">${esc(c.cls)}</div><div class="bar"><span style="width:${c.level/60*100}%"></span></div><div class="muted">Level ${c.level} · ${60-c.level} to go</div></div>`;
+    return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label} · unclaimed</div>${ico(c)}<h3>${esc(full(c))}</h3><div class="muted" style="color:${c.color}">${esc(c.cls)}</div><div class="bar"><span style="width:${c.level/60*100}%"></span></div><div class="muted">Level ${c.level} · ${60-c.level} to go</div></div>`;
   }).join("");
   // ---- Awards, all worked out from the guild data
   const top=(items,n=3)=>items.filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,n);
@@ -141,7 +141,7 @@ function draw(g){
   ];
   document.getElementById("awards").innerHTML=A.map(([i,t,d,list,f])=>{
     const w=list[0];
-    return `<div class="card award"><div class="ico">${i}</div><h3>${t}</h3><p class="muted desc">${d}</p>`+(w?`<div class="win">${ico(w.m)}<strong>${esc(w.m.name)}</strong><span class="val">${f(w.v)}</span></div>`+list.slice(1).map((r,k)=>`<div class="runner"><span>${k+2}. ${esc(r.m.name)}</span><span>${f(r.v)}</span></div>`).join(""):`<p class="muted" style="margin:0">Nobody yet.</p>`)+`</div>`;
+    return `<div class="card award"><div class="ico">${i}</div><h3>${t}</h3><p class="muted desc">${d}</p>`+(w?`<div class="win">${ico(w.m)}<strong>${esc(full(w.m))}</strong><span class="val">${f(w.v)}</span></div>`+list.slice(1).map((r,k)=>`<div class="runner"><span>${k+2}. ${esc(full(r.m))}</span><span>${f(r.v)}</span></div>`).join(""):`<p class="muted" style="margin:0">Nobody yet.</p>`)+`</div>`;
   }).join("");
   // ---- Firsts: earliest recorded kill for each boss, plus the raids that are still locked
   const kills=Object.entries(g.bossKills||{}).filter(([,b])=>b.first).map(([n,b])=>({n,t:b.first,place:(n.match(/\(([^)]+)\)\s*$/)||[])[1]||""})).sort((a,b)=>a.t-b.t);
