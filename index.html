@@ -32,20 +32,6 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui
 h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
 a{color:var(--accent)}
 .wrap{max-width:960px;margin:0 auto;padding:0 20px}
-nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface)}
-nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)}
-nav a:hover{color:var(--accent)}
-.menu-btn{display:none}
-.navmain,.navpages{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}
-@media (min-width:1100px){nav{justify-content:space-between;flex-wrap:nowrap}.navpages{padding-left:22px;border-left:1px solid var(--line)}}
-@media (max-width:720px){
-  nav{flex-direction:column;align-items:stretch;gap:0;padding:6px 20px}
-  .navmain,.navpages{display:contents}
-  .menu-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:none;border:0;color:var(--text);font:inherit;font-weight:600;font-size:.95rem;padding:8px;cursor:pointer}
-  .menu-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  nav a{display:none;padding:11px 4px;border-top:1px solid var(--line);text-align:center;font-size:.95rem}
-  nav.open a:not([hidden]){display:block}
-}
 .hero{background:var(--hero);text-align:center;padding:72px 20px;border-bottom:1px solid var(--line)}
 .hero h1{font-size:clamp(2.2rem,8vw,4rem);color:var(--accent);letter-spacing:.04em}
 .hero p{color:var(--muted);max-width:520px;margin:12px auto 26px}
@@ -121,10 +107,8 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 </style>
 </head>
 <body>
-<nav>
-<div class="navmain"><a href="#stats">Guild Stats</a><a href="#race">Race to 60</a><a href="#roster">Roster</a><a href="#professions" id="profnav" hidden>Professions</a><a href="#dungeons">Dungeons</a><a href="#raidprog">Raid Progression</a></div>
-<div class="navpages"><a href="hotfixes.html">Patch Notes</a><a href="hall-of-fame.html">Hall of Fame</a><a class="raidroster" href="raid-roster.html">Raid Roster</a></div>
-</nav>
+<nav></nav>
+<script src="nav.js"></script>
 
 <header class="hero banner">
   <h1 class="sr">Dirty Socks</h1>
@@ -356,17 +340,6 @@ function render(d){
   drawProfessions();drawCraft();
 }
 document.getElementById("yr").textContent=new Date().getFullYear();
-// Mobile menu: the link row collapses behind a Menu button on small screens.
-(function(){
-  const nav=document.querySelector("nav");if(!nav)return;
-  const btn=document.createElement("button");btn.type="button";btn.className="menu-btn";
-  btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Toggle menu");btn.textContent="☰ Menu";
-  nav.insertBefore(btn,nav.firstChild);
-  const set=o=>{nav.classList.toggle("open",o);btn.setAttribute("aria-expanded",String(o));btn.textContent=o?"✕ Close":"☰ Menu"};
-  btn.addEventListener("click",()=>set(!nav.classList.contains("open")));
-  nav.addEventListener("click",e=>{if(e.target.closest("a"))set(false)});
-})();
-
 // ===== DUNGEON CHECKLIST: add a dungeon’s name to "cleared" once the guild has beaten it =====
 const cleared=["Wetlands","The Stockade","The Drowned City","Krol’dok Stronghold"]; // dungeons Blizzard’s statistics don’t track; everything else is checked automatically
 const clearedOn={"Wetlands":"Nov 10","The Stockade":"Nov 10","Scarlet Monastery":"Nov 12","The Drowned City":"Nov 12","Krol’dok Stronghold":"Nov 17"}; // optional dates for hand-ticked dungeons

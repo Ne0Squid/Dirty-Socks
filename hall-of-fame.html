@@ -31,9 +31,6 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui
 h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
 a{color:var(--accent)}
 .wrap{max-width:960px;margin:0 auto;padding:0 20px}
-nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface)}
-nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)}
-nav a:hover,nav a.here{color:var(--accent)}
 .hero{background:var(--hero);border-bottom:1px solid var(--line)}
 .banner{padding:0;line-height:0}
 .banner img{display:block;width:100%;height:clamp(110px,30vw,480px);object-fit:cover;object-position:center 35%}
@@ -81,7 +78,8 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 </style>
 </head>
 <body>
-<nav><a href="index.html">← Guild Home</a><a href="hotfixes.html">Patch Notes</a><a href="raid-roster.html">Raid Roster</a><a class="here" href="hall-of-fame.html">Hall of Fame</a></nav>
+<nav></nav>
+<script src="nav.js"></script>
 
 <header class="hero banner">
   <h1 class="sr">Dirty Socks</h1>
