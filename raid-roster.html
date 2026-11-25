@@ -79,20 +79,6 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 .sched .when{margin:0 0 4px;font-size:1.05rem}.sched .when b{font-family:Cinzel,Georgia,serif;font-size:1.3rem;color:var(--accent)}.sched .when span{color:var(--muted)}
 .sched .muted{margin:0}
 </style>
-<style>
-.rq label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.9rem}
-.rq select,.rq textarea{font:inherit;font-weight:400;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%}
-.rq select:focus-visible,.rq textarea:focus-visible,.rq input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-.rq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;align-items:start}
-.rq fieldset{border:1px solid var(--line);border-radius:6px;padding:8px 12px 10px;margin:0;min-width:0}
-.rq legend{font-weight:600;font-size:.9rem;padding:0 6px}
-.rq .chk{flex-direction:row;align-items:center;gap:8px;font-weight:400;padding:3px 0}
-.rq textarea{resize:vertical}
-.rq-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}
-.rq-actions .btn[disabled]{opacity:.6;cursor:default}
-#rq-msg.err{color:var(--accent)}
-.rq-done{display:flex;flex-direction:column;gap:6px}.rq-done b{font-family:Cinzel,Georgia,serif;font-size:1.2rem;color:var(--accent)}
-</style>
 </head>
 <body>
 <nav></nav>
@@ -117,21 +103,10 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 </section>
 <section id="request" style="padding-top:8px">
   <h2>Request a Raid Spot</h2>
-  <form class="card rq" id="rqform" novalidate>
-    <p class="muted" style="margin:0 0 16px">Want in? Tell the officers which character you would like to bring. They confirm every spot and add you to the roster.</p>
-    <div class="rq-grid">
-      <label for="rq-char">Character<select id="rq-char" required><option value="">Loading roster…</option></select></label>
-      <label for="rq-raid">Raid<select id="rq-raid"><option>The Barrow Deeps (10)</option><option>Hyjal Summit (20)</option><option>Either raid</option></select></label>
-      <label for="rq-role">Role<select id="rq-role"><option>Tank</option><option>Healer</option><option>DPS</option></select></label>
-      <fieldset><legend>Nights you can make</legend>
-        <label class="chk"><input type="checkbox" name="rq-night" value="Wednesday" checked> Wednesday</label>
-        <label class="chk"><input type="checkbox" name="rq-night" value="Thursday" checked> Thursday</label>
-      </fieldset>
-    </div>
-    <label for="rq-note" style="margin-top:14px"><span>Anything the officers should know <span class="muted" style="font-weight:400">(optional)</span></span><textarea id="rq-note" rows="3" maxlength="300" placeholder="Off-spec, gear status, a backup role…"></textarea></label>
-    <input type="text" id="rq-web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
-    <div class="rq-actions"><button class="btn" type="submit" id="rq-send">Send request</button><span class="muted" id="rq-msg" role="status"></span></div>
-  </form>
+  <div class="card rq">
+    <p style="margin:0 0 16px">Want in? Tell the officers which character you would like to bring, which raid, your role and the nights you can make. Every spot is confirmed by an officer.</p>
+    <a class="btn" href="https://forms.gle/wESFMshow64SfqLF6" target="_blank" rel="noopener">Request a spot</a>
+  </div>
 </section>
 </main>
 
@@ -168,35 +143,6 @@ Promise.all([
   fetch("raid-roster.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({}))
 ]).then(([g,a])=>draw(g,a));
 
-// ===== Raid spot requests =====
-// REQUEST_URL is the small relay that forwards a request to the officers' Discord channel. Until it is set up, the form
-// shows how it will look and works as a preview, but nothing is sent.
-const REQUEST_URL="";
-(function(){
-  const f=document.getElementById("rqform"),sel=document.getElementById("rq-char"),msg=document.getElementById("rq-msg"),btn=document.getElementById("rq-send");
-  const full=m=>m.surname?m.name+" "+m.surname:m.name;
-  fetch("guild-data.json",{cache:"no-cache"}).then(r=>r.json()).then(g=>{
-    const list=(g.roster||[]).filter(m=>m.level>=10).sort((a,b)=>full(a).localeCompare(full(b)));
-    sel.innerHTML='<option value="">Choose your character</option>'+list.map(m=>`<option value="${full(m).replace(/"/g,"&quot;")}">${full(m)} · ${m.cls}</option>`).join("");
-  }).catch(()=>{sel.innerHTML='<option value="">Roster unavailable, try again later</option>'});
-  const say=(t,bad)=>{msg.textContent=t;msg.className="muted"+(bad?" err":"")};
-  f.addEventListener("submit",async e=>{
-    e.preventDefault();
-    const nights=[...f.querySelectorAll('[name=rq-night]:checked')].map(x=>x.value);
-    if(!sel.value)return say("Choose your character first.",true);
-    if(!nights.length)return say("Pick at least one night.",true);
-    if(document.getElementById("rq-web").value)return; // spam trap
-    try{if(Date.now()-Number(localStorage.getItem("ds-rq")||0)<60000)return say("You just sent one. Give it a minute.",true)}catch(_){}
-    const body={character:sel.value,raid:document.getElementById("rq-raid").value,role:document.getElementById("rq-role").value,nights,note:document.getElementById("rq-note").value.trim()};
-    btn.disabled=true;say("Sending…");
-    try{
-      if(REQUEST_URL){const r=await fetch(REQUEST_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});if(!r.ok)throw 0}
-      else await new Promise(r=>setTimeout(r,500));
-      try{localStorage.setItem("ds-rq",String(Date.now()))}catch(_){}
-      f.innerHTML=`<div class="rq-done"><b>Request sent</b><span>${body.character} · ${body.role} · ${body.raid} · ${nights.join(" & ")}</span><span class="muted">${REQUEST_URL?"The officers will confirm your spot and add you to the roster.":"Preview only: nothing was actually sent."}</span></div>`;
-    }catch(_){btn.disabled=false;say("Could not send. Please try again, or message an officer.",true)}
-  });
-})();
 </script>
 </body>
 </html>
