@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25T18:39:55.200Z",
+  "generated": "2026-11-25T19:45:49.364Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -612,7 +612,7 @@
     {
       "name": "Hotdog",
       "surname": "Nomustard",
-      "level": 26,
+      "level": 27,
       "cls": "Hunter",
       "color": "#abd473",
       "rank": 4,
@@ -621,7 +621,7 @@
       "professions": [
         {
           "name": "Mining",
-          "skill": 117,
+          "skill": 120,
           "max": 150,
           "primary": true
         },
@@ -935,7 +935,7 @@
         "thick-hogs": 16,
         "annie-turvy": 58,
         "the-parttimedad": 28,
-        "hotdog-nomustard": 26,
+        "hotdog-nomustard": 27,
         "zeik-soulfly": 20,
         "ember-highland": 13,
         "neo-squid": 11,
@@ -956,17 +956,17 @@
     ]
   },
   "professionIcons": {
-    "First Aid": "https://render.worldofwarcraft.com/forever-us/icons/56/135966.jpg",
-    "Enchanting": "https://render.worldofwarcraft.com/forever-us/icons/56/136244.jpg",
-    "Fishing": "https://render.worldofwarcraft.com/forever-us/icons/56/136245.jpg",
-    "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg",
-    "Blacksmithing": "https://render.worldofwarcraft.com/forever-us/icons/56/136241.jpg",
-    "Leatherworking": "https://render.worldofwarcraft.com/forever-us/icons/56/136247.jpg",
-    "Skinning": "https://render.worldofwarcraft.com/forever-us/icons/56/134366.jpg",
     "Mining": "https://render.worldofwarcraft.com/forever-us/icons/56/136248.jpg",
-    "Cooking": "https://render.worldofwarcraft.com/forever-us/icons/56/133971.jpg",
+    "Blacksmithing": "https://render.worldofwarcraft.com/forever-us/icons/56/136241.jpg",
+    "Tailoring": "https://render.worldofwarcraft.com/forever-us/icons/56/136249.jpg",
+    "Fishing": "https://render.worldofwarcraft.com/forever-us/icons/56/136245.jpg",
+    "Enchanting": "https://render.worldofwarcraft.com/forever-us/icons/56/136244.jpg",
+    "Skinning": "https://render.worldofwarcraft.com/forever-us/icons/56/134366.jpg",
+    "Leatherworking": "https://render.worldofwarcraft.com/forever-us/icons/56/136247.jpg",
+    "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg",
+    "First Aid": "https://render.worldofwarcraft.com/forever-us/icons/56/135966.jpg",
     "Herbalism": "https://render.worldofwarcraft.com/forever-us/icons/56/136246.jpg",
-    "Tailoring": "https://render.worldofwarcraft.com/forever-us/icons/56/136249.jpg"
+    "Cooking": "https://render.worldofwarcraft.com/forever-us/icons/56/133971.jpg"
   },
   "recipes": {
     "Mining": {
@@ -993,8 +993,8 @@
         "scott-frost",
         "capo-shoots",
         "capo-shoots",
-        "mrs-capo",
         "rowdy-highland",
+        "mrs-capo",
         "hotdog-nomustard",
         "the-parttimedad"
       ],
@@ -1020,8 +1020,8 @@
         "needmore-beers",
         "scott-frost",
         "capo-shoots",
-        "mrs-capo",
         "rowdy-highland",
+        "mrs-capo",
         "hotdog-nomustard",
         "the-parttimedad"
       ],
@@ -1181,41 +1181,41 @@
       "Charred Wolf Meat": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
-        "mr-capo",
         "capo-shoots",
-        "plucky-recks",
+        "mr-capo",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "emo-erling",
-        "thick-hogs",
-        "mrs-capo",
         "rowdy-highland",
-        "ember-highland",
-        "annie-turvy",
+        "mrs-capo",
+        "thick-hogs",
         "zeik-soulfly",
+        "annie-turvy",
+        "ember-highland",
         "neo-squid"
       ],
       "Roasted Boar Meat": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
-        "mr-capo",
         "capo-shoots",
-        "plucky-recks",
+        "mr-capo",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "emo-erling",
-        "thick-hogs",
-        "mrs-capo",
         "rowdy-highland",
-        "ember-highland",
-        "annie-turvy",
+        "mrs-capo",
+        "thick-hogs",
         "zeik-soulfly",
+        "annie-turvy",
+        "ember-highland",
         "neo-squid"
       ],
       "Spotted Yellowtail": [
@@ -1234,8 +1234,8 @@
       ],
       "Brilliant Smallfish": [
         "needmore-beers",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "plucky-recks",
         "pope-feratu"
@@ -1267,41 +1267,41 @@
       "Herb Baked Egg": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
-        "mr-capo",
         "capo-shoots",
-        "plucky-recks",
+        "mr-capo",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "emo-erling",
-        "thick-hogs",
-        "mrs-capo",
         "rowdy-highland",
-        "ember-highland",
-        "annie-turvy",
+        "mrs-capo",
+        "thick-hogs",
         "zeik-soulfly",
+        "annie-turvy",
+        "ember-highland",
         "neo-squid"
       ],
       "Basic Campfire": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
-        "mr-capo",
         "capo-shoots",
-        "plucky-recks",
+        "mr-capo",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "emo-erling",
-        "thick-hogs",
-        "mrs-capo",
         "rowdy-highland",
-        "ember-highland",
-        "annie-turvy",
+        "mrs-capo",
+        "thick-hogs",
         "zeik-soulfly",
+        "annie-turvy",
+        "ember-highland",
         "neo-squid"
       ],
       "Twice-Spiced Raptor Slice": [
@@ -1345,8 +1345,8 @@
         "orken-magorken",
         "squid-zero",
         "scott-frost",
-        "plucky-recks",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "rowdy-highland",
         "zeik-soulfly"
@@ -1436,11 +1436,11 @@
       "Fishing": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
-        "plucky-recks",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "zeik-soulfly"
       ],
@@ -1476,18 +1476,18 @@
         "orken-magorken",
         "squid-zero",
         "scott-frost",
-        "mr-capo",
         "capo-shoots",
-        "plucky-recks",
+        "mr-capo",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "emo-erling",
-        "mrs-capo",
         "rowdy-highland",
-        "ember-highland",
-        "hotdog-nomustard",
+        "mrs-capo",
         "zeik-soulfly",
+        "hotdog-nomustard",
         "the-parttimedad",
+        "ember-highland",
         "neo-squid"
       ],
       "Heavy Linen Bandage": [
@@ -1496,13 +1496,13 @@
         "squid-zero",
         "scott-frost",
         "capo-shoots",
-        "plucky-recks",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
-        "mrs-capo",
         "rowdy-highland",
-        "hotdog-nomustard",
+        "mrs-capo",
         "zeik-soulfly",
+        "hotdog-nomustard",
         "the-parttimedad"
       ],
       "Wool Bandage": [
@@ -1511,11 +1511,11 @@
         "squid-zero",
         "scott-frost",
         "capo-shoots",
-        "plucky-recks",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
-        "hotdog-nomustard",
-        "zeik-soulfly"
+        "zeik-soulfly",
+        "hotdog-nomustard"
       ],
       "Heavy Wool Bandage": [
         "needmore-beers",
@@ -1523,8 +1523,8 @@
         "squid-zero",
         "scott-frost",
         "capo-shoots",
-        "plucky-recks",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "hotdog-nomustard"
       ],
@@ -1547,14 +1547,14 @@
         "orken-magorken",
         "squid-zero",
         "scott-frost",
-        "mr-capo",
         "capo-shoots",
-        "plucky-recks",
+        "mr-capo",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "mrs-capo",
-        "hotdog-nomustard",
-        "zeik-soulfly"
+        "zeik-soulfly",
+        "hotdog-nomustard"
       ],
       "Minor Healing Potion": [
         "needmore-beers",
@@ -2167,8 +2167,8 @@
         "pope-feratu",
         "emo-erling",
         "mrs-capo",
-        "ember-highland",
-        "the-parttimedad"
+        "the-parttimedad",
+        "ember-highland"
       ],
       "Camp Chair": [
         "orken-magorken",
@@ -3125,15 +3125,15 @@
       "Herbalism": [
         "cameron-croucher",
         "cameron-croucher",
-        "hotdog-nomustard",
-        "hotdog-nomustard",
         "zeik-soulfly",
-        "zeik-soulfly"
+        "zeik-soulfly",
+        "hotdog-nomustard",
+        "hotdog-nomustard"
       ],
       "Incense Candle": [
         "cameron-croucher",
-        "hotdog-nomustard",
-        "zeik-soulfly"
+        "zeik-soulfly",
+        "hotdog-nomustard"
       ]
     },
     "Alchemy": {
@@ -3176,15 +3176,15 @@
     }
   },
   "classIcons": {
-    "Warlock": "https://render.worldofwarcraft.com/forever-us/icons/56/626007.jpg",
-    "Priest": "https://render.worldofwarcraft.com/forever-us/icons/56/626004.jpg",
-    "Rogue": "https://render.worldofwarcraft.com/forever-us/icons/56/626005.jpg",
-    "Druid": "https://render.worldofwarcraft.com/forever-us/icons/56/625999.jpg",
-    "Paladin": "https://render.worldofwarcraft.com/forever-us/icons/56/626003.jpg",
     "Warrior": "https://render.worldofwarcraft.com/forever-us/icons/56/626008.jpg",
-    "Hunter": "https://render.worldofwarcraft.com/forever-us/icons/56/626000.jpg",
     "Shaman": "https://render.worldofwarcraft.com/forever-us/icons/56/626006.jpg",
-    "Mage": "https://render.worldofwarcraft.com/forever-us/icons/56/626001.jpg"
+    "Warlock": "https://render.worldofwarcraft.com/forever-us/icons/56/626007.jpg",
+    "Paladin": "https://render.worldofwarcraft.com/forever-us/icons/56/626003.jpg",
+    "Rogue": "https://render.worldofwarcraft.com/forever-us/icons/56/626005.jpg",
+    "Mage": "https://render.worldofwarcraft.com/forever-us/icons/56/626001.jpg",
+    "Hunter": "https://render.worldofwarcraft.com/forever-us/icons/56/626000.jpg",
+    "Priest": "https://render.worldofwarcraft.com/forever-us/icons/56/626004.jpg",
+    "Druid": "https://render.worldofwarcraft.com/forever-us/icons/56/625999.jpg"
   },
   "unrecognizedKills": [
     "Overlord Wyrmthalak kills (Lower Blackrock Spire)"
@@ -3195,8 +3195,8 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "capo-shoots",
         "plucky-recks",
@@ -3210,12 +3210,12 @@
       "total": 7,
       "members": [
         "needmore-beers",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "plucky-recks",
-        "annie-turvy",
-        "hotdog-nomustard"
+        "hotdog-nomustard",
+        "annie-turvy"
       ],
       "first": 1794073195000,
       "seen": null
@@ -3225,14 +3225,14 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
-        "plucky-recks",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
-        "annie-turvy",
-        "the-parttimedad"
+        "the-parttimedad",
+        "annie-turvy"
       ],
       "first": 1793920466000,
       "seen": null
@@ -3245,8 +3245,8 @@
         "canigeta-summon",
         "scott-frost",
         "capo-shoots",
-        "plucky-recks",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "annie-turvy"
       ],
@@ -3258,8 +3258,8 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "pope-feratu",
         "annie-turvy"
@@ -3272,20 +3272,20 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
-        "mr-capo",
         "capo-shoots",
-        "plucky-recks",
+        "mr-capo",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
-        "thick-hogs",
         "mrs-capo",
-        "annie-turvy",
-        "hotdog-nomustard",
+        "thick-hogs",
         "zeik-soulfly",
-        "the-parttimedad"
+        "hotdog-nomustard",
+        "the-parttimedad",
+        "annie-turvy"
       ],
       "first": 1793898057000,
       "seen": null
@@ -3295,17 +3295,17 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "capo-shoots",
-        "plucky-recks",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
-        "annie-turvy",
-        "hotdog-nomustard",
         "zeik-soulfly",
-        "the-parttimedad"
+        "hotdog-nomustard",
+        "the-parttimedad",
+        "annie-turvy"
       ],
       "first": 1794087023000,
       "seen": null
@@ -3318,11 +3318,11 @@
         "canigeta-summon",
         "scott-frost",
         "capo-shoots",
-        "plucky-recks",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
-        "annie-turvy",
-        "the-parttimedad"
+        "the-parttimedad",
+        "annie-turvy"
       ],
       "first": 1793948659000,
       "seen": null
@@ -3336,9 +3336,9 @@
         "capo-shoots",
         "cameron-croucher",
         "pope-feratu",
-        "annie-turvy",
         "hotdog-nomustard",
-        "the-parttimedad"
+        "the-parttimedad",
+        "annie-turvy"
       ],
       "first": 1794032583000,
       "seen": null
@@ -3351,8 +3351,8 @@
         "canigeta-summon",
         "scott-frost",
         "capo-shoots",
-        "plucky-recks",
         "cameron-croucher",
+        "plucky-recks",
         "pope-feratu",
         "annie-turvy"
       ],
@@ -3378,8 +3378,8 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "pope-feratu",
         "annie-turvy"
@@ -3392,8 +3392,8 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "capo-shoots",
         "plucky-recks",
@@ -3408,8 +3408,8 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "plucky-recks",
         "pope-feratu",
@@ -3423,8 +3423,8 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "plucky-recks",
         "pope-feratu",
@@ -3438,8 +3438,8 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "pope-feratu",
         "annie-turvy"
@@ -3452,8 +3452,8 @@
       "members": [
         "needmore-beers",
         "orken-magorken",
-        "canigeta-summon",
         "squid-zero",
+        "canigeta-summon",
         "scott-frost",
         "plucky-recks",
         "annie-turvy"
