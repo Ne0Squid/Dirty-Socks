@@ -3,12 +3,11 @@
   var nav=document.querySelector("nav");if(!nav)return;
   var page=(location.pathname.split("/").pop()||"index.html");
   var home=page==="index.html";
-  var s=home?"":"index.html"; // section links jump within the home page, or go there from other pages
-  var main=[["Guild Stats","#stats"],["Race to 60","#race"],["Roster","#roster"],["Professions","#professions","profnav"],["Dungeons","#dungeons"],["Raid Progression","#raidprog"]];
+  var sections=[["Guild Stats","#stats"],["Race to 60","#race"],["Roster","#roster"],["Professions","#professions","profnav"],["Dungeons","#dungeons"],["Raid Progression","#raidprog"]];
+  var main=home?sections:[["Home","index.html"]]; // other pages just offer a way back home
   var pages=[["Patch Notes","hotfixes.html"],["Hall of Fame","hall-of-fame.html"],["Raid Roster","raid-roster.html"]];
   var a=function(l,href,id){return '<a href="'+href+'"'+(id?' id="'+id+'" hidden':'')+(href===page?' class="here"':'')+'>'+l+'</a>'};
-  nav.innerHTML='<div class="navmain">'+main.map(function(l){return a(l[0],l[1].charAt(0)==="#"?s+l[1]:l[1],l[2])}).join("")+'</div><div class="navpages">'+pages.map(function(l){return a(l[0],l[1])}).join("")+'</div>';
-  if(!home)document.getElementById("profnav").hidden=false; // other pages always list it; the home page shows it once there is profession data
+  nav.innerHTML='<div class="navmain">'+main.map(function(l){return a(l[0],l[1],l[2])}).join("")+'</div><div class="navpages">'+pages.map(function(l){return a(l[0],l[1])}).join("")+'</div>';
   var css=document.createElement("style");
   css.textContent='nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface)}'
   +'nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)}nav a:hover,nav a.here{color:var(--accent)}'
