@@ -1,10 +1,28 @@
 {
-  "generated": "2026-11-24T12:54:07+00:00",
+  "generated": "2026-11-25T00:45:05+00:00",
   "source": "https://foreverchanges.pro/patch-notes/feed.xml",
   "siteName": "ForeverChanges",
   "siteUrl": "https://foreverchanges.pro/patch-notes",
   "title": "ForeverChanges: Patch notes",
   "entries": [
+    {
+      "id": "foreverchanges-hotfix-2026-11-24",
+      "title": "Hotfix, November 24, 2026",
+      "date": "2026-11-24T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-24",
+      "summary": "Hotfixes to the November 24 client, first seen at 20:30 UTC on November 24 in the caches the launch realms send. Blizzard has posted no notes for them. The warlock and paladin epic class mounts now also teach Journeyman Riding when you learn them.",
+      "kind": "hotfix",
+      "firstSeen": "2026-11-25T00:45:05+00:00"
+    },
+    {
+      "id": "foreverchanges-1.60.1.71091",
+      "title": "Build 1.60.1.71091, November 24, 2026",
+      "date": "2026-11-24T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#1.60.1.71091",
+      "summary": "The November 24 client, read from its files: Blizzard has posted no notes for it. It writes some of the server’s recent hotfixes into the client itself, and no talent, class spell, racial or item reads differently.",
+      "kind": "build",
+      "firstSeen": "2026-11-25T00:45:05+00:00"
+    },
     {
       "id": "foreverchanges-hotfix-2026-11-23",
       "title": "Hotfix, November 23, 2026",
@@ -90,7 +108,7 @@
       "id": "foreverchanges-hotfix-2026-11-16",
       "title": "Hotfix, November 16, 2026",
       "date": "2026-11-16T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-16",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-16",
       "summary": "Blizzard’s notes of November 16, posted at 02:17 UTC on November 17, describe the hotfixes of that day: lures for everyone from the Fishing Rack, Windfury Totem fixes, Cleave and Heroic Strike for Unbridled Wrath, Flurry and Reckless Swings, fixes in The Drowned City and Sunken Temple, and quest fixes. Vampiric Embrace changes with the weekly maintenance on November 17. The hotfix data shows more changes the notes leave out: world buffs are lost when you die, and three Darkmoon Cards, the Onyxia Blood Talisman, the Krol'dok Battlegear, Grimstitch Armor and Escape Plan change.",
       "kind": "hotfix",
       "firstSeen": null
@@ -99,7 +117,7 @@
       "id": "foreverchanges-hotfix-2026-11-14",
       "title": "Hotfix, November 14, 2026",
       "date": "2026-11-14T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-14",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-14",
       "summary": "Blizzard’s hotfix of November 14, posted at 01:18 UTC on November 15: enemies in dungeons stop giving experience only when a party member is more than 12 levels above them, instead of whenever they are trivial to one.",
       "kind": "hotfix",
       "firstSeen": null
@@ -189,7 +207,7 @@
       "id": "foreverchanges-1.60.1.70862",
       "title": "Build 1.60.1.70862, November 7, 2026",
       "date": "2026-11-07T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes/page/2#1.60.1.70862",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#1.60.1.70862",
       "summary": "The November 7 client, read from its files: Blizzard has posted no notes for it. The Adventurer’s Tent is a rested tent again, Rock on Stick and Bigger Rock on Bigger Stick read their bleed, four quest items get a Use line, and the client now holds five of the new dungeons with their encounters. The rest catches up with the server’s hotfixes the site already shows, among them Gore Drinker, Bear Form, Ravage and the Hyjal flasks.",
       "kind": "build",
       "firstSeen": null
