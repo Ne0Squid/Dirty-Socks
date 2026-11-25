@@ -107,6 +107,7 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 
 <script>
 document.getElementById("yr").textContent=new Date().getFullYear();
+const both=m=>m.surname?m.name+" "+m.surname:m.name; // podium shows first and last name
 const full=m=>m.surname&&m.name.length<=3?m.name+" "+m.surname:m.name; // very short first names get their last name too
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const slugOf=m=>(m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-");
@@ -121,10 +122,10 @@ function draw(g){
   const chasers=roster.filter(m=>m.level<60&&!wonSlugs.has(slugOf(m))).sort((a,b)=>b.level-a.level||(b.ilvl||0)-(a.ilvl||0));
   document.getElementById("podium").innerHTML=[0,1,2].map(i=>{
     const [medal,label,col]=MEDALS[i],w=won[i];
-    if(w){const m=bySlug[w.slug]||w;return `<div class="card pod p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div>${ico(m)}<h3>${esc(full(m))}</h3><div class="muted" style="color:${w.color}">${esc(w.cls)}</div><div class="muted when">Reached 60 on ${dfmt(w.at)}</div></div>`}
+    if(w){const m=bySlug[w.slug]||w;return `<div class="card pod p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div>${ico(m)}<h3>${esc(both(m))}</h3><div class="muted" style="color:${w.color}">${esc(w.cls)}</div><div class="muted when">Reached 60 on ${dfmt(w.at)}</div></div>`}
     const c=chasers[i-won.length];
     if(!c)return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div><h3>Unclaimed</h3></div>`;
-    return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label} · unclaimed</div>${ico(c)}<h3>${esc(full(c))}</h3><div class="muted" style="color:${c.color}">${esc(c.cls)}</div><div class="bar"><span style="width:${c.level/60*100}%"></span></div><div class="muted">Level ${c.level} · ${60-c.level} to go</div></div>`;
+    return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label} · unclaimed</div>${ico(c)}<h3>${esc(both(c))}</h3><div class="muted" style="color:${c.color}">${esc(c.cls)}</div><div class="bar"><span style="width:${c.level/60*100}%"></span></div><div class="muted">Level ${c.level}</div></div>`;
   }).join("");
   // ---- Awards, all worked out from the guild data
   const top=(items,n=5)=>items.filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,n);

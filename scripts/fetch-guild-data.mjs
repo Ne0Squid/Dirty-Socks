@@ -308,7 +308,7 @@ let prevFame = {};
 if (existsSync(outPath)) { try { prevFame = JSON.parse(readFileSync(outPath, "utf8")).fame ?? {}; } catch { prevFame = {}; } }
 const reached60 = [...(prevFame.reached60 ?? [])];
 for (const m of members.filter((x) => x.surname && x.level >= 60 && !reached60.some((r) => r.slug === slugOf(x)))) {
-  reached60.push({ slug: slugOf(m), name: m.name, cls: m.cls, color: m.color, at: new Date().toISOString() });
+  reached60.push({ slug: slugOf(m), name: m.name, surname: m.surname, cls: m.cls, color: m.color, at: new Date().toISOString() });
 }
 const fame = { reached60 };
 
