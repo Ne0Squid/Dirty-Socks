@@ -132,15 +132,11 @@ function draw(g){
   const top=(items,n=3)=>items.filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,n);
   const bossCount={};Object.values(g.bossKills||{}).forEach(b=>(b.members||[]).forEach(s=>bossCount[s]=(bossCount[s]||0)+1));
   const recipeCount={};Object.values(g.recipes||{}).forEach(p=>Object.values(p).forEach(who=>who.forEach(s=>recipeCount[s]=(recipeCount[s]||0)+1)));
-  const days=Object.keys((g.history||{}).days||{}).sort(),latest=days[days.length-1];
-  const base=days.find(d=>(new Date(latest)-new Date(d))/864e5<=7);
-  const gain=m=>{const a=(g.history.days[base]||{})[slugOf(m)],b=(g.history.days[latest]||{})[slugOf(m)];return a&&b?b-a:0};
   const totalBosses=Object.keys(g.bossKills||{}).length;
   const A=[
     ["⚔️","Best Geared","Highest item level in the guild.",top(roster.map(m=>({m,v:m.ilvl||0}))),v=>"iLvl "+v],
     ["🏰","Dungeon Delver","Most different dungeon bosses defeated.",top(roster.map(m=>({m,v:bossCount[slugOf(m)]||0}))),v=>v+(totalBosses?" / "+totalBosses:"")+" bosses"],
-    ["🔨","Master Crafter","Knows the most profession recipes.",top(roster.map(m=>({m,v:recipeCount[slugOf(m)]||0}))),v=>v+" recipes"],
-    ["🚀","Weekly Climber","Most levels gained in the last 7 days.",top(base&&base!==latest?roster.map(m=>({m,v:gain(m)})):[]),v=>"+"+v+" levels"]
+    ["🔨","Master Crafter","Knows the most profession recipes.",top(roster.map(m=>({m,v:recipeCount[slugOf(m)]||0}))),v=>v+" recipes"]
   ];
   document.getElementById("awards").innerHTML=A.map(([i,t,d,list,f])=>{
     const w=list[0];
