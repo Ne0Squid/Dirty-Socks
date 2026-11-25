@@ -147,6 +147,16 @@ function bossKillStats(st) {
   for (const c of st?.categories ?? []) walk(c, false);
   return found;
 }
+// Honorable kills: a PvP statistic ("Total Honorable Kills" or similar); the largest matching figure is the lifetime total.
+function honorableKills(st) {
+  let best = null;
+  const walk = (cat) => {
+    for (const x of cat.statistics ?? []) if (/honou?rable\s+kills/i.test(x.name ?? "") && typeof x.quantity === "number") best = Math.max(best ?? 0, x.quantity);
+    for (const sub of cat.sub_categories ?? []) walk(sub);
+  };
+  for (const c of st?.categories ?? []) walk(c);
+  return best;
+}
 const bossKills = {}; // statistic name -> { total, members: [slug] }
 
 // Item level: use Blizzard's own figure from the character profile when it has one,
@@ -162,7 +172,7 @@ function itemLevel(profile, eq) {
   return levels.length ? Math.round(levels.reduce((a, b) => a + b, 0) / levels.length) : null;
 }
 
-let checked = 0, raised = 0, unavailable = 0, specFound = 0, specMissing = 0, profFound = 0, ilvlFound = 0;
+let checked = 0, raised = 0, unavailable = 0, specFound = 0, specMissing = 0, profFound = 0, ilvlFound = 0, hkFound = 0;
 for (let i = 0; i < members.length; i += 5) {
   await Promise.all(members.slice(i, i + 5).map(async (m) => {
     if (!m.surname) return;
@@ -173,7 +183,7 @@ for (let i = 0; i < members.length; i += 5) {
       recipeFailed.add(slugOf(m));
       if (old) { // keep what we had
         m.level = Math.max(m.level ?? 0, old.level ?? 0) || m.level;
-        m.spec = old.spec ?? null; m.professions = old.professions ?? []; m.ilvl = old.ilvl ?? null;
+        m.spec = old.spec ?? null; m.professions = old.professions ?? []; m.ilvl = old.ilvl ?? null; m.hk = old.hk ?? null;
         carried++;
       }
       return;
@@ -181,11 +191,12 @@ for (let i = 0; i < members.length; i += 5) {
     checked++;
     if (p.level > (m.level ?? 0)) { m.level = p.level; raised++; }
     const base = `/profile/wow/character/${encodeURIComponent(slugOf(m))}`;
-    const [sp, pr, eq, ast] = await Promise.all([
+    const [sp, pr, eq, ast, pvp] = await Promise.all([
       get(`${base}/specializations`, accessToken),
       get(`${base}/professions`, accessToken),
       get(`${base}/equipment`, accessToken),
       get(`${base}/achievements/statistics`, accessToken),
+      get(`${base}/pvp-summary`, accessToken),
     ]);
     for (const [name, qty, ts] of bossKillStats(ast)) {
       if (qty <= 0) continue;
@@ -194,6 +205,8 @@ for (let i = 0; i < members.length; i += 5) {
       // A member with exactly one kill gives that kill's exact time, so the earliest of those is the best "first cleared".
       if (qty === 1 && ts && (e.first == null || ts < e.first)) e.first = ts;
     }
+    m.hk = honorableKills(ast) ?? (typeof pvp?.honorable_kills === "number" ? pvp.honorable_kills : null) ?? old?.hk ?? null;
+    if (m.hk != null) hkFound++;
     m.spec = sp ? activeSpec(sp) : (old?.spec ?? null);
     if (m.spec) specFound++; else specMissing++;
     if (pr) { for (const [prof, name] of recipeNames(pr)) ((recipes[prof] ??= {})[name] ??= []).push(slugOf(m)); }
@@ -207,6 +220,7 @@ for (let i = 0; i < members.length; i += 5) {
 }
 console.log(`Specializations: ${specFound} found, ${specMissing} without a spec`);
 console.log(`Professions: ${profFound} characters with data`);
+console.log(`Honorable kills: ${hkFound} characters with a value`);
 console.log(`Item levels: ${ilvlFound} characters with a value`);
 console.log(`Kept previous values for ${carried} characters where Blizzard did not answer`);
 console.log(`Profile levels: ${checked} checked, ${raised} higher than the roster, ${unavailable} unavailable`);

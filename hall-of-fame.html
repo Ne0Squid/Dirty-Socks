@@ -136,7 +136,8 @@ function draw(g){
   const A=[
     ["⚔️","Best Geared","Highest item level in the guild.",top(roster.map(m=>({m,v:m.ilvl||0}))),v=>"iLvl "+v],
     ["🏰","Dungeon Delver","Most different dungeon bosses defeated.",top(roster.map(m=>({m,v:bossCount[slugOf(m)]||0}))),v=>v+(totalBosses?" / "+totalBosses:"")+" bosses"],
-    ["🔨","Master Crafter","Knows the most profession recipes.",top(roster.map(m=>({m,v:recipeCount[slugOf(m)]||0}))),v=>v+" recipes"]
+    ["🔨","Master Crafter","Knows the most profession recipes.",top(roster.map(m=>({m,v:recipeCount[slugOf(m)]||0}))),v=>v+" recipes"],
+    ["💀","Most Honorable Kills","Most honorable kills in PvP.",top(roster.map(m=>({m,v:m.hk||0}))),v=>v.toLocaleString("en-US")+" kills"]
   ];
   document.getElementById("awards").innerHTML=A.map(([i,t,d,list,f])=>{
     const w=list[0];
