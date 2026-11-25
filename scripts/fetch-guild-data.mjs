@@ -86,6 +86,8 @@ const prevBy = Object.fromEntries((prevData.roster ?? []).map((m) => [slugOf(m),
 let carried = 0;
 // Forever returns specialization_groups[]; the group with is_active:true holds the current spec.
 // If that group lists more than one spec, use the one with the most talent points spent.
+// Characters whose spec is always shown as set here (for hybrids who keep flipping between two builds).
+const SPEC_OVERRIDES = { "squid-zero": "Restoration" };
 function activeSpec(sp) {
   const groups = sp?.specialization_groups ?? [];
   const group = groups.find((g) => g.is_active) ?? (groups.length === 1 ? groups[0] : null);
@@ -208,6 +210,7 @@ for (let i = 0; i < members.length; i += 5) {
     m.hk = honorableKills(ast) ?? (typeof pvp?.honorable_kills === "number" ? pvp.honorable_kills : null) ?? old?.hk ?? null;
     if (m.hk != null) hkFound++;
     m.spec = sp ? activeSpec(sp) : (old?.spec ?? null);
+    if (SPEC_OVERRIDES[slugOf(m)]) m.spec = SPEC_OVERRIDES[slugOf(m)];
     if (m.spec) specFound++; else specMissing++;
     if (pr) { for (const [prof, name] of recipeNames(pr)) ((recipes[prof] ??= {})[name] ??= []).push(slugOf(m)); }
     else recipeFailed.add(slugOf(m));
