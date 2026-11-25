@@ -134,22 +134,22 @@ function draw(g){
   const recipeCount={};Object.values(g.recipes||{}).forEach(p=>Object.values(p).forEach(who=>who.forEach(s=>recipeCount[s]=(recipeCount[s]||0)+1)));
   const totalBosses=Object.keys(g.bossKills||{}).length;
   const A=[
-    ["⚔️","Best Geared","Highest item level in the guild.",top(roster.map(m=>({m,v:m.ilvl||0}))),v=>"iLvl "+v],
-    ["🏰","Dungeon Delver","Most different dungeon bosses defeated.",top(roster.map(m=>({m,v:bossCount[slugOf(m)]||0}))),v=>v+(totalBosses?" / "+totalBosses:"")+" bosses"],
-    ["🔨","Master Crafter","Knows the most profession recipes.",top(roster.map(m=>({m,v:recipeCount[slugOf(m)]||0}))),v=>v+" recipes"],
-    ["💀","Most Honorable Kills","Most honorable kills in PvP.",top(roster.map(m=>({m,v:m.hk||0}))),v=>v.toLocaleString("en-US")+" kills"]
+    ["Best Geared","Highest item level in the guild.",top(roster.map(m=>({m,v:m.ilvl||0}))),v=>"iLvl "+v],
+    ["Dungeon Delver","Most different dungeon bosses defeated.",top(roster.map(m=>({m,v:bossCount[slugOf(m)]||0}))),v=>v+(totalBosses?" / "+totalBosses:"")+" bosses"],
+    ["Master Crafter","Knows the most profession recipes.",top(roster.map(m=>({m,v:recipeCount[slugOf(m)]||0}))),v=>v+" recipes"],
+    ["Most Honorable Kills","Most honorable kills in PvP.",top(roster.map(m=>({m,v:m.hk||0}))),v=>v.toLocaleString("en-US")+" kills"]
   ];
-  document.getElementById("awards").innerHTML=A.map(([i,t,d,list,f])=>{
+  document.getElementById("awards").innerHTML=A.map(([t,d,list,f])=>{
     const w=list[0];
-    return `<div class="card award"><div class="ico">${i}</div><h3>${t}</h3><p class="muted desc">${d}</p>`+(w?`<div class="win">${ico(w.m)}<strong>${esc(full(w.m))}</strong><span class="val">${f(w.v)}</span></div>`+list.slice(1).map((r,k)=>`<div class="runner"><span>${k+2}. ${esc(full(r.m))}</span><span>${f(r.v)}</span></div>`).join(""):`<p class="muted" style="margin:0">Nobody yet.</p>`)+`</div>`;
+    return `<div class="card award"><h3>${t}</h3><p class="muted desc">${d}</p>`+(w?`<div class="win">${ico(w.m)}<strong>${esc(full(w.m))}</strong><span class="val">${f(w.v)}</span></div>`+list.slice(1).map((r,k)=>`<div class="runner"><span>${k+2}. ${esc(full(r.m))}</span><span>${f(r.v)}</span></div>`).join(""):`<p class="muted" style="margin:0">Nobody yet.</p>`)+`</div>`;
   }).join("");
   // ---- Firsts: earliest recorded kill for each boss, plus the raids that are still locked
   const kills=Object.entries(g.bossKills||{}).filter(([,b])=>b.first).map(([n,b])=>({n,t:b.first,place:(n.match(/\(([^)]+)\)\s*$/)||[])[1]||""})).sort((a,b)=>a.t-b.t);
   const nice=n=>n.replace(/\s*\([^)]*\)\s*$/,"").replace(/\s+kills?$/i,"");
-  const rows=kills.slice(0,5).map((k,i)=>`<tr><td>${i==0?"🩸 First Blood · ":""}<strong>${esc(nice(k.n))}</strong> <span class="muted">${esc(k.place)}</span></td><td>${dfmt(k.t)}</td></tr>`);
+  const rows=kills.slice(0,5).map((k,i)=>`<tr><td>${i==0?"First Blood · ":""}<strong>${esc(nice(k.n))}</strong> <span class="muted">${esc(k.place)}</span></td><td>${dfmt(k.t)}</td></tr>`);
   ["The Barrow Deeps","Hyjal Summit","Onyxia's Lair"].forEach(r=>{
     const k=kills.find(x=>x.place.toLowerCase().replace(/’/g,"'")===r.toLowerCase());
-    rows.push(k?`<tr><td>🏆 First ${esc(r)} kill · <strong>${esc(nice(k.n))}</strong></td><td>${dfmt(k.t)}</td></tr>`:`<tr><td class="lock">🔒 First ${esc(r)} kill</td><td>Unlocks Dec 9</td></tr>`);
+    rows.push(k?`<tr><td>First ${esc(r)} kill · <strong>${esc(nice(k.n))}</strong></td><td>${dfmt(k.t)}</td></tr>`:`<tr><td class="lock">First ${esc(r)} kill</td><td>Unlocks Dec 9</td></tr>`);
   });
   document.getElementById("firsts").innerHTML=rows.join("");
 }
