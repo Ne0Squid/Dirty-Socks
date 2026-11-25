@@ -9,7 +9,7 @@
   var a=function(l,href,id){return '<a href="'+href+'"'+(id?' id="'+id+'" hidden':'')+(href===page?' class="here"':'')+'>'+l+'</a>'};
   nav.innerHTML='<div class="navmain">'+main.map(function(l){return a(l[0],l[1],l[2])}).join("")+'</div><div class="navpages">'+pages.map(function(l){return a(l[0],l[1])}).join("")+'</div>';
   var css=document.createElement("style");
-  css.textContent='nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface)}'
+  css.textContent='html{scroll-padding-top:64px}nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface)}'
   +'nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)}nav a:hover,nav a.here{color:var(--accent)}'
   +'.menu-btn{display:none}.navmain,.navpages{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}'
   +'@media (min-width:1100px){nav{justify-content:space-between;flex-wrap:nowrap}.navpages{padding-left:22px;border-left:1px solid var(--line)}}'
