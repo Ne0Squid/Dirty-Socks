@@ -73,6 +73,12 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 .role.tank{color:#6aa6ff;border-color:#6aa6ff55}.role.heal{color:#5fd38d;border-color:#5fd38d55}.role.dps{color:#ff7a66;border-color:#ff7a6655}
 @media (max-width:520px){.rtable th,.rtable td{padding:8px 10px}details.raid>summary{padding:12px 12px}}
 </style>
+<style>
+.sched{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.sched h3{font-size:1.2rem;margin-bottom:6px}
+.sched .when{margin:0 0 4px;font-size:1.05rem}.sched .when b{font-family:Cinzel,Georgia,serif;font-size:1.3rem;color:var(--accent)}.sched .when span{color:var(--muted)}
+.sched .muted{margin:0}
+</style>
 </head>
 <body>
 <nav></nav>
@@ -84,6 +90,13 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 </header>
 
 <main class="wrap">
+<section style="padding-bottom:8px">
+  <h2>Raid Schedule</h2>
+  <div class="sched">
+    <div class="card"><h3>Wednesday</h3><p class="when"><b>8:00 PM</b> <span>to</span> <b>12:00 AM</b> EST</p></div>
+    <div class="card"><h3>Thursday</h3><p class="when"><b>8:00 PM</b> <span>to</span> <b>12:00 AM</b> EST</p></div>
+  </div>
+</section>
 <section>
   <h2>Raid Roster</h2>
   <div id="raids"></div>
