@@ -129,7 +129,7 @@ function draw(g){
     return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label} · unclaimed</div>${ico(c)}<h3>${esc(full(c))}</h3><div class="muted" style="color:${c.color}">${esc(c.cls)}</div><div class="bar"><span style="width:${c.level/60*100}%"></span></div><div class="muted">Level ${c.level} · ${60-c.level} to go</div></div>`;
   }).join("");
   // ---- Awards, all worked out from the guild data
-  const top=(items,n=3)=>items.filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,n);
+  const top=(items,n=5)=>items.filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,n);
   const bossCount={};Object.values(g.bossKills||{}).forEach(b=>(b.members||[]).forEach(s=>bossCount[s]=(bossCount[s]||0)+1));
   const recipeCount={};Object.values(g.recipes||{}).forEach(p=>Object.values(p).forEach(who=>who.forEach(s=>recipeCount[s]=(recipeCount[s]||0)+1)));
   const totalBosses=Object.keys(g.bossKills||{}).length;
