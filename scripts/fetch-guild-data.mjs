@@ -288,11 +288,22 @@ days[new Date().toISOString().slice(0, 10)] = Object.fromEntries(
   members.filter((m) => m.surname && typeof m.level === "number").map((m) => [slugOf(m), m.level]));
 days = Object.fromEntries(Object.keys(days).sort().slice(-35).map((k) => [k, days[k]]));
 
+// Hall of Fame: the order characters first reach level 60, recorded the first run that sees them there.
+// Only ever added to, so the podium can't change after the fact (times are as precise as the hourly run).
+let prevFame = {};
+if (existsSync(outPath)) { try { prevFame = JSON.parse(readFileSync(outPath, "utf8")).fame ?? {}; } catch { prevFame = {}; } }
+const reached60 = [...(prevFame.reached60 ?? [])];
+for (const m of members.filter((x) => x.surname && x.level >= 60 && !reached60.some((r) => r.slug === slugOf(x)))) {
+  reached60.push({ slug: slugOf(m), name: m.name, cls: m.cls, color: m.color, at: new Date().toISOString() });
+}
+const fame = { reached60 };
+
 const out = {
   generated: new Date().toISOString(),
   guild: { name: guild?.name ?? "Dirty Socks", faction: guild?.faction?.name ?? null },
   roster: members,
   history: { days },
+  fame,
   professionIcons,
   recipes,
   classIcons,
