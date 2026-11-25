@@ -141,7 +141,7 @@ function draw(g){
   ];
   document.getElementById("awards").innerHTML=A.map(([t,d,list,f])=>{
     const w=list[0];
-    return `<div class="card award"><h3>${t}</h3><p class="muted desc">${d}</p>`+(w?`<div class="win">${ico(w.m)}<strong>${esc(full(w.m))}</strong><span class="val">${f(w.v)}</span></div>`+list.slice(1).map((r,k)=>`<div class="runner"><span>${k+2}. ${esc(full(r.m))}</span><span>${f(r.v)}</span></div>`).join(""):`<p class="muted" style="margin:0">Nobody yet.</p>`)+`</div>`;
+    return `<div class="card award"><h3>${t}</h3><p class="muted desc">${d}</p>`+(w?`<div class="win"><strong>${esc(full(w.m))}</strong><span class="val">${f(w.v)}</span></div>`+list.slice(1).map((r,k)=>`<div class="runner"><span>${k+2}. ${esc(full(r.m))}</span><span>${f(r.v)}</span></div>`).join(""):`<p class="muted" style="margin:0">Nobody yet.</p>`)+`</div>`;
   }).join("");
   // ---- Firsts: earliest recorded kill for each boss, plus the raids that are still locked
   const kills=Object.entries(g.bossKills||{}).filter(([,b])=>b.first).map(([n,b])=>({n,t:b.first,place:(n.match(/\(([^)]+)\)\s*$/)||[])[1]||""})).sort((a,b)=>a.t-b.t);
