@@ -81,6 +81,8 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 </style>
 <style>
 .rq label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.9rem}
+.rq textarea{font:inherit;font-weight:400;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%;resize:vertical}
+.rq textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .rq select{font:inherit;font-weight:400;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%}
 .rq select:focus-visible,.rq input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .rq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;align-items:start}
@@ -127,6 +129,7 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
         <label class="chk"><input type="checkbox" name="rq-night" value="Thursday (8PM-12AM EST)" checked> Thursday</label>
       </fieldset>
     </div>
+    <label for="rq-note" style="margin-top:14px"><span>Anything else to tell us? <span class="muted" style="font-weight:400">(optional)</span></span><textarea id="rq-note" rows="3" maxlength="300" placeholder="Off-spec, gear status, a backup role…"></textarea></label>
     <input type="text" id="rq-web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
     <div class="rq-actions"><button class="btn" type="submit" id="rq-send">Send request</button><span class="muted" id="rq-msg" role="status"></span></div>
     <p class="muted" style="margin:14px 0 0">Trouble with the form? <a href="https://forms.gle/wESFMshow64SfqLF6" target="_blank" rel="noopener">Open it on Google instead</a>.</p>
@@ -171,7 +174,7 @@ Promise.all([
 // ===== Raid spot requests =====
 // The form submits straight to the officers' Google Form (answers land in its spreadsheet). The ENTRY ids come from the form's pre-filled link.
 const FORM="https://docs.google.com/forms/d/e/1FAIpQLSecjQnuAldPcMEYdueUhxgdFkDrHhRanQPIn7qA4gPi5g2B2w/formResponse";
-const ENTRY={character:"entry.1353387200",raid:"entry.1801637567",role:"entry.230302326",nights:"entry.874453092"};
+const ENTRY={character:"entry.1353387200",raid:"entry.1801637567",role:"entry.230302326",nights:"entry.874453092",note:"entry.112388042"};
 (function(){
   const f=document.getElementById("rqform"),sel=document.getElementById("rq-char"),msg=document.getElementById("rq-msg"),btn=document.getElementById("rq-send");
   const full=m=>m.surname?m.name+" "+m.surname:m.name;
@@ -191,6 +194,7 @@ const ENTRY={character:"entry.1353387200",raid:"entry.1801637567",role:"entry.23
     const body=new URLSearchParams();
     body.append(ENTRY.character,sel.value);body.append(ENTRY.raid,raid);body.append(ENTRY.role,role);
     nights.forEach(n=>body.append(ENTRY.nights,n));
+    const note=document.getElementById("rq-note").value.trim();if(note)body.append(ENTRY.note,note);
     btn.disabled=true;say("Sending…");
     try{
       // Google does not let a web page read the reply, so "no-cors" is used and a request that leaves the browser counts as sent.
