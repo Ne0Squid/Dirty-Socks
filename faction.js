@@ -61,7 +61,7 @@
     for (var i = 0; i < btns.length; i++) btns[i].setAttribute("aria-pressed", String(btns[i].getAttribute("data-f") === f));
   }
   document.addEventListener("DOMContentLoaded", function () {
-    var nav = document.querySelector(".banner") || document.querySelector("nav");
+    var nav = document.querySelector("nav") || document.querySelector(".banner");
     if (nav) {
       var box = document.createElement("div");
       box.className = "faction-toggle"; box.setAttribute("role", "group"); box.setAttribute("aria-label", "Choose your faction");
