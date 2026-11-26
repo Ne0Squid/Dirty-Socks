@@ -1,0 +1,89 @@
+{
+ "https://nether.wowhead.com/forever/tooltip/item/280080?dataEnv=1&locale=0": {
+  "status": 404,
+  "type": "application/json; charset=utf-8",
+  "len": 28,
+  "hasName": false,
+  "head": "{\"error\":\"Entity not found\"}"
+ },
+ "https://nether.wowhead.com/tooltip/item/280080?dataEnv=17&locale=0": {
+  "status": 404,
+  "type": "application/json; charset=utf-8",
+  "len": 28,
+  "hasName": false,
+  "head": "{\"error\":\"Entity not found\"}"
+ },
+ "https://www.wowhead.com/forever/item=280080?xml": {
+  "status": 403,
+  "type": "text/html",
+  "len": 919,
+  "hasName": false,
+  "head": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> <HTML><HEAD><META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\"> <TITLE>ERROR: The request could not be satisfied</TITLE> </HEAD><BODY> <H1>403 ERROR</H1> <H2>The request could not be satisfied.</H2> <HR noshade size=\"1px\"> Request blocked. We can't connect to the server for this app or website at this time. There might be too much traffic or a configuration error. Try again"
+ },
+ "https://www.wowhead.com/forever/item=280080/claymore-of-two-moons": {
+  "status": 403,
+  "type": "text/html",
+  "len": 919,
+  "hasName": false,
+  "head": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> <HTML><HEAD><META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\"> <TITLE>ERROR: The request could not be satisfied</TITLE> </HEAD><BODY> <H1>403 ERROR</H1> <H2>The request could not be satisfied.</H2> <HR noshade size=\"1px\"> Request blocked. We can't connect to the server for this app or website at this time. There might be too much traffic or a configuration error. Try again"
+ },
+ "https://www.wowhead.com/forever/search?q=Claymore+of+Two+Moons": {
+  "status": 403,
+  "type": "text/html",
+  "len": 919,
+  "hasName": false,
+  "head": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> <HTML><HEAD><META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\"> <TITLE>ERROR: The request could not be satisfied</TITLE> </HEAD><BODY> <H1>403 ERROR</H1> <H2>The request could not be satisfied.</H2> <HR noshade size=\"1px\"> Request blocked. We can't connect to the server for this app or website at this time. There might be too much traffic or a configuration error. Try again"
+ },
+ "https://endgametools.com/en/wow-forever/items/280080": {
+  "status": 200,
+  "type": "text/html",
+  "len": 60699,
+  "hasName": true,
+  "head": "<!DOCTYPE html><html lang=\"en\" class=\"passiononecaps_419b4389-module__5qBO3q__variable cinzelcaps_fb526db3-module__7K3lgq__variable antoncaps_a036701c-module__vZqefq__variable montserratcaps_fdde76ec-module__-xM_zG__variable marcellussccaps_88980c90-module__twXRoG__variable pixelifysans_1dcc5dad-module__6mM3lq__variable\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta http-equiv=\"content-language\" content=\"en\"><title>Claymore of Two Moons — N"
+ },
+ "https://endgametools.com/en/wow-forever/items/280062": {
+  "status": 200,
+  "type": "text/html",
+  "len": 60691,
+  "hasName": true,
+  "head": "<!DOCTYPE html><html lang=\"en\" class=\"passiononecaps_419b4389-module__5qBO3q__variable cinzelcaps_fb526db3-module__7K3lgq__variable antoncaps_a036701c-module__vZqefq__variable montserratcaps_fdde76ec-module__-xM_zG__variable marcellussccaps_88980c90-module__twXRoG__variable pixelifysans_1dcc5dad-module__6mM3lq__variable\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><meta http-equiv=\"content-language\" content=\"en\"><title>Cloak of the Fleshborer —"
+ },
+ "https://wowforever.wclbox.com/en/wupin/280080": {
+  "status": 200,
+  "type": "text/html; charset=utf-8",
+  "len": 83742,
+  "hasName": true,
+  "head": "<!doctype html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <!-- Each language has a stable URL. Readers choose via the language links. --> <link rel=\"icon\" href=\"/favicon.ico?v=wclbox-gradient-20260922\" sizes=\"16x16 32x32 48x48 64x64 128x128 256x256\" /> <link rel=\"icon\" href=\"/favicon.svg?v=wclbox-gradient-20260922\" type=\"image/svg+xml\" sizes=\"any\" /> <link rel=\"apple-touch-icon\" href=\"/apple-icon.png?v=wclbox-gradient-20260922\" sizes=\"180x180\" /> <meta name=\"viewport\" content=\"width=devic"
+ },
+ "https://www.gamemaps.net/game/wow_forever/items/280080-claymore-of-two-moons": {
+  "status": 200,
+  "type": "text/html;charset=utf-8",
+  "len": 198298,
+  "hasName": true,
+  "head": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>Claymore of Two Moons — WoW: Forever Item | GameMaps</title><link rel=\"preconnect\" href=\"https://images.gamemaps.net\" crossorigin><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><style>.toast[data-v-f9848673]{box-shadow:0 .5rem 1rem #00000080;max-width:400px;min-width:250px}.toast-enter-active[da"
+ },
+ "https://metaforge.app/wow-forever/database/weapons/claymore-of-two-moons": {
+  "error": "TypeError: fetch failed"
+ },
+ "https://metaforge.app/wow-forever/database/items?page=1": {
+  "status": 200,
+  "type": "text/html",
+  "len": 243131,
+  "hasName": false,
+  "head": "<!doctype html> <html lang=\"en\"> <head> <meta name=\"sentry-trace\" content=\"9af56ccec6334b9982097752031dc62f-95ec585b41ee45f5\"/><meta name=\"baggage\" content=\"sentry-environment=production,sentry-public_key=17ce0109f09f492a1a3c81a168eaceee,sentry-trace_id=9af56ccec6334b9982097752031dc62f,sentry-org_id=330368\"/> <meta charset=\"utf-8\" /> <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content\" /> <!--8imker--><!--[--><link rel=\"alter"
+ },
+ "https://wowtbc.gg/warcraftforever/loot-tables/dungeons/blackmaw-hold/": {
+  "status": 200,
+  "type": "text/html; charset=UTF-8",
+  "len": 295479,
+  "hasName": true,
+  "head": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta http-equiv=\"x-ua-compatible\" content=\"ie=edge\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\"/><style data-href=\"/styles.79faa7a0ea1824803252.css\" data-identity=\"gatsby-global-css\">.balance,.boomkin,.boomkins,.druid,.druids{color:#ff7d0a!important;font-weight:500}.hunter,.hunters{color:#a9d271!important;font-weight:500}.mage,.mages{color:#40c7eb!important;font-weight:500}.monk,.monks{color:#"
+ },
+ "https://wow.zamimg.com/js/tooltips.js": {
+  "status": 200,
+  "type": "text/javascript",
+  "len": 206502,
+  "hasName": false,
+  "head": "window.WH=new function(){this.REMOTE=!(\".\"+location.hostname).endsWith(\".wowhead.com\")&&location.hostname!==\"wh-site\"||location.pathname===\"/widgets/power/demo.html\";this.STATIC_URL=\"https://wow.zamimg.com\";this.staticUrl=this.STATIC_URL;this.PageMeta={};const e={lastResizeEntries:new WeakMap,pendingResizeReplays:new WeakMap,resizeEventObserver:undefined};this.defineEnum=function(e,t){let a={};let i=[];Object.keys(e).forEach((n=>{a[n]=t?new t(a):{};a[n].name=n;a[n].value=e[n];Object.freeze(a[n])"
+ }
+}
