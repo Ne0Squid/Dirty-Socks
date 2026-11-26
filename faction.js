@@ -15,7 +15,6 @@
   var css = document.createElement("style");
   css.textContent =
     'html:root{--glow:224,72,63}html:root[data-faction="alliance"]{--glow:106,166,255}' +
-    'html:root body{background-image:radial-gradient(ellipse 1200px 620px at 50% 700px,rgba(var(--glow),.26),transparent 70%),radial-gradient(ellipse 800px 700px at 0% 100%,rgba(var(--glow),.16),transparent 70%),radial-gradient(ellipse 800px 700px at 100% 60%,rgba(var(--glow),.13),transparent 70%);background-repeat:no-repeat}' +
     '.hero.banner{border-bottom:0}.banner{position:relative}.banner::after{content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(40px,8vw,90px);background:linear-gradient(to bottom,rgba(15,17,23,0),var(--bg));pointer-events:none}' +
     'html:root[data-faction="alliance"]{--accent:#1f4fa3;--accent-text:#ffffff}' +
     '@media (prefers-color-scheme:dark){html:root[data-faction="alliance"]:not([data-theme="light"]){--accent:#6aa6ff;--accent-text:#08111f}}' +
