@@ -31,7 +31,7 @@ function parse(html) {
     const spans = [...m[2].matchAll(/<span>([\s\S]*?)<\/span>/g)].map(s => decode(s[1]));
     const text = decode(m[2]);
     if (!text) continue;
-    lines.push(spans.length === 2 && decode(m[2]) === spans.join(" ").replace(/\s+/g, " ") ? { c: cls, l: spans[0], r: spans[1] } : { c: cls, t: text });
+    lines.push(spans.length === 2 ? { c: cls, l: spans[0], r: spans[1] } : { c: cls, t: text });
   }
   return { q: q ? +q : 1, lines };
 }
