@@ -54,7 +54,18 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 #more{margin:16px auto 0;display:block}
 .embed-box{margin-top:18px}
 .embed-box iframe{display:block;width:100%;height:80vh;min-height:500px;border:1px solid var(--line);border-radius:8px;margin-top:14px;background:#fff}
-footer{display:flex;justify-content:space-between;align-items:center;gap:8px 28px;flex-wrap:wrap;padding:28px max(20px,calc((100% - 1200px)/2));color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}footer a{color:var(--accent);text-decoration:none;font-weight:600}footer a:hover{text-decoration:underline}footer .tm{text-align:right}@media (max-width:760px){footer{justify-content:center;text-align:center}footer .tm{text-align:center}}
+footer{padding:0 max(20px,calc((100% - 1200px)/2));color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+footer a{color:var(--accent);text-decoration:none;font-weight:600}footer a:hover{text-decoration:underline}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px 40px;padding:36px 0 30px}
+.fcol h3{font-family:Cinzel,Georgia,serif;font-size:.95rem;letter-spacing:.06em;color:var(--text);margin:0 0 12px}
+.fcol ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fcol li a{color:var(--muted);font-weight:400;font-size:.92rem}.fcol li a:hover{color:var(--accent);text-decoration:none}
+.fbrandlink{display:inline-flex;align-items:center;gap:12px;color:var(--accent);font-family:Cinzel,Georgia,serif;font-weight:800;font-size:1.25rem;letter-spacing:.03em}.fbrandlink:hover{text-decoration:none}
+.fbrandlink img{height:54px;width:auto;display:block}
+html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data-faction="alliance"] .fbrandlink .fl-horde{display:none}
+.fbase{display:flex;justify-content:space-between;align-items:center;gap:8px 28px;flex-wrap:wrap;padding:18px 0 24px;border-top:1px solid var(--line)}
+.fbase .tm{text-align:right}
+@media (max-width:760px){.fgrid{grid-template-columns:1fr 1fr;padding:28px 0 22px}.fbrand{grid-column:1/-1}.fbase{justify-content:center;text-align:center}.fbase .tm{text-align:center}}
 </style>
 <style>
 .chips[hidden]{display:none}
@@ -117,7 +128,14 @@ table.loot{width:100%;border-collapse:collapse;font-size:.92rem}
 </section>
 </main>
 
-<footer><span>© <span id="yr"></span> <a href="index.html">Dirty Socks</a></span><span class="tm">World of Warcraft® is a registered trademark of Blizzard Entertainment, Inc.</span></footer>
+<footer>
+  <div class="fgrid">
+    <div class="fcol fbrand"><a class="fbrandlink" href="index.html"><img class="fl-horde" src="images/logo-horde-sm.png" alt="" width="52" height="54"><img class="fl-alliance" src="images/logo-alliance-sm.png" alt="" width="52" height="54"><span>Dirty Socks</span></a></div>
+    <div class="fcol"><h3>Navigation</h3><ul><li><a href="index.html">Home</a></li><li><a href="raid-roster.html">Roster</a></li><li><a href="hall-of-fame.html">Hall of Fame</a></li><li><a href="recruitment.html">Recruitment</a></li></ul></div>
+    <div class="fcol"><h3>Tools</h3><ul><li><a href="bis.html">Pre-Raid BiS</a></li><li><a href="dungeon-loot.html">Dungeon Loot</a></li><li><a href="hotfixes.html">Patch Notes</a></li></ul></div>
+  </div>
+  <div class="fbase"><span>© <span id="yr"></span> <a href="index.html">Dirty Socks</a></span><span class="tm">World of Warcraft® is a registered trademark of Blizzard Entertainment, Inc.</span></div>
+</footer>
 
 <script src="tooltips.js"></script>
 <script>
