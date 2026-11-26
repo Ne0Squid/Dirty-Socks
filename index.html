@@ -142,15 +142,6 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
   </div>
 </section>
 
-<section id="roster">
-  <h2>Roster</h2>
-  <div class="filters" id="filters"></div>
-  <div class="grid" id="members"></div>
-  <div class="pager" id="pager"></div>
-  <p class="muted" style="margin-top:12px">Characters below level 10 are hidden from the roster and will appear once they reach level 10.</p>
-  <div class="card" hidden style="margin-top:20px"><!-- Class chart temporarily hidden: remove the hidden attribute to bring it back --><h3 style="font-size:1.2rem;margin-bottom:6px">Classes in the Guild</h3><div id="classbars"></div></div>
-</section>
-
 <section id="professions" hidden>
   <h2>Professions</h2>
   <div class="card craft" id="craftcard" hidden>
@@ -203,35 +194,14 @@ const fallback={generated:"2026-11-12T02:17:13.558Z",founded:1793984794000,roste
  {name:"Ember",surname:"Highland",level:13,cls:"Hunter",color:"#abd473",rank:4},
  {name:"Parttimedad",surname:"Parttimedad",level:5,cls:"Druid",color:"#ff7d0a",rank:4}
 ]};
-// ===== EDIT THESE BY HAND =====
-const rankNames={0:"Guild Master",1:"Officer"}; // Blizzard returns numbers only; add titles like 1:"Officer"
-// ==============================
 
 const fmt=d=>new Date(d).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"});
 const fmtTime=d=>new Date(d).toLocaleString("en-US",{month:"long",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit",timeZoneName:"short"});
 const ago=t=>{const m=Math.max(0,Math.round((Date.now()-new Date(t))/6e4));return m<1?"just now":m<60?m+" min ago":m<1440?Math.round(m/60)+" hr ago":Math.round(m/1440)+" days ago"};
-const fEl=document.getElementById("filters"),mEl=document.getElementById("members");
-let sorted=[],tabs=[];
+let sorted=[];
 const armoryUrl=m=>"https://worldofwarcraft.blizzard.com/en-us/forever/us/armory/character/"+encodeURIComponent((m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-"));
 // Armory pages only exist for characters level 10 and up, so lower levels stay plain text.
 const nameLink=m=>{const t=m.name+" "+(m.surname||"");return m.level>=10?`<a href="${armoryUrl(m)}" target="_blank" rel="noopener">${t}</a>`:t};
-const PER_PAGE=15;let curClass="All";
-function show(c,pg){
-  curClass=c;
-  const list=sorted.filter(m=>c==="All"||m.cls===c);
-  const pages=Math.max(1,Math.ceil(list.length/PER_PAGE));
-  const cur=Math.min(Math.max(1,pg||1),pages);
-  fEl.innerHTML=tabs.map(t=>`<button class="${t===c?"on":""}" data-c="${t}">${t}</button>`).join("");
-  mEl.innerHTML=list.slice((cur-1)*PER_PAGE,cur*PER_PAGE).map(m=>`<div class="card member">${cico(m)}<div><strong>${nameLink(m)}</strong><div class="muted">Level ${m.level}${m.ilvl?" · iLvl "+m.ilvl:""}</div><div class="muted">${m.spec?m.spec+" ":""}${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
-  const pagerEl=document.getElementById("pager");
-  if(pages<=1){pagerEl.innerHTML="";return}
-  let h=`<button data-p="${cur-1}" ${cur===1?"disabled":""}>‹ Prev</button>`;
-  for(let i=1;i<=pages;i++)h+=`<button data-p="${i}" class="${i===cur?"on":""}">${i}</button>`;
-  h+=`<button data-p="${cur+1}" ${cur===pages?"disabled":""}>Next ›</button>`;
-  pagerEl.innerHTML=h;
-}
-fEl.addEventListener("click",e=>{const b=e.target.closest("button");if(b)show(b.dataset.c,1)});
-document.getElementById("pager").addEventListener("click",e=>{const b=e.target.closest("button");if(b&&!b.disabled)show(curClass,+b.dataset.p)});
 // ===== LEADERBOARD + PROFESSIONS =====
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const slugOf=m=>(m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-");
@@ -326,15 +296,9 @@ function render(d){
     [roster.length,"Members"],[avgLvl,"Average level"],[avgIlvl,"Average item level"],[daysFounded,"Days since founded"]
   ].map(s=>`<div class="card stat"><b>${s[0]}</b><span class="muted">${s[1]}</span></div>`).join("");
   document.getElementById("updated").textContent=d.saved?"Live roster data couldn’t be loaded, so this is a saved copy from "+fmtTime(d.generated)+".":"Roster last updated "+fmtTime(d.generated)+" ("+ago(d.generated)+").";
-  const counts={};
-  roster.forEach(m=>{(counts[m.cls]=counts[m.cls]||{n:0,color:m.color}).n++});
-  const maxN=Math.max(...Object.values(counts).map(c=>c.n));
-  document.getElementById("classbars").innerHTML=Object.entries(counts).sort((a,b)=>b[1].n-a[1].n||a[0].localeCompare(b[0])).map(([c,v])=>`<div class="crow"><span>${c}</span><div class="ctrack"><span style="width:${v.n/maxN*100}%;background:${v.color}"></span></div><span class="cnum">${v.n}</span></div>`).join("");
   const leaders=roster.filter(m=>m.level===maxLevel);
   document.getElementById("leaders").innerHTML=leaders.map(m=>`<div class="card leader" style="border-top:4px solid ${m.color}"><div class="muted">${m.level>=60?"Reached 60!":leaders.length>1?"Tied for the lead":"Leading the race"}</div><h3>${nameLink(m)}</h3><div class="muted">${m.cls}</div><div class="lvl">Level ${m.level}</div><div class="bar"><span style="width:${Math.min(100,m.level/60*100)}%"></span></div><span class="muted">${m.level>=60?"Max level":(60-m.level)+" levels to go"}</span></div>`).join("");
   sorted=roster.filter(m=>m.level>=10).sort((a,b)=>a.rank-b.rank||b.level-a.level); // characters under level 10 stay hidden
-  tabs=["All",...[...new Set(sorted.map(m=>m.cls))].sort()];
-  show("All");
   lvlHistory=d.history||null;
   profIcons=d.icons||{};recipeData=d.recipes||{};
   drawBoard();
