@@ -3,74 +3,98 @@
  "indexLen": 1142933,
  "indexHead": "{\"build\":\"1.60.1.71139\",\"rows\":[[25,\"Worn Shortsword\",1,2,1,21,2,7,135274],[35,\"Bent Staff\",1,2,1,17,2,10,135145],[36,\"Worn Mace\",1,2,1,21,2,4,133478],[37,\"Worn Axe\",1,2,1,21,2,0,132402],[38,\"Recruit's Shirt\",1,1,0,4,4,0,135009],[39,\"Recruit's Pants\",0,1,1,7,4,1,134582],[40,\"Recruit's Boots\",1,1,0,8,4,1,132540],[43,\"Squire's Boots\",1,1,0,8,4,1,132535],[44,\"Squire's Pants\",0,1,1,7,4,1,134582],[45,\"Squire's Shirt\",1,1,0,4,4,0,135005],[47,\"Footpad's Shoes\",1,1,0,8,4,1,132539],[48,\"Footpad's Pants\",0,1,1,7,4,1,134582],[49,\"Footpad's Shirt\",1,1,0,4,4,0,135009],[51,\"Neophyte's Boots\",1,1,0,8,4,1,132",
  "rowShape": [
-  "build",
-  "rows"
+  [
+   25,
+   "Worn Shortsword",
+   1,
+   2,
+   1,
+   21,
+   2,
+   7,
+   135274
+  ],
+  [
+   35,
+   "Bent Staff",
+   1,
+   2,
+   1,
+   17,
+   2,
+   10,
+   135145
+  ],
+  [
+   36,
+   "Worn Mace",
+   1,
+   2,
+   1,
+   21,
+   2,
+   4,
+   133478
+  ]
  ],
  "names": 788,
- "found": 0,
+ "found": 775,
  "ambiguous": 0,
  "missing": [
-  "Cloak of the Fleshborer",
-  "Bloodfur Bulwark",
-  "Withering Grips",
-  "Tuskblade Halberd",
-  "Lucky Shovelnose Tuft",
-  "Spike Crested Bracers",
-  "Lunarlight Robe",
-  "Claymore of Two Moons",
-  "Flameslash Crescent",
-  "Robes of Dark Summons",
-  "Impish Chain Hood",
-  "Flamebreak Talisman",
-  "Cowl of Dark Ambition",
-  "Burnished Pridescales",
-  "Behemoth Bones",
-  "Trousers of the Ebon Giant",
-  "Blackmaw Chain Belt",
-  "Scalding Flamehoof",
-  "Bleak Eye Shoulderplates",
-  "Horns of Varrox",
-  "Bloody Claws of Attack",
-  "Shamanic Wristguards",
-  "Veilpiercer Girdle",
-  "Idol of Ferocity",
-  "Mantle of Lost Hope",
-  "Stoneshell Guard",
-  "Earthslag Shoulders",
-  "Enthralled Sphere",
-  "Blackveil Cape",
-  "Greaves of Withering Despair",
-  "Kentic Amice",
-  "Crusader's Armor",
-  "Fleetfoot Greaves",
-  "Houndmaster's Bow",
-  "Houndmaster's Rifle",
-  "Spritecaster Cape",
-  "Savage Gladiator Greaves",
-  "Shadefiend Boots",
-  "Graverot Cape",
-  "Carapace of Anub'shiah"
+  "Voone's Twitchbow",
+  "Chillpike",
+  "Bonespike Shoulder",
+  "Cloak of Revanchion",
+  "The Shadow's Grasp",
+  "Bracers of Mending",
+  "Darkshade Gloves",
+  "Lord Blackwood's Blade",
+  "Lord Blackwood's Buckler",
+  "Blackwood's Thigh",
+  "Detention Strap",
+  "Staff of Balzaphon",
+  "Waistband of Balzaphon"
  ],
  "samples": [
   {
    "n": "Cloak of the Fleshborer",
-   "none": true
+   "ids": [
+    280062
+   ],
+   "status": 200,
+   "text": " Cloak of the Fleshborer — New in WoW Forever · Endgame Tools Skip to content Endgame Tools News Recent news Menu Close WoW Forever GTA 6 WoW Forever AION 2 Roblox Minecraft Fortnite All games Recent news Language English Deutsch English Español Español (México) Français Italiano Português (BR) Русский 한국어 简体中文 繁體中文 Theme Your account Language en Deutsch de English en Español es Español (México) es-MX Français fr Italiano it Português (BR) pt-BR Русский ru 한국어 ko 简体中文 zh-CN 繁體中文 zh-TW WoW Forever Overview News Blue tracker Launch Items BiS Talents Sets Professions Spells Dungeons Raids All tools Launch Events Servers Patch notes Items Sets Spells BiS Talents Talent changes Challenges Profess"
   },
   {
    "n": "Claymore of Two Moons",
-   "none": true
+   "ids": [
+    280080
+   ],
+   "status": 200,
+   "text": " Claymore of Two Moons — New in WoW Forever · Endgame Tools Skip to content Endgame Tools News Recent news Menu Close WoW Forever GTA 6 WoW Forever AION 2 Roblox Minecraft Fortnite All games Recent news Language English Deutsch English Español Español (México) Français Italiano Português (BR) Русский 한국어 简体中文 繁體中文 Theme Your account Language en Deutsch de English en Español es Español (México) es-MX Français fr Italiano it Português (BR) pt-BR Русский ru 한국어 ko 简体中文 zh-CN 繁體中文 zh-TW WoW Forever Overview News Blue tracker Launch Items BiS Talents Sets Professions Spells Dungeons Raids All tools Launch Events Servers Patch notes Items Sets Spells BiS Talents Talent changes Challenges Professio"
   },
   {
    "n": "Ritssyn's Wand of Bad Mojo",
-   "none": true
+   "ids": [
+    22408
+   ],
+   "status": 200,
+   "text": " Ritssyn's Wand of Bad Mojo — WoW Forever item · Endgame Tools Skip to content Endgame Tools News Recent news Menu Close WoW Forever GTA 6 WoW Forever AION 2 Roblox Minecraft Fortnite All games Recent news Language English Deutsch English Español Español (México) Français Italiano Português (BR) Русский 한국어 简体中文 繁體中文 Theme Your account Language en Deutsch de English en Español es Español (México) es-MX Français fr Italiano it Português (BR) pt-BR Русский ru 한국어 ko 简体中文 zh-CN 繁體中文 zh-TW WoW Forever Overview News Blue tracker Launch Items BiS Talents Sets Professions Spells Dungeons Raids All tools Launch Events Servers Patch notes Items Sets Spells BiS Talents Talent changes Challenges Profes"
   },
   {
    "n": "Fiendish Machete",
-   "none": true
+   "ids": [
+    18310
+   ],
+   "status": 200,
+   "text": " Fiendish Machete — WoW Forever item · Endgame Tools Skip to content Endgame Tools News Recent news Menu Close WoW Forever GTA 6 WoW Forever AION 2 Roblox Minecraft Fortnite All games Recent news Language English Deutsch English Español Español (México) Français Italiano Português (BR) Русский 한국어 简体中文 繁體中文 Theme Your account Language en Deutsch de English en Español es Español (México) es-MX Français fr Italiano it Português (BR) pt-BR Русский ru 한국어 ko 简体中文 zh-CN 繁體中文 zh-TW WoW Forever Overview News Blue tracker Launch Items BiS Talents Sets Professions Spells Dungeons Raids All tools Launch Events Servers Patch notes Items Sets Spells BiS Talents Talent changes Challenges Professions Prof"
   },
   {
    "n": "Spike Crested Bracers",
-   "none": true
+   "ids": [
+    280061
+   ],
+   "status": 200,
+   "text": " Spike Crested Bracers — New in WoW Forever · Endgame Tools Skip to content Endgame Tools News Recent news Menu Close WoW Forever GTA 6 WoW Forever AION 2 Roblox Minecraft Fortnite All games Recent news Language English Deutsch English Español Español (México) Français Italiano Português (BR) Русский 한국어 简体中文 繁體中文 Theme Your account Language en Deutsch de English en Español es Español (México) es-MX Français fr Italiano it Português (BR) pt-BR Русский ru 한국어 ko 简体中文 zh-CN 繁體中文 zh-TW WoW Forever Overview News Blue tracker Launch Items BiS Talents Sets Professions Spells Dungeons Raids All tools Launch Events Servers Patch notes Items Sets Spells BiS Talents Talent changes Challenges Professio"
   }
  ]
 }
