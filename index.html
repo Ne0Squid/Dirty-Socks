@@ -131,12 +131,6 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 <section id="race">
   <h2>Race to 60</h2>
   <div class="grid" id="leaders"></div>
-  <div class="card" id="lbcard" style="margin-top:14px" hidden>
-    <h3 style="font-size:1.2rem;margin-bottom:10px">Leaderboard</h3>
-    <div class="filters" id="lbtabs"></div>
-    <div id="lbbody"></div>
-    <p class="muted" id="lbnote" style="margin:10px 0 0"></p>
-  </div>
 </section>
 
 <section id="professions" hidden>
@@ -222,29 +216,6 @@ function weeklyGains(list){
   });
   return {rows,since};
 }
-function drawBoard(){
-  if(!sorted.length)return;
-  const SHOW_LEVEL_TAB=false; // temporarily hidden; set to true to bring back the Highest level tab
-  const modes=[];
-  if(SHOW_LEVEL_TAB)modes.unshift(["level","Highest level"]);
-  if(sorted.some(m=>m.ilvl))modes.push(["ilvl","Item level"]);
-  modes.push(["gain","Gained this week"]);
-  if(!modes.some(x=>x[0]===lbMode))lbMode=modes[0][0];
-  document.getElementById("lbcard").hidden=false;
-  document.getElementById("lbtabs").innerHTML=modes.map(([k,l])=>`<button class="${k===lbMode?"on":""}" data-b="${k}">${l}</button>`).join("");
-  let rows=[],note="",fmtv=v=>v;
-  if(lbMode==="level"){rows=sorted.map(m=>({m,val:m.level}));fmtv=v=>"Level "+v}
-  else if(lbMode==="ilvl"){rows=sorted.filter(m=>m.ilvl).map(m=>({m,val:m.ilvl}));fmtv=v=>"Item level "+v}
-  else{
-    const g=weeklyGains(sorted);
-    if(!g)note="Weekly gains appear once the site has saved a couple of days of levels. Check back tomorrow.";
-    else{rows=g.rows.filter(r=>r.val>0);fmtv=v=>"+"+v+(v===1?" level":" levels");note=(rows.length?"":"No level-ups yet. ")+"Levels gained since "+fmtDayUTC(g.since)+".";}
-  }
-  rows.sort((a,b)=>b.val-a.val||b.m.level-a.m.level);rows=rows.slice(0,5);
-  document.getElementById("lbbody").innerHTML=rows.map((r,i)=>`<div class="lbrow"><span class="lbpos">${i+1}</span>${cico(r.m)}<span><strong>${nameLink(r.m)}</strong><small>${esc(r.m.spec?r.m.spec+" ":"")}${esc(r.m.cls)}</small></span><span class="lbval">${fmtv(r.val)}</span></div>`).join("");
-  document.getElementById("lbnote").textContent=note;
-}
-document.getElementById("lbtabs").addEventListener("click",e=>{const b=e.target.closest("button");if(b){lbMode=b.dataset.b;drawBoard()}});
 document.getElementById("proflist").addEventListener("click",e=>{
   const b=e.target.closest(".prof-more"); if(!b) return;
   const ex=b.previousElementSibling, open=ex.hidden;
@@ -290,7 +261,6 @@ function render(d){
   sorted=roster.filter(m=>m.level>=10).sort((a,b)=>a.rank-b.rank||b.level-a.level); // characters under level 10 stay hidden
   lvlHistory=d.history||null;
   profIcons=d.icons||{};recipeData=d.recipes||{};
-  drawBoard();
   drawProfessions();drawCraft();
 }
 document.getElementById("yr").textContent=new Date().getFullYear();
