@@ -303,7 +303,7 @@ function drawProfessions(){
   sorted.forEach(m=>(m.professions||[]).forEach(p=>{if(p&&p.name)(map[p.name]=map[p.name]||{primary:!!p.primary,rows:[]}).rows.push({m,skill:p.skill,max:p.max})}));
   const names=Object.keys(map);
   document.getElementById("professions").hidden=!names.length;
-  document.getElementById("profnav").hidden=!names.length;
+  const pn=document.getElementById("profnav");if(pn)pn.hidden=!names.length;
   names.sort((a,b)=>(map[b].primary-map[a].primary)||(map[b].rows.length-map[a].rows.length)||a.localeCompare(b));
   document.getElementById("proflist").innerHTML=names.map(n=>{
     const r=map[n].rows.sort((a,b)=>(b.skill||0)-(a.skill||0)||b.m.level-a.m.level);

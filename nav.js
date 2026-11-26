@@ -1,28 +1,37 @@
-// Shared site navigation: one list of links for every page, so the menu looks the same everywhere.
+// Shared site navigation: logo + guild name on the left, one list of links (identical on every page) on the right.
 (function(){
   var nav=document.querySelector("nav");if(!nav)return;
   var page=(location.pathname.split("/").pop()||"index.html");
-  var home=page==="index.html";
-  var sections=[["Guild Stats","#stats"],["Race to 60","#race"],["Roster","#roster"],["Professions","#professions","profnav"],["Dungeons","#dungeons"],["Raid Progression","#raidprog"]];
-  var main=home?sections:[["Home","index.html"]]; // other pages just offer a way back home
-  var pages=[["Raid Roster","raid-roster.html"],["Hall of Fame","hall-of-fame.html"],["Pre-Raid BiS","bis.html"],["Dungeon Loot","dungeon-loot.html"],["Patch Notes","hotfixes.html"]];
-  var a=function(l,href,id){return '<a href="'+href+'"'+(id?' id="'+id+'" hidden':'')+(href===page?' class="here"':'')+'>'+l+'</a>'};
-  nav.innerHTML='<div class="navmain">'+main.map(function(l){return a(l[0],l[1],l[2])}).join("")+'</div><div class="navpages">'+pages.map(function(l){return a(l[0],l[1])}).join("")+'</div>';
+  var links=[["Home","index.html"],["Roster","raid-roster.html"],["Hall of Fame","hall-of-fame.html"],["Pre-Raid BiS","bis.html"],["Dungeon Loot","dungeon-loot.html"],["Patch Notes","hotfixes.html"]];
+  var a=function(l){return '<a href="'+l[1]+'"'+(l[1]===page?' class="here" aria-current="page"':'')+'>'+l[0]+'</a>'};
+  nav.innerHTML='<a class="brand" href="index.html" aria-label="Dirty Socks – home">'
+    +'<img class="logo logo-horde" src="images/logo-horde-sm.png" alt="" width="44" height="46">'
+    +'<img class="logo logo-alliance" src="images/logo-alliance-sm.png" alt="" width="44" height="46">'
+    +'<span class="brand-name">Dirty Socks</span></a>'
+    +'<div class="navlinks">'+links.map(a).join("")+'</div>';
   var css=document.createElement("style");
-  css.textContent='html{scroll-padding-top:64px}nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--surface)}'
-  +'nav a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--muted)}nav a:hover,nav a.here{color:var(--accent)}'
-  +'.menu-btn{display:none}.navmain,.navpages{display:flex;gap:18px;flex-wrap:wrap;justify-content:center}'
-  +'@media (min-width:1100px){nav{justify-content:space-between;flex-wrap:nowrap}.navpages{padding-left:22px;border-left:1px solid var(--line)}}'
-  +'@media (max-width:720px){nav{flex-direction:column;align-items:stretch;gap:0;padding:6px 20px}.navmain,.navpages{display:contents}'
-  +'.menu-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:none;border:0;color:var(--text);font:inherit;font-weight:600;font-size:.95rem;padding:8px;cursor:pointer}'
-  +'.menu-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}'
-  +'nav a{display:none;padding:11px 4px;border-top:1px solid var(--line);text-align:center;font-size:.95rem}nav.open a:not([hidden]){display:block}}';
+  css.textContent='html{scroll-padding-top:72px}'
+  +'nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding:8px max(20px,env(safe-area-inset-left,0px)) 8px max(20px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);background:var(--surface)}'
+  +'nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}'
+  +'nav .logo{height:46px;width:auto;display:block;filter:drop-shadow(0 1px 3px rgba(0,0,0,.35))}'
+  +'html:root:not([data-faction="alliance"]) nav .logo-alliance,html:root[data-faction="alliance"] nav .logo-horde{display:none}'
+  +'nav .brand-name{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:1.3rem;letter-spacing:.01em;color:var(--text)}'
+  +'nav .brand:hover .brand-name{color:var(--accent)}'
+  +'nav .brand:focus-visible,nav .navlinks a:focus-visible,.menu-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}'
+  +'.navlinks{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}'
+  +'.navlinks a{text-decoration:none;font-weight:600;font-size:.92rem;color:var(--muted);padding:6px 0;border-bottom:2px solid transparent}'
+  +'.navlinks a:hover{color:var(--text)}.navlinks a.here{color:var(--accent);border-bottom-color:var(--accent)}'
+  +'.menu-btn{display:none}'
+  +'@media (max-width:900px){nav{flex-wrap:wrap}.menu-btn{display:flex;align-items:center;gap:8px;margin-left:auto;background:none;border:1px solid var(--line);border-radius:6px;color:var(--text);font:inherit;font-weight:600;font-size:.9rem;padding:7px 12px;cursor:pointer}'
+  +'.navlinks{display:none;flex-basis:calc(100% + 40px);flex-direction:column;gap:0;margin:2px -20px -8px;border-top:1px solid var(--line)}nav.open .navlinks{display:flex}'
+  +'.navlinks a{padding:12px 20px;border-bottom:1px solid var(--line);text-align:left;font-size:.98rem}.navlinks a.here{border-bottom-color:var(--line);background:rgba(127,127,127,.1)}}'
+  +'@media (max-width:420px){nav .brand-name{font-size:1.15rem}nav .logo{height:40px}}';
   document.head.appendChild(css);
-  // Mobile: the link row collapses behind a Menu button.
+  // Small screens: the links collapse behind a Menu button.
   var btn=document.createElement("button");btn.type="button";btn.className="menu-btn";
   btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Toggle menu");btn.textContent="☰ Menu";
-  nav.insertBefore(btn,nav.firstChild);
+  nav.insertBefore(btn,nav.querySelector(".navlinks"));
   var set=function(o){nav.classList.toggle("open",o);btn.setAttribute("aria-expanded",String(o));btn.textContent=o?"✕ Close":"☰ Menu"};
   btn.addEventListener("click",function(){set(!nav.classList.contains("open"))});
-  nav.addEventListener("click",function(e){if(e.target.closest("a"))set(false)});
+  nav.addEventListener("click",function(e){if(e.target.closest(".navlinks a"))set(false)});
 })();
