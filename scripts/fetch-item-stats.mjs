@@ -30,12 +30,14 @@ let prev = null; try { prev = JSON.parse(readFileSync("item-stats.json", "utf8")
 const force = process.env.FORCE === "1";
 const sameItems = prev && Object.keys(prev.items).concat(prev.missing || []).length === names.length;
 if (!force && prev && prev.build === build && sameItems) { console.log(`Build ${build} unchanged; nothing to do.`); process.exit(0); }
+// Manual overrides: item name -> item ID (for items whose names don't match the database, e.g. tier 0.5 sets).
+let manual = {}; try { manual = Object.fromEntries(Object.entries(JSON.parse(readFileSync("item-ids.json", "utf8"))).map(([k, v]) => [norm(k), v])); } catch {}
 const idx = indexJson.rows.map(r => ({ id: r[0], name: r[1], k: norm(r[1]) }));
 const byK = new Map(); idx.forEach(r => { if (!byK.has(r.k)) byK.set(r.k, r); });
 const out = {}, unmatched = [];
 const jobs = [];
 for (const n of names) {
-  let r = byK.get(norm(n));
+  let r = manual[norm(n)] ? { id: manual[norm(n)], name: n } : byK.get(norm(n));
   if (!r) { const k = norm(n); let best = null, bd = 99; for (const c of idx) { if (Math.abs(c.k.length - k.length) > 3) continue; const d = lev(k, c.k); if (d < bd) { bd = d; best = c; } } if (best && bd <= 2 && k.length >= 10) r = best; }
   if (r) jobs.push({ n, r }); else unmatched.push(n);
 }
