@@ -51,7 +51,7 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 nav #countdown{position:absolute;left:max(20px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%);padding:0;gap:10px;background:none;border:0;border-radius:0;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
 nav #cdtitle{font-size:.74rem;color:var(--muted)}nav .cd-units{gap:7px}nav .cd-u b{font-size:.9rem}nav .cd-u span{font-size:.62rem;color:var(--muted)}
 .splash{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(40px,8vh,84px) 20px clamp(70px,12vh,120px)}
-.splash::before{content:"";position:absolute;inset:0 0 -40px 0;z-index:-1;background:url(images/hero-bg.jpg) center top/cover no-repeat;-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 52%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 52%,transparent 100%);pointer-events:none}
+.splash::before{content:"";position:absolute;inset:0 0 -40px 0;z-index:-1;background:radial-gradient(ellipse 46% 62% at 50% 46%,rgba(11,13,17,.78),rgba(11,13,17,.35) 60%,rgba(11,13,17,0) 80%),linear-gradient(rgba(11,13,17,.28),rgba(11,13,17,.28)),url(images/hero-bg.jpg) center top/cover no-repeat;-webkit-mask-image:linear-gradient(to bottom,#000 0,#000 52%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0,#000 52%,transparent 100%);pointer-events:none}
 .splash .sl{width:clamp(170px,26vw,260px);height:auto}
 html:root:not([data-faction="alliance"]) .splash .sl-alliance,html:root[data-faction="alliance"] .splash .sl-horde{display:none}
 .splash .pill{margin-top:18px;display:inline-block;padding:7px 22px;border:1px solid var(--accent);border-radius:999px;font-family:Cinzel,Georgia,serif;font-weight:600;font-size:clamp(.78rem,2.6vw,.98rem);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:rgba(11,13,17,.62);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
@@ -59,7 +59,7 @@ html:root:not([data-faction="alliance"]) .splash .sl-alliance,html:root[data-fac
 @media (max-width:480px){.splash .pill{letter-spacing:.08em;font-size:.74rem;padding:9px 20px;border-radius:28px;text-wrap:balance;text-align:center;line-height:1.5}}
 .splash .cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .splash .btn{padding:12px 28px;font-size:1rem;border:2px solid var(--accent)}
-.splash .btn.ghost{background:transparent;color:var(--accent)}
+.splash .btn.ghost{background:rgba(11,13,17,.62);color:var(--accent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .splash .btn:hover{filter:brightness(1.12)}.splash .btn.ghost:hover{background:var(--accent);color:var(--accent-text);filter:none}
 main.wrap{padding-top:10px}
 @media (max-width:480px){#countdown{padding:5px 11px}#cdtitle{display:none}}
