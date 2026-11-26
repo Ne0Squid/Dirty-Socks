@@ -39,6 +39,8 @@ const jobs = [];
 for (const n of names) {
   let r = byK.get(norm(n)) || (manual[norm(n)] ? { id: manual[norm(n)], name: n } : null);
   if (!r) { const k = norm(n); let best = null, bd = 99; for (const c of idx) { if (Math.abs(c.k.length - k.length) > 3) continue; const d = lev(k, c.k); if (d < bd) { bd = d; best = c; } } if (best && bd <= 2 && k.length >= 10) r = best; }
+  // Random-suffix variants ("Archivist Cape of Healing") link to the base item ("Archivist Cape").
+  if (!r) { const m = n.match(/^(.+?) of (?:the )?.+$/); if (m && m[1].trim().split(/\s+/).length >= 2) { const b = byK.get(norm(m[1])); if (b) { r = b; console.log(`base match: ${n} -> ${b.name} (${b.id})`); } } }
   if (r) jobs.push({ n, r }); else unmatched.push(n);
 }
 function parse(html) {
