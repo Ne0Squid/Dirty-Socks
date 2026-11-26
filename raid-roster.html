@@ -264,7 +264,7 @@ function draw(guild,assign){
       const ico=icons[m.cls]?`<img class="cico" src="${esc(icons[m.cls])}" alt="" style="border-color:${m.color}" loading="lazy">`:`<span class="dot" style="background:${m.color}"></span>`;
       return `<tr><td class="num">${n}</td><td>${tag}</td><td><strong>${esc(m.name)}</strong></td><td><span class="cls">${ico}<span style="color:${m.color}">${esc(m.cls)}</span></span></td><td>${esc(m.spec||"–")}</td><td>${m.ilvl||"–"}</td></tr>`;
     })).join("");
-    const open=document.getElementById("raid"+ri)?document.getElementById("raid"+ri).open:true;
+    const open=document.getElementById("raid"+ri)?document.getElementById("raid"+ri).open:false; // collapsed by default
     return `<details class="card raid" id="raid${ri}"${open?" open":""}><summary><span class="t">${esc(r.name)}</span><span class="n">${filled} / ${r.size} filled</span></summary>
     <div class="rwrap"><table class="rtable"><thead><tr><th>#</th><th>Role</th><th>Player</th><th>Class</th><th>Spec</th><th>iLvl</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
   }).join("");
