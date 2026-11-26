@@ -128,7 +128,7 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
       </fieldset>
     </div>
     <input type="text" id="rq-web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
-    <div class="rq-actions"><button class="btn" type="submit" id="rq-send">Send request</button><span class="muted" id="rq-msg" role="status"></span></div>
+    <div class="rq-actions"><button class="btn" type="submit" id="rq-send">Continue</button><span class="muted" id="rq-msg" role="status"></span></div>
     <p class="muted" style="margin:14px 0 0">Trouble with the form? <a href="https://forms.gle/wESFMshow64SfqLF6" target="_blank" rel="noopener">Open it on Google instead</a>.</p>
   </form>
 </section>
@@ -169,7 +169,7 @@ Promise.all([
 
 
 // ===== Raid spot requests =====
-// The form submits straight to the officers' Google Form (answers land in its spreadsheet). The ENTRY ids come from the form's pre-filled link.
+// The form opens the officers' Google Form with the answers pre-filled (they land in its spreadsheet once submitted). The ENTRY ids come from the form's pre-filled link.
 const FORM="https://docs.google.com/forms/d/e/1FAIpQLSecjQnuAldPcMEYdueUhxgdFkDrHhRanQPIn7qA4gPi5g2B2w/formResponse";
 const ENTRY={character:"entry.1353387200",raid:"entry.1801637567",role:"entry.230302326",nights:"entry.874453092"};
 (function(){
@@ -186,18 +186,16 @@ const ENTRY={character:"entry.1353387200",raid:"entry.1801637567",role:"entry.23
     if(!sel.value)return say("Choose your character first.",true);
     if(!nights.length)return say("Pick at least one night.",true);
     if(document.getElementById("rq-web").value)return; // spam trap
-    try{if(Date.now()-Number(localStorage.getItem("ds-rq")||0)<60000)return say("You just sent one. Give it a minute.",true)}catch(_){}
+    try{if(Date.now()-Number(localStorage.getItem("ds-rq")||0)<60000)return say("Give it a minute before sending another.",true)}catch(_){}
     const raid=document.getElementById("rq-raid").value,role=document.getElementById("rq-role").value;
-    const body=new URLSearchParams();
-    body.append(ENTRY.character,sel.value);body.append(ENTRY.raid,raid);body.append(ENTRY.role,role);
-    nights.forEach(n=>body.append(ENTRY.nights,n));
-    btn.disabled=true;say("Sending…");
-    try{
-      // Google does not let a web page read the reply, so "no-cors" is used and a sent request is treated as delivered.
-      await fetch(FORM,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body});
-      try{localStorage.setItem("ds-rq",String(Date.now()))}catch(_){}
-      f.innerHTML=`<div class="rq-done"><b>Request sent</b><span>${sel.value} · ${role} · ${raid} · ${nights.map(n=>n.split(" ")[0]).join(" & ")}</span><span class="muted">The officers will confirm your spot and add you to the roster.</span></div>`;
-    }catch(_){btn.disabled=false;say("Could not send. Check your connection, or use the Google link below.",true)}
+    const q=new URLSearchParams({"usp":"pp_url"});
+    q.append(ENTRY.character,sel.value);q.append(ENTRY.raid,raid);q.append(ENTRY.role,role);
+    nights.forEach(n=>q.append(ENTRY.nights,n));
+    const url=FORM.replace("/formResponse","/viewform")+"?"+q.toString();
+    try{localStorage.setItem("ds-rq",String(Date.now()))}catch(_){}
+    // Open the officers' Google Form with everything filled in; Google checks the answers and the player presses Submit there.
+    const w=window.open(url,"_blank");if(w)try{w.opener=null}catch(_){}
+    f.innerHTML=`<div class="rq-done"><b>One last step</b><span>${sel.value} · ${role} · ${raid} · ${nights.map(n=>n.split(" ")[0]).join(" & ")}</span><span>${w?"Your form opened in a new tab. Press <strong>Submit</strong> there to send your request.":"Your browser blocked the new tab."} <a href="${url}" target="_blank" rel="noopener">Open the form${w?" again":""}</a>.</span><span class="muted">Your request isn't sent until you press Submit on the Google form.</span></div>`;
   });
 })();
 </script>
