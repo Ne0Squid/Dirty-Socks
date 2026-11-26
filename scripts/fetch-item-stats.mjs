@@ -37,7 +37,7 @@ const byK = new Map(); idx.forEach(r => { if (!byK.has(r.k)) byK.set(r.k, r); })
 const out = {}, unmatched = [];
 const jobs = [];
 for (const n of names) {
-  let r = manual[norm(n)] ? { id: manual[norm(n)], name: n } : byK.get(norm(n));
+  let r = byK.get(norm(n)) || (manual[norm(n)] ? { id: manual[norm(n)], name: n } : null);
   if (!r) { const k = norm(n); let best = null, bd = 99; for (const c of idx) { if (Math.abs(c.k.length - k.length) > 3) continue; const d = lev(k, c.k); if (d < bd) { bd = d; best = c; } } if (best && bd <= 2 && k.length >= 10) r = best; }
   if (r) jobs.push({ n, r }); else unmatched.push(n);
 }
