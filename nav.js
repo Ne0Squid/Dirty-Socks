@@ -2,7 +2,7 @@
 (function(){
   var nav=document.querySelector("nav");if(!nav)return;
   var page=(location.pathname.split("/").pop()||"index.html");
-  var links=[["Home","index.html"],["Roster","raid-roster.html"],["Hall of Fame","hall-of-fame.html"],["Pre-Raid BiS","bis.html"],["Dungeon Loot","dungeon-loot.html"],["Patch Notes","hotfixes.html"]];
+  var links=[["Home","index.html"],["Roster","raid-roster.html"],["Hall of Fame","hall-of-fame.html"],["Pre-Raid BiS","bis.html"],["Dungeon Loot","dungeon-loot.html"],["Patch Notes","hotfixes.html"],["Recruitment","recruitment.html"]];
   var a=function(l){return '<a href="'+l[1]+'"'+(l[1]===page?' class="here" aria-current="page"':'')+'>'+l[0]+'</a>'};
   nav.innerHTML='<a class="brand" href="index.html" aria-label="Dirty Socks – home">'
     +'<img class="logo logo-horde" src="images/logo-horde-sm.png" alt="" width="44" height="46">'
@@ -21,7 +21,7 @@
   +'.navlinks a:hover{color:var(--text)}.navlinks a.here{color:var(--accent);border-bottom-color:var(--accent)}'
   +'nav .faction-toggle{position:absolute;right:max(20px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);background:var(--bg)}'
   +'.menu-btn{display:none}'
-  +'@media (max-width:1100px){nav{flex-wrap:wrap;justify-content:space-between}nav .faction-toggle{position:static!important;transform:none!important;order:2;margin-left:auto}.menu-btn{order:3;margin-left:0!important}nav .brand{order:1}.navlinks{order:4}.menu-btn{display:flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);border-radius:6px;color:var(--text);font:inherit;font-weight:600;font-size:.9rem;padding:7px 12px;cursor:pointer}'
+  +'@media (max-width:1160px){nav{flex-wrap:wrap;justify-content:space-between}nav .faction-toggle{position:static!important;transform:none!important;order:2;margin-left:auto}.menu-btn{order:3;margin-left:0!important}nav .brand{order:1}.navlinks{order:4}.menu-btn{display:flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);border-radius:6px;color:var(--text);font:inherit;font-weight:600;font-size:.9rem;padding:7px 12px;cursor:pointer}'
   +'.navlinks{display:none;flex-basis:calc(100% + 40px);flex-direction:column;gap:0;margin:2px -20px -8px;border-top:1px solid var(--line)}nav.open .navlinks{display:flex}'
   +'.navlinks a{padding:12px 20px;border-bottom:1px solid var(--line);text-align:left;font-size:.98rem}.navlinks a.here{border-bottom-color:var(--line);background:rgba(127,127,127,.1)}}'
   +'@media (max-width:420px){nav .logo{height:42px}}';
