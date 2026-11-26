@@ -1,263 +1,76 @@
 {
- "https://wowforever.wclbox.com/en/": {
-  "s": 200,
-  "len": 122171,
-  "title": "WCLBox · WoW Forever Database - Talents, Items &amp; Patch Changes",
-  "forms": [
-   "<form class=\"sy-search ss\" role=\"search\" action=\"/en/sousuo\">"
-  ],
-  "inputs": [
-   "<input autoComplete=\"off\" spellCheck=\"false\" role=\"combobox\" aria-expanded=\"false\" aria-controls=\"ss-panel\" aria-autocomplete=\"list\" aria-label=\"Search for talents, spells, items, regions and dungeons\" placeholder=\"Search for spells, items, regions, dungeons…\" name=\"q\" value=\"\"/>"
-  ],
-  "itemLinkCount": 2,
-  "itemLinkSample": [
-   "/en/wupin",
-   "/en/wupin/fenlei"
-  ],
-  "head": "<!doctype html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <!-- Each language has a stable URL. Readers choose via the language links. --> <link rel=\"icon\" href=\"/favicon.ico?v=wclbox-gradient-2",
-  "locs": []
- },
- "https://wowforever.wclbox.com/en/wupin/280080": {
-  "s": 200,
-  "len": 83742,
-  "title": "Claymore of Two Moons (Item 280080) - WCLBox · WoW Forever Database",
-  "forms": [
-   "<form class=\"xs-find\" role=\"search\" action=\"/en/sousuo\">",
-   "<form class=\"xs-find\" role=\"search\" action=\"/en/sousuo\">"
-  ],
-  "inputs": [
-   "<input type=\"search\" placeholder=\"Search spells and items\" aria-label=\"Search the Database\" autoComplete=\"off\" name=\"q\"/>",
-   "<input type=\"search\" placeholder=\"Search spells and items\" aria-label=\"Search the Database\" autoComplete=\"off\" name=\"q\"/>"
-  ],
-  "itemLinkCount": 8,
-  "itemLinkSample": [
-   "https://wowforever.wclbox.com/wupin/280080",
-   "https://wowforever.wclbox.com/en/wupin/280080",
-   "/en/wupin",
-   "/wupin/280080",
-   "/api/open/v1/items/280080",
-   "/en/wupin/fenlei/wuqi"
-  ],
-  "head": "<!doctype html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <!-- Each language has a stable URL. Readers choose via the language links. --> <link rel=\"icon\" href=\"/favicon.ico?v=wclbox-gradient-2",
-  "locs": []
- },
- "https://wowforever.wclbox.com/en/search?q=Claymore%20of%20Two%20Moons": {
-  "s": 404,
-  "len": 80189,
-  "title": "Page Not Found - WCLBox · WoW Forever Database",
-  "forms": [
-   "<form class=\"xs-find\" role=\"search\" action=\"/en/sousuo\">",
-   "<form class=\"xs-find\" role=\"search\" action=\"/en/sousuo\">"
-  ],
-  "inputs": [
-   "<input type=\"search\" placeholder=\"Search spells and items\" aria-label=\"Search the Database\" autoComplete=\"off\" name=\"q\"/>",
-   "<input type=\"search\" placeholder=\"Search spells and items\" aria-label=\"Search the Database\" autoComplete=\"off\" name=\"q\"/>"
-  ],
-  "itemLinkCount": 2,
-  "itemLinkSample": [
-   "/en/wupin",
-   "/en/wupin/fenlei"
-  ],
-  "head": "<!doctype html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <!-- Each language has a stable URL. Readers choose via the language links. --> <link rel=\"icon\" href=\"/favicon.ico?v=wclbox-gradient-2",
-  "locs": []
- },
- "https://wowforever.wclbox.com/en/wupin?q=Claymore%20of%20Two%20Moons": {
-  "s": 200,
-  "len": 154650,
-  "title": "WoW Forever Item Database: New Gear and Classic Era Changes - WCLBox · WoW Forever Database",
-  "forms": [
-   "<form class=\"xs-find\" role=\"search\" action=\"/en/sousuo\">",
-   "<form class=\"xs-find\" role=\"search\" action=\"/en/sousuo\">"
-  ],
-  "inputs": [
-   "<input type=\"search\" placeholder=\"Search spells and items\" aria-label=\"Search the Database\" autoComplete=\"off\" name=\"q\"/>",
-   "<input type=\"search\" placeholder=\"Search spells and items\" aria-label=\"Search the Database\" autoComplete=\"off\" name=\"q\"/>",
-   "<input type=\"search\" placeholder=\"Thunderfury, spell power, 19019…\" aria-label=\"Search items\" value=\"\"/>"
-  ],
-  "itemLinkCount": 109,
-  "itemLinkSample": [
-   "https://wowforever.wclbox.com/wupin",
-   "https://wowforever.wclbox.com/en/wupin",
-   "/assets/item-catalog-CPl61kmE.css",
-   "/en/wupin",
-   "/wupin",
-   "/en/wupin/fenlei"
-  ],
-  "head": "<!doctype html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <!-- Each language has a stable URL. Readers choose via the language links. --> <link rel=\"icon\" href=\"/favicon.ico?v=wclbox-gradient-2",
-  "locs": []
- },
- "https://wowforever.wclbox.com/en/wupin/search?q=Claymore%20of%20Two%20Moons": {
-  "s": 404,
-  "len": 80189,
-  "title": "Page Not Found - WCLBox · WoW Forever Database",
-  "forms": [
-   "<form class=\"xs-find\" role=\"search\" action=\"/en/sousuo\">",
-   "<form class=\"xs-find\" role=\"search\" action=\"/en/sousuo\">"
-  ],
-  "inputs": [
-   "<input type=\"search\" placeholder=\"Search spells and items\" aria-label=\"Search the Database\" autoComplete=\"off\" name=\"q\"/>",
-   "<input type=\"search\" placeholder=\"Search spells and items\" aria-label=\"Search the Database\" autoComplete=\"off\" name=\"q\"/>"
-  ],
-  "itemLinkCount": 2,
-  "itemLinkSample": [
-   "/en/wupin",
-   "/en/wupin/fenlei"
-  ],
-  "head": "<!doctype html> <html lang=\"en\"> <head> <meta charset=\"UTF-8\" /> <!-- Each language has a stable URL. Readers choose via the language links. --> <link rel=\"icon\" href=\"/favicon.ico?v=wclbox-gradient-2",
-  "locs": []
- },
- "https://www.gamemaps.net/game/wow_forever/items": {
-  "s": 200,
-  "len": 230084,
-  "title": "WoW: Forever Item Database — Stats, Effects &amp; Tooltips | GameMaps",
-  "forms": [
-   "<form class=\"wow-panel wow-filters\" role=\"search\">"
-  ],
-  "inputs": [
-   "<input id=\"wow-items-q\" value=\"\" type=\"search\" maxlength=\"64\" class=\"form-control\" placeholder=\"Search items by name, e.g. Thunderfury\">",
-   "<input id=\"wow-items-minreq\" type=\"number\" min=\"0\" max=\"100\" class=\"form-control form-control-sm\" placeholder=\"Min\">",
-   "<input type=\"number\" min=\"0\" max=\"100\" class=\"form-control form-control-sm\" placeholder=\"Max\" aria-label=\"Max required level\">"
-  ],
-  "itemLinkCount": 54,
-  "itemLinkSample": [
-   "/game/wow_forever/items/_payload.json?_b=47390c10-f7da-4191-b998-80f2c7939345",
-   "https://www.gamemaps.net/game/wow_forever/items",
-   "/game/wow_forever/items",
-   "/game/wow_forever/items/18582-the-twin-blades-of-azzinoth",
-   "/game/wow_forever/items/18583-warglaive-of-azzinoth-right",
-   "/game/wow_forever/items/18584-warglaive-of-azzinoth-left"
-  ],
-  "head": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>WoW: Forever Item Database — Stats, Effects &amp; Tooltips | GameMaps</title",
-  "locs": []
- },
- "https://www.gamemaps.net/game/wow_forever/items?search=Claymore%20of%20Two%20Moons": {
-  "s": 200,
-  "len": 230084,
-  "title": "WoW: Forever Item Database — Stats, Effects &amp; Tooltips | GameMaps",
-  "forms": [
-   "<form class=\"wow-panel wow-filters\" role=\"search\">"
-  ],
-  "inputs": [
-   "<input id=\"wow-items-q\" value=\"\" type=\"search\" maxlength=\"64\" class=\"form-control\" placeholder=\"Search items by name, e.g. Thunderfury\">",
-   "<input id=\"wow-items-minreq\" type=\"number\" min=\"0\" max=\"100\" class=\"form-control form-control-sm\" placeholder=\"Min\">",
-   "<input type=\"number\" min=\"0\" max=\"100\" class=\"form-control form-control-sm\" placeholder=\"Max\" aria-label=\"Max required level\">"
-  ],
-  "itemLinkCount": 54,
-  "itemLinkSample": [
-   "/game/wow_forever/items/_payload.json?_b=47390c10-f7da-4191-b998-80f2c7939345",
-   "https://www.gamemaps.net/game/wow_forever/items",
-   "/game/wow_forever/items",
-   "/game/wow_forever/items/18582-the-twin-blades-of-azzinoth",
-   "/game/wow_forever/items/18583-warglaive-of-azzinoth-right",
-   "/game/wow_forever/items/18584-warglaive-of-azzinoth-left"
-  ],
-  "head": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>WoW: Forever Item Database — Stats, Effects &amp; Tooltips | GameMaps</title",
-  "locs": []
- },
- "https://www.gamemaps.net/game/wow_forever/search?q=Claymore%20of%20Two%20Moons": {
-  "s": 404,
-  "len": 10304,
-  "title": "GameMaps — Interactive Maps for Your Favorite Games",
-  "forms": [],
-  "inputs": [],
-  "itemLinkCount": 0,
-  "itemLinkSample": [],
-  "head": "<!DOCTYPE html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>GameMaps — Interactive Maps for Your Favorite Games</title><link rel=\"precon",
-  "locs": []
- },
- "https://www.gamemaps.net/search?q=Claymore%20of%20Two%20Moons": {
-  "s": 404,
-  "len": 310,
-  "forms": [],
-  "inputs": [],
-  "itemLinkCount": 0,
-  "itemLinkSample": [],
-  "head": "{ \"error\": true, \"url\": \"http://www.gamemaps.net/search?q=Claymore%20of%20Two%20Moons\", \"statusCode\": 404, \"statusMessage\": \"Page not found: /search?q=Claymore+of+Two+Moons\", \"message\": \"Page not foun",
-  "locs": []
- },
- "https://www.gamemaps.net/sitemap.xml": {
-  "s": 200,
-  "len": 950,
-  "forms": [],
-  "inputs": [],
-  "itemLinkCount": 0,
-  "itemLinkSample": [],
-  "head": "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"> <sitemap><loc>https://www.gamemaps.net/sitemap-static.xml</loc><lastmod>2026-11-25T11:28:41Z</",
-  "locs": [
-   "https://www.gamemaps.net/sitemap-static.xml",
-   "https://www.gamemaps.net/sitemap-games.xml",
-   "https://www.gamemaps.net/sitemap-maps.xml",
-   "https://www.gamemaps.net/sitemap-categories.xml",
-   "https://www.gamemaps.net/sitemap-quests.xml",
-   "https://www.gamemaps.net/sitemap-wow-forever-items.xml",
-   "https://www.gamemaps.net/sitemap-wow-forever-spells.xml"
-  ]
- },
- "https://wowforever.wclbox.com/sitemap.xml": {
-  "s": 200,
-  "len": 595,
-  "forms": [],
-  "inputs": [],
-  "itemLinkCount": 0,
-  "itemLinkSample": [],
-  "head": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><sitemap><loc>https://wowforever.wclbox.com/sitemap-zh-1.xml</loc><lastmod>2026-11-26T08:05:13.1",
-  "locs": [
-   "https://wowforever.wclbox.com/sitemap-zh-1.xml",
-   "https://wowforever.wclbox.com/sitemap-zh-2.xml",
-   "https://wowforever.wclbox.com/sitemap-en-1.xml",
-   "https://wowforever.wclbox.com/sitemap-en-2.xml"
-  ]
- },
- "https://endgametools.com/sitemap.xml": {
-  "s": 200,
-  "len": 7035790,
-  "forms": [],
-  "inputs": [],
-  "itemLinkCount": 82,
-  "itemLinkSample": [
-   "https://endgametools.com/en/wow-forever/items",
-   "https://endgametools.com/es/wow-forever/items",
-   "https://endgametools.com/pt-BR/wow-forever/items",
-   "https://endgametools.com/fr/wow-forever/items",
-   "https://endgametools.com/de/wow-forever/items",
-   "https://endgametools.com/ru/wow-forever/items"
-  ],
-  "head": "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:image=\"http://www.google.com/schemas/sitemap-image/1.1\" xmlns:xhtml=\"http://www.w3.org/1999/xht",
-  "locs": [
-   "https://endgametools.com/en",
-   "https://endgametools.com/es",
-   "https://endgametools.com/pt-BR",
-   "https://endgametools.com/fr",
-   "https://endgametools.com/de",
-   "https://endgametools.com/ru",
-   "https://endgametools.com/zh-CN",
-   "https://endgametools.com/es-MX"
-  ]
- },
- "https://endgametools.com/en/wow-forever/items": {
-  "s": 200,
-  "len": 648586,
-  "title": "WoW Forever item database: all 21,982 items · Endgame Tools",
-  "forms": [
-   "<form role=\"search\" data-item-search data-index=\"/en/wow-forever/items/search.json\" data-locale=\"en\" data-count-one=\"1 item\" data-count-many=\"{count} items\" data-none=\"No item matches. Try fewer words, or clear a filter.\" data-loading=\"Loading the item list…\" class=\"mt-10\">"
-  ],
-  "inputs": [
-   "<input id=\"item-query\" name=\"q\" type=\"search\" autocomplete=\"off\" autocapitalize=\"off\" spellcheck=\"false\" enterkeyhint=\"search\" placeholder=\"Search 21,982 items\" class=\"border-edge bg-slab text-chalk placeholder:text-fog min-h-12 w-full min-w-0 flex-1 border px-3 text-base\">"
-  ],
-  "itemLinkCount": 2244,
-  "itemLinkSample": [
-   "https://endgametools.com/en/wow-forever/items",
-   "https://endgametools.com/fr/wow-forever/items",
-   "https://endgametools.com/es/wow-forever/items",
-   "https://endgametools.com/pt-BR/wow-forever/items",
-   "https://endgametools.com/de/wow-forever/items",
-   "https://endgametools.com/ru/wow-forever/items"
-  ],
-  "head": "<!DOCTYPE html><html lang=\"en\" class=\"passiononecaps_419b4389-module__5qBO3q__variable cinzelcaps_fb526db3-module__7K3lgq__variable antoncaps_a036701c-module__vZqefq__variable montserratcaps_fdde76ec-",
-  "locs": []
- },
- "endgameBlocks": [
-  "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://endgametools.com#organization\",\"name\":\"Endgame Tools\",\"url\":\"https://endgametools.com\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://endgametools.com/apple-icon.png\",\"width\":180,\"height\":180}},{\"@type\":\"WebSite\",\"@id\":\"https://endgametools.com#website\",\"name\":\"Endgame Tools\",\"url\":\"https://endgametools.com/en\",\"inLanguage\":\"en\",\"publisher\":{\"@id\":\"https://endgametools.com#organization\"}},{\"@type\":\"WebPage\",\"@id\":\"https://endgametools.com/en/wow-forever/items/280062#page\",\"url\":\"https://endgametools.com/en/wow-fore"
+ "indexStatus": 200,
+ "indexLen": 1142933,
+ "indexHead": "{\"build\":\"1.60.1.71139\",\"rows\":[[25,\"Worn Shortsword\",1,2,1,21,2,7,135274],[35,\"Bent Staff\",1,2,1,17,2,10,135145],[36,\"Worn Mace\",1,2,1,21,2,4,133478],[37,\"Worn Axe\",1,2,1,21,2,0,132402],[38,\"Recruit's Shirt\",1,1,0,4,4,0,135009],[39,\"Recruit's Pants\",0,1,1,7,4,1,134582],[40,\"Recruit's Boots\",1,1,0,8,4,1,132540],[43,\"Squire's Boots\",1,1,0,8,4,1,132535],[44,\"Squire's Pants\",0,1,1,7,4,1,134582],[45,\"Squire's Shirt\",1,1,0,4,4,0,135005],[47,\"Footpad's Shoes\",1,1,0,8,4,1,132539],[48,\"Footpad's Pants\",0,1,1,7,4,1,134582],[49,\"Footpad's Shirt\",1,1,0,4,4,0,135009],[51,\"Neophyte's Boots\",1,1,0,8,4,1,132",
+ "rowShape": [
+  "build",
+  "rows"
  ],
- "endgameStats": 6
+ "names": 788,
+ "found": 0,
+ "ambiguous": 0,
+ "missing": [
+  "Cloak of the Fleshborer",
+  "Bloodfur Bulwark",
+  "Withering Grips",
+  "Tuskblade Halberd",
+  "Lucky Shovelnose Tuft",
+  "Spike Crested Bracers",
+  "Lunarlight Robe",
+  "Claymore of Two Moons",
+  "Flameslash Crescent",
+  "Robes of Dark Summons",
+  "Impish Chain Hood",
+  "Flamebreak Talisman",
+  "Cowl of Dark Ambition",
+  "Burnished Pridescales",
+  "Behemoth Bones",
+  "Trousers of the Ebon Giant",
+  "Blackmaw Chain Belt",
+  "Scalding Flamehoof",
+  "Bleak Eye Shoulderplates",
+  "Horns of Varrox",
+  "Bloody Claws of Attack",
+  "Shamanic Wristguards",
+  "Veilpiercer Girdle",
+  "Idol of Ferocity",
+  "Mantle of Lost Hope",
+  "Stoneshell Guard",
+  "Earthslag Shoulders",
+  "Enthralled Sphere",
+  "Blackveil Cape",
+  "Greaves of Withering Despair",
+  "Kentic Amice",
+  "Crusader's Armor",
+  "Fleetfoot Greaves",
+  "Houndmaster's Bow",
+  "Houndmaster's Rifle",
+  "Spritecaster Cape",
+  "Savage Gladiator Greaves",
+  "Shadefiend Boots",
+  "Graverot Cape",
+  "Carapace of Anub'shiah"
+ ],
+ "samples": [
+  {
+   "n": "Cloak of the Fleshborer",
+   "none": true
+  },
+  {
+   "n": "Claymore of Two Moons",
+   "none": true
+  },
+  {
+   "n": "Ritssyn's Wand of Bad Mojo",
+   "none": true
+  },
+  {
+   "n": "Fiendish Machete",
+   "none": true
+  },
+  {
+   "n": "Spike Crested Bracers",
+   "none": true
+  }
+ ]
 }
