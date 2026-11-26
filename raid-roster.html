@@ -74,6 +74,15 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .embed-box{margin-top:18px}
 .embed-box iframe{display:block;width:100%;height:80vh;min-height:500px;border:1px solid var(--line);border-radius:8px;margin-top:14px;background:#fff}
 footer{display:flex;justify-content:space-between;align-items:center;gap:8px 28px;flex-wrap:wrap;padding:28px max(20px,calc((100% - 1200px)/2));color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}footer a{color:var(--accent);text-decoration:none;font-weight:600}footer a:hover{text-decoration:underline}footer .tm{text-align:right}@media (max-width:760px){footer{justify-content:center;text-align:center}footer .tm{text-align:center}}
+.craft input{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
+.craft input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.cfrow{padding:10px 0;border-top:1px solid var(--line)}.cfrow:first-child{margin-top:10px}
+.cfrow b{font-weight:600}.cfrow .muted{font-size:.82rem}.cfrow .who{margin-top:2px}.cfrow .who a{color:inherit;text-decoration:none}.cfrow .who a:hover{color:var(--accent);text-decoration:underline}
+.prof-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
+.prof-head h3{font-size:.82rem}.pico{display:inline-block;width:1.5em;height:1.5em;margin-right:.45em;text-align:center;vertical-align:-.3em}img.pico{border-radius:4px;object-fit:cover}
+.prow{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-top:1px solid var(--line);font-size:.92rem}
+.prof-more{margin-top:8px;width:100%;background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px;font:inherit;font-size:.85rem;cursor:pointer}.prof-more:hover{color:var(--accent);border-color:var(--accent)}
+.prow a{color:inherit;text-decoration:none}.prow a:hover{color:var(--accent);text-decoration:underline}
 </style>
 </head>
 <body>
@@ -93,6 +102,17 @@ footer{display:flex;justify-content:space-between;align-items:center;gap:8px 28p
   <div class="grid" id="members"></div>
   <div class="pager" id="pager"></div>
   <p class="muted" style="margin-top:12px">Characters below level 10 are hidden from the roster and will appear once they reach level 10.</p>
+</section>
+<section id="professions" hidden style="padding-top:8px">
+  <h2>Professions</h2>
+  <div class="card craft" id="craftcard" hidden>
+    <h3 style="font-size:1.2rem;margin-bottom:4px">Craft Finder</h3>
+    <p class="muted" style="margin:0 0 10px">Type a recipe to see who in the guild can make it.</p>
+    <input type="search" id="craftq" placeholder="Search recipes, e.g. Thorium" autocomplete="off" aria-label="Search recipes">
+    <div id="craftout"></div>
+  </div>
+  <div class="grid" id="proflist" style="margin-top:14px"></div>
+  <p class="muted" style="margin-top:12px">Professions of guild members level 10 and up, from the Armory. Skill shows current / maximum.</p>
 </section>
 </main>
 
@@ -157,6 +177,42 @@ function showRoster(c,pg){
   h+=`<button data-p="${cur+1}" ${cur===pages?"disabled":""}>Next ›</button>`;
   pagerEl.innerHTML=h;
 }
+let profIcons={},recipeData={};
+const slugOf=m=>(m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-");
+document.getElementById("proflist").addEventListener("click",e=>{
+  const b=e.target.closest(".prof-more"); if(!b) return;
+  const ex=b.previousElementSibling, open=ex.hidden;
+  ex.hidden=!open; b.textContent=open?"Show fewer":"Show "+b.dataset.n+" more";
+});
+const PROF_ICONS={"Mining":"⛏️","Blacksmithing":"🔨","Leatherworking":"🥾","Skinning":"🔪","Herbalism":"🌿","Alchemy":"⚗️","Tailoring":"🧵","Engineering":"⚙️","Enchanting":"✨","Cooking":"🍳","Fishing":"🎣","First Aid":"🩹","Jewelcrafting":"💎","Inscription":"📜","Archaeology":"🏺","Lockpicking":"🗝️"};
+function drawCraft(){
+  const card=document.getElementById("craftcard"),out=document.getElementById("craftout");
+  const all=[];
+  for(const prof in recipeData)for(const name in recipeData[prof])all.push({prof,name,who:recipeData[prof][name]});
+  card.hidden=!all.length;
+  const q=document.getElementById("craftq").value.trim().toLowerCase();
+  if(!all.length||q.length<2){out.innerHTML=q.length?'<p class="muted" style="margin:10px 0 0">Keep typing…</p>':"";return}
+  const bySlug={};gSorted.forEach(m=>bySlug[slugOf(m)]=m);
+  const hits=all.filter(r=>r.name.toLowerCase().includes(q)).sort((a,b)=>b.who.length-a.who.length||a.name.localeCompare(b.name));
+  out.innerHTML=hits.length?hits.slice(0,25).map(r=>`<div class="cfrow"><b>${esc(r.name)}</b> <span class="muted">· ${esc(r.prof)}</span><div class="who">${r.who.map(w=>bySlug[w]?nameLink(bySlug[w]):"").filter(Boolean).join(", ")}</div></div>`).join("")+(hits.length>25?`<p class="muted" style="margin:10px 0 0">Showing 25 of ${hits.length}. Type more to narrow it down.</p>`:""):'<p class="muted" style="margin:10px 0 0">No guild member knows a recipe matching that.</p>';
+}
+document.getElementById("craftq").addEventListener("input",drawCraft);
+function profIcon(n){const u=profIcons[n],e=PROF_ICONS[n]||"🛠️";return u?`<img class="pico" src="${esc(u)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'pico',textContent:this.dataset.e}))" data-e="${e}">`:`<span class="pico" aria-hidden="true">${e}</span>`}
+function drawProfessions(){
+  const map={};
+  gSorted.forEach(m=>(m.professions||[]).forEach(p=>{if(p&&p.name)(map[p.name]=map[p.name]||{primary:!!p.primary,rows:[]}).rows.push({m,skill:p.skill,max:p.max})}));
+  const names=Object.keys(map);
+  document.getElementById("professions").hidden=!names.length;
+  const pn=document.getElementById("profnav");if(pn)pn.hidden=!names.length;
+  names.sort((a,b)=>(map[b].primary-map[a].primary)||(map[b].rows.length-map[a].rows.length)||a.localeCompare(b));
+  document.getElementById("proflist").innerHTML=names.map(n=>{
+    const r=map[n].rows.sort((a,b)=>(b.skill||0)-(a.skill||0)||b.m.level-a.m.level);
+    const row=x=>`<div class="prow"><span>${nameLink(x.m)}</span><span class="muted">${x.skill!=null?x.skill+(x.max?" / "+x.max:""):"–"}</span></div>`;
+    const more=r.length>5?`<div class="prof-extra" hidden>${r.slice(5).map(row).join("")}</div><button type="button" class="prof-more" data-n="${r.length-5}">Show ${r.length-5} more</button>`:"";
+    return `<div class="card"><div class="prof-head"><h3>${profIcon(n)}${esc(n)}</h3><span class="muted">${r.length} ${r.length===1?"member":"members"}</span></div>${r.slice(0,5).map(row).join("")}${more}</div>`;
+  }).join("");
+}
+
 document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("button");if(b)showRoster(b.dataset.c,1)});
 document.getElementById("pager").addEventListener("click",e=>{const b=e.target.closest("button");if(b&&!b.disabled)showRoster(curClass,+b.dataset.p)});
 Promise.all([
@@ -168,7 +224,9 @@ Promise.all([
   classIcons=d.classIcons||{};
   gSorted=d.roster.filter(m=>m.level>=10).sort((a,b)=>a.rank-b.rank||b.level-a.level); // characters under level 10 stay hidden
   gTabs=["All",...[...new Set(gSorted.map(m=>m.cls))].sort()];
+  profIcons=d.professionIcons||{};recipeData=d.recipes||{};
   showRoster("All");
+  drawProfessions();drawCraft();
 }).catch(()=>{document.getElementById("members").innerHTML='<p class="muted">Could not load the roster. Try refreshing the page.</p>'});
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 </script>
