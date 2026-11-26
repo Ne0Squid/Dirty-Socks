@@ -11,7 +11,15 @@ const get = async u => { for (let n = 0; n < 3; n++) { try { const r = await fet
 
 const j = JSON.parse(readFileSync("dungeon-loot.json", "utf8"));
 const names = [...new Set(j.dungeons.flatMap(d => d.bosses.flatMap(b => b.items.map(i => i.item))).concat(Object.values(j.trash).flat().map(i => i.item)))];
-const idx = JSON.parse(await get(`${BASE}/search.json`)).rows.map(r => ({ id: r[0], name: r[1], k: norm(r[1]) }));
+const indexRaw = await get(`${BASE}/search.json`);
+if (!indexRaw) { console.error("Item index unavailable; keeping existing data."); process.exit(0); }
+const indexJson = JSON.parse(indexRaw);
+const build = indexJson.build;
+let prev = null; try { prev = JSON.parse(readFileSync("item-stats.json", "utf8")); } catch {}
+const force = process.env.FORCE === "1";
+const sameItems = prev && Object.keys(prev.items).concat(prev.missing || []).length === names.length;
+if (!force && prev && prev.build === build && sameItems) { console.log(`Build ${build} unchanged; nothing to do.`); process.exit(0); }
+const idx = indexJson.rows.map(r => ({ id: r[0], name: r[1], k: norm(r[1]) }));
 const byK = new Map(); idx.forEach(r => { if (!byK.has(r.k)) byK.set(r.k, r); });
 const out = {}, unmatched = [];
 const jobs = [];
@@ -37,6 +45,7 @@ function parse(html) {
 }
 let k = 0, fail = 0;
 await Promise.all(Array.from({ length: 6 }, async () => { while (k < jobs.length) { const { n, r } = jobs[k++]; const html = await get(`${BASE}/${r.id}`); const p = html && parse(html); if (p) out[n] = { id: r.id, ...(r.name !== n ? { as: r.name } : {}), ...p }; else { fail++; unmatched.push(n); } } }));
+if (prev && Object.keys(out).length < Object.keys(prev.items).length * 0.9) { console.error(`Only ${Object.keys(out).length} items fetched (had ${Object.keys(prev.items).length}); keeping existing data.`); process.exit(0); }
 const sorted = Object.fromEntries(Object.entries(out).sort(([a], [b]) => a.localeCompare(b)));
-writeFileSync("item-stats.json", JSON.stringify({ source: "endgametools.com", fetched: new Date().toISOString().slice(0, 10), items: sorted, missing: unmatched.sort() }, null, 0));
+writeFileSync("item-stats.json", JSON.stringify({ source: "endgametools.com", build, fetched: new Date().toISOString().slice(0, 10), items: sorted, missing: unmatched.sort() }, null, 0));
 console.log(`items ${Object.keys(out).length}/${names.length}, missing ${unmatched.length}`, unmatched);
