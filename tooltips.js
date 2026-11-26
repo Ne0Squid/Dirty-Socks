@@ -33,6 +33,18 @@
     has: n => !!items[n],
     q: n => items[n] ? items[n].q : 1,
     ready: f => { waiting.push(f); if (Object.keys(items).length) f(); },
+    // Wrap every item name inside a longer line ("A / B", "A (Horde: B)", "Name (where it drops)").
+    line: str => {
+      let paren = false, horde = false;
+      return String(str).split(/( \/ |\(Horde: |\(|\))/).map(t => {
+        if (t === "(Horde: ") { paren = true; horde = true; return esc(t); }
+        if (t === "(") { paren = true; horde = false; return esc(t); }
+        if (t === ")") { paren = false; horde = false; return esc(t); }
+        if (t === " / ") return esc(t);
+        const n = t.trim();
+        return n && (!paren || horde) && items[n] ? esc(t.slice(0, t.indexOf(n))) + window.DSTips.span(n) + esc(t.slice(t.indexOf(n) + n.length)) : esc(t);
+      }).join("");
+    },
     // Wrap an item name in a tooltip span (plain text if there is no data for it).
     span: n => `<span${items[n] ? ` class="has-tip q${items[n].q}"` : ""} data-tip="${esc(n)}">${esc(n)}</span>`,
   };

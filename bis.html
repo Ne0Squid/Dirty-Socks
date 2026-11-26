@@ -131,7 +131,7 @@ function draw(s){
   document.getElementById("view").innerHTML=`<div class="head"><h3 style="color:${COLORS[s.cls]}">${esc(s.label)} ${s.cls}</h3></div>
   ${members.length?`<div class="who"><span class="muted">In the guild:</span>${members.map(m=>`<span class="tag" style="color:${COLORS[m.cls]};border-color:${COLORS[m.cls]}55">${esc(fullName(m))}</span>`).join("")}</div>`:""}
   <div class="card bwrap"><table class="bis"><thead><tr><th>Slot</th><th>BiS item</th><th>Where to get it</th>${s.enchants?"<th>Enchant</th>":""}<th>Alternatives</th></tr></thead><tbody>
-  ${s.items.map(it=>`<tr><td class="slot" data-l="Slot">${esc(it.slot)}</td><td class="item" data-l="BiS">${DSTips.span(it.item)}</td><td data-l="From">${esc(it.where||"")}</td>${s.enchants?`<td data-l="Enchant">${esc(it.enchant||"")}</td>`:""}<td class="alt" data-l="Alternatives">${it.alts.map(a=>{const m=a.match(/^([^(]+?)(\s*\(.*)?$/);return `<div>${m?DSTips.span(m[1].trim())+esc(m[2]||""):esc(a)}</div>`}).join("")}</td></tr>`).join("")}
+  ${s.items.map(it=>`<tr><td class="slot" data-l="Slot">${esc(it.slot)}</td><td class="item" data-l="BiS">${DSTips.line(it.item)}</td><td data-l="From">${esc(it.where||"")}</td>${s.enchants?`<td data-l="Enchant">${esc(it.enchant||"")}</td>`:""}<td class="alt" data-l="Alternatives">${it.alts.map(a=>`<div>${DSTips.line(a)}</div>`).join("")}</td></tr>`).join("")}
   </tbody></table></div>
   <p class="muted note">Source: ${esc(s.source)}</p>`;
 }

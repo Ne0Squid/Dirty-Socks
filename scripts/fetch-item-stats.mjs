@@ -11,7 +11,16 @@ const get = async u => { for (let n = 0; n < 3; n++) { try { const r = await fet
 
 const j = JSON.parse(readFileSync("dungeon-loot.json", "utf8"));
 const bis = JSON.parse(readFileSync("bis.json", "utf8"));
-const bisNames = bis.specs.flatMap(sp => sp.items.flatMap(it => [it.item, ...(it.alts || []).map(a => a.replace(/\s*\(.*$/, ""))]));
+// BiS entries can read "A / B" or "A (Horde: B)" or "Name (where it drops)"; pull out just the item names.
+function itemNames(str) {
+  const out = []; let paren = false, horde = false;
+  for (const t of str.split(/( \/ |\(Horde: |\(|\))/)) {
+    if (t === "(Horde: ") { paren = true; horde = true; } else if (t === "(") { paren = true; horde = false; } else if (t === ")") { paren = false; horde = false; }
+    else if (t === " / ") {} else if (t.trim() && (!paren || horde)) out.push(t.trim());
+  }
+  return out;
+}
+const bisNames = bis.specs.flatMap(sp => sp.items.flatMap(it => [it.item, ...(it.alts || [])].flatMap(itemNames)));
 const names = [...new Set(j.dungeons.flatMap(d => d.bosses.flatMap(b => b.items.map(i => i.item))).concat(Object.values(j.trash).flat().map(i => i.item), bisNames).map(n => n.trim()).filter(Boolean))];
 const indexRaw = await get(`${BASE}/search.json`);
 if (!indexRaw) { console.error("Item index unavailable; keeping existing data."); process.exit(0); }
