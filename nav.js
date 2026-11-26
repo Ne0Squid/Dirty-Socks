@@ -15,7 +15,7 @@
   +'nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}'
   +'nav .logo{height:46px;width:auto;display:block;filter:drop-shadow(0 1px 3px rgba(0,0,0,.35))}'
   +'html:root:not([data-faction="alliance"]) nav .logo-alliance,html:root[data-faction="alliance"] nav .logo-horde{display:none}'
-  +'nav .brand-name{font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:1.3rem;letter-spacing:.01em;color:var(--text)}'
+  +'nav .brand-name{font-family:inherit;font-weight:700;font-size:1.3rem;letter-spacing:.01em;color:var(--text)}'
   +'nav .brand:hover .brand-name{color:var(--accent)}'
   +'nav .brand:focus-visible,nav .navlinks a:focus-visible,.menu-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}'
   +'.navlinks{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}'
