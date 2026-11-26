@@ -197,7 +197,7 @@ fetch("guild-data.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>
 // Who fills each slot lives in raid-roster.json (slot number -> character name); everything else comes from the guild data.
 const RAIDS=[
   {id:"barrow",name:"The Barrow Deeps",size:10,slots:[["Main Tank","tank",1],["Off Tank","tank",1],["Healer","heal",2],["DPS","dps",6],["Backup","bak",2]]},
-  {id:"hyjal",name:"Hyjal Summit",size:20,slots:[["Main Tank","tank",1],["Off Tank","tank",1],["Healer","heal",2],["DPS","dps",16],["Backup","bak",4]]}
+  {id:"hyjal",name:"Hyjal Summit",size:20,slots:[["Main Tank","tank",1],["Off Tank","tank",1],["Healer","heal",4],["DPS","dps",14],["Backup","bak",4]]}
 ];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function draw(guild,assign){
