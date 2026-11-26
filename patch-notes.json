@@ -1,10 +1,28 @@
 {
-  "generated": "2026-11-25T12:57:36+00:00",
+  "generated": "2026-11-26T00:45:05+00:00",
   "source": "https://foreverchanges.pro/patch-notes/feed.xml",
   "siteName": "ForeverChanges",
   "siteUrl": "https://foreverchanges.pro/patch-notes",
   "title": "ForeverChanges: Patch notes",
   "entries": [
+    {
+      "id": "foreverchanges-1.60.1.71139",
+      "title": "Build 1.60.1.71139, November 25, 2026",
+      "date": "2026-11-25T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#1.60.1.71139",
+      "summary": "The November 25 client, read from its files: Blizzard has posted no notes for it. It writes some of the server’s recent hotfixes into the client itself, and no talent, class spell, racial or item reads differently.",
+      "kind": "build",
+      "firstSeen": "2026-11-26T00:45:05+00:00"
+    },
+    {
+      "id": "foreverchanges-hotfix-2026-11-25",
+      "title": "Hotfix, November 25, 2026",
+      "date": "2026-11-25T12:00:00+00:00",
+      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-25",
+      "summary": "Blizzard’s notes of November 25, posted at 23:25 UTC: Balance druids need fewer talent points for Starfire, Alterac Valley rewards its objectives more than killing the enemy General, hunter and warlock pets can critically strike with melee attacks again, and paladins and warlocks get Journeyman Riding from their mount quests. Most of it was live during the day, and the Night Watchman’s Torch can be used while mounted again.",
+      "kind": "hotfix",
+      "firstSeen": "2026-11-26T00:45:05+00:00"
+    },
     {
       "id": "foreverchanges-hotfix-2026-11-24",
       "title": "Hotfix, November 24, 2026",
@@ -90,7 +108,7 @@
       "id": "foreverchanges-hotfix-2026-11-17",
       "title": "Hotfix, November 17, 2026",
       "date": "2026-11-17T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes#hotfix-2026-11-17",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-17",
       "summary": "Blizzard’s notes of November 17, posted at 03:24 UTC on November 18: Upper Blackrock Spire is back to its intended difficulty, Soulforge Armor has Spell Power instead of Strength, the Battle for Alterac Valley quests require level 58, Bronze Mace is Bind on Equip, and there are fixes to the Cozy Sleeping Bag, world buffs, Flurry, professions and many quests.",
       "kind": "hotfix",
       "firstSeen": null
@@ -99,7 +117,7 @@
       "id": "foreverchanges-1.60.1.70959",
       "title": "Build 1.60.1.70959, November 17, 2026",
       "date": "2026-11-17T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes#1.60.1.70959",
+      "link": "https://foreverchanges.pro/patch-notes/page/2#1.60.1.70959",
       "summary": "The November 17 client, read from its files: Blizzard has posted no notes for it. It writes the server’s hotfixes of November 13 and 16 into the client itself, and no talent, class spell, racial or item reads differently.",
       "kind": "build",
       "firstSeen": null
@@ -189,7 +207,7 @@
       "id": "foreverchanges-hotfix-2026-11-08",
       "title": "Hotfix, November 8, 2026",
       "date": "2026-11-08T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-08",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#hotfix-2026-11-08",
       "summary": "Blizzard’s hotfix of November 8, live from about 19:05 UTC: enemies in dungeons give 50% more experience when you kill them.",
       "kind": "hotfix",
       "firstSeen": null
@@ -198,7 +216,7 @@
       "id": "foreverchanges-hotfix-2026-11-07",
       "title": "Hotfix, November 7, 2026",
       "date": "2026-11-07T12:00:00+00:00",
-      "link": "https://foreverchanges.pro/patch-notes/page/2#hotfix-2026-11-07",
+      "link": "https://foreverchanges.pro/patch-notes/page/3#hotfix-2026-11-07",
       "summary": "A hotfix to the November 7 client, first seen at about 22:17 UTC on November 7 in the cache the launch realms send. It made Fear Ward castable in Shadowform only, and Blizzard reverted that right away.",
       "kind": "hotfix",
       "firstSeen": null
