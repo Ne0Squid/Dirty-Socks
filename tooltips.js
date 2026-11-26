@@ -55,7 +55,7 @@ a[data-wowhead]{color:#c9a8ff;text-decoration:underline dotted rgba(255,255,255,
         if (t === ")") { paren = false; horde = false; return esc(t); }
         if (t === " / ") return esc(t);
         const n = t.trim();
-        return n && (!paren || horde) && (items[n] || wh(n)) ? esc(t.slice(0, t.indexOf(n))) + window.DSTips.span(n) + esc(t.slice(t.indexOf(n) + n.length)) : esc(t);
+        return /^[A-Za-z]/.test(n) && (!paren || horde) && (items[n] || wh(n)) ? esc(t.slice(0, t.indexOf(n))) + window.DSTips.span(n) + esc(t.slice(t.indexOf(n) + n.length)) : esc(t);
       }).join("");
     },
     // Wrap an item name in a tooltip span (plain text if there is no data for it).

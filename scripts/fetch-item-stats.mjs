@@ -16,7 +16,7 @@ function itemNames(str) {
   const out = []; let paren = false, horde = false;
   for (const t of str.split(/( \/ |\(Horde: |\(|\))/)) {
     if (t === "(Horde: ") { paren = true; horde = true; } else if (t === "(") { paren = true; horde = false; } else if (t === ")") { paren = false; horde = false; }
-    else if (t === " / ") {} else if (t.trim() && (!paren || horde)) out.push(t.trim());
+    else if (t === " / ") {} else if (/^[A-Za-z]/.test(t.trim()) && (!paren || horde)) out.push(t.trim());
   }
   return out;
 }
