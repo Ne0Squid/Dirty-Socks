@@ -47,6 +47,8 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .cd-units{display:flex;gap:clamp(6px,1.6vw,12px)}
 .cd-u{display:flex;align-items:baseline;gap:2px}.cd-u b{font-family:Cinzel,Georgia,serif;font-size:clamp(.8rem,3vw,1.2rem);color:var(--accent);font-variant-numeric:tabular-nums}.cd-u span{font-size:clamp(.55rem,2vw,.72rem);color:#c9c4b6;text-transform:lowercase}
 .cdbar{display:flex;justify-content:center;padding:22px 20px 0}
+.cdbar:empty{display:none}.cdbar:has(#countdown[hidden]){display:none}
+nav #countdown{position:absolute;left:max(20px,env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%);padding:6px 14px}
 main.wrap{padding-top:30px}
 @media (max-width:480px){#countdown{padding:5px 11px}#cdtitle{display:none}}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
@@ -348,6 +350,10 @@ const raidsOpen=new Date("2026-12-09T00:00:00");
     units.innerHTML=v.map(([l,n])=>`<div class="cd-u"><b>${String(n).padStart(2,"0")}</b><span>${l}</span></div>`).join("");
   }
   const t=setInterval(tick,1000);tick();
+  // Wide screens: the countdown sits at the left of the navigation bar; narrower ones keep it under the bar.
+  const nav=document.querySelector("nav"),bar=document.querySelector(".cdbar"),mq=matchMedia("(min-width:1360px)");
+  const place=()=>(mq.matches?nav:bar).appendChild(box);
+  place();mq.addEventListener("change",place);
 })();
 function drawRaids(bk){
   const stats=Object.keys(bk||{}).map(dkey);
