@@ -358,13 +358,13 @@ const raidsOpen=new Date("2026-12-09T00:00:00");
   place();mq.addEventListener("change",place);
 })();
 // The small nav logo stays hidden while the big splash logo is on screen, then fades in once it scrolls away.
+// Both splash logos (Horde and Alliance) are watched, so it also works after switching factions.
 (function(){
-  const nav=document.querySelector("nav");
-  const big=[...document.querySelectorAll(".splash .sl")].find(i=>i.offsetParent);
-  if(!big||!("IntersectionObserver" in window))return;
-  const h=()=>Math.round(nav.getBoundingClientRect().height);
-  const obs=new IntersectionObserver(es=>nav.classList.toggle("logo-away",es[es.length-1].isIntersecting),{rootMargin:`-${h()}px 0px 0px 0px`});
-  obs.observe(big);
+  const nav=document.querySelector("nav"),bigs=[...document.querySelectorAll(".splash .sl")];
+  if(!bigs.length||!("IntersectionObserver" in window))return;
+  const seen=new Map();
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>seen.set(e.target,e.isIntersecting));nav.classList.toggle("logo-away",[...seen.values()].some(Boolean))},{rootMargin:`-${Math.round(nav.getBoundingClientRect().height)}px 0px 0px 0px`});
+  bigs.forEach(i=>obs.observe(i));
   nav.classList.add("logo-away");
 })();
 function drawRaids(bk){
