@@ -123,7 +123,11 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
     <div class="rq-grid">
       <label for="rq-char">Character<select id="rq-char"><option value="">Loading roster…</option></select></label>
       <label for="rq-raid">Raid<select id="rq-raid"><option>The Barrow Deeps (10)</option><option>Hyjal Summit (20)</option><option>Both raids</option></select></label>
-      <label for="rq-role">Role<select id="rq-role"><option>Tank</option><option>Healer</option><option>DPS</option></select></label>
+      <fieldset><legend>Roles you can fill</legend>
+        <label class="chk"><input type="checkbox" name="rq-role" value="Tank"> Tank</label>
+        <label class="chk"><input type="checkbox" name="rq-role" value="Healer"> Healer</label>
+        <label class="chk"><input type="checkbox" name="rq-role" value="DPS"> DPS</label>
+      </fieldset>
       <fieldset><legend>Nights you can make</legend>
         <label class="chk"><input type="checkbox" name="rq-night" value="Wednesday (8PM-12AM EST)" checked> Wednesday</label>
         <label class="chk"><input type="checkbox" name="rq-night" value="Thursday (8PM-12AM EST)" checked> Thursday</label>
@@ -187,12 +191,14 @@ const ENTRY={character:"entry.1353387200",raid:"entry.1801637567",role:"entry.23
     e.preventDefault();
     const nights=[...f.querySelectorAll("[name=rq-night]:checked")].map(x=>x.value);
     if(!sel.value)return say("Choose your character first.",true);
+    const roles=[...f.querySelectorAll("[name=rq-role]:checked")].map(x=>x.value);
+    if(!roles.length)return say("Pick at least one role.",true);
     if(!nights.length)return say("Pick at least one night.",true);
     if(document.getElementById("rq-web").value)return; // spam trap
     try{if(Date.now()-Number(localStorage.getItem("ds-rq")||0)<60000)return say("You just sent one. Give it a minute.",true)}catch(_){}
-    const raid=document.getElementById("rq-raid").value,role=document.getElementById("rq-role").value;
+    const raid=document.getElementById("rq-raid").value,role=roles.join(", ");
     const body=new URLSearchParams();
-    body.append(ENTRY.character,sel.value);body.append(ENTRY.raid,raid);body.append(ENTRY.role,role);
+    body.append(ENTRY.character,sel.value);body.append(ENTRY.raid,raid);roles.forEach(r=>body.append(ENTRY.role,r));
     nights.forEach(n=>body.append(ENTRY.nights,n));
     const note=document.getElementById("rq-note").value.trim();if(note)body.append(ENTRY.note,note);
     btn.disabled=true;say("Sending…");
