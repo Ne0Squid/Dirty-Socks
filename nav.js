@@ -10,7 +10,7 @@
     +'</a>'
     +'<div class="navlinks">'+links.map(a).join("")+'</div>';
   var css=document.createElement("style");
-  css.textContent='html{scroll-padding-top:72px}'
+  css.textContent='html{scroll-padding-top:72px;scrollbar-width:none;-ms-overflow-style:none}html::-webkit-scrollbar{display:none}'
   +'nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;justify-content:center;gap:12px 28px;flex-wrap:wrap;padding:8px max(20px,env(safe-area-inset-left,0px)) 8px max(20px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);background:var(--surface)}'
   +'nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}'
   +'nav .logo{height:50px;width:auto;display:block;filter:drop-shadow(0 1px 3px rgba(0,0,0,.35))}'
