@@ -1,5 +1,7 @@
 {
   "_help": "groups: characters that belong to the same player, full names as on the roster, e.g. [\"Squid Zero\", \"Neo Squid\"]. While groups is empty the Players box stays hidden. roleOverrides: set a role by full name where the Armory spec can't tell, e.g. {\"Cameron Croucher\": \"Tank\"} (Tank, Healer, Melee or Ranged).",
   "groups": [],
-  "roleOverrides": {}
+  "roleOverrides": {
+    "Needmore Beers": "Tank"
+  }
 }

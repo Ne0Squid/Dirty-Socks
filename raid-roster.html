@@ -51,10 +51,12 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .pager button:disabled{opacity:.4;cursor:default}
 .cico{width:38px;height:38px;border-radius:8px;border:2px solid;flex:none;object-fit:cover}
 .dot{width:12px;height:12px;border-radius:50%;flex:none}
-#glancebox{padding:6px 0}
-.grow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+#glancebox{padding:4px 0}
+.grow{display:flex;flex-wrap:wrap;gap:6px 44px;padding:14px 22px}
 .grow+.grow{border-top:1px solid var(--line)}
-.stat{text-align:center;padding:16px 8px}.stat b{display:block;font-family:Cinzel,Georgia,serif;font-size:clamp(1.3rem,4.5vw,2rem);color:var(--accent)}.stat span{font-size:clamp(.72rem,2.4vw,.9rem)}
+.stat{text-align:left;padding:0}.stat b{display:block;font-family:Cinzel,Georgia,serif;font-size:clamp(1.3rem,4.5vw,2rem);color:var(--accent);line-height:1.2}.stat span{font-size:clamp(.72rem,2.4vw,.9rem)}
+.roles{gap:4px 28px;padding:12px 22px}
+.rl{font-size:.92rem;color:var(--muted);white-space:nowrap}.rl b{color:var(--accent);font-family:Cinzel,Georgia,serif;font-size:1rem;margin-left:4px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
 .muted{color:var(--muted);font-size:.9rem}
 .btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;border:0;cursor:pointer;font-family:inherit}
@@ -205,7 +207,7 @@ function drawGlance(roster,acc){
   const rc={Tank:0,Healer:0,Melee:0,Ranged:0};
   roster.forEach(m=>{const r=roleOf(m,over);if(r)rc[r]++});
   const box=c=>`<div class="stat"><b>${c[0]}</b><span class="muted">${c[1]}</span></div>`;
-  document.getElementById("glancebox").innerHTML=`<div class="grow">${top.map(box).join("")}</div><div class="grow">${[[rc.Tank,"Tanks"],[rc.Healer,"Healers"],[rc.Melee,"Melee DPS"],[rc.Ranged,"Ranged DPS"]].map(box).join("")}</div>`;
+  document.getElementById("glancebox").innerHTML=`<div class="grow">${top.map(box).join("")}</div><div class="grow roles">${[[rc.Tank,"Tanks"],[rc.Healer,"Healers"],[rc.Melee,"Melee DPS"],[rc.Ranged,"Ranged DPS"]].map(c=>`<span class="rl">${c[1]}:<b>${c[0]}</b></span>`).join("")}</div>`;
   document.getElementById("glancenote").textContent=(groups.length?"Players counts each person once, however many characters they have. ":"")+"Characters includes alts and bank characters. Averages cover level 10 and up. Roles come from each character’s Armory spec, and characters without a spec are left out. Feral Druids count as Melee DPS unless an officer marks them as tanks.";
 }
 // ===== GUILD ROSTER (moved here from the home page) =====
