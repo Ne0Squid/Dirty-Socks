@@ -1,4 +1,5 @@
 {
-  "_help": "Group characters that belong to the same player. Use full names exactly as on the roster, e.g. [\"Squid Zero\", \"Neo Squid\"]. Characters not listed count as their own player. While groups is empty the Players box stays hidden.",
-  "groups": []
+  "_help": "groups: characters that belong to the same player, full names as on the roster, e.g. [\"Squid Zero\", \"Neo Squid\"]. While groups is empty the Players box stays hidden. roleOverrides: set a role by full name where the Armory spec can't tell, e.g. {\"Cameron Croucher\": \"Tank\"} (Tank, Healer, Melee or Ranged).",
+  "groups": [],
+  "roleOverrides": {}
 }
