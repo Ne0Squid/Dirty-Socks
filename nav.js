@@ -7,25 +7,23 @@
   nav.innerHTML='<a class="brand" href="index.html" aria-label="Dirty Socks – home">'
     +'<img class="logo logo-horde" src="images/logo-horde-sm.png" alt="" width="44" height="46">'
     +'<img class="logo logo-alliance" src="images/logo-alliance-sm.png" alt="" width="44" height="46">'
-    +'<span class="brand-name">Dirty Socks</span></a>'
+    +'</a>'
     +'<div class="navlinks">'+links.map(a).join("")+'</div>';
   var css=document.createElement("style");
   css.textContent='html{scroll-padding-top:72px}'
-  +'nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding:8px max(20px,env(safe-area-inset-left,0px)) 8px max(20px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);background:var(--surface)}'
+  +'nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;align-items:center;justify-content:center;gap:12px 28px;flex-wrap:wrap;padding:8px max(20px,env(safe-area-inset-left,0px)) 8px max(20px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line);background:var(--surface)}'
   +'nav .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}'
-  +'nav .logo{height:46px;width:auto;display:block;filter:drop-shadow(0 1px 3px rgba(0,0,0,.35))}'
+  +'nav .logo{height:50px;width:auto;display:block;filter:drop-shadow(0 1px 3px rgba(0,0,0,.35))}'
   +'html:root:not([data-faction="alliance"]) nav .logo-alliance,html:root[data-faction="alliance"] nav .logo-horde{display:none}'
-  +'nav .brand-name{font-family:inherit;font-weight:700;font-size:1.3rem;letter-spacing:.01em;color:var(--text)}'
-  +'nav .brand:hover .brand-name{color:var(--accent)}'
   +'nav .brand:focus-visible,nav .navlinks a:focus-visible,.menu-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}'
-  +'.navlinks{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}'
+  +'.navlinks{display:flex;gap:26px;flex-wrap:wrap;justify-content:center}'
   +'.navlinks a{text-decoration:none;font-weight:600;font-size:.92rem;color:var(--muted);padding:6px 0;border-bottom:2px solid transparent}'
   +'.navlinks a:hover{color:var(--text)}.navlinks a.here{color:var(--accent);border-bottom-color:var(--accent)}'
   +'.menu-btn{display:none}'
-  +'@media (max-width:900px){nav{flex-wrap:wrap}.menu-btn{display:flex;align-items:center;gap:8px;margin-left:auto;background:none;border:1px solid var(--line);border-radius:6px;color:var(--text);font:inherit;font-weight:600;font-size:.9rem;padding:7px 12px;cursor:pointer}'
+  +'@media (max-width:900px){nav{flex-wrap:wrap;justify-content:space-between}.menu-btn{display:flex;align-items:center;gap:8px;margin-left:auto;background:none;border:1px solid var(--line);border-radius:6px;color:var(--text);font:inherit;font-weight:600;font-size:.9rem;padding:7px 12px;cursor:pointer}'
   +'.navlinks{display:none;flex-basis:calc(100% + 40px);flex-direction:column;gap:0;margin:2px -20px -8px;border-top:1px solid var(--line)}nav.open .navlinks{display:flex}'
   +'.navlinks a{padding:12px 20px;border-bottom:1px solid var(--line);text-align:left;font-size:.98rem}.navlinks a.here{border-bottom-color:var(--line);background:rgba(127,127,127,.1)}}'
-  +'@media (max-width:420px){nav .brand-name{font-size:1.15rem}nav .logo{height:40px}}';
+  +'@media (max-width:420px){nav .logo{height:42px}}';
   document.head.appendChild(css);
   // Small screens: the links collapse behind a Menu button.
   var btn=document.createElement("button");btn.type="button";btn.className="menu-btn";
