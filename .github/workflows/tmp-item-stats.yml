@@ -1,0 +1,21 @@
+name: Item stats (temporary)
+on:
+  push:
+    branches: [bis-wide]
+    paths: [".github/workflows/tmp-item-stats.yml"]
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node scripts/fetch-item-stats.mjs
+        env: { FORCE: "1" }
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add item-stats.json
+          git commit -m "Item stats (BiS)" && git pull --rebase origin bis-wide && git push

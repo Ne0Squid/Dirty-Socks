@@ -10,7 +10,9 @@ const decode = s => s.replace(/<[^>]+>/g, "").replace(/&#x27;|&#39;/g, "'").repl
 const get = async u => { for (let n = 0; n < 3; n++) { try { const r = await fetch(u, { headers: UA, signal: AbortSignal.timeout(30000) }); if (r.ok) return await r.text(); } catch {} await new Promise(r => setTimeout(r, 800)); } return null; };
 
 const j = JSON.parse(readFileSync("dungeon-loot.json", "utf8"));
-const names = [...new Set(j.dungeons.flatMap(d => d.bosses.flatMap(b => b.items.map(i => i.item))).concat(Object.values(j.trash).flat().map(i => i.item)))];
+const bis = JSON.parse(readFileSync("bis.json", "utf8"));
+const bisNames = bis.specs.flatMap(sp => sp.items.flatMap(it => [it.item, ...(it.alts || []).map(a => a.replace(/\s*\(.*$/, ""))]));
+const names = [...new Set(j.dungeons.flatMap(d => d.bosses.flatMap(b => b.items.map(i => i.item))).concat(Object.values(j.trash).flat().map(i => i.item), bisNames).map(n => n.trim()).filter(Boolean))];
 const indexRaw = await get(`${BASE}/search.json`);
 if (!indexRaw) { console.error("Item index unavailable; keeping existing data."); process.exit(0); }
 const indexJson = JSON.parse(indexRaw);
@@ -25,7 +27,7 @@ const out = {}, unmatched = [];
 const jobs = [];
 for (const n of names) {
   let r = byK.get(norm(n));
-  if (!r) { const k = norm(n); let best = null, bd = 99; for (const c of idx) { if (Math.abs(c.k.length - k.length) > 3) continue; const d = lev(k, c.k); if (d < bd) { bd = d; best = c; } } if (best && bd <= 2) r = best; }
+  if (!r) { const k = norm(n); let best = null, bd = 99; for (const c of idx) { if (Math.abs(c.k.length - k.length) > 3) continue; const d = lev(k, c.k); if (d < bd) { bd = d; best = c; } } if (best && bd <= 2 && k.length >= 10) r = best; }
   if (r) jobs.push({ n, r }); else unmatched.push(n);
 }
 function parse(html) {
