@@ -179,7 +179,7 @@ function drawGlance(roster,acc){
 // ===== GUILD ROSTER (moved here from the home page) =====
 const rankNames={0:"Guild Master",1:"Officer"}; // Blizzard returns numbers only; add titles like 2:"Raider"
 let gSorted=[],gTabs=[],classIcons={},curClass="All";
-const PER_PAGE=15;
+const PER_PAGE=20;
 const armoryUrl=m=>"https://worldofwarcraft.blizzard.com/en-us/forever/us/armory/character/"+encodeURIComponent((m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-"));
 // Armory pages only exist for characters level 10 and up, so lower levels stay plain text.
 const nameLink=m=>{const t=m.name+" "+(m.surname||"");return m.level>=10?`<a href="${armoryUrl(m)}" target="_blank" rel="noopener">${t}</a>`:t};
