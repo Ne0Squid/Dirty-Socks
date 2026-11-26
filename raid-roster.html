@@ -51,6 +51,8 @@ h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .pager button:disabled{opacity:.4;cursor:default}
 .cico{width:38px;height:38px;border-radius:8px;border:2px solid;flex:none;object-fit:cover}
 .dot{width:12px;height:12px;border-radius:50%;flex:none}
+#glancecards{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.stat{text-align:center;padding:14px 6px}.stat b{display:block;font-family:Cinzel,Georgia,serif;font-size:clamp(1.3rem,4.5vw,2rem);color:var(--accent)}.stat span{font-size:clamp(.72rem,2.4vw,.9rem)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
 .muted{color:var(--muted);font-size:.9rem}
 .btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;border:0;cursor:pointer;font-family:inherit}
@@ -116,6 +118,11 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 <h1 class="sr">Dirty Socks</h1>
 
 <main class="wrap">
+<section id="glance" style="padding-bottom:8px">
+  <h2>Roster at a Glance</h2>
+  <div id="glancecards"></div>
+  <p class="muted" id="glancenote" style="margin-top:12px"></p>
+</section>
 <section id="roster" style="padding-bottom:8px">
   <h2>Guild Roster</h2>
   <div class="filters" id="filters"></div>
@@ -163,6 +170,24 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 
 <script>
 document.getElementById("yr").textContent=new Date().getFullYear();
+// ===== ROSTER AT A GLANCE =====
+// accounts.json groups characters that belong to the same player: { "groups": [["Squid Zero","Neo Squid"], ...] } (full names).
+// Blizzard doesn't say which characters share an account, so officers keep this list by hand.
+function drawGlance(roster,groups){
+  const avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):"–";
+  const lvls=roster.filter(m=>m.level>=10).map(m=>m.level),ilvls=roster.filter(m=>m.level>=10&&m.ilvl>0).map(m=>m.ilvl);
+  const key=m=>(m.name+" "+(m.surname||"")).trim().toLowerCase();
+  const known=new Set(roster.map(key));
+  let extra=0,mapped=0;
+  (groups||[]).forEach(g=>{const n=[...new Set((g||[]).map(x=>String(x).trim().toLowerCase()))].filter(x=>known.has(x)).length;if(n>1){extra+=n-1;mapped+=n}});
+  const cards=[];
+  if((groups||[]).length)cards.push([roster.length-extra,"Players"]);
+  cards.push([roster.length,"Characters"],[avg(lvls),"Average level"],[avg(ilvls),"Average item level"]);
+  document.getElementById("glancecards").innerHTML=cards.map(c=>`<div class="card stat"><b>${c[0]}</b><span class="muted">${c[1]}</span></div>`).join("");
+  document.getElementById("glancenote").textContent=(groups||[]).length
+    ?"Players counts each person once, however many characters they have. Characters includes alts and bank characters. Averages cover characters level 10 and up."
+    :"Characters includes alts and bank characters. Averages cover characters level 10 and up.";
+}
 // ===== GUILD ROSTER (moved here from the home page) =====
 const rankNames={0:"Guild Master",1:"Officer"}; // Blizzard returns numbers only; add titles like 2:"Raider"
 let gSorted=[],gTabs=[],classIcons={},curClass="All";
@@ -187,8 +212,12 @@ function showRoster(c,pg){
 }
 document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("button");if(b)showRoster(b.dataset.c,1)});
 document.getElementById("pager").addEventListener("click",e=>{const b=e.target.closest("button");if(b&&!b.disabled)showRoster(curClass,+b.dataset.p)});
-fetch("guild-data.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{
+Promise.all([
+  fetch("guild-data.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null),
+  fetch("accounts.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({}))
+]).then(([d,acc])=>{
   if(!d||!d.roster)return;
+  drawGlance(d.roster,acc&&acc.groups);
   classIcons=d.classIcons||{};
   gSorted=d.roster.filter(m=>m.level>=10).sort((a,b)=>a.rank-b.rank||b.level-a.level); // characters under level 10 stay hidden
   gTabs=["All",...[...new Set(gSorted.map(m=>m.cls))].sort()];

@@ -1,0 +1,4 @@
+{
+  "_help": "Group characters that belong to the same player. Use full names exactly as on the roster, e.g. [\"Squid Zero\", \"Neo Squid\"]. Characters not listed count as their own player. While groups is empty the Players box stays hidden.",
+  "groups": []
+}
