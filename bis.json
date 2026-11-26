@@ -1,0 +1,2718 @@
+{
+ "updated": "2026-11-24",
+ "note": "Pre-raid best in slot lists for WoW Forever, patch 1.60.1.",
+ "specs": [
+  {
+   "id": "resto-druid",
+   "label": "Restoration",
+   "cls": "Druid",
+   "role": "Healer",
+   "specs": [
+    "Restoration"
+   ],
+   "source": "Wowhead WoW: Forever Resto Druid BiS, patch 1.60.1 (Nov 24, 2026)",
+   "enchants": true,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Living Crown",
+     "where": "Leatherworking pattern (very expensive)",
+     "enchant": "Lesser Arcanum of Voracity",
+     "alts": [
+      "Feralheart Headdress (T0.5 questline)",
+      "Bad Hat (quest Deadliest Catch, Azshara)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Animated Chain Necklace",
+     "where": "Ramstein the Gorger, Stratholme (Undead side)",
+     "enchant": "Enchant Necklace – Healing Power",
+     "alts": [
+      "Heart of the Fiend (Kirtonos the Herald, Scholomance)",
+      "Jeweled Amulet of Cainwyn (world drop)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Feralheart Mantle",
+     "where": "Druid T0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Mooncloth Shoulders (Tailoring)",
+      "Living Shoulders (Leatherworking)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Hide of the Wild",
+     "where": "Leatherworking pattern",
+     "enchant": "Enchant Cloak – Greater Resistance",
+     "alts": [
+      "Archivist Cape of Healing (Archivist Galford, Stratholme Live)",
+      "Drape of Recovery (Pix Xizzix vendor)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Embrace of the Wind Serpent",
+     "where": "Shade of Hakkar, Temple of Atal'Hakkar",
+     "enchant": "Enchant Chest – Greater Stats",
+     "alts": [
+      "Robes of the Exalted (Baron Rivendare, Stratholme)",
+      "Forest's Embrace (quest A Better Ingredient)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Bleak Howler Armguards",
+     "where": "Gizrul the Slavener, Lower Blackrock Spire",
+     "enchant": "Enchant Bracer – Greater Spellpower",
+     "alts": [
+      "Wyrmthalak's Shackles (Blackrock Spire quests)",
+      "Feralheart Bindings (T0.5)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Feralheart Gauntlets",
+     "where": "Druid T0.5 questline",
+     "enchant": "Enchant Gloves – Healing Power",
+     "alts": [
+      "Hands of the Exalted Herald (Princess Moira, BRD)",
+      "Wildheart Gloves (The Unforgiven, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Sash of Mercy",
+     "where": "World drop (BoE) – check the Auction House",
+     "enchant": null,
+     "alts": [
+      "Caretaker's Cord (Pix Xizzix vendor)",
+      "Wisdom of the Timbermaw (Leatherworking)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Feralheart Pants",
+     "where": "Druid T0.5 questline",
+     "enchant": "Lesser Arcanum of Voracity",
+     "alts": [
+      "Devout Skirt (Baron Rivendare, Stratholme)",
+      "Padre's Trousers (Illyanna Ravenoak, Dire Maul West)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Feralheart Sandals",
+     "where": "Druid T0.5 questline",
+     "enchant": "Enchant Boots – Speed",
+     "alts": [
+      "Ogreseer Tower Boots (Spirestone Lord Magus, LBRS)",
+      "Mooncloth Boots"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Band of Mending",
+     "where": "Sothos & Jarien, Stratholme Live (needs Brazier of Invocation from the T0.5 questline)",
+     "enchant": null,
+     "alts": [
+      "Ring of Nature's Cycles (quest Work Well Done, Mount Hyjal)",
+      "Fordring's Seal (quest In Dreams)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Blessed Band of Light",
+     "where": "Pix Xizzix, Booty Bay – 75 Tarnished Undermine Real",
+     "enchant": null,
+     "alts": [
+      "Ring of Nature's Cycles (quest Work Well Done, Mount Hyjal)",
+      "Fordring's Seal (quest In Dreams)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Serenity Field",
+     "where": "Pix Xizzix, Booty Bay – 125 Tarnished Undermine Real",
+     "enchant": null,
+     "alts": [
+      "Weakness Analyzer (Pix Xizzix vendor)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Royal Seal of Eldre'Thalas",
+     "where": "Quest The Emerald Dream (Dire Maul)",
+     "enchant": null,
+     "alts": [
+      "Burst of Knowledge (Ambassador Flamelash, BRD) – mana option",
+      "Mindtap Talisman (Magister Kalendris, Dire Maul) – mana option"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Gift of the Elven Magi",
+     "where": "Grand Crusader Dathrohan, Stratholme Live",
+     "enchant": "Enchant Weapon – Insight",
+     "alts": [
+      "Lorespinner (Lethtendris, Dire Maul East)",
+      "Masterwork Crimson Hammer (Crimson Hammersmith, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Off Hand",
+     "item": "Lei of the Lifegiver",
+     "where": "Stormpike Guard vendor at Exalted (Horde: Frostwolf)",
+     "enchant": "Enchant Off-Hand – Excellent Spirit",
+     "alts": [
+      "Penelope's Rose (Kirtonos the Herald, Scholomance)",
+      "Thaurissan's Royal Scepter (Emperor Thaurissan, BRD)"
+     ]
+    },
+    {
+     "slot": "Idol",
+     "item": "Idol of Synthesis",
+     "where": "Pix Xizzix, Booty Bay (cost 50)",
+     "enchant": null,
+     "alts": [
+      "Mystic Mushroom (formula)",
+      "Talons of Wrath (formula)"
+     ]
+    },
+    {
+     "slot": "Staff (instead of MH + OH)",
+     "item": "Glowing Brightwood Staff",
+     "where": "World drop (BoE)",
+     "enchant": null,
+     "alts": [
+      "Hammer of the Grand Crusader (Dathrohan, Stratholme)",
+      "Staff of Metanoia (Jandice Barov, Scholomance)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "prot-warrior",
+   "label": "Protection",
+   "cls": "Warrior",
+   "role": "Tank",
+   "specs": [
+    "Protection"
+   ],
+   "source": "ConquestCapped WoW Forever Protection Warrior BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Faceguard of Heroism",
+     "where": "Tier 0.5 questline (Protection version)",
+     "enchant": null,
+     "alts": [
+      "Enchanted Thorium Helm (Blacksmithing, Armorsmith)",
+      "Lionheart Helm (Blacksmithing)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Horn of Ve'han",
+     "where": "Quest Work Well Done, Mount Hyjal",
+     "enchant": null,
+     "alts": [
+      "Medallion of Grand Marshal Morris (world drop)",
+      "Talisman of Evasion (War Master Voone, LBRS)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Theramore Spaulders (Horde: Darkspear Spaulders)",
+     "where": "Theramore Expeditionary Force / Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Stockade Pauldrons (world drop)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Stalwart Cloak",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Redoubt Cloak (Mizzle the Crafty, DM North tribute chest)",
+      "Cloak of Warding (Tailoring)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Chestguard of Heroism",
+     "where": "Tier 0.5 questline (Protection version)",
+     "enchant": null,
+     "alts": [
+      "Deathbone Chestplate (Scholomance bosses)",
+      "Ornate Adamantium Breastplate (quest In Dreams, W. Plaguelands)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Wristguards of Heroism",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Sentinel's Wristguards (Blacksmithing, 90 Merchant's Favor)",
+      "Spike Crested Bracers (Bonesnout the Unbroken, Blackmaw Hold)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Theramore Gauntlets (Horde: Raider Gauntlets)",
+     "where": "Theramore Expeditionary Force / Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Sentinel's Gloves (Blacksmithing)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Waistguard of Heroism",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Deathbone Girdle (Scholomance bosses)",
+      "Brigam Girdle (General Drakkisath, UBRS)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Legguards of Heroism",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Deathbone Legguards (Scholomance bosses)",
+      "Enchanted Thorium Leggings (Blacksmithing, Armorsmith)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Sabatons of Heroism",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Deathbone Sabatons (Scholomance bosses)",
+      "Furbolg Berserker's Boots (Blackmaw Hold trash)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Ring of Awareness",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Warden's Signet of Vigilance (The Watchers, Exalted)",
+      "Ring of Demonic Potency (Alzzin the Wildshaper, DM East)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Band of the Steadfast Hero",
+     "where": "Kormok, Scholomance",
+     "enchant": null,
+     "alts": [
+      "Don Julio's Band (Alterac Valley, Exalted)",
+      "Venomvessel Ring (Venomridge, The Shaper's Terrace)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Mark of the Chosen",
+     "where": "Quest The Pariah's Instructions, Maraudon",
+     "enchant": null,
+     "alts": [
+      "Defender's Grip Stabilizer (Pix Xizzix, 125 TUR)",
+      "Force of Will (General Angerforge, BRD)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Adaptive Combat Assistant",
+     "where": "Pix Xizzix, 125 TUR",
+     "enchant": null,
+     "alts": [
+      "Force of Will (General Angerforge, BRD)",
+      "Mark of Tyranny (UBRS quest)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Felstriker",
+     "where": "Warchief Rend Blackhand, UBRS (~2% drop)",
+     "enchant": null,
+     "alts": [
+      "Ironfoe (Emperor Thaurissan, BRD)",
+      "Thrash Blade (quest Corruption of Earth and Seed, Maraudon)"
+     ]
+    },
+    {
+     "slot": "Shield",
+     "item": "Draconian Deflector",
+     "where": "General Drakkisath, UBRS",
+     "enchant": null,
+     "alts": [
+      "Antique Bulwark (quest Greater Friend of the Library)",
+      "Bloodfur Bulwark (Withermaw, Blackmaw Hold)"
+     ]
+    },
+    {
+     "slot": "Ranged",
+     "item": "Gorewood Bow",
+     "where": "Quest The Scarlet Oracle, Demetria / Order Must Be Restored, E. Plaguelands",
+     "enchant": null,
+     "alts": [
+      "Bloodseeker (Alterac Valley quest)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fury-warrior",
+   "label": "Fury",
+   "cls": "Warrior",
+   "role": "DPS",
+   "specs": [
+    "Fury"
+   ],
+   "source": "ConquestCapped WoW Forever Fury Warrior BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Lionheart Helm",
+     "where": "Blacksmithing (very rare plans)",
+     "enchant": null,
+     "alts": [
+      "Fury Visor (quest Voodoo Feathers, Sunken Temple)",
+      "Mask of the Unforgiven (The Unforgiven, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Mark of Fordring",
+     "where": "Quest In Dreams, W. Plaguelands",
+     "enchant": null,
+     "alts": [
+      "Beads of Ogre Might (quest Falrin's Vendetta, Dire Maul)",
+      "Pendant of Celerity (Lord Valthalak, UBRS)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Theramore Epaulets (Horde: Darkspear Epaulets)",
+     "where": "Theramore Expeditionary Force / Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Truestrike Shoulders (Pyroguard Emberseer, UBRS)",
+      "Hermit's Pauldron (quest Work Well Done, Mount Hyjal)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Cape of the Black Baron",
+     "where": "Baron Rivendare, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Howler's Furs (Pix Xizzix, 75 TUR)",
+      "Deathguard's Cloak (Arathi Basin, Exalted)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Timbermaw Tunic",
+     "where": "Leatherworking",
+     "enchant": null,
+     "alts": [
+      "Savage Gladiator Chain (Gorosh the Dervish, BRD)",
+      "Breastplate of Heroism (Tier 0.5 questline)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Battleborn Armbraces",
+     "where": "Warchief Rend Blackhand, UBRS",
+     "enchant": null,
+     "alts": [
+      "Berserker Bracers (Warsong Gulch, Exalted)",
+      "Spike Crested Bracers (Bonesnout the Unbroken, Blackmaw Hold)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Theramore Gauntlets (Horde: Raider Gauntlets)",
+     "where": "Theramore Expeditionary Force / Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Death Grips (Magistrate Barthilas, Stratholme)",
+      "Voone's Vice Grips (Blackrock Spire quest)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Highlander's Plate Girdle (Horde: Defiler's Plate Girdle)",
+     "where": "Arathi Basin, Honored",
+     "enchant": null,
+     "alts": [
+      "Brigam Girdle (General Drakkisath, UBRS)",
+      "Omokk's Girth Restrainer (Blackrock Spire quest)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Titanic Leggings",
+     "where": "Blacksmithing, Armorsmith (plan source unconfirmed)",
+     "enchant": null,
+     "alts": [
+      "Sentinel's / Outrider's Plate Legguards (Warsong Gulch, Exalted)",
+      "Blademaster Leggings (The Beast, UBRS)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Battleboots of Heroism",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Bloodmail Boots (Scholomance)",
+      "Windreaver Greaves (Kirtonos the Herald, Scholomance)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Cutthroat's Signet",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Don Julio's Band (Alterac Valley, Exalted)",
+      "Warden's Signet of Ferocity (The Watchers, Exalted)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Engraved Band",
+     "where": "Quest Blackmaw Reclamation, Blackmaw Hold",
+     "enchant": null,
+     "alts": [
+      "Painweaver Band (General Drakkisath, UBRS)",
+      "Tarnished Elven Ring (DM North tribute chest)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Counterattack Lodestone",
+     "where": "Mizzle the Crafty, DM North tribute chest",
+     "enchant": null,
+     "alts": [
+      "Heart of Wyrmthalak (Overlord Wyrmthalak, LBRS)",
+      "Behemoth Bones (Blackmaw Behemoth, Blackmaw Hold)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Heart of Wyrmthalak",
+     "where": "Overlord Wyrmthalak, LBRS",
+     "enchant": null,
+     "alts": [
+      "Hand of Justice (Emperor Thaurissan, BRD)",
+      "Blackhand's Breadth (UBRS quest)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Ironfoe",
+     "where": "Emperor Dagran Thaurissan, BRD",
+     "enchant": null,
+     "alts": [
+      "Dal'Rend's Sacred Charge (Rend Blackhand, UBRS)",
+      "Stormstrike Hammer (Alterac Valley, Revered)"
+     ]
+    },
+    {
+     "slot": "Off Hand",
+     "item": "Dragon's Call",
+     "where": "Shade of Eranikus, Sunken Temple",
+     "enchant": null,
+     "alts": [
+      "Dal'Rend's Tribal Guardian (Rend Blackhand, UBRS)",
+      "Frostbite (Alterac Valley, Revered)"
+     ]
+    },
+    {
+     "slot": "Ranged",
+     "item": "Satyr's Bow",
+     "where": "Zevrim Thornhoof, Dire Maul",
+     "enchant": null,
+     "alts": [
+      "Blackcrow (Shadow Hunter Vosh'gajin, LBRS)",
+      "Riphook (Shadow Hunter Vosh'gajin, LBRS)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "prot-paladin",
+   "label": "Protection",
+   "cls": "Paladin",
+   "role": "Tank",
+   "specs": [
+    "Protection"
+   ],
+   "source": "ConquestCapped WoW Forever Protection Paladin BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Soulforge Faceguard",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Enriched Thorium Helm (Blacksmithing, 120 Merchant's Favor)",
+      "Enchanted Thorium Helm (Blacksmithing, Armorsmith)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Museum Keeper's Chain",
+     "where": "Quest Greater Friend of the Library",
+     "enchant": null,
+     "alts": [
+      "Horn of Ve'han (quest Work Well Done, Mount Hyjal)",
+      "Medallion of Grand Marshal Morris (world drop)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Theramore Mantle (Horde: Darkspear Mantle)",
+     "where": "Theramore Expeditionary Force / Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Stockade Pauldrons (world drop)",
+      "Soulforge Pauldrons (Tier 0.5 questline)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Redoubt Cloak",
+     "where": "Mizzle the Crafty, DM North tribute chest",
+     "enchant": null,
+     "alts": [
+      "Stalwart Cloak (Pix Xizzix, 75 TUR)",
+      "Arcanoweave Cloak (Pix Xizzix, 75 TUR)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Soulforge Chestguards",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Enriched Thorium Breastplate (Blacksmithing, 120 Merchant's Favor)",
+      "Ornate Adamantium Breastplate (quest In Dreams, W. Plaguelands)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Soulforge Wristguards",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Warder's Wristguards (Blacksmithing, 90 Merchant's Favor)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Soulforge Handguards",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Warder's Gloves (Blacksmithing)",
+      "Stonegrip Gauntlets (world drop)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Warder's Waistguard",
+     "where": "Blacksmithing, 90 Merchant's Favor",
+     "enchant": null,
+     "alts": [
+      "Soulforge Waistguard (Tier 0.5 questline)",
+      "Vindicator's Belt (Pix Xizzix, 100 TUR)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Soulforge Legguards",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Enriched Thorium Leggings (Blacksmithing, 120 Merchant's Favor)",
+      "Deathbone Legguards (Scholomance)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Soulforge Sabatons",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Warder's Sabatons (Blacksmithing, 90 Merchant's Favor)",
+      "Boots of Avoidance (world drop)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Ring of Awareness",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Blood of the Martyr (quest Aurius' Reckoning, Stratholme)",
+      "Ring of Demonic Potency (Alzzin the Wildshaper, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Blood of the Martyr",
+     "where": "Quest Aurius' Reckoning, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Ring of Demonic Potency (Alzzin the Wildshaper, Dire Maul)",
+      "Band of the Steadfast Hero (Kormok, Scholomance)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Mark of the Chosen",
+     "where": "Quest The Pariah's Instructions, Maraudon",
+     "enchant": null,
+     "alts": [
+      "Adaptive Combat Assistant (Pix Xizzix, 125 TUR)",
+      "Mark of Tyranny (UBRS quest)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Adaptive Combat Assistant",
+     "where": "Pix Xizzix, 125 TUR",
+     "enchant": null,
+     "alts": [
+      "Defender's Grip Stabilizer (Pix Xizzix, 125 TUR)",
+      "Force of Will (General Angerforge, BRD)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Sageblade",
+     "where": "Blacksmithing, Master Swordsmith",
+     "enchant": null,
+     "alts": [
+      "Hand of Edward the Odd (rare world drop)",
+      "Mind Carver (Prince Tortheldrin, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Shield",
+     "item": "Draconian Aegis of the Legion",
+     "where": "Lord Valthalak, UBRS",
+     "enchant": null,
+     "alts": [
+      "Draconian Deflector (General Drakkisath, UBRS)",
+      "Antique Bulwark (quest Greater Friend of the Library)"
+     ]
+    },
+    {
+     "slot": "Libram",
+     "item": "Libram of Law",
+     "where": "Pix Xizzix, 50 TUR",
+     "enchant": null,
+     "alts": [
+      "Steadfast Libram (Enchanting)",
+      "Libram of Fervor (world drop)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "holy-paladin",
+   "label": "Holy",
+   "cls": "Paladin",
+   "role": "Healer",
+   "specs": [
+    "Holy"
+   ],
+   "source": "ConquestCapped WoW Forever Holy Paladin BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Living Crown",
+     "where": "Leatherworking (pattern from Warpwood Treant, Dire Maul)",
+     "enchant": null,
+     "alts": [
+      "Soulforge Crown (Tier 0.5 questline, Holy)",
+      "Whitesoul Helm (Blacksmithing, Armorsmith)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Tooth of Gnarr",
+     "where": "General Drakkisath, UBRS (~25%)",
+     "enchant": null,
+     "alts": [
+      "Animated Chain Necklace (Ramstein the Gorger, Stratholme)",
+      "Wavefront Necklace (Lord Skwol, Silithus)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Theramore Shoulderguards (Horde: Darkspear Shoulderguards)",
+     "where": "Theramore Expeditionary Force / Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Dawnbringer Shoulders (Blacksmithing, Argent Dawn Revered)",
+      "Soulforge Epaulets (Tier 0.5 questline, Holy)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Hide of the Wild",
+     "where": "Leatherworking (pattern from Knot Thimblejack's Cache, Dire Maul)",
+     "enchant": null,
+     "alts": [
+      "Drape of Recovery (Pix Xizzix, 75 TUR)",
+      "Cloak of the Cosmos (Immol'thar, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Breastplate of Salvation",
+     "where": "Blacksmithing (plans from Legashi Summoner, Blackmaw Hold)",
+     "enchant": null,
+     "alts": [
+      "Red Dragonscale Breastplate (Leatherworking)",
+      "Soulforge Embrace (Tier 0.5 questline, Holy)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Soulforge Bindings",
+     "where": "Tier 0.5 questline, Holy",
+     "enchant": null,
+     "alts": [
+      "Loomguard Armbraces (Kirtonos the Herald, Scholomance)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Theramore Handwraps (Horde: Raider Handwraps)",
+     "where": "Theramore Expeditionary Force / Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Harmonious Gauntlets (King Gordok, Dire Maul)",
+      "Soulforge Fists (Tier 0.5 questline, Holy)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Soulforge Cord",
+     "where": "Tier 0.5 questline, Holy",
+     "enchant": null,
+     "alts": [
+      "Whipvine Cord (Alzzin the Wildshaper, Dire Maul)",
+      "Wisdom of the Timbermaw (Tailoring)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Martyr's Legplates",
+     "where": "Blacksmithing (plans from Gordok Brute, Dire Maul)",
+     "enchant": null,
+     "alts": [
+      "Padre's Trousers (Illyanna Ravenoak, Dire Maul)",
+      "Soulforge Leggings (Tier 0.5 questline, Holy)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Soulforge Treads",
+     "where": "Tier 0.5 questline, Holy",
+     "enchant": null,
+     "alts": [
+      "Verdant Footpads (Stonespine, Stratholme)",
+      "Boots of the Full Moon (Captain Kromcrush, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Fordring's Seal",
+     "where": "Quest In Dreams, W. Plaguelands",
+     "enchant": null,
+     "alts": [
+      "Rosewine Circle (Urok Doomhowl, LBRS)",
+      "Blessed Band of Light (Pix Xizzix, 75 TUR)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Band of Mending",
+     "where": "Grand Crusader Dathrohan, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Rosewine Circle (Urok Doomhowl, LBRS)",
+      "Fordring's Seal (quest In Dreams, W. Plaguelands)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Serenity Field",
+     "where": "Pix Xizzix, 125 TUR",
+     "enchant": null,
+     "alts": [
+      "Royal Seal of Eldre'Thalas (quest The Light and How To Swing It, Dire Maul)",
+      "Burst of Knowledge (Ambassador Flamelash, BRD)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Royal Seal of Eldre'Thalas",
+     "where": "Quest The Light and How To Swing It, Dire Maul",
+     "enchant": null,
+     "alts": [
+      "Burst of Knowledge (Ambassador Flamelash, BRD)",
+      "Sanctified Orb (quest Forging the Mightstone)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Hammer of Revitalization",
+     "where": "Isalien, Dire Maul",
+     "enchant": null,
+     "alts": [
+      "Masterwork Crimson Hammer (Crimson Hammersmith, Stratholme)",
+      "Hammer of the Grand Crusader (Balnazzar, Stratholme; two-hand)"
+     ]
+    },
+    {
+     "slot": "Off Hand",
+     "item": "Penelope's Rose",
+     "where": "Quest Kirtonos the Herald, Scholomance",
+     "enchant": null,
+     "alts": [
+      "Lei of the Lifegiver (Alterac Valley, Exalted)",
+      "Sunderbark Vigil (quest The Dying Ancients)"
+     ]
+    },
+    {
+     "slot": "Libram",
+     "item": "Libram of Economy",
+     "where": "Pix Xizzix, 50 TUR",
+     "enchant": null,
+     "alts": [
+      "Libram of Holy Alacrity (Enchanting, or Pix Xizzix for 15 TUR)",
+      "Libram of Divinity (rare drop, Scholomance)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ret-paladin",
+   "label": "Retribution",
+   "cls": "Paladin",
+   "role": "DPS",
+   "specs": [
+    "Retribution"
+   ],
+   "source": "ConquestCapped WoW Forever Retribution Paladin BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Soulforge Greathelm",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Stalwart Helm (Blacksmithing, plans from Bloodaxe Veteran)",
+      "Lionheart Helm (Blacksmithing, very rare plans)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Mark of Fordring",
+     "where": "Quest In Dreams, W. Plaguelands",
+     "enchant": null,
+     "alts": [
+      "Beads of Ogre Might (quest Falrin's Vendetta, Dire Maul)",
+      "Star of Mystaria (Stratholme)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Soulforge Spaulders",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Lamellar Spaulders (Arathi Basin, Exalted)",
+      "Truestrike Shoulders (Pyroguard Emberseer, UBRS)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Arcanoweave Cloak",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Howler's Furs (Pix Xizzix, 75 TUR)",
+      "Cape of the Black Baron (Baron Rivendare, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Soulforge Breastplate",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Timbermaw Tunic (Leatherworking)",
+      "Lightforge Breastplate (General Drakkisath, UBRS)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Soulforge Bracers",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Berserker Bracers (Warsong Gulch, Exalted)",
+      "Battleborn Armbraces (Rend Blackhand, UBRS)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Storm Gauntlets",
+     "where": "Leatherworking",
+     "enchant": null,
+     "alts": [
+      "Soulforge Gauntlets (Tier 0.5 questline)",
+      "Theramore / Raider Gauntlets (faction Exalted)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Soulforge Belt",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Vindicator's Belt (Pix Xizzix, 100 TUR)",
+      "Brigam Girdle (General Drakkisath, UBRS)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Champion's Legplates",
+     "where": "Blacksmithing (plan source unconfirmed)",
+     "enchant": null,
+     "alts": [
+      "Soulforge Legplates (Tier 0.5 questline)",
+      "Sentinel's Lamellar / Outrider's Plate Legguards (Warsong Gulch, Exalted)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Soulforge Warboots",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Furbolg Berserker's Boots (Blackmaw Devotee, Blackmaw Hold)",
+      "Battlechaser's Greaves (BRD trash)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Channeler's Ring",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Blackstone Ring (Princess Theradras, Maraudon)",
+      "Don Julio's Band (Alterac Valley, Exalted)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Don Mauricio's Band of Domination",
+     "where": "Darkmaster Gandling, Scholomance",
+     "enchant": null,
+     "alts": [
+      "Ring of Demonic Guile (Alzzin the Wildshaper, Dire Maul)",
+      "Don Julio's Band (Alterac Valley, Exalted)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Heart of Wyrmthalak",
+     "where": "Overlord Wyrmthalak, LBRS",
+     "enchant": null,
+     "alts": [
+      "Behemoth Bones (Blackmaw Behemoth, Blackmaw Hold)",
+      "Blackhand's Breadth (UBRS quest)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Smolderweb's Eye",
+     "where": "Mother Smolderweb, LBRS",
+     "enchant": null,
+     "alts": [
+      "Weakness Analyzer (Pix Xizzix, 125 TUR)",
+      "Hand of Justice (Emperor Thaurissan, BRD)"
+     ]
+    },
+    {
+     "slot": "Two-Hand",
+     "item": "Nightfall",
+     "where": "Blacksmithing, Master Axesmith (plans from Lokhtos Darkbargainer)",
+     "enchant": null,
+     "alts": [
+      "Blackblade of Shahram (General Drakkisath, UBRS)",
+      "Hammer of Thundering Hooves (Thunderhoof, The Shaper's Terrace)"
+     ]
+    },
+    {
+     "slot": "Libram",
+     "item": "Libram of Law",
+     "where": "Pix Xizzix, 50 TUR",
+     "enchant": null,
+     "alts": [
+      "Libram of Hope (Isalien, Dire Maul)",
+      "Libram of Invocation (Enchanting)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "holy-priest",
+   "label": "Holy",
+   "cls": "Priest",
+   "role": "Healer",
+   "specs": [
+    "Holy"
+   ],
+   "source": "ConquestCapped WoW Forever Holy Priest BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Virtuous Crown",
+     "where": "Tier 0.5 questline, Holy",
+     "enchant": null,
+     "alts": [
+      "Mooncloth Circlet (Tailoring)",
+      "Bad Hat (quest Deadliest Catch, Azshara)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Animated Chain Necklace",
+     "where": "Ramstein the Gorger, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Wavefront Necklace (Lord Skwol, Silithus)",
+      "Heart of the Fiend (Kirtonos the Herald, Scholomance)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Mooncloth Shoulders",
+     "where": "Tailoring (pattern from Huntsman Radley, WPL, or EPL Necromancers)",
+     "enchant": null,
+     "alts": [
+      "Rugged Mantle of the Timbermaw (Tailoring, Timbermaw rep)",
+      "Virtuous Mantle (Tier 0.5 questline, Holy)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Hide of the Wild",
+     "where": "Leatherworking (pattern from Dire Maul)",
+     "enchant": null,
+     "alts": [
+      "Drape of Recovery (Pix Xizzix, 75 TUR)",
+      "Battle Healer's Cloak / Caretaker's Cape (Warsong Gulch rep)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Virtuous Robe",
+     "where": "Tier 0.5 questline, Holy",
+     "enchant": null,
+     "alts": [
+      "Truefaith Vestments (Tailoring, Priest only)",
+      "Robes of the Exalted (Baron Rivendare, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Virtuous Bracers",
+     "where": "Tier 0.5 questline, Holy",
+     "enchant": null,
+     "alts": [
+      "Wyrmthalak's Shackles (LBRS quest)",
+      "Verek's Loyal Wraps (Verek, BRD)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Virtuous Mitts",
+     "where": "Tier 0.5 questline, Holy",
+     "enchant": null,
+     "alts": [
+      "Desert Bloom Gloves (quest Armaments of War, Silithus)",
+      "Mooncloth Gloves (Tailoring)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Penitent's Cinch",
+     "where": "Pix Xizzix, 100 TUR",
+     "enchant": null,
+     "alts": [
+      "Wisdom of the Timbermaw (Tailoring)",
+      "Whipvine Cord (Alzzin the Wildshaper, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Virtuous Skirt",
+     "where": "Tier 0.5 questline, Holy",
+     "enchant": null,
+     "alts": [
+      "Padre's Trousers (Illyanna Ravenoak, Dire Maul)",
+      "Senior Designer's Pantaloons (Fineous Darkvire, BRD)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Virtuous Sandals",
+     "where": "Tier 0.5 questline, Holy",
+     "enchant": null,
+     "alts": [
+      "Swarmtender's Footpads (Tailoring)",
+      "Naturopathy Footpads (Ravasaur Hunter rare drop)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Band of Mending",
+     "where": "Grand Crusader Dathrohan, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Fordring's Seal (quest In Dreams, W. Plaguelands)",
+      "Warden's Signet of Resolve (The Watchers, Exalted)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Blessed Band of Light",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Fordring's Seal (quest In Dreams, W. Plaguelands)",
+      "Rosewine Circle (Urok Doomhowl, LBRS)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Serenity Field",
+     "where": "Pix Xizzix, 125 TUR",
+     "enchant": null,
+     "alts": [
+      "Royal Seal of Eldre'Thalas (quest Holy Bologna, Dire Maul)",
+      "Burst of Knowledge (Ambassador Flamelash, BRD)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Royal Seal of Eldre'Thalas",
+     "where": "Priest quest Holy Bologna, Dire Maul",
+     "enchant": null,
+     "alts": [
+      "Burst of Knowledge (Ambassador Flamelash, BRD)",
+      "Mindtap Talisman (Magister Kalendris, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Gift of the Elven Magi",
+     "where": "Dathrohan / Balnazzar, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Hammer of Revitalization (Isalien, Dire Maul)",
+      "Masterwork Crimson Hammer (Crimson Hammersmith, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Off Hand",
+     "item": "Penelope's Rose",
+     "where": "Quest Kirtonos the Herald, Scholomance",
+     "enchant": null,
+     "alts": [
+      "Lei of the Lifegiver (Alterac Valley, Exalted)",
+      "Tome of Divine Right (Mor Grayhoof, UBRS)"
+     ]
+    },
+    {
+     "slot": "Wand",
+     "item": "Wand of Eternal Light",
+     "where": "Secret Safe, BRD",
+     "enchant": null,
+     "alts": [
+      "Bonecreeper Stylus (Darkmaster Gandling, Scholomance)",
+      "Torch of Light (Enchanting, needs raid items)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "shadow-priest",
+   "label": "Shadow",
+   "cls": "Priest",
+   "role": "DPS",
+   "specs": [
+    "Shadow"
+   ],
+   "source": "ConquestCapped WoW Forever Shadow Priest BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Spellweaver's Turban",
+     "where": "General Drakkisath, UBRS",
+     "enchant": null,
+     "alts": [
+      "Crimson Felt Hat (Magistrate Barthilas, Stratholme)",
+      "Cowl of Dark Ambition (Unbound Spirit, Blackmaw Hold)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Nacreous Shell Necklace",
+     "where": "Cannon Master Willey, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Star of Mystaria (Grand Crusader Dathrohan, Stratholme)",
+      "Orb of the Darkmoon (1,200 Darkmoon Prize Tickets)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Virtuous Epaulets",
+     "where": "Tier 0.5 questline (Shadow version)",
+     "enchant": null,
+     "alts": [
+      "Rugged Mantle of the Timbermaw (Tailoring, Timbermaw rep)",
+      "Burial Shawl (Scholomance bosses)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Arcanoweave Cloak",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Fel Cape (Tailoring)",
+      "Amplifying Cloak (Magister Kalendris, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Robes of Dark Summons",
+     "where": "Impaan the Imprisoner, Blackmaw Hold",
+     "enchant": null,
+     "alts": [
+      "Robe of Winter Night (Tailoring)",
+      "Robe of Everlasting Night (Immol'thar, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Netherpearl Cuffs",
+     "where": "Tailoring (pattern for 60 Merchant's Favor)",
+     "enchant": null,
+     "alts": [
+      "Sublime Wristguards (DM North guards)",
+      "Tearfall Bracers (The Unforgiven, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Gloves of Spell Mastery",
+     "where": "Tailoring (pattern from Blackrock Spire mobs)",
+     "enchant": null,
+     "alts": [
+      "Felcloth Gloves (Tailoring)",
+      "Hands of Power (Quartermaster Zigris, LBRS)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Belt of the Archmage",
+     "where": "Tailoring (pattern from Gordok ogres, Dire Maul)",
+     "enchant": null,
+     "alts": [
+      "Knowledge of the Timbermaw (Tailoring, Timbermaw rep)",
+      "Thuzadin Sash (Nerub'enkan, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Leggings of Torment",
+     "where": "Lord Valthalak, UBRS",
+     "enchant": null,
+     "alts": [
+      "Skyshroud Leggings (Highlord Omokk, LBRS)",
+      "Master's Leggings (world drop)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Virtuous Slippers",
+     "where": "Tier 0.5 questline (Shadow version)",
+     "enchant": null,
+     "alts": [
+      "Venomspew Footpads (Tailoring)",
+      "Dragonrider Boots (Rend Blackhand, UBRS)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Rune Band of Wizardry",
+     "where": "Lord Valthalak, UBRS",
+     "enchant": null,
+     "alts": [
+      "Songstone of Ironforge / Eye of Orgrimmar (BRD quest)",
+      "Maiden's Circle (world drop)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Channeler's Ring",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Don Mauricio's Band of Domination (Darkmaster Gandling, Scholomance)",
+      "Maiden's Circle (world drop)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Weakness Analyzer",
+     "where": "Pix Xizzix, 125 TUR",
+     "enchant": null,
+     "alts": [
+      "Eye of the Beast (UBRS quest)",
+      "Smolderweb's Eye (Mother Smolderweb, LBRS)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Briarwood Reed",
+     "where": "Jed Runewatcher, UBRS",
+     "enchant": null,
+     "alts": [
+      "Burst of Knowledge (Ambassador Flamelash, BRD)",
+      "Mindtap Talisman (Magister Kalendris, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Blade of the New Moon",
+     "where": "Immol'thar, Dire Maul",
+     "enchant": null,
+     "alts": [
+      "Scepter of the Unholy (Baron Rivendare, Stratholme)",
+      "Sageclaw / Mindfang (Arathi Basin, Exalted)"
+     ]
+    },
+    {
+     "slot": "Off Hand",
+     "item": "Obsidian Bauble",
+     "where": "Pusillin, Dire Maul",
+     "enchant": null,
+     "alts": [
+      "Scepter of Interminable Focus (Sothos and Jarien's Heirlooms, Stratholme)",
+      "Master's Rod of Shadow Wrath (world drop)"
+     ]
+    },
+    {
+     "slot": "Wand",
+     "item": "Skul's Ghastly Touch",
+     "where": "Skul, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Ritssyn's Wand of Bad Mojo (Baron Rivendare, Stratholme)",
+      "Oblivion's Touch (Death Knight Darkreaver, Scholomance)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "resto-shaman",
+   "label": "Restoration",
+   "cls": "Shaman",
+   "role": "Healer",
+   "specs": [
+    "Restoration"
+   ],
+   "source": "ConquestCapped WoW Forever Restoration Shaman BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Living Crown",
+     "where": "Leatherworking (pattern from Warpwood Treant, Dire Maul)",
+     "enchant": null,
+     "alts": [
+      "Crown of The Five Thunders (Tier 0.5 questline, Resto)",
+      "Bad Hat (quest Deadliest Catch, Azshara)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Tooth of Gnarr",
+     "where": "General Drakkisath, UBRS",
+     "enchant": null,
+     "alts": [
+      "Wavefront Necklace (Lord Skwol, Silithus)",
+      "Animated Chain Necklace (Ramstein the Gorger, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Theramore Shoulderguards (Horde: Darkspear Shoulderguards)",
+     "where": "Theramore Expeditionary Force / Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Mooncloth Shoulders (Tailoring)",
+      "Mantle of The Five Thunders (Tier 0.5 questline, Resto)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Hide of the Wild",
+     "where": "Leatherworking (pattern from Knot Thimblejack's Cache, Dire Maul)",
+     "enchant": null,
+     "alts": [
+      "Drape of Recovery (Pix Xizzix, 75 TUR)",
+      "Cloak of the Cosmos (Immol'thar, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Tunic of The Five Thunders",
+     "where": "Tier 0.5 questline (Resto)",
+     "enchant": null,
+     "alts": [
+      "Robes of the Exalted (Baron Rivendare, Stratholme)",
+      "Red Dragonscale Breastplate (Leatherworking)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Bracers of The Five Thunders",
+     "where": "Tier 0.5 questline (Resto)",
+     "enchant": null,
+     "alts": [
+      "Loomguard Armbraces (Kirtonos the Herald, Scholomance)",
+      "Dryad's Wrist Bindings (Warsong Gulch, Exalted)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Theramore Handwraps (Horde: Raider Handwraps)",
+     "where": "Theramore Expeditionary Force / Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Harmonious Gauntlets (King Gordok, Dire Maul)",
+      "Grasp of The Five Thunders (Tier 0.5 questline, Resto)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Sash of The Five Thunders",
+     "where": "Tier 0.5 questline (Resto)",
+     "enchant": null,
+     "alts": [
+      "Sash of Mercy (world drop, BoE)",
+      "Whipvine Cord (Alzzin the Wildshaper, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Padre's Trousers",
+     "where": "Illyanna Ravenoak, Dire Maul",
+     "enchant": null,
+     "alts": [
+      "Leggings of The Five Thunders (Tier 0.5 questline, Resto)",
+      "Ironfeather Leggings (Leatherworking, BoE)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Greaves of The Five Thunders",
+     "where": "Tier 0.5 questline (Resto)",
+     "enchant": null,
+     "alts": [
+      "Verdant Footpads (Stonespine, Stratholme)",
+      "Ogreseer Tower Boots (Spirestone Lord Magus, LBRS)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Fordring's Seal",
+     "where": "Quest In Dreams, W. Plaguelands",
+     "enchant": null,
+     "alts": [
+      "Band of Mending (Grand Crusader Dathrohan, Stratholme)",
+      "Blessed Band of Light (Pix Xizzix, 75 TUR)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Band of Mending",
+     "where": "Grand Crusader Dathrohan, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Rosewine Circle (Urok Doomhowl, LBRS)",
+      "Blessed Band of Light (Pix Xizzix, 75 TUR)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Serenity Field",
+     "where": "Pix Xizzix, 125 TUR",
+     "enchant": null,
+     "alts": [
+      "Royal Seal of Eldre'Thalas (quest Frost Shock and You, Dire Maul)",
+      "Burst of Knowledge (Ambassador Flamelash, BRD)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Royal Seal of Eldre'Thalas",
+     "where": "Quest Frost Shock and You, Dire Maul",
+     "enchant": null,
+     "alts": [
+      "Burst of Knowledge (Ambassador Flamelash, BRD)",
+      "Second Wind (Golem Lord Argelmach, BRD)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Gift of the Elven Magi",
+     "where": "Dathrohan / Balnazzar, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Hammer of Revitalization (Isalien, Dire Maul)",
+      "Masterwork Crimson Hammer (Crimson Hammersmith, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Off Hand",
+     "item": "Penelope's Rose",
+     "where": "Quest Kirtonos the Herald, Scholomance",
+     "enchant": null,
+     "alts": [
+      "Lei of the Lifegiver (Alterac Valley, Exalted)",
+      "Sunderbark Vigil (quest The Dying Ancients)"
+     ]
+    },
+    {
+     "slot": "Totem",
+     "item": "Totem of Sustaining",
+     "where": "Lord Alexei Barov and other bosses, Scholomance",
+     "enchant": null,
+     "alts": [
+      "Tidal Totem (Pix Xizzix, 50 TUR)",
+      "Polished Driftwood Icon (Enchanting, Shaman only)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "enh-shaman",
+   "label": "Enhancement",
+   "cls": "Shaman",
+   "role": "DPS",
+   "specs": [
+    "Enhancement"
+   ],
+   "source": "ConquestCapped WoW Forever Enhancement Shaman BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Black Dragonscale Helm",
+     "where": "Leatherworking",
+     "enchant": null,
+     "alts": [
+      "Skyfury Helm (quest The Darkreaver Menace, Scholomance)",
+      "Scarlet Executioner's Guise (Scarlet Executioner, W. Plaguelands)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Mark of Fordring",
+     "where": "Quest In Dreams, W. Plaguelands",
+     "enchant": null,
+     "alts": [
+      "Beads of Ogre Might (quest Falrin's Vendetta, Dire Maul)",
+      "Star of Mystaria (Stratholme)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Darkspear Epaulets",
+     "where": "Creeg Bothunk, Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Truestrike Shoulders (Pyroguard Emberseer, UBRS)",
+      "Hermit's Pauldron (quest Work Well Done, Mount Hyjal)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Howler's Furs",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Arcanoweave Cloak (Pix Xizzix, 75 TUR)",
+      "Heliotrope Cloak (Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Timbermaw Tunic",
+     "where": "Leatherworking",
+     "enchant": null,
+     "alts": [
+      "Dawn Armor (Leatherworking)",
+      "Onyxia Scale Breastplate (Leatherworking)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Tranquil Wristguards",
+     "where": "Leatherworking",
+     "enchant": null,
+     "alts": [
+      "Windtalker's Wristguards (Warsong Gulch, Exalted)",
+      "Forest Stalker's Bracers (Warsong Gulch, Exalted)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Bloodmail Gauntlets",
+     "where": "Scholomance",
+     "enchant": null,
+     "alts": [
+      "Fists of The Five Thunders (Tier 0.5 questline)",
+      "Skyfury Gauntlets (Shaman quest)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Girdle of The Five Thunders",
+     "where": "Tier 0.5 questline (Enhancement version)",
+     "enchant": null,
+     "alts": [
+      "Windseeker's Belt (Pix Xizzix, 100 TUR)",
+      "Might of the Timbermaw (Leatherworking)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Outrider's Chain Leggings",
+     "where": "Warsong Gulch, Exalted (Horde)",
+     "enchant": null,
+     "alts": [
+      "Blademaster Leggings (The Beast, UBRS)",
+      "Warbear Woolies (Leatherworking)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Bloodmail Boots",
+     "where": "Scholomance",
+     "enchant": null,
+     "alts": [
+      "Windreaver Greaves (Kirtonos the Herald, Scholomance)",
+      "Kayser's Boots of Precision (War Master Voone, LBRS)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Don Julio's Band",
+     "where": "Alterac Valley, Exalted",
+     "enchant": null,
+     "alts": [
+      "Warden's Signet of Ferocity (The Watchers, Exalted)",
+      "Blackstone Ring (Princess Theradras, Maraudon)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Warden's Signet of Ferocity",
+     "where": "The Watchers, Exalted",
+     "enchant": null,
+     "alts": [
+      "Don Julio's Band (Alterac Valley, Exalted)",
+      "Channeler's Ring (Pix Xizzix, 75 TUR)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Behemoth Bones",
+     "where": "Blackmaw Behemoth, Blackmaw Hold",
+     "enchant": null,
+     "alts": [
+      "Hand of Justice (Emperor Thaurissan, BRD)",
+      "Flamebreak Talisman (Unbound Spirit, Blackmaw Hold)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Counterattack Lodestone",
+     "where": "Mizzle the Crafty, DM North tribute chest",
+     "enchant": null,
+     "alts": [
+      "Blackhand's Breadth (UBRS quest)",
+      "Molten Heart of the Mountain (Enchanting)"
+     ]
+    },
+    {
+     "slot": "Two-Hand",
+     "item": "Forest Defender's Axe",
+     "where": "Blacksmithing",
+     "enchant": null,
+     "alts": [
+      "The Unstoppable Force (Alterac Valley, Exalted)",
+      "Hammer of Thundering Hooves (Thunderhoof, The Shaper's Terrace)"
+     ]
+    },
+    {
+     "slot": "Totem",
+     "item": "Totem of Rage",
+     "where": "Magmus, BRD",
+     "enchant": null,
+     "alts": [
+      "Totem of the Storm (Pix Xizzix, 50 TUR)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fire-mage",
+   "label": "Fire",
+   "cls": "Mage",
+   "role": "DPS",
+   "specs": [
+    "Fire"
+   ],
+   "source": "ConquestCapped WoW Forever Fire Mage BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Sorcerer's Crown",
+     "where": "Tier 0.5 questline (final stage)",
+     "enchant": null,
+     "alts": [
+      "Spellweaver's Turban (General Drakkisath, UBRS)",
+      "Eye of Flame (world drop)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Nacreous Shell Necklace",
+     "where": "Cannon Master Willey, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Beads of Ogre Mojo (quest Falrin's Vendetta, Dire Maul)",
+      "Lady Maye's Pendant (world drop)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Sorcerer's Mantle",
+     "where": "Tier 0.5 questline (stage 3)",
+     "enchant": null,
+     "alts": [
+      "Mantle of the Timbermaw (Tailoring, Timbermaw rep)",
+      "Thuzadin Mantle (Baron Rivendare, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Arcanoweave Cloak",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Mageflame Cloak (world drop)",
+      "Amplifying Cloak (Magister Kalendris, DM West)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Robe of the Archmage",
+     "where": "Tailoring, Mage only (pattern source unconfirmed)",
+     "enchant": null,
+     "alts": [
+      "Robes of Dark Summons (Impaan the Imprisoner, Blackmaw Hold)",
+      "Sorcerer's Robes (Tier 0.5 questline)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Sorcerer's Bindings",
+     "where": "Tier 0.5 questline (stage 1)",
+     "enchant": null,
+     "alts": [
+      "Dryad's Wrist Bindings (Warsong Gulch, Exalted)",
+      "Sublime Wristguards (DM North guards)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Sorcerer's Gauntlets",
+     "where": "Tier 0.5 questline (stage 2)",
+     "enchant": null,
+     "alts": [
+      "Gloves of Spell Mastery (Tailoring)",
+      "Hands of Power (Quartermaster Zigris, LBRS)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Belt of the Archmage",
+     "where": "Tailoring (BoE)",
+     "enchant": null,
+     "alts": [
+      "Ban'thok Sash (Ok'thor the Breaker, BRD)",
+      "Sorcerer's Belt (Tier 0.5 questline)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Sorcerer's Leggings",
+     "where": "Tier 0.5 questline (stage 3)",
+     "enchant": null,
+     "alts": [
+      "Sentinel's / Outrider's Silk Leggings (Warsong Gulch, Exalted)",
+      "Skyshroud Leggings (Highlord Omokk, LBRS)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Sorcerer's Sandals",
+     "where": "Tier 0.5 questline (stage 3)",
+     "enchant": null,
+     "alts": [
+      "Fire Striders (Dathrohan / Balnazzar, Stratholme)",
+      "Kayser's Boots of Precision (War Master Voone, LBRS)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Channeler's Ring",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Ring of Demonic Guile (Alzzin the Wildshaper, DM East)",
+      "Songstone of Ironforge / Eye of Orgrimmar (BRD quest)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Rune Band of Wizardry",
+     "where": "Lord Valthalak, UBRS",
+     "enchant": null,
+     "alts": [
+      "Flaming Band (Pyroguard Emberseer, UBRS)",
+      "Maiden's Circle (world drop)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Weakness Analyzer",
+     "where": "Pix Xizzix, 125 TUR",
+     "enchant": null,
+     "alts": [
+      "Eye of the Beast (UBRS quest)",
+      "Smolderweb's Eye (Mother Smolderweb, LBRS)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Eye of the Beast",
+     "where": "UBRS quest",
+     "enchant": null,
+     "alts": [
+      "Smolderweb's Eye (Mother Smolderweb, LBRS)",
+      "Draconic Infused Emblem (General Drakkisath, UBRS)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Sageblade",
+     "where": "Blacksmithing, Master Swordsmith (BoE)",
+     "enchant": null,
+     "alts": [
+      "Witchblade (Darkmaster Gandling, Scholomance)",
+      "Flarethorn (Gorosh the Dervish, BRD)"
+     ]
+    },
+    {
+     "slot": "Off Hand",
+     "item": "Obsidian Bauble",
+     "where": "Pusillin, DM East",
+     "enchant": null,
+     "alts": [
+      "Tome of Fiery Arcana (Alterac Valley, Exalted)",
+      "Tome of the Lost (General Drakkisath, UBRS)"
+     ]
+    },
+    {
+     "slot": "Wand",
+     "item": "Bonecreeper Stylus",
+     "where": "Darkmaster Gandling, Scholomance",
+     "enchant": null,
+     "alts": [
+      "Pyric Caduceus (Pyromancer Loregrain, BRD)",
+      "Ritssyn's Wand of Bad Mojo (Baron Rivendare, Stratholme)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "destro-warlock",
+   "label": "Destruction",
+   "cls": "Warlock",
+   "role": "DPS",
+   "specs": [
+    "Destruction"
+   ],
+   "source": "ConquestCapped WoW Forever Destruction Warlock BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Spellweaver's Turban",
+     "where": "General Drakkisath, UBRS",
+     "enchant": null,
+     "alts": [
+      "Crimson Felt Hat (Magistrate Barthilas, Stratholme)",
+      "Deathmist Mask (Tier 0.5 questline)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Nacreous Shell Necklace",
+     "where": "Cannon Master Willey, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Star of Mystaria (Balnazzar and trash, Stratholme)",
+      "Beads of Ogre Mojo (quest Falrin's Vendetta, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Mantle of the Timbermaw",
+     "where": "Tailoring (pattern from Meilosh, Timbermaw Revered)",
+     "enchant": null,
+     "alts": [
+      "Demonheart Spaulders (Guardians of Hyjal pattern)",
+      "Thuzadin Mantle (Baron Rivendare, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Arcanoweave Cloak",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Amplifying Cloak (Magister Kalendris, Dire Maul)",
+      "Frostwolf Advisor's / Stormpike Sage's Cloak (Alterac Valley, Honored)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Robe of the Void",
+     "where": "Tailoring (pattern from Darkmaster Gandling, Scholomance)",
+     "enchant": null,
+     "alts": [
+      "Robes of Dark Summons (Impaan the Imprisoner, Blackmaw Hold)",
+      "Robe of Everlasting Night (Immol'thar, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Sublime Wristguards",
+     "where": "Dire Maul guards and trash",
+     "enchant": null,
+     "alts": [
+      "Deathmist Bracers (Tier 0.5 questline)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Deathmist Wraps",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Gloves of Spell Mastery (Tailoring)",
+      "Felcloth Gloves (Tailoring)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Belt of the Archmage",
+     "where": "Tailoring (pattern from Gordok ogres, Dire Maul)",
+     "enchant": null,
+     "alts": [
+      "Deathmist Belt (Tier 0.5 questline)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Skyshroud Leggings",
+     "where": "Highlord Omokk, LBRS",
+     "enchant": null,
+     "alts": [
+      "Demonheart Leggings (Guardians of Hyjal, Friendly)",
+      "Deathmist Leggings (Tier 0.5 questline)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Omnicast Boots",
+     "where": "Golem Lord Argelmach, BRD",
+     "enchant": null,
+     "alts": [
+      "Demonheart Boots (Guardians of Hyjal pattern)",
+      "Deathmist Sandals (Tier 0.5 questline)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Channeler's Ring",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Ring of Demonic Guile (Alzzin the Wildshaper, Dire Maul)",
+      "Maiden's Circle (world drop)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Rune Band of Wizardry",
+     "where": "Lord Valthalak, UBRS",
+     "enchant": null,
+     "alts": [
+      "Don Mauricio's Band of Domination (Darkmaster Gandling, Scholomance)",
+      "The Postmaster's Seal (Postmaster Malown, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Royal Seal of Eldre'Thalas",
+     "where": "Quest Harnessing Shadows, Dire Maul",
+     "enchant": null,
+     "alts": [
+      "Eye of the Beast (UBRS quest)",
+      "Weakness Analyzer (Pix Xizzix, 125 TUR)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Eye of the Beast",
+     "where": "UBRS quest",
+     "enchant": null,
+     "alts": [
+      "Weakness Analyzer (Pix Xizzix, 125 TUR)",
+      "Briarwood Reed (Jed Runewatcher, UBRS)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Sageblade",
+     "where": "Blacksmithing, Swordsmith (plans not available yet)",
+     "enchant": null,
+     "alts": [
+      "Witchblade (Darkmaster Gandling, Scholomance)",
+      "Mind Carver (Prince Tortheldrin, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Off Hand",
+     "item": "Obsidian Bauble",
+     "where": "Pusillin, Dire Maul",
+     "enchant": null,
+     "alts": [
+      "Tome of the Lost (General Drakkisath, UBRS)",
+      "Book of the Dead (Grand Crusader Dathrohan, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Wand",
+     "item": "Bonecreeper Stylus",
+     "where": "Darkmaster Gandling, Scholomance",
+     "enchant": null,
+     "alts": [
+      "Ritssyn's Wand of Bad Mojo (Baron Rivendare, Stratholme)",
+      "Oblivion's Touch (Death Knight Darkreaver, Scholomance)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mm-hunter",
+   "label": "Marksmanship",
+   "cls": "Hunter",
+   "role": "DPS",
+   "specs": [
+    "Marksmanship"
+   ],
+   "source": "ConquestCapped WoW Forever Marksmanship Hunter BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Black Dragonscale Helm",
+     "where": "Leatherworking (pattern from Blackhand Assassin, UBRS)",
+     "enchant": null,
+     "alts": [
+      "Beastmaster's Cap (Tier 0.5 questline)",
+      "Mask of the Unforgiven (The Unforgiven, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Mark of Fordring",
+     "where": "Quest In Dreams, W. Plaguelands",
+     "enchant": null,
+     "alts": [
+      "Pendant of Celerity (Lord Valthalak, UBRS)",
+      "Beads of Ogre Might (quest Falrin's Vendetta, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Theramore Epaulets (Horde: Darkspear Epaulets)",
+     "where": "Theramore Expeditionary Force / Darkspear Raiders, Exalted",
+     "enchant": null,
+     "alts": [
+      "Spaulders of the Unseen (world drop)",
+      "Stratholme Militia Shoulderguard (Stratholme trash)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Howler's Furs",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Cape of the Black Baron (Baron Rivendare, Stratholme)",
+      "Cloak of the Honor Guard / Deathguard's Cloak (Arathi Basin, Exalted)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Dawn Armor",
+     "where": "Leatherworking (pattern source unconfirmed)",
+     "enchant": null,
+     "alts": [
+      "Furbolg Rib Protector (Sabella No-Eyes, rare elite)",
+      "Beastmaster's Tunic (Tier 0.5 questline)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Bracers of the Eclipse",
+     "where": "Prince Tortheldrin, DM West",
+     "enchant": null,
+     "alts": [
+      "Beastmaster's Bindings (Tier 0.5 questline)",
+      "Slashclaw Bracers (Halycon, LBRS)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Devilsaur Gauntlets",
+     "where": "Tribal Leatherworking",
+     "enchant": null,
+     "alts": [
+      "Theramore / Raider Gloves (faction Exalted)",
+      "Voone's Vice Grips (LBRS quest)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Marksman's Girdle",
+     "where": "Urok Doomhowl, LBRS",
+     "enchant": null,
+     "alts": [
+      "Ranger's Belt (Pix Xizzix, 100 TUR)",
+      "Highlander's / Defiler's Chain Girdle (Arathi Basin, Honored)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Devilsaur Leggings",
+     "where": "Tribal Leatherworking",
+     "enchant": null,
+     "alts": [
+      "Sentinel's / Outrider's Chain Leggings (Warsong Gulch, Exalted)",
+      "Plaguehound Leggings (Stratholme trash)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Windreaver Greaves",
+     "where": "Kirtonos the Herald, Scholomance",
+     "enchant": null,
+     "alts": [
+      "Beastmaster's Treads (Tier 0.5 questline)",
+      "Beaststalker's Boots (Nerub'enkan, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Cutthroat's Signet",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Warden's Signet of Ferocity (The Watchers, Exalted)",
+      "Don Julio's Band (Alterac Valley, Exalted)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Tarnished Elven Ring",
+     "where": "Mizzle the Crafty, DM North tribute chest",
+     "enchant": null,
+     "alts": [
+      "Blackstone Ring (Princess Theradras, Maraudon)",
+      "Painweaver Band (General Drakkisath, UBRS)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Blackhand's Breadth",
+     "where": "UBRS quest (For The Horde! / General Drakkisath's Demise)",
+     "enchant": null,
+     "alts": [
+      "Counterattack Lodestone (DM North tribute chest)",
+      "Smolderweb's Eye (Mother Smolderweb, LBRS)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Flamebreak Talisman",
+     "where": "Blackmaw Hold",
+     "enchant": null,
+     "alts": [
+      "Behemoth Bones (Blackmaw Behemoth, Blackmaw Hold)",
+      "Weakness Analyzer (Pix Xizzix, 125 TUR)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Tooth of the Matriarch",
+     "where": "Direhorn Matriarch, The Shaper's Terrace",
+     "enchant": null,
+     "alts": [
+      "Legionite Glaive (Blacksmithing)",
+      "Barbarous Blade (King Gordok, DM North)"
+     ]
+    },
+    {
+     "slot": "Off Hand",
+     "item": "Heartseeker",
+     "where": "Blacksmithing, Weaponsmith",
+     "enchant": null,
+     "alts": []
+    },
+    {
+     "slot": "Ranged",
+     "item": "Ancient Bone Bow",
+     "where": "Random drop, Scholomance",
+     "enchant": null,
+     "alts": [
+      "Deep Jungle Rifle (Thunderhoof, The Shaper's Terrace)",
+      "Stoneshatter (Prince Tortheldrin, DM West)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "combat-rogue",
+   "label": "Combat",
+   "cls": "Rogue",
+   "role": "DPS",
+   "specs": [
+    "Combat"
+   ],
+   "source": "ConquestCapped WoW Forever Combat Rogue BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Darkmantle Cap",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Mask of the Unforgiven (The Unforgiven, Stratholme)",
+      "Eye of Rend (Rend Blackhand, UBRS)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Mark of Fordring",
+     "where": "Quest In Dreams, W. Plaguelands",
+     "enchant": null,
+     "alts": [
+      "Pendant of Celerity (Lord Valthalak, UBRS)",
+      "Beads of Ogre Might (quest Falrin's Vendetta, Dire Maul)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Stormshroud Shoulders",
+     "where": "Elemental Leatherworking",
+     "enchant": null,
+     "alts": [
+      "Theramore / Darkspear Pauldrons (faction Exalted)",
+      "Truestrike Shoulders (Pyroguard Emberseer, UBRS)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Cape of the Black Baron",
+     "where": "Baron Rivendare, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Howler's Furs (Pix Xizzix, 75 TUR)",
+      "Cloak of the Honor Guard (Arathi Basin, Exalted)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Darkmantle Tunic",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Dawn Armor (Leatherworking)",
+      "Shadowcraft Tunic (General Drakkisath, UBRS)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Darkmantle Bracers",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Bracers of the Eclipse (Prince Tortheldrin, DM West)",
+      "Blackmist Armguards (The Beast, UBRS)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Stormshroud Gloves",
+     "where": "Elemental Leatherworking",
+     "enchant": null,
+     "alts": [
+      "Devilsaur Gauntlets (Tribal Leatherworking)",
+      "Theramore Gloves (faction Exalted)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Assassin's Waistguard",
+     "where": "Pix Xizzix, 100 TUR",
+     "enchant": null,
+     "alts": [
+      "Darkmantle Belt (Tier 0.5 questline)",
+      "Might of the Timbermaw (Leatherworking)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Stormshroud Pants",
+     "where": "Elemental Leatherworking",
+     "enchant": null,
+     "alts": [
+      "Devilsaur Leggings (Tribal Leatherworking)",
+      "Plaguehound Leggings (world drop, BoE)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Darkmantle Footpads",
+     "where": "Tier 0.5 questline",
+     "enchant": null,
+     "alts": [
+      "Mongoose Boots (Leatherworking)",
+      "Shadowcraft Boots (Rattlegore, Scholomance)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Cutthroat's Signet",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Don Julio's Band (Alterac Valley, Exalted)",
+      "Warden's Signet of Ferocity (The Watchers, Exalted)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Painweaver Band",
+     "where": "General Drakkisath, UBRS",
+     "enchant": null,
+     "alts": [
+      "Blackstone Ring (Princess Theradras, Maraudon)",
+      "Tarnished Elven Ring (DM North tribute chest)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Heart of Wyrmthalak",
+     "where": "Overlord Wyrmthalak, LBRS",
+     "enchant": null,
+     "alts": [
+      "Behemoth Bones (Blackmaw Behemoth, Blackmaw Hold)",
+      "Hand of Justice (Emperor Thaurissan, BRD)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Counterattack Lodestone",
+     "where": "Mizzle the Crafty, DM North tribute chest",
+     "enchant": null,
+     "alts": [
+      "Royal Seal of Eldre'Thalas (quest Garona, Dire Maul)",
+      "Blackhand's Breadth (UBRS quest)"
+     ]
+    },
+    {
+     "slot": "Main Hand",
+     "item": "Dragon's Call",
+     "where": "Shade of Eranikus, Sunken Temple",
+     "enchant": null,
+     "alts": [
+      "Dal'Rend's Sacred Charge (Rend Blackhand, UBRS)",
+      "Ironfoe (Emperor Thaurissan, BRD)"
+     ]
+    },
+    {
+     "slot": "Off Hand",
+     "item": "Distracting Dagger",
+     "where": "Prince Tortheldrin, DM West",
+     "enchant": null,
+     "alts": [
+      "Dal'Rend's Tribal Guardian (Rend Blackhand, UBRS)",
+      "Talon of Tor'Rel (Tor'Rel, The Shaper's Terrace)"
+     ]
+    },
+    {
+     "slot": "Ranged",
+     "item": "Bloodseeker",
+     "where": "Alterac Valley quest",
+     "enchant": null,
+     "alts": [
+      "Satyr's Bow (Zevrim Thornhoof, Dire Maul)",
+      "Blackcrow (Shadow Hunter Vosh'gajin, LBRS)"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "feral-tank-druid",
+   "label": "Feral (Tank)",
+   "cls": "Druid",
+   "role": "Tank",
+   "specs": [
+    "Feral Combat",
+    "Feral"
+   ],
+   "source": "ConquestCapped WoW Forever Feral Tank Druid BiS (TUR = Tarnished Undermine Real, Pix Xizzix in Booty Bay)",
+   "enchants": false,
+   "items": [
+    {
+     "slot": "Head",
+     "item": "Feralheart Faceguard",
+     "where": "Tier 0.5 questline (tank)",
+     "enchant": null,
+     "alts": [
+      "Mask of the Unforgiven (The Unforgiven, Stratholme)",
+      "Bone Ring Helm (Rattlegore, Scholomance)"
+     ]
+    },
+    {
+     "slot": "Neck",
+     "item": "Horn of Ve'han",
+     "where": "Quest Work Well Done, Mount Hyjal",
+     "enchant": null,
+     "alts": [
+      "Medallion of Grand Marshal Morris (world drop)",
+      "Talisman of Evasion (War Master Voone, LBRS)"
+     ]
+    },
+    {
+     "slot": "Shoulders",
+     "item": "Feralheart Pauldrons",
+     "where": "Tier 0.5 questline (tank)",
+     "enchant": null,
+     "alts": [
+      "Grovekeeper Spaulders (Leatherworking, Druid only)",
+      "Theramore Pauldrons (Theramore Expeditionary Force, Exalted)"
+     ]
+    },
+    {
+     "slot": "Back",
+     "item": "Stalwart Cloak",
+     "where": "Pix Xizzix, 75 TUR",
+     "enchant": null,
+     "alts": [
+      "Redoubt Cloak (DM North tribute chest)",
+      "Stoneskin Gargoyle Cape (Stonespine, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Chest",
+     "item": "Feralheart Armor",
+     "where": "Tier 0.5 questline (tank)",
+     "enchant": null,
+     "alts": [
+      "Dire Warbear Harness (Leatherworking 290, Meilosh)",
+      "Songbird Blouse (Hearthsinger Forresten, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Wrist",
+     "item": "Feralheart Wristguards",
+     "where": "Tier 0.5 questline (tank)",
+     "enchant": null,
+     "alts": [
+      "Malefic Bracers (Scholomance)"
+     ]
+    },
+    {
+     "slot": "Hands",
+     "item": "Goo-Covered Demonic Gauntlet",
+     "where": "Demonic Gauntlet + Acidic Goo (source unconfirmed)",
+     "enchant": null,
+     "alts": [
+      "Feralheart Grips (Tier 0.5 questline)",
+      "Grovekeeper Gauntlets (Leatherworking, Druid only)"
+     ]
+    },
+    {
+     "slot": "Waist",
+     "item": "Feralheart Waistguard",
+     "where": "Tier 0.5 questline (tank)",
+     "enchant": null,
+     "alts": [
+      "Dinosaur Hide Belt (Eastgrotto Gorillas)",
+      "Shifter's Belt (Pix Xizzix, 100 TUR)"
+     ]
+    },
+    {
+     "slot": "Legs",
+     "item": "Feralheart Legguards",
+     "where": "Tier 0.5 questline (tank)",
+     "enchant": null,
+     "alts": [
+      "Dire Warbear Woolies (Leatherworking 290, Meilosh)",
+      "Warstrife Leggings (General Angerforge, BRD)"
+     ]
+    },
+    {
+     "slot": "Feet",
+     "item": "Feralheart Treads",
+     "where": "Tier 0.5 questline (tank)",
+     "enchant": null,
+     "alts": [
+      "Grovekeeper Treads (Leatherworking, Druid only)",
+      "Ash Covered Boots (Archivist Galford, Stratholme)"
+     ]
+    },
+    {
+     "slot": "Ring 1",
+     "item": "Ouroboros Ring",
+     "where": "Quest Blackmaw Reclamation, Blackmaw Hold",
+     "enchant": null,
+     "alts": [
+      "Ring of Awareness (Pix Xizzix, 75 TUR)",
+      "Band of the Steadfast Hero (Kormok, Scholomance)"
+     ]
+    },
+    {
+     "slot": "Ring 2",
+     "item": "Ring of Protection",
+     "where": "Quest Hidden Treasures, E. Plaguelands",
+     "enchant": null,
+     "alts": [
+      "Ring of Demonic Potency (Alzzin the Wildshaper, Dire Maul)",
+      "Band of the Steadfast Hero (Kormok, Scholomance)"
+     ]
+    },
+    {
+     "slot": "Trinket 1",
+     "item": "Mark of the Chosen",
+     "where": "Quest The Pariah's Instructions, Maraudon",
+     "enchant": null,
+     "alts": [
+      "The Lion Horn of Stormwind (world drop)",
+      "Defender's Grip Stabilizer (Pix Xizzix, 125 TUR)"
+     ]
+    },
+    {
+     "slot": "Trinket 2",
+     "item": "Adaptive Combat Assistant",
+     "where": "Pix Xizzix, 125 TUR",
+     "enchant": null,
+     "alts": [
+      "Defender's Grip Stabilizer (Pix Xizzix, 125 TUR)",
+      "Force of Will (General Angerforge, BRD)"
+     ]
+    },
+    {
+     "slot": "Two-Hand",
+     "item": "Unyielding Maul",
+     "where": "Mizzle the Crafty, DM North tribute chest",
+     "enchant": null,
+     "alts": [
+      "Warden Staff (world drop, BoE)"
+     ]
+    },
+    {
+     "slot": "Idol",
+     "item": "Idol of Brutality",
+     "where": "Magistrate Barthilas, Stratholme",
+     "enchant": null,
+     "alts": [
+      "Enraged Idol (Pix Xizzix, 50 TUR)",
+      "Idol of the Ursine Twins (Enchanting 300)"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pre-Raid BiS – Dirty Socks</title>
+<meta name="description" content="Pre-raid best in slot gear lists for every class and spec in WoW Forever.">
+<meta name="theme-color" content="#0f1117">
+<link rel="icon" href="images/favicon.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dirty Socks">
+<meta property="og:title" content="Pre-Raid BiS – Dirty Socks">
+<meta property="og:description" content="Pre-raid best in slot gear lists for every class and spec in WoW Forever.">
+<meta property="og:url" content="https://ne0squid.github.io/Dirty-Socks/bis.html">
+<meta property="og:image" content="https://ne0squid.github.io/Dirty-Socks/images/og-image.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pre-Raid BiS – Dirty Socks">
+<meta name="twitter:description" content="Pre-raid best in slot gear lists for every class and spec in WoW Forever.">
+<meta name="twitter:image" content="https://ne0squid.github.io/Dirty-Socks/images/og-image.jpg?v=2">
+<script src="faction.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;--blue:#2f6fa8;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;--blue:#6aa9e0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;--blue:#6aa9e0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
+a{color:var(--accent)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.hero{background:var(--hero);border-bottom:1px solid var(--line)}
+.banner{padding:0;line-height:0}
+.banner img{display:block;width:100%;height:clamp(110px,30vw,480px);object-fit:cover;object-position:center 35%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+section{padding:44px 0}
+h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.muted{color:var(--muted);font-size:.9rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;border:0;cursor:pointer;font-family:inherit}
+#entries{display:grid;gap:14px;margin-top:18px}
+.pn-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.pn-badge{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 10px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
+.pn-hotfix{border-color:var(--accent);color:var(--accent)}
+.pn-build{border-color:var(--blue);color:var(--blue)}
+.pn-new{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.pn-date{margin-left:auto;color:var(--muted);font-size:.9rem}
+.pn-title{font-size:1.15rem;margin:0 0 6px}
+.pn-sum{margin:0 0 10px}
+.pn-credit{margin-top:14px}
+#more{margin:16px auto 0;display:block}
+.embed-box{margin-top:18px}
+.embed-box iframe{display:block;width:100%;height:80vh;min-height:500px;border:1px solid var(--line);border-radius:8px;margin-top:14px;background:#fff}
+footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+</style>
+<style>
+.pick{display:flex;flex-direction:column;gap:12px}
+.cls{display:flex;gap:8px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;font:inherit;font-size:.9rem;font-weight:600}
+.chip i{width:10px;height:10px;border-radius:50%;background:var(--c);flex:none}
+.chip:hover{border-color:var(--c)}
+.chip[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#14110a}
+.chip[aria-pressed="true"] i{background:#14110a}
+.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.spec .chip{font-weight:400;font-size:.85rem;padding:5px 12px}
+.head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;justify-content:space-between;margin:26px 0 8px}
+.head h3{font-size:1.4rem}
+.prog{font-family:Cinzel,Georgia,serif;font-weight:800;color:var(--accent)}
+.bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin:6px 0 14px}.bar span{display:block;height:100%;background:var(--accent);transition:width .25s}
+.who{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.who .tag{border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.85rem;font-weight:600}
+.bwrap{overflow-x:auto}
+table.bis{width:100%;border-collapse:collapse;font-size:.92rem;min-width:760px}
+.bis th{text-align:left;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:10px 12px;border-bottom:1px solid var(--line);font-weight:600}
+.bis td{padding:11px 12px;border-top:1px solid var(--line);vertical-align:top}
+.bis tr:first-child td{border-top:0}
+.bis .slot{color:var(--muted);white-space:nowrap}
+.bis .item{font-weight:600}
+.bis .alt{color:var(--muted)}.bis .alt div+div{margin-top:4px}
+.bis tr.got .item,.bis tr.got .slot{opacity:.55;text-decoration:line-through}
+.bis input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+.note{margin-top:14px}
+@media (max-width:760px){
+  .bwrap{overflow:visible}
+  table.bis{min-width:0}.bis thead{display:none}
+  .bis tr{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:12px 0;border-top:1px solid var(--line)}.bis tr:first-child{border-top:0}
+  .bis td{border:0;padding:0}
+  .bis td:first-child{grid-row:1/span 5;padding-top:2px}
+  .bis td[data-l]:not(.item):not(.slot)::before{content:attr(data-l) ": ";color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
+  .bis td:empty{display:none}
+}
+</style>
+</head>
+<body>
+<nav></nav>
+<script src="nav.js"></script>
+
+<header class="hero banner">
+  <h1 class="sr">Dirty Socks</h1>
+  <a href="index.html"><img src="images/Raid-Horde.png" alt="Dirty Socks – back to the guild page"><script>window.dsBanner&&dsBanner()</script></a>
+</header>
+
+<main class="wrap">
+<section>
+  <h2>Pre-Raid Best in Slot</h2>
+  <p class="muted" style="margin:-6px 0 18px">The best gear to chase before the raids open, for every class and spec. Pick yours, then tick off pieces as you get them.</p>
+  <div class="pick"><div class="cls" id="classes" role="group" aria-label="Class"></div><div class="cls spec" id="specs" role="group" aria-label="Spec"></div></div>
+  <div id="view" aria-live="polite"></div>
+  <p class="muted note">Your ticked pieces are saved in this browser only. TUR = Tarnished Undermine Real, a currency bought from Pix Xizzix in Booty Bay.</p>
+</section>
+</main>
+
+<footer>© <span id="yr"></span> Dirty Socks · Not affiliated with Blizzard Entertainment.</footer>
+
+<script>
+document.getElementById("yr").textContent=new Date().getFullYear();
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const COLORS={Druid:"#ff7d0a",Hunter:"#abd473",Mage:"#3fc7eb",Paladin:"#f58cba",Priest:"#c8c8c8",Rogue:"#fff569",Shaman:"#0070de",Warlock:"#8788ee",Warrior:"#c79c6e"};
+const store={get(k){try{return JSON.parse(localStorage.getItem(k)||"null")}catch(_){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}};
+let DATA=[],GUILD=[],cur=null;
+const fullName=m=>m.surname&&m.name.length<=3?m.name+" "+m.surname:m.name;
+function pick(id,fromHash){
+  const s=DATA.find(x=>x.id===id)||DATA[0];cur=s;
+  if(!fromHash){try{history.replaceState(null,"","#"+s.id)}catch(_){}}
+  store.set("ds-bis-last",s.id);
+  document.getElementById("classes").innerHTML=[...new Set(DATA.map(x=>x.cls))].map(c=>`<button type="button" class="chip" style="--c:${COLORS[c]}" aria-pressed="${c===s.cls}" data-cls="${c}"><i></i>${c}</button>`).join("");
+  document.getElementById("specs").innerHTML=DATA.filter(x=>x.cls===s.cls).map(x=>`<button type="button" class="chip" style="--c:${COLORS[x.cls]}" aria-pressed="${x.id===s.id}" data-id="${x.id}"><i></i>${esc(x.label)}</button>`).join("");
+  draw(s);
+}
+function draw(s){
+  const got=new Set(store.get("ds-bis-"+s.id)||[]),total=s.items.length;
+  const members=GUILD.filter(m=>m.cls===s.cls&&m.spec&&s.specs.some(n=>m.spec.toLowerCase().includes(n.toLowerCase())));
+  const cols=s.enchants?["Enchant"]:[];
+  document.getElementById("view").innerHTML=`<div class="head"><h3 style="color:${COLORS[s.cls]}">${esc(s.label)} ${s.cls}</h3><span class="prog" id="prog"></span></div>
+  <div class="bar"><span id="barfill"></span></div>
+  ${members.length?`<div class="who"><span class="muted">In the guild:</span>${members.map(m=>`<span class="tag" style="color:${COLORS[m.cls]};border-color:${COLORS[m.cls]}55">${esc(fullName(m))}</span>`).join("")}</div>`:""}
+  <div class="card bwrap"><table class="bis"><thead><tr><th><span class="sr">Got it</span></th><th>Slot</th><th>BiS item</th><th>Where to get it</th>${s.enchants?"<th>Enchant</th>":""}<th>Alternatives</th></tr></thead><tbody>
+  ${s.items.map((it,i)=>`<tr class="${got.has(i)?"got":""}"><td><input type="checkbox" data-i="${i}" aria-label="Got ${esc(it.item)}"${got.has(i)?" checked":""}></td><td class="slot" data-l="Slot">${esc(it.slot)}</td><td class="item" data-l="BiS">${esc(it.item)}</td><td data-l="From">${esc(it.where||"")}</td>${s.enchants?`<td data-l="Enchant">${esc(it.enchant||"")}</td>`:""}<td class="alt" data-l="Alternatives">${it.alts.map(a=>`<div>${esc(a)}</div>`).join("")}</td></tr>`).join("")}
+  </tbody></table></div>
+  <p class="muted note">Source: ${esc(s.source)}</p>`;
+  const upd=()=>{const n=got.size;document.getElementById("prog").textContent=n+" of "+total+" collected";document.getElementById("barfill").style.width=(total?n/total*100:0)+"%"};
+  upd();
+  document.querySelector("#view tbody").addEventListener("change",e=>{
+    const c=e.target.closest("input[data-i]");if(!c)return;const i=+c.dataset.i;
+    c.checked?got.add(i):got.delete(i);c.closest("tr").classList.toggle("got",c.checked);store.set("ds-bis-"+s.id,[...got]);upd();
+  });
+}
+document.getElementById("classes").addEventListener("click",e=>{const b=e.target.closest("[data-cls]");if(!b)return;const first=DATA.find(x=>x.cls===b.dataset.cls);pick(first.id)});
+document.getElementById("specs").addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b)pick(b.dataset.id)});
+window.addEventListener("hashchange",()=>{const id=location.hash.slice(1);if(DATA.some(x=>x.id===id))pick(id,true)});
+Promise.all([fetch("bis.json").then(r=>r.json()),fetch("guild-data.json",{cache:"no-cache"}).then(r=>r.json()).catch(()=>({}))]).then(([b,g])=>{
+  DATA=b.specs;GUILD=(g.roster||[]);
+  const h=location.hash.slice(1),last=store.get("ds-bis-last");
+  pick(DATA.some(x=>x.id===h)?h:DATA.some(x=>x.id===last)?last:"resto-druid",true);
+}).catch(()=>{document.getElementById("view").innerHTML='<p class="muted">Could not load the gear lists. Try refreshing the page.</p>'});
+</script>
+</body>
+</html>
