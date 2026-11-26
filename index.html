@@ -129,7 +129,7 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
 <section id="race">
   <h2>Race to 60</h2>
   <div class="grid" id="leaders"></div>
-  <div class="card" id="chasers" style="margin-top:14px" hidden><h3 style="font-size:1.2rem;margin-bottom:6px">Chasing the lead</h3><div id="chasebody"></div></div>
+  <div class="card" id="chasers" style="margin-top:14px" hidden><h3 style="font-size:1.2rem;margin-bottom:6px">Standings</h3><div id="chasebody"></div></div>
 </section>
 
 <section id="professions" hidden>
@@ -255,11 +255,18 @@ function render(d){
   classIcons=d.classIcons||{};
   const roster=d.roster, maxLevel=Math.max(...roster.map(m=>m.level));
   const classes=[...new Set(roster.map(m=>m.cls))].sort();
-  const leaders=roster.filter(m=>m.level===maxLevel);
-  document.getElementById("leaders").innerHTML=leaders.map(m=>`<div class="card leader" style="border-top:4px solid ${m.color}"><div class="muted">${m.level>=60?"Reached 60!":leaders.length>1?"Tied for the lead":"Leading the race"}</div><h3>${nameLink(m)}</h3><div class="muted">${m.cls}</div><div class="lvl">Level ${m.level}</div><div class="bar"><span style="width:${Math.min(100,m.level/60*100)}%"></span></div><span class="muted">${m.level>=60?"Max level":(60-m.level)+" levels to go"}</span></div>`).join("");
-  const chase=roster.filter(m=>m.level<maxLevel).sort((a,b)=>b.level-a.level||(b.ilvl||0)-(a.ilvl||0)||a.name.localeCompare(b.name)).slice(0,4);
+  // Finish order: the day each character first shows level 60 in the saved daily history (same-day finishes sort by name).
+  const hist=(d.history&&d.history.days)||{},histDays=Object.keys(hist).sort();
+  const doneOn=m=>{const s=slugOf(m);return histDays.find(k=>hist[k][s]>=60)||""};
+  const finished=roster.filter(m=>m.level>=60).sort((a,b)=>doneOn(a).localeCompare(doneOn(b))||a.name.localeCompare(b.name));
+  const byLevel=(a,b)=>b.level-a.level||(b.ilvl||0)-(a.ilvl||0)||a.name.localeCompare(b.name);
+  const leaders=finished.length?[finished[0]]:roster.filter(m=>m.level===maxLevel);
+  const cardNote=m=>{if(m.level>=60){const k=doneOn(m);return "Won the race to 60"+(k?" · "+fmtDayUTC(k):"")}return leaders.length>1?"Tied for the lead":"Leading the race"};
+  document.getElementById("leaders").innerHTML=leaders.map(m=>`<div class="card leader" style="border-top:4px solid ${m.color}"><div class="muted">${cardNote(m)}</div><h3>${nameLink(m)}</h3><div class="muted">${m.cls}</div><div class="lvl">Level ${m.level}</div><div class="bar"><span style="width:${Math.min(100,m.level/60*100)}%"></span></div><span class="muted">${m.level>=60?"Max level":(60-m.level)+" levels to go"}</span></div>`).join("");
+  const rest=finished.length?[...finished.slice(1),...roster.filter(m=>m.level<60).sort(byLevel)]:roster.filter(m=>m.level<maxLevel).sort(byLevel);
+  const chase=rest.slice(0,Math.max(4,finished.length>1?finished.length-1:0));
   document.getElementById("chasers").hidden=!chase.length;
-  document.getElementById("chasebody").innerHTML=chase.map((m,i)=>`<div class="lbrow"><span class="lbpos">${i+2}</span>${cico(m)}<span><strong>${nameLink(m)}</strong><small>${esc(m.spec?m.spec+" ":"")}${esc(m.cls)}</small></span><span class="lbval">Level ${m.level}</span></div>`).join("");
+  document.getElementById("chasebody").innerHTML=chase.map((m,i)=>{const k=m.level>=60?doneOn(m):"";return `<div class="lbrow"><span class="lbpos">${i+2}</span>${cico(m)}<span><strong>${nameLink(m)}</strong><small>${esc(m.spec?m.spec+" ":"")}${esc(m.cls)}</small></span><span class="lbval">${m.level>=60?"Reached 60"+(k?" · "+fmtDayUTC(k):""):"Level "+m.level}</span></div>`}).join("");
   sorted=roster.filter(m=>m.level>=10).sort((a,b)=>a.rank-b.rank||b.level-a.level); // characters under level 10 stay hidden
   lvlHistory=d.history||null;
   profIcons=d.icons||{};recipeData=d.recipes||{};
