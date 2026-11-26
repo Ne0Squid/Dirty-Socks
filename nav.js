@@ -5,7 +5,7 @@
   var home=page==="index.html";
   var sections=[["Guild Stats","#stats"],["Race to 60","#race"],["Roster","#roster"],["Professions","#professions","profnav"],["Dungeons","#dungeons"],["Raid Progression","#raidprog"]];
   var main=home?sections:[["Home","index.html"]]; // other pages just offer a way back home
-  var pages=[["Raid Roster","raid-roster.html"],["Hall of Fame","hall-of-fame.html"],["Pre-Raid BiS","bis.html"],["Patch Notes","hotfixes.html"]];
+  var pages=[["Raid Roster","raid-roster.html"],["Hall of Fame","hall-of-fame.html"],["Pre-Raid BiS","bis.html"],["Dungeon Loot","dungeon-loot.html"],["Patch Notes","hotfixes.html"]];
   var a=function(l,href,id){return '<a href="'+href+'"'+(id?' id="'+id+'" hidden':'')+(href===page?' class="here"':'')+'>'+l+'</a>'};
   nav.innerHTML='<div class="navmain">'+main.map(function(l){return a(l[0],l[1],l[2])}).join("")+'</div><div class="navpages">'+pages.map(function(l){return a(l[0],l[1])}).join("")+'</div>';
   var css=document.createElement("style");

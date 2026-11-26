@@ -1,0 +1,5752 @@
+{
+ "updated": "2026-11-26",
+ "notes": [
+  "Which dungeons: every WoW Forever dungeon whose recommended range starts above level 50 (levels from zockify.com's Forever dungeon list).",
+  "Left out: Alcaz Prison (48-53), Maraudon (46-55), Zul'Farrak (44-54), Uldaman (42-52) and Krol'dok Stronghold (40-55) start below 50.",
+  "Loot: wowtbc.gg WoW Forever loot tables. The site says loot is still being discovered and original-dungeon drops come from Classic Era tables and may have moved.",
+  "Boss order: original dungeons follow the usual route through the instance. For Blackmaw Hold and Shaper's Terrace the order follows the loot site, because no official boss order has been published.",
+  "Boss type: Rare = may not spawn every run; Summoned = needs an item or quest to call; Event = only during a world event; Ring of Law = one of these is chosen at random; Tribute chest = Dire Maul North tribute run.",
+  "Shaper's Terrace: the site lists 'Vitrix' with the combined drops of Bolt, Cinder and Snowtalon. It is kept as listed.",
+  "Drop chance is only filled in where the source showed one. Quest rewards are not included.",
+  "Stratholme: the site lists both sides together; bosses are split into Live and Undead using the standard layout."
+ ],
+ "dungeons": [
+  {
+   "name": "Blackmaw Hold",
+   "levels": "55-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Withermaw",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Cloak of the Fleshborer",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Bloodfur Bulwark",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Withering Grips",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Bonesnout the Unbroken",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Tuskblade Halberd",
+       "slot": "Two-hand",
+       "kind": "Polearm",
+       "chance": null
+      },
+      {
+       "item": "Lucky Shovelnose Tuft",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Spike Crested Bracers",
+       "slot": "Wrist",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Moontouched Wanderer",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Lunarlight Robe",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Claymore of Two Moons",
+       "slot": "Two-hand",
+       "kind": "Sword",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Impaan the Imprisoner",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Flameslash Crescent",
+       "slot": "Two-hand",
+       "kind": "Axe",
+       "chance": null
+      },
+      {
+       "item": "Robes of Dark Summons",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Impish Chain Hood",
+       "slot": "Head",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Unbound Spirit",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Flamebreak Talisman",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Cowl of Dark Ambition",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Burnished Pridescales",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Blackmaw Behemoth",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Behemoth Bones",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Trousers of the Ebon Giant",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Blackmaw Chain Belt",
+       "slot": "Waist",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "name": "Varrox Bleakhoof",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Scalding Flamehoof",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Bleak Eye Shoulderplates",
+       "slot": "Shoulder",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Horns of Varrox",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "name": "Elder Shaman Bloodmane",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Bloody Claws of Attack",
+       "slot": "One-hand",
+       "kind": "Fist weapon",
+       "chance": null
+      },
+      {
+       "item": "Shamanic Wristguards",
+       "slot": "Wrist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Veilpiercer Girdle",
+       "slot": "Waist",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": null
+  },
+  {
+   "name": "Blackrock Depths",
+   "levels": "52-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Lord Roccor",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Idol of Ferocity",
+       "slot": "Relic",
+       "kind": "Idol",
+       "chance": null
+      },
+      {
+       "item": "Mantle of Lost Hope",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Stoneshell Guard",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Earthslag Shoulders",
+       "slot": "Shoulder",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "High Interrogator Gerstahn",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Enthralled Sphere",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Blackveil Cape",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Greaves of Withering Despair",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Kentic Amice",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Houndmaster Grebmar",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Crusader's Armor",
+       "slot": "Chest",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Fleetfoot Greaves",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Houndmaster's Bow",
+       "slot": "Ranged",
+       "kind": "Bow",
+       "chance": null
+      },
+      {
+       "item": "Houndmaster's Rifle",
+       "slot": "Ranged",
+       "kind": "Gun",
+       "chance": null
+      },
+      {
+       "item": "Spritecaster Cape",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Anub'shiah",
+     "type": "Ring of Law (random)",
+     "items": [
+      {
+       "item": "Savage Gladiator Greaves",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Shadefiend Boots",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Graverot Cape",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Carapace of Anub'shiah",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Eviscerator",
+     "type": "Ring of Law (random)",
+     "items": [
+      {
+       "item": "Savage Gladiator Grips",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Rubicund Armguards",
+       "slot": "Wrist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Splinthide Shoulders",
+       "slot": "Shoulder",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Girdle of Beastial Fury",
+       "slot": "Waist",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Gorosh the Dervish",
+     "type": "Ring of Law (random)",
+     "items": [
+      {
+       "item": "Savage Gladiator Chain",
+       "slot": "Chest",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Bloodclot Band",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Flarethorn",
+       "slot": "Main hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Leggings of Frenzied Magic",
+       "slot": "Legs",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "name": "Grizzle",
+     "type": "Ring of Law (random)",
+     "items": [
+      {
+       "item": "Savage Gladiator Shoulders",
+       "slot": "Shoulder",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Grizzle's Skinner",
+       "slot": "Main hand",
+       "kind": "Axe",
+       "chance": null
+      },
+      {
+       "item": "Stonewall Girdle",
+       "slot": "Waist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Dregmetal Spaulders",
+       "slot": "Shoulder",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Entrenching Boots",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "name": "Hedrum the Creeper",
+     "type": "Ring of Law (random)",
+     "items": [
+      {
+       "item": "Savage Gladiator Helm",
+       "slot": "Head",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Spiderfang Carapace",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Silkweb Gloves",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Hookfang Shanker",
+       "slot": "One-hand",
+       "kind": "Dagger",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "name": "Ok'thor the Breaker",
+     "type": "Ring of Law (random)",
+     "items": [
+      {
+       "item": "Savage Gladiator Leggings",
+       "slot": "Legs",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Ban'thok Sash",
+       "slot": "Waist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Ogreseer Fists",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Cyclopean Band",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "name": "Pyromancer Loregrain",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Flamestrider Robes",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Pyric Caduceus",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      },
+      {
+       "item": "Searingscale Leggings",
+       "slot": "Legs",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Kindling Stave",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "name": "Lord Incendius",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Cinderhide Armsplints",
+       "slot": "Wrist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Pyremail Wristguards",
+       "slot": "Wrist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Flameweave Cuffs",
+       "slot": "Wrist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Emberplate Armguards",
+       "slot": "Wrist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Incendic Bracers",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 12,
+     "name": "Warder Stilgiss",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Boreal Mantle",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Chillsteel Girdle",
+       "slot": "Waist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Dark Warder's Pauldrons",
+       "slot": "Shoulder",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Arbiter's Blade",
+       "slot": "Main hand",
+       "kind": "Sword",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "name": "Verek",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Verek's Collar",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Verek's Leash",
+       "slot": "Waist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Verek's Loyal Wraps",
+       "slot": "Wrist",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 14,
+     "name": "Fineous Darkvire",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Chief Architect's Monocle",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Senior Designer's Pantaloons",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Lead Surveyor's Mantle",
+       "slot": "Shoulder",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Foreman's Head Protector",
+       "slot": "Head",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "name": "Bael'Gar",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Lavacrest Leggings",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Sash of the Burning Heart",
+       "slot": "Waist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Force of Magma",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Rubidium Hammer",
+       "slot": "Main hand",
+       "kind": "Mace",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 16,
+     "name": "General Angerforge",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Force of Will",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Royal Decorated Armor",
+       "slot": "Chest",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Warstrife Leggings",
+       "slot": "Legs",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Angerforge's Battle Axe",
+       "slot": "Two-hand",
+       "kind": "Axe",
+       "chance": null
+      },
+      {
+       "item": "Lord General's Sword",
+       "slot": "Main hand",
+       "kind": "Sword",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 17,
+     "name": "Golem Lord Argelmach",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Naglering",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Second Wind",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Omnicast Boots",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Luminary Kilt",
+       "slot": "Legs",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 18,
+     "name": "Hurley Blackbreath",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Ragefury Eyepatch",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Coal Miner Boots",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Hurley's Tankard",
+       "slot": "Main hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Firemoss Boots",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 19,
+     "name": "Phalanx",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Bloodfist",
+       "slot": "One-hand",
+       "kind": "Fist weapon",
+       "chance": null
+      },
+      {
+       "item": "Fists of Phalanx",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Golem Fitted Pauldrons",
+       "slot": "Shoulder",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Backroom Bulwark",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Rockfist",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 20,
+     "name": "Plugger Spazzring",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Barman Shanker",
+       "slot": "Main hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Mixologist's Tunic",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Brewmancer Nightcap",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 21,
+     "name": "Ambassador Flamelash",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Circle of Flame",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Cape of the Fire Salamander",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Molten Fists",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Burst of Knowledge",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Flame Wrath",
+       "slot": "Two-hand",
+       "kind": "Polearm",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 22,
+     "name": "Panzor the Invincible",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Rock Golem Bulwark",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Shalehusk Boots",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Stone of the Earth",
+       "slot": "Two-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Soot Encrusted Footwear",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 23,
+     "name": "Doom'rel",
+     "type": "Boss (The Seven)",
+     "items": [
+      {
+       "item": "Legplates of the Eternal Guardian",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": "46%"
+      }
+     ]
+    },
+    {
+     "n": 24,
+     "name": "Anger'rel",
+     "type": "Boss (The Seven)",
+     "items": [
+      {
+       "item": "Ghostshroud",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": "25%"
+      }
+     ]
+    },
+    {
+     "n": 25,
+     "name": "Magmus",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Magmus Stone",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Lavastone Hammer",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Totem of Rage",
+       "slot": "Relic",
+       "kind": "Totem",
+       "chance": null
+      },
+      {
+       "item": "Libram of Truth",
+       "slot": "Relic",
+       "kind": "Libram",
+       "chance": null
+      },
+      {
+       "item": "Golem Skull Helm",
+       "slot": "Head",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 26,
+     "name": "Princess Moira Bronzebeard",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Swiftwalker Boots",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Hands of the Exalted Herald",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "High Priestess Boots",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Ebonsteel Spaulders",
+       "slot": "Shoulder",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 27,
+     "name": "Emperor Dagran Thaurissan",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Emperor's Seal",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Ironfoe",
+       "slot": "Main hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Robes of the Royal Crown",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Thaurissan's Royal Scepter",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "The Emperor's New Cape",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Imperial Jewel",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Wristguards of Renown",
+       "slot": "Wrist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Sash of the Grand Hunt",
+       "slot": "Waist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Dreadforge Retaliator",
+       "slot": "Two-hand",
+       "kind": "Axe",
+       "chance": null
+      },
+      {
+       "item": "Guiding Stave of Wisdom",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      },
+      {
+       "item": "Hand of Justice",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": "Blackrock Depths"
+  },
+  {
+   "name": "Blackrock Spire: Lower",
+   "levels": "55-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Highlord Omokk",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Slamshot Shoulders",
+       "slot": "Shoulder",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Fist of Omokk",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Plate of the Shaman King",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Tressermane Leggings",
+       "slot": "Legs",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Skyshroud Leggings",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Boots of Elements",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Shadow Hunter Vosh'gajin",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Funeral Cuffs",
+       "slot": "Wrist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Blackcrow",
+       "slot": "Ranged",
+       "kind": "Crossbow",
+       "chance": null
+      },
+      {
+       "item": "Riphook",
+       "slot": "Ranged",
+       "kind": "Bow",
+       "chance": null
+      },
+      {
+       "item": "Trueaim Gauntlets",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Demonic Runed Spaulders",
+       "slot": "Shoulder",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Shadowcraft Gloves",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "War Master Voone",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Kayser's Boots of Precision",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Keris of Zul'Serak",
+       "slot": "One-hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Flightblade Throwing Axe",
+       "slot": "Thrown",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Talisman of Evasion",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Brazecore Armguards",
+       "slot": "Wrist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Beaststalker's Gloves",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Voone's Twitchbow",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Mother Smolderweb",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Venomspitter",
+       "slot": "One-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Smolderweb's Eye",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Gilded Gauntlets",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Wildheart Boots",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Urok Doomhowl",
+     "type": "Summoned",
+     "items": [
+      {
+       "item": "Slaghide Gauntlets",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Ribsteel Footguards",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Marksman's Girdle",
+       "slot": "Waist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Rosewine Circle",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Quartermaster Zigris",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Cloudrunner Girdle",
+       "slot": "Waist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Hands of Power",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "name": "Halycon",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Ironweave Bracers",
+       "slot": "Wrist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Pads of the Dread Wolf",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Slashclaw Bracers",
+       "slot": "Wrist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Halycon's Spiked Collar",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "name": "Gizrul the Slavener",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Rhombeard Protector",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Wolfshear Leggings",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Bleak Howler Armguards",
+       "slot": "Wrist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Wildheart Spaulders",
+       "slot": "Shoulder",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "name": "Spirestone Butcher",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Butcher's Apron",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Rivenspike",
+       "slot": "One-hand",
+       "kind": "Axe",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "name": "Spirestone Lord Magus",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Globe of D'sak",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Ogreseer Tower Boots",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Magus Ring",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 11,
+     "name": "Spirestone Battle Lord",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Swiftdart Battleboots",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "The Blackrock Slicer",
+       "slot": "Two-hand",
+       "kind": "Axe",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 12,
+     "name": "Bannok Grimaxe",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Chiselbrand Girdle",
+       "slot": "Waist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Backusarian Gauntlets",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Demonfork",
+       "slot": "Main hand",
+       "kind": "Axe",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 13,
+     "name": "Crystal Fang",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Fallbrush Handgrips",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Sunderseer Mantle",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Fang of the Crystal Spider",
+       "slot": "One-hand",
+       "kind": "Dagger",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 14,
+     "name": "Ghok Bashguud",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Hurd Smasher",
+       "slot": "One-hand",
+       "kind": "Fist weapon",
+       "chance": null
+      },
+      {
+       "item": "Armswake Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Bashguuder",
+       "slot": "One-hand",
+       "kind": "Mace",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 15,
+     "name": "Burning Felguard",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Demonskin Gloves",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Phase Blade",
+       "slot": "One-hand",
+       "kind": "Sword",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 16,
+     "name": "Mor Grayhoof",
+     "type": "Summoned",
+     "items": [
+      {
+       "item": "Idol of Rejuvenation",
+       "slot": "Relic",
+       "kind": "Idol",
+       "chance": null
+      },
+      {
+       "item": "Ironweave Belt",
+       "slot": "Waist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Tome of Divine Right",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "The Jaw Breaker",
+       "slot": "One-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Belt of the Trickster",
+       "slot": "Waist",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 17,
+     "name": "Overlord Wyrmthalak",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Relentless Scythe",
+       "slot": "Two-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Mark of the Dragon Lord",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Trindlehaven Staff",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      },
+      {
+       "item": "Reiver Claws",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Heart of the Scale",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": "<1%"
+      },
+      {
+       "item": "Heart of Wyrmthalak",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Beaststalker's Mantle",
+       "slot": "Shoulder",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Chillpike",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": "Blackrock Spire (Lower and Upper)"
+  },
+  {
+   "name": "Blackrock Spire: Upper",
+   "levels": "56-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Pyroguard Emberseer",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Wildfire Cape",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Flaming Band",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Truestrike Shoulders",
+       "slot": "Shoulder",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Emberfury Talisman",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Gauntlets of Elements",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Solakar Flamewreath",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Dustfeather Sash",
+       "slot": "Waist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Nightbrace Tunic",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Crystallized Girdle",
+       "slot": "Waist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Polychromatic Visionwrap",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Devout Mantle",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Jed Runewatcher",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Starfire Tiara",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Serpentine Skuller",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      },
+      {
+       "item": "Briarwood Reed",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Goraluk Anvilcrack",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Handcrafted Mastersmith Girdle",
+       "slot": "Waist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Flame Walkers",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Handcrafted Mastersmith Leggings",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Mastersmith's Hammer",
+       "slot": "Main hand",
+       "kind": "Mace",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Gyth",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Gyth's Skull",
+       "slot": "Head",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Dragoneye Coif",
+       "slot": "Head",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Tribal War Feathers",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Pauldrons of Elements",
+       "slot": "Shoulder",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Dragonskin Cowl",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Warchief Rend Blackhand",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Blackhand Doomsaw",
+       "slot": "Two-hand",
+       "kind": "Polearm",
+       "chance": null
+      },
+      {
+       "item": "Eye of Rend",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Felstriker",
+       "slot": "One-hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Warmaster Legguards",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Battleborn Armbraces",
+       "slot": "Wrist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Dal'Rend's Tribal Guardian",
+       "slot": "Off hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Dal'Rend's Sacred Charge",
+       "slot": "Main hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Dragonrider Boots",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Band of Rumination",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Feralsurge Girdle",
+       "slot": "Waist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Faith Healer's Boots",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Spaulders of Valor",
+       "slot": "Shoulder",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Bonespike Shoulder",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "name": "The Beast",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Pip's Skinner",
+       "slot": "Main hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Blademaster Leggings",
+       "slot": "Legs",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Tristam Legguards",
+       "slot": "Legs",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Spiritshroud Leggings",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Blackmist Armguards",
+       "slot": "Wrist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Bloodmoon Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Frostweaver Cape",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Seeping Willow",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Ironweave Boots",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Lightforge Spaulders",
+       "slot": "Shoulder",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "name": "Lord Valthalak",
+     "type": "Summoned",
+     "items": [
+      {
+       "item": "Ironweave Cowl",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Lord Valthalak's Staff of Command",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      },
+      {
+       "item": "Draconian Aegis of the Legion",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Shroud of Domination",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Rune Band of Wizardry",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Pendant of Celerity",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Leggings of Torment",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Handguards of Savagery",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "name": "General Drakkisath",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Blackblade of Shahram",
+       "slot": "Two-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Draconian Deflector",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Painweaver Band",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Tooth of Gnarr",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Brigam Girdle",
+       "slot": "Waist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Vest of Elements",
+       "slot": "Chest",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Beaststalker's Tunic",
+       "slot": "Chest",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Magister's Robes",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Devout Robe",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Dreadmist Robe",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Wildheart Vest",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Shadowcraft Tunic",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Lightforge Breastplate",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Breastplate of Valor",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Tome of the Lost",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Spellweaver's Turban",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Draconic Infused Emblem",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Shadow Prowler's Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": "Blackrock Spire (Lower and Upper)"
+  },
+  {
+   "name": "Dire Maul: East",
+   "levels": "54-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Pusillin",
+     "type": "Boss (chase)",
+     "items": [
+      {
+       "item": "Obsidian Bauble",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Demondash Spaulders",
+       "slot": "Shoulder",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Zevrim Thornhoof",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Gloves of Shadowy Mist",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Clever Hat",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Helm of Awareness",
+       "slot": "Head",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Fervent Helm",
+       "slot": "Head",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Satyr's Bow",
+       "slot": "Ranged",
+       "kind": "Bow",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Hydrospawn",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Breakwater Legguards",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Riptide Shoes",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Tempest Talisman",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Waterspout Boots",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Waveslicer",
+       "slot": "Two-hand",
+       "kind": "Axe",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Lethtendris",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Lethtendris's Wand",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      },
+      {
+       "item": "Band of Vigor",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Quel'dorai Channeling Rod",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      },
+      {
+       "item": "Felhide Cap",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Pimgib",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Pimgib's Collar",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Isalien",
+     "type": "Summoned",
+     "items": [
+      {
+       "item": "Totem of Tides",
+       "slot": "Relic",
+       "kind": "Totem",
+       "chance": null
+      },
+      {
+       "item": "Libram of Hope",
+       "slot": "Relic",
+       "kind": "Libram",
+       "chance": null
+      },
+      {
+       "item": "Ironweave Gloves",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Huntsman's Harpoon",
+       "slot": "Two-hand",
+       "kind": "Polearm",
+       "chance": null
+      },
+      {
+       "item": "Hammer of Revitalization",
+       "slot": "Main hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Boots of Ferocity",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "name": "Alzzin the Wildshaper",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Gloves of Restoration",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Fiendish Machete",
+       "slot": "One-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Energized Chestplate",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Ring of Demonic Guile",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Ring of Demonic Potency",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Merciful Greaves",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Energetic Rod",
+       "slot": "Main hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Razor Gauntlets",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Whipvine Cord",
+       "slot": "Waist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Shadewood Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": "Dire Maul (all wings)"
+  },
+  {
+   "name": "Dire Maul: North",
+   "levels": "54-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Stomper Kreeg",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Kreeg's Mug",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Guard Fengus",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Robe of Combustion",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Hyena Hide Belt",
+       "slot": "Waist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Modest Armguards",
+       "slot": "Wrist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Gallant's Wristguards",
+       "slot": "Wrist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Unsophisticated Hand Cannon",
+       "slot": "Ranged",
+       "kind": "Gun",
+       "chance": null
+      },
+      {
+       "item": "Jagged Bone Fist",
+       "slot": "One-hand",
+       "kind": "Fist weapon",
+       "chance": null
+      },
+      {
+       "item": "Ogre Pocket Knife",
+       "slot": "One-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Gordok Nose Ring",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Captain Kromcrush",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Monstrous Glaive",
+       "slot": "Two-hand",
+       "kind": "Polearm",
+       "chance": null
+      },
+      {
+       "item": "Kromcrush's Chestplate",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Mugger's Belt",
+       "slot": "Waist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Boots of the Full Moon",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Cho'Rush the Observer",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Mana Channeling Wand",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      },
+      {
+       "item": "Cho'Rush's Blade",
+       "slot": "One-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Observer's Shield",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Insightful Hood",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "King Gordok",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Barbarous Blade",
+       "slot": "Two-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Grimy Metal Boots",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Band of the Ogre King",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Brightly Glowing Stone",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Leggings of Destruction",
+       "slot": "Legs",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Bracers of Prosperity",
+       "slot": "Wrist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Crown of the Ogre King",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Harmonious Gauntlets",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Mizzle the Crafty",
+     "type": "Tribute chest",
+     "items": [
+      {
+       "item": "Redoubt Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": "1%"
+      },
+      {
+       "item": "Rod of the Ogre Magi",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": "1%"
+      },
+      {
+       "item": "Counterattack Lodestone",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": "1%"
+      },
+      {
+       "item": "Barrier Shield",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": "2%"
+      },
+      {
+       "item": "Unyielding Maul",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": "1%"
+      },
+      {
+       "item": "Mindsurge Robe",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": "2%"
+      },
+      {
+       "item": "Tarnished Elven Ring",
+       "slot": "Finger",
+       "kind": null,
+       "chance": "3%"
+      },
+      {
+       "item": "Elemental Plate Girdle",
+       "slot": "Waist",
+       "kind": "Plate",
+       "chance": "2%"
+      },
+      {
+       "item": "Mud Stained Boots",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": "1%"
+      },
+      {
+       "item": "Hyena Hide Jerkin",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": "3%"
+      },
+      {
+       "item": "Scarab Plate Helm",
+       "slot": "Head",
+       "kind": "Plate",
+       "chance": "2%"
+      },
+      {
+       "item": "Skullcracking Mace",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": "2%"
+      },
+      {
+       "item": "Ogre Toothpick Shooter",
+       "slot": "Ranged",
+       "kind": "Bow",
+       "chance": "1%"
+      }
+     ]
+    }
+   ],
+   "trashGroup": "Dire Maul (all wings)"
+  },
+  {
+   "name": "Dire Maul: West",
+   "levels": "54-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Tendris Warpwood",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Petrified Bark Shield",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Stoneflower Staff",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      },
+      {
+       "item": "Tanglemoss Leggings",
+       "slot": "Legs",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Warpwood Binding",
+       "slot": "Waist",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Illyanna Ravenoak",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Well Balanced Axe",
+       "slot": "One-hand",
+       "kind": "Axe",
+       "chance": null
+      },
+      {
+       "item": "Gauntlets of Accuracy",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Force Imbued Gauntlets",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Padre's Trousers",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Magister Kalendris",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Flamescarred Shoulders",
+       "slot": "Shoulder",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Amplifying Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Magically Sealed Bracers",
+       "slot": "Wrist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Mindtap Talisman",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Elder Magus Pendant",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Tsu'zee",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Murmuring Ring",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Threadbare Trousers",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Brightspark Gloves",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Immol'thar",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Vigilance Charm",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Blade of the New Moon",
+       "slot": "Main hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Quickdraw Gloves",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Odious Greaves",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Evil Eye Pendant",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Bile-etched Spaulders",
+       "slot": "Shoulder",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Robe of Everlasting Night",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Cloak of the Cosmos",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Eyestalk Cord",
+       "slot": "Waist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Demon Howl Wristguards",
+       "slot": "Wrist",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Lord Hel'nurath",
+     "type": "Summoned (Warlock mount quest)",
+     "items": [
+      {
+       "item": "Fel Hardened Bracers",
+       "slot": "Wrist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Xorothian Firestick",
+       "slot": "Ranged",
+       "kind": "Gun",
+       "chance": null
+      },
+      {
+       "item": "Dreadguard's Protector",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Diabolic Mantle",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "name": "Revanchion",
+     "type": "Event",
+     "items": [
+      {
+       "item": "Cloak of Revanchion",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "The Shadow's Grasp",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Bracers of Mending",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "name": "Prince Tortheldrin",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Chestplate of Tranquility",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Bracers of the Eclipse",
+       "slot": "Wrist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Timeworn Mace",
+       "slot": "One-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Silvermoon Leggings",
+       "slot": "Legs",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Eldritch Reinforced Legplates",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Fluctuating Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Stoneshatter",
+       "slot": "Ranged",
+       "kind": "Crossbow",
+       "chance": null
+      },
+      {
+       "item": "Distracting Dagger",
+       "slot": "Off hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Emerald Flame Ring",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Mind Carver",
+       "slot": "Main hand",
+       "kind": "Sword",
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": "Dire Maul (all wings)"
+  },
+  {
+   "name": "Scholomance",
+   "levels": "58-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Kirtonos the Herald",
+     "type": "Summoned",
+     "items": [
+      {
+       "item": "Gravestone War Axe",
+       "slot": "Two-hand",
+       "kind": "Axe",
+       "chance": null
+      },
+      {
+       "item": "Stoneform Shoulders",
+       "slot": "Shoulder",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Clutch of Andros",
+       "slot": "Waist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Gargoyle Slashers",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Heart of the Fiend",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Windreaver Greaves",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Loomguard Armbraces",
+       "slot": "Wrist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Frightalon",
+       "slot": "One-hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Boots of Valor",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Jandice Barov",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Ghostloom Leggings",
+       "slot": "Legs",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Royal Cap Spaulders",
+       "slot": "Shoulder",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Phantasmal Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Wraithplate Leggings",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Staff of Metanoia",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      },
+      {
+       "item": "Barovian Family Sword",
+       "slot": "Two-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Dreadmist Mantle",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Darkshade Gloves",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Rattlegore",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Rattlecage Buckler",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Corpselight Greaves",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Deadwalker Mantle",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Bone Ring Helm",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Bone Golem Shoulders",
+       "slot": "Shoulder",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Frightskull Shaft",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Shadowcraft Boots",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Marduk Blackpool",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Ebon Hilt of Marduk",
+       "slot": "Main hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Death Knight Sabatons",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Gravetoll Gavel",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "The Black Helm",
+       "slot": "Head",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Vectus",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Skullsmoke Pants",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Dark Advisor's Pendant",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Soulwoven Drape",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Band of the Damned",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Ras Frostwhisper",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Alanna's Embrace",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Iceblade Hacker",
+       "slot": "Main hand",
+       "kind": "Axe",
+       "chance": "15%"
+      },
+      {
+       "item": "Freezing Lich Robes",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": "14%"
+      },
+      {
+       "item": "Bonechill Hammer",
+       "slot": "One-hand",
+       "kind": "Mace",
+       "chance": "15%"
+      },
+      {
+       "item": "Frostbite Girdle",
+       "slot": "Waist",
+       "kind": "Leather",
+       "chance": "15%"
+      },
+      {
+       "item": "Death's Clutch",
+       "slot": "Shoulder",
+       "kind": "Leather",
+       "chance": "14%"
+      },
+      {
+       "item": "Maelstrom Leggings",
+       "slot": "Legs",
+       "kind": "Mail",
+       "chance": "14%"
+      },
+      {
+       "item": "Boneclenched Gauntlets",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": "14%"
+      },
+      {
+       "item": "Shivery Handwraps",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": "15%"
+      },
+      {
+       "item": "Shadowy Mail Greaves",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": "15%"
+      },
+      {
+       "item": "Spellbound Tome",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": "15%"
+      },
+      {
+       "item": "Intricately Runed Shield",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": "15%"
+      },
+      {
+       "item": "Magister's Mantle",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": "18%"
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "name": "Kormok",
+     "type": "Summoned",
+     "items": [
+      {
+       "item": "Amalgam's Band",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Ironweave Pants",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Band of the Steadfast Hero",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Blade of Necromancy",
+       "slot": "Main hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Hammer of Divine Might",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "name": "Death Knight Darkreaver",
+     "type": "Summoned",
+     "items": [
+      {
+       "item": "Specter's Blade",
+       "slot": "One-hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Malicious Axe",
+       "slot": "Two-hand",
+       "kind": "Axe",
+       "chance": null
+      },
+      {
+       "item": "Necromantic Band",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Oblivion's Touch",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "name": "Lord Blackwood",
+     "type": "Event",
+     "items": [
+      {
+       "item": "Lord Blackwood's Blade",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Lord Blackwood's Buckler",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Blackwood's Thigh",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "name": "Darkmaster Gandling",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Don Mauricio's Band of Domination",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Boots of the Shrieker",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Headmaster's Charge",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      },
+      {
+       "item": "Bonecreeper Stylus",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      },
+      {
+       "item": "Tombstone Breastplate",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Vigorsteel Vambraces",
+       "slot": "Wrist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Silent Fang",
+       "slot": "Main hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Witchblade",
+       "slot": "Main hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Coif of Elements",
+       "slot": "Head",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Beaststalker's Cap",
+       "slot": "Head",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Magister's Crown",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Devout Crown",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Dreadmist Mask",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Shadowcraft Cap",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Wildheart Cowl",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Lightforge Helm",
+       "slot": "Head",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Helm of Valor",
+       "slot": "Head",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Detention Strap",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": "Scholomance"
+  },
+  {
+   "name": "Shaper's Terrace",
+   "levels": "58-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Titanosaur",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Titanosaur Scale Pendant",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Gargantuan Wristguards",
+       "slot": "Wrist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Deeproar Cord",
+       "slot": "Waist",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Tor'Rel",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Talon of Tor'Rel",
+       "slot": "One-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Frostfang Mail Vest",
+       "slot": "Chest",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Raptorscale Bulwark",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Direhorn Matriarch",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Tooth of the Matriarch",
+       "slot": "One-hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Scaleguard Scimitar",
+       "slot": "One-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Regal Direhorn Drape",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Thunderhoof",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Hammer of Thundering Hooves",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Dinofrill Casque",
+       "slot": "Head",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Deep Jungle Rifle",
+       "slot": "Ranged",
+       "kind": "Gun",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Venomridge",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Venomvessel Ring",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Spiderchitin Wrap",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Octoclaw Chain Boots",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Bolt",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Sparklance Wand",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      },
+      {
+       "item": "Bolt's Charged Eyeball",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "name": "Cinder",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Heartflame Gauntlets",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Cinderedge Crescent",
+       "slot": "One-hand",
+       "kind": "Axe",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "name": "Snowtalon",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Albinofur Grips",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Crownroar Chestplate",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "name": "Vitrix",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Albinofur Grips",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Crownroar Chestplate",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Heartflame Gauntlets",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Sparklance Wand",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      },
+      {
+       "item": "Bolt's Charged Eyeball",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "name": "Nanaya",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Nanaya's Control Spire",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      },
+      {
+       "item": "Legplates of Reinforced Crystal",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Leggings of Curation",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": null
+  },
+  {
+   "name": "Stratholme: Live",
+   "levels": "58-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Skul",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Skul's Cold Embrace",
+       "slot": "Chest",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Skul's Fingerbone Claws",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Skul's Ghastly Touch",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Hearthsinger Forresten",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Magister's Boots",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Songbird Blouse",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Woollies of the Prancing Minstrel",
+       "slot": "Legs",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Rainbow Girdle",
+       "slot": "Waist",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Postmaster Malown",
+     "type": "Summoned",
+     "items": [
+      {
+       "item": "The Postmaster's Tunic",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "The Postmaster's Trousers",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "The Postmaster's Band",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "The Postmaster's Treads",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "The Postmaster's Seal",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Malown's Slam",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "The Unforgiven",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Mask of the Unforgiven",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Wailing Nightbane Pauldrons",
+       "slot": "Shoulder",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Soul Breaker",
+       "slot": "Main hand",
+       "kind": "Axe",
+       "chance": null
+      },
+      {
+       "item": "Tearfall Bracers",
+       "slot": "Wrist",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Timmy the Cruel",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Vambraces of the Sadist",
+       "slot": "Wrist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "The Cruel Hand of Timmy",
+       "slot": "One-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Timmy's Galoshes",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Grimgore Noose",
+       "slot": "Waist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Lightforge Gauntlets",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Cannon Master Willey",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Willey's Portable Howitzer",
+       "slot": "Ranged",
+       "kind": "Gun",
+       "chance": null
+      },
+      {
+       "item": "Master Cannoneer Boots",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Cannonball Runner",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Barrage Girdle",
+       "slot": "Waist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Nacreous Shell Necklace",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Willey's Back Scratcher",
+       "slot": "Main hand",
+       "kind": "Fist weapon",
+       "chance": null
+      },
+      {
+       "item": "Mantle of the Scarlet Crusade",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Redemption",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      },
+      {
+       "item": "Helm of the New Moon",
+       "slot": "Head",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Shadowcraft Spaulders",
+       "slot": "Shoulder",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "name": "Archivist Galford",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Tome of Knowledge",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Archivist Cape",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Foresight Girdle",
+       "slot": "Waist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Ash Covered Boots",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Devout Gloves",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 8,
+     "name": "Sothos and Jarien's Heirlooms",
+     "type": "Summoned",
+     "items": [
+      {
+       "item": "Ironweave Robe",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Amulet of the Redeemed",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Legplates of Vigilance",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Scepter of Interminable Focus",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 9,
+     "name": "Balzaphon",
+     "type": "Event",
+     "items": [
+      {
+       "item": "Chains of the Lich",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Staff of Balzaphon",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Waistband of Balzaphon",
+       "slot": "Not yet discovered",
+       "kind": null,
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 10,
+     "name": "Grand Crusader Dathrohan / Balnazzar",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Star of Mystaria",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Demonshear",
+       "slot": "Two-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Book of the Dead",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Wyrmtongue Shoulders",
+       "slot": "Shoulder",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Crown of Tyranny",
+       "slot": "Head",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Gift of the Elven Magi",
+       "slot": "Main hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Fire Striders",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Hammer of the Grand Crusader",
+       "slot": "Two-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Grand Crusader's Helm",
+       "slot": "Head",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Shroud of the Nathrezim",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Band of Mending",
+       "slot": "Finger",
+       "kind": null,
+       "chance": "1%"
+      },
+      {
+       "item": "Lightforge Boots",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": "Stratholme (both sides)"
+  },
+  {
+   "name": "Stratholme: Undead",
+   "levels": "58-60",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Stonespine",
+     "type": "Rare",
+     "items": [
+      {
+       "item": "Stoneskin Gargoyle Cape",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Gargoyle Shredder Talons",
+       "slot": "Off hand",
+       "kind": "Fist weapon",
+       "chance": null
+      },
+      {
+       "item": "Verdant Footpads",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Baroness Anastari",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Banshee Finger",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      },
+      {
+       "item": "Coldtouch Phantom Wraps",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Chillhide Bracers",
+       "slot": "Wrist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Windshrieker Pauldrons",
+       "slot": "Shoulder",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Banshee's Touch",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Anastari Heirloom",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Screeching Bow",
+       "slot": "Ranged",
+       "kind": "Bow",
+       "chance": null
+      },
+      {
+       "item": "Shadowy Laced Handwraps",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Dreadmist Sandals",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Nerub'enkan",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Husk of Nerub'enkan",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Fangdrip Runners",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Crypt Stalker Leggings",
+       "slot": "Legs",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Darkspinner Claws",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Acid-etched Pauldrons",
+       "slot": "Shoulder",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Carapace Spine Crossbow",
+       "slot": "Ranged",
+       "kind": "Crossbow",
+       "chance": null
+      },
+      {
+       "item": "Chitinous Plate Legguards",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Thuzadin Sash",
+       "slot": "Waist",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Beaststalker's Boots",
+       "slot": "Feet",
+       "kind": "Mail",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Maleki the Pallid",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Skull of Burning Shadows",
+       "slot": "Held in off-hand",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Darkbind Fingers",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Flamescarred Girdle",
+       "slot": "Waist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Lavawalker Greaves",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Twilight Void Bracers",
+       "slot": "Wrist",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Pale Moon Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Maleki's Footwraps",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Bone Slicing Hatchet",
+       "slot": "One-hand",
+       "kind": "Axe",
+       "chance": null
+      },
+      {
+       "item": "Devout Sandals",
+       "slot": "Feet",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Magistrate Barthilas",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Idol of Brutality",
+       "slot": "Relic",
+       "kind": "Idol",
+       "chance": null
+      },
+      {
+       "item": "Death Grips",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Royal Tribunal Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Peacemaker",
+       "slot": "Two-hand",
+       "kind": "Polearm",
+       "chance": null
+      },
+      {
+       "item": "Magistrate's Cuffs",
+       "slot": "Wrist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Crimson Felt Hat",
+       "slot": "Head",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Ramstein the Gorger",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Animated Chain Necklace",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Slavedriver's Cane",
+       "slot": "Two-hand",
+       "kind": "Staff",
+       "chance": null
+      },
+      {
+       "item": "Band of Flesh",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Soulstealer Mantle",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Crest of Retribution",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Ramstein's Lightning Bolts",
+       "slot": "Trinket",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Gauntlets of Valor",
+       "slot": "Hands",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 7,
+     "name": "Baron Rivendare",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Cape of the Black Baron",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Dracorian Gauntlets",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Seal of Rivendare",
+       "slot": "Finger",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Robes of the Exalted",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Scepter of the Unholy",
+       "slot": "Main hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Skullforge Reaver",
+       "slot": "One-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Runeblade of Baron Rivendare",
+       "slot": "Two-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Ritssyn's Wand of Bad Mojo",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      },
+      {
+       "item": "Tunic of the Crescent Moon",
+       "slot": "Chest",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Gauntlets of Deftness",
+       "slot": "Hands",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Helm of the Executioner",
+       "slot": "Head",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Thuzadin Mantle",
+       "slot": "Shoulder",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Bonescraper",
+       "slot": "One-hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Kilt of Elements",
+       "slot": "Legs",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Beaststalker's Pants",
+       "slot": "Legs",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Magister's Leggings",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Devout Skirt",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Dreadmist Leggings",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Shadowcraft Pants",
+       "slot": "Legs",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Wildheart Kilt",
+       "slot": "Legs",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Lightforge Legplates",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Legplates of Valor",
+       "slot": "Legs",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": "Stratholme (both sides)"
+  },
+  {
+   "name": "The Temple of Atal'Hakkar",
+   "levels": "52-58",
+   "bosses": [
+    {
+     "n": 1,
+     "name": "Atal'alarion",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Darkwater Bracers",
+       "slot": "Wrist",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Atal'alarion's Tusk Ring",
+       "slot": "Waist",
+       "kind": "Plate",
+       "chance": null
+      },
+      {
+       "item": "Headspike",
+       "slot": "Two-hand",
+       "kind": "Polearm",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 2,
+     "name": "Spawn of Hakkar",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Slitherscale Boots",
+       "slot": "Feet",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Wingveil Cloak",
+       "slot": "Back",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 3,
+     "name": "Jammal'an the Prophet",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Wanderer's Gloves",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Vestments of the Atal'ai Prophet",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Kilt of the Atal'ai Prophet",
+       "slot": "Legs",
+       "kind": "Cloth",
+       "chance": null
+      },
+      {
+       "item": "Gloves of the Atal'ai Prophet",
+       "slot": "Hands",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 4,
+     "name": "Ogom the Wretched",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Blade of the Wretched",
+       "slot": "Main hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Fist of the Damned",
+       "slot": "One-hand",
+       "kind": "Mace",
+       "chance": null
+      },
+      {
+       "item": "Eater of the Dead",
+       "slot": "Main hand",
+       "kind": "Axe",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 5,
+     "name": "Shade of Hakkar",
+     "type": "Boss",
+     "items": [
+      {
+       "item": "Embrace of the Wind Serpent",
+       "slot": "Chest",
+       "kind": "Cloth",
+       "chance": null
+      }
+     ]
+    },
+    {
+     "n": 6,
+     "name": "Shade of Eranikus",
+     "type": "Final boss",
+     "items": [
+      {
+       "item": "Dragon's Call",
+       "slot": "One-hand",
+       "kind": "Sword",
+       "chance": null
+      },
+      {
+       "item": "Dire Nail",
+       "slot": "Main hand",
+       "kind": "Dagger",
+       "chance": null
+      },
+      {
+       "item": "Dragon's Eye",
+       "slot": "Neck",
+       "kind": null,
+       "chance": null
+      },
+      {
+       "item": "Horns of Eranikus",
+       "slot": "Head",
+       "kind": "Mail",
+       "chance": null
+      },
+      {
+       "item": "Crest of Supremacy",
+       "slot": "Off hand",
+       "kind": "Shield",
+       "chance": null
+      },
+      {
+       "item": "Rod of Corrosion",
+       "slot": "Ranged",
+       "kind": "Wand",
+       "chance": null
+      },
+      {
+       "item": "Tooth of Eranikus",
+       "slot": "Main hand",
+       "kind": "Axe",
+       "chance": null
+      },
+      {
+       "item": "Wanderer's Gloves",
+       "slot": "Hands",
+       "kind": "Leather",
+       "chance": null
+      },
+      {
+       "item": "Templar Boots",
+       "slot": "Feet",
+       "kind": "Plate",
+       "chance": null
+      }
+     ]
+    }
+   ],
+   "trashGroup": "The Temple of Atal'Hakkar"
+  }
+ ],
+ "trash": {
+  "Blackrock Depths": [
+   {
+    "item": "Ironweave Mantle",
+    "slot": "Shoulder",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Lefty's Brass Knuckle",
+    "slot": "One-hand",
+    "kind": "Fist weapon",
+    "chance": null
+   },
+   {
+    "item": "Malgen's Long Bow",
+    "slot": "Ranged",
+    "kind": "Bow",
+    "chance": null
+   },
+   {
+    "item": "Shroud of Arcane Mastery",
+    "slot": "Back",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Impervious Giant",
+    "slot": "Two-hand",
+    "kind": "Mace",
+    "chance": null
+   },
+   {
+    "item": "Blood-Etched Blade",
+    "slot": "Main hand",
+    "kind": "Dagger",
+    "chance": "21%"
+   },
+   {
+    "item": "The Hammer of Grace",
+    "slot": "Main hand",
+    "kind": "Mace",
+    "chance": null
+   },
+   {
+    "item": "Deathdealer Breastplate",
+    "slot": "Chest",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Haunting Specter Leggings",
+    "slot": "Legs",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Black Steel Bindings",
+    "slot": "Wrist",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Wand of Eternal Light",
+    "slot": "Ranged",
+    "kind": "Wand",
+    "chance": null
+   },
+   {
+    "item": "Magma Forged Band",
+    "slot": "Finger",
+    "kind": null,
+    "chance": null
+   },
+   {
+    "item": "Mana Shaping Handwraps",
+    "slot": "Hands",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Wraith Scythe",
+    "slot": "Main hand",
+    "kind": "Axe",
+    "chance": null
+   },
+   {
+    "item": "Spire of the Stoneshaper",
+    "slot": "Two-hand",
+    "kind": "Staff",
+    "chance": null
+   },
+   {
+    "item": "Mar Alom's Grip",
+    "slot": "Hands",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Stoneshield Cloak",
+    "slot": "Back",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Blisterbane Wrap",
+    "slot": "Back",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Battlechaser's Greaves",
+    "slot": "Feet",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Doomforged Straightedge",
+    "slot": "One-hand",
+    "kind": "Sword",
+    "chance": null
+   },
+   {
+    "item": "Aristocratic Cuffs",
+    "slot": "Wrist",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Ribsplitter",
+    "slot": "Main hand",
+    "kind": "Axe",
+    "chance": null
+   },
+   {
+    "item": "Runed Golem Shackles",
+    "slot": "Wrist",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "The Judge's Gavel",
+    "slot": "Two-hand",
+    "kind": "Mace",
+    "chance": null
+   },
+   {
+    "item": "Braincage",
+    "slot": "Head",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Searing Needle",
+    "slot": "One-hand",
+    "kind": "Dagger",
+    "chance": null
+   },
+   {
+    "item": "Funeral Pyre Vestment",
+    "slot": "Chest",
+    "kind": "Cloth",
+    "chance": null
+   }
+  ],
+  "Blackrock Spire (Lower and Upper)": [
+   {
+    "item": "Wind Dancer Boots",
+    "slot": "Feet",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Wildheart Gloves",
+    "slot": "Hands",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Father Flame",
+    "slot": "Held in off-hand",
+    "kind": null,
+    "chance": null
+   },
+   {
+    "item": "Cord of Elements",
+    "slot": "Waist",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Beaststalker's Belt",
+    "slot": "Waist",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Devout Belt",
+    "slot": "Waist",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Shadowcraft Belt",
+    "slot": "Waist",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Magister's Bindings",
+    "slot": "Wrist",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Dreadmist Bracers",
+    "slot": "Wrist",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Bracers of Valor",
+    "slot": "Wrist",
+    "kind": "Plate",
+    "chance": null
+   }
+  ],
+  "Dire Maul (all wings)": [
+   {
+    "item": "Gordok Bracers of Power",
+    "slot": "Wrist",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Ogre Forged Hauberk",
+    "slot": "Chest",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Cyclone Spaulders",
+    "slot": "Shoulder",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Oddly Magical Belt",
+    "slot": "Waist",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Shaggy Leggings",
+    "slot": "Legs",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Carrion Scorpid Helm",
+    "slot": "Head",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Bulky Iron Spaulders",
+    "slot": "Shoulder",
+    "kind": "Plate",
+    "chance": "5%"
+   },
+   {
+    "item": "Denwatcher's Shoulders",
+    "slot": "Shoulder",
+    "kind": "Mail",
+    "chance": "6%"
+   },
+   {
+    "item": "Heliotrope Cloak",
+    "slot": "Back",
+    "kind": "Cloth",
+    "chance": "6%"
+   },
+   {
+    "item": "Sublime Wristguards",
+    "slot": "Wrist",
+    "kind": "Cloth",
+    "chance": "5%"
+   },
+   {
+    "item": "Hedgecutter",
+    "slot": "One-hand",
+    "kind": "Axe",
+    "chance": "6%"
+   },
+   {
+    "item": "Orphic Bracers",
+    "slot": "Wrist",
+    "kind": "Cloth",
+    "chance": "<1%"
+   },
+   {
+    "item": "Wand of Arcane Potency",
+    "slot": "Ranged",
+    "kind": "Wand",
+    "chance": null
+   },
+   {
+    "item": "Eidolon Cloak",
+    "slot": "Back",
+    "kind": "Cloth",
+    "chance": "<1%"
+   },
+   {
+    "item": "Eidolon Talisman",
+    "slot": "Neck",
+    "kind": null,
+    "chance": null
+   },
+   {
+    "item": "Petrified Band",
+    "slot": "Finger",
+    "kind": null,
+    "chance": "1%"
+   },
+   {
+    "item": "Stonebark Gauntlets",
+    "slot": "Hands",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Barbed Thorn Necklace",
+    "slot": "Neck",
+    "kind": null,
+    "chance": null
+   },
+   {
+    "item": "Marksman Bands",
+    "slot": "Wrist",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Unbridled Leggings",
+    "slot": "Legs",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Phasing Boots",
+    "slot": "Feet",
+    "kind": "Cloth",
+    "chance": null
+   }
+  ],
+  "Scholomance": [
+   {
+    "item": "Totem of Sustaining",
+    "slot": "Relic",
+    "kind": "Totem",
+    "chance": "1%"
+   },
+   {
+    "item": "Libram of Divinity",
+    "slot": "Relic",
+    "kind": "Libram",
+    "chance": "1%"
+   },
+   {
+    "item": "Bonebrace Hauberk",
+    "slot": "Chest",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Bloodmail Hauberk",
+    "slot": "Chest",
+    "kind": "Mail",
+    "chance": "2%"
+   },
+   {
+    "item": "Bloodmail Legguards",
+    "slot": "Legs",
+    "kind": "Mail",
+    "chance": "3%"
+   },
+   {
+    "item": "Bloodmail Belt",
+    "slot": "Waist",
+    "kind": "Mail",
+    "chance": "3%"
+   },
+   {
+    "item": "Bloodmail Gauntlets",
+    "slot": "Hands",
+    "kind": "Mail",
+    "chance": "3%"
+   },
+   {
+    "item": "Bloodmail Boots",
+    "slot": "Feet",
+    "kind": "Mail",
+    "chance": "3%"
+   },
+   {
+    "item": "Deathbone Girdle",
+    "slot": "Waist",
+    "kind": "Plate",
+    "chance": "3%"
+   },
+   {
+    "item": "Deathbone Sabatons",
+    "slot": "Feet",
+    "kind": "Plate",
+    "chance": "3%"
+   },
+   {
+    "item": "Deathbone Gauntlets",
+    "slot": "Hands",
+    "kind": "Plate",
+    "chance": "3%"
+   },
+   {
+    "item": "Deathbone Legguards",
+    "slot": "Legs",
+    "kind": "Plate",
+    "chance": "3%"
+   },
+   {
+    "item": "Deathbone Chestplate",
+    "slot": "Chest",
+    "kind": "Plate",
+    "chance": "2%"
+   },
+   {
+    "item": "Necropile Robe",
+    "slot": "Chest",
+    "kind": "Cloth",
+    "chance": "2%"
+   },
+   {
+    "item": "Necropile Cuffs",
+    "slot": "Wrist",
+    "kind": "Cloth",
+    "chance": "3%"
+   },
+   {
+    "item": "Necropile Boots",
+    "slot": "Feet",
+    "kind": "Cloth",
+    "chance": "3%"
+   },
+   {
+    "item": "Necropile Leggings",
+    "slot": "Legs",
+    "kind": "Cloth",
+    "chance": "3%"
+   },
+   {
+    "item": "Necropile Mantle",
+    "slot": "Shoulder",
+    "kind": "Cloth",
+    "chance": "3%"
+   },
+   {
+    "item": "Cadaverous Belt",
+    "slot": "Waist",
+    "kind": "Leather",
+    "chance": "3%"
+   },
+   {
+    "item": "Cadaverous Armor",
+    "slot": "Chest",
+    "kind": "Leather",
+    "chance": "2%"
+   },
+   {
+    "item": "Cadaverous Leggings",
+    "slot": "Legs",
+    "kind": "Leather",
+    "chance": "3%"
+   },
+   {
+    "item": "Cadaverous Gloves",
+    "slot": "Hands",
+    "kind": "Leather",
+    "chance": "3%"
+   },
+   {
+    "item": "Cadaverous Walkers",
+    "slot": "Feet",
+    "kind": "Leather",
+    "chance": "3%"
+   },
+   {
+    "item": "Ancient Bone Bow",
+    "slot": "Ranged",
+    "kind": "Bow",
+    "chance": "2%"
+   },
+   {
+    "item": "Burial Shawl",
+    "slot": "Shoulder",
+    "kind": "Cloth",
+    "chance": "2%"
+   },
+   {
+    "item": "Ghoul Skin Leggings",
+    "slot": "Legs",
+    "kind": "Leather",
+    "chance": "2%"
+   },
+   {
+    "item": "Hammer of the Vesper",
+    "slot": "One-hand",
+    "kind": "Mace",
+    "chance": "2%"
+   },
+   {
+    "item": "Dimly Opalescent Ring",
+    "slot": "Finger",
+    "kind": null,
+    "chance": "2%"
+   },
+   {
+    "item": "Belt of the Ordained",
+    "slot": "Waist",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Magister's Gloves",
+    "slot": "Hands",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Dreadmist Wraps",
+    "slot": "Hands",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Innervating Band",
+    "slot": "Finger",
+    "kind": null,
+    "chance": null
+   },
+   {
+    "item": "Malefic Bracers",
+    "slot": "Wrist",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Lightforge Bracers",
+    "slot": "Wrist",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Icy Tomb Spaulders",
+    "slot": "Shoulder",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Tattered Leather Hood",
+    "slot": "Head",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Coldstone Slippers",
+    "slot": "Feet",
+    "kind": "Cloth",
+    "chance": null
+   }
+  ],
+  "Stratholme (both sides)": [
+   {
+    "item": "Plaguehound Leggings",
+    "slot": "Legs",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Morlune's Bracer",
+    "slot": "Wrist",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Stratholme Militia Shoulderguard",
+    "slot": "Shoulder",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Hand of the Zealous",
+    "slot": "Two-hand",
+    "kind": "Mace",
+    "chance": null
+   },
+   {
+    "item": "Scarlet Malice",
+    "slot": "One-hand",
+    "kind": "Mace",
+    "chance": null
+   },
+   {
+    "item": "Plate of the Scarlet Bastion",
+    "slot": "Chest",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Scarlet Bonebreaker",
+    "slot": "Two-hand",
+    "kind": "Mace",
+    "chance": null
+   },
+   {
+    "item": "Masterwork Crimson Hammer",
+    "slot": "Main hand",
+    "kind": "Mace",
+    "chance": null
+   },
+   {
+    "item": "Lightcrest Hammer",
+    "slot": "One-hand",
+    "kind": "Mace",
+    "chance": null
+   },
+   {
+    "item": "Black Guard Skullcap",
+    "slot": "Head",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Swordsmith Mitts",
+    "slot": "Hands",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Plague Defiled Buckler",
+    "slot": "Off hand",
+    "kind": "Shield",
+    "chance": null
+   },
+   {
+    "item": "Gracious Cape",
+    "slot": "Back",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Luxurious Smoking Jacket",
+    "slot": "Chest",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Grimm's Packing Gloves",
+    "slot": "Hands",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Ezra's Seal of Authenticity",
+    "slot": "Finger",
+    "kind": null,
+    "chance": null
+   },
+   {
+    "item": "Magister's Belt",
+    "slot": "Waist",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Dreadmist Belt",
+    "slot": "Waist",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Lightforge Belt",
+    "slot": "Waist",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Belt of Valor",
+    "slot": "Waist",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Juno's Shadow",
+    "slot": "Back",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Plaguebat Fur Gloves",
+    "slot": "Hands",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Bindings of Elements",
+    "slot": "Wrist",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Beaststalker's Bindings",
+    "slot": "Wrist",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Devout Bracers",
+    "slot": "Wrist",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Wildheart Bracers",
+    "slot": "Wrist",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Sacred Cloth Leggings",
+    "slot": "Legs",
+    "kind": "Cloth",
+    "chance": null
+   }
+  ],
+  "The Temple of Atal'Hakkar": [
+   {
+    "item": "Drakeclaw Band",
+    "slot": "Finger",
+    "kind": null,
+    "chance": null
+   },
+   {
+    "item": "Drakestone",
+    "slot": "Held in off-hand",
+    "kind": null,
+    "chance": null
+   },
+   {
+    "item": "Might of Hakkar",
+    "slot": "Main hand",
+    "kind": "Mace",
+    "chance": null
+   },
+   {
+    "item": "Windscale Sarong",
+    "slot": "Legs",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Featherskin Cape",
+    "slot": "Back",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Spire of Hakkar",
+    "slot": "Two-hand",
+    "kind": "Staff",
+    "chance": null
+   },
+   {
+    "item": "Warrior's Embrace",
+    "slot": "Chest",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Bloodshot Greaves",
+    "slot": "Feet",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Smoldering Claw",
+    "slot": "Two-hand",
+    "kind": "Polearm",
+    "chance": null
+   },
+   {
+    "item": "Firebreather",
+    "slot": "One-hand",
+    "kind": "Sword",
+    "chance": null
+   },
+   {
+    "item": "Drakefang Butcher",
+    "slot": "Two-hand",
+    "kind": "Sword",
+    "chance": null
+   },
+   {
+    "item": "Bloodfire Talons",
+    "slot": "Hands",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Nightfall Drape",
+    "slot": "Back",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Dawnspire Cord",
+    "slot": "Waist",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Atal'ai Spaulders",
+    "slot": "Shoulder",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Atal'ai Breastplate",
+    "slot": "Chest",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Atal'ai Leggings",
+    "slot": "Legs",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Atal'ai Boots",
+    "slot": "Feet",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Atal'ai Gloves",
+    "slot": "Hands",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Atal'ai Girdle",
+    "slot": "Waist",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Soulcatcher Halo",
+    "slot": "Head",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Silvershell Leggings",
+    "slot": "Legs",
+    "kind": "Plate",
+    "chance": null
+   },
+   {
+    "item": "Mark of Hakkar",
+    "slot": "Finger",
+    "kind": null,
+    "chance": null
+   },
+   {
+    "item": "Hakkari Breastplate",
+    "slot": "Chest",
+    "kind": "Leather",
+    "chance": null
+   },
+   {
+    "item": "Hakkari Shroud",
+    "slot": "Head",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Ragehammer",
+    "slot": "Two-hand",
+    "kind": "Mace",
+    "chance": null
+   },
+   {
+    "item": "Mistwalker Boots",
+    "slot": "Feet",
+    "kind": "Cloth",
+    "chance": null
+   },
+   {
+    "item": "Stealthblade",
+    "slot": "Main hand",
+    "kind": "Dagger",
+    "chance": null
+   },
+   {
+    "item": "Slimescale Bracers",
+    "slot": "Wrist",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Winter's Bite",
+    "slot": "Main hand",
+    "kind": "Axe",
+    "chance": null
+   },
+   {
+    "item": "Deathblow",
+    "slot": "Two-hand",
+    "kind": "Sword",
+    "chance": null
+   },
+   {
+    "item": "Stinging Bow",
+    "slot": "Ranged",
+    "kind": "Bow",
+    "chance": null
+   },
+   {
+    "item": "Bludgeon of the Grinning Dog",
+    "slot": "Two-hand",
+    "kind": "Staff",
+    "chance": null
+   },
+   {
+    "item": "Murkwater Gauntlets",
+    "slot": "Hands",
+    "kind": "Mail",
+    "chance": null
+   },
+   {
+    "item": "Mindseye Circle",
+    "slot": "Finger",
+    "kind": null,
+    "chance": null
+   }
+  ]
+ }
+}
