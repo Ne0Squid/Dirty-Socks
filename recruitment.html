@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Recruitment – Dirty Socks</title>
+<meta name="description" content="Join Dirty Socks, a WoW Forever raiding guild. Request a raid spot.">
+<meta name="theme-color" content="#0f1117">
+<link rel="icon" href="images/favicon.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dirty Socks">
+<meta property="og:title" content="Recruitment – Dirty Socks">
+<meta property="og:description" content="Join Dirty Socks, a WoW Forever raiding guild. Request a raid spot.">
+<meta property="og:url" content="https://ne0squid.github.io/Dirty-Socks/recruitment.html">
+<meta property="og:image" content="https://ne0squid.github.io/Dirty-Socks/images/og-image.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Recruitment – Dirty Socks">
+<meta name="twitter:description" content="Join Dirty Socks, a WoW Forever raiding guild. Request a raid spot.">
+<meta name="twitter:image" content="https://ne0squid.github.io/Dirty-Socks/images/og-image.jpg?v=2">
+<script src="faction.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;--blue:#2f6fa8;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;--blue:#6aa9e0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1117;--surface:#181b24;--text:#ece6d8;--muted:#9a9484;--accent:#e0483f;--accent-text:#14110a;--line:#2b2f3b;--hero:#1f1416;--blue:#6aa9e0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
+a{color:var(--accent)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+main.wrap{padding-top:34px}
+.hero{background:var(--hero);border-bottom:1px solid var(--line)}
+.banner{padding:0;line-height:0}
+.banner img{display:block;width:100%;height:clamp(110px,30vw,480px);object-fit:cover;object-position:center 35%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+section{padding:44px 0}
+h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filters button{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:20px;padding:6px 16px;cursor:pointer;font-size:.88rem}
+.filters button.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.member{display:flex;align-items:center;gap:10px}
+.member a{color:inherit;text-decoration:none}.member a:hover{color:var(--accent);text-decoration:underline}
+.tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right;white-space:nowrap}
+.pager{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.pager button{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer;font-size:.88rem;min-width:36px}
+.pager button.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.pager button:disabled{opacity:.4;cursor:default}
+.cico{width:38px;height:38px;border-radius:8px;border:2px solid;flex:none;object-fit:cover}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}
+#glancebox{padding:4px 0}
+.grow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.grow+.grow{border-top:1px solid var(--line)}
+.stat{text-align:center;padding:16px 8px}.stat b{display:block;font-family:Cinzel,Georgia,serif;font-size:clamp(1.3rem,4.5vw,2rem);color:var(--accent)}.stat span{font-size:clamp(.72rem,2.4vw,.9rem)}
+.grow.roles{display:flex;flex-wrap:wrap;gap:4px 28px;padding:12px 22px;align-items:baseline}.rl.fn{margin-left:auto;font-size:.8rem;font-style:italic;white-space:normal;text-align:right}
+.rl{font-size:.92rem;color:var(--muted);white-space:nowrap}.rl b{color:var(--accent);font-family:Cinzel,Georgia,serif;font-size:1rem;margin-left:4px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.muted{color:var(--muted);font-size:.9rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;border:0;cursor:pointer;font-family:inherit}
+#entries{display:grid;gap:14px;margin-top:18px}
+.pn-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.pn-badge{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 10px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
+.pn-hotfix{border-color:var(--accent);color:var(--accent)}
+.pn-build{border-color:var(--blue);color:var(--blue)}
+.pn-new{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.pn-date{margin-left:auto;color:var(--muted);font-size:.9rem}
+.pn-title{font-size:1.15rem;margin:0 0 6px}
+.pn-sum{margin:0 0 10px}
+.pn-credit{margin-top:14px}
+#more{margin:16px auto 0;display:block}
+.embed-box{margin-top:18px}
+.embed-box iframe{display:block;width:100%;height:80vh;min-height:500px;border:1px solid var(--line);border-radius:8px;margin-top:14px;background:#fff}
+footer{display:flex;justify-content:space-between;align-items:center;gap:8px 28px;flex-wrap:wrap;padding:28px max(20px,calc((100% - 1200px)/2));color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}footer a{color:var(--accent);text-decoration:none;font-weight:600}footer a:hover{text-decoration:underline}footer .tm{text-align:right}@media (max-width:760px){footer{justify-content:center;text-align:center}footer .tm{text-align:center}}
+</style>
+<style>
+.rq label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.9rem}
+.rq textarea{font:inherit;font-weight:400;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%;resize:vertical}
+.rq textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.rq select{font:inherit;font-weight:400;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%}
+.rq select:focus-visible,.rq input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.rq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;align-items:start}
+.rq fieldset{border:1px solid var(--line);border-radius:6px;padding:8px 12px 10px;margin:0;min-width:0}
+.rq legend{font-weight:600;font-size:.9rem;padding:0 6px}
+.rq .chk{flex-direction:row;align-items:center;gap:8px;font-weight:400;padding:3px 0}
+.rq-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}
+.rq-actions .btn[disabled]{opacity:.6;cursor:default}
+#rq-msg.err{color:var(--accent)}
+.rq-done{display:flex;flex-direction:column;gap:6px}.rq-done b{font-family:Cinzel,Georgia,serif;font-size:1.2rem;color:var(--accent)}
+</style>
+</head>
+<body>
+<nav></nav>
+<script src="nav.js"></script>
+
+<main class="wrap">
+<h1 class="sr">Recruitment</h1>
+<section id="request">
+  <h2>Request a Raid Spot</h2>
+  <form class="card rq" id="rqform" novalidate>
+    <p class="muted" style="margin:0 0 16px">Want in? Tell the officers which character you would like to bring. They confirm every spot and add you to the roster.</p>
+    <div class="rq-grid">
+      <label for="rq-char">Character<select id="rq-char"><option value="">Loading roster…</option></select></label>
+      <label for="rq-raid">Raid<select id="rq-raid"><option>The Barrow Deeps (10)</option><option>Hyjal Summit (20)</option><option>Both raids</option></select></label>
+      <fieldset><legend>Roles you can fill</legend>
+        <label class="chk"><input type="checkbox" name="rq-role" value="Tank"> Tank</label>
+        <label class="chk"><input type="checkbox" name="rq-role" value="Healer"> Healer</label>
+        <label class="chk"><input type="checkbox" name="rq-role" value="DPS"> DPS</label>
+      </fieldset>
+      <fieldset><legend>Nights you can make</legend>
+        <label class="chk"><input type="checkbox" name="rq-night" value="Wednesday (8PM-12AM EST)" checked> Wednesday</label>
+        <label class="chk"><input type="checkbox" name="rq-night" value="Thursday (8PM-12AM EST)" checked> Thursday</label>
+      </fieldset>
+    </div>
+    <label for="rq-note" style="margin-top:14px"><span>Anything else to tell us? <span class="muted" style="font-weight:400">(optional)</span></span><textarea id="rq-note" rows="3" maxlength="300" placeholder="Off-spec, gear status, a backup role…"></textarea></label>
+    <input type="text" id="rq-web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+    <div class="rq-actions"><button class="btn" type="submit" id="rq-send">Send request</button><span class="muted" id="rq-msg" role="status"></span></div>
+    <p class="muted" style="margin:14px 0 0">Trouble with the form? <a href="https://forms.gle/wESFMshow64SfqLF6" target="_blank" rel="noopener">Open it on Google instead</a>.</p>
+  </form>
+</section>
+</main>
+
+<footer><span>© <span id="yr"></span> <a href="index.html">Dirty Socks</a></span><span class="tm">World of Warcraft® is a registered trademark of Blizzard Entertainment, Inc.</span></footer>
+
+<script>
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+// ===== Raid spot requests =====
+// The form submits straight to the officers' Google Form (answers land in its spreadsheet). The ENTRY ids come from the form's pre-filled link.
+const FORM="https://docs.google.com/forms/d/e/1FAIpQLSecjQnuAldPcMEYdueUhxgdFkDrHhRanQPIn7qA4gPi5g2B2w/formResponse";
+const ENTRY={character:"entry.1353387200",raid:"entry.1801637567",role:"entry.230302326",nights:"entry.874453092",note:"entry.112388042"};
+(function(){
+  const f=document.getElementById("rqform"),sel=document.getElementById("rq-char"),msg=document.getElementById("rq-msg"),btn=document.getElementById("rq-send");
+  const full=m=>m.surname?m.name+" "+m.surname:m.name;
+  fetch("guild-data.json",{cache:"no-cache"}).then(r=>r.json()).then(g=>{
+    const list=(g.roster||[]).filter(m=>m.level>=10).sort((a,b)=>full(a).localeCompare(full(b)));
+    sel.innerHTML='<option value="">Choose your character</option>'+list.map(m=>`<option value="${full(m).replace(/"/g,"&quot;")}">${full(m)} · ${m.cls}</option>`).join("");
+  }).catch(()=>{sel.innerHTML='<option value="">Roster unavailable, try again later</option>'});
+  const say=(t,bad)=>{msg.textContent=t;msg.className="muted"+(bad?" err":"")};
+  f.addEventListener("submit",async e=>{
+    e.preventDefault();
+    const nights=[...f.querySelectorAll("[name=rq-night]:checked")].map(x=>x.value);
+    if(!sel.value)return say("Choose your character first.",true);
+    const roles=[...f.querySelectorAll("[name=rq-role]:checked")].map(x=>x.value);
+    if(!roles.length)return say("Pick at least one role.",true);
+    if(!nights.length)return say("Pick at least one night.",true);
+    if(document.getElementById("rq-web").value)return; // spam trap
+    try{if(Date.now()-Number(localStorage.getItem("ds-rq")||0)<60000)return say("You just sent one. Give it a minute.",true)}catch(_){}
+    const raid=document.getElementById("rq-raid").value,role=roles.join(", ");
+    const body=new URLSearchParams();
+    body.append(ENTRY.character,sel.value);body.append(ENTRY.raid,raid);roles.forEach(r=>body.append(ENTRY.role,r));
+    nights.forEach(n=>body.append(ENTRY.nights,n));
+    const note=document.getElementById("rq-note").value.trim();if(note)body.append(ENTRY.note,note);
+    btn.disabled=true;say("Sending…");
+    try{
+      // Google does not let a web page read the reply, so "no-cors" is used and a request that leaves the browser counts as sent.
+      await fetch(FORM,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body});
+      try{localStorage.setItem("ds-rq",String(Date.now()))}catch(_){}
+      f.innerHTML=`<div class="rq-done"><b>Request sent</b><span>${sel.value} · ${role} · ${raid} · ${nights.map(n=>n.split(" ")[0]).join(" & ")}</span><span class="muted">The officers will confirm your spot and add you to the roster.</span></div>`;
+    }catch(_){btn.disabled=false;say("Could not send. Check your connection, or use the Google link below.",true)}
+  });
+})();
+</script>
+</body>
+</html>

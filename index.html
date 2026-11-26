@@ -60,9 +60,6 @@ html:root:not([data-faction="alliance"]) .splash .sl-alliance,html:root[data-fac
 .splash .btn{padding:12px 28px;font-size:1rem;border:2px solid var(--accent)}
 .splash .btn.ghost{background:transparent;color:var(--accent)}
 .splash .btn:hover{filter:brightness(1.12)}.splash .btn.ghost:hover{background:var(--accent);color:var(--accent-text);filter:none}
-nav .brand{transition:opacity .45s ease}
-nav.logo-away .brand{opacity:0;pointer-events:none}
-@media (prefers-reduced-motion:reduce){nav .brand{transition:none}}
 main.wrap{padding-top:10px}
 @media (max-width:480px){#countdown{padding:5px 11px}#cdtitle{display:none}}
 .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
@@ -357,16 +354,6 @@ const raidsOpen=new Date("2026-12-09T00:00:00");
   const nav=document.querySelector("nav"),bar=document.querySelector(".cdbar"),mq=matchMedia("(min-width:1200px)");
   const place=()=>(mq.matches?nav:bar).appendChild(box);
   place();mq.addEventListener("change",place);
-})();
-// The small nav logo stays hidden while the big splash logo is on screen, then fades in once it scrolls away.
-// Both splash logos (Horde and Alliance) are watched, so it also works after switching factions.
-(function(){
-  const nav=document.querySelector("nav"),bigs=[...document.querySelectorAll(".splash .sl")];
-  if(!bigs.length||!("IntersectionObserver" in window))return;
-  const seen=new Map();
-  const obs=new IntersectionObserver(es=>{es.forEach(e=>seen.set(e.target,e.isIntersecting));nav.classList.toggle("logo-away",[...seen.values()].some(Boolean))},{rootMargin:`-${Math.round(nav.getBoundingClientRect().height)}px 0px 0px 0px`});
-  bigs.forEach(i=>obs.observe(i));
-  nav.classList.add("logo-away");
 })();
 function drawRaids(bk){
   const stats=Object.keys(bk||{}).map(dkey);
