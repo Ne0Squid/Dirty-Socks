@@ -15,17 +15,17 @@
   var css = document.createElement("style");
   css.textContent =
     'html:root{--glow:224,72,63}html:root[data-faction="alliance"]{--glow:106,166,255}' +
-    '.hero.banner{border-bottom:0}.banner{position:relative}.banner::after{content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(40px,8vw,90px);background:linear-gradient(to bottom,rgba(15,17,23,0),var(--bg));pointer-events:none}' +
+    '.hero.banner{border-bottom:0}.banner{position:relative}.banner::after{content:"";position:absolute;left:0;right:0;bottom:0;height:clamp(40px,8vw,90px);background:linear-gradient(to bottom,rgba(7,8,12,0),var(--bg));pointer-events:none}' +
     'html:root[data-faction="alliance"]{--accent:#1f4fa3;--accent-text:#ffffff}' +
-    '@media (prefers-color-scheme:dark){html:root[data-faction="alliance"]:not([data-theme="light"]){--accent:#6aa6ff;--accent-text:#08111f}}' +
-    'html:root[data-faction="alliance"][data-theme="dark"]{--accent:#6aa6ff;--accent-text:#08111f}' +
+    '@media (prefers-color-scheme:dark){html:root[data-faction="alliance"]:not([data-theme="light"]){--accent:#5a94ec;--accent-text:#050b16}}' +
+    'html:root[data-faction="alliance"][data-theme="dark"]{--accent:#5a94ec;--accent-text:#050b16}' +
     '.faction-toggle{display:inline-flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;background:var(--bg)}' +
     '.faction-toggle button{border:0;background:none;color:var(--muted);font:inherit;font-size:.82rem;font-weight:600;padding:4px 14px;cursor:pointer;line-height:1.4}' +
     '.faction-toggle button:hover{color:var(--text)}' +
     '.faction-toggle button[aria-pressed="true"]{color:#fff}' +
     '.faction-toggle button[data-f="horde"][aria-pressed="true"]{background:#b3241f}' +
     '.faction-toggle button[data-f="alliance"][aria-pressed="true"]{background:#2a5db0}' +
-    '.banner{position:relative}.banner .faction-toggle{position:absolute;top:10px;right:10px;z-index:2;background:rgba(12,14,20,.62);border-color:rgba(255,255,255,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 2px 10px rgba(0,0,0,.35)}' +
+    '.banner{position:relative}.banner .faction-toggle{position:absolute;top:10px;right:10px;z-index:2;background:rgba(5,6,9,.62);border-color:rgba(255,255,255,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 2px 10px rgba(0,0,0,.35)}' +
     '@media (max-width:600px){.banner .faction-toggle{top:6px;right:6px}.banner .faction-toggle button{font-size:.68rem;padding:3px 9px}}' +
     '.banner .faction-toggle button{color:#e8e2d2}.banner .faction-toggle button:hover{color:#fff}' +
     '.faction-toggle button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}';
