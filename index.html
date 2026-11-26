@@ -351,7 +351,7 @@ const raidsOpen=new Date("2026-12-09T00:00:00");
   }
   const t=setInterval(tick,1000);tick();
   // Wide screens: the countdown sits at the left of the navigation bar; narrower ones keep it under the bar.
-  const nav=document.querySelector("nav"),bar=document.querySelector(".cdbar"),mq=matchMedia("(min-width:1330px)");
+  const nav=document.querySelector("nav"),bar=document.querySelector(".cdbar"),mq=matchMedia("(min-width:1101px)");
   const place=()=>(mq.matches?nav:bar).appendChild(box);
   place();mq.addEventListener("change",place);
 })();
