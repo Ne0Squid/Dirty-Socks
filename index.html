@@ -40,7 +40,6 @@ section{padding:44px 0}
 h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
 .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-#statcards{grid-template-columns:repeat(4,1fr);gap:10px}
 .stat{text-align:center;padding:14px 6px}.stat b{display:block;font-family:Cinzel,Georgia,serif;font-size:clamp(1.1rem,4.5vw,2rem);color:var(--accent)}.stat span{font-size:clamp(.68rem,2.4vw,.9rem)}
 .muted{color:var(--muted);font-size:.9rem}
 #countdown{display:inline-flex;align-items:center;gap:clamp(8px,2vw,16px);white-space:nowrap;padding:7px 16px;line-height:1.2;background:rgba(12,14,20,.66);border:1px solid rgba(255,255,255,.22);border-radius:999px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 2px 12px rgba(0,0,0,.45)}
@@ -126,11 +125,6 @@ footer{text-align:center;padding:28px 20px;color:var(--muted);font-size:.85rem;b
   <div class="card"><p>Dirty Socks is a Horde guild on WoW Forever (North America). Tell visitors here what makes the guild special: your playstyle, goals, and the kind of players you’re looking for.</p></div>
 </section>-->
 
-<section id="stats">
-  <h2>Guild Stats</h2>
-  <div class="grid" id="statcards"></div>
-  <p class="muted" id="updated" style="margin-top:12px"></p>
-</section>
 <section id="race">
   <h2>Race to 60</h2>
   <div class="grid" id="leaders"></div>
@@ -288,14 +282,6 @@ function render(d){
   classIcons=d.classIcons||{};
   const roster=d.roster, maxLevel=Math.max(...roster.map(m=>m.level));
   const classes=[...new Set(roster.map(m=>m.cls))].sort();
-  const lvls=roster.filter(m=>m.level>=10).map(m=>m.level), ilvls=roster.filter(m=>m.level>=10&&m.ilvl>0).map(m=>m.ilvl);
-  const avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):"–";
-  const avgLvl=avg(lvls), avgIlvl=avg(ilvls);
-  const FOUNDED_ON=new Date(2026,10,4), daysFounded=Math.max(0,Math.floor((new Date()-FOUNDED_ON)/864e5));
-  document.getElementById("statcards").innerHTML=[
-    [roster.length,"Members"],[avgLvl,"Average level"],[avgIlvl,"Average item level"],[daysFounded,"Days since founded"]
-  ].map(s=>`<div class="card stat"><b>${s[0]}</b><span class="muted">${s[1]}</span></div>`).join("");
-  document.getElementById("updated").textContent=d.saved?"Live roster data couldn’t be loaded, so this is a saved copy from "+fmtTime(d.generated)+".":"Roster last updated "+fmtTime(d.generated)+" ("+ago(d.generated)+").";
   const leaders=roster.filter(m=>m.level===maxLevel);
   document.getElementById("leaders").innerHTML=leaders.map(m=>`<div class="card leader" style="border-top:4px solid ${m.color}"><div class="muted">${m.level>=60?"Reached 60!":leaders.length>1?"Tied for the lead":"Leading the race"}</div><h3>${nameLink(m)}</h3><div class="muted">${m.cls}</div><div class="lvl">Level ${m.level}</div><div class="bar"><span style="width:${Math.min(100,m.level/60*100)}%"></span></div><span class="muted">${m.level>=60?"Max level":(60-m.level)+" levels to go"}</span></div>`).join("");
   sorted=roster.filter(m=>m.level>=10).sort((a,b)=>a.rank-b.rank||b.level-a.level); // characters under level 10 stay hidden
