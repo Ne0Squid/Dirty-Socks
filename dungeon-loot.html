@@ -93,13 +93,6 @@ table.loot{width:100%;border-collapse:collapse;font-size:.92rem}
 .res{margin-top:22px}
 .empty{color:var(--muted);padding:18px 4px}
 @media (max-width:640px){.loot th:nth-child(3),.loot td:nth-child(3){display:none}details.boss>summary{padding:12px}.loot td,.loot th{padding:8px 12px}}
-.tip{position:fixed;z-index:80;max-width:min(340px,calc(100vw - 24px));background:#0b0d14;border:1px solid #3a3f52;border-radius:6px;padding:10px 12px;box-shadow:0 8px 28px rgba(0,0,0,.6);font-size:.85rem;line-height:1.45;pointer-events:none;color:#f2f2f2}
-.tip[hidden]{display:none}
-.tip .tn{font-weight:700;font-size:.95rem;margin-bottom:2px}
-.tip .tl{display:flex;justify-content:space-between;gap:16px}
-.tip .c-chalk{color:#f2f2f2}.tip .c-q2{color:#1eff00}.tip .c-fog{color:#9aa0b4}
-.q0{color:#9d9d9d}.q1{color:#fff}.q2{color:#1eff00}.q3{color:#4a9bff}.q4{color:#c06bff}.q5{color:#ff8000}
-.it.has{cursor:help;text-decoration:underline dotted rgba(255,255,255,.3);text-underline-offset:3px}
 </style>
 </head>
 <body>
@@ -128,18 +121,19 @@ table.loot{width:100%;border-collapse:collapse;font-size:.92rem}
 
 <footer>© <span id="yr"></span> Dirty Socks · Not affiliated with Blizzard Entertainment.</footer>
 
+<script src="tooltips.js"></script>
 <script>
 document.getElementById("yr").textContent=new Date().getFullYear();
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const slug=n=>n.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-let ST={},D=[],TRASH={},cur=null,allOpen=false;
+let D=[],TRASH={},cur=null,allOpen=false;
 const $=id=>document.getElementById(id);
 const qv=()=>$("q").value.trim().toLowerCase(),sv=()=>$("slot").value;
 const slotOk=i=>!sv()||i.slot===sv();
 const chance=i=>i.chance||"";
 function rows(items){
   const showC=items.some(i=>i.chance);
-  return `<div class="tw"><table class="loot"><thead><tr><th>Item</th><th>Slot</th><th>Type</th>${showC?"<th>Drop chance</th>":""}</tr></thead><tbody>${items.map(i=>`<tr><td class="it${ST[i.item]?` has q${ST[i.item].q}`:""}" data-tip="${esc(i.item)}">${esc(i.item)}</td><td class="${i.slot==="Not yet discovered"?"mu":""}">${esc(i.slot==="Not yet discovered"?"Slot unknown":i.slot||"")}</td><td class="mu">${esc(i.kind||"")}</td>${showC?`<td class="mu">${esc(chance(i))}</td>`:""}</tr>`).join("")}</tbody></table></div>`;
+  return `<div class="tw"><table class="loot"><thead><tr><th>Item</th><th>Slot</th><th>Type</th>${showC?"<th>Drop chance</th>":""}</tr></thead><tbody>${items.map(i=>`<tr><td class="it">${DSTips.span(i.item)}</td><td class="${i.slot==="Not yet discovered"?"mu":""}">${esc(i.slot==="Not yet discovered"?"Slot unknown":i.slot||"")}</td><td class="mu">${esc(i.kind||"")}</td>${showC?`<td class="mu">${esc(chance(i))}</td>`:""}</tr>`).join("")}</tbody></table></div>`;
 }
 const badge=t=>t==="Boss"?"":`<span class="badge${t==="Final boss"?" fin":""}">${esc(t.replace(/^Boss \((.*)\)$/,"$1"))}</span>`;
 function pick(id,fromHash){
@@ -157,7 +151,7 @@ function draw(){
       d.bosses.forEach(b=>b.items.forEach(i=>{if(slotOk(i)&&(i.item.toLowerCase().includes(q)||b.name.toLowerCase().includes(q)))hits.push({i,src:b.name,d:d.name})}));
       (TRASH[d.trashGroup]||[]).forEach(i=>{if(d===D.find(x=>x.trashGroup===d.trashGroup)&&slotOk(i)&&i.item.toLowerCase().includes(q))hits.push({i,src:"Trash",d:d.trashGroup})});
     });
-    view.innerHTML=`<div class="dhead res"><h3>Search results</h3><span class="muted">${hits.length} ${hits.length===1?"item":"items"}</span></div>`+(hits.length?`<div class="card" style="padding:0"><div class="tw" style="border:0"><table class="loot"><thead><tr><th>Item</th><th>Slot</th><th>Type</th><th>Dropped by</th></tr></thead><tbody>${hits.map(h=>`<tr><td class="it${ST[h.i.item]?` has q${ST[h.i.item].q}`:""}" data-tip="${esc(h.i.item)}">${esc(h.i.item)}</td><td>${esc(h.i.slot==="Not yet discovered"?"Slot unknown":h.i.slot||"")}</td><td class="mu">${esc(h.i.kind||"")}</td><td>${esc(h.src)} <span class="mu">· ${esc(h.d)}</span></td></tr>`).join("")}</tbody></table></div></div>`:'<p class="empty">Nothing matches that search.</p>');
+    view.innerHTML=`<div class="dhead res"><h3>Search results</h3><span class="muted">${hits.length} ${hits.length===1?"item":"items"}</span></div>`+(hits.length?`<div class="card" style="padding:0"><div class="tw" style="border:0"><table class="loot"><thead><tr><th>Item</th><th>Slot</th><th>Type</th><th>Dropped by</th></tr></thead><tbody>${hits.map(h=>`<tr><td class="it">${DSTips.span(h.i.item)}</td><td>${esc(h.i.slot==="Not yet discovered"?"Slot unknown":h.i.slot||"")}</td><td class="mu">${esc(h.i.kind||"")}</td><td>${esc(h.src)} <span class="mu">· ${esc(h.d)}</span></td></tr>`).join("")}</tbody></table></div></div>`:'<p class="empty">Nothing matches that search.</p>');
     $("toggle").hidden=true;return;
   }
   $("toggle").hidden=false;
@@ -173,26 +167,13 @@ $("dungeons").addEventListener("click",e=>{const b=e.target.closest("[data-id]")
 $("q").addEventListener("input",draw);$("slot").addEventListener("change",draw);
 $("toggle").addEventListener("click",()=>{allOpen=!allOpen;document.querySelectorAll("#view details.boss").forEach(d=>d.open=allOpen);$("toggle").textContent=allOpen?"Collapse all":"Expand all"});
 window.addEventListener("hashchange",()=>{const id=location.hash.slice(1);if(D.some(d=>slug(d.name)===id))pick(id,true)});
-const tip=document.createElement("div");tip.className="tip";tip.hidden=true;document.body.appendChild(tip);
-function showTip(el,x,y){
-  const it=ST[el.dataset.tip];if(!it)return;
-  tip.innerHTML=`<div class="tn q${it.q}">${esc(el.dataset.tip)}</div>`+it.lines.map(l=>l.l!=null?`<div class="tl c-${l.c}"><span>${esc(l.l)}</span><span>${esc(l.r)}</span></div>`:`<div class="c-${l.c}">${esc(l.t)}</div>`).join("");
-  tip.hidden=false;const r=tip.getBoundingClientRect();
-  let left=x+16,top=y+16;if(left+r.width>innerWidth-8)left=Math.max(8,x-r.width-16);if(top+r.height>innerHeight-8)top=Math.max(8,innerHeight-r.height-8);
-  tip.style.left=left+"px";tip.style.top=top+"px";
-}
-const view$=$("view");
-view$.addEventListener("mousemove",e=>{const t=e.target.closest(".it.has");if(t)showTip(t,e.clientX,e.clientY);else tip.hidden=true});
-view$.addEventListener("mouseleave",()=>tip.hidden=true);
-view$.addEventListener("click",e=>{const t=e.target.closest(".it.has");if(t&&matchMedia("(hover:none)").matches){const r=t.getBoundingClientRect();showTip(t,r.left,r.bottom-16);tip.style.pointerEvents="none";clearTimeout(window._tt);window._tt=setTimeout(()=>tip.hidden=true,4000)}else if(!t)tip.hidden=true});
-window.addEventListener("scroll",()=>tip.hidden=true,{passive:true});
-fetch("item-stats.json").then(r=>r.ok?r.json():null).then(j=>{if(j&&j.items){ST=j.items;if(cur)draw()}}).catch(()=>{});
 fetch("dungeon-loot.json").then(r=>r.json()).then(j=>{
   const lv=s=>parseInt(s,10)||0;
   D=j.dungeons.slice().sort((a,b)=>lv(a.levels)-lv(b.levels)||a.name.localeCompare(b.name));TRASH=j.trash;
   const slots=[...new Set(D.flatMap(d=>d.bosses.flatMap(b=>b.items.map(i=>i.slot))).concat(Object.values(TRASH).flat().map(i=>i.slot)))].filter(s=>s&&s!=="Not yet discovered").sort();
   $("slot").innerHTML='<option value="">All slots</option>'+slots.map(s=>`<option>${esc(s)}</option>`).join("");
   $("notes").innerHTML=j.notes.map(n=>`<li>${esc(n)}</li>`).join("");
+  DSTips.ready(()=>{if(cur)draw()});
   const h=location.hash.slice(1);pick(D.some(d=>slug(d.name)===h)?h:slug(D[0].name),true);
 }).catch(()=>{$("view").innerHTML='<p class="muted">Could not load the loot tables. Try refreshing the page.</p>'});
 </script>
