@@ -4,7 +4,7 @@ const get = async u => { const r = await fetch(u, { headers: UA, signal: AbortSi
 const out = {};
 const idx = await get("https://endgametools.com/en/wow-forever/items/search.json");
 out.indexStatus = idx.s; out.indexLen = idx.t.length; out.indexHead = idx.t.slice(0, 600);
-let rows = []; try { rows = JSON.parse(idx.t); } catch {}
+let rows = []; try { rows = JSON.parse(idx.t).rows; } catch {}
 out.rowShape = Array.isArray(rows) ? rows.slice(0, 3) : Object.keys(rows).slice(0, 5);
 const j = JSON.parse(readFileSync("dungeon-loot.json", "utf8"));
 const names = [...new Set(j.dungeons.flatMap(d => d.bosses.flatMap(b => b.items.map(i => i.item))).concat(Object.values(j.trash).flat().map(i => i.item)))];
