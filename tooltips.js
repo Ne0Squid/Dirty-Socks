@@ -38,7 +38,8 @@ a[data-wowhead]{color:#c9a8ff;text-decoration:underline dotted rgba(255,255,255,
     window.whTooltips = { colorLinks: true, iconizeLinks: false, renameLinks: false };
     const s = document.createElement("script"); s.src = "https://wow.zamimg.com/js/tooltips.js"; s.async = true; document.head.appendChild(s);
   }
-  const wh = n => ids[key(n)];
+  // Wowhead's own tooltip is preferred whenever we know the item ID (from item-ids.json or item-stats.json).
+  const wh = n => ids[key(n)] || (items[n] && items[n].id);
   fetch("item-ids.json").then(r => r.ok ? r.json() : null).then(j => { if (j) { Object.entries(j).forEach(([k, v]) => ids[key(k)] = v); waiting.forEach(f => f()); } }).catch(() => {});
   fetch("item-stats.json").then(r => r.ok ? r.json() : null).then(j => { if (j && j.items) { items = j.items; waiting.forEach(f => f()); } }).catch(() => {});
   window.DSTips = {
@@ -58,6 +59,6 @@ a[data-wowhead]{color:#c9a8ff;text-decoration:underline dotted rgba(255,255,255,
       }).join("");
     },
     // Wrap an item name in a tooltip span (plain text if there is no data for it).
-    span: n => items[n] || !wh(n) ? `<span${items[n] ? ` class="has-tip q${items[n].q}"` : ""} data-tip="${esc(n)}">${esc(n)}</span>` : (setTimeout(wowhead, 0), `<a href="https://www.wowhead.com/forever/item=${wh(n)}" target="_blank" rel="noopener" data-wowhead="item=${wh(n)}&domain=forever">${esc(n)}</a>`),
+    span: n => !wh(n) ? `<span${items[n] ? ` class="has-tip q${items[n].q}"` : ""} data-tip="${esc(n)}">${esc(n)}</span>` : (setTimeout(wowhead, 0), `<a href="https://www.wowhead.com/forever/item=${wh(n)}" target="_blank" rel="noopener" data-wowhead="item=${wh(n)}&domain=forever">${esc(n)}</a>`),
   };
 })();
