@@ -6,11 +6,13 @@
 .tip .tl{display:flex;justify-content:space-between;gap:16px}
 .tip .c-chalk{color:#f2f2f2}.tip .c-q2{color:#1eff00}.tip .c-fog{color:#9aa0b4}
 .q0{color:#9d9d9d}.q1{color:#fff}.q2{color:#1eff00}.q3{color:#4a9bff}.q4{color:#c06bff}.q5{color:#ff8000}
+a[data-wowhead]{color:#c9a8ff;text-decoration:underline dotted rgba(255,255,255,.3);text-underline-offset:3px}
 .has-tip{cursor:help;text-decoration:underline dotted rgba(255,255,255,.3);text-underline-offset:3px}`;
   const st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; document.body.appendChild(tip);
-  let items = {}; const waiting = [];
+  let items = {}, ids = {}; const waiting = [];
+  const key = n => String(n).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   function show(el, x, y) {
     const it = items[el.dataset.tip]; if (!it) return;
     tip.innerHTML = `<div class="tn q${it.q}">${esc(el.dataset.tip)}</div>` + it.lines.map(l => l.l != null ? `<div class="tl c-${l.c}"><span>${esc(l.l)}</span><span>${esc(l.r)}</span></div>` : `<div class="c-${l.c}">${esc(l.t)}</div>`).join("");
@@ -28,6 +30,16 @@
     else if (!t) tip.hidden = true;
   });
   addEventListener("scroll", () => tip.hidden = true, { passive: true });
+  // Items our stats source doesn't have (e.g. Tier 0.5 sets) fall back to Wowhead's own hover tooltips, loaded only when needed.
+  let whLoaded = false;
+  function wowhead() {
+    if (whLoaded) { try { window.$WowheadPower && window.$WowheadPower.refreshLinks(); } catch (e) {} return; }
+    whLoaded = true;
+    window.whTooltips = { colorLinks: true, iconizeLinks: false, renameLinks: false };
+    const s = document.createElement("script"); s.src = "https://wow.zamimg.com/js/tooltips.js"; s.async = true; document.head.appendChild(s);
+  }
+  const wh = n => ids[key(n)];
+  fetch("item-ids.json").then(r => r.ok ? r.json() : null).then(j => { if (j) { Object.entries(j).forEach(([k, v]) => ids[key(k)] = v); waiting.forEach(f => f()); } }).catch(() => {});
   fetch("item-stats.json").then(r => r.ok ? r.json() : null).then(j => { if (j && j.items) { items = j.items; waiting.forEach(f => f()); } }).catch(() => {});
   window.DSTips = {
     has: n => !!items[n],
@@ -42,10 +54,10 @@
         if (t === ")") { paren = false; horde = false; return esc(t); }
         if (t === " / ") return esc(t);
         const n = t.trim();
-        return n && (!paren || horde) && items[n] ? esc(t.slice(0, t.indexOf(n))) + window.DSTips.span(n) + esc(t.slice(t.indexOf(n) + n.length)) : esc(t);
+        return n && (!paren || horde) && (items[n] || wh(n)) ? esc(t.slice(0, t.indexOf(n))) + window.DSTips.span(n) + esc(t.slice(t.indexOf(n) + n.length)) : esc(t);
       }).join("");
     },
     // Wrap an item name in a tooltip span (plain text if there is no data for it).
-    span: n => `<span${items[n] ? ` class="has-tip q${items[n].q}"` : ""} data-tip="${esc(n)}">${esc(n)}</span>`,
+    span: n => items[n] || !wh(n) ? `<span${items[n] ? ` class="has-tip q${items[n].q}"` : ""} data-tip="${esc(n)}">${esc(n)}</span>` : (setTimeout(wowhead, 0), `<a href="https://www.wowhead.com/forever/item=${wh(n)}" target="_blank" rel="noopener" data-wowhead="item=${wh(n)}&domain=forever">${esc(n)}</a>`),
   };
 })();
