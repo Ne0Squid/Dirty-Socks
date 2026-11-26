@@ -321,9 +321,9 @@ const out = {
   roster: members,
   history: { days },
   fame,
-  professionIcons,
+  professionIcons: { ...(prevData.professionIcons ?? {}), ...professionIcons }, // keep earlier icons if Blizzard's media lookups fail this run
   recipes,
-  classIcons,
+  classIcons: { ...(prevData.classIcons ?? {}), ...classIcons },
   unrecognizedKills,
   bossKills, // dungeon/raid boss kills combined across the guild
   // Raw payloads, kept so raid/dungeon progress can be mapped once their shape is confirmed.

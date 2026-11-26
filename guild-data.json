@@ -987,7 +987,19 @@
       }
     ]
   },
-  "professionIcons": {},
+  "professionIcons": {
+    "Cooking": "https://render.worldofwarcraft.com/forever-us/icons/56/133971.jpg",
+    "Skinning": "https://render.worldofwarcraft.com/forever-us/icons/56/134366.jpg",
+    "Blacksmithing": "https://render.worldofwarcraft.com/forever-us/icons/56/136241.jpg",
+    "Fishing": "https://render.worldofwarcraft.com/forever-us/icons/56/136245.jpg",
+    "Tailoring": "https://render.worldofwarcraft.com/forever-us/icons/56/136249.jpg",
+    "Mining": "https://render.worldofwarcraft.com/forever-us/icons/56/136248.jpg",
+    "Enchanting": "https://render.worldofwarcraft.com/forever-us/icons/56/136244.jpg",
+    "Leatherworking": "https://render.worldofwarcraft.com/forever-us/icons/56/136247.jpg",
+    "First Aid": "https://render.worldofwarcraft.com/forever-us/icons/56/135966.jpg",
+    "Herbalism": "https://render.worldofwarcraft.com/forever-us/icons/56/136246.jpg",
+    "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg"
+  },
   "recipes": {
     "Tailoring": {
       "Simple Linen Boots": [
@@ -3239,7 +3251,17 @@
       ]
     }
   },
-  "classIcons": {},
+  "classIcons": {
+    "Priest": "https://render.worldofwarcraft.com/forever-us/icons/56/626004.jpg",
+    "Warrior": "https://render.worldofwarcraft.com/forever-us/icons/56/626008.jpg",
+    "Hunter": "https://render.worldofwarcraft.com/forever-us/icons/56/626000.jpg",
+    "Mage": "https://render.worldofwarcraft.com/forever-us/icons/56/626001.jpg",
+    "Paladin": "https://render.worldofwarcraft.com/forever-us/icons/56/626003.jpg",
+    "Shaman": "https://render.worldofwarcraft.com/forever-us/icons/56/626006.jpg",
+    "Rogue": "https://render.worldofwarcraft.com/forever-us/icons/56/626005.jpg",
+    "Warlock": "https://render.worldofwarcraft.com/forever-us/icons/56/626007.jpg",
+    "Druid": "https://render.worldofwarcraft.com/forever-us/icons/56/625999.jpg"
+  },
   "unrecognizedKills": [
     "Overlord Wyrmthalak kills (Lower Blackrock Spire)",
     "General Drakkisath kills (Upper Blackrock Spire)"
