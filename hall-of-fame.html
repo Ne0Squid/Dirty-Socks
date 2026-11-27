@@ -64,7 +64,7 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 .pod{box-shadow:0 0 30px -8px var(--m)}.pod.p1{order:2;padding-top:30px;padding-bottom:26px;box-shadow:0 0 40px -6px var(--m)}.pod.p2{order:1}.pod.p3{order:3}
 .pod .medal{font-size:2.2rem;line-height:1}
 .pod .place{font-family:Cinzel,Georgia,serif;font-weight:800;color:var(--m);letter-spacing:.06em;font-size:.85rem;margin:6px 0 10px;text-transform:uppercase}
-.pod h3{font-size:1.25rem;margin:8px 0 2px}
+.pod h3{font-size:1.25rem;margin:8px 0 2px}.pod h3 a{color:inherit;text-decoration:none}.pod h3 a:hover{color:var(--accent);text-decoration:underline}.pod h3 a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
 .pod .when{margin-top:8px}
 .pod.open{opacity:.9;border-top-style:dashed}
 .pod .bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin:10px 0 4px}.pod .bar span{display:block;height:100%;background:var(--m)}
@@ -137,15 +137,16 @@ function draw(g){
   const roster=(g.roster||[]).filter(m=>m.level>=10),icons=g.classIcons||{};
   const ico=m=>icons[m.cls]?`<img class="cico" src="${esc(icons[m.cls])}" alt="" style="border-color:${m.color}" loading="lazy">`:"";
   const bySlug={};roster.forEach(m=>bySlug[slugOf(m)]=m);
+  const pname=(m,slug)=>bySlug[slug]?`<a href="/character?c=${encodeURIComponent(slug)}">${esc(both(m))}</a>`:esc(both(m));   // links to the character page while they are in the guild
   // ---- Race to 60 podium: locked winners first, then the current leaders chasing the open spots
   const won=((g.fame||{}).reached60||[]).slice(0,3),wonSlugs=new Set(won.map(w=>w.slug));
   const chasers=roster.filter(m=>m.level<60&&!wonSlugs.has(slugOf(m))).sort((a,b)=>b.level-a.level);
   document.getElementById("podium").innerHTML=[0,1,2].map(i=>{
     const [medal,label,col]=MEDALS[i],w=won[i];
-    if(w){const m=bySlug[w.slug]||w;return `<div class="card pod p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div>${ico(m)}<h3>${esc(both(m))}</h3><div class="muted" style="color:${w.color}">${esc(w.cls)}</div><div class="muted when">Reached 60 on ${dfmt(w.at)}</div></div>`}
+    if(w){const m=bySlug[w.slug]||w;return `<div class="card pod p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div>${ico(m)}<h3>${pname(m,w.slug)}</h3><div class="muted" style="color:${w.color}">${esc(w.cls)}</div><div class="muted when">Reached 60 on ${dfmt(w.at)}</div></div>`}
     const c=chasers[i-won.length];
     if(!c)return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div><h3>Unclaimed</h3></div>`;
-    return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label} · unclaimed</div>${ico(c)}<h3>${esc(both(c))}</h3><div class="muted" style="color:${c.color}">${esc(c.cls)}</div><div class="bar"><span style="width:${c.level/60*100}%"></span></div><div class="muted">Level ${c.level}</div></div>`;
+    return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label} · unclaimed</div>${ico(c)}<h3>${pname(c,slugOf(c))}</h3><div class="muted" style="color:${c.color}">${esc(c.cls)}</div><div class="bar"><span style="width:${c.level/60*100}%"></span></div><div class="muted">Level ${c.level}</div></div>`;
   }).join("");
   // ---- 4th to 10th place: everyone who reached 60 after the podium; an open place shows the highest-level character still climbing
   const all=(g.fame||{}).reached60||[],ORD=["4th","5th","6th","7th","8th","9th","10th"];
