@@ -321,9 +321,9 @@ function paint(){
     +`<div class="ch-links"><a href="${armoryUrl(m)}" target="_blank" rel="noopener">View on the Blizzard Armory ↗</a><span class="muted">Updated ${esc(ago(G.generated))}</span></div>`
     +altsHtml(m)+`</div></div>`
     +signupHtml(m)
-    +`<div class="layout"><div class="stack"><section class="card"><h3 class="t">Gear</h3>${gearHtml()}</section></div>`
+    +`<div class="layout"><div class="stack"><section class="card"><h3 class="t">Gear</h3>${gearHtml()}</section>`
+    +`<section class="card"><h3 class="t">Professions</h3>${profHtml(m,slug)}</section></div>`
     +`<div class="stack"><section class="card"><h3 class="t">Stats</h3>${statsHtml()}</section>`
-    +`<section class="card"><h3 class="t">Professions</h3>${profHtml(m,slug)}</section>`
     +`<section class="card"><h3 class="t">Dungeon &amp; raid kills</h3>${killsHtml(slug)}</section></div></div>`;
 }
 function pickView(){
