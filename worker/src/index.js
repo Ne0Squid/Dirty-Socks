@@ -229,13 +229,23 @@ function alertDiscord(ctx, env, store, sub, build, url = env.DISCORD_WEBHOOK_URL
 // lists, quotes, links, pictures); the site turns it into HTML itself and escapes everything else. The author is stored for the
 // record but never sent to the site or to Discord, so nothing shows who (or what group) wrote a post.
 // Pictures are uploaded first (POST /api/news/image), then pointed at from the body as ![caption](img:ID).
+// Each post also has a URL name (slug) made from its title, so it lives at /news/<slug> on the site, and an optional cover photo
+// (with a focus point) that the home page slider shows behind the title.
 const NEWS_ID = /^[a-z0-9]{6,40}$/;
 const NEWS_FEED_MAX = 30, NEWS_STORE_MAX = 200, NEWS_ALERTS_PER_HOUR = 10, NEWS_BODY_MAX = 8000;
 const NEWS_IMG_MAX = 800_000, NEWS_IMG_PER_POST = 12, NEWS_IMG_STORE_MAX = 120, NEWS_IMG_PER_HOUR = 40, NEWS_IMG_ORPHAN_MS = 24 * 3600e3;
 const lines = (s, n) => String(s ?? "").replace(/\r\n?/g, "\n").replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f<]/g, "").replace(/[ \t]+/g, " ").replace(/ ?\n ?/g, "\n").replace(/\n{3,}/g, "\n\n").trim().slice(0, n);
-const publicPost = (p) => ({ id: p.id, title: p.title, body: p.body, ...(p.md ? { md: true } : {}), pinned: !!p.pinned, at: p.at, ...(p.edited ? { edited: p.edited } : {}) });
+// "Team Liquid Cafe is HERE!" -> "team-liquid-cafe-is-here". Same rule is used to find a post from whatever is typed after /news/.
+const slugify = (t) => String(t ?? "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/&/g, " and ").replace(/['\u2019]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60).replace(/-+$/, "") || "post";
+const slugOf = (p) => p.slug || `${slugify(p.title)}-${String(p.id).slice(-5)}`;   // posts from before slugs existed get a stable one
+const pct = (v) => { const n = Math.round(Number(v)); return Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : 50; };
+const publicPost = (p) => ({
+  id: p.id, slug: slugOf(p), title: p.title, body: p.body, ...(p.md ? { md: true } : {}), pinned: !!p.pinned, at: p.at, ...(p.edited ? { edited: p.edited } : {}),
+  ...(p.cover ? { cover: p.cover, fx: p.fx ?? 50, fy: p.fy ?? 50 } : {}),
+});
 const IMG_TOKEN = /!\[([^\]\n]*)\]\(img:([a-z0-9]{6,40})\)/g;
 const newsImageIds = (body) => [...new Set([...String(body ?? "").matchAll(IMG_TOKEN)].map((m) => m[2]))];
+const postImageIds = (post) => [...new Set([...newsImageIds(post.body), ...(post.cover ? [post.cover] : [])])];   // pictures in the text plus the cover
 const randId = (n) => Array.from(crypto.getRandomValues(new Uint8Array(n)), (x) => x.toString(36).padStart(2, "0")).join("");
 const IMG_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 // What the bytes really are, so a renamed file can never be stored or served as a picture.
@@ -249,15 +259,25 @@ function sniffImage(b) {
 }
 async function dropImage(store, id) { await store.del(`imgmeta:${id}`); await store.del(`imgdata:${id}`); }
 
-async function publicNews(env) {
+async function sortedNews(env) {
   const posts = (await db(env).list("news:")).map(({ value }) => value);
-  posts.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b.at - a.at || (a.id < b.id ? 1 : a.id > b.id ? -1 : 0));   // equal timestamps: stable order
-  return json({ news: posts.slice(0, NEWS_FEED_MAX).map(publicPost) }, 200, { "Cache-Control": "public, max-age=15", Vary: "Origin" });
+  return posts.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b.at - a.at || (a.id < b.id ? 1 : a.id > b.id ? -1 : 0));   // equal timestamps: stable order
+}
+async function publicNews(env, url) {
+  const asked = parseInt(url.searchParams.get("limit"), 10), limit = Number.isFinite(asked) ? Math.min(NEWS_FEED_MAX, Math.max(1, asked)) : NEWS_FEED_MAX;
+  return json({ news: (await sortedNews(env)).slice(0, limit).map(publicPost) }, 200, { "Cache-Control": "public, max-age=15", Vary: "Origin" });
+}
+// One post by the name in its address. Typing the title with spaces or capitals works too (it is turned into the slug first).
+async function publicPostBySlug(env, seg) {
+  let want; try { want = seg ? slugify(decodeURIComponent(seg)) : ""; } catch { return json({ error: "not found" }, 404); }
+  if (!want) return json({ error: "not found" }, 404);
+  const post = (await sortedNews(env)).find((p) => slugOf(p) === want);
+  return post ? json({ post: publicPost(post) }, 200, { "Cache-Control": "public, max-age=15", Vary: "Origin" }) : json({ error: "not found" }, 404);
 }
 
 // Discord already understands the same Markdown, so the text goes across as written. Pictures cannot sit inside an embed's text, so the
 // first one becomes the embed's picture and the rest are left for the site. Links keep only http(s) targets. No pings either way.
-function discordBody(body, site) {
+function discordBody(body, link) {
   let first = null;
   const kept = [];
   for (const l of String(body ?? "").split("\n")) {
@@ -268,9 +288,9 @@ function discordBody(body, site) {
     kept.push(out);
   }
   let text = kept.join("\n").replace(/\n{3,}/g, "\n\n").trim();
-  if (text.length > 3500) {
-    const cut = text.lastIndexOf("\n", 3500);
-    text = text.slice(0, cut > 1500 ? cut : 3500).trimEnd() + "\n\n" + (site ? `[Read the rest on the site](${site}/#news)` : "…");
+  if (text.length > 1400) {   // the post has its own page now, so the channel only gets the start
+    const cut = text.lastIndexOf("\n", 1400);
+    text = text.slice(0, cut > 700 ? cut : 1400).trimEnd() + "\n\n" + (link ? `[Read the full post](${link})` : "…");
   }
   return { text, image: first };
 }
@@ -278,10 +298,11 @@ function discordBody(body, site) {
 function newsEmbed(env, post, apiOrigin) {
   const site = String(env.SITE_ORIGIN || "").replace(/\/+$/, "");
   const embed = { title: plain(post.title, 250), color: 0xd9534f, timestamp: new Date(post.at).toISOString(), footer: { text: "Dirty Socks news" } };
-  const { text, image } = discordBody(post.body, site);
+  const link = site ? `${site}/news/${slugOf(post)}` : "", { text, image } = discordBody(post.body, link);
   if (text) embed.description = text;
-  if (image && apiOrigin) embed.image = { url: `${apiOrigin}/api/news/img/${image}` };
-  if (site) embed.url = `${site}/#news`;
+  const pic = post.cover || image;   // the cover photo leads; otherwise the first picture in the text
+  if (pic && apiOrigin) embed.image = { url: `${apiOrigin}/api/news/img/${pic}` };
+  if (link) embed.url = link;
   return { username: "Dirty Socks News", allowed_mentions: { parse: [] }, embeds: [embed] };
 }
 
@@ -441,13 +462,15 @@ async function handleApi(req, url, env, who, ctx) {
       if (!NEWS_ID.test(id)) return json({ error: "bad id" }, 400);
       const gone = await store.get(`news:${id}`);
       await store.del(`news:${id}`);
-      if (gone) for (const r of newsImageIds(gone.body)) await dropImage(store, r);
+      if (gone) for (const r of postImageIds(gone)) await dropImage(store, r);
       return json({ ok: true });
     }
     let b; try { b = await req.json(); } catch { return json({ error: "bad request" }, 400); }
     const title = clean(b.title, 120), body = lines(b.body, NEWS_BODY_MAX);
     if (!title) return json({ error: "Give the post a title." }, 400);
-    let prev = null, nid = id;
+    const cover = clean(b.cover, 60);
+    if (cover && !NEWS_ID.test(cover)) return json({ error: "bad cover" }, 400);
+    let prev = null, nid = id, slug = "";
     if (method === "PUT") {
       if (!NEWS_ID.test(id)) return json({ error: "bad id" }, 400);
       prev = await store.get(`news:${id}`);
@@ -455,9 +478,11 @@ async function handleApi(req, url, env, who, ctx) {
     } else {
       if ((await store.list("news:")).length >= NEWS_STORE_MAX) return json({ error: "That is a lot of news. Delete some old posts first." }, 400);
       nid = Date.now().toString(36) + randId(3);
+      const taken = new Set((await sortedNews(env)).map(slugOf)), base = slugify(title);
+      slug = base; for (let n = 2; taken.has(slug); n++) slug = `${base}-${n}`;   // two posts with the same title get -2, -3...
     }
     // Every picture the body points at must exist and not belong to some other post.
-    const refs = newsImageIds(body), metas = [];
+    const refs = postImageIds({ body, cover }), metas = [];
     if (refs.length > NEWS_IMG_PER_POST) return json({ error: `Up to ${NEWS_IMG_PER_POST} pictures per post.` }, 400);
     for (const r of refs) {
       const m = await store.get(`imgmeta:${r}`);
@@ -465,12 +490,13 @@ async function handleApi(req, url, env, who, ctx) {
       if (m.post && m.post !== nid) return json({ error: "A picture in this post belongs to a different post." }, 400);
       metas.push(m);
     }
-    const now = Date.now(), post = prev
-      ? { ...prev, title, body, md: true, pinned: !!b.pinned, edited: now }
-      : { id: nid, title, body, md: true, pinned: !!b.pinned, at: now, by: who.sub };
+    const now = Date.now(), look = cover ? { cover, fx: pct(b.fx), fy: pct(b.fy) } : {};
+    const post = prev
+      ? (({ cover: _c, fx: _x, fy: _y, ...rest }) => ({ ...rest, title, body, md: true, pinned: !!b.pinned, edited: now, ...look }))(prev)
+      : { id: nid, slug, title, body, md: true, pinned: !!b.pinned, at: now, by: who.sub, ...look };
     await store.put(`news:${nid}`, post);
     for (const m of metas) if (m.post !== nid) await store.put(`imgmeta:${m.id}`, { ...m, post: nid });
-    if (prev) for (const r of newsImageIds(prev.body)) if (!refs.includes(r)) await dropImage(store, r);   // pictures taken out of the text are deleted
+    if (prev) for (const r of postImageIds(prev)) if (!refs.includes(r)) await dropImage(store, r);   // pictures taken out of the text, or a replaced cover, are deleted
     if (!prev) alertDiscord(ctx, env, store, `news:${who.sub}`, () => newsEmbed(env, post, url.origin), env.DISCORD_NEWS_WEBHOOK_URL, NEWS_ALERTS_PER_HOUR);   // new posts only, not edits
     return json({ ok: true, post: publicPost(post) });
   }
@@ -486,7 +512,8 @@ export default {
       if (url.pathname === "/auth/login") res = await login(url, env);
       else if (url.pathname === "/auth/callback") res = await callback(url, env);
       else if (url.pathname === "/api/roster" && req.method === "GET") res = await publicRoster(env);
-      else if (url.pathname === "/api/news" && req.method === "GET") res = await publicNews(env);
+      else if (url.pathname === "/api/news" && req.method === "GET") res = await publicNews(env, url);
+      else if (url.pathname.startsWith("/api/news/post/") && req.method === "GET") res = await publicPostBySlug(env, url.pathname.slice("/api/news/post/".length));
       else if (url.pathname.startsWith("/api/news/img/") && req.method === "GET") res = await newsImage(env, url.pathname.slice("/api/news/img/".length));
       else if (url.pathname.startsWith("/api/")) {
         const who = await me(req, env);

@@ -75,5 +75,42 @@
     }
     return out.join("");
   }
-  return { render: render, esc: esc };
+
+  // A short plain-text teaser (about 200-280 characters, cut at a word) for the home slider, the all-news list and link previews.
+  function excerpt(src, max) {
+    max = max || 280;
+    var out = [];
+    String(src == null ? "" : src).replace(/\r\n?/g, "\n").replace(/\u0000/g, "").split("\n").forEach(function (l) {
+      if (/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(l) || new RegExp("^\\s*!\\[[^\\]\\n]*\\]\\(img:" + ID + "\\)\\s*$").test(l)) return;
+      var head = /^\s*#{1,3}\s+/.test(l);
+      l = l.replace(/^\s*(#{1,3}\s+|>\s?|[-*+]\s+|\d+[.)]\s+)/, "")
+        .replace(new RegExp("!\\[([^\\]\\n]*)\\]\\(img:" + ID + "\\)", "g"), "")
+        .replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s()<>"'`]+)\)/g, "$1")
+        .replace(/`([^`\n]+)`/g, "$1")
+        .replace(/\*\*(?=\S)([^\n]*?\S)\*\*/g, "$1").replace(/~~(?=\S)([^\n]*?\S)~~/g, "$1")
+        .replace(/(^|[^*\w])\*(?=[^\s*])([^*\n]*?[^\s*])\*(?!\*)/g, "$1$2").replace(/(^|[^\w])_(?=[^\s_])([^_\n]*?[^\s_])_(?!\w)/g, "$1$2")
+        .replace(/https?:\/\/(?:www\.)?([^\s<>"'`]+?)\/?(?=[\s.,;:!?)]*(?:\s|$))/g, "$1")
+        .replace(/\s+/g, " ").trim();
+      if (!l) return;
+      out.push(head && !/[.!?:]$/.test(l) ? l + "." : l);
+    });
+    var t = out.join(" ");
+    if (t.length <= max) return t;
+    var cut = t.slice(0, max), sp = cut.lastIndexOf(" ");
+    if (sp > max * 0.7) cut = cut.slice(0, sp);
+    return cut.replace(/[\s,;:\-\u2013\u2014(]+$/, "") + "\u2026";
+  }
+
+  // One slide of the news slider: cover photo (or the guild crest), bold title, teaser and a Read More button. href "" draws it without a link (editor preview).
+  var ARROW = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></svg>';
+  function slide(p, api, o) {
+    o = o || {};
+    var href = o.href === undefined ? "/news/" + encodeURIComponent(p.slug || "") : o.href;
+    var bg = p.cover
+      ? '<img class="nbg" src="' + esc(String(api || "").replace(/\/+$/, "") + "/api/news/img/" + p.cover) + '" alt="" style="object-position:' + (+p.fx >= 0 ? +p.fx : 50) + "% " + (+p.fy >= 0 ? +p.fy : 50) + '%"' + (o.eager ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async">'
+      : '<div class="nbg nbg-none" aria-hidden="true"><img class="lh" src="/images/logo-horde.png" alt="" width="487" height="512"><img class="la" src="/images/logo-alliance.png" alt="" width="487" height="512"></div>';
+    var btn = href ? '<a class="nsbtn" href="' + esc(href) + '">Read More ' + ARROW + "</a>" : '<span class="nsbtn">Read More ' + ARROW + "</span>";
+    return '<article class="nslide' + (p.cover ? "" : " nocover") + '">' + bg + '<div class="nshade"></div><div class="ncap"><h3 class="nstitle">' + esc(p.title) + '</h3><p class="nsex">' + esc(excerpt(p.body)) + "</p>" + btn + "</div></article>";
+  }
+  return { render: render, esc: esc, excerpt: excerpt, slide: slide };
 });

@@ -37,9 +37,12 @@ Not announced: edits to an existing sign-up, and officers approving, declining, 
 Messages cannot ping anyone (mentions are switched off and player text is escaped), and each account can trigger at most 8 alerts an hour.
 If Discord is down or the address is wrong the sign-up itself is unaffected. To stop the alerts, delete the secret and the webhook, then re-run the deploy.
 
-## News on the home page (Web Admins)
-The home page has a **News** section above Race to 60 (latest 3 posts, older ones behind a button; it hides itself while there are none).
-Everyone can read it. Only **Web Admins** can post, edit or delete, on the **Post-News page** (`/post-news`, files `post-news.html` + `news-admin.js`). Web Admins get a
+## News (Web Admins post, everyone reads)
+Every post has **its own page** at `dirtysocks.net/news/<title>` (the title turned into a web address: `Raid night: moved!` becomes `/news/raid-night-moved`), and the home page has a
+**News slider** above Race to 60: the latest 5 posts as big slides (cover photo, bold title, the first ~280 characters of the message and a white **Read More** button that opens the
+post's page), with dots, arrows, swipe and arrow keys. It moves on its own every 7 seconds, stops when you hover, focus or touch it (or press the pause button) and never moves for
+people who ask for reduced motion. It hides itself while there are no posts. `/news` lists every post as a card.
+Everyone can read the news. Only **Web Admins** can post, edit or delete, on the **Post-News page** (`/post-news`, files `post-news.html` + `news-admin.js`). Web Admins get a
 **Post news** item in the account menu (the dropdown under their name, top left); nobody else sees it, and for everyone else, signed in or not, `/post-news` shows the normal
 "page not found" screen. The page is not in the sitemap or the footer and is set to `noindex`. The home page news is read-only for everybody.
 Officers are a separate group: being an officer does not allow posting, and being a Web Admin does not give officer powers (someone can be both).
@@ -50,7 +53,20 @@ simply appear for those accounts.
 (The page's files are public, as on any static site, but nothing in them works without a Web Admin login: the Worker refuses every post, edit, delete and upload from anyone else.)
 - To add or remove a Web Admin: change the `WEB_ADMIN_SUBS` secret in GitHub (*Settings -> Secrets and variables -> Actions*), then *Actions -> Deploy login worker -> Run workflow*.
 - Posts can be formatted and carry pictures (below). 120 characters for the title and 8000 for the message. Pinned posts stay on top.
-- API: public `GET /api/news` and `GET /api/news/img/<id>`; Web Admins only: `POST /api/news`, `PUT /api/news?id=...`, `DELETE /api/news?id=...`, `POST /api/news/image`.
+- API: public `GET /api/news` (optional `?limit=`), `GET /api/news/post/<title-address>` and `GET /api/news/img/<id>`; Web Admins only: `POST /api/news`, `PUT /api/news?id=...`, `DELETE /api/news?id=...`, `POST /api/news/image`.
+
+### Post pages, addresses and the cover photo
+- **Addresses:** a new post gets its address from the title when it is created (lower case, accents and symbols dropped, at most 60 characters; two posts with the same title get `-2`, `-3`, ...).
+  **Editing the title does not change the address**, so links that were already shared keep working. Posts from before this existed use the title plus the last 5 characters of their id.
+  The lookup ignores capital letters and stray characters, so `/news/Raid-Night-Moved` also opens it.
+- **How the page is drawn:** GitHub Pages only serves files that exist in the repo, and a new post is not a file. So `/news/<title>` falls through to `404.html`, which loads `news-post.js`; that
+  recognises the address, fetches the post from the Worker and draws it in place (title, cover, message, "More news", copy link), and shows the normal not-found page if there is no such post.
+  **Side effect:** the browser gets these pages with HTTP status 404 even though the visitor sees the post. Visitors never notice, but search engines will not index individual posts and link previews
+  (Discord, Facebook, ...) show the generic site card. If that ever matters, a GitHub Action can write a real `news/<title>.html` file for each post (static generation).
+- **Cover photo:** a separate section under the title on the Post-News page. Pick or drag in a wide photo (shrunk to at most 1920px / 800 KB), see the slide exactly as it will look on a computer
+  or on a phone, and use the two sliders to choose which part stays in view (the site crops the picture to fit; the choice is saved as `fx`/`fy`, 0-100). Without a cover the slide shows the guild crest.
+  A replaced or removed cover is deleted from storage. The cover is also the picture in the Discord alert (if there is none, the first picture in the text).
+- **Teaser:** the slide and the cards show the first ~280 characters of the message with the formatting marks stripped, cut at a word and ending in "…" (`excerpt()` in `news-format.js`).
 
 ### Formatting and pictures
 The post form has a toolbar (bold, italic, heading, bullet and numbered lists, quote, link, divider, picture) and a Write / Preview switch. Under the hood a post is a small,
@@ -66,7 +82,7 @@ file renders the editor preview. `node scripts/test-news-format.mjs` checks it, 
 ### Discord alert for new posts (optional)
 Same idea as the sign-up alerts, with its own channel: create a webhook in the channel that should get the announcements, add it as the GitHub secret
 `DISCORD_NEWS_WEBHOOK_URL`, then run the deploy workflow (it posts one "connected" message). Each **new** post is sent as a message with the title and text (Discord shows the bold, lists, quotes and links) and a link
-to the news section; the post's first picture is shown in the message. Edits and deletes are not sent. Nobody can be pinged (mentions are off), only http(s) links go across, nothing identifies the author,
+to the post's own page (`/news/<title>`); the cover photo (or else the post's first picture) is shown in the message. Edits and deletes are not sent. Nobody can be pinged (mentions are off), only http(s) links go across, nothing identifies the author,
 and one admin can send at most 10 messages an hour (posts are still saved). It is separate from `DISCORD_WEBHOOK_URL`, so the two can go to different channels.
 
 ## Roster slots (the Raid Roster on Recruitment)

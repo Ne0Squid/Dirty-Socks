@@ -115,6 +115,7 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 <nav></nav>
 <script src="auth-config.js"></script>
 <script src="news-format.js"></script>
+<script src="news-slider.js" defer></script>
 <script src="nav.js"></script>
 
 <section class="splash" aria-label="Welcome">
@@ -141,7 +142,7 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 </section>-->
 
 <section id="news" hidden aria-label="News">
-  <h2>News</h2>
+  <div class="nhead"><h2>News</h2><a class="nall" href="/news">All news &rarr;</a></div>
   <div id="newslist"></div>
 </section>
 
@@ -327,45 +328,6 @@ fetch("guild-data.json",{cache:"no-cache"})
   .then(r=>r.ok?r.json():Promise.reject())
   .then(j=>{render({generated:j.generated,founded:(j.raw&&j.raw.guild&&j.raw.guild.created_timestamp)||fallback.founded,roster:j.roster,history:j.history,icons:j.professionIcons,classIcons:j.classIcons,recipes:j.recipes});drawDungeons(j.bossKills);drawRaids(j.bossKills)})
   .catch(()=>render({...fallback,saved:true}));
-</script>
-<script>
-// News: a read-only list for everyone. Posting and editing live on the Post-News page (only for people the service lets post).
-(function(){
-  var sec=document.getElementById("news"),listBox=document.getElementById("newslist");
-  if(!sec)return;
-  var Q=new URLSearchParams(location.search);
-  var API=String((location.hostname==="localhost"&&Q.get("api"))||window.DS_API||"").replace(/\/+$/,"");
-  if(!API)return;
-  var posts=[],showAll=false,loaded=false,SHOW=3;
-  var esc=function(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
-  var day=function(t){return new Date(t).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})};
-  function bodyHtml(p){
-    if(!p.body)return"";
-    if(!p.md)return'<p class="nbody">'+esc(p.body)+'</p>';   // posts from before formatting stay plain text
-    return'<div class="nbody nmd">'+(window.NewsFmt?window.NewsFmt.render(p.body,API):"<p>"+esc(p.body)+"</p>")+'</div>';
-  }
-  function postHtml(p){
-    return '<article class="card npost'+(p.pinned?" pinned":"")+'"><div class="nmeta">'+(p.pinned?'<span class="npin">Pinned</span>':"")+'<span>'+esc(day(p.at))+(p.edited?" \u00B7 edited":"")+'</span></div>'
-      +'<h3>'+esc(p.title)+'</h3>'+bodyHtml(p)+'</article>';
-  }
-  function drawList(){
-    var top=posts.slice(0,SHOW),more=posts.slice(SHOW);
-    var html='<div class="nlist">'+top.map(postHtml).join("")+'</div>';
-    if(more.length)html+='<div class="nlist" id="newsmore" style="margin-top:14px"'+(showAll?"":" hidden")+'>'+more.map(postHtml).join("")+'</div>'
-      +'<button type="button" class="nmore" aria-expanded="'+showAll+'" aria-controls="newsmore">'+(showAll?"\u25B4 Show less":"\u25BE Show "+more.length+" older post"+(more.length===1?"":"s"))+'</button>';
-    listBox.innerHTML=html;
-    sec.hidden=!posts.length;
-  }
-  listBox.addEventListener("click",function(e){
-    var b=e.target.closest&&e.target.closest(".nmore");if(!b)return;
-    showAll=!showAll;drawList();if(!showAll){b=listBox.querySelector(".nmore");b&&b.scrollIntoView({block:"nearest"})}
-  });
-  fetch(API+"/api/news?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){
-    if(!j||!Array.isArray(j.news))return;
-    posts=j.news;drawList();
-    if(!loaded){loaded=true;if(location.hash==="#news"&&!sec.hidden)sec.scrollIntoView()}
-  }).catch(function(){});
-})();
 </script>
 </body>
 </html>

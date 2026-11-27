@@ -387,7 +387,7 @@ console.log("news + web admins");
   const newsPosts = posts.filter((p) => p.url === NEWS_HOOK);
   ok(newsPosts.length === 3 && posts.every((p) => p.url === NEWS_HOOK), "each NEW post went to the news webhook (edits did not), and nothing went to the sign-up one", posts.map((p) => p.url));
   const em = newsPosts[0].body.embeds[0];
-  ok(em.title === "Raid night bmoved/b" && em.description === "Line one\nLine two spaced\n\nLine three" && em.url === SITE + "/#news" && newsPosts[0].body.allowed_mentions.parse.length === 0, "Discord message: title, body with line breaks, link to the news section, no pings", em);
+  ok(em.title === "Raid night bmoved/b" && em.description === "Line one\nLine two spaced\n\nLine three" && em.url === SITE + "/news/raid-night-bmoved-b" && newsPosts[0].body.allowed_mentions.parse.length === 0, "Discord message: title, body with line breaks, link to the post's own page, no pings", em);
   ok(!JSON.stringify(newsPosts).match(/3000|4000|WebAdmin|Both#|admin/i), "no author or admin information goes to Discord either");
   const sneaky = await (await post(tW, { title: "Hello @everyone", body: "**bold** [ok](https://good.example) [bad](javascript:alert(1)) [odd](ftp://x.example) @everyone" })).json(); await flush();
   const sd = posts[posts.length - 1].body.embeds[0], sb = posts[posts.length - 1].body;
@@ -463,6 +463,84 @@ console.log("news + web admins");
   for (let i = 0; i < 45 && last === 200; i++) last = (await up(tX, "image/png", bin("", PNG))).status;
   ok(last === 429, "an admin can upload at most 40 pictures an hour", last);
   ok(!JSON.stringify(await feed()).match(/"by"|3000|4000|imgmeta|imgdata/), "the feed still carries no author or storage details");
+
+  // ---- post pages (slugs), cover photo, focus point -----------------------------------------------
+  {
+    const e3 = makeEnv({ WEB_ADMIN_SUBS: "3000", DISCORD_NEWS_WEBHOOK_URL: NEWS_HOOK }), f3 = (r) => worker.fetch(r, e3, ctx);
+    const l3 = await f3(req("/auth/login")), st3 = new URL(l3.headers.get("Location")).searchParams.get("state");
+    const t3 = ((await f3(req(`/auth/callback?code=codeW&state=${encodeURIComponent(st3)}`, { origin: null }))).headers.get("Location").match(/#session=(.+)$/) || [])[1];
+    const mk = async (title, body = "x", extra = {}) => { await new Promise((r) => setTimeout(r, 4)); return (await f3(req("/api/news", { method: "POST", token: t3, body: { title, body, ...extra } }))); };
+    const feed3 = async (q = "") => (await (await f3(req("/api/news" + q, { origin: null }))).json()).news;
+    const up3 = (type, bytes) => f3(new Request(API + "/api/news/image", { method: "POST", headers: { Authorization: "Bearer " + t3, "Content-Type": type }, body: bytes }));
+    const img3 = (id) => f3(new Request(API + "/api/news/img/" + id));
+    const slugOfTitle = async (title) => (await (await mk(title)).json()).post?.slug;
+    const PNGb = new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, ...Array.from({ length: 40 }, (_, i) => i)]);
+
+    ok(await slugOfTitle("Team Liquid Cafe is HERE!") === "team-liquid-cafe-is-here", "the address is made from the title: lowercase words joined by hyphens");
+    ok(await slugOfTitle("Café & Crème: Ready?") === "cafe-and-creme-ready", "accents are dropped and & becomes 'and'");
+    ok(await slugOfTitle("Raid's  new__time") === "raids-new-time", "apostrophes vanish and runs of symbols become one hyphen");
+    ok(await slugOfTitle("!!! \u{1F525}\u{1F525}") === "post", "a title with no letters still gets a usable address");
+    const longSlug = await slugOfTitle("word ".repeat(40));
+    ok(longSlug.length <= 60 && !longSlug.endsWith("-") && longSlug.startsWith("word-word"), "long titles give a short address with no dangling hyphen", longSlug);
+    const dups = [await slugOfTitle("Wow"), await slugOfTitle("WOW"), await slugOfTitle("wow!")];
+    ok(dups.join() === "wow,wow-2,wow-3", "two posts with the same title get -2, -3 so every address is unique", dups);
+
+    const feed1 = await feed3();
+    ok(feed1.every((p) => /^[a-z0-9-]+$/.test(p.slug)) && new Set(feed1.map((p) => p.slug)).size === feed1.length, "every post in the feed has a unique address-safe slug");
+    const get = (seg, o = {}) => f3(req("/api/news/post/" + seg, { origin: null, ...o }));
+    const one = await (await get("team-liquid-cafe-is-here")).json();
+    ok(one.post && one.post.title === "Team Liquid Cafe is HERE!" && !JSON.stringify(one).match(/"by"|3000/), "a post can be fetched by its address, with no author information");
+    ok((await (await get("Team%20Liquid%20Cafe%20Is%20HERE")).json()).post?.id === one.post.id && (await (await get("TEAM-LIQUID-CAFE-IS-HERE")).json()).post?.id === one.post.id, "typing the title with spaces or capitals finds the same post");
+    ok((await get("nothing-here")).status === 404 && (await get("%E0%A4%A")).status === 404 && (await get("")).status === 404, "unknown or malformed addresses are 404");
+    const ren = await f3(req(`/api/news?id=${one.post.id}`, { method: "PUT", token: t3, body: { title: "Totally different title", body: "x" } }));
+    ok((await ren.json()).post.slug === "team-liquid-cafe-is-here" && (await get("totally-different-title")).status === 404, "editing the title keeps the old address, so shared links never break");
+    ok((await feed3("?limit=2")).length === 2 && (await feed3("?limit=0")).length === 1 && (await feed3("?limit=abc")).length === feed1.length && (await feed3("?limit=999")).length === feed1.length, "the feed can be limited (the home page asks for just the latest few)");
+    // a post saved before slugs existed still gets an address
+    await e3.STORE.get().fetch("https://store/", { method: "POST", body: JSON.stringify({ op: "put", key: "news:legacy01", value: { id: "legacy01", title: "Old one", body: "plain", at: 1, pinned: false } }) });
+    const legacy = (await feed3()).find((p) => p.id === "legacy01");
+    ok(legacy && legacy.slug === "old-one-acy01" && (await (await get(legacy.slug)).json()).post?.id === "legacy01", "a post from before addresses existed gets a stable one automatically", legacy);
+
+    // cover photo
+    const c1 = await (await up3("image/png", PNGb)).json(), c2 = await (await up3("image/png", PNGb)).json(), c3 = await (await up3("image/png", PNGb)).json();
+    const cv = await (await mk("Cover test", "Body text", { cover: c1.id, fx: 30, fy: 70 })).json();
+    ok(cv.ok && cv.post.cover === c1.id && cv.post.fx === 30 && cv.post.fy === 70, "a post can have a cover photo and a focus point", cv);
+    ok((await img3(c1.id)).status === 200, "the cover is served publicly");
+    ok((await (await mk("Clamp", "x", { cover: c2.id, fx: 150, fy: -5 })).json()).post.fx === 100, "the focus point is kept between 0 and 100");
+    const c2post = (await feed3()).find((p) => p.title === "Clamp");
+    ok(c2post.fx === 100 && c2post.fy === 0, "…both ways", c2post);
+    ok((await (await mk("NaN", "x", { cover: c3.id, fx: "abc" })).json()).post.fx === 50, "a junk focus value falls back to the middle");
+    ok((await mk("Ghost cover", "x", { cover: "doesnotexist1" })).status === 400 && (await mk("Bad cover", "x", { cover: "no way!" })).status === 400, "a cover that does not exist or is malformed is refused");
+    ok((await mk("Steal cover", "x", { cover: c1.id })).status === 400, "a cover already used by another post cannot be reused");
+    const noCover = await (await mk("No cover", "x")).json();
+    ok(!("cover" in noCover.post) && !("fx" in noCover.post), "a post without a cover carries no cover fields");
+    // replacing / removing the cover cleans up
+    const c4 = await (await up3("image/webp", new Uint8Array([0x52, 0x49, 0x46, 0x46, 1, 2, 3, 4, 0x57, 0x45, 0x42, 0x50, 9, 9, 9]))).json();
+    const rep1 = await f3(req(`/api/news?id=${cv.post.id}`, { method: "PUT", token: t3, body: { title: "Cover test", body: "Body text", cover: c4.id, fx: 10, fy: 20 } }));
+    ok(rep1.status === 200 && (await img3(c1.id)).status === 404 && (await img3(c4.id)).status === 200, "replacing the cover deletes the old photo");
+    const rep2 = await (await f3(req(`/api/news?id=${cv.post.id}`, { method: "PUT", token: t3, body: { title: "Cover test", body: `Text ![](img:${c4.id})`, cover: c4.id } }))).json();
+    ok(rep2.ok && (await img3(c4.id)).status === 200, "the same photo can be both cover and a picture in the text");
+    const rep3 = await (await f3(req(`/api/news?id=${cv.post.id}`, { method: "PUT", token: t3, body: { title: "Cover test", body: `Text ![](img:${c4.id})`, cover: "" } }))).json();
+    ok(rep3.ok && !("cover" in rep3.post) && (await img3(c4.id)).status === 200, "removing only the cover keeps a photo that the text still uses");
+    const rep4 = await (await f3(req(`/api/news?id=${cv.post.id}`, { method: "PUT", token: t3, body: { title: "Cover test", body: "Text only", cover: "" } }))).json();
+    ok(rep4.ok && (await img3(c4.id)).status === 404, "…and removing it from the text too deletes it");
+    const c5 = await (await up3("image/png", PNGb)).json(), withC5 = await (await mk("Delete me", "x", { cover: c5.id })).json();
+    await f3(req(`/api/news?id=${withC5.post.id}`, { method: "DELETE", token: t3 }));
+    ok((await img3(c5.id)).status === 404, "deleting a post deletes its cover");
+
+    // Discord: the cover leads, the title links to the post's page, long posts are cut short (fresh service, so the hourly alert limit is not used up)
+    await Promise.all(pending.splice(0)); posts.length = 0;
+    const e4 = makeEnv({ WEB_ADMIN_SUBS: "3000", DISCORD_NEWS_WEBHOOK_URL: NEWS_HOOK }), f4 = (r) => worker.fetch(r, e4, ctx);
+    const l4 = await f4(req("/auth/login")), st4 = new URL(l4.headers.get("Location")).searchParams.get("state");
+    const t4 = ((await f4(req(`/auth/callback?code=codeW&state=${encodeURIComponent(st4)}`, { origin: null }))).headers.get("Location").match(/#session=(.+)$/) || [])[1];
+    const up4 = (bytes) => f4(new Request(API + "/api/news/image", { method: "POST", headers: { Authorization: "Bearer " + t4, "Content-Type": "image/png" }, body: bytes }));
+    const c6 = await (await up4(PNGb)).json(), c7 = await (await up4(PNGb)).json();
+    const longBody = `![](img:${c7.id})\n` + Array.from({ length: 60 }, (_, i) => `Paragraph ${i} with some words in it.`).join("\n\n");
+    const dp = await (await f4(req("/api/news", { method: "POST", token: t4, body: { title: "Discord cover", body: longBody, cover: c6.id } }))).json(); await Promise.all(pending.splice(0));
+    const de = posts[posts.length - 1].body.embeds[0];
+    ok(de.image.url === `https://login.test/api/news/img/${c6.id}` && de.url === `${SITE}/news/${dp.post.slug}`, "Discord: the cover photo is the embed picture and the title links to the post page", de);
+    ok(de.description.length < 1700 && de.description.endsWith(`[Read the full post](${SITE}/news/${dp.post.slug})`), "Discord: a long post is cut short with a link to read the rest", de.description.slice(-120));
+    ok(!JSON.stringify(posts).match(/3000|"by"/), "…and still shows no author");
+  }
 
   // no news webhook configured -> posting still works, nothing is sent
   const e2 = makeEnv({ WEB_ADMIN_SUBS: "3000" }), fw2 = (r) => worker.fetch(r, e2, ctx);

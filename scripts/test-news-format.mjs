@@ -2,7 +2,7 @@
 import fs from "node:fs";
 const mod = { exports: {} };
 new Function("module", "exports", fs.readFileSync(new URL("../news-format.js", import.meta.url), "utf8")).call({}, mod, mod.exports);
-const { render } = mod.exports;
+const { render, excerpt, slide } = mod.exports;
 const BASE = "https://api.test";
 let pass = 0, fail = 0;
 const ok = (c, name, extra = "") => { c ? pass++ : fail++; console.log(`${c ? "  ok  " : " FAIL "} ${name}${c ? "" : "  " + extra}`); };
@@ -44,6 +44,24 @@ ok(pic === '<figure class="nfig"><a class="nimg" href="https://api.test/api/news
 ok(!has(render("![](img:abc123xyz)", BASE), "figcaption") && has(render("![](img:abc123xyz)", BASE), 'alt="Picture from this news post"'), "no caption: no figcaption, still has alt text");
 ok(has(render("text ![x](img:abc123xyz) more", BASE), '<p>text <a class="nimg"'), "a picture inside a line stays inline");
 ok(render("") === "" && render(null) === "" && render("   \n \n") === "", "empty input renders nothing");
+
+console.log("teaser (excerpt)");
+ok(excerpt("") === "" && excerpt(null) === "" && excerpt("short and sweet") === "short and sweet", "short or empty text comes back as is");
+const long = "word ".repeat(200), ex = excerpt(long);
+ok(ex.length >= 200 && ex.length <= 300 && ex.endsWith("\u2026") && !/\s\u2026$/.test(ex) && /word\u2026$/.test(ex), "long text is cut at a word to 200-300 characters with an ellipsis", ex.length + " " + ex.slice(-20));
+ok(excerpt("x".repeat(900)).length <= 300, "even one huge word stays under 300");
+ok(excerpt("# Big news\n**Bold** and *italic* with a [link](https://example.com/x).") === "Big news. Bold and italic with a link.", "formatting marks are removed, headings get a full stop", excerpt("# Big news\n**Bold** and *italic* with a [link](https://example.com/x)."));
+ok(excerpt("![cap](img:abc123xyz)\n---\n> quoted\n- one\n1. two\n`code`") === "quoted one two code", "pictures and dividers are skipped, list and quote marks removed");
+ok(excerpt("Sign up at https://www.dirtysocks.net/signup now") === "Sign up at dirtysocks.net/signup now", "bare links show as short addresses");
+ok(excerpt("<script>alert(1)</script> & \"q\"") === "<script>alert(1)</script> & \"q\"", "it is plain text (the slide escapes it), nothing is interpreted");
+
+console.log("slide");
+const sl = slide({ title: "Hi <b>", body: "hello **w**", slug: "hi-b", cover: "abc123xyz", fx: 20, fy: 80 }, "https://api.test", { eager: true });
+ok(sl.includes('class="nstitle">Hi &lt;b&gt;</h3>') && sl.includes('<p class="nsex">hello w</p>') && sl.includes('href="/news/hi-b"') && sl.includes("object-position:20% 80%") && sl.includes("https://api.test/api/news/img/abc123xyz"), "a slide has the cover, bold title, teaser and a Read More link to the post page", sl);
+ok(!slide({ title: "t", body: "b", slug: "t" }, "https://api.test").includes("<img class=\"nbg\"") && slide({ title: "t", body: "b", slug: "t" }, "https://api.test").includes("nbg-none"), "no cover: the slide shows the guild crest instead");
+ok(!slide({ title: "t", body: "b", slug: "t" }, "", { href: "" }).includes("<a "), "href '' draws the button without a link (editor preview)");
+const hostile = slide({ title: '"><img src=x onerror=alert(1)>', body: "<script>alert(1)</script>", slug: 'a"b<c', cover: "abc123xyz", fx: '50" onload="x', fy: 1 }, "https://api.test");
+ok(!/<script|<img src=x|onload=|onerror=alert/.test(hostile.replace(/&lt;[^>]*/g, "")) && !hostile.includes('onload="x'), "hostile titles, slugs and focus values cannot break out of the markup", hostile);
 
 console.log("safety");
 const attacks = [

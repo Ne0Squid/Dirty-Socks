@@ -7,7 +7,8 @@
   var Q=new URLSearchParams(location.search);
   var API=String((location.hostname==="localhost"&&Q.get("api"))||window.DS_API||"").replace(/\/+$/,"");
   var tok=null;try{tok=localStorage.getItem("ds-session")}catch(e){}
-  var posts=[],admin=false,editing=null,confirming=null,BODY_MAX=8000,DRAFT="ds-news-draft",TITLE=document.title;
+  var posts=[],admin=false,editing=null,confirming=null,BODY_MAX=8000,DRAFT="ds-news-draft",TITLE=document.title,cvView=window.innerWidth<700?"phone":"desktop";
+  var keep=location.hostname==="localhost"&&Q.get("api")?"?api="+encodeURIComponent(Q.get("api")):"";   // only for local testing: carry the test service along in links
   var esc=function(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
   var day=function(t){return new Date(t).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})};
   var auth=function(extra){var h={Authorization:"Bearer "+tok};for(var k in extra)h[k]=extra[k];return h};
@@ -18,12 +19,21 @@
   // ---- the editor ----
   var BAR=[["bold","<b>B</b>","Bold (Ctrl+B)","Bold"],["italic","<i>I</i>","Italic (Ctrl+I)","Italic"],["h","H","Heading","Heading"],["ul","• List","Bulleted list","Bulleted list"],["ol","1. List","Numbered list","Numbered list"],["quote","“","Quote","Quote"],["link","Link","Link","Link"],["hr","—","Divider line","Divider line"],["image","Picture","Add a picture","Add a picture"]];
   function loadDraft(){try{return JSON.parse(localStorage.getItem(DRAFT)||"null")||{}}catch(e){return{}}}
-  function saveDraft(form){if(form.getAttribute("data-form")!=="new")return;try{var t=form.elements.title.value,b=form.elements.body.value;if(t||b)localStorage.setItem(DRAFT,JSON.stringify({title:t,body:b}));else localStorage.removeItem(DRAFT)}catch(e){}}
+  function saveDraft(form){if(form.getAttribute("data-form")!=="new")return;try{var e=form.elements,t=e.title.value,b=e.body.value;if(t||b||e.cover.value)localStorage.setItem(DRAFT,JSON.stringify({title:t,body:b,cover:e.cover.value,fx:e.fx.value,fy:e.fy.value}));else localStorage.removeItem(DRAFT)}catch(x){}}
   function clearDraft(){try{localStorage.removeItem(DRAFT)}catch(e){}}
   function formHtml(p){
-    var id=p?p.id:"new",d=p?{title:p.title,body:p.body}:loadDraft();
+    var id=p?p.id:"new",d=p?{title:p.title,body:p.body,cover:p.cover,fx:p.fx,fy:p.fy}:loadDraft();
+    var fx=+d.fx>=0?+d.fx:50,fy=+d.fy>=0?+d.fy:50;
     return '<form class="card nform" data-form="'+esc(id)+'" novalidate>'+(p?"":'<h3>Post news</h3>')
       +'<label>Title<input type="text" name="title" maxlength="120" required value="'+esc(d.title||"")+'"></label>'
+      +'<div class="ncover"><div class="ncv-head"><strong>Cover photo</strong><span class="muted">Shown behind the title on the home page slider. Add one to make the post stand out.</span></div>'
+      +'<input type="hidden" name="cover" value="'+esc(d.cover||"")+'"><input type="hidden" name="fx" value="'+fx+'"><input type="hidden" name="fy" value="'+fy+'">'
+      +'<input type="file" data-cover-file accept="image/png,image/jpeg,image/webp,image/gif" hidden>'
+      +'<div class="ncv-views" role="group" aria-label="Preview size"><span class="muted">Preview:</span><button type="button" data-cvview="desktop" aria-pressed="true">Computer</button><button type="button" data-cvview="phone" aria-pressed="false">Phone</button></div>'
+      +'<div class="ncv-stage" data-drop></div>'
+      +'<div class="ncv-ctl"><button type="button" data-cv="pick"></button><button type="button" data-cv="remove" hidden>Remove cover</button><span class="nstat ncv-stat" role="status"></span></div>'
+      +'<div class="ncv-pos" hidden><label for="cvx-'+esc(id)+'">Move left / right</label><input id="cvx-'+esc(id)+'" type="range" min="0" max="100" value="'+fx+'" data-cvpos="fx"><label for="cvy-'+esc(id)+'">Move up / down</label><input id="cvy-'+esc(id)+'" type="range" min="0" max="100" value="'+fy+'" data-cvpos="fy"></div>'
+      +'<p class="muted nhelp">The site crops the photo to fit, so check both sizes and slide it until the important part shows. Big photos are shrunk for you.</p></div>'
       +'<div class="ned"><div class="nbar" role="toolbar" aria-label="Formatting">'
       +BAR.map(function(b){return'<button type="button" data-fmt="'+b[0]+'" title="'+b[2]+'" aria-label="'+b[3]+'">'+b[1]+'</button>'}).join("")
       +'<input type="file" data-file accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden>'
@@ -97,7 +107,8 @@
   // pictures: shrink in the browser (longest side 1600px), then upload, then drop a ![](img:ID) line into the text
   var IMG_MAX=780000,EDGE=1600;
   function toBlob(c,type,q){return new Promise(function(r){c.toBlob(r,type,q)})}
-  function shrink(file){
+  function shrink(file,edge){
+    edge=edge||EDGE;
     if(!/^image\/(jpeg|png|webp|gif)$/.test(file.type))return Promise.reject(new Error("Use a JPEG, PNG, WebP or GIF picture."));
     if(file.type==="image/gif")return file.size<=IMG_MAX?Promise.resolve(file):Promise.reject(new Error("That GIF is over 780 KB. Use a smaller or shorter one."));
     return new Promise(function(res,rej){
@@ -106,8 +117,8 @@
       im.onload=function(){
         URL.revokeObjectURL(url);
         var w=im.naturalWidth,h=im.naturalHeight,long=Math.max(w,h);
-        if(file.size<=400000&&long<=EDGE)return res(file);   // already small: keep it exactly as it is
-        var base=Math.min(1,EDGE/long),tries=[[1,.86],[1,.74],[.8,.7],[.65,.65],[.5,.6]],i=0;
+        if(file.size<=400000&&long<=edge)return res(file);   // already small: keep it exactly as it is
+        var base=Math.min(1,edge/long),tries=[[1,.86],[1,.74],[.8,.7],[.65,.65],[.5,.6]],i=0;
         (function next(){
           var t=tries[i++];if(!t)return rej(new Error("Could not make that picture small enough. Try a smaller one."));
           var c=document.createElement("canvas");c.width=Math.max(1,Math.round(w*base*t[0]));c.height=Math.max(1,Math.round(h*base*t[0]));
@@ -139,21 +150,45 @@
   }
 
 
+  // ---- cover photo: a live preview of the home page slide, a picker, and two sliders for what stays in view ----
+  function drawCover(form){
+    var e=form.elements,stage=form.querySelector(".ncv-stage"),has=!!e.cover.value;
+    var draft={title:e.title.value.trim()||"Your title goes here",body:e.body.value.trim()||"The first couple of sentences of your message show here, under the title.",slug:"preview"};
+    if(has){draft.cover=e.cover.value;draft.fx=+e.fx.value;draft.fy=+e.fy.value}
+    stage.innerHTML='<div class="nslider ncv-slider'+(cvView==="phone"?" ph":"")+'">'+window.NewsFmt.slide(draft,API,{href:"",eager:true})+'</div>';
+    stage.querySelector(".nslide").classList.add("on");
+    form.querySelector("[data-cv=pick]").textContent=has?"Change photo":"Add a cover photo";
+    form.querySelector("[data-cv=remove]").hidden=!has;form.querySelector(".ncv-pos").hidden=!has;
+    form.querySelectorAll("[data-cvview]").forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-cvview")===cvView))});
+  }
+  function syncCover(form){   // title or message changed: update the preview text without redrawing the picture
+    var s=form.querySelector(".ncv-stage .nslide");if(!s)return;
+    var e=form.elements,t=s.querySelector(".nstitle"),x=s.querySelector(".nsex");
+    t.textContent=e.title.value.trim()||"Your title goes here";
+    x.textContent=window.NewsFmt.excerpt(e.body.value)||"The first couple of sentences of your message show here, under the title.";
+  }
+  function setCover(form,id){var e=form.elements;e.cover.value=id||"";if(!id){e.fx.value=50;e.fy.value=50;form.querySelectorAll("[data-cvpos]").forEach(function(r){r.value=50})}drawCover(form);saveDraft(form)}
+  function addCover(form,file){
+    if(!file||!/^image\//.test(file.type))return;
+    var st=form.querySelector(".ncv-stat");form._busy=(form._busy||0)+1;showErr(form,"");st.textContent="Uploading cover\u2026";
+    shrink(file,1920).then(upload).then(function(j){setCover(form,j.id)}).catch(function(e){showErr(form,e&&e.message||"Could not add that picture.")}).then(function(){form._busy--;st.textContent=""});
+  }
+
   // ---- posts ----
   function postHtml(p){
     if(editing===p.id)return formHtml(p);
     var tools='<div class="ntools">'+(confirming===p.id
       ?'<span>Delete this post?</span><button type="button" class="danger" data-a="del-yes" data-id="'+esc(p.id)+'">Yes, delete</button><button type="button" data-a="del-no">Cancel</button>'
-      :'<button type="button" data-a="edit" data-id="'+esc(p.id)+'">Edit</button><button type="button" data-a="del" data-id="'+esc(p.id)+'">Delete</button>')+'</div>';
+      :'<button type="button" data-a="edit" data-id="'+esc(p.id)+'">Edit</button><button type="button" data-a="del" data-id="'+esc(p.id)+'">Delete</button><a class="ntlink" href="/news/'+encodeURIComponent(p.slug)+keep+'">View page</a>')+'</div>';
     var body=!p.body?"":p.md?'<div class="nbody nmd">'+fmt(p.body)+'</div>':'<p class="nbody">'+esc(p.body)+'</p>';
-    return '<article class="card npost'+(p.pinned?" pinned":"")+'"><div class="nmeta">'+(p.pinned?'<span class="npin">Pinned</span>':"")+'<span>'+esc(day(p.at))+(p.edited?" \u00B7 edited":"")+'</span></div>'
+    return '<article class="card npost'+(p.pinned?" pinned":"")+'"><div class="nmeta">'+(p.pinned?'<span class="npin">Pinned</span>':"")+'<span>'+esc(day(p.at))+(p.edited?" \u00B7 edited":"")+'</span>'+(p.cover?'<span>\u00B7 has a cover photo</span>':'<span>\u00B7 no cover photo</span>')+'</div>'
       +'<h3>'+esc(p.title)+'</h3>'+body+tools+'</article>';
   }
   function drawList(){
     listBox.innerHTML=posts.length?'<div class="nlist">'+posts.map(postHtml).join("")+'</div>':'<p class="muted">No posts yet. Your first one will show up here.</p>';
-    listBox.querySelectorAll("form[data-form]").forEach(count);
+    listBox.querySelectorAll("form[data-form]").forEach(function(f){count(f);drawCover(f)});
   }
-  function drawForm(){formBox.innerHTML=formHtml(null);formBox.querySelectorAll("form[data-form]").forEach(count)}
+  function drawForm(){formBox.innerHTML=formHtml(null);formBox.querySelectorAll("form[data-form]").forEach(function(f){count(f);drawCover(f)})}
   function reload(){
     return fetch(API+"/api/news?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){
       if(!j||!Array.isArray(j.news))return;
@@ -166,22 +201,30 @@
     if(!title){showErr(form,"Give the post a title.");return}
     if(form._busy){showErr(form,"Wait for the picture to finish uploading.");return}
     showErr(form,"");btn.disabled=true;
-    fetch(API+"/api/news"+(isNew?"":"?id="+encodeURIComponent(id)),{method:isNew?"POST":"PUT",headers:auth({"Content-Type":"application/json"}),body:JSON.stringify({title:title,body:String(f.get("body")||""),pinned:!!f.get("pinned")})})
+    fetch(API+"/api/news"+(isNew?"":"?id="+encodeURIComponent(id)),{method:isNew?"POST":"PUT",headers:auth({"Content-Type":"application/json"}),body:JSON.stringify({title:title,body:String(f.get("body")||""),pinned:!!f.get("pinned"),cover:String(f.get("cover")||""),fx:Number(f.get("fx")),fy:Number(f.get("fy"))})})
       .then(function(r){return r.json().catch(function(){return{}}).then(function(j){return{ok:r.ok,status:r.status,j:j}})})
       .then(function(res){
         btn.disabled=false;
         if(!res.ok){showErr(form,res.status===401?"Your login expired. Log in again to post.":(res.j&&res.j.error)||"Could not save that. Try again.");return}
         editing=null;
         if(isNew){clearDraft();drawForm()}
-        say(isNew?'Posted. It is live on the home page now. <a href="/#news">See it there</a>':"Changes saved. <a href=\"/#news\">See it on the home page</a>");
+        var u="/news/"+encodeURIComponent((res.j.post&&res.j.post.slug)||"")+keep;
+        say(isNew?'Posted. It is on the home page slider and has its own page now. <a href="'+u+'">Open the post page</a>':'Changes saved. <a href="'+u+'">Open the post page</a>');
         return reload();
       }).catch(function(){btn.disabled=false;showErr(form,"Could not reach the server. Try again.")});
   }
   main.addEventListener("submit",function(e){var f=e.target.closest&&e.target.closest("form[data-form]");if(!f)return;e.preventDefault();if(admin)save(f)});
-  main.addEventListener("input",function(e){var f=e.target.closest&&e.target.closest("form[data-form]");if(!f)return;count(f);saveDraft(f);if(!okBox.hidden)say("")});
+  main.addEventListener("input",function(e){
+    var f=e.target.closest&&e.target.closest("form[data-form]");if(!f)return;
+    var pos=e.target.getAttribute&&e.target.getAttribute("data-cvpos");
+    if(pos){f.elements[pos].value=e.target.value;var im=f.querySelector(".ncv-stage .nbg");if(im&&im.tagName==="IMG")im.style.objectPosition=f.elements.fx.value+"% "+f.elements.fy.value+"%";saveDraft(f);return}
+    count(f);saveDraft(f);if(e.target.name==="title"||e.target.name==="body")syncCover(f);if(!okBox.hidden)say("");
+  });
   main.addEventListener("change",function(e){
-    if(!e.target.matches||!e.target.matches("input[data-file]"))return;
-    var f=e.target.closest("form[data-form]");if(f&&admin)addFiles(f,e.target.files);e.target.value="";
+    if(!e.target.matches)return;
+    var f=e.target.closest("form[data-form]");if(!f||!admin)return;
+    if(e.target.matches("input[data-file]")){addFiles(f,e.target.files);e.target.value=""}
+    else if(e.target.matches("input[data-cover-file]")){addCover(f,e.target.files[0]);e.target.value=""}
   });
   main.addEventListener("keydown",function(e){
     if(!admin||!(e.ctrlKey||e.metaKey)||e.altKey||!e.target.matches||!e.target.matches("textarea[name=body]"))return;
@@ -193,13 +236,33 @@
     var files=[].slice.call((e.clipboardData&&e.clipboardData.files)||[]).filter(function(f){return/^image\//.test(f.type)});
     if(files.length){e.preventDefault();addFiles(e.target.closest("form[data-form]"),files)}
   });
-  main.addEventListener("dragover",function(e){if(admin&&e.target.matches&&e.target.matches("textarea[name=body]")&&e.dataTransfer&&[].indexOf.call(e.dataTransfer.types||[],"Files")>=0)e.preventDefault()});
+  main.addEventListener("dragover",function(e){
+    if(!admin||!e.target.closest||!e.dataTransfer||[].indexOf.call(e.dataTransfer.types||[],"Files")<0)return;
+    if(e.target.matches("textarea[name=body]"))e.preventDefault();
+    var z=e.target.closest("[data-drop]");if(z){e.preventDefault();z.classList.add("drag")}
+  });
+  main.addEventListener("dragleave",function(e){var z=e.target.closest&&e.target.closest("[data-drop]");if(z&&!z.contains(e.relatedTarget))z.classList.remove("drag")});
+  main.addEventListener("drop",function(e){   // a picture dropped on the cover preview becomes the cover
+    var z=admin&&e.target.closest&&e.target.closest("[data-drop]");if(!z)return;z.classList.remove("drag");
+    var f=z.closest("form[data-form]"),file=[].slice.call((e.dataTransfer&&e.dataTransfer.files)||[]).filter(function(x){return/^image\//.test(x.type)})[0];
+    if(f&&file){e.preventDefault();addCover(f,file)}
+  });
   main.addEventListener("drop",function(e){
     if(!admin||!e.target.matches||!e.target.matches("textarea[name=body]"))return;
     var files=[].slice.call((e.dataTransfer&&e.dataTransfer.files)||[]).filter(function(f){return/^image\//.test(f.type)});
     if(files.length){e.preventDefault();addFiles(e.target.closest("form[data-form]"),files)}
   });
   main.addEventListener("click",function(e){
+    var cv=e.target.closest&&e.target.closest("[data-cv],[data-cvview]");
+    if(cv&&admin){
+      var cf=cv.closest("form[data-form]");
+      if(cf){
+        if(cv.hasAttribute("data-cvview")){cvView=cv.getAttribute("data-cvview");document.querySelectorAll("#pn-main form[data-form]").forEach(drawCover)}
+        else if(cv.getAttribute("data-cv")==="pick")cf.querySelector("[data-cover-file]").click();
+        else setCover(cf,"");
+        return;
+      }
+    }
     var t=e.target.closest&&e.target.closest("[data-fmt],[data-tab]");
     if(t&&admin){var form=t.closest("form[data-form]");if(form){if(t.hasAttribute("data-tab"))setTab(form,t.getAttribute("data-tab"));else tool(form,t.getAttribute("data-fmt"));return}}
     var b=e.target.closest&&e.target.closest("[data-a]");if(!b||!admin)return;

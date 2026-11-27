@@ -63,6 +63,7 @@ html:root:not([data-faction="alliance"]) .lost .a,html:root[data-faction="allian
 </style>
 <style>
 </style>
+<link rel="stylesheet" href="news.css">
 </head>
 <body>
 <script>
@@ -74,9 +75,10 @@ html:root:not([data-faction="alliance"]) .lost .a,html:root[data-faction="allian
 })();
 </script>
 <nav></nav>
+<script src="auth-config.js"></script>
 <script src="nav.js"></script>
 <main class="wrap">
-<section class="lost">
+<section class="lost" id="nlost">
   <img class="h" src="images/logo-horde.png" alt="" width="487" height="512">
   <img class="a" src="images/logo-alliance.png" alt="" width="487" height="512">
   <div class="code" aria-hidden="true">404</div>
@@ -97,5 +99,7 @@ html:root:not([data-faction="alliance"]) .lost .a,html:root[data-faction="allian
 <script>
 document.getElementById("yr").textContent=new Date().getFullYear();
 </script>
+<script src="news-format.js"></script>
+<script src="news-post.js"></script>
 </body>
 </html>
