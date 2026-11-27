@@ -69,7 +69,7 @@
 
   /* ---------- hero: pine garland corners, warm glow, snowy drift ---------- */
   function garland(){
-    var R=rng(7),P0=[-12,-4],C=[120,128],P2=[372,40],cols=["#1c5836","#256f42","#154a2c","#35884f","#2a7a47"],g="",needles="";
+    var R=rng(7),P0=[-12,-16],C=[180,170],P2=[372,-16],cols=["#1c5836","#256f42","#154a2c","#35884f","#2a7a47"],g="",needles="";
     function B(t){var u=1-t;return[u*u*P0[0]+2*u*t*C[0]+t*t*P2[0],u*u*P0[1]+2*u*t*C[1]+t*t*P2[1]]}
     function T(t){var u=1-t;return Math.atan2(2*u*(C[1]-P0[1])+2*t*(P2[1]-C[1]),2*u*(C[0]-P0[0])+2*t*(P2[0]-C[0]))}
     for(var t=0;t<=1;t+=.0105){
@@ -83,13 +83,14 @@
     }
     var stem='M'+P0[0]+' '+P0[1]+'Q'+C[0]+' '+C[1]+' '+P2[0]+' '+P2[1];
     var deco="",oc=[["#e0392f","#7a120d"],["#f4c552","#8a6410"],["#4aa3ff","#143f7a"],["#e0392f","#7a120d"],["#f4c552","#8a6410"]];
-    [[.2,8,0],[.4,9,1],[.58,8.5,2],[.76,8,3],[.9,7,4]].forEach(function(o){var p=B(o[0]);
+    [[.17,8,0],[.31,8.5,1],[.5,9.5,2],[.69,8.5,3],[.83,8,4]].forEach(function(o){var p=B(o[0]);
       deco+='<circle cx="'+p[0].toFixed(1)+'" cy="'+(p[1]+7).toFixed(1)+'" r="'+o[1]+'" fill="url(#xgo'+o[2]+')"/><rect x="'+(p[0]-2.5).toFixed(1)+'" y="'+(p[1]-1.5).toFixed(1)+'" width="5" height="4" rx="1" fill="#d8b24a"/>'});
-    [.3,.68,.84].forEach(function(t){var p=B(t);deco+='<g fill="#c8201a"><circle cx="'+(p[0]-4)+'" cy="'+(p[1]+3)+'" r="3"/><circle cx="'+(p[0]+3)+'" cy="'+(p[1]+4)+'" r="3"/><circle cx="'+p[0]+'" cy="'+(p[1]+8)+'" r="3"/></g><g fill="#fff" opacity=".6"><circle cx="'+(p[0]-5)+'" cy="'+(p[1]+2)+'" r=".9"/><circle cx="'+(p[0]+2)+'" cy="'+(p[1]+3)+'" r=".9"/></g>'});
-    var fl="";[.1,.3,.5,.7,.95].forEach(function(t,i){var p=B(t);fl+='<g class="xtw k'+(i%3)+'"><circle cx="'+p[0].toFixed(1)+'" cy="'+(p[1]-3).toFixed(1)+'" r="9" fill="url(#xgl)"/><circle cx="'+p[0].toFixed(1)+'" cy="'+(p[1]-3).toFixed(1)+'" r="2.2" fill="#fff6d6"/></g>'});
-    var bow='<g transform="translate(12 12)"><path d="M0 0C-26-18-34 6-18 12C-8 14-2 6 0 0Z" fill="#c8201a"/><path d="M0 0C26-18 34 6 18 12C8 14 2 6 0 0Z" fill="#d83a30"/><path d="M-2 4L-16 36L-7 31L-2 40Z" fill="#a51a14"/><path d="M2 4L16 34L7 30L2 38Z" fill="#b8231b"/><circle cx="0" cy="2" r="6" fill="#e8483c"/><path d="M-4 0Q0 -3 4 0" stroke="#fff" stroke-opacity=".5" fill="none"/></g>';
+    [.24,.4,.6,.76].forEach(function(t){var p=B(t);deco+='<g fill="#c8201a"><circle cx="'+(p[0]-4)+'" cy="'+(p[1]+3)+'" r="3"/><circle cx="'+(p[0]+3)+'" cy="'+(p[1]+4)+'" r="3"/><circle cx="'+p[0]+'" cy="'+(p[1]+8)+'" r="3"/></g><g fill="#fff" opacity=".6"><circle cx="'+(p[0]-5)+'" cy="'+(p[1]+2)+'" r=".9"/><circle cx="'+(p[0]+2)+'" cy="'+(p[1]+3)+'" r=".9"/></g>'});
+    var fl="";[.12,.24,.4,.6,.76,.88].forEach(function(t,i){var p=B(t);fl+='<g class="xtw k'+(i%3)+'"><circle cx="'+p[0].toFixed(1)+'" cy="'+(p[1]-3).toFixed(1)+'" r="9" fill="url(#xgl)"/><circle cx="'+p[0].toFixed(1)+'" cy="'+(p[1]-3).toFixed(1)+'" r="2.2" fill="#fff6d6"/></g>'});
+    function bowAt(p,sc){return'<g transform="translate('+p[0].toFixed(1)+' '+(p[1]+2).toFixed(1)+') scale('+sc+')">'+BOW+'</g>'}
+    var BOW='<path d="M0 0C-26-18-34 6-18 12C-8 14-2 6 0 0Z" fill="#c8201a"/><path d="M0 0C26-18 34 6 18 12C8 14 2 6 0 0Z" fill="#d83a30"/><path d="M-2 4L-16 36L-7 31L-2 40Z" fill="#a51a14"/><path d="M2 4L16 34L7 30L2 38Z" fill="#b8231b"/><circle cx="0" cy="2" r="6" fill="#e8483c"/><path d="M-4 0Q0 -3 4 0" stroke="#fff" stroke-opacity=".5" fill="none"/>';
     var grads=oc.map(function(c,i){return'<radialGradient id="xgo'+i+'" cx=".33" cy=".3" r=".8"><stop offset="0" stop-color="#fff"/><stop offset=".2" stop-color="'+c[0]+'"/><stop offset="1" stop-color="'+c[1]+'"/></radialGradient>'}).join("");
-    return'<svg class="xg" viewBox="-14 -10 400 150" aria-hidden="true"><defs>'+grads+'<radialGradient id="xgl"><stop offset="0" stop-color="#ffd987" stop-opacity=".9"/><stop offset="1" stop-color="#ffd987" stop-opacity="0"/></radialGradient></defs><path d="'+stem+'" stroke="#2d1d10" stroke-width="4" fill="none" stroke-linecap="round"/>'+needles+deco+fl+bow+'</svg>';
+    return'<svg class="xg" viewBox="-14 -10 400 150" aria-hidden="true"><defs>'+grads+'<radialGradient id="xgl"><stop offset="0" stop-color="#ffd987" stop-opacity=".9"/><stop offset="1" stop-color="#ffd987" stop-opacity="0"/></radialGradient></defs><path d="'+stem+'" stroke="#2d1d10" stroke-width="4" fill="none" stroke-linecap="round"/>'+needles+deco+fl+bowAt(B(.07),1)+bowAt(B(.93),.8)+'</svg>';
   }
   var sp=d.querySelector(".splash");
   if(sp){

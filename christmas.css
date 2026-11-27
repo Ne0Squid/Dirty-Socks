@@ -40,7 +40,7 @@ html[data-xmas] .splash::before{filter:saturate(.92) hue-rotate(-6deg)}
    radial-gradient(ellipse 85% 75% at 50% 42%,rgba(120,175,240,0) 55%,rgba(120,175,240,.2) 100%)}
 .xfront{z-index:2}
 .xdrift{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(54px,7vw,100px);display:block;-webkit-mask:linear-gradient(#000 0,#000 50%,transparent 100%);mask:linear-gradient(#000 0,#000 50%,transparent 100%)}
-.xg{position:absolute;top:-6px;width:clamp(170px,31vw,500px);height:auto;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))}
+.xg{position:absolute;top:0;width:clamp(170px,31vw,500px);height:auto;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))}
 .xg.l{left:-4px}.xg.r{right:-4px;transform:scaleX(-1)}
 .xtw{animation:xtw 1.6s ease-in-out infinite alternate}
 .xtw.k1{animation-duration:2.2s;animation-delay:-.8s}.xtw.k2{animation-duration:1.9s;animation-delay:-1.3s}
