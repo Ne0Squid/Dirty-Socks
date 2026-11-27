@@ -93,19 +93,11 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 .sched .muted{margin:0}
 </style>
 <style>
-.rq label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.9rem}
-.rq textarea{font:inherit;font-weight:400;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%;resize:vertical}
-.rq textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-.rq select{font:inherit;font-weight:400;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%}
-.rq select:focus-visible,.rq input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
-.rq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;align-items:start}
-.rq fieldset{border:1px solid var(--line);border-radius:6px;padding:8px 12px 10px;margin:0;min-width:0}
-.rq legend{font-weight:600;font-size:.9rem;padding:0 6px}
-.rq .chk{flex-direction:row;align-items:center;gap:8px;font-weight:400;padding:3px 0}
-.rq-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}
-.rq-actions .btn[disabled]{opacity:.6;cursor:default}
-#rq-msg.err{color:var(--accent)}
-.rq-done{display:flex;flex-direction:column;gap:6px}.rq-done b{font-family:Cinzel,Georgia,serif;font-size:1.2rem;color:var(--accent)}
+.join h3{font-size:1.25rem;margin:0 0 6px}
+.join .steps{margin:12px 0 18px;padding-left:20px;color:var(--muted)}.join .steps li{margin:4px 0}
+.join .btn{display:inline-flex;align-items:center;gap:10px;padding:11px 22px;font-size:1rem}
+.join .alt{margin:14px 0 0}
+.rnote{margin:0;padding:10px 18px 14px;font-size:.9rem}
 </style>
 </head>
 <body>
@@ -127,26 +119,13 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 </section>
 <section id="request" style="padding-top:8px">
   <h2>Request a Raid Spot</h2>
-  <form class="card rq" id="rqform" novalidate>
-    <p class="muted" style="margin:0 0 16px">Want in? Tell the officers which character you would like to bring. They confirm every spot and add you to the roster.</p>
-    <div class="rq-grid">
-      <label for="rq-char">Character<select id="rq-char"><option value="">Loading roster…</option></select></label>
-      <label for="rq-raid">Raid<select id="rq-raid"><option>The Barrow Deeps (10)</option><option>Hyjal Summit (20)</option><option>Both raids</option></select></label>
-      <fieldset><legend>Roles you can fill</legend>
-        <label class="chk"><input type="checkbox" name="rq-role" value="Tank"> Tank</label>
-        <label class="chk"><input type="checkbox" name="rq-role" value="Healer"> Healer</label>
-        <label class="chk"><input type="checkbox" name="rq-role" value="DPS"> DPS</label>
-      </fieldset>
-      <fieldset><legend>Nights you can make</legend>
-        <label class="chk"><input type="checkbox" name="rq-night" value="Wednesday (8PM-12AM EST)" checked> Wednesday</label>
-        <label class="chk"><input type="checkbox" name="rq-night" value="Thursday (8PM-12AM EST)" checked> Thursday</label>
-      </fieldset>
-    </div>
-    <label for="rq-note" style="margin-top:14px"><span>Anything else to tell us? <span class="muted" style="font-weight:400">(optional)</span></span><textarea id="rq-note" rows="3" maxlength="300" placeholder="Off-spec, gear status, a backup role…"></textarea></label>
-    <input type="text" id="rq-web" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
-    <div class="rq-actions"><button class="btn" type="submit" id="rq-send">Send request</button><span class="muted" id="rq-msg" role="status"></span></div>
-    <p class="muted" style="margin:14px 0 0">Trouble with the form? <a href="https://forms.gle/wESFMshow64SfqLF6" target="_blank" rel="noopener">Open it on Google instead</a>.</p>
-  </form>
+  <div class="card join">
+    <h3>Sign up with Battle.net</h3>
+    <p class="muted" style="margin:0">Sign in and your characters, levels and gear come with you. The officers confirm every spot and place you in the roster above.</p>
+    <ol class="steps"><li>Sign in with your Battle.net account.</li><li>Pick the character you want to bring.</li><li>Choose a raid and your nights.</li></ol>
+    <a class="btn" href="/signup">Sign up with Battle.net</a>
+    <p class="muted alt">Prefer not to sign in? <a href="https://forms.gle/wESFMshow64SfqLF6" target="_blank" rel="noopener">Use the Google request form</a> instead.</p>
+  </div>
 </section>
 </main>
 
@@ -159,73 +138,57 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
   <div class="fbase"><span>© <span id="yr"></span> <a href="/">Dirty Socks</a></span><span class="tm">World of Warcraft® is a registered trademark of Blizzard Entertainment, Inc.</span></div>
 </footer>
 
+<script src="auth-config.js"></script>
 <script>
 document.getElementById("yr").textContent=new Date().getFullYear();
 
-// Who fills each slot lives in raid-roster.json (slot number -> character name); everything else comes from the guild data.
+// Who fills each slot comes from two places:
+//  - raid-roster.json pins a character to a slot number by hand (always wins), and
+//  - the sign-up service: officers place approved players in a slot (main / off / heal / dps / backup-by-role).
+// Everything else (class, spec, item level) comes from the guild data. The last number in each slot row is its "cat" in the service (keep in step with LAYOUT in worker/src/index.js).
 const RAIDS=[
-  {id:"barrow",name:"The Barrow Deeps",size:10,slots:[["Main Tank","tank",1],["Off Tank","tank",1],["Healer","heal",2],["DPS","dps",6],["Backup","bak",2]]},
-  {id:"hyjal",name:"Hyjal Summit",size:20,slots:[["Main Tank","tank",1],["Off Tank","tank",1],["Healer","heal",4],["DPS","dps",14],["Backup","bak",4]]}
+  {id:"barrow",name:"The Barrow Deeps",size:10,slots:[["Main Tank","tank",1,"main"],["Off Tank","tank",1,"off"],["Healer","heal",2,"heal"],["DPS","dps",6,"dps"],["Backup","bak",2,"bak"]]},
+  {id:"hyjal",name:"Hyjal Summit",size:20,slots:[["Main Tank","tank",1,"main"],["Off Tank","tank",1,"off"],["Healer","heal",4,"heal"],["DPS","dps",14,"dps"],["Backup","bak",4,"bak"]]}
 ];
+const BAKROLE={"bak-tank":["Tank","tank"],"bak-heal":["Healer","heal"],"bak-dps":["DPS","dps"]};
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-function draw(guild,assign){
+function draw(guild,assign,placed){
   const roster=guild.roster||[],icons=guild.classIcons||{};
-  const find=n=>roster.find(m=>m.name.toLowerCase()===String(n).trim().toLowerCase());
+  const full=m=>m.surname?m.name+" "+m.surname:m.name,lc=x=>String(x).trim().toLowerCase();
+  const find=n=>roster.find(m=>lc(m.name)===lc(n))||roster.find(m=>lc(full(m))===lc(n));
   document.getElementById("raids").innerHTML=RAIDS.map((r,ri)=>{
-    let n=0,filled=0;const a=assign[r.id]||{};
-    const rows=r.slots.flatMap(([label,cls,count])=>Array.from({length:count},()=>{
-      n++;const who=a[n],m=who?find(who):null,tag=`<span class="role ${cls}">${esc(label)}</span>`;
+    const a=assign[r.id]||{},spec=[];let n=0;
+    r.slots.forEach(([label,cls,count,cat])=>{for(let i=0;i<count;i++)spec.push({n:++n,label,cls,cat})});
+    // Placed players take the first free slot of their kind. Hand-pinned names (raid-roster.json) are never moved or doubled up.
+    const pinned=new Set(Object.values(a).flatMap(x=>{const v=lc(x);return[v,v.split(" ")[0]]}));
+    const fill={},extra=[];
+    (placed[r.id]||[]).filter(p=>!pinned.has(lc(p.character))&&!pinned.has(lc(p.character).split(" ")[0])).forEach(p=>{
+      const cat=String(p.slot).startsWith("bak")?"bak":p.slot,row=spec.find(x=>x.cat===cat&&!a[x.n]&&!fill[x.n]);
+      row?fill[row.n]={name:p.character,slot:p.slot}:extra.push(p.character);
+    });
+    let filled=0;
+    const rows=spec.map(({n,label,cls})=>{
+      const f=fill[n],who=a[n]||(f&&f.name),m=who?find(who):null;
+      let tag=`<span class="role ${cls}">${esc(label)}</span>`;
+      if(f&&BAKROLE[f.slot])tag+=` <span class="role ${BAKROLE[f.slot][1]}">${BAKROLE[f.slot][0]}</span>`;
       if(!who)return `<tr><td class="num">${n}</td><td>${tag}</td><td class="open" colspan="4">Open</td></tr>`;
       if(cls!=="bak")filled++;
       if(!m)return `<tr><td class="num">${n}</td><td>${tag}</td><td><strong>${esc(who)}</strong></td><td class="open" colspan="3">Not found in guild roster</td></tr>`;
       const ico=icons[m.cls]?`<img class="cico" src="${esc(icons[m.cls])}" alt="" style="border-color:${m.color}" loading="lazy">`:`<span class="dot" style="background:${m.color}"></span>`;
       return `<tr><td class="num">${n}</td><td>${tag}</td><td><strong>${esc(m.name)}</strong></td><td><span class="cls">${ico}<span style="color:${m.color}">${esc(m.cls)}</span></span></td><td>${esc(m.spec||"–")}</td><td>${m.ilvl||"–"}</td></tr>`;
-    })).join("");
+    }).join("");
     const open=document.getElementById("raid"+ri)?document.getElementById("raid"+ri).open:false; // collapsed by default
     return `<details class="card raid" id="raid${ri}"${open?" open":""}><summary><span class="t">${esc(r.name)}</span><span class="n">${filled} / ${r.size} filled</span></summary>
-    <div class="rwrap"><table class="rtable"><thead><tr><th>#</th><th>Role</th><th>Player</th><th>Class</th><th>Spec</th><th>iLvl</th></tr></thead><tbody>${rows}</tbody></table></div></details>`;
+    <div class="rwrap"><table class="rtable"><thead><tr><th>#</th><th>Role</th><th>Player</th><th>Class</th><th>Spec</th><th>iLvl</th></tr></thead><tbody>${rows}</tbody></table></div>${extra.length?`<p class="muted rnote">Confirmed, waiting for a free slot: ${extra.map(esc).join(", ")}</p>`:""}</details>`;
   }).join("");
 }
+// Confirmed players from the sign-up service. If it cannot be reached the roster simply shows the hand-pinned names.
+const apiRoster=(window.DS_API?fetch(window.DS_API.replace(/\/+$/,"")+"/api/roster",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null):Promise.resolve(null));
 Promise.all([
   fetch("guild-data.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
-  fetch("raid-roster.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({}))
-]).then(([g,a])=>draw(g,a));
-
-// ===== Raid spot requests =====
-// The form submits straight to the officers' Google Form (answers land in its spreadsheet). The ENTRY ids come from the form's pre-filled link.
-const FORM="https://docs.google.com/forms/d/e/1FAIpQLSecjQnuAldPcMEYdueUhxgdFkDrHhRanQPIn7qA4gPi5g2B2w/formResponse";
-const ENTRY={character:"entry.1353387200",raid:"entry.1801637567",role:"entry.230302326",nights:"entry.874453092",note:"entry.112388042"};
-(function(){
-  const f=document.getElementById("rqform"),sel=document.getElementById("rq-char"),msg=document.getElementById("rq-msg"),btn=document.getElementById("rq-send");
-  const full=m=>m.surname?m.name+" "+m.surname:m.name;
-  fetch("guild-data.json",{cache:"no-cache"}).then(r=>r.json()).then(g=>{
-    const list=(g.roster||[]).filter(m=>m.level>=10).sort((a,b)=>full(a).localeCompare(full(b)));
-    sel.innerHTML='<option value="">Choose your character</option>'+list.map(m=>`<option value="${full(m).replace(/"/g,"&quot;")}">${full(m)} · ${m.cls}</option>`).join("");
-  }).catch(()=>{sel.innerHTML='<option value="">Roster unavailable, try again later</option>'});
-  const say=(t,bad)=>{msg.textContent=t;msg.className="muted"+(bad?" err":"")};
-  f.addEventListener("submit",async e=>{
-    e.preventDefault();
-    const nights=[...f.querySelectorAll("[name=rq-night]:checked")].map(x=>x.value);
-    if(!sel.value)return say("Choose your character first.",true);
-    const roles=[...f.querySelectorAll("[name=rq-role]:checked")].map(x=>x.value);
-    if(!roles.length)return say("Pick at least one role.",true);
-    if(!nights.length)return say("Pick at least one night.",true);
-    if(document.getElementById("rq-web").value)return; // spam trap
-    try{if(Date.now()-Number(localStorage.getItem("ds-rq")||0)<60000)return say("You just sent one. Give it a minute.",true)}catch(_){}
-    const raid=document.getElementById("rq-raid").value,role=roles.join(", ");
-    const body=new URLSearchParams();
-    body.append(ENTRY.character,sel.value);body.append(ENTRY.raid,raid);roles.forEach(r=>body.append(ENTRY.role,r));
-    nights.forEach(n=>body.append(ENTRY.nights,n));
-    const note=document.getElementById("rq-note").value.trim();if(note)body.append(ENTRY.note,note);
-    btn.disabled=true;say("Sending…");
-    try{
-      // Google does not let a web page read the reply, so "no-cors" is used and a request that leaves the browser counts as sent.
-      await fetch(FORM,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body});
-      try{localStorage.setItem("ds-rq",String(Date.now()))}catch(_){}
-      f.innerHTML=`<div class="rq-done"><b>Request sent</b><span>${sel.value} · ${role} · ${raid} · ${nights.map(n=>n.split(" ")[0]).join(" & ")}</span><span class="muted">The officers will confirm your spot and add you to the roster.</span></div>`;
-    }catch(_){btn.disabled=false;say("Could not send. Check your connection, or use the Google link below.",true)}
-  });
-})();
+  fetch("raid-roster.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({})),
+  apiRoster
+]).then(([g,a,p])=>draw(g,a,(p&&p.raids)||{}));
 </script>
 </body>
 </html>

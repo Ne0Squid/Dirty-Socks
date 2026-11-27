@@ -11,6 +11,12 @@ const STATUSES = ["pending", "approved", "declined"];
 // A "both" sign-up is two separate requests: each raid keeps its own status.
 const raidsOf = (raid) => (raid === "both" ? ["barrow", "hyjal"] : [raid]);
 const statusesOf = (s) => Object.fromEntries(raidsOf(s.raid).map((r) => [r, STATUSES.includes(s.statuses?.[r]) ? s.statuses[r] : (STATUSES.includes(s.status) ? s.status : "pending")]));
+// Roster slots per raid (keep in step with RAIDS in recruitment.html). Backups are one shared pool, tagged with the role they cover.
+const LAYOUT = { barrow: { main: 1, off: 1, heal: 2, dps: 6, bak: 2 }, hyjal: { main: 1, off: 1, heal: 4, dps: 14, bak: 4 } };
+const SLOTS = ["main", "off", "heal", "dps", "bak-tank", "bak-heal", "bak-dps"];
+const bucket = (slot) => (slot.startsWith("bak") ? "bak" : slot);
+// Placements only count while that raid is approved.
+const slotsOf = (s) => { const st = statusesOf(s); return Object.fromEntries(raidsOf(s.raid).filter((r) => st[r] === "approved" && SLOTS.includes(s.slots?.[r])).map((r) => [r, s.slots[r]])); };
 const MAX_PER_ACCOUNT = 6;
 const SESSION_DAYS = 7;
 
@@ -150,6 +156,14 @@ async function callback(url, env) {
   } catch { return back("error=login"); }
 }
 
+// Public, read-only: who is confirmed and where they sit. Names only (no BattleTags, notes or account ids).
+async function publicRoster(env) {
+  const raids = { barrow: [], hyjal: [] };
+  for (const { value: s } of await db(env).list("signup:")) for (const [r, slot] of Object.entries(slotsOf(s))) raids[r].push({ character: s.character, slot, at: s.created || 0 });
+  for (const r of Object.keys(raids)) raids[r] = raids[r].sort((a, b) => a.at - b.at).map(({ character, slot }) => ({ character, slot }));
+  return json({ raids, layout: LAYOUT }, 200, { "Cache-Control": "public, max-age=15", Vary: "Origin" });
+}
+
 async function handleApi(req, url, env, who) {
   const store = db(env), officer = isOfficer(env, who.sub), method = req.method, path = url.pathname;
 
@@ -161,12 +175,12 @@ async function handleApi(req, url, env, who) {
   if (path === "/api/signups" && method === "GET") {
     const items = await store.list("signup:");
     const out = items.map(({ value: s }) => {
-      const row = { character: s.character, raid: s.raid, roles: s.roles, nights: s.nights, statuses: statusesOf(s), verified: s.verified, mine: s.sub === who.sub, updated: s.updated };
+      const row = { character: s.character, raid: s.raid, roles: s.roles, nights: s.nights, statuses: statusesOf(s), slots: slotsOf(s), verified: s.verified, mine: s.sub === who.sub, updated: s.updated };
       if (officer || s.sub === who.sub) { row.note = s.note; row.battletag = s.battletag; }
       if (officer) row.sub = s.sub;
       return row;
     }).sort((a, b) => a.updated - b.updated);
-    return json({ signups: out, caps: { barrow: RAIDS.barrow, hyjal: RAIDS.hyjal } });
+    return json({ signups: out, caps: { barrow: RAIDS.barrow, hyjal: RAIDS.hyjal }, layout: LAYOUT });
   }
 
   if (path === "/api/signup" && method === "PUT") {
@@ -207,7 +221,7 @@ async function handleApi(req, url, env, who) {
       if (!raids.includes(raid)) return json({ error: "That sign-up is not for that raid." }, 400);
       if (raids.length > 1) {
         const keep = raids.find((r) => r !== raid), { status: _legacy, ...rest } = s;
-        await store.put(k, { ...rest, raid: keep, statuses: { [keep]: statusesOf(s)[keep] }, updated: Date.now() });
+        await store.put(k, { ...rest, raid: keep, statuses: { [keep]: statusesOf(s)[keep] }, slots: slotsOf(s)[keep] ? { [keep]: slotsOf(s)[keep] } : {}, updated: Date.now() });
         return json({ ok: true });
       }
     }
@@ -226,8 +240,30 @@ async function handleApi(req, url, env, who) {
       if (!raids.includes(b.raid)) return json({ error: "That sign-up is not for that raid." }, 400);
       cur[b.raid] = b.status;   // one raid only: the other keeps its own answer
     } else for (const r of raids) cur[r] = b.status;
+    const { status: _legacy, ...rest } = s, slots = slotsOf(s);
+    if (b.status !== "approved") for (const r of (b.raid ? [b.raid] : raids)) delete slots[r];   // declined or pending means no roster slot
+    await store.put(k, { ...rest, statuses: cur, slots, updated: Date.now() });
+    return json({ ok: true });
+  }
+
+  // Officer puts an approved player into a roster slot ("" clears it). Choosing a slot also approves that raid.
+  if (path === "/api/signup/slot" && method === "POST") {
+    if (!officer) return json({ error: "Officers only." }, 403);
+    let b; try { b = await req.json(); } catch { return json({ error: "bad request" }, 400); }
+    const k = `signup:${String(b.sub)}:${key(clean(b.character, 80))}`, s = await store.get(k);
+    if (!s) return json({ error: "Sign-up not found." }, 404);
+    if (!raidsOf(s.raid).includes(b.raid)) return json({ error: "That sign-up is not for that raid." }, 400);
+    const slot = b.slot === "" || b.slot == null ? "" : String(b.slot);
+    if (slot && !SLOTS.includes(slot)) return json({ error: "bad slot" }, 400);
+    const cur = statusesOf(s), slots = slotsOf(s);
+    if (slot) {
+      let taken = 0;
+      for (const { key: other, value: o } of await store.list("signup:")) if (other !== k && slotsOf(o)[b.raid] && bucket(slotsOf(o)[b.raid]) === bucket(slot)) taken++;
+      if (taken >= LAYOUT[b.raid][bucket(slot)]) return json({ error: "That part of the roster is full. Pick another slot or move someone first." }, 409);
+      slots[b.raid] = slot; cur[b.raid] = "approved";
+    } else delete slots[b.raid];
     const { status: _legacy, ...rest } = s;
-    await store.put(k, { ...rest, statuses: cur, updated: Date.now() });
+    await store.put(k, { ...rest, statuses: cur, slots, updated: Date.now() });
     return json({ ok: true });
   }
   return json({ error: "not found" }, 404);
@@ -241,6 +277,7 @@ export default {
     try {
       if (url.pathname === "/auth/login") res = await login(url, env);
       else if (url.pathname === "/auth/callback") res = await callback(url, env);
+      else if (url.pathname === "/api/roster" && req.method === "GET") res = await publicRoster(env);
       else if (url.pathname.startsWith("/api/")) {
         const who = await me(req, env);
         res = who ? await handleApi(req, url, env, who) : json({ error: "Please sign in." }, 401);

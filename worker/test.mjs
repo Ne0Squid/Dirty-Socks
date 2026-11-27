@@ -160,6 +160,63 @@ console.log("remove one raid");
   await put(A.token, { ...good, raid: "both" });
 }
 
+console.log("roster slots");
+{
+  const del = (token, q) => fetchW(req("/api/signup?" + q, { method: "DELETE", token }));
+  const slot = (token, body) => fetchW(req("/api/signup/slot", { method: "POST", token, body }));
+  const st = (body) => fetchW(req("/api/signup/status", { method: "POST", token: O.token, body }));
+  const get = async (name) => (await (await fetchW(req("/api/signups", { token: O.token }))).json()).signups.find((s) => s.character === name);
+  const pub = async () => (await fetchW(req("/api/roster"))).json();
+  const SQ = { sub: "1001", character: "Squid Zero" }, NEO = { sub: "1001", character: "Neo Squid" }, SF = { sub: "1002", character: "Scott Frost" };
+  await put(A.token, { ...good, raid: "both" });
+  await put(A.token, { ...good, character: "Neo Squid", raid: "barrow", roles: ["DPS"] });
+  await put(B.token, { ...good, character: "Scott Frost", raid: "barrow", roles: ["Tank"] });
+
+  ok((await slot(A.token, { ...SQ, raid: "barrow", slot: "heal" })).status === 403, "non-officer cannot place players");
+  ok((await slot(O.token, { ...SQ, raid: "barrow", slot: "king" })).status === 400, "unknown slot rejected");
+  ok((await slot(O.token, { ...SF, raid: "hyjal", slot: "main" })).status === 400, "cannot place someone in a raid they did not ask for");
+  ok((await slot(O.token, { sub: "999", character: "Ghost", raid: "barrow", slot: "dps" })).status === 404, "unknown sign-up -> 404");
+  ok((await pub()).raids.barrow.length === 0, "nothing public until someone is placed");
+
+  ok((await slot(O.token, { ...SQ, raid: "barrow", slot: "heal" })).status === 200, "officer places Squid Zero as Healer in Barrow");
+  let z = await get("Squid Zero");
+  ok(z.statuses.barrow === "approved" && z.slots.barrow === "heal" && z.statuses.hyjal === "pending" && !z.slots.hyjal, "placing also approves that raid, and only that raid", JSON.stringify(z));
+  let r = await pub();
+  ok(r.raids.barrow.length === 1 && r.raids.barrow[0].character === "Squid Zero" && r.raids.barrow[0].slot === "heal" && r.raids.hyjal.length === 0, "public roster shows the placement", JSON.stringify(r.raids));
+  ok(JSON.stringify(r).indexOf("battletag") < 0 && JSON.stringify(r).indexOf("1001") < 0 && JSON.stringify(r).indexOf("Resto") < 0, "public roster leaks no BattleTag, account id or note");
+  ok((await fetchW(req("/api/roster"))).headers.get("Access-Control-Allow-Origin") === SITE, "public roster can be read from the website");
+  ok((await fetchW(req("/api/roster", { origin: "https://evil.example" }))).headers.get("Access-Control-Allow-Origin") === null, "…but not from other sites");
+
+  ok((await slot(O.token, { ...NEO, raid: "barrow", slot: "main" })).status === 200, "Neo Squid takes Main Tank");
+  ok((await slot(O.token, { ...SF, raid: "barrow", slot: "main" })).status === 409, "Main Tank is full -> 409");
+  ok((await slot(O.token, { ...NEO, raid: "barrow", slot: "bak-dps" })).status === 200, "move Neo Squid to Backup (DPS)");
+  ok((await slot(O.token, { ...SQ, raid: "barrow", slot: "bak-heal" })).status === 200, "Squid Zero as a Backup Healer");
+  ok((await slot(O.token, { ...SF, raid: "barrow", slot: "bak-tank" })).status === 409, "backups are one shared pool (2 in Barrow) -> third is refused");
+  ok((await slot(O.token, { ...SF, raid: "barrow", slot: "main" })).status === 200, "Main Tank is free again after the move");
+  r = await pub();
+  const by = Object.fromEntries(r.raids.barrow.map((x) => [x.character, x.slot]));
+  ok(by["Scott Frost"] === "main" && by["Neo Squid"] === "bak-dps" && by["Squid Zero"] === "bak-heal", "backup slots carry the role they cover", JSON.stringify(by));
+
+  ok((await st({ ...SQ, raid: "barrow", status: "declined" })).status === 200, "decline Squid Zero in Barrow");
+  ok(!(await pub()).raids.barrow.some((x) => x.character === "Squid Zero"), "declined players leave the public roster");
+  await st({ ...SQ, raid: "barrow", status: "approved" });
+  ok(!(await pub()).raids.barrow.some((x) => x.character === "Squid Zero") && (await get("Squid Zero")).statuses.barrow === "approved", "re-approving does not silently restore the old slot");
+
+  await slot(O.token, { ...SQ, raid: "barrow", slot: "dps" });
+  await slot(O.token, { ...SQ, raid: "hyjal", slot: "heal" });
+  ok((await slot(O.token, { ...SQ, raid: "barrow", slot: "" })).status === 200 && !(await get("Squid Zero")).slots.barrow && (await get("Squid Zero")).statuses.barrow === "approved", "clearing a slot keeps the approval");
+  await slot(O.token, { ...SQ, raid: "barrow", slot: "dps" });
+  ok((await del(O.token, "character=Squid%20Zero&sub=1001&raid=barrow")).status === 200, "remove Barrow from a placed both-raids sign-up");
+  z = await get("Squid Zero");
+  ok(z.raid === "hyjal" && z.slots.hyjal === "heal" && z.statuses.hyjal === "approved", "Hyjal keeps its approval and slot", JSON.stringify(z));
+  await put(A.token, { ...good, raid: "hyjal" });
+  ok(Object.keys((await get("Squid Zero")).slots).length === 0 && (await pub()).raids.hyjal.length === 0, "editing a sign-up clears its roster slots (back to pending)");
+
+  await del(O.token, "character=Neo%20Squid&sub=1001");
+  await put(A.token, { ...good, raid: "both" });
+  await put(B.token, { ...good, character: "Scott Frost" });
+}
+
 console.log("withdraw + limits");
 {
   const del = (token, q) => fetchW(req("/api/signup?" + q, { method: "DELETE", token }));

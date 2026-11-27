@@ -24,6 +24,18 @@ Sign-ups are stored in the worker's own database (a Durable Object). Nothing sen
 Signed-in players see an *account ID* next to their BattleTag. Put officers' ids in `OFFICER_SUBS` in `wrangler.toml`
 (comma separated) and push. Officers get Approve / Decline / Remove buttons for each raid separately and can see BattleTags and notes.
 
+## Roster slots (the Raid Roster on Recruitment)
+In the Raid line-up on /signup, officers get a slot picker on every row: Main Tank, Off Tank, Healer, DPS, or a
+Backup tagged Tank / Healer / DPS (so a healer on the bench shows as "Backup · Healer"). Picking a slot also approves that raid,
+and a slot type that is full (for example 2 Healers in Barrow) cannot be picked. Declining a player, or the player editing
+their sign-up, frees the slot again.
+
+The Recruitment page reads the public, read-only feed `GET /api/roster` (names and slots only, no BattleTags or notes) and
+drops each placed player into the first free row of that kind. Names pinned by hand in `raid-roster.json` still win, so clear that
+file's entries once you place everyone from the sign-up page, otherwise a pinned name and a placed name can clash.
+If the feed cannot be reached the page simply shows the pinned names. Slot counts live in `LAYOUT` in `src/index.js` and in
+`RAIDS` in `recruitment.html`; change both together if a raid size changes.
+
 ## What it stores
 BattleTag, Blizzard account id, the character list Battle.net shares (kept 7 days), and each player's sign-ups
 (character, raid, roles, nights, note, and an approval status for each raid they asked for). Players can withdraw a sign-up themselves at any time.

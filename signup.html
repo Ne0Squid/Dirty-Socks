@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Raid Sign-up – Dirty Socks</title>
 <meta name="description" content="Sign in with Battle.net and sign up for Dirty Socks raids with your real character stats.">
-<meta name="robots" content="noindex">
 <meta name="theme-color" content="#0b0d11">
 <link rel="icon" href="images/favicon.png?v=2" type="image/png">
 <link rel="icon" href="images/favicon.ico?v=2" sizes="any">
@@ -123,7 +122,9 @@ h3.sec{font-size:1.15rem;margin:26px 0 12px}
 .st.approved{color:#5fd38d;border-color:#5fd38d55}.st.pending{color:#e0b341;border-color:#e0b34155}.st.declined{color:var(--muted);text-decoration:line-through}
 .mini{font:inherit;font-size:.78rem;padding:2px 9px;border-radius:6px;border:1px solid var(--line);background:none;color:var(--text);cursor:pointer}
 .mini:hover{border-color:var(--accent);color:var(--accent)}
-.sp{margin-left:auto;display:flex;gap:6px}
+.sp{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.slotsel{font:inherit;font-size:.78rem;padding:2px 6px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--text);max-width:11.5rem}
+.slotsel.need{border-color:#e0b341;color:#e0b341}
 .steps{margin:12px 0 18px;padding-left:20px;color:var(--muted)}
 .steps li{margin:4px 0}
 .bnet{display:inline-flex;align-items:center;gap:10px;padding:11px 22px;font-size:1rem}
@@ -160,11 +161,16 @@ const SHORT={barrow:"Barrow",hyjal:"Hyjal"};
 // "Both raids" is really two requests: each raid has its own status (approve Barrow, decline Hyjal, ...)
 const raidList=r=>r==="both"?["barrow","hyjal"]:[r];
 const stOf=(s,raid)=>(s.statuses&&s.statuses[raid])||s.status||"pending";
+// Roster slots an officer can give an approved player. Backups are one shared pool, tagged with the role they cover.
+const SLOT_LABEL={main:"Main Tank",off:"Off Tank",heal:"Healer",dps:"DPS","bak-tank":"Backup · Tank","bak-heal":"Backup · Healer","bak-dps":"Backup · DPS"};
+const SLOT_IDS=Object.keys(SLOT_LABEL);
+const bucket=v=>v.startsWith("bak")?"bak":v;
+const slotOf=(s,raid)=>(s.slots&&s.slots[raid])||"";
 const NIGHTS={wednesday:"Wednesday (8PM-12AM EST)",thursday:"Thursday (8PM-12AM EST)"};
 const view=document.getElementById("view");
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const full=m=>m.surname?m.name+" "+m.surname:m.name, key=s=>String(s).toLowerCase().replace(/\s+/g," ");
-const S={token:null,demoIn:false,me:null,roster:[],byName:{},overrides:{},signups:[],caps:{barrow:10,hyjal:20},pick:null,form:null,notice:"",msg:"",bad:false,busy:false,loadErr:""};
+const S={token:null,demoIn:false,me:null,roster:[],byName:{},overrides:{},signups:[],caps:{barrow:10,hyjal:20},layout:{barrow:{main:1,off:1,heal:2,dps:6,bak:2},hyjal:{main:1,off:1,heal:4,dps:14,bak:4}},pick:null,form:null,notice:"",msg:"",bad:false,busy:false,loadErr:""};
 try{S.token=localStorage.getItem(SKEY)}catch(_){}
 
 // ---- coming back from Battle.net -------------------------------------------------------------
@@ -188,13 +194,14 @@ const real={
   me:()=>call("/api/me"),list:()=>call("/api/signups"),
   put:b=>call("/api/signup",{method:"PUT",body:JSON.stringify(b)}),
   del:(c,sub,raid)=>call("/api/signup?character="+encodeURIComponent(c)+(sub?"&sub="+encodeURIComponent(sub):"")+(raid?"&raid="+encodeURIComponent(raid):""),{method:"DELETE"}),
-  status:b=>call("/api/signup/status",{method:"POST",body:JSON.stringify(b)})
+  status:b=>call("/api/signup/status",{method:"POST",body:JSON.stringify(b)}),
+  slot:b=>call("/api/signup/slot",{method:"POST",body:JSON.stringify(b)})
 };
 let demoRows=null;
 function demoSeed(){
   const top=S.roster.filter(m=>m.level>=10).sort((a,b)=>b.level-a.level);
   const others=top.slice(3,9);
-  demoRows=others.map((m,i)=>({character:full(m),raid:i%3===2?"both":i%2?"hyjal":"barrow",roles:[roleOf(m)],nights:["wednesday","thursday"],statuses:Object.fromEntries(raidList(i%3===2?"both":i%2?"hyjal":"barrow").map(r=>[r,i<3&&r!=="hyjal"||i===1?"approved":"pending"])),verified:true,mine:false,sub:"d"+i,battletag:"Player"+i+"#"+(1000+i),updated:i}));
+  demoRows=others.map((m,i)=>({character:full(m),raid:i%3===2?"both":i%2?"hyjal":"barrow",roles:[roleOf(m)],nights:["wednesday","thursday"],statuses:Object.fromEntries(raidList(i%3===2?"both":i%2?"hyjal":"barrow").map(r=>[r,i<3&&r!=="hyjal"||i===1?"approved":"pending"])),slots:{},verified:true,mine:false,sub:"d"+i,battletag:"Player"+i+"#"+(1000+i),updated:i}));
 }
 const demo={
   async me(){
@@ -202,20 +209,22 @@ const demo={
     return{sub:"demo",battletag:"YourName#1234",officer:Q.get("demo")==="officer",source:"blizzard",charsStatus:200,
       characters:top.map(m=>({name:m.name,surname:m.surname,level:m.level,cls:m.cls}))};
   },
-  async list(){if(!demoRows)demoSeed();return{signups:demoRows.map(r=>({...r})),caps:{barrow:10,hyjal:20}}},
+  async list(){if(!demoRows)demoSeed();return{signups:demoRows.map(r=>({...r,slots:{...r.slots}})),caps:{barrow:10,hyjal:20},layout:S.layout}},
   async put(b){
     if(!demoRows)demoSeed();
     const i=demoRows.findIndex(r=>r.mine&&key(r.character)===key(b.character));
-    const row={...b,statuses:Object.fromEntries(raidList(b.raid).map(r=>[r,"pending"])),verified:true,mine:true,sub:"demo",battletag:"YourName#1234",updated:Date.now()};
+    const row={...b,statuses:Object.fromEntries(raidList(b.raid).map(r=>[r,"pending"])),slots:{},verified:true,mine:true,sub:"demo",battletag:"YourName#1234",updated:Date.now()};
     if(i<0)demoRows.push(row);else demoRows[i]=row;return{ok:true};
   },
   async del(c,sub,raid){
     if(!demoRows)demoSeed();
     const r=demoRows.find(r=>key(r.character)===key(c)&&(sub?r.sub===sub:r.mine));if(!r)return{ok:true};
-    if(raid&&r.raid==="both"){r.raid=raid==="barrow"?"hyjal":"barrow";delete r.statuses[raid];return{ok:true}}
+    if(raid&&r.raid==="both"){r.raid=raid==="barrow"?"hyjal":"barrow";delete r.statuses[raid];delete r.slots[raid];return{ok:true}}
     demoRows=demoRows.filter(x=>x!==r);return{ok:true};
   },
-  async status(b){const r=demoRows.find(r=>r.sub===b.sub&&key(r.character)===key(b.character));if(r)for(const x of(b.raid?[b.raid]:raidList(r.raid)))r.statuses[x]=b.status;return{ok:true}}
+  async status(b){const r=demoRows.find(r=>r.sub===b.sub&&key(r.character)===key(b.character));if(r)for(const x of(b.raid?[b.raid]:raidList(r.raid))){r.statuses[x]=b.status;if(b.status!=="approved")delete r.slots[x]}return{ok:true}},
+  async slot(b){const r=demoRows.find(r=>r.sub===b.sub&&key(r.character)===key(b.character));if(!r)return{ok:true};
+    if(b.slot){r.statuses[b.raid]="approved";r.slots[b.raid]=b.slot}else delete r.slots[b.raid];return{ok:true}}
 };
 const api=DEMO?demo:real;
 
@@ -239,7 +248,7 @@ function signedOut(){
     <p class="muted" style="margin:0">Skip the form. Sign in and your characters, levels and gear come with you.</p>
     <ol class="steps"><li>Sign in with your Battle.net account.</li><li>Pick the character you want to bring.</li><li>Choose a raid and your nights. The officers confirm your spot.</li></ol>
     <button class="btn bnet" id="signin" type="button">Sign in with Battle.net</button>
-    <p class="muted" style="margin:14px 0 0">We only read your BattleTag and your character list. We never see your password and cannot play, buy or change anything on your account. Prefer not to sign in? <a href="/recruitment#request">Use the request form</a>.</p>
+    <p class="muted" style="margin:14px 0 0">We only read your BattleTag and your character list. We never see your password and cannot play, buy or change anything on your account. Prefer not to sign in? <a href="https://forms.gle/wESFMshow64SfqLF6" target="_blank" rel="noopener">Use the Google request form</a>.</p>
   </div>`;
 }
 function charCards(){
@@ -276,14 +285,23 @@ function formView(){
 function mySignups(){
   const mine=S.signups.filter(s=>s.mine);
   if(!mine.length)return"";
-  return`<h3 class="sec">Your sign-ups</h3><div class="card"><ul class="lu">`+mine.map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="muted">${esc(RAIDS[s.raid])} · ${s.nights.map(n=>esc(NIGHTS[n].split(" ")[0])).join(" & ")}</span>${raidList(s.raid).map(r=>`<span class="st ${stOf(s,r)}">${s.raid==="both"?SHORT[r]+" · ":""}${stOf(s,r)}</span>`).join("")}<span class="sp"><button class="mini" data-edit="${esc(s.character)}" type="button">Edit</button>${s.raid==="both"?raidList(s.raid).map(r=>`<button class="mini" data-del="${esc(s.character)}" data-raid="${r}" type="button" title="Drop out of ${esc(SHORT[r])} only. You stay signed up for ${esc(SHORT[r==="barrow"?"hyjal":"barrow"])}.">Leave ${esc(SHORT[r])}</button>`).join(""):""}<button class="mini" data-del="${esc(s.character)}" type="button"${s.raid==="both"?' title="Withdraw from both raids"':""}>${s.raid==="both"?"Withdraw all":"Withdraw"}</button></span></li>`).join("")+`</ul></div>`;
+  return`<h3 class="sec">Your sign-ups</h3><div class="card"><ul class="lu">`+mine.map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="muted">${esc(RAIDS[s.raid])} · ${s.nights.map(n=>esc(NIGHTS[n].split(" ")[0])).join(" & ")}</span>${raidList(s.raid).map(r=>`<span class="st ${stOf(s,r)}">${s.raid==="both"?SHORT[r]+" · ":""}${stOf(s,r)}</span>${slotOf(s,r)?`<span class="chip ok" title="Your place in the ${esc(SHORT[r])} roster">${esc(SLOT_LABEL[slotOf(s,r)])}</span>`:""}`).join("")}<span class="sp"><button class="mini" data-edit="${esc(s.character)}" type="button">Edit</button>${s.raid==="both"?raidList(s.raid).map(r=>`<button class="mini" data-del="${esc(s.character)}" data-raid="${r}" type="button" title="Drop out of ${esc(SHORT[r])} only. You stay signed up for ${esc(SHORT[r==="barrow"?"hyjal":"barrow"])}.">Leave ${esc(SHORT[r])}</button>`).join(""):""}<button class="mini" data-del="${esc(s.character)}" type="button"${s.raid==="both"?' title="Withdraw from both raids"':""}>${s.raid==="both"?"Withdraw all":"Withdraw"}</button></span></li>`).join("")+`</ul></div>`;
+}
+function slotPicker(s,raid){
+  const cur=slotOf(s,raid),lay=S.layout[raid]||{},used={};
+  S.signups.forEach(o=>{if(o===s)return;const v=slotOf(o,raid);if(v)used[bucket(v)]=(used[bucket(v)]||0)+1});
+  const ok=stOf(s,raid)==="approved";
+  return`<select class="slotsel${ok&&!cur?" need":""}" data-slot="1" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" data-raid="${raid}" aria-label="Roster slot for ${esc(s.character)}" title="Choose where ${esc(s.character)} sits in the ${esc(SHORT[raid])} roster. Picking a slot also approves them.">
+    <option value="">${ok?"Choose slot…":"Place in roster…"}</option>`+SLOT_IDS.map(v=>{
+      const b=bucket(v),n=used[b]||0,cap=lay[b]||0,full=n>=cap&&cur!==v,shown=n+(cur&&bucket(cur)===b?1:0);
+      return`<option value="${v}"${cur===v?" selected":""}${full?" disabled":""}>${esc(SLOT_LABEL[v])} (${shown}/${cap})</option>`}).join("")+`</select>`;
 }
 function lineup(){
   const col=raid=>{
     const rows=S.signups.filter(s=>s.raid===raid||s.raid==="both"),cap=S.caps[raid];
-    const ok=rows.filter(s=>stOf(s,raid)==="approved").length,wait=rows.filter(s=>stOf(s,raid)==="pending").length;
-    return`<div class="card"><h3>${esc(RAIDS[raid])}</h3><span class="muted">${ok} of ${cap} confirmed${wait?" · "+wait+" waiting":""}</span>
-      ${rows.length?`<ul class="lu">`+rows.filter(s=>stOf(s,raid)!=="declined"||S.me.officer).map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="st ${stOf(s,raid)}">${stOf(s,raid)}</span>${s.raid==="both"?`<span class="muted" title="This player signed up for both raids. Each raid is approved on its own.">+ ${esc(SHORT[raid==="barrow"?"hyjal":"barrow"])}</span>`:""}${s.verified?"":'<span class="chip warn" title="Claimed from the roster, not confirmed by Battle.net">unverified</span>'}${S.me.officer?`<span class="sp"><button class="mini" data-set="approved" data-raid="${raid}" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Approve</button><button class="mini" data-set="declined" data-raid="${raid}" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Decline</button><button class="mini" data-del="${esc(s.character)}" data-sub="${esc(s.sub)}" data-raid="${raid}" type="button"${s.raid==="both"?` title="Takes them out of ${esc(SHORT[raid])} only. They stay signed up for ${esc(SHORT[raid==="barrow"?"hyjal":"barrow"])}."`:""}>Remove</button></span>`:""}</li>`).join("")+`</ul>`:`<p class="muted" style="margin:10px 0 0">Nobody yet. Be the first!</p>`}</div>`;
+    const ok=rows.filter(s=>stOf(s,raid)==="approved").length,wait=rows.filter(s=>stOf(s,raid)==="pending").length,need=rows.filter(s=>stOf(s,raid)==="approved"&&!slotOf(s,raid)).length;
+    return`<div class="card"><h3>${esc(RAIDS[raid])}</h3><span class="muted">${ok} of ${cap} confirmed${wait?" · "+wait+" waiting":""}${S.me.officer&&need?" · "+need+" need a slot":""}</span>
+      ${rows.length?`<ul class="lu">`+rows.filter(s=>stOf(s,raid)!=="declined"||S.me.officer).map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="st ${stOf(s,raid)}">${stOf(s,raid)}</span>${slotOf(s,raid)&&!S.me.officer?`<span class="chip ok">${esc(SLOT_LABEL[slotOf(s,raid)])}</span>`:""}${s.raid==="both"?`<span class="muted" title="This player signed up for both raids. Each raid is approved on its own.">+ ${esc(SHORT[raid==="barrow"?"hyjal":"barrow"])}</span>`:""}${s.verified?"":'<span class="chip warn" title="Claimed from the roster, not confirmed by Battle.net">unverified</span>'}${S.me.officer?`<span class="sp">${slotPicker(s,raid)}<button class="mini" data-set="approved" data-raid="${raid}" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Approve</button><button class="mini" data-set="declined" data-raid="${raid}" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Decline</button><button class="mini" data-del="${esc(s.character)}" data-sub="${esc(s.sub)}" data-raid="${raid}" type="button"${s.raid==="both"?` title="Takes them out of ${esc(SHORT[raid])} only. They stay signed up for ${esc(SHORT[raid==="barrow"?"hyjal":"barrow"])}."`:""}>Remove</button></span>`:""}</li>`).join("")+`</ul>`:`<p class="muted" style="margin:10px 0 0">Nobody yet. Be the first!</p>`}</div>`;
   };
   return`<h3 class="sec">Raid line-up</h3><div class="lineup">${col("barrow")}${col("hyjal")}</div>`;
 }
@@ -317,7 +335,7 @@ function pickChar(name){
     :{raid:"barrow",roles:[m?roleOf(m):"DPS"],nights:["wednesday","thursday"],note:""};
 }
 async function refresh(){
-  try{const l=await api.list();S.signups=l.signups;S.caps=l.caps||S.caps}catch(e){if(e.message!=="auth")S.loadErr=e.message}
+  try{const l=await api.list();S.signups=l.signups;S.caps=l.caps||S.caps;S.layout=l.layout||S.layout}catch(e){if(e.message!=="auth")S.loadErr=e.message}
 }
 async function boot(){
   try{
@@ -356,7 +374,13 @@ view.addEventListener("click",async e=>{
     if(t.dataset.set){await api.status({sub:t.dataset.sub,character:t.dataset.c,raid:t.dataset.raid,status:t.dataset.set});await refresh();render()}
   }catch(err){if(err.message!=="auth"){S.notice=err.message}render()}
 });
-view.addEventListener("change",e=>{
+view.addEventListener("change",async e=>{
+  if(e.target.dataset&&e.target.dataset.slot){
+    const t=e.target;t.disabled=true;
+    try{await api.slot({sub:t.dataset.sub,character:t.dataset.c,raid:t.dataset.raid,slot:t.value});await refresh()}
+    catch(err){if(err.message!=="auth")S.notice=err.message}
+    render();return;
+  }
   if(e.target.name==="pick"){readForm();pickChar(e.target.value);render();return}
   if(e.target.id==="claim"){pickChar(e.target.value);render();return}
   if(e.target.closest("#suform"))readForm();
