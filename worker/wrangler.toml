@@ -10,7 +10,7 @@ REGION = "us"
 # Forever profile data, same namespace the hourly guild-data job already uses.
 PROFILE_NAMESPACE = "profile-forever-us"
 # Blizzard account ids (the "sub" shown in the officer panel) allowed to approve sign-ups, comma separated.
-OFFICER_SUBS = ""
+OFFICER_SUBS = "57041177"
 # Extra sites allowed to call the API (for testing), comma separated.
 ALLOWED_ORIGINS = ""
 
