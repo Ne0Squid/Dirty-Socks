@@ -1,10 +1,5 @@
 {
-  "_help": "Put a character name against a slot number. Names must match the guild roster. Leave a slot out to keep it Open.",
-  "barrow": {
-    "1": "Needmore",
-    "3": "Squid",
-    "5": "Scott",
-    "6": "Orken"
-  },
+  "_help": "Optional. The roster is filled from the sign-up page now (officers place players there). Only add a name here to pin someone by hand: slot number -> character name, matching the guild roster. Pinned names always win over the sign-up page.",
+  "barrow": {},
   "hyjal": {}
 }
