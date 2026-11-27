@@ -1,0 +1,233 @@
+// Dirty Socks login + raid sign-up API.
+// Runs on Cloudflare Workers with no dependencies. Flow:
+//   site -> /auth/login -> Battle.net -> /auth/callback -> site#session=<signed token>
+//   site then calls /api/* with "Authorization: Bearer <token>".
+// Secrets: BLIZZARD_CLIENT_ID, BLIZZARD_CLIENT_SECRET, SESSION_SECRET. Settings live in wrangler.toml.
+
+const RAIDS = { barrow: 10, hyjal: 20, both: 0 };
+const ROLES = ["Tank", "Healer", "DPS"];
+const NIGHTS = ["wednesday", "thursday"];
+const STATUSES = ["pending", "approved", "declined"];
+const MAX_PER_ACCOUNT = 6;
+const SESSION_DAYS = 7;
+
+const enc = new TextEncoder(), dec = new TextDecoder();
+const b64u = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+const unb64u = (s) => Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/")), (c) => c.charCodeAt(0));
+const hmacKey = (secret) => crypto.subtle.importKey("raw", enc.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign", "verify"]);
+
+async function sign(obj, secret) {
+  const p = b64u(enc.encode(JSON.stringify(obj)));
+  return p + "." + b64u(await crypto.subtle.sign("HMAC", await hmacKey(secret), enc.encode(p)));
+}
+async function verify(token, secret) {
+  if (typeof token !== "string" || token.split(".").length !== 2) return null;
+  const [p, s] = token.split(".");
+  let ok = false;
+  try { ok = await crypto.subtle.verify("HMAC", await hmacKey(secret), unb64u(s), enc.encode(p)); } catch { return null; }
+  if (!ok) return null;
+  let o; try { o = JSON.parse(dec.decode(unb64u(p))); } catch { return null; }
+  return o && o.exp > Date.now() / 1000 ? o : null;
+}
+
+// ---- storage: one Durable Object holding everything -------------------------------------------
+const json = (o, status = 200, headers = {}) => new Response(JSON.stringify(o), { status, headers: { "Content-Type": "application/json", ...headers } });
+
+export class Store {
+  constructor(state) { this.s = state.storage; }
+  async fetch(req) {
+    const b = await req.json(), now = Date.now();
+    if (b.op === "get") {
+      const r = await this.s.get(b.key);
+      if (r && r.exp && r.exp < now) { await this.s.delete(b.key); return json({ value: null }); }
+      return json({ value: r ? r.v : null });
+    }
+    if (b.op === "put") { await this.s.put(b.key, { v: b.value, exp: b.ttl ? now + b.ttl * 1000 : 0 }); return json({ ok: true }); }
+    if (b.op === "del") { await this.s.delete(b.key); return json({ ok: true }); }
+    if (b.op === "list") {
+      const m = await this.s.list({ prefix: b.prefix }), items = [];
+      for (const [key, r] of m) if (!(r.exp && r.exp < now)) items.push({ key, value: r.v });
+      return json({ items });
+    }
+    return json({ error: "bad op" }, 400);
+  }
+}
+function db(env) {
+  const stub = env.STORE.get(env.STORE.idFromName("main"));
+  const call = async (b) => (await stub.fetch("https://store/", { method: "POST", body: JSON.stringify(b) })).json();
+  return {
+    get: async (k) => (await call({ op: "get", key: k })).value ?? null,
+    put: (k, v, ttl) => call({ op: "put", key: k, value: v, ttl }),
+    del: (k) => call({ op: "del", key: k }),
+    list: async (p) => (await call({ op: "list", prefix: p })).items,
+  };
+}
+
+// ---- helpers ----------------------------------------------------------------------------------
+function allowedOrigins(env) {
+  const site = new URL(env.SITE_ORIGIN), set = new Set([site.origin]);
+  set.add(site.hostname.startsWith("www.") ? `${site.protocol}//${site.hostname.slice(4)}` : `${site.protocol}//www.${site.hostname}`);
+  (env.ALLOWED_ORIGINS || "").split(",").map((s) => s.trim()).filter(Boolean).forEach((o) => set.add(o));
+  return set;
+}
+function corsHeaders(req, env) {
+  const o = req.headers.get("Origin");
+  return o && allowedOrigins(env).has(o)
+    ? { "Access-Control-Allow-Origin": o, "Access-Control-Allow-Headers": "Authorization, Content-Type", "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS", "Access-Control-Max-Age": "86400", Vary: "Origin" }
+    : {};
+}
+const clean = (s, n) => String(s ?? "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, n);
+const full = (c) => (c.surname ? `${c.name} ${c.surname}` : c.name);
+const key = (name) => name.toLowerCase().replace(/\s+/g, " ");
+const isOfficer = (env, sub) => (env.OFFICER_SUBS || "").split(",").map((s) => s.trim()).filter(Boolean).includes(String(sub));
+
+async function me(req, env) {
+  const m = (req.headers.get("Authorization") || "").match(/^Bearer (.+)$/);
+  return m ? verify(m[1], env.SESSION_SECRET) : null;
+}
+
+// What Battle.net says this account owns. Never throws: if the game's profile is not exposed, the site falls back to "claim a character".
+async function fetchCharacters(env, accessToken) {
+  const region = env.REGION || "us", ns = env.PROFILE_NAMESPACE || "profile-forever-us";
+  try {
+    const r = await fetch(`https://${region}.api.blizzard.com/profile/user/wow?namespace=${ns}&locale=en_US`, { headers: { Authorization: `Bearer ${accessToken}` } });
+    if (!r.ok) return { status: r.status, list: [] };
+    const data = await r.json(), list = [];
+    for (const acct of data.wow_accounts || []) for (const c of acct.characters || []) {
+      list.push({
+        name: clean(c.name, 40), surname: c.surname ? clean(c.surname, 40) : undefined, id: c.id,
+        realm: c.realm && c.realm.name ? clean(c.realm.name, 40) : undefined,
+        level: c.level, cls: c.playable_class && c.playable_class.name, race: c.playable_race && c.playable_race.name,
+        faction: c.faction && (c.faction.name || c.faction.type),
+      });
+    }
+    return { status: 200, list };
+  } catch { return { status: 0, list: [] }; }
+}
+
+async function rosterNames(env) {
+  try {
+    const r = await fetch(new URL("/guild-data.json", env.SITE_ORIGIN));
+    const g = await r.json();
+    return new Set((g.roster || []).filter((m) => m.level >= 10).map((m) => key(full(m))));
+  } catch { return null; }
+}
+
+// ---- routes -----------------------------------------------------------------------------------
+async function login(url, env) {
+  const ret = url.searchParams.get("return") || new URL("/signup", env.SITE_ORIGIN).href;
+  let origin; try { origin = new URL(ret).origin; } catch { return json({ error: "bad return url" }, 400); }
+  if (!allowedOrigins(env).has(origin)) return json({ error: "return url not allowed" }, 400);
+  const state = await sign({ r: ret, n: b64u(crypto.getRandomValues(new Uint8Array(12))), exp: Math.floor(Date.now() / 1000) + 600 }, env.SESSION_SECRET);
+  const q = new URLSearchParams({ client_id: env.BLIZZARD_CLIENT_ID, redirect_uri: `${url.origin}/auth/callback`, response_type: "code", scope: "openid wow.profile", state });
+  return Response.redirect(`${env.OAUTH_AUTHORIZE_URL || "https://oauth.battle.net/authorize"}?${q}`, 302); // OAUTH_AUTHORIZE_URL is only set by the local dev server
+}
+
+async function callback(url, env) {
+  const st = await verify(url.searchParams.get("state"), env.SESSION_SECRET);
+  if (!st) return json({ error: "login expired, go back and try again" }, 400);
+  const back = (frag) => Response.redirect(`${st.r.split("#")[0]}#${frag}`, 302);
+  const code = url.searchParams.get("code");
+  if (!code) return back("error=" + encodeURIComponent(url.searchParams.get("error") || "cancelled"));
+  try {
+    const tr = await fetch("https://oauth.battle.net/token", {
+      method: "POST",
+      headers: { Authorization: "Basic " + btoa(`${env.BLIZZARD_CLIENT_ID}:${env.BLIZZARD_CLIENT_SECRET}`), "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ grant_type: "authorization_code", code, redirect_uri: `${url.origin}/auth/callback` }),
+    });
+    if (!tr.ok) return back("error=token");
+    const { access_token } = await tr.json();
+    const ur = await fetch("https://oauth.battle.net/userinfo", { headers: { Authorization: `Bearer ${access_token}` } });
+    if (!ur.ok) return back("error=userinfo");
+    const u = await ur.json(), sub = String(u.sub || u.id);
+    const chars = await fetchCharacters(env, access_token);
+    await db(env).put(`chars:${sub}`, { list: chars.list, status: chars.status, at: Date.now() }, SESSION_DAYS * 86400);
+    const token = await sign({ sub, bt: clean(u.battletag, 60), exp: Math.floor(Date.now() / 1000) + SESSION_DAYS * 86400 }, env.SESSION_SECRET);
+    return back("session=" + token);
+  } catch { return back("error=login"); }
+}
+
+async function handleApi(req, url, env, who) {
+  const store = db(env), officer = isOfficer(env, who.sub), method = req.method, path = url.pathname;
+
+  if (path === "/api/me" && method === "GET") {
+    const c = (await store.get(`chars:${who.sub}`)) || { list: [], status: null };
+    return json({ sub: who.sub, battletag: who.bt, officer, characters: c.list, source: c.list.length ? "blizzard" : "none", charsStatus: c.status });
+  }
+
+  if (path === "/api/signups" && method === "GET") {
+    const items = await store.list("signup:");
+    const out = items.map(({ value: s }) => {
+      const row = { character: s.character, raid: s.raid, roles: s.roles, nights: s.nights, status: s.status, verified: s.verified, mine: s.sub === who.sub, updated: s.updated };
+      if (officer || s.sub === who.sub) { row.note = s.note; row.battletag = s.battletag; }
+      if (officer) row.sub = s.sub;
+      return row;
+    }).sort((a, b) => a.updated - b.updated);
+    return json({ signups: out, caps: { barrow: RAIDS.barrow, hyjal: RAIDS.hyjal } });
+  }
+
+  if (path === "/api/signup" && method === "PUT") {
+    let b; try { b = await req.json(); } catch { return json({ error: "bad request" }, 400); }
+    const character = clean(b.character, 80), note = clean(b.note, 300);
+    const roles = [...new Set(Array.isArray(b.roles) ? b.roles : [])], nights = [...new Set(Array.isArray(b.nights) ? b.nights : [])];
+    if (!character) return json({ error: "Choose a character." }, 400);
+    if (!(b.raid in RAIDS)) return json({ error: "Choose a raid." }, 400);
+    if (!roles.length || !roles.every((r) => ROLES.includes(r))) return json({ error: "Pick at least one role." }, 400);
+    if (!nights.length || !nights.every((n) => NIGHTS.includes(n))) return json({ error: "Pick at least one night." }, 400);
+
+    const c = (await store.get(`chars:${who.sub}`)) || { list: [] };
+    let verified = false;
+    if (c.list.length) {
+      if (!c.list.some((x) => key(full(x)) === key(character))) return json({ error: "That character is not on your Battle.net account." }, 403);
+      verified = true;
+    } else {
+      const names = await rosterNames(env);
+      if (names && !names.has(key(character))) return json({ error: "That character is not on the guild roster." }, 400);
+    }
+    const k = `signup:${who.sub}:${key(character)}`, prev = await store.get(k);
+    if (!prev) {
+      const mine = (await store.list(`signup:${who.sub}:`)).length;
+      if (mine >= MAX_PER_ACCOUNT) return json({ error: `You can have up to ${MAX_PER_ACCOUNT} sign-ups. Withdraw one first.` }, 400);
+    }
+    const now = Date.now();
+    await store.put(k, { sub: who.sub, battletag: who.bt, character, raid: b.raid, roles, nights, note, verified, status: "pending", created: prev ? prev.created : now, updated: now });
+    return json({ ok: true });
+  }
+
+  if (path === "/api/signup" && method === "DELETE") {
+    const character = clean(url.searchParams.get("character"), 80), target = officer && url.searchParams.get("sub") ? url.searchParams.get("sub") : who.sub;
+    await store.del(`signup:${target}:${key(character)}`);
+    return json({ ok: true });
+  }
+
+  if (path === "/api/signup/status" && method === "POST") {
+    if (!officer) return json({ error: "Officers only." }, 403);
+    let b; try { b = await req.json(); } catch { return json({ error: "bad request" }, 400); }
+    if (!STATUSES.includes(b.status)) return json({ error: "bad status" }, 400);
+    const k = `signup:${String(b.sub)}:${key(clean(b.character, 80))}`, s = await store.get(k);
+    if (!s) return json({ error: "Sign-up not found." }, 404);
+    await store.put(k, { ...s, status: b.status, updated: Date.now() });
+    return json({ ok: true });
+  }
+  return json({ error: "not found" }, 404);
+}
+
+export default {
+  async fetch(req, env) {
+    const url = new URL(req.url), cors = corsHeaders(req, env);
+    if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
+    let res;
+    try {
+      if (url.pathname === "/auth/login") res = await login(url, env);
+      else if (url.pathname === "/auth/callback") res = await callback(url, env);
+      else if (url.pathname.startsWith("/api/")) {
+        const who = await me(req, env);
+        res = who ? await handleApi(req, url, env, who) : json({ error: "Please sign in." }, 401);
+      } else if (url.pathname === "/") res = json({ ok: true, service: "dirty-socks-login" });
+      else res = json({ error: "not found" }, 404);
+    } catch (e) { res = json({ error: "Server error." }, 500); }
+    const out = new Response(res.body, res);
+    for (const [k, v] of Object.entries(cors)) out.headers.set(k, v);
+    return out;
+  },
+};

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Raid Sign-up – Dirty Socks</title>
+<meta name="description" content="Sign in with Battle.net and sign up for Dirty Socks raids with your real character stats.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0d11">
+<link rel="icon" href="images/favicon.png?v=2" type="image/png">
+<link rel="icon" href="images/favicon.ico?v=2" sizes="any">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dirty Socks">
+<meta property="og:title" content="Raid Sign-up – Dirty Socks">
+<meta property="og:description" content="Sign up for Dirty Socks raids with Battle.net.">
+<meta property="og:url" content="https://www.dirtysocks.net/signup">
+<link rel="canonical" href="https://www.dirtysocks.net/signup">
+<meta property="og:image" content="https://www.dirtysocks.net/images/og-image.jpg?v=3">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Raid Sign-up – Dirty Socks">
+<meta name="twitter:description" content="Sign up for Dirty Socks raids with Battle.net.">
+<meta name="twitter:image" content="https://www.dirtysocks.net/images/og-image.jpg?v=3">
+<script src="faction.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;--blue:#2f6fa8;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0d11;--surface:#10151c;--text:#ece6d8;--muted:#9a9484;--accent:#db433b;--accent-text:#0b0807;--line:#232732;--hero:#191011;--blue:#6aa9e0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0d11;--surface:#10151c;--text:#ece6d8;--muted:#9a9484;--accent:#db433b;--accent-text:#0b0807;--line:#232732;--hero:#191011;--blue:#6aa9e0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
+a{color:var(--accent)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+main.wrap{padding-top:34px}
+.hero{background:var(--hero);border-bottom:1px solid var(--line)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+section{padding:44px 0}
+h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right;white-space:nowrap}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}
+#glancebox{padding:4px 0}
+.grow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.grow+.grow{border-top:1px solid var(--line)}
+.grow.roles{display:flex;flex-wrap:wrap;gap:4px 28px;padding:12px 22px;align-items:baseline}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.muted{color:var(--muted);font-size:.9rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;border:0;cursor:pointer;font-family:inherit}
+#entries{display:grid;gap:14px;margin-top:18px}
+#more{margin:16px auto 0;display:block}
+footer{padding:0 max(20px,calc((100% - 1200px)/2));color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+footer a{color:var(--accent);text-decoration:none;font-weight:600}footer a:hover{text-decoration:underline}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px 40px;padding:36px 0 30px}
+.fcol h3{font-family:Cinzel,Georgia,serif;font-size:.95rem;letter-spacing:.06em;color:var(--text);margin:0 0 12px}
+.fcol ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fcol li a{color:var(--muted);font-weight:400;font-size:.92rem}.fcol li a:hover{color:var(--accent);text-decoration:none}
+.fbrandlink{display:inline-flex;align-items:center;gap:12px;color:var(--accent);font-family:Cinzel,Georgia,serif;font-weight:800;font-size:1.25rem;letter-spacing:.03em}.fbrandlink:hover{text-decoration:none}
+.fbrandlink img{height:54px;width:auto;display:block}
+.ftag{margin:10px 0 0;color:var(--muted);font-size:.92rem;font-style:italic}
+html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data-faction="alliance"] .fbrandlink .fl-horde{display:none}
+.fbase{display:flex;justify-content:space-between;align-items:center;gap:8px 28px;flex-wrap:wrap;padding:18px 0 24px;border-top:1px solid var(--line)}
+.fbase .tm{text-align:right}
+@media (max-width:760px){.fgrid{grid-template-columns:1fr 1fr;padding:28px 0 22px}.fbrand{grid-column:1/-1}.fbase{justify-content:center;text-align:center}.fbase .tm{text-align:center}}
+</style>
+<style>
+details.raid{margin-bottom:14px;padding:0;overflow:hidden}
+details.raid>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;cursor:pointer;list-style:none;font-family:Cinzel,Georgia,serif;font-weight:800;font-size:1.15rem}
+details.raid>summary::-webkit-details-marker{display:none}
+details.raid>summary::before{content:"";width:0;height:0;border-left:7px solid var(--accent);border-top:5px solid transparent;border-bottom:5px solid transparent;margin-right:12px;display:inline-block;transition:transform .15s}
+details.raid[open]>summary::before{transform:rotate(90deg)}
+details.raid>summary .t{flex:1}
+details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:.85rem;color:var(--muted)}.cls{display:inline-flex;align-items:center;gap:8px;font-weight:600}.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.role{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.78rem;font-weight:600;border:1px solid var(--line)}
+.role.tank{color:#629df5;border-color:#629df555}.role.heal{color:#5fd38d;border-color:#5fd38d55}.role.dps{color:#ff7a66;border-color:#ff7a6655}.role.bak{color:var(--muted);border-style:dashed}
+@media (max-width:520px){details.raid>summary{padding:12px 12px}}
+</style>
+<style>
+</style>
+<style>
+.rq label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.9rem}
+.rq textarea{font:inherit;font-weight:400;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%;resize:vertical}
+.rq textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.rq select{font:inherit;font-weight:400;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:9px 10px;width:100%}
+.rq select:focus-visible,.rq input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.rq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;align-items:start}
+.rq fieldset{border:1px solid var(--line);border-radius:6px;padding:8px 12px 10px;margin:0;min-width:0}
+.rq legend{font-weight:600;font-size:.9rem;padding:0 6px}
+.rq .chk{flex-direction:row;align-items:center;gap:8px;font-weight:400;padding:3px 0}
+.rq-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}
+.rq-actions .btn[disabled]{opacity:.6;cursor:default}
+#rq-msg.err{color:var(--accent)}
+.beta{font-family:Inter,system-ui,sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--accent);color:var(--accent);border-radius:999px;padding:2px 9px;vertical-align:.4em;margin-left:8px}
+.notice{border-color:var(--accent);margin-bottom:14px}
+.demo{margin-bottom:14px;border-style:dashed}
+.who{display:flex;align-items:center;justify-content:space-between;gap:10px 18px;flex-wrap:wrap;margin-bottom:18px}
+.linkbtn{background:none;border:0;color:var(--accent);font:inherit;cursor:pointer;padding:0;text-decoration:underline}
+h3.sec{font-size:1.15rem;margin:26px 0 12px}
+.chars{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.ch{position:relative;display:block;cursor:pointer;margin:0}
+.ch input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.ch .card{height:100%;padding:14px 16px;transition:border-color .15s}
+.ch input:checked+.card{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.ch input:focus-visible+.card{outline:2px solid var(--accent);outline-offset:2px}
+.ch b{display:flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.ch small{display:block;color:var(--muted);margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-size:.74rem;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
+.chip.ok{color:#5fd38d;border-color:#5fd38d55}.chip.warn{color:#e0b341;border-color:#e0b34155}
+.stats{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0 0 14px}
+.stats span{color:var(--muted);font-size:.9rem}.stats b{color:var(--text)}
+.lineup{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.lineup h3{font-size:1.05rem;margin:0 0 2px}
+.lu{list-style:none;margin:10px 0 0;padding:0}
+.lu li{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap;padding:8px 0;border-top:1px solid var(--line)}
+.lu li:first-child{border-top:0}
+.lu .nm{font-weight:600}
+.st{font-size:.74rem;font-weight:600;border-radius:999px;padding:1px 9px;border:1px solid var(--line);text-transform:capitalize}
+.st.approved{color:#5fd38d;border-color:#5fd38d55}.st.pending{color:#e0b341;border-color:#e0b34155}.st.declined{color:var(--muted);text-decoration:line-through}
+.mini{font:inherit;font-size:.78rem;padding:2px 9px;border-radius:6px;border:1px solid var(--line);background:none;color:var(--text);cursor:pointer}
+.mini:hover{border-color:var(--accent);color:var(--accent)}
+.sp{margin-left:auto;display:flex;gap:6px}
+.steps{margin:12px 0 18px;padding-left:20px;color:var(--muted)}
+.steps li{margin:4px 0}
+.bnet{display:inline-flex;align-items:center;gap:10px;padding:11px 22px;font-size:1rem}
+</style>
+</head>
+<body>
+<nav></nav>
+<script src="nav.js"></script>
+<h1 class="sr">Raid Sign-up</h1>
+<main class="wrap">
+<section>
+  <h2>Raid Sign-up <span class="beta">Beta</span></h2>
+  <div id="view"><p class="muted">Loading…</p></div>
+</section>
+</main>
+<footer>
+  <div class="fgrid">
+    <div class="fcol fbrand"><div class="fbrandlink"><img class="fl-horde" src="images/logo-horde-sm.png" alt="" width="52" height="54"><img class="fl-alliance" src="images/logo-alliance-sm.png" alt="" width="52" height="54"><span>Dirty Socks</span></div><p class="ftag">Socks ain’t clean</p></div>
+    <div class="fcol"><h3>Navigation</h3><ul><li><a href="/">Home</a></li><li><a href="/roster">Roster</a></li><li><a href="/hall-of-fame">Hall of Fame</a></li><li><a href="/recruitment">Recruitment</a></li></ul></div>
+    <div class="fcol"><h3>Tools</h3><ul><li><a href="/bis">Pre-Raid BiS</a></li><li><a href="/dungeon-loot">Dungeon Loot</a></li><li><a href="/patch-notes">Patch Notes</a></li></ul></div>
+  </div>
+  <div class="fbase"><span>© <span id="yr"></span> <a href="/">Dirty Socks</a></span><span class="tm">World of Warcraft® is a registered trademark of Blizzard Entertainment, Inc.</span></div>
+</footer>
+<script src="auth-config.js"></script>
+<script>
+document.getElementById("yr").textContent=new Date().getFullYear();
+(function(){
+const Q=new URLSearchParams(location.search);
+const API=(window.DS_API||(location.hostname==="localhost"&&Q.get("api"))||"").replace(/\/+$/,"");
+const DEMO=!API||Q.has("demo");
+const SKEY="ds-session";
+const RAIDS={barrow:"The Barrow Deeps (10)",hyjal:"Hyjal Summit (20)",both:"Both raids"};
+const NIGHTS={wednesday:"Wednesday (8PM-12AM EST)",thursday:"Thursday (8PM-12AM EST)"};
+const view=document.getElementById("view");
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const full=m=>m.surname?m.name+" "+m.surname:m.name, key=s=>String(s).toLowerCase().replace(/\s+/g," ");
+const S={token:null,demoIn:false,me:null,roster:[],byName:{},overrides:{},signups:[],caps:{barrow:10,hyjal:20},pick:null,form:null,notice:"",msg:"",bad:false,busy:false,loadErr:""};
+try{S.token=localStorage.getItem(SKEY)}catch(_){}
+
+// ---- coming back from Battle.net -------------------------------------------------------------
+(function(){
+  const h=new URLSearchParams(location.hash.slice(1));
+  if(h.get("session")){S.token=h.get("session");try{localStorage.setItem(SKEY,S.token)}catch(_){}}
+  const e=h.get("error");
+  if(e)S.notice=/denied|cancel/i.test(e)?"Sign-in was cancelled. You can try again whenever you like.":"Battle.net sign-in did not complete. Please try again.";
+  if(location.hash)history.replaceState(null,"",location.pathname+location.search);
+})();
+
+// ---- API: the real one, and a pretend one for demo mode --------------------------------------
+async function call(path,opt){
+  const r=await fetch(API+path,{...opt,headers:{Authorization:"Bearer "+S.token,"Content-Type":"application/json"}});
+  const j=await r.json().catch(()=>({}));
+  if(r.status===401){signOut();S.notice="Your session ended. Please sign in again.";throw new Error("auth")}
+  if(!r.ok)throw new Error(j.error||"Something went wrong. Please try again.");
+  return j;
+}
+const real={
+  me:()=>call("/api/me"),list:()=>call("/api/signups"),
+  put:b=>call("/api/signup",{method:"PUT",body:JSON.stringify(b)}),
+  del:(c,sub)=>call("/api/signup?character="+encodeURIComponent(c)+(sub?"&sub="+encodeURIComponent(sub):""),{method:"DELETE"}),
+  status:b=>call("/api/signup/status",{method:"POST",body:JSON.stringify(b)})
+};
+let demoRows=null;
+function demoSeed(){
+  const top=S.roster.filter(m=>m.level>=10).sort((a,b)=>b.level-a.level);
+  const others=top.slice(3,9);
+  demoRows=others.map((m,i)=>({character:full(m),raid:i%3===2?"both":i%2?"hyjal":"barrow",roles:[roleOf(m)],nights:["wednesday","thursday"],status:i<3?"approved":"pending",verified:true,mine:false,sub:"d"+i,battletag:"Player"+i+"#"+(1000+i),updated:i}));
+}
+const demo={
+  async me(){
+    const top=S.roster.filter(m=>m.level>=10).sort((a,b)=>b.level-a.level).slice(0,3);
+    return{sub:"demo",battletag:"YourName#1234",officer:Q.get("demo")==="officer",source:"blizzard",charsStatus:200,
+      characters:top.map(m=>({name:m.name,surname:m.surname,level:m.level,cls:m.cls}))};
+  },
+  async list(){if(!demoRows)demoSeed();return{signups:demoRows.map(r=>({...r})),caps:{barrow:10,hyjal:20}}},
+  async put(b){
+    if(!demoRows)demoSeed();
+    const i=demoRows.findIndex(r=>r.mine&&key(r.character)===key(b.character));
+    const row={...b,status:"pending",verified:true,mine:true,sub:"demo",battletag:"YourName#1234",updated:Date.now()};
+    if(i<0)demoRows.push(row);else demoRows[i]=row;return{ok:true};
+  },
+  async del(c,sub){if(!demoRows)demoSeed();demoRows=demoRows.filter(r=>!(key(r.character)===key(c)&&(sub?r.sub===sub:r.mine)));return{ok:true}},
+  async status(b){const r=demoRows.find(r=>r.sub===b.sub&&key(r.character)===key(b.character));if(r)r.status=b.status;return{ok:true}}
+};
+const api=DEMO?demo:real;
+
+// ---- character helpers -----------------------------------------------------------------------
+function roleOf(m){
+  const o=S.overrides[full(m)];if(o)return o==="Healer"?"Healer":o==="Tank"?"Tank":"DPS";
+  const sp=m.spec||"";
+  if(/Protection|Guardian|Blood/.test(sp))return"Tank";
+  if(/Holy|Restoration|Discipline|Mistweaver|Preservation/.test(sp))return"Healer";
+  return"DPS";
+}
+const roleClass={Tank:"tank",Healer:"heal",DPS:"dps"};
+const roleChip=r=>`<span class="role ${roleClass[r]||""}">${esc(r)}</span>`;
+const info=c=>S.byName[key(full(c))]||null;
+function profChips(m){return(m&&m.professions||[]).filter(p=>p.primary).map(p=>`<span class="chip">${esc(p.name)} ${p.skill}</span>`).join("")}
+
+// ---- views -----------------------------------------------------------------------------------
+function signedOut(){
+  return`<div class="card">
+    <h3 style="font-family:Cinzel,Georgia,serif;margin:0 0 6px">Sign up for raids with Battle.net</h3>
+    <p class="muted" style="margin:0">Skip the form. Sign in and your characters, levels and gear come with you.</p>
+    <ol class="steps"><li>Sign in with your Battle.net account.</li><li>Pick the character you want to bring.</li><li>Choose a raid and your nights. The officers confirm your spot.</li></ol>
+    <button class="btn bnet" id="signin" type="button">Sign in with Battle.net</button>
+    <p class="muted" style="margin:14px 0 0">We only read your BattleTag and your character list. We never see your password and cannot play, buy or change anything on your account. Prefer not to sign in? <a href="/recruitment#request">Use the request form</a>.</p>
+  </div>`;
+}
+function charCards(){
+  const list=S.me.characters.slice().sort((a,b)=>(b.level||0)-(a.level||0));
+  return`<div class="chars" role="radiogroup" aria-label="Your characters">`+list.map(c=>{
+    const m=info(c),n=full(c),sel=S.pick&&key(S.pick)===key(n);
+    const lvl=m?m.level:c.level, cls=m?m.cls:c.cls;
+    return`<label class="ch"><input type="radio" name="pick" value="${esc(n)}"${sel?" checked":""}><div class="card">
+      <b><span class="dot" style="background:${esc(m&&m.color||"var(--muted)")}"></span>${esc(n)}</b>
+      <small>Level ${esc(lvl)} ${esc((m&&m.spec?m.spec+" ":"")+(cls||""))}${m&&m.ilvl?" · iLvl "+m.ilvl:""}</small>
+      <div class="chips">${m?'<span class="chip ok">In Dirty Socks</span>':'<span class="chip warn">Not in the guild yet</span>'}${profChips(m)}</div>
+    </div></label>`}).join("")+`</div>`;
+}
+function claimPicker(){
+  const list=S.roster.filter(m=>m.level>=10).sort((a,b)=>full(a).localeCompare(full(b)));
+  return`<div class="card rq"><p class="muted" style="margin:0 0 12px">Battle.net did not share your character list for this game, so choose your character from the guild roster. The officers double-check every sign-up.</p>
+    <label for="claim">Character<select id="claim"><option value="">Choose your character</option>${list.map(m=>`<option value="${esc(full(m))}"${S.pick&&key(S.pick)===key(full(m))?" selected":""}>${esc(full(m))} · ${esc(m.cls)}</option>`).join("")}</select></label></div>`;
+}
+function formView(){
+  const m=S.byName[key(S.pick)],f=S.form,mine=S.signups.find(s=>s.mine&&key(s.character)===key(S.pick));
+  const stats=m?`<div class="stats"><span>Level <b>${m.level}</b></span><span>Item level <b>${m.ilvl||"–"}</b></span><span><b>${esc((m.spec?m.spec+" ":"")+m.cls)}</b></span>${profChips(m)?'<span style="display:flex;gap:6px">'+profChips(m)+"</span>":""}</div>`
+    :`<div class="stats"><span>This character is not on the Dirty Socks roster yet. The officers will see that on your sign-up.</span></div>`;
+  return`<form class="card rq" id="suform" novalidate>
+    <h3 style="font-family:Cinzel,Georgia,serif;margin:0 0 4px">${esc(S.pick)}</h3>${stats}
+    <div class="rq-grid">
+      <label for="su-raid">Raid<select id="su-raid">${Object.entries(RAIDS).map(([k,v])=>`<option value="${k}"${f.raid===k?" selected":""}>${esc(v)}</option>`).join("")}</select></label>
+      <fieldset><legend>Roles you can fill</legend>${["Tank","Healer","DPS"].map(r=>`<label class="chk"><input type="checkbox" name="su-role" value="${r}"${f.roles.includes(r)?" checked":""}> ${r}</label>`).join("")}</fieldset>
+      <fieldset><legend>Nights you can make</legend>${Object.entries(NIGHTS).map(([k,v])=>`<label class="chk"><input type="checkbox" name="su-night" value="${k}"${f.nights.includes(k)?" checked":""}> ${esc(v.split(" ")[0])}</label>`).join("")}</fieldset>
+    </div>
+    <label for="su-note" style="margin-top:14px"><span>Anything else to tell us? <span class="muted" style="font-weight:400">(optional)</span></span><textarea id="su-note" rows="3" maxlength="300" placeholder="Off-spec, gear status, a backup character…">${esc(f.note)}</textarea></label>
+    <div class="rq-actions"><button class="btn" type="submit"${S.busy?" disabled":""}>${mine?"Update sign-up":"Sign up"}</button><span class="muted${S.bad?" err":""}" id="su-msg" role="status">${esc(S.msg)}</span></div>
+  </form>`;
+}
+function mySignups(){
+  const mine=S.signups.filter(s=>s.mine);
+  if(!mine.length)return"";
+  return`<h3 class="sec">Your sign-ups</h3><div class="card"><ul class="lu">`+mine.map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="muted">${esc(RAIDS[s.raid])} · ${s.nights.map(n=>esc(NIGHTS[n].split(" ")[0])).join(" & ")}</span><span class="st ${s.status}">${s.status}</span><span class="sp"><button class="mini" data-edit="${esc(s.character)}" type="button">Edit</button><button class="mini" data-del="${esc(s.character)}" type="button">Withdraw</button></span></li>`).join("")+`</ul></div>`;
+}
+function lineup(){
+  const col=raid=>{
+    const rows=S.signups.filter(s=>s.raid===raid||s.raid==="both"),cap=S.caps[raid];
+    const ok=rows.filter(s=>s.status==="approved").length,wait=rows.filter(s=>s.status==="pending").length;
+    return`<div class="card"><h3>${esc(RAIDS[raid])}</h3><span class="muted">${ok} of ${cap} confirmed${wait?" · "+wait+" waiting":""}</span>
+      ${rows.length?`<ul class="lu">`+rows.filter(s=>s.status!=="declined"||S.me.officer).map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="st ${s.status}">${s.status}</span>${s.verified?"":'<span class="chip warn" title="Claimed from the roster, not confirmed by Battle.net">unverified</span>'}${S.me.officer?`<span class="sp"><button class="mini" data-set="approved" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Approve</button><button class="mini" data-set="declined" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Decline</button><button class="mini" data-del="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Remove</button></span>`:""}</li>`).join("")+`</ul>`:`<p class="muted" style="margin:10px 0 0">Nobody yet. Be the first!</p>`}</div>`;
+  };
+  return`<h3 class="sec">Raid line-up</h3><div class="lineup">${col("barrow")}${col("hyjal")}</div>`;
+}
+function render(){
+  const out=[];
+  if(S.notice)out.push(`<div class="card notice" role="alert">${esc(S.notice)}</div>`);
+  if(DEMO)out.push(`<div class="card demo"><b>Demo mode.</b> <span class="muted">This is a preview with pretend data. Nothing is saved or sent.${S.demoIn?"":" Click the button below to walk through it."}</span></div>`);
+  const signed=DEMO?S.demoIn:!!S.token;
+  if(!signed)out.push(signedOut());
+  else if(S.loadErr)out.push(`<div class="card notice">${esc(S.loadErr)} <button class="linkbtn" id="retry" type="button">Try again</button></div>`);
+  else if(!S.me)out.push(`<p class="muted">Loading your characters…</p>`);
+  else{
+    out.push(`<div class="who"><span>Signed in as <b>${esc(S.me.battletag)}</b>${S.me.officer?' <span class="chip ok">Officer</span>':""} <span class="muted" title="Officers use this number to give someone officer access">· account ID ${esc(S.me.sub)}</span></span><button class="linkbtn" id="signout" type="button">Sign out</button></div>`);
+    out.push(`<h3 class="sec" style="margin-top:0">Choose your character</h3>`);
+    out.push(S.me.characters.length?charCards():claimPicker());
+    if(S.pick){out.push(`<h3 class="sec">Sign up</h3>`);out.push(formView())}
+    out.push(mySignups());out.push(lineup());
+  }
+  // keep keyboard focus and typed text when the page redraws
+  const a=document.activeElement,id=a&&a.id,pos=a&&a.selectionStart;
+  view.innerHTML=out.join("");
+  if(id){const el=document.getElementById(id);if(el){el.focus();try{if(pos!=null)el.setSelectionRange(pos,pos)}catch(_){}}}
+}
+
+// ---- actions ---------------------------------------------------------------------------------
+function pickChar(name){
+  S.pick=name||null;S.msg="";
+  if(!name){S.form=null;return}
+  const m=S.byName[key(name)],ex=S.signups.find(s=>s.mine&&key(s.character)===key(name));
+  S.form=ex?{raid:ex.raid,roles:ex.roles.slice(),nights:ex.nights.slice(),note:ex.note||""}
+    :{raid:"barrow",roles:[m?roleOf(m):"DPS"],nights:["wednesday","thursday"],note:""};
+}
+async function refresh(){
+  try{const l=await api.list();S.signups=l.signups;S.caps=l.caps||S.caps}catch(e){if(e.message!=="auth")S.loadErr=e.message}
+}
+async function boot(){
+  try{
+    const[g,a]=await Promise.all([fetch("guild-data.json").then(r=>r.json()).catch(()=>({})),fetch("accounts.json").then(r=>r.json()).catch(()=>({}))]);
+    S.roster=g.roster||[];S.overrides=a.roleOverrides||{};
+    S.byName={};S.roster.forEach(m=>S.byName[key(full(m))]=m);
+  }catch(_){}
+  const signed=DEMO?S.demoIn:!!S.token;
+  if(signed){
+    S.loadErr="";
+    try{S.me=await api.me();await refresh();if(S.me.characters.length===1&&!S.pick)pickChar(full(S.me.characters[0]))}
+    catch(e){if(e.message!=="auth")S.loadErr=e.message}
+  }
+  render();
+}
+function signOut(){S.token=null;S.me=null;S.demoIn=false;S.pick=null;S.form=null;S.signups=[];try{localStorage.removeItem(SKEY)}catch(_){}}
+function readForm(){
+  const f=document.getElementById("suform");if(!f)return;
+  S.form={raid:f.querySelector("#su-raid").value,roles:[...f.querySelectorAll("[name=su-role]:checked")].map(x=>x.value),nights:[...f.querySelectorAll("[name=su-night]:checked")].map(x=>x.value),note:f.querySelector("#su-note").value};
+}
+view.addEventListener("click",async e=>{
+  const t=e.target.closest("button");if(!t)return;
+  if(t.id==="signin"){
+    if(DEMO){S.demoIn=true;S.notice="";await boot();return}
+    location.href=API+"/auth/login?return="+encodeURIComponent(location.origin+location.pathname+(location.hostname==="localhost"&&Q.get("api")?"?api="+Q.get("api"):""));return;
+  }
+  if(t.id==="signout"){signOut();S.notice="";render();return}
+  if(t.id==="retry"){await boot();return}
+  try{
+    if(t.dataset.edit){pickChar(t.dataset.edit);render();document.getElementById("suform").scrollIntoView({behavior:"smooth",block:"center"});return}
+    if(t.dataset.del){
+      await api.del(t.dataset.del,t.dataset.sub&&t.dataset.sub!==S.me.sub?t.dataset.sub:undefined);await refresh();
+      if(S.pick&&key(S.pick)===key(t.dataset.del)){pickChar(S.pick)}
+      S.msg="";render();return
+    }
+    if(t.dataset.set){await api.status({sub:t.dataset.sub,character:t.dataset.c,status:t.dataset.set});await refresh();render()}
+  }catch(err){if(err.message!=="auth"){S.notice=err.message}render()}
+});
+view.addEventListener("change",e=>{
+  if(e.target.name==="pick"){readForm();pickChar(e.target.value);render();return}
+  if(e.target.id==="claim"){pickChar(e.target.value);render();return}
+  if(e.target.closest("#suform"))readForm();
+});
+view.addEventListener("input",e=>{if(e.target.id==="su-note")readForm()});
+view.addEventListener("submit",async e=>{
+  e.preventDefault();readForm();const f=S.form;
+  const say=(t,bad)=>{S.msg=t;S.bad=!!bad;const el=document.getElementById("su-msg");if(el){el.textContent=t;el.className="muted"+(bad?" err":"")}};
+  if(!f.roles.length)return say("Pick at least one role.",true);
+  if(!f.nights.length)return say("Pick at least one night.",true);
+  S.busy=true;say("Saving…");
+  try{
+    await api.put({character:S.pick,raid:f.raid,roles:f.roles,nights:f.nights,note:f.note.trim()});
+    await refresh();S.busy=false;S.msg="Saved. The officers will confirm your spot.";S.bad=false;render();
+  }catch(err){S.busy=false;if(err.message!=="auth")say(err.message,true);else render()}
+});
+boot();
+})();
+</script>
+</body>
+</html>

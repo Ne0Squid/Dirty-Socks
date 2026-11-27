@@ -1,0 +1,51 @@
+name: Deploy login worker
+
+# Publishes worker/ (the Battle.net login + raid sign-up service) to Cloudflare.
+# It does nothing until the Cloudflare secrets exist. Setup steps: worker/README.md
+on:
+  push:
+    branches: [main, blizzard-login]
+    paths: ["worker/**", ".github/workflows/deploy-worker.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-worker
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check setup
+        id: cfg
+        run: |
+          if [ -z "$CF_TOKEN" ]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Cloudflare secrets are not set yet, so nothing was deployed. See worker/README.md."
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Test the worker
+        if: steps.cfg.outputs.ready == 'true'
+        run: node worker/test.mjs
+
+      - name: Deploy to Cloudflare
+        if: steps.cfg.outputs.ready == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker
+          secrets: |
+            BLIZZARD_CLIENT_ID
+            BLIZZARD_CLIENT_SECRET
+            SESSION_SECRET
+        env:
+          BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
+          BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
