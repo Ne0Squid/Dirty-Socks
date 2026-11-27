@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Patch Notes – Dirty Socks</title>
+<meta name="description" content="The latest WoW Forever patch notes and hotfixes, kept up to date for the Dirty Socks guild.">
+<meta name="theme-color" content="#0b0d11">
+<link rel="icon" href="images/favicon.png?v=2" type="image/png">
+<link rel="icon" href="images/favicon.ico?v=2" sizes="any">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dirty Socks">
+<meta property="og:title" content="Patch Notes – Dirty Socks">
+<meta property="og:description" content="The latest WoW Forever patch notes and hotfixes, kept up to date for the Dirty Socks guild.">
+<meta property="og:url" content="https://www.dirtysocks.net/patch-notes">
+<link rel="canonical" href="https://www.dirtysocks.net/patch-notes">
+<meta property="og:image" content="https://www.dirtysocks.net/images/og-image.jpg?v=3">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Patch Notes – Dirty Socks">
+<meta name="twitter:description" content="The latest WoW Forever patch notes and hotfixes, kept up to date for the Dirty Socks guild.">
+<meta name="twitter:image" content="https://www.dirtysocks.net/images/og-image.jpg?v=3">
+<script src="faction.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;--blue:#2f6fa8;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0d11;--surface:#10151c;--text:#ece6d8;--muted:#9a9484;--accent:#db433b;--accent-text:#0b0807;--line:#232732;--hero:#191011;--blue:#6aa9e0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0d11;--surface:#10151c;--text:#ece6d8;--muted:#9a9484;--accent:#db433b;--accent-text:#0b0807;--line:#232732;--hero:#191011;--blue:#6aa9e0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
+a{color:var(--accent)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+main.wrap{padding-top:34px}
+.hero{background:var(--hero);border-bottom:1px solid var(--line)}
+.banner{padding:0;line-height:0}
+.banner img{display:block;width:100%;height:clamp(110px,30vw,480px);object-fit:cover;object-position:center 35%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+section{padding:44px 0}
+h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.muted{color:var(--muted);font-size:.9rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;border:0;cursor:pointer;font-family:inherit}
+#entries{display:grid;gap:14px;margin-top:18px}
+.pn-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.pn-badge{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 10px;border-radius:20px;border:1px solid var(--line);color:var(--muted)}
+.pn-hotfix{border-color:var(--accent);color:var(--accent)}
+.pn-build{border-color:var(--blue);color:var(--blue)}
+.pn-new{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.pn-date{margin-left:auto;color:var(--muted);font-size:.9rem}
+.pn-title{font-size:1.15rem;margin:0 0 6px}
+.pn-sum{margin:0 0 10px}
+.pn-credit{margin-top:14px}
+#more{margin:16px auto 0;display:block}
+.embed-box{margin-top:18px}
+.embed-box iframe{display:block;width:100%;height:80vh;min-height:500px;border:1px solid var(--line);border-radius:8px;margin-top:14px;background:#fff}
+footer{padding:0 max(20px,calc((100% - 1200px)/2));color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+footer a{color:var(--accent);text-decoration:none;font-weight:600}footer a:hover{text-decoration:underline}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px 40px;padding:36px 0 30px}
+.fcol h3{font-family:Cinzel,Georgia,serif;font-size:.95rem;letter-spacing:.06em;color:var(--text);margin:0 0 12px}
+.fcol ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fcol li a{color:var(--muted);font-weight:400;font-size:.92rem}.fcol li a:hover{color:var(--accent);text-decoration:none}
+.fbrandlink{display:inline-flex;align-items:center;gap:12px;color:var(--accent);font-family:Cinzel,Georgia,serif;font-weight:800;font-size:1.25rem;letter-spacing:.03em}.fbrandlink:hover{text-decoration:none}
+.fbrandlink img{height:54px;width:auto;display:block}
+.ftag{margin:10px 0 0;color:var(--muted);font-size:.92rem;font-style:italic}
+html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data-faction="alliance"] .fbrandlink .fl-horde{display:none}
+.fbase{display:flex;justify-content:space-between;align-items:center;gap:8px 28px;flex-wrap:wrap;padding:18px 0 24px;border-top:1px solid var(--line)}
+.fbase .tm{text-align:right}
+@media (max-width:760px){.fgrid{grid-template-columns:1fr 1fr;padding:28px 0 22px}.fbrand{grid-column:1/-1}.fbase{justify-content:center;text-align:center}.fbase .tm{text-align:center}}
+</style>
+<style>
+details.road{padding:0;overflow:hidden;margin-bottom:22px}
+details.road>summary{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;list-style:none;font-family:Cinzel,Georgia,serif;font-weight:800;font-size:1.25rem;color:var(--accent)}
+details.road>summary::-webkit-details-marker{display:none}
+details.road>summary::before{content:"";width:0;height:0;border-left:7px solid var(--accent);border-top:5px solid transparent;border-bottom:5px solid transparent;transition:transform .15s}
+details.road[open]>summary::before{transform:rotate(90deg)}
+details.road>summary small{margin-left:auto;font-family:Inter,system-ui,sans-serif;font-weight:600;font-size:.8rem;color:var(--muted)}
+.road-body{padding:4px 20px 20px;border-top:1px solid var(--line)}
+.tl{list-style:none;margin:16px 0 0;padding:0 0 0 26px;position:relative}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl>li{position:relative;padding:0 0 18px}
+.tl>li::before{content:"";position:absolute;left:-26px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2px solid var(--line)}
+.tl>li.done::before{background:var(--accent);border-color:var(--accent)}
+.tl>li.next::before{background:var(--surface);border-color:var(--accent);box-shadow:0 0 0 4px rgba(var(--glow,224,72,63),.28)}
+.tl .when{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tl .what{font-family:Cinzel,Georgia,serif;font-weight:800;font-size:1.05rem}
+.tl>li.done .what{color:var(--muted)}
+.tl ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:.92rem}
+.tl .tag{display:inline-block;margin-left:8px;padding:1px 9px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;vertical-align:middle;border:1px solid var(--line);color:var(--muted)}
+.tl .tag.next{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+.tl .cdown{font-weight:700;color:var(--accent);font-size:.9rem;margin-top:4px}
+.rmap{display:block;width:100%;margin-top:6px;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:none;cursor:zoom-in;position:relative}
+.rmap img{display:block;width:100%;height:auto}
+.rmap span{position:absolute;right:10px;bottom:10px;background:rgba(8,10,14,.78);color:#fff;font-size:.8rem;font-weight:600;padding:5px 12px;border-radius:999px}
+dialog.lb{border:0;padding:0;background:rgba(0,0,0,.92);max-width:100vw;max-height:100vh;width:100vw;height:100vh}
+dialog.lb::backdrop{background:rgba(0,0,0,.85)}
+.lb-scroll{width:100%;height:100%;overflow:auto;display:flex;align-items:flex-start;justify-content:center;cursor:zoom-out}
+.lb-scroll img{width:max(100%,900px);max-width:1920px;height:auto;display:block;margin:auto}
+.lb-x{position:fixed;top:12px;right:14px;z-index:5;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:7px 16px;font-weight:700;cursor:pointer}
+@media (max-width:520px){details.road>summary{font-size:1.05rem;padding:14px}.road-body{padding:4px 14px 16px}}
+</style>
+</head>
+<body>
+<nav></nav>
+<script src="nav.js"></script>
+
+<h1 class="sr">Dirty Socks</h1>
+
+<main class="wrap">
+<section id="roadmap">
+  <details class="card road" open>
+    <summary>2026 | 2027 Roadmap<small id="roadnext"></small></summary>
+    <div class="road-body">
+      <ol class="tl" id="tl"></ol>
+      <button class="rmap" id="rmap" type="button" aria-label="Open the official roadmap image full screen"><img src="images/roadmap.jpg" alt="Official WoW: Forever 2026–2027 roadmap from Blizzard: Beta Sept 17–Oct 22, Oct 27, launch Nov 4, raids unlock Dec 9, major updates in spring and summer" loading="lazy" width="1920" height="1080"><span>Tap to enlarge</span></button>
+      <p class="muted" style="margin:10px 0 0">Official roadmap from Blizzard Entertainment. More news is to be shared, and content and timing are subject to change.</p>
+    </div>
+  </details>
+  <dialog class="lb" id="lb"><button class="lb-x" id="lbx" type="button">Close ✕</button><div class="lb-scroll" id="lbs"><img src="images/roadmap.jpg" alt="Official WoW: Forever 2026–2027 roadmap"></div></dialog>
+</section>
+
+<section>
+  <h2>Patch Notes &amp; Hotfixes</h2>
+  <div class="card">
+    <p style="margin:0">The latest WoW: Forever hotfixes and client builds, newest first. Summaries come from the ForeverChanges patch-notes feed, and each entry links to its full write-up there. Blizzard’s official notes are at the bottom of the page.</p>
+    <p class="muted" id="updated" style="margin:10px 0 0"></p>
+  </div>
+  <div id="entries"></div>
+  <button class="btn" id="more" type="button" hidden>Show older entries</button>
+  <p class="muted pn-credit" id="credit" hidden>Summaries by <a id="creditlink" href="https://foreverchanges.pro/patch-notes" target="_blank" rel="noopener">ForeverChanges</a>.</p>
+
+  <div class="card embed-box">
+    <h3 style="font-size:1.2rem;margin-bottom:6px">Full notes from Blizzard</h3>
+    <p class="muted" style="margin:0 0 12px">Want Blizzard’s official text? Load their hotfix page right here. It’s shown directly from Blizzard’s website.</p>
+    <button class="btn" id="embedbtn" type="button">Show Blizzard’s full notes here</button>
+    <div id="embedwrap" hidden>
+      <iframe id="embedframe" title="Blizzard WoW: Forever hotfix notes" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+      <p class="muted" style="margin:10px 0 0">If the box above stays blank, Blizzard doesn’t allow its page to be shown on other sites. <a href="https://worldofwarcraft.blizzard.com/en-us/news/24315281" target="_blank" rel="noopener">Open the notes on Blizzard’s site instead.</a></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="fgrid">
+    <div class="fcol fbrand"><div class="fbrandlink"><img class="fl-horde" src="images/logo-horde-sm.png" alt="" width="52" height="54"><img class="fl-alliance" src="images/logo-alliance-sm.png" alt="" width="52" height="54"><span>Dirty Socks</span></div><p class="ftag">Socks ain’t clean</p></div>
+    <div class="fcol"><h3>Navigation</h3><ul><li><a href="/">Home</a></li><li><a href="/roster">Roster</a></li><li><a href="/hall-of-fame">Hall of Fame</a></li><li><a href="/recruitment">Recruitment</a></li></ul></div>
+    <div class="fcol"><h3>Tools</h3><ul><li><a href="/bis">Pre-Raid BiS</a></li><li><a href="/dungeon-loot">Dungeon Loot</a></li><li><a href="/patch-notes">Patch Notes</a></li></ul></div>
+  </div>
+  <div class="fbase"><span>© <span id="yr"></span> <a href="/">Dirty Socks</a></span><span class="tm">World of Warcraft® is a registered trademark of Blizzard Entertainment, Inc.</span></div>
+</footer>
+
+<script>
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ago=t=>{const m=Math.max(0,Math.round((Date.now()-new Date(t))/6e4));return m<1?"just now":m<60?m+" min ago":m<1440?Math.round(m/60)+" hr ago":Math.round(m/1440)+" days ago"};
+const fmtTime=d=>new Date(d).toLocaleString("en-US",{month:"long",day:"numeric",year:"numeric",hour:"numeric",minute:"2-digit",timeZoneName:"short"});
+const fmtDay=d=>new Date(d).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric",timeZone:"UTC"});
+const SITE="https://foreverchanges.pro/";
+const BLIZZ="https://worldofwarcraft.blizzard.com/en-us/news/24315281";
+const KINDS={hotfix:"Hotfix",build:"Client build",other:"Update"};
+const PAGE=10;
+let entries=[],shown=0;
+document.getElementById("yr").textContent=new Date().getFullYear();
+
+function card(e){
+  const isNew=e.firstSeen&&Date.now()-new Date(e.firstSeen)<72*36e5;
+  const link=String(e.link||"").startsWith(SITE)?e.link:SITE+"patch-notes";
+  const kind=KINDS[e.kind]?e.kind:"other";
+  return `<article class="card"><div class="pn-top"><span class="pn-badge pn-${kind}">${KINDS[kind]}</span>${isNew?'<span class="pn-badge pn-new">New</span>':""}<span class="pn-date">${fmtDay(e.date)}</span></div><h3 class="pn-title">${esc(e.title)}</h3>${e.summary?`<p class="pn-sum">${esc(e.summary)}</p>`:""}<a href="${esc(link)}" target="_blank" rel="noopener">Read the full entry on ForeverChanges</a></article>`;
+}
+function showMore(){
+  const next=entries.slice(shown,shown+PAGE);
+  document.getElementById("entries").insertAdjacentHTML("beforeend",next.map(card).join(""));
+  shown+=next.length;
+  document.getElementById("more").hidden=shown>=entries.length;
+}
+function render(d){
+  entries=d.entries||[];
+  document.getElementById("updated").textContent="Last checked "+fmtTime(d.generated)+" ("+ago(d.generated)+"). The page checks for new entries automatically twice a day.";
+  const site=String(d.siteUrl||"").startsWith(SITE)?d.siteUrl:SITE+"patch-notes";
+  document.getElementById("creditlink").href=site;
+  document.getElementById("credit").hidden=false;
+  showMore();
+}
+document.getElementById("more").addEventListener("click",showMore);
+fetch("patch-notes.json",{cache:"no-cache"})
+  .then(r=>r.ok?r.json():Promise.reject())
+  .then(render)
+  .catch(()=>{document.getElementById("entries").innerHTML=`<div class="card"><p style="margin:0">The patch notes haven’t loaded yet. They appear after the first scheduled update runs. In the meantime, you can read them on <a href="${SITE}patch-notes" target="_blank" rel="noopener">ForeverChanges</a> or on <a href="${BLIZZ}" target="_blank" rel="noopener">Blizzard’s site</a>.</p></div>`});
+document.getElementById("embedbtn").addEventListener("click",()=>{
+  const wrap=document.getElementById("embedwrap"),frame=document.getElementById("embedframe"),btn=document.getElementById("embedbtn");
+  if(wrap.hidden){ if(!frame.src) frame.src=BLIZZ; wrap.hidden=false; btn.textContent="Hide Blizzard’s full notes"; }
+  else { wrap.hidden=true; btn.textContent="Show Blizzard’s full notes here"; }
+});
+
+// ---- Roadmap ----
+(function(){
+  const D=(y,m,d)=>new Date(y,m-1,d,0,0,0);
+  const items=[
+    {when:"Sept 17 – Oct 22",what:"Beta",end:D(2026,10,23),pts:["Play up to level 30"]},
+    {when:"Oct 27",what:"Early name reservation",end:D(2026,10,28),pts:["Name reservation and character creation"]},
+    {when:"Nov 4",what:"Launch",end:D(2026,11,5)},
+    {when:"Dec 9",what:"Raids unlock",end:D(2026,12,10),at:D(2026,12,9),pts:["Barrow Deeps (10 player)","Hyjal Summit (20 player)","Onyxia’s Lair (40 player)"]},
+    {when:"Spring 2027",what:"Major updates",end:D(2027,6,21),pts:["2 new raids (10 player, 20 player)","2 new dungeons","New quests and playable area","New legendary questline","PvP season refresh"]},
+    {when:"Summer 2027",what:"Major updates",end:D(2027,9,23),pts:["Revamped iconic raid and a new raid","Expanded world content","2 new dungeons","PvP season refresh","Professions and legacy updates"]}
+  ];
+  const now=new Date(),ni=items.findIndex(i=>i.end>now);
+  const cd=t=>{const s=Math.max(0,Math.floor((t-new Date())/1000)),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);return d+"d "+h+"h "+m+"m"};
+  const tl=document.getElementById("tl");
+  tl.innerHTML=items.map((it,i)=>{
+    const st=i<ni||ni<0?"done":i===ni?"next":"";
+    const tag=st==="next"?'<span class="tag next">Next up</span>':st==="done"?'<span class="tag">Done</span>':"";
+    return `<li class="${st}"><div class="when">${esc(it.when)}</div><div class="what">${esc(it.what)}${tag}</div>${it.pts?"<ul>"+it.pts.map(p=>"<li>"+esc(p)+"</li>").join("")+"</ul>":""}${st==="next"&&it.at?`<div class="cdown" id="rcd"></div>`:""}</li>`;
+  }).join("");
+  const nx=items[ni];
+  if(nx){document.getElementById("roadnext").textContent="Next: "+nx.what+" · "+nx.when;
+    if(nx.at){const e=document.getElementById("rcd"),tick=()=>{if(nx.at<=new Date()){e.textContent="";return}e.textContent="Starts in "+cd(nx.at)};tick();setInterval(tick,30000)}}
+  const lb=document.getElementById("lb"),open=()=>{if(lb.showModal)lb.showModal();else lb.setAttribute("open","")},close=()=>{if(lb.close)lb.close();else lb.removeAttribute("open")};
+  document.getElementById("rmap").addEventListener("click",open);
+  document.getElementById("lbx").addEventListener("click",close);
+  document.getElementById("lbs").addEventListener("click",close);
+  lb.addEventListener("click",e=>{if(e.target===lb)close()});
+})();
+</script>
+</body>
+</html>

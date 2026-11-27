@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roster – Dirty Socks</title>
+<meta name="description" content="The Dirty Socks guild roster.">
+<meta name="theme-color" content="#0b0d11">
+<link rel="icon" href="images/favicon.png?v=2" type="image/png">
+<link rel="icon" href="images/favicon.ico?v=2" sizes="any">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dirty Socks">
+<meta property="og:title" content="Roster – Dirty Socks">
+<meta property="og:description" content="The Dirty Socks guild roster.">
+<meta property="og:url" content="https://www.dirtysocks.net/roster">
+<link rel="canonical" href="https://www.dirtysocks.net/roster">
+<meta property="og:image" content="https://www.dirtysocks.net/images/og-image.jpg?v=3">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Roster – Dirty Socks">
+<meta name="twitter:description" content="The Dirty Socks guild roster.">
+<meta name="twitter:image" content="https://www.dirtysocks.net/images/og-image.jpg?v=3">
+<script src="faction.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;--blue:#2f6fa8;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0d11;--surface:#10151c;--text:#ece6d8;--muted:#9a9484;--accent:#db433b;--accent-text:#0b0807;--line:#232732;--hero:#191011;--blue:#6aa9e0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0d11;--surface:#10151c;--text:#ece6d8;--muted:#9a9484;--accent:#db433b;--accent-text:#0b0807;--line:#232732;--hero:#191011;--blue:#6aa9e0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
+a{color:var(--accent)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+main.wrap{padding-top:34px}
+.hero{background:var(--hero);border-bottom:1px solid var(--line)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+section{padding:44px 0}
+h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.filters button{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:20px;padding:6px 16px;cursor:pointer;font-size:.88rem}
+.filters button.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.member{display:flex;align-items:center;gap:10px}
+.member a{color:inherit;text-decoration:none}.member a:hover{color:var(--accent);text-decoration:underline}
+.tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right;white-space:nowrap}
+.pager{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.pager button{background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer;font-size:.88rem;min-width:36px}
+.pager button.on{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.pager button:disabled{opacity:.4;cursor:default}
+.cico{width:38px;height:38px;border-radius:8px;border:2px solid;flex:none;object-fit:cover}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}
+#glancebox{padding:4px 0}
+.grow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.grow+.grow{border-top:1px solid var(--line)}
+.stat{text-align:center;padding:16px 8px}.stat b{display:block;font-family:Cinzel,Georgia,serif;font-size:clamp(1.3rem,4.5vw,2rem);color:var(--accent)}.stat span{font-size:clamp(.72rem,2.4vw,.9rem)}
+.grow.roles{display:flex;flex-wrap:wrap;gap:4px 28px;padding:12px 22px;align-items:baseline}.rl.fn{margin-left:auto;font-size:.8rem;font-style:italic;white-space:normal;text-align:right}
+.rl{font-size:.92rem;color:var(--muted);white-space:nowrap}.rl b{color:var(--accent);font-family:Cinzel,Georgia,serif;font-size:1rem;margin-left:4px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.muted{color:var(--muted);font-size:.9rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;border:0;cursor:pointer;font-family:inherit}
+#entries{display:grid;gap:14px;margin-top:18px}
+#more{margin:16px auto 0;display:block}
+footer{padding:0 max(20px,calc((100% - 1200px)/2));color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+footer a{color:var(--accent);text-decoration:none;font-weight:600}footer a:hover{text-decoration:underline}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px 40px;padding:36px 0 30px}
+.fcol h3{font-family:Cinzel,Georgia,serif;font-size:.95rem;letter-spacing:.06em;color:var(--text);margin:0 0 12px}
+.fcol ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fcol li a{color:var(--muted);font-weight:400;font-size:.92rem}.fcol li a:hover{color:var(--accent);text-decoration:none}
+.fbrandlink{display:inline-flex;align-items:center;gap:12px;color:var(--accent);font-family:Cinzel,Georgia,serif;font-weight:800;font-size:1.25rem;letter-spacing:.03em}.fbrandlink:hover{text-decoration:none}
+.fbrandlink img{height:54px;width:auto;display:block}
+.ftag{margin:10px 0 0;color:var(--muted);font-size:.92rem;font-style:italic}
+html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data-faction="alliance"] .fbrandlink .fl-horde{display:none}
+.fbase{display:flex;justify-content:space-between;align-items:center;gap:8px 28px;flex-wrap:wrap;padding:18px 0 24px;border-top:1px solid var(--line)}
+.fbase .tm{text-align:right}
+@media (max-width:760px){.fgrid{grid-template-columns:1fr 1fr;padding:28px 0 22px}.fbrand{grid-column:1/-1}.fbase{justify-content:center;text-align:center}.fbase .tm{text-align:center}}
+.craft input{width:100%;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
+.craft input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.cfrow{padding:10px 0;border-top:1px solid var(--line)}.cfrow:first-child{margin-top:10px}
+.cfrow b{font-weight:600}.cfrow .muted{font-size:.82rem}.cfrow .who{margin-top:2px}.cfrow .who a{color:inherit;text-decoration:none}.cfrow .who a:hover{color:var(--accent);text-decoration:underline}
+.prof-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
+.prof-head h3{font-size:.82rem}.pico{display:inline-block;width:1.5em;height:1.5em;margin-right:.45em;text-align:center;vertical-align:-.3em}img.pico{border-radius:4px;object-fit:cover}
+.prow{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-top:1px solid var(--line);font-size:.92rem}
+.prof-more{margin-top:8px;width:100%;background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px;font:inherit;font-size:.85rem;cursor:pointer}.prof-more:hover{color:var(--accent);border-color:var(--accent)}
+.prow a{color:inherit;text-decoration:none}.prow a:hover{color:var(--accent);text-decoration:underline}
+</style>
+</head>
+<body>
+<nav></nav>
+<script src="nav.js"></script>
+
+<h1 class="sr">Dirty Socks</h1>
+
+<main class="wrap">
+<section id="glance" style="padding-bottom:8px">
+  <h2>Roster at a Glance</h2>
+  <div class="card" id="glancebox"></div>
+</section>
+<section id="roster" style="padding-bottom:8px">
+  <h2>Guild Roster</h2>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="members"></div>
+  <div class="pager" id="pager"></div>
+  <p class="muted" style="margin-top:12px">Characters below level 10 are hidden from the roster and will appear once they reach level 10.</p>
+</section>
+<section id="professions" hidden style="padding-top:8px">
+  <h2>Professions</h2>
+  <div class="card craft" id="craftcard" hidden>
+    <h3 style="font-size:1.2rem;margin-bottom:4px">Craft Finder</h3>
+    <p class="muted" style="margin:0 0 10px">Type a recipe to see who in the guild can make it.</p>
+    <input type="search" id="craftq" placeholder="Search recipes, e.g. Thorium" autocomplete="off" aria-label="Search recipes">
+    <div id="craftout"></div>
+  </div>
+  <div class="grid" id="proflist" style="margin-top:14px"></div>
+  <p class="muted" style="margin-top:12px">Professions of guild members level 10 and up, from the Armory. Skill shows current / maximum.</p>
+</section>
+</main>
+
+<footer>
+  <div class="fgrid">
+    <div class="fcol fbrand"><div class="fbrandlink"><img class="fl-horde" src="images/logo-horde-sm.png" alt="" width="52" height="54"><img class="fl-alliance" src="images/logo-alliance-sm.png" alt="" width="52" height="54"><span>Dirty Socks</span></div><p class="ftag">Socks ain’t clean</p></div>
+    <div class="fcol"><h3>Navigation</h3><ul><li><a href="/">Home</a></li><li><a href="/roster">Roster</a></li><li><a href="/hall-of-fame">Hall of Fame</a></li><li><a href="/recruitment">Recruitment</a></li></ul></div>
+    <div class="fcol"><h3>Tools</h3><ul><li><a href="/bis">Pre-Raid BiS</a></li><li><a href="/dungeon-loot">Dungeon Loot</a></li><li><a href="/patch-notes">Patch Notes</a></li></ul></div>
+  </div>
+  <div class="fbase"><span>© <span id="yr"></span> <a href="/">Dirty Socks</a></span><span class="tm">World of Warcraft® is a registered trademark of Blizzard Entertainment, Inc.</span></div>
+</footer>
+
+<script>
+document.getElementById("yr").textContent=new Date().getFullYear();
+// ===== ROSTER AT A GLANCE =====
+// accounts.json groups characters that belong to the same player: { "groups": [["Squid Zero","Neo Squid"], ...] } (full names).
+// Blizzard doesn't say which characters share an account, so officers keep this list by hand.
+// Role of each class/spec. Armory specs: Feral Combat can't tell cat from bear, so it counts as Melee DPS
+// unless a character is listed under roleOverrides in accounts.json, e.g. {"Cameron Croucher":"Tank"}.
+const ROLES={
+  Warrior:{Protection:"Tank",Arms:"Melee",Fury:"Melee"},
+  Paladin:{Protection:"Tank",Holy:"Healer",Retribution:"Melee"},
+  Druid:{Restoration:"Healer",Balance:"Ranged","Feral Combat":"Melee",Feral:"Melee"},
+  Priest:{Holy:"Healer",Discipline:"Healer",Shadow:"Ranged"},
+  Shaman:{Restoration:"Healer",Elemental:"Ranged",Enhancement:"Melee"},
+  Rogue:"Melee",Hunter:"Ranged",Mage:"Ranged",Warlock:"Ranged"
+};
+const roleOf=(m,over)=>{
+  const o=over[(m.name+" "+(m.surname||"")).trim().toLowerCase()];if(o)return o;
+  if(!m.spec)return null; // no spec on the Armory yet
+  const r=ROLES[m.cls];return typeof r==="string"?r:(r&&r[m.spec])||null;
+};
+function drawGlance(roster,acc){
+  acc=acc||{};const groups=acc.groups||[];
+  const over={};Object.keys(acc.roleOverrides||{}).forEach(k=>{const v=String(acc.roleOverrides[k]).toLowerCase();over[k.trim().toLowerCase()]=/tank/.test(v)?"Tank":/heal/.test(v)?"Healer":/range/.test(v)?"Ranged":"Melee"});
+  const avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):"–";
+  const lvls=roster.filter(m=>m.level>=10).map(m=>m.level),ilvls=roster.filter(m=>m.level>=10&&m.ilvl>0).map(m=>m.ilvl);
+  const key=m=>(m.name+" "+(m.surname||"")).trim().toLowerCase();
+  const known=new Set(roster.map(key));
+  let extra=0;
+  groups.forEach(g=>{const n=[...new Set((g||[]).map(x=>String(x).trim().toLowerCase()))].filter(x=>known.has(x)).length;if(n>1)extra+=n-1});
+  const top=[];
+  if(groups.length)top.push([roster.length-extra,"Players"]);
+  top.push([roster.length,"Characters"],[avg(lvls),"Average level"],[avg(ilvls),"Average item level"]);
+  const rc={Tank:0,Healer:0,Melee:0,Ranged:0};
+  roster.forEach(m=>{const r=roleOf(m,over);if(r)rc[r]++});
+  const box=c=>`<div class="stat"><b>${c[0]}</b><span class="muted">${c[1]}</span></div>`;
+  document.getElementById("glancebox").innerHTML=`<div class="grow">${top.map(box).join("")}</div><div class="grow roles">${[[rc.Tank,"Tanks"],[rc.Healer,"Healers"],[rc.Melee,"Melee DPS"],[rc.Ranged,"Ranged DPS"]].map(c=>`<span class="rl">${c[1]}:<b>${c[0]}</b></span>`).join("")}<span class="rl fn">*only characters over level 10 are counted towards averages</span></div>`;
+}
+// ===== GUILD ROSTER (moved here from the home page) =====
+const rankNames={0:"Guild Master",1:"Officer"}; // Blizzard returns numbers only; add titles like 2:"Raider"
+let gSorted=[],gTabs=[],classIcons={},curClass="All";
+const PER_PAGE=20;
+const armoryUrl=m=>"https://worldofwarcraft.blizzard.com/en-us/forever/us/armory/character/"+encodeURIComponent((m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-"));
+// Armory pages only exist for characters level 10 and up, so lower levels stay plain text.
+const nameLink=m=>{const t=m.name+" "+(m.surname||"");return m.level>=10?`<a href="${armoryUrl(m)}" target="_blank" rel="noopener">${t}</a>`:t};
+const cico=m=>classIcons[m.cls]?`<img class="cico" src="${esc(classIcons[m.cls])}" alt="${esc(m.cls)}" style="border-color:${m.color}" loading="lazy" onerror="this.outerHTML='<span class=&quot;dot&quot; style=&quot;background:${m.color}&quot;></span>'">`:`<span class="dot" style="background:${m.color}"></span>`;
+function showRoster(c,pg){
+  curClass=c;
+  const list=gSorted.filter(m=>c==="All"||m.cls===c);
+  const pages=Math.max(1,Math.ceil(list.length/PER_PAGE));
+  const cur=Math.min(Math.max(1,pg||1),pages);
+  document.getElementById("filters").innerHTML=gTabs.map(t=>`<button class="${t===c?"on":""}" data-c="${esc(t)}">${esc(t)}</button>`).join("");
+  document.getElementById("members").innerHTML=list.slice((cur-1)*PER_PAGE,cur*PER_PAGE).map(m=>`<div class="card member">${cico(m)}<div><strong>${nameLink(m)}</strong><div class="muted">Level ${m.level}${m.ilvl?" · iLvl "+m.ilvl:""}</div><div class="muted">${m.spec?m.spec+" ":""}${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
+  const pagerEl=document.getElementById("pager");
+  if(pages<=1){pagerEl.innerHTML="";return}
+  let h=`<button data-p="${cur-1}" ${cur===1?"disabled":""}>‹ Prev</button>`;
+  for(let i=1;i<=pages;i++)h+=`<button data-p="${i}" class="${i===cur?"on":""}">${i}</button>`;
+  h+=`<button data-p="${cur+1}" ${cur===pages?"disabled":""}>Next ›</button>`;
+  pagerEl.innerHTML=h;
+}
+let profIcons={},recipeData={};
+const slugOf=m=>(m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-");
+document.getElementById("proflist").addEventListener("click",e=>{
+  const b=e.target.closest(".prof-more"); if(!b) return;
+  const ex=b.previousElementSibling, open=ex.hidden;
+  ex.hidden=!open; b.textContent=open?"Show fewer":"Show "+b.dataset.n+" more";
+});
+const PROF_ICONS={"Mining":"⛏️","Blacksmithing":"🔨","Leatherworking":"🥾","Skinning":"🔪","Herbalism":"🌿","Alchemy":"⚗️","Tailoring":"🧵","Engineering":"⚙️","Enchanting":"✨","Cooking":"🍳","Fishing":"🎣","First Aid":"🩹","Jewelcrafting":"💎","Inscription":"📜","Archaeology":"🏺","Lockpicking":"🗝️"};
+function drawCraft(){
+  const card=document.getElementById("craftcard"),out=document.getElementById("craftout");
+  const all=[];
+  for(const prof in recipeData)for(const name in recipeData[prof])all.push({prof,name,who:recipeData[prof][name]});
+  card.hidden=!all.length;
+  const q=document.getElementById("craftq").value.trim().toLowerCase();
+  if(!all.length||q.length<2){out.innerHTML=q.length?'<p class="muted" style="margin:10px 0 0">Keep typing…</p>':"";return}
+  const bySlug={};gSorted.forEach(m=>bySlug[slugOf(m)]=m);
+  const hits=all.filter(r=>r.name.toLowerCase().includes(q)).sort((a,b)=>b.who.length-a.who.length||a.name.localeCompare(b.name));
+  out.innerHTML=hits.length?hits.slice(0,25).map(r=>`<div class="cfrow"><b>${esc(r.name)}</b> <span class="muted">· ${esc(r.prof)}</span><div class="who">${r.who.map(w=>bySlug[w]?nameLink(bySlug[w]):"").filter(Boolean).join(", ")}</div></div>`).join("")+(hits.length>25?`<p class="muted" style="margin:10px 0 0">Showing 25 of ${hits.length}. Type more to narrow it down.</p>`:""):'<p class="muted" style="margin:10px 0 0">No guild member knows a recipe matching that.</p>';
+}
+document.getElementById("craftq").addEventListener("input",drawCraft);
+function profIcon(n){const u=profIcons[n],e=PROF_ICONS[n]||"🛠️";return u?`<img class="pico" src="${esc(u)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'pico',textContent:this.dataset.e}))" data-e="${e}">`:`<span class="pico" aria-hidden="true">${e}</span>`}
+function drawProfessions(){
+  const map={};
+  gSorted.forEach(m=>(m.professions||[]).forEach(p=>{if(p&&p.name)(map[p.name]=map[p.name]||{primary:!!p.primary,rows:[]}).rows.push({m,skill:p.skill,max:p.max})}));
+  const names=Object.keys(map);
+  document.getElementById("professions").hidden=!names.length;
+  const pn=document.getElementById("profnav");if(pn)pn.hidden=!names.length;
+  names.sort((a,b)=>(map[b].primary-map[a].primary)||(map[b].rows.length-map[a].rows.length)||a.localeCompare(b));
+  document.getElementById("proflist").innerHTML=names.map(n=>{
+    const r=map[n].rows.sort((a,b)=>(b.skill||0)-(a.skill||0)||b.m.level-a.m.level);
+    const row=x=>`<div class="prow"><span>${nameLink(x.m)}</span><span class="muted">${x.skill!=null?x.skill+(x.max?" / "+x.max:""):"–"}</span></div>`;
+    const more=r.length>5?`<div class="prof-extra" hidden>${r.slice(5).map(row).join("")}</div><button type="button" class="prof-more" data-n="${r.length-5}">Show ${r.length-5} more</button>`:"";
+    return `<div class="card"><div class="prof-head"><h3>${profIcon(n)}${esc(n)}</h3><span class="muted">${r.length} ${r.length===1?"member":"members"}</span></div>${r.slice(0,5).map(row).join("")}${more}</div>`;
+  }).join("");
+}
+
+document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("button");if(b)showRoster(b.dataset.c,1)});
+document.getElementById("pager").addEventListener("click",e=>{const b=e.target.closest("button");if(b&&!b.disabled)showRoster(curClass,+b.dataset.p)});
+Promise.all([
+  fetch("guild-data.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null),
+  fetch("accounts.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({}))
+]).then(([d,acc])=>{
+  if(!d||!d.roster)return;
+  drawGlance(d.roster,acc);
+  classIcons=d.classIcons||{};
+  gSorted=d.roster.filter(m=>m.level>=10).sort((a,b)=>a.rank-b.rank||b.level-a.level); // characters under level 10 stay hidden
+  gTabs=["All",...[...new Set(gSorted.map(m=>m.cls))].sort()];
+  profIcons=d.professionIcons||{};recipeData=d.recipes||{};
+  showRoster("All");
+  drawProfessions();drawCraft();
+}).catch(()=>{document.getElementById("members").innerHTML='<p class="muted">Could not load the roster. Try refreshing the page.</p>'});
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+</script>
+</body>
+</html>
