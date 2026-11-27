@@ -17,6 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}   # optional: sign-up alerts (worker/README.md)
     steps:
       - uses: actions/checkout@v4
 
@@ -34,6 +35,20 @@ jobs:
         if: steps.cfg.outputs.ready == 'true'
         run: node worker/test.mjs
 
+      # The Discord secret is only uploaded when it exists, so deploys keep working before it is added.
+      - name: Pick the secrets to upload
+        id: sec
+        if: steps.cfg.outputs.ready == 'true'
+        run: |
+          {
+            echo "list<<EOF"
+            echo BLIZZARD_CLIENT_ID
+            echo BLIZZARD_CLIENT_SECRET
+            echo SESSION_SECRET
+            if [ -n "$DISCORD_WEBHOOK_URL" ]; then echo DISCORD_WEBHOOK_URL; fi
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+
       - name: Deploy to Cloudflare
         if: steps.cfg.outputs.ready == 'true'
         uses: cloudflare/wrangler-action@v3
@@ -41,11 +56,17 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: worker
-          secrets: |
-            BLIZZARD_CLIENT_ID
-            BLIZZARD_CLIENT_SECRET
-            SESSION_SECRET
+          secrets: ${{ steps.sec.outputs.list }}
         env:
           BLIZZARD_CLIENT_ID: ${{ secrets.BLIZZARD_CLIENT_ID }}
           BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
           SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+      # Running the workflow by hand (Actions -> Deploy login worker -> Run workflow) also posts one test message.
+      - name: Send a test message to Discord
+        if: github.event_name == 'workflow_dispatch' && steps.cfg.outputs.ready == 'true' && env.DISCORD_WEBHOOK_URL != ''
+        run: |
+          curl -fsS -H "Content-Type: application/json" \
+            -d '{"username":"Dirty Socks Sign-ups","content":"✅ Sign-up alerts are connected. New raid sign-ups will show up in this channel."}' \
+            "$DISCORD_WEBHOOK_URL"

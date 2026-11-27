@@ -24,6 +24,19 @@ Sign-ups are stored in the worker's own database (a Durable Object). Nothing sen
 Signed-in players see an *account ID* next to their BattleTag. Put officers' ids in `OFFICER_SUBS` in `wrangler.toml`
 (comma separated) and push. Officers get Approve / Decline / Remove buttons for each raid separately and can see BattleTags and notes.
 
+## Discord sign-up alerts (optional)
+With a Discord webhook the worker posts a short message to one channel when a player signs up for a raid. Nothing is sent until the secret exists.
+
+1. In Discord: *channel settings -> Integrations -> Webhooks -> New Webhook*, name it, copy the **Webhook URL**. Use a channel only the officers can see:
+   the message shows the character, class and level, raid, roles, nights and the player's note (never the BattleTag).
+2. In GitHub (repo *Settings -> Secrets and variables -> Actions -> New repository secret*) add `DISCORD_WEBHOOK_URL` with that address. Keep it private: anyone with it can post to the channel.
+3. *Actions -> Deploy login worker -> Run workflow.* It uploads the secret and posts one "connected" test message to the channel.
+
+What gets announced: a brand-new sign-up, a player withdrawing, and a player leaving one raid of a Both-raids sign-up.
+Not announced: edits to an existing sign-up, and officers approving, declining, placing or removing players.
+Messages cannot ping anyone (mentions are switched off and player text is escaped), and each account can trigger at most 8 alerts an hour.
+If Discord is down or the address is wrong the sign-up itself is unaffected. To stop the alerts, delete the secret and the webhook, then re-run the deploy.
+
 ## Roster slots (the Raid Roster on Recruitment)
 In the Raid line-up on /signup, officers get a slot picker on every row: Main Tank, Off Tank, Healer, DPS, or a
 Backup tagged Tank / Healer / DPS (so a healer on the bench shows as "Backup · Healer"). Picking a slot also approves that raid,
@@ -48,7 +61,7 @@ At login the worker asks Battle.net for the player's characters (`/profile/user/
   so officers know to double-check. The page handles both cases automatically.
 
 ## Testing without any accounts
-- `node worker/test.mjs` runs 46 checks against a pretend Battle.net (no network needed).
+- `node worker/test.mjs` runs over 100 checks against a pretend Battle.net (no network needed).
 - `node worker/dev.mjs` starts the worker locally with pretend accounts. Serve the site (`python3 -m http.server 8123`) and open
   `http://localhost:8123/signup?api=http://localhost:8787`. Visit `http://localhost:8787/mock-oauth/as?code=codeB` first to
   sign in as a different pretend player (`codeA` has characters, `codeB` has none shared, `codeO` is an officer, `cancel` presses Cancel).

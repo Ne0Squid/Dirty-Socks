@@ -247,6 +247,88 @@ console.log("CORS + misc");
   ok(!evil.headers.get("Access-Control-Allow-Origin"), "other sites get no CORS header");
   ok((await fetchW(req("/nope"))).status === 404, "unknown path -> 404");
 }
+
+console.log("discord sign-up alerts");
+{
+  const posts = [], pending = [], ctx = { waitUntil: (p) => pending.push(p) };
+  let discordDown = false;
+  const baseFetch = globalThis.fetch;
+  globalThis.fetch = async (input, init = {}) => {
+    const u = new URL(typeof input === "string" ? input : input.url ?? String(input));
+    if (u.hostname === "discord.com" || u.hostname === "evil.example") { if (discordDown) throw new Error("discord is down"); posts.push({ url: String(u), body: JSON.parse(init.body) }); return new Response(null, { status: 204 }); }
+    return baseFetch(input, init);
+  };
+  const HOOK = "https://discord.com/api/webhooks/123456789012345678/abc-DEF_ghi123";
+  const mk = (extra) => { const e = makeEnv({ OFFICER_SUBS: "2000", ...extra }); return (r) => worker.fetch(r, e, ctx); };
+  const flush = async () => { await Promise.all(pending.splice(0)); };
+  const login = async (fw, code) => {
+    const l = await fw(req("/auth/login")), state = new URL(l.headers.get("Location")).searchParams.get("state");
+    const cb = await fw(req(`/auth/callback?code=${code}&state=${encodeURIComponent(state)}`, { origin: null }));
+    return ((cb.headers.get("Location") || "").match(/#session=(.+)$/) || [])[1];
+  };
+  const body = (extra = {}) => ({ character: "Squid Zero", raid: "both", roles: ["Healer"], nights: ["wednesday", "thursday"], note: "", ...extra });
+
+  // no secret -> silent
+  const none = mk({});
+  const tN = await login(none, "codeA");
+  ok((await none(req("/api/signup", { method: "PUT", token: tN, body: body() }))).status === 200, "sign-up works with no Discord secret");
+  await flush(); ok(posts.length === 0, "no webhook configured: nothing is sent");
+
+  // a webhook that isn't a Discord address is never called
+  const bad = mk({ DISCORD_WEBHOOK_URL: "https://evil.example/api/webhooks/1/x" });
+  const tBad = await login(bad, "codeA");
+  await bad(req("/api/signup", { method: "PUT", token: tBad, body: body() })); await flush();
+  ok(posts.length === 0, "a webhook address that is not Discord's is ignored");
+
+  // configured
+  const fw = mk({ DISCORD_WEBHOOK_URL: HOOK });
+  const tA = await login(fw, "codeA"), tO = await login(fw, "codeO");
+  const r1 = await fw(req("/api/signup", { method: "PUT", token: tA, body: body({ note: "@everyone [free nitro](https://evil.example) **bold** `x`" }) }));
+  ok(r1.status === 200, "sign-up still succeeds");
+  await flush();
+  ok(posts.length === 1 && posts[0].url === HOOK, "new sign-up posts to the webhook", posts.length);
+  const e = posts[0]?.body.embeds[0] || {};
+  ok(e.title === "New raid sign-up" && e.description === "**Squid Zero** · Level 60 Druid", "title, character, level and class", e.description);
+  const f = Object.fromEntries((e.fields || []).map((x) => [x.name, x.value]));
+  ok(f.Raid === "Both raids" && f.Roles === "Healer" && f.Nights === "Wednesday, Thursday", "raid, roles and nights", f);
+  ok(f.Note.includes("\\@everyone") && !/(^|[^\\])\]\(/.test(f.Note) && !/(^|[^\\])\*\*/.test(f.Note), "player text is escaped so it cannot form links, bold or mentions", f.Note);
+  ok(Array.isArray(posts[0].body.allowed_mentions.parse) && posts[0].body.allowed_mentions.parse.length === 0, "mentions are switched off");
+  ok(e.footer.text === "Verified with Battle.net" && e.url === SITE + "/signup", "verified footer and a link to the sign-up page");
+  ok(!JSON.stringify(posts[0].body).includes("Squid#1234") && !JSON.stringify(posts[0].body).includes("1001"), "no BattleTag or account id is sent");
+
+  await fw(req("/api/signup", { method: "PUT", token: tA, body: body({ roles: ["Healer", "DPS"] }) })); await flush();
+  ok(posts.length === 1, "editing an existing sign-up is not announced");
+
+  await fw(req("/api/signup?character=Squid%20Zero&raid=barrow", { method: "DELETE", token: tA })); await flush();
+  const e2 = posts[1]?.body.embeds[0] || {}, f2 = Object.fromEntries((e2.fields || []).map((x) => [x.name, x.value]));
+  ok(posts.length === 2 && e2.title === "Left one raid" && f2.Left === "The Barrow Deeps" && f2["Still signed up for"] === "Hyjal Summit", "leaving one raid says which and what remains", f2);
+
+  await fw(req("/api/signup?character=Squid%20Zero", { method: "DELETE", token: tA })); await flush();
+  ok(posts.length === 3 && posts[2].body.embeds[0].title === "Sign-up withdrawn", "withdrawing is announced");
+
+  await fw(req("/api/signup", { method: "PUT", token: tA, body: body({ character: "Neo Squid", raid: "hyjal" }) })); await flush();
+  ok(posts.length === 4 && posts[3].body.embeds[0].description.startsWith("**Neo Squid**"), "second character announced");
+  const sub = (await (await fw(req("/api/signups", { token: tO }))).json()).signups.find((x) => x.character === "Neo Squid").sub;
+  const rm = await fw(req(`/api/signup?character=Neo%20Squid&sub=${sub}`, { method: "DELETE", token: tO })); await flush();
+  ok(rm.status === 200 && posts.length === 4, "an officer removing someone is not announced");
+
+  // flood protection: 8 alerts per account per hour
+  for (let i = 0; i < 6; i++) { await fw(req("/api/signup", { method: "PUT", token: tA, body: body({ character: "Neo Squid", raid: "hyjal" }) })); await fw(req("/api/signup?character=Neo%20Squid", { method: "DELETE", token: tA })); await flush(); }
+  ok(posts.length === 8, "at most 8 alerts per account per hour", posts.length);
+
+  // Discord being down never breaks the player's sign-up
+  discordDown = true;
+  const tB = await login(fw, "codeB");
+  const rb = await fw(req("/api/signup", { method: "PUT", token: tB, body: body({ character: "Needmore Beers", raid: "barrow" }) })); await flush();
+  ok(rb.status === 200 && (await (await fw(req("/api/signups", { token: tB }))).json()).signups.some((x) => x.character === "Needmore Beers"), "Discord down: the sign-up is still saved");
+  const eb = posts.length; discordDown = false;
+  ok(eb === 8, "nothing was sent while it was down");
+  const unv = mk({ DISCORD_WEBHOOK_URL: HOOK }); const tU = await login(unv, "codeB");
+  await unv(req("/api/signup", { method: "PUT", token: tU, body: body({ character: "Scott Frost", raid: "hyjal", roles: ["Tank"], nights: ["thursday"] }) })); await flush();
+  const eu = posts[posts.length - 1].body.embeds[0];
+  ok(posts.length === 9 && eu.footer.text.startsWith("Not verified") && eu.description === "**Scott Frost**", "unverified sign-up is flagged for the officers", eu);
+  globalThis.fetch = baseFetch;
+}
 bz.restore();
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

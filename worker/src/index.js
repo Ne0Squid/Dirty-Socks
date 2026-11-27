@@ -2,7 +2,7 @@
 // Runs on Cloudflare Workers with no dependencies. Flow:
 //   site -> /auth/login -> Battle.net -> /auth/callback -> site#session=<signed token>
 //   site then calls /api/* with "Authorization: Bearer <token>".
-// Secrets: BLIZZARD_CLIENT_ID, BLIZZARD_CLIENT_SECRET, SESSION_SECRET. Settings live in wrangler.toml.
+// Secrets: BLIZZARD_CLIENT_ID, BLIZZARD_CLIENT_SECRET, SESSION_SECRET, and optionally DISCORD_WEBHOOK_URL (sign-up alerts). Settings live in wrangler.toml.
 
 const RAIDS = { barrow: 10, hyjal: 20, both: 0 };
 const ROLES = ["Tank", "Healer", "DPS"];
@@ -157,6 +157,63 @@ async function callback(url, env) {
 }
 
 // Public, read-only: who is confirmed and where they sit. Names only (no BattleTags, notes or account ids).
+// ---- Discord sign-up alerts -------------------------------------------------------------------------
+// Optional: with a DISCORD_WEBHOOK_URL secret, a short message is posted to that channel when a player signs up or
+// withdraws. Nothing is sent without the secret, nothing in a message can ping anyone, BattleTags are left out,
+// and a Discord problem never affects the player (it is sent after the answer, errors are swallowed).
+const WEBHOOK_RE = /^https:\/\/(?:(?:canary|ptb)\.)?(?:discord|discordapp)\.com\/api\/(?:v\d+\/)?webhooks\/\d+\/[\w-]+$/;
+const RAID_NAMES = { barrow: "The Barrow Deeps", hyjal: "Hyjal Summit", both: "Both raids" };
+const ALERTS_PER_HOUR = 8;   // per account, so nobody can flood the channel by signing up and withdrawing over and over
+const plain = (s, n = 300) => String(s ?? "").replace(/\s+/g, " ").replace(/[\\`*_~|>[\]()<@]/g, "\\$&").slice(0, n);   // player text shown as plain text
+const cap1 = (w) => w.charAt(0).toUpperCase() + w.slice(1);
+
+function signupEmbed(env, kind, s, info, extra = {}) {
+  const raids = (r) => RAID_NAMES[r] ?? r;
+  const fields = [];
+  let title, color;
+  if (kind === "new") { title = "New raid sign-up"; color = 0x2ecc71; }
+  else if (kind === "left") { title = "Left one raid"; color = 0xe67e22; }
+  else { title = "Sign-up withdrawn"; color = 0x95a5a6; }
+  if (kind === "left") {
+    fields.push({ name: "Left", value: raids(extra.left), inline: true }, { name: "Still signed up for", value: raids(s.raid === "both" ? extra.keep : s.raid), inline: true });
+  } else {
+    fields.push({ name: "Raid", value: raids(s.raid), inline: true });
+    if (s.roles?.length) fields.push({ name: "Roles", value: s.roles.map((r) => plain(r, 20)).join(", "), inline: true });
+    if (s.nights?.length) fields.push({ name: "Nights", value: s.nights.map((n) => plain(cap1(n), 20)).join(", "), inline: true });
+    if (kind === "new" && s.note) fields.push({ name: "Note", value: plain(s.note) });
+  }
+  const site = String(env.SITE_ORIGIN || "").replace(/\/+$/, "");
+  const embed = {
+    title, color, timestamp: new Date().toISOString(),
+    description: `**${plain(s.character, 80)}**${info ? " · " + plain(info, 60) : ""}`,
+    fields,
+  };
+  if (kind === "new") embed.footer = { text: s.verified ? "Verified with Battle.net" : "Not verified, so officers should double-check the character" };
+  if (site) embed.url = `${site}/signup`;
+  return { username: "Dirty Socks Sign-ups", allowed_mentions: { parse: [] }, embeds: [embed] };
+}
+
+async function allowAlert(store, sub, now) {
+  const k = `alerts:${sub}`, a = (await store.get(k)) || { start: now, n: 0 };
+  if (now - a.start > 3600e3) { a.start = now; a.n = 0; }
+  if (a.n >= ALERTS_PER_HOUR) return false;
+  a.n++; await store.put(k, a);
+  return true;
+}
+
+// Fire and forget: runs after the response has been sent when the platform allows it.
+function alertDiscord(ctx, env, store, sub, build) {
+  const url = env.DISCORD_WEBHOOK_URL;
+  if (!url || !WEBHOOK_RE.test(url)) return;
+  const job = (async () => {
+    try {
+      if (!(await allowAlert(store, sub, Date.now()))) return;
+      await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(build()) });
+    } catch { /* a Discord hiccup must never touch the sign-up itself */ }
+  })();
+  if (ctx && typeof ctx.waitUntil === "function") ctx.waitUntil(job);
+}
+
 async function publicRoster(env) {
   const raids = { barrow: [], hyjal: [] };
   for (const { value: s } of await db(env).list("signup:")) for (const [r, slot] of Object.entries(slotsOf(s))) raids[r].push({ character: s.character, slot, at: s.created || 0 });
@@ -164,7 +221,7 @@ async function publicRoster(env) {
   return json({ raids, layout: LAYOUT }, 200, { "Cache-Control": "public, max-age=15", Vary: "Origin" });
 }
 
-async function handleApi(req, url, env, who) {
+async function handleApi(req, url, env, who, ctx) {
   const store = db(env), officer = isOfficer(env, who.sub), method = req.method, path = url.pathname;
 
   if (path === "/api/me" && method === "GET") {
@@ -207,25 +264,33 @@ async function handleApi(req, url, env, who) {
       if (mine >= MAX_PER_ACCOUNT) return json({ error: `You can have up to ${MAX_PER_ACCOUNT} sign-ups. Withdraw one first.` }, 400);
     }
     const now = Date.now();
-    await store.put(k, { sub: who.sub, battletag: who.bt, character, raid: b.raid, roles, nights, note, verified, statuses: Object.fromEntries(raidsOf(b.raid).map((r) => [r, "pending"])), created: prev ? prev.created : now, updated: now });
+    const row = { sub: who.sub, battletag: who.bt, character, raid: b.raid, roles, nights, note, verified, statuses: Object.fromEntries(raidsOf(b.raid).map((r) => [r, "pending"])), created: prev ? prev.created : now, updated: now };
+    await store.put(k, row);
+    if (!prev) {   // only a brand-new sign-up is announced, not later edits
+      const mine = c.list.find((x) => key(full(x)) === key(character));
+      alertDiscord(ctx, env, store, who.sub, () => signupEmbed(env, "new", row, mine && mine.level ? `Level ${mine.level}${mine.cls ? " " + mine.cls : ""}` : ""));
+    }
     return json({ ok: true });
   }
 
   if (path === "/api/signup" && method === "DELETE") {
     const character = clean(url.searchParams.get("character"), 80), target = officer && url.searchParams.get("sub") ? url.searchParams.get("sub") : who.sub;
-    const k = `signup:${target}:${key(character)}`, raid = url.searchParams.get("raid");
+    const k = `signup:${target}:${key(character)}`, raid = url.searchParams.get("raid"), byOwner = target === who.sub;
+    const prior = await store.get(k);
     if (raid) {   // take them out of one raid only; a Both-raids sign-up keeps the other raid and its status
-      const s = await store.get(k);
+      const s = prior;
       if (!s) return json({ ok: true });
       const raids = raidsOf(s.raid);
       if (!raids.includes(raid)) return json({ error: "That sign-up is not for that raid." }, 400);
       if (raids.length > 1) {
         const keep = raids.find((r) => r !== raid), { status: _legacy, ...rest } = s;
         await store.put(k, { ...rest, raid: keep, statuses: { [keep]: statusesOf(s)[keep] }, slots: slotsOf(s)[keep] ? { [keep]: slotsOf(s)[keep] } : {}, updated: Date.now() });
+        if (byOwner) alertDiscord(ctx, env, store, who.sub, () => signupEmbed(env, "left", s, "", { left: raid, keep }));
         return json({ ok: true });
       }
     }
     await store.del(k);
+    if (prior && byOwner) alertDiscord(ctx, env, store, who.sub, () => signupEmbed(env, "withdrawn", prior, ""));   // officers removing someone is not announced
     return json({ ok: true });
   }
 
@@ -270,7 +335,7 @@ async function handleApi(req, url, env, who) {
 }
 
 export default {
-  async fetch(req, env) {
+  async fetch(req, env, ctx) {
     const url = new URL(req.url), cors = corsHeaders(req, env);
     if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
     let res;
@@ -280,7 +345,7 @@ export default {
       else if (url.pathname === "/api/roster" && req.method === "GET") res = await publicRoster(env);
       else if (url.pathname.startsWith("/api/")) {
         const who = await me(req, env);
-        res = who ? await handleApi(req, url, env, who) : json({ error: "Please sign in." }, 401);
+        res = who ? await handleApi(req, url, env, who, ctx) : json({ error: "Please sign in." }, 401);
       } else if (url.pathname === "/") res = json({ ok: true, service: "dirty-socks-login" });
       else res = json({ error: "not found" }, 404);
     } catch (e) { res = json({ error: "Server error." }, 500); }
