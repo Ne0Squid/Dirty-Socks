@@ -122,6 +122,8 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 .rep{padding:8px 0;border-top:1px solid var(--line)}.rep:first-of-type{border-top:0;padding-top:0}
 .rep .hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px}.rep .nm{font-weight:600;min-width:0;overflow-wrap:anywhere}
 .rep .st{font-size:.84rem;font-weight:600;color:var(--rc,var(--muted));white-space:nowrap}
+#repmore .rep:first-of-type{border-top:1px solid var(--line);padding-top:8px}
+.rep-toggle{display:block;margin:8px 0 0;padding:6px 0 0;border:0;background:none;color:var(--muted);font:inherit;font-size:.85rem;cursor:pointer;text-align:left}.rep-toggle:hover{color:var(--accent)}.rep-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 .rep .bar{height:6px;margin:6px 0 2px}.rep .bar span{background:var(--rc,var(--accent))}.rep .num{font-size:.76rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .sg{margin:0 0 14px}.sg:last-child{margin-bottom:0}.sg h4{margin:0 0 4px;font-family:Inter,system-ui,sans-serif;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .sr2{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-top:1px solid var(--line);font-size:.92rem}.sg h4+.sr2{border-top:0}.sr2 span:first-child{color:var(--muted)}.sr2 b{font-weight:600;font-variant-numeric:tabular-nums}
@@ -300,8 +302,21 @@ function repHtml(){
     return`<div class="rep" style="--rc:${REPCOL[Math.max(0,Math.min(7,t))]}"><div class="hd"><span class="nm">${esc(r.n)}</span><span class="st">${esc(r.s||"")}</span></div>`
       +`<div class="bar"><span style="width:${pct}%"></span></div>`+(full?"":`<div class="num">${nf(r.v||0)} / ${nf(r.m)}</div>`)+`</div>`};
   const top=R.slice(0,5),more=R.slice(5);
-  return top.map(row).join("")+(more.length?`<details class="rec"><summary>Show ${more.length} more faction${more.length===1?"":"s"}</summary>${more.map(row).join("")}</details>`:"");
+  if(!more.length)return top.map(row).join("");
+  return top.map(row).join("")+`<div id="repmore"${repOpen?"":" hidden"}>${more.map(row).join("")}</div>`
+    +`<button type="button" class="rep-toggle" id="reptoggle" aria-expanded="${repOpen}" aria-controls="repmore">${repOpen?"▴ Show less":`▾ Show ${more.length} more faction${more.length===1?"":"s"}`}</button>`;
 }
+let repOpen=false;
+// Show more / Show less under the reputation list (the state survives the page repainting itself).
+document.addEventListener("click",e=>{
+  const b=e.target.closest&&e.target.closest("#reptoggle");if(!b)return;
+  const box=document.getElementById("repmore");if(!box)return;
+  repOpen=box.hidden;box.hidden=!repOpen;
+  const n=box.querySelectorAll(".rep").length;
+  b.setAttribute("aria-expanded",String(repOpen));
+  b.textContent=repOpen?"▴ Show less":`▾ Show ${n} more faction${n===1?"":"s"}`;
+  if(!repOpen)b.scrollIntoView({block:"nearest"});
+});
 const RAIDNAMES=["the barrow deeps","hyjal summit","onyxias lair"];
 const placeKey=n=>String(n).toLowerCase().replace(/[’']/g,"").trim();
 const fmtDay=t=>{if(t==null)return"";const d=new Date(t),y=d.getFullYear()!==new Date().getFullYear();return d.toLocaleDateString("en-US",y?{month:"short",day:"numeric",year:"numeric"}:{month:"short",day:"numeric"})};
