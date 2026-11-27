@@ -299,7 +299,7 @@ function repHtml(){
     const t=typeof r.t==="number"?r.t:3,full=t>=7||!r.m,pct=full?100:Math.max(0,Math.min(100,(r.v||0)/r.m*100));
     return`<div class="rep" style="--rc:${REPCOL[Math.max(0,Math.min(7,t))]}"><div class="hd"><span class="nm">${esc(r.n)}</span><span class="st">${esc(r.s||"")}</span></div>`
       +`<div class="bar"><span style="width:${pct}%"></span></div>`+(full?"":`<div class="num">${nf(r.v||0)} / ${nf(r.m)}</div>`)+`</div>`};
-  const top=R.slice(0,10),more=R.slice(10);
+  const top=R.slice(0,5),more=R.slice(5);
   return top.map(row).join("")+(more.length?`<details class="rec"><summary>Show ${more.length} more faction${more.length===1?"":"s"}</summary>${more.map(row).join("")}</details>`:"");
 }
 const RAIDNAMES=["the barrow deeps","hyjal summit","onyxias lair"];
