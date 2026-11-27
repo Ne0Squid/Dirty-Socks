@@ -1,0 +1,43 @@
+# Battle.net login + raid sign-up
+
+The site is static, so the login lives in a small free service on Cloudflare Workers (`worker/src/index.js`).
+Players press **Sign in with Battle.net**, come back to `/signup` with their characters, and sign up for a raid.
+Sign-ups are stored in the worker's own database (a Durable Object). Nothing sensitive is kept in this repo.
+
+## One-time setup (about 15 minutes, all free)
+
+1. **Cloudflare account.** Sign up at cloudflare.com. In the dashboard open *Workers & Pages* once so it asks you to pick a
+   `workers.dev` name (this becomes part of the service address). Copy your **Account ID** (right-hand side of the Workers & Pages page).
+2. **Cloudflare API token.** *My Profile -> API Tokens -> Create Token -> "Edit Cloudflare Workers" template.* Copy the token.
+3. **GitHub secrets** (repo *Settings -> Secrets and variables -> Actions*). `BLIZZARD_CLIENT_ID` and `BLIZZARD_CLIENT_SECRET`
+   already exist for the hourly roster job and are reused. Add three new ones:
+   - `CLOUDFLARE_API_TOKEN` : the token from step 2
+   - `CLOUDFLARE_ACCOUNT_ID` : the account id from step 1
+   - `SESSION_SECRET` : any long random text (40+ characters). It signs login sessions. Keep it private.
+4. **Deploy.** Pushing anything in `worker/` runs the *Deploy login worker* action (or open the failed/skipped run and press
+   *Re-run all jobs*). The log ends with the service address: `https://dirty-socks-login.<your-name>.workers.dev`.
+5. **Tell Battle.net about it.** At <https://develop.battle.net/access/clients> open your client and add this to *Redirect URLs*:
+   `https://dirty-socks-login.<your-name>.workers.dev/auth/callback`
+6. **Turn it on.** Put the service address into `auth-config.js` (`window.DS_API = "..."`). Until then `/signup` runs in demo mode.
+
+## Officers
+Signed-in players see an *account ID* next to their BattleTag. Put officers' ids in `OFFICER_SUBS` in `wrangler.toml`
+(comma separated) and push. Officers get Approve / Decline / Remove buttons and can see BattleTags and notes.
+
+## What it stores
+BattleTag, Blizzard account id, the character list Battle.net shares (kept 7 days), and each player's sign-ups
+(character, raid, roles, nights, note, status). Players can withdraw a sign-up themselves at any time.
+No passwords, no Battle.net tokens are stored: the Battle.net access token is used once during login and then discarded.
+
+## Characters: verified or claimed
+At login the worker asks Battle.net for the player's characters (`/profile/user/wow`, namespace `profile-forever-us`).
+- If Battle.net answers, only characters on that account can be signed up (marked verified).
+- If it does not answer for this game, the page falls back to a roster picker and the sign-up is marked **unverified**
+  so officers know to double-check. The page handles both cases automatically.
+
+## Testing without any accounts
+- `node worker/test.mjs` runs 46 checks against a pretend Battle.net (no network needed).
+- `node worker/dev.mjs` starts the worker locally with pretend accounts. Serve the site (`python3 -m http.server 8123`) and open
+  `http://localhost:8123/signup?api=http://localhost:8787`. Visit `http://localhost:8787/mock-oauth/as?code=codeB` first to
+  sign in as a different pretend player (`codeA` has characters, `codeB` has none shared, `codeO` is an officer, `cancel` presses Cancel).
+- `http://localhost:8123/signup?demo=1` shows the page with pretend data and no service at all (add `&demo=officer` for the officer view).
