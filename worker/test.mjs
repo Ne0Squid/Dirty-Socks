@@ -136,6 +136,30 @@ const O = await signIn("codeO");
   }
 }
 
+console.log("remove one raid");
+{
+  const del = (token, q) => fetchW(req("/api/signup?" + q, { method: "DELETE", token }));
+  const get = async (name) => (await (await fetchW(req("/api/signups", { token: O.token }))).json()).signups.find((s) => s.character === name);
+  const st = (body) => fetchW(req("/api/signup/status", { method: "POST", token: O.token, body }));
+  await put(A.token, { ...good, raid: "both" });
+  await st({ sub: "1001", character: "Squid Zero", raid: "barrow", status: "approved" });
+  await st({ sub: "1001", character: "Squid Zero", raid: "hyjal", status: "declined" });
+  await del(A.token, "character=Scott%20Frost&sub=1002&raid=barrow");
+  ok(!!(await get("Scott Frost")), "a player cannot use ?sub= to take someone else out of a raid");
+  ok((await del(O.token, "character=Squid%20Zero&sub=1001&raid=hyjal")).status === 200, "officer removes Hyjal only");
+  let z = await get("Squid Zero");
+  ok(z && z.raid === "barrow" && z.statuses.barrow === "approved" && z.statuses.hyjal === undefined, "Barrow stays, with its own approval", JSON.stringify(z));
+  ok((await del(O.token, "character=Squid%20Zero&sub=1001&raid=hyjal")).status === 400, "cannot remove a raid the sign-up is not in");
+  ok((await del(O.token, "character=Squid%20Zero&sub=1001&raid=barrow")).status === 200 && !(await get("Squid Zero")), "removing the last raid removes the sign-up");
+  await put(A.token, { ...good, raid: "both" });
+  await st({ sub: "1001", character: "Squid Zero", raid: "hyjal", status: "approved" });
+  ok((await del(O.token, "character=Squid%20Zero&sub=1001&raid=barrow")).status === 200, "officer removes Barrow only");
+  z = await get("Squid Zero");
+  ok(z.raid === "hyjal" && z.statuses.hyjal === "approved" && z.statuses.barrow === undefined, "Hyjal stays, with its own approval", JSON.stringify(z));
+  ok((await del(A.token, "character=Squid%20Zero")).status === 200 && !(await get("Squid Zero")), "no raid given (Withdraw) removes the whole sign-up");
+  await put(A.token, { ...good, raid: "both" });
+}
+
 console.log("withdraw + limits");
 {
   const del = (token, q) => fetchW(req("/api/signup?" + q, { method: "DELETE", token }));

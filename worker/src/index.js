@@ -199,7 +199,19 @@ async function handleApi(req, url, env, who) {
 
   if (path === "/api/signup" && method === "DELETE") {
     const character = clean(url.searchParams.get("character"), 80), target = officer && url.searchParams.get("sub") ? url.searchParams.get("sub") : who.sub;
-    await store.del(`signup:${target}:${key(character)}`);
+    const k = `signup:${target}:${key(character)}`, raid = url.searchParams.get("raid");
+    if (raid) {   // take them out of one raid only; a Both-raids sign-up keeps the other raid and its status
+      const s = await store.get(k);
+      if (!s) return json({ ok: true });
+      const raids = raidsOf(s.raid);
+      if (!raids.includes(raid)) return json({ error: "That sign-up is not for that raid." }, 400);
+      if (raids.length > 1) {
+        const keep = raids.find((r) => r !== raid), { status: _legacy, ...rest } = s;
+        await store.put(k, { ...rest, raid: keep, statuses: { [keep]: statusesOf(s)[keep] }, updated: Date.now() });
+        return json({ ok: true });
+      }
+    }
+    await store.del(k);
     return json({ ok: true });
   }
 

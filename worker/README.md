@@ -22,7 +22,7 @@ Sign-ups are stored in the worker's own database (a Durable Object). Nothing sen
 
 ## Officers
 Signed-in players see an *account ID* next to their BattleTag. Put officers' ids in `OFFICER_SUBS` in `wrangler.toml`
-(comma separated) and push. Officers get Approve / Decline / Remove buttons and can see BattleTags and notes.
+(comma separated) and push. Officers get Approve / Decline / Remove buttons for each raid separately and can see BattleTags and notes.
 
 ## What it stores
 BattleTag, Blizzard account id, the character list Battle.net shares (kept 7 days), and each player's sign-ups

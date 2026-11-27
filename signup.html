@@ -187,7 +187,7 @@ async function call(path,opt){
 const real={
   me:()=>call("/api/me"),list:()=>call("/api/signups"),
   put:b=>call("/api/signup",{method:"PUT",body:JSON.stringify(b)}),
-  del:(c,sub)=>call("/api/signup?character="+encodeURIComponent(c)+(sub?"&sub="+encodeURIComponent(sub):""),{method:"DELETE"}),
+  del:(c,sub,raid)=>call("/api/signup?character="+encodeURIComponent(c)+(sub?"&sub="+encodeURIComponent(sub):"")+(raid?"&raid="+encodeURIComponent(raid):""),{method:"DELETE"}),
   status:b=>call("/api/signup/status",{method:"POST",body:JSON.stringify(b)})
 };
 let demoRows=null;
@@ -209,7 +209,12 @@ const demo={
     const row={...b,statuses:Object.fromEntries(raidList(b.raid).map(r=>[r,"pending"])),verified:true,mine:true,sub:"demo",battletag:"YourName#1234",updated:Date.now()};
     if(i<0)demoRows.push(row);else demoRows[i]=row;return{ok:true};
   },
-  async del(c,sub){if(!demoRows)demoSeed();demoRows=demoRows.filter(r=>!(key(r.character)===key(c)&&(sub?r.sub===sub:r.mine)));return{ok:true}},
+  async del(c,sub,raid){
+    if(!demoRows)demoSeed();
+    const r=demoRows.find(r=>key(r.character)===key(c)&&(sub?r.sub===sub:r.mine));if(!r)return{ok:true};
+    if(raid&&r.raid==="both"){r.raid=raid==="barrow"?"hyjal":"barrow";delete r.statuses[raid];return{ok:true}}
+    demoRows=demoRows.filter(x=>x!==r);return{ok:true};
+  },
   async status(b){const r=demoRows.find(r=>r.sub===b.sub&&key(r.character)===key(b.character));if(r)for(const x of(b.raid?[b.raid]:raidList(r.raid)))r.statuses[x]=b.status;return{ok:true}}
 };
 const api=DEMO?demo:real;
@@ -278,7 +283,7 @@ function lineup(){
     const rows=S.signups.filter(s=>s.raid===raid||s.raid==="both"),cap=S.caps[raid];
     const ok=rows.filter(s=>stOf(s,raid)==="approved").length,wait=rows.filter(s=>stOf(s,raid)==="pending").length;
     return`<div class="card"><h3>${esc(RAIDS[raid])}</h3><span class="muted">${ok} of ${cap} confirmed${wait?" · "+wait+" waiting":""}</span>
-      ${rows.length?`<ul class="lu">`+rows.filter(s=>stOf(s,raid)!=="declined"||S.me.officer).map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="st ${stOf(s,raid)}">${stOf(s,raid)}</span>${s.raid==="both"?`<span class="muted" title="This player signed up for both raids. Each raid is approved on its own.">+ ${esc(SHORT[raid==="barrow"?"hyjal":"barrow"])}</span>`:""}${s.verified?"":'<span class="chip warn" title="Claimed from the roster, not confirmed by Battle.net">unverified</span>'}${S.me.officer?`<span class="sp"><button class="mini" data-set="approved" data-raid="${raid}" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Approve</button><button class="mini" data-set="declined" data-raid="${raid}" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Decline</button><button class="mini" data-del="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button"${s.raid==="both"?' title="Removes the whole sign-up, both raids. Use Decline to turn down just this raid."':""}>Remove</button></span>`:""}</li>`).join("")+`</ul>`:`<p class="muted" style="margin:10px 0 0">Nobody yet. Be the first!</p>`}</div>`;
+      ${rows.length?`<ul class="lu">`+rows.filter(s=>stOf(s,raid)!=="declined"||S.me.officer).map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="st ${stOf(s,raid)}">${stOf(s,raid)}</span>${s.raid==="both"?`<span class="muted" title="This player signed up for both raids. Each raid is approved on its own.">+ ${esc(SHORT[raid==="barrow"?"hyjal":"barrow"])}</span>`:""}${s.verified?"":'<span class="chip warn" title="Claimed from the roster, not confirmed by Battle.net">unverified</span>'}${S.me.officer?`<span class="sp"><button class="mini" data-set="approved" data-raid="${raid}" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Approve</button><button class="mini" data-set="declined" data-raid="${raid}" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Decline</button><button class="mini" data-del="${esc(s.character)}" data-sub="${esc(s.sub)}" data-raid="${raid}" type="button"${s.raid==="both"?` title="Takes them out of ${esc(SHORT[raid])} only. They stay signed up for ${esc(SHORT[raid==="barrow"?"hyjal":"barrow"])}."`:""}>Remove</button></span>`:""}</li>`).join("")+`</ul>`:`<p class="muted" style="margin:10px 0 0">Nobody yet. Be the first!</p>`}</div>`;
   };
   return`<h3 class="sec">Raid line-up</h3><div class="lineup">${col("barrow")}${col("hyjal")}</div>`;
 }
@@ -344,7 +349,7 @@ view.addEventListener("click",async e=>{
   try{
     if(t.dataset.edit){pickChar(t.dataset.edit);render();document.getElementById("suform").scrollIntoView({behavior:"smooth",block:"center"});return}
     if(t.dataset.del){
-      await api.del(t.dataset.del,t.dataset.sub&&t.dataset.sub!==S.me.sub?t.dataset.sub:undefined);await refresh();
+      await api.del(t.dataset.del,t.dataset.sub&&t.dataset.sub!==S.me.sub?t.dataset.sub:undefined,t.dataset.raid||undefined);await refresh();
       if(S.pick&&key(S.pick)===key(t.dataset.del)){pickChar(S.pick)}
       S.msg="";render();return
     }
