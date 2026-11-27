@@ -69,7 +69,9 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 .crumbs{margin:0 0 14px;font-size:.9rem}.crumbs a{color:var(--muted);text-decoration:none}.crumbs a:hover{color:var(--accent)}
 .hero-card{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 26px;align-items:center;padding:20px 24px;overflow:hidden}
 .portrait{width:190px;height:230px;display:grid;place-items:center;border-radius:12px;background:radial-gradient(ellipse at 50% 38%,rgba(255,255,255,.09),rgba(255,255,255,0) 70%),var(--bg);border:1px solid var(--line);overflow:hidden}
-.portrait img{width:100%;height:100%;object-fit:contain;display:block}.portrait img.cls{width:84px;height:84px;border-radius:14px;border:3px solid var(--cc,#777);object-fit:cover}
+.portrait img{width:100%;height:100%;object-fit:contain;display:block}
+/* Blizzard's full-body render leaves the character small in the middle of a big frame, so zoom in on it (the class-icon fallback is not zoomed). */
+.portrait img:not(.cls){transform:scale(2.6);transform-origin:48% 58%}.portrait img.cls{width:84px;height:84px;border-radius:14px;border:3px solid var(--cc,#777);object-fit:cover}
 .ch-name{font-size:clamp(1.7rem,5.2vw,2.7rem);line-height:1.1;margin:0}
 .ch-title{color:var(--muted);font-style:italic;margin:2px 0 0}
 .ch-line{margin:8px 0 0;font-size:1.05rem}.ch-line b{font-weight:600}
