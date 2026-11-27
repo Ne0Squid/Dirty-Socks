@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27T15:50:00.788Z",
+  "generated": "2026-11-27T16:30:16.974Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -473,7 +473,7 @@
       "professions": [
         {
           "name": "Skinning",
-          "skill": 158,
+          "skill": 162,
           "max": 225,
           "primary": true
         },
@@ -658,13 +658,13 @@
       "professions": [
         {
           "name": "Skinning",
-          "skill": 174,
+          "skill": 180,
           "max": 225,
           "primary": true
         },
         {
           "name": "Mining",
-          "skill": 91,
+          "skill": 101,
           "max": 150,
           "primary": true
         },
@@ -1694,23 +1694,23 @@
       "Skinning": [
         "squid-zero",
         "orken-magorken",
-        "pope-feratu",
         "capo-shoots",
-        "emo-erling",
+        "pope-feratu",
         "mrs-capo",
-        "the-parttimedad",
+        "emo-erling",
         "udderly-baked",
+        "the-parttimedad",
         "ember-highland"
       ],
       "Camp Chair": [
         "squid-zero",
         "orken-magorken",
-        "pope-feratu",
         "capo-shoots",
-        "emo-erling",
+        "pope-feratu",
         "mrs-capo",
-        "the-parttimedad",
-        "udderly-baked"
+        "emo-erling",
+        "udderly-baked",
+        "the-parttimedad"
       ],
       "Field Guide": [
         "pope-feratu"
@@ -1719,22 +1719,22 @@
     "Cooking": {
       "Charred Wolf Meat": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
-        "canigeta-summon",
+        "plucky-recks",
         "capo-shoots",
-        "rowdy-highland",
-        "emo-erling",
+        "pope-feratu",
+        "canigeta-summon",
         "mrs-capo",
+        "emo-erling",
         "mr-capo",
+        "rowdy-highland",
+        "udderly-baked",
         "thick-hogs",
         "zeik-soulfly",
-        "udderly-baked",
         "ember-highland",
         "neo-squid"
       ],
@@ -1742,31 +1742,31 @@
         "squid-zero",
         "scott-frost",
         "orken-magorken",
+        "cameron-croucher",
         "plucky-recks",
         "pope-feratu",
-        "cameron-croucher",
         "rowdy-highland",
-        "zeik-soulfly",
-        "udderly-baked"
+        "udderly-baked",
+        "zeik-soulfly"
       ],
       "Roasted Boar Meat": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
-        "canigeta-summon",
+        "plucky-recks",
         "capo-shoots",
-        "rowdy-highland",
-        "emo-erling",
+        "pope-feratu",
+        "canigeta-summon",
         "mrs-capo",
+        "emo-erling",
         "mr-capo",
+        "rowdy-highland",
+        "udderly-baked",
         "thick-hogs",
         "zeik-soulfly",
-        "udderly-baked",
         "ember-highland",
         "neo-squid"
       ],
@@ -1784,8 +1784,8 @@
       ],
       "Brilliant Smallfish": [
         "squid-zero",
-        "scott-frost",
         "needmore-beers",
+        "scott-frost",
         "plucky-recks",
         "pope-feratu",
         "canigeta-summon",
@@ -1793,17 +1793,17 @@
       ],
       "Longjaw Mud Snapper": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
         "pope-feratu",
         "udderly-baked"
       ],
       "Bristle Whisker Catfish": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
         "pope-feratu",
         "udderly-baked"
       ],
@@ -1816,45 +1816,91 @@
       ],
       "Herb Baked Egg": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
-        "canigeta-summon",
+        "plucky-recks",
         "capo-shoots",
-        "rowdy-highland",
-        "emo-erling",
+        "pope-feratu",
+        "canigeta-summon",
         "mrs-capo",
+        "emo-erling",
         "mr-capo",
+        "rowdy-highland",
+        "udderly-baked",
         "thick-hogs",
         "zeik-soulfly",
-        "udderly-baked",
         "ember-highland",
         "neo-squid"
       ],
       "Basic Campfire": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
-        "canigeta-summon",
+        "plucky-recks",
         "capo-shoots",
-        "rowdy-highland",
-        "emo-erling",
+        "pope-feratu",
+        "canigeta-summon",
         "mrs-capo",
+        "emo-erling",
         "mr-capo",
+        "rowdy-highland",
+        "udderly-baked",
         "thick-hogs",
         "zeik-soulfly",
-        "udderly-baked",
         "ember-highland",
         "neo-squid"
+      ],
+      "Mithril Headed Trout": [
+        "needmore-beers",
+        "scott-frost"
+      ],
+      "Spotted Yellowtail": [
+        "needmore-beers",
+        "scott-frost",
+        "pope-feratu"
+      ],
+      "Filet of Redgill": [
+        "needmore-beers"
+      ],
+      "Mightfish Steak": [
+        "needmore-beers"
+      ],
+      "Baked Salmon": [
+        "needmore-beers"
+      ],
+      "Slitherskin Mackerel": [
+        "needmore-beers",
+        "scott-frost",
+        "pope-feratu"
+      ],
+      "Goblin Deviled Clams": [
+        "needmore-beers",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Twice-Spiced Raptor Slice": [
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Briny Seafood Stew": [
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Plain Ol' Paletusk": [
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
       ],
       "Tender Wolf Steak": [
         "scott-frost",
@@ -1877,10 +1923,6 @@
         "orken-magorken",
         "pope-feratu"
       ],
-      "Mithril Headed Trout": [
-        "scott-frost",
-        "needmore-beers"
-      ],
       "Smoked Sagefish": [
         "scott-frost",
         "pope-feratu"
@@ -1890,18 +1932,8 @@
         "orken-magorken",
         "pope-feratu"
       ],
-      "Spotted Yellowtail": [
-        "scott-frost",
-        "needmore-beers",
-        "pope-feratu"
-      ],
       "Journeyman Campfire": [
         "scott-frost",
-        "pope-feratu"
-      ],
-      "Slitherskin Mackerel": [
-        "scott-frost",
-        "needmore-beers",
         "pope-feratu"
       ],
       "Rainbow Fin Albacore": [
@@ -1915,24 +1947,6 @@
       ],
       "Steaming Stag Steak": [
         "scott-frost"
-      ],
-      "Twice-Spiced Raptor Slice": [
-        "scott-frost",
-        "orken-magorken",
-        "needmore-beers",
-        "pope-feratu"
-      ],
-      "Briny Seafood Stew": [
-        "scott-frost",
-        "orken-magorken",
-        "needmore-beers",
-        "pope-feratu"
-      ],
-      "Plain Ol' Paletusk": [
-        "scott-frost",
-        "orken-magorken",
-        "needmore-beers",
-        "pope-feratu"
       ],
       "Barbecued Buzzard Wing": [
         "orken-magorken",
@@ -1950,11 +1964,6 @@
         "orken-magorken",
         "pope-feratu"
       ],
-      "Goblin Deviled Clams": [
-        "orken-magorken",
-        "needmore-beers",
-        "pope-feratu"
-      ],
       "Raging Raptor Ribs": [
         "orken-magorken"
       ],
@@ -1964,15 +1973,6 @@
       ],
       "Expert Campfire": [
         "orken-magorken"
-      ],
-      "Filet of Redgill": [
-        "needmore-beers"
-      ],
-      "Mightfish Steak": [
-        "needmore-beers"
-      ],
-      "Baked Salmon": [
-        "needmore-beers"
       ],
       "Crispy Bat Wing": [
         "pope-feratu",
@@ -1991,43 +1991,43 @@
     "Fishing": {
       "Fishing": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
+        "cameron-croucher",
         "plucky-recks",
         "pope-feratu",
-        "cameron-croucher",
         "canigeta-summon",
-        "zeik-soulfly",
-        "udderly-baked"
+        "udderly-baked",
+        "zeik-soulfly"
       ],
       "Fish Bowl": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
         "pope-feratu",
-        "zeik-soulfly",
-        "udderly-baked"
+        "udderly-baked",
+        "zeik-soulfly"
       ]
     },
     "First Aid": {
       "Silk Bandage": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
-        "pope-feratu",
         "cameron-croucher",
-        "capo-shoots"
+        "capo-shoots",
+        "pope-feratu"
       ],
       "Heavy Silk Bandage": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
-        "pope-feratu",
-        "capo-shoots"
+        "capo-shoots",
+        "pope-feratu"
       ],
       "Anti-Venom": [
         "squid-zero",
@@ -2037,59 +2037,59 @@
       ],
       "Linen Bandage": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
-        "plucky-recks",
-        "pope-feratu",
         "cameron-croucher",
+        "plucky-recks",
         "capo-shoots",
-        "rowdy-highland",
-        "emo-erling",
+        "pope-feratu",
         "mrs-capo",
-        "hotdog-nomustard",
+        "emo-erling",
         "mr-capo",
-        "zeik-soulfly",
+        "rowdy-highland",
+        "hotdog-nomustard",
         "the-parttimedad",
+        "zeik-soulfly",
         "ember-highland",
         "neo-squid"
       ],
       "Heavy Linen Bandage": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
-        "plucky-recks",
-        "pope-feratu",
         "cameron-croucher",
+        "plucky-recks",
         "capo-shoots",
-        "rowdy-highland",
+        "pope-feratu",
         "mrs-capo",
+        "rowdy-highland",
         "hotdog-nomustard",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "the-parttimedad",
+        "zeik-soulfly"
       ],
       "Wool Bandage": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
-        "plucky-recks",
-        "pope-feratu",
         "cameron-croucher",
+        "plucky-recks",
         "capo-shoots",
+        "pope-feratu",
         "hotdog-nomustard",
         "zeik-soulfly"
       ],
       "Heavy Wool Bandage": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
-        "plucky-recks",
-        "pope-feratu",
         "cameron-croucher",
+        "plucky-recks",
         "capo-shoots",
+        "pope-feratu",
         "hotdog-nomustard"
       ],
       "Runecloth Bandage": [
@@ -2103,41 +2103,41 @@
       ],
       "Mageweave Bandage": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
         "pope-feratu"
       ],
       "Heavy Mageweave Bandage": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
         "pope-feratu"
       ],
       "First Aid Kit": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
-        "plucky-recks",
-        "pope-feratu",
         "cameron-croucher",
+        "plucky-recks",
         "capo-shoots",
+        "pope-feratu",
         "mrs-capo",
-        "hotdog-nomustard",
         "mr-capo",
+        "hotdog-nomustard",
         "zeik-soulfly"
       ],
       "Minor Healing Potion": [
         "squid-zero",
+        "needmore-beers",
         "scott-frost",
         "orken-magorken",
-        "needmore-beers",
         "pope-feratu",
         "emo-erling",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "the-parttimedad",
+        "zeik-soulfly"
       ],
       "Lesser Healing Potion": [
         "squid-zero",
@@ -2169,77 +2169,77 @@
       "Major Healing Potion": [
         "scott-frost"
       ],
-      "Strong Anti-Venom": [
-        "pope-feratu"
-      ],
       "Greater Healing Potion": [
         "capo-shoots"
+      ],
+      "Strong Anti-Venom": [
+        "pope-feratu"
       ]
     },
     "Mining": {
       "Smelt Gold": [
-        "scott-frost",
-        "needmore-beers"
+        "needmore-beers",
+        "scott-frost"
       ],
       "Smelt Iron": [
-        "scott-frost",
         "needmore-beers",
+        "scott-frost",
         "capo-shoots"
       ],
       "Smelt Tin": [
-        "scott-frost",
         "needmore-beers",
+        "scott-frost",
         "capo-shoots",
         "hotdog-nomustard",
         "the-parttimedad"
       ],
       "Mining": [
-        "scott-frost",
-        "scott-frost",
         "needmore-beers",
         "needmore-beers",
+        "scott-frost",
+        "scott-frost",
         "capo-shoots",
         "capo-shoots",
-        "rowdy-highland",
         "mrs-capo",
+        "rowdy-highland",
         "hotdog-nomustard",
         "the-parttimedad"
       ],
       "Smelt Silver": [
-        "scott-frost",
         "needmore-beers",
+        "scott-frost",
         "capo-shoots",
         "hotdog-nomustard",
         "the-parttimedad"
       ],
       "Smelt Bronze": [
-        "scott-frost",
         "needmore-beers",
+        "scott-frost",
         "capo-shoots",
         "hotdog-nomustard",
         "the-parttimedad"
       ],
       "Smelt Steel": [
-        "scott-frost",
-        "needmore-beers"
+        "needmore-beers",
+        "scott-frost"
       ],
       "Smelt Copper": [
-        "scott-frost",
         "needmore-beers",
+        "scott-frost",
         "capo-shoots",
-        "rowdy-highland",
         "mrs-capo",
+        "rowdy-highland",
         "hotdog-nomustard",
         "the-parttimedad"
       ],
       "Smelt Mithril": [
-        "scott-frost",
         "needmore-beers",
+        "scott-frost",
         "capo-shoots"
       ],
       "Lodestone": [
-        "scott-frost",
         "needmore-beers",
+        "scott-frost",
         "capo-shoots",
         "mrs-capo",
         "hotdog-nomustard",
@@ -2247,6 +2247,66 @@
       ]
     },
     "Blacksmithing": {
+      "Rough Weightstone": [
+        "needmore-beers",
+        "scott-frost",
+        "rowdy-highland"
+      ],
+      "Rough Grinding Stone": [
+        "needmore-beers",
+        "scott-frost"
+      ],
+      "Coarse Grinding Stone": [
+        "needmore-beers",
+        "scott-frost"
+      ],
+      "Heavy Grinding Stone": [
+        "needmore-beers",
+        "scott-frost"
+      ],
+      "Rough Copper Vest": [
+        "needmore-beers",
+        "scott-frost",
+        "rowdy-highland"
+      ],
+      "Rough Sharpening Stone": [
+        "needmore-beers",
+        "scott-frost",
+        "rowdy-highland"
+      ],
+      "Copper Bracers": [
+        "needmore-beers",
+        "scott-frost",
+        "rowdy-highland"
+      ],
+      "Runed Copper Belt": [
+        "needmore-beers",
+        "scott-frost"
+      ],
+      "Patterned Bronze Bracers": [
+        "needmore-beers",
+        "scott-frost"
+      ],
+      "Bronze Shortsword": [
+        "needmore-beers",
+        "scott-frost"
+      ],
+      "Silver Rod": [
+        "needmore-beers"
+      ],
+      "Bronze Warhammer": [
+        "needmore-beers",
+        "scott-frost"
+      ],
+      "Sharpening Wheel": [
+        "needmore-beers",
+        "scott-frost"
+      ],
+      "Copper Rod": [
+        "needmore-beers",
+        "scott-frost",
+        "rowdy-highland"
+      ],
       "Green Iron Bracers": [
         "scott-frost"
       ],
@@ -2256,70 +2316,26 @@
       "Polished Steel Boots": [
         "scott-frost"
       ],
-      "Rough Weightstone": [
-        "scott-frost",
-        "needmore-beers",
-        "rowdy-highland"
-      ],
       "Heavy Weightstone": [
         "scott-frost"
       ],
       "Coarse Weightstone": [
         "scott-frost"
       ],
-      "Rough Grinding Stone": [
-        "scott-frost",
-        "needmore-beers"
-      ],
       "Runed Copper Gauntlets": [
         "scott-frost"
-      ],
-      "Coarse Grinding Stone": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Heavy Grinding Stone": [
-        "scott-frost",
-        "needmore-beers"
-      ],
-      "Rough Copper Vest": [
-        "scott-frost",
-        "needmore-beers",
-        "rowdy-highland"
-      ],
-      "Rough Sharpening Stone": [
-        "scott-frost",
-        "needmore-beers",
-        "rowdy-highland"
-      ],
-      "Copper Bracers": [
-        "scott-frost",
-        "needmore-beers",
-        "rowdy-highland"
       ],
       "Coarse Sharpening Stone": [
         "scott-frost"
       ],
-      "Runed Copper Belt": [
-        "scott-frost",
-        "needmore-beers"
-      ],
       "Rough Bronze Leggings": [
         "scott-frost"
-      ],
-      "Patterned Bronze Bracers": [
-        "scott-frost",
-        "needmore-beers"
       ],
       "Heavy Sharpening Stone": [
         "scott-frost"
       ],
       "Shining Silver Breastplate": [
         "scott-frost"
-      ],
-      "Bronze Shortsword": [
-        "scott-frost",
-        "needmore-beers"
       ],
       "Dense Sharpening Stone": [
         "scott-frost"
@@ -2345,10 +2361,6 @@
       "Heavy Mithril Boots": [
         "scott-frost"
       ],
-      "Bronze Warhammer": [
-        "scott-frost",
-        "needmore-beers"
-      ],
       "Heavy Mithril Axe": [
         "scott-frost"
       ],
@@ -2358,10 +2370,6 @@
       "Iron Shield Spike": [
         "scott-frost"
       ],
-      "Sharpening Wheel": [
-        "scott-frost",
-        "needmore-beers"
-      ],
       "Sterling Silver Boots": [
         "scott-frost"
       ],
@@ -2370,14 +2378,6 @@
       ],
       "Justicar's Boots": [
         "scott-frost"
-      ],
-      "Copper Rod": [
-        "scott-frost",
-        "needmore-beers",
-        "rowdy-highland"
-      ],
-      "Silver Rod": [
-        "needmore-beers"
       ]
     },
     "Tailoring": {
@@ -3480,14 +3480,14 @@
       "total": 13,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
+        "orken-magorken",
         "plucky-recks",
+        "capo-shoots",
         "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots"
+        "canigeta-summon"
       ],
       "first": 1794550690000,
       "seen": null
@@ -3496,8 +3496,8 @@
       "total": 7,
       "members": [
         "squid-zero",
-        "scott-frost",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
         "plucky-recks",
         "canigeta-summon",
@@ -3510,13 +3510,13 @@
       "total": 10,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
+        "orken-magorken",
+        "cameron-croucher",
         "plucky-recks",
         "pope-feratu",
-        "cameron-croucher",
         "canigeta-summon",
         "the-parttimedad"
       ],
@@ -3527,10 +3527,10 @@
       "total": 9,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
+        "orken-magorken",
         "pope-feratu",
         "canigeta-summon"
       ],
@@ -3541,21 +3541,21 @@
       "total": 22,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
-        "canigeta-summon",
+        "plucky-recks",
         "capo-shoots",
+        "pope-feratu",
+        "canigeta-summon",
         "mrs-capo",
-        "hotdog-nomustard",
         "mr-capo",
+        "hotdog-nomustard",
         "thick-hogs",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "the-parttimedad",
+        "zeik-soulfly"
       ],
       "first": 1793898057000,
       "seen": null
@@ -3564,20 +3564,20 @@
       "total": 22,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
-        "canigeta-summon",
+        "plucky-recks",
         "capo-shoots",
+        "pope-feratu",
+        "canigeta-summon",
         "mrs-capo",
-        "hotdog-nomustard",
         "mr-capo",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "hotdog-nomustard",
+        "the-parttimedad",
+        "zeik-soulfly"
       ],
       "first": 1794087023000,
       "seen": null
@@ -3586,12 +3586,12 @@
       "total": 9,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
+        "pope-feratu",
         "canigeta-summon"
       ],
       "first": 1794540894000,
@@ -3601,14 +3601,14 @@
       "total": 13,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
+        "orken-magorken",
         "plucky-recks",
+        "capo-shoots",
         "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots"
+        "canigeta-summon"
       ],
       "first": 1794550690000,
       "seen": null
@@ -3617,10 +3617,10 @@
       "total": 21,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
+        "orken-magorken",
         "plucky-recks",
         "pope-feratu",
         "canigeta-summon"
@@ -3632,10 +3632,10 @@
       "total": 14,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
+        "orken-magorken",
         "plucky-recks",
         "pope-feratu",
         "canigeta-summon"
@@ -3647,10 +3647,10 @@
       "total": 8,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
+        "orken-magorken",
         "pope-feratu",
         "canigeta-summon"
       ],
@@ -3661,10 +3661,10 @@
       "total": 15,
       "members": [
         "squid-zero",
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
+        "orken-magorken",
         "plucky-recks",
         "pope-feratu",
         "canigeta-summon",
@@ -3676,15 +3676,15 @@
     "Shade of the Archmage Kills (City of Dalaran)": {
       "total": 9,
       "members": [
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
-        "canigeta-summon",
-        "capo-shoots"
+        "plucky-recks",
+        "capo-shoots",
+        "pope-feratu",
+        "canigeta-summon"
       ],
       "first": 1794299959000,
       "seen": null
@@ -3692,15 +3692,15 @@
     "Archmage Arugal kills (Shadowfang Keep)": {
       "total": 10,
       "members": [
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
-        "canigeta-summon",
+        "plucky-recks",
         "capo-shoots",
+        "pope-feratu",
+        "canigeta-summon",
         "the-parttimedad"
       ],
       "first": 1793948659000,
@@ -3709,13 +3709,13 @@
     "Aku'mai kills (Blackfathom Deeps)": {
       "total": 9,
       "members": [
-        "scott-frost",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "pope-feratu",
         "cameron-croucher",
-        "canigeta-summon",
         "capo-shoots",
+        "pope-feratu",
+        "canigeta-summon",
         "hotdog-nomustard",
         "the-parttimedad"
       ],
@@ -3725,15 +3725,15 @@
     "Charlga Razorflank kills (Razorfen Kraul)": {
       "total": 10,
       "members": [
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
-        "canigeta-summon",
+        "plucky-recks",
         "capo-shoots",
+        "pope-feratu",
+        "canigeta-summon",
         "udderly-baked"
       ],
       "first": 1794175389000,
@@ -3742,12 +3742,12 @@
     "Mekgineer Thermaplugg kills (Gnomeregan)": {
       "total": 7,
       "members": [
-        "scott-frost",
-        "orken-magorken",
         "needmore-beers",
+        "scott-frost",
         "annie-turvy",
-        "pope-feratu",
+        "orken-magorken",
         "cameron-croucher",
+        "pope-feratu",
         "canigeta-summon"
       ],
       "first": 1794421901000,
@@ -3757,10 +3757,10 @@
       "total": 5,
       "members": [
         "annie-turvy",
-        "pope-feratu",
         "cameron-croucher",
-        "canigeta-summon",
-        "capo-shoots"
+        "capo-shoots",
+        "pope-feratu",
+        "canigeta-summon"
       ],
       "first": 1794298578000,
       "seen": "2026-11-19T04:52:37.945Z"
