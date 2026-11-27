@@ -35,6 +35,9 @@
       .replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s()<>"'`]+)\)/g, function (m, t, u) {
         return hold('<a href="' + esc(u) + '" target="_blank" rel="noopener noreferrer nofollow">' + emph(esc(t.replace(/\u0000(\d+)\u0000/g, function (x, i) { return kind[+i] === "img" ? "" : x; }))) + "</a>", "a");
       })
+      .replace(/\[(https?:\/\/[^\s\[\]()<>"'`\u0000]+)\]\(([^()\n\u0000]+)\)/g, function (m, u, t) {   // written the wrong way round, [address](words): show the words as the link
+        return hold('<a href="' + esc(u) + '" target="_blank" rel="noopener noreferrer nofollow">' + emph(esc(t.trim())) + "</a>", "a");
+      })
       .replace(/(^|[\s(])(https?:\/\/[^\s<>"'`\u0000]+)/g, function (m, pre, u) {
         var tail = (u.match(/[.,;:!?)\]]+$/) || [""])[0];   // keep sentence punctuation out of the link
         if (tail) u = u.slice(0, -tail.length);
@@ -86,6 +89,7 @@
       l = l.replace(/^\s*(#{1,3}\s+|>\s?|[-*+]\s+|\d+[.)]\s+)/, "")
         .replace(new RegExp("!\\[([^\\]\\n]*)\\]\\(img:" + ID + "\\)", "g"), "")
         .replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s()<>"'`]+)\)/g, "$1")
+        .replace(/\[(https?:\/\/[^\s\[\]()<>"'`]+)\]\(([^()\n]+)\)/g, "$2")
         .replace(/`([^`\n]+)`/g, "$1")
         .replace(/\*\*(?=\S)([^\n]*?\S)\*\*/g, "$1").replace(/~~(?=\S)([^\n]*?\S)~~/g, "$1")
         .replace(/(^|[^*\w])\*(?=[^\s*])([^*\n]*?[^\s*])\*(?!\*)/g, "$1$2").replace(/(^|[^\w])_(?=[^\s_])([^_\n]*?[^\s_])_(?!\w)/g, "$1$2")

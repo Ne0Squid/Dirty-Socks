@@ -44,7 +44,7 @@
       +'<label class="chk"><input type="checkbox" name="pinned"'+(p&&p.pinned?" checked":"")+'> Pin to the top</label>'
       +'<p class="nerr" role="alert" hidden></p>'
       +'<div class="nbtns"><button class="btn" type="submit">'+(p?"Save changes":"Post news")+'</button>'+(p?'<button class="btn ghost" type="button" data-a="cancel">Cancel</button>':"")+'</div>'
-      +'<p class="muted nhelp">Pictures: use the Picture button, or paste or drag them into the box. Type a caption between the [ ] after adding one.</p></form>';
+      +'<p class="muted nhelp">Pictures: use the Picture button, or paste or drag them into the box. Type a caption between the [ ] after adding one. Links: select the words you want clickable, press Link, then paste the address between the ( ). The words go in [ ], the address in ( ).</p></form>';
   }
   function ta(f){return f.elements.body}
   function edit(t,a,b,text,selA,selB){   // replace [a,b) with text (keeps undo working where the browser allows it), then select selA..selB
