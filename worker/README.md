@@ -39,12 +39,15 @@ If Discord is down or the address is wrong the sign-up itself is unaffected. To 
 
 ## News on the home page (Web Admins)
 The home page has a **News** section above Race to 60 (latest 3 posts, older ones behind a button; it hides itself while there are none).
-Everyone can read it. Only **Web Admins** can post, edit or delete, from the form that appears on the home page when they are signed in.
+Everyone can read it. Only **Web Admins** can post, edit or delete, on the **Post-News page** (`/post-news`, files `post-news.html` + `news-admin.js`). Web Admins get a
+**Post news** item in the account menu (the dropdown under their name, top left); nobody else sees it, and for everyone else, signed in or not, `/post-news` shows the normal
+"page not found" screen. The page is not in the sitemap or the footer and is set to `noindex`. The home page news is read-only for everybody.
 Officers are a separate group: being an officer does not allow posting, and being a Web Admin does not give officer powers (someone can be both).
 
 The Web Admin group is deliberately invisible. The people in it live in the `WEB_ADMIN_SUBS` **secret** (Blizzard account ids, comma separated, same ids
 as `OFFICER_SUBS`), not in the repo. The site and the public feed never show a rank, a label, an author or who posted; the post form and Edit/Delete buttons
 simply appear for those accounts.
+(The page's files are public, as on any static site, but nothing in them works without a Web Admin login: the Worker refuses every post, edit, delete and upload from anyone else.)
 - To add or remove a Web Admin: change the `WEB_ADMIN_SUBS` secret in GitHub (*Settings -> Secrets and variables -> Actions*), then *Actions -> Deploy login worker -> Run workflow*.
 - Posts can be formatted and carry pictures (below). 120 characters for the title and 8000 for the message. Pinned posts stay on top.
 - API: public `GET /api/news` and `GET /api/news/img/<id>`; Web Admins only: `POST /api/news`, `PUT /api/news?id=...`, `DELETE /api/news?id=...`, `POST /api/news/image`.

@@ -84,11 +84,13 @@
       box.innerHTML='<button type="button" class="acct-btn" data-a="menu" aria-haspopup="true" aria-expanded="false">'+label+'</button>'
         +'<div class="acct-menu" role="menu"><div class="acct-who">Signed in as<b>'+esc(bt||"your Battle.net account")+'</b>'+(c.officer?'<span>Officer</span>':'')+'</div>'
         +(ch?'<a href="/character?c='+encodeURIComponent(String(ch.n).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-"))+(location.hostname==="localhost"&&Q.get("api")?"&api="+encodeURIComponent(Q.get("api")):"")+'" role="menuitem">My character</a>':'')
-        +'<a href="/signup" role="menuitem">Raid sign-up</a><button type="button" role="menuitem" data-a="out">Sign out</button></div>';
+        +'<a href="/signup" role="menuitem">Raid sign-up</a>'
+        +(c.wa?'<a href="/post-news'+(location.hostname==="localhost"&&Q.get("api")?"?api="+encodeURIComponent(Q.get("api")):"")+'" role="menuitem">Post news</a>':'')   // only people who may post ever get this link
+        +'<button type="button" role="menuitem" data-a="out">Sign out</button></div>';
     }
     function refresh(){
       var tok=ls.get(KEY);if(!tok)return;
-      var c=cached(tok);if(c&&Date.now()-c.at<TTL)return;
+      var c=cached(tok);if(c&&Date.now()-c.at<TTL&&"wa" in c)return;   // an older saved copy without the posting flag is refreshed once
       var head={Authorization:"Bearer "+tok};
       fetch(API+"/api/me",{headers:head}).then(function(r){
         if(r.status===401){ls.del(KEY);ls.del(CKEY);draw();return null}
@@ -104,7 +106,7 @@
             var n=x.surname?x.name+" "+x.surname:x.name,l=Math.max(x.level||0,lv[key(n)]||0);
             if(!best||l>best.l)best={n:n,l:l,c:x.cls};
           });
-          ls.set(CKEY,JSON.stringify({t:tok.slice(-16),at:Date.now(),bt:m.battletag||"",officer:!!m.officer,ch:best}));
+          ls.set(CKEY,JSON.stringify({t:tok.slice(-16),at:Date.now(),bt:m.battletag||"",officer:!!m.officer,wa:m.webAdmin===true,ch:best}));
           draw();
         });
       }).catch(function(){});
@@ -118,7 +120,7 @@
         var open=!box.classList.contains("open");box.classList.toggle("open",open);b.setAttribute("aria-expanded",String(open));
       }else if(a==="out"){
         ls.del(KEY);ls.del(CKEY);
-        if(onSignup){location.reload();return}
+        if(onSignup||/\/post-news(\.html)?\/?$/.test(location.pathname)){location.reload();return}   // these pages change completely when signed out
         draw();
       }
     });
