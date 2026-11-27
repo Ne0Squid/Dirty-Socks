@@ -34,3 +34,4 @@
   btn.addEventListener("click",function(){set(!nav.classList.contains("open"))});
   nav.addEventListener("click",function(e){if(e.target.closest(".navlinks a"))set(false)});
 })();
+(function(){var l=document.createElement("link");l.rel="stylesheet";l.href="christmas.css";document.head.appendChild(l);var j=document.createElement("script");j.src="christmas.js";document.body.appendChild(j)})();

@@ -1,0 +1,37 @@
+/* Winter Veil / Christmas theme — preview branch only */
+:root{--xr:#c8372d;--xg:#2f8f4e;--xgold:#f2c14e;--xsnow:#eaf3ff}
+html[data-xmas] body{--accent:var(--xr)}
+html[data-xmas][data-faction="alliance"] body{--accent:#4f9a64}
+/* string lights under the nav */
+html[data-xmas] nav::after{content:"";position:absolute;left:0;right:0;top:100%;height:26px;pointer-events:none;
+ background:
+  radial-gradient(circle at 50% 14px,var(--xr) 0 4px,transparent 5px) 0 0/90px 26px repeat-x,
+  radial-gradient(circle at 50% 14px,var(--xgold) 0 4px,transparent 5px) 18px 0/90px 26px repeat-x,
+  radial-gradient(circle at 50% 14px,var(--xg) 0 4px,transparent 5px) 36px 0/90px 26px repeat-x,
+  radial-gradient(circle at 50% 14px,#4aa3ff 0 4px,transparent 5px) 54px 0/90px 26px repeat-x,
+  radial-gradient(circle at 50% 14px,var(--xr) 0 4px,transparent 5px) 72px 0/90px 26px repeat-x;
+ filter:drop-shadow(0 0 5px rgba(255,220,150,.55));animation:xtwinkle 2.4s ease-in-out infinite alternate}
+html[data-xmas] nav::before{content:"";position:absolute;left:0;right:0;top:100%;height:14px;pointer-events:none;
+ background:radial-gradient(ellipse 50% 100% at 50% 0,transparent 62%,rgba(255,255,255,.0) 63%);border-top:0}
+@keyframes xtwinkle{from{opacity:.65}to{opacity:1}}
+/* ribbon */
+.xribbon{background:linear-gradient(90deg,#8e1f19,#c8372d 50%,#8e1f19);color:#fff;text-align:center;font-family:Cinzel,Georgia,serif;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-bottom:2px solid var(--xgold)}
+/* candy-cane borders on cards/sections */
+html[data-xmas] .card,html[data-xmas] .box,html[data-xmas] section.panel{border-top:3px solid transparent;border-image:repeating-linear-gradient(135deg,var(--xr) 0 10px,#fff 10px 20px) 3}
+/* buttons */
+html[data-xmas] .btn{box-shadow:0 0 0 2px rgba(242,193,78,.55)}
+html[data-xmas] .splash .pill{border-color:var(--xgold);color:var(--xgold)}
+/* cold hero tint + snow drift */
+html[data-xmas] .splash::after{content:"";position:absolute;left:0;right:0;bottom:-40px;height:90px;z-index:-1;pointer-events:none;
+ background:radial-gradient(ellipse 60% 100% at 25% 100%,#eaf3ff 0 40%,transparent 41%),radial-gradient(ellipse 55% 100% at 75% 100%,#eaf3ff 0 38%,transparent 39%);opacity:.0}
+html[data-xmas] .splash::before{filter:saturate(.9) hue-rotate(-8deg)}
+/* santa hat */
+.xhat{position:absolute;width:38%;max-width:100px;aspect-ratio:1;pointer-events:none;left:50%;transform:translate(-30%,-4%) rotate(14deg);top:0}
+.xlogo{position:relative;display:inline-block;line-height:0}
+html:root:not([data-faction="alliance"]) .splash .xlogo.sl-alliance,html:root[data-faction="alliance"] .splash .xlogo.sl-horde{display:none}
+/* footer */
+html[data-xmas] footer{border-top:3px solid transparent;border-image:repeating-linear-gradient(135deg,var(--xr) 0 10px,#fff 10px 20px,var(--xg) 20px 30px,#fff 30px 40px) 3}
+html[data-xmas] .fbrand i,html[data-xmas] .fbrand em{color:var(--xgold)}
+/* snow canvas */
+#xsnow{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40}
+@media (prefers-reduced-motion:reduce){html[data-xmas] nav::after{animation:none}#xsnow{display:none}}
