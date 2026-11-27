@@ -5,8 +5,9 @@
   var path=location.pathname,clean=path.replace(/\/index\.html$/,"/").replace(/\.html$/,"");
   if(clean!==path&&history.replaceState)history.replaceState(history.state,"",clean+location.search+location.hash);
   var page=clean.replace(/\/+$/,"")||"/";
-  var links=[["Home","/"],["Roster","/roster"],["Hall of Fame","/hall-of-fame"],["Recruitment","/recruitment"]];
-  var a=function(l){return '<a href="'+l[1]+'"'+(l[1]===page?' class="here" aria-current="page"':'')+'>'+l[0]+'</a>'};
+  var links=[["Home","/"],["News","/news"],["Roster","/roster"],["Hall of Fame","/hall-of-fame"],["Recruitment","/recruitment"]];
+  var here=function(h){return h===page||(h!=="/"&&page.indexOf(h+"/")===0)};   // News also lights up on each post's own page (/news/<title>)
+  var a=function(l){return '<a href="'+l[1]+'"'+(here(l[1])?' class="here" aria-current="page"':'')+'>'+l[0]+'</a>'};
   nav.innerHTML='<a class="brand" href="/" aria-label="Dirty Socks – home">'
     +'<img class="logo logo-horde" src="images/logo-horde-sm.png" alt="" width="44" height="46">'
     +'<img class="logo logo-alliance" src="images/logo-alliance-sm.png" alt="" width="44" height="46">'
