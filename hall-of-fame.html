@@ -68,6 +68,16 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 .pod .when{margin-top:8px}
 .pod.open{opacity:.9;border-top-style:dashed}
 .pod .bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin:10px 0 4px}.pod .bar span{display:block;height:100%;background:var(--m)}
+.rlist{margin-top:14px;padding:4px 18px}
+.rrow{display:grid;grid-template-columns:7.4rem minmax(0,1.5fr) minmax(0,1fr) minmax(0,1.3fr);gap:4px 16px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
+.rrow:first-child{border-top:0}
+.rrow .rp{font-family:Cinzel,Georgia,serif;font-weight:800;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.rrow.claimed .rp{color:var(--accent)}
+.rrow .rn{display:flex;align-items:center;gap:10px;min-width:0;font-weight:600}.rrow .rn a{color:var(--text);text-decoration:none}.rrow .rn a:hover{color:var(--accent);text-decoration:underline}
+.rrow .rn .cico{width:26px;height:26px;border-radius:6px;flex:none}
+.rrow .rc{font-weight:600}.rrow .rw{color:var(--muted);text-align:right}
+.rrow.open .rn,.rrow.open .rc{opacity:.8}
+@media (max-width:640px){.rrow{grid-template-columns:minmax(0,1fr) auto;padding:12px 0}.rrow .rp{grid-column:1/-1}.rrow .rw{grid-column:1/-1;text-align:left}}
 .cico{width:34px;height:34px;border-radius:8px;border:2px solid;object-fit:cover;vertical-align:middle}
 .awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
 .award .ico{font-size:1.5rem}.award h3{font-size:1.05rem;margin:4px 0 2px}.award .desc{margin:0 0 12px}
@@ -89,8 +99,9 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 <main class="wrap">
 <section>
   <h2>Race to 60</h2>
-  <p class="muted" style="margin:-6px 0 16px">The first three Dirty Socks to reach level 60. Once a spot is claimed it is locked in for good.</p>
+  <p class="muted" style="margin:-6px 0 16px">The first three Dirty Socks to reach level 60 take the podium, and everyone after them is listed by place down to 10th. Once a spot is claimed it is locked in for good.</p>
   <div class="podium" id="podium"></div>
+  <div class="card rlist" id="racelist"></div>
 </section>
 <section style="padding-top:8px">
   <h2>Guild Awards</h2>
@@ -135,6 +146,16 @@ function draw(g){
     const c=chasers[i-won.length];
     if(!c)return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div><h3>Unclaimed</h3></div>`;
     return `<div class="card pod open p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label} · unclaimed</div>${ico(c)}<h3>${esc(both(c))}</h3><div class="muted" style="color:${c.color}">${esc(c.cls)}</div><div class="bar"><span style="width:${c.level/60*100}%"></span></div><div class="muted">Level ${c.level}</div></div>`;
+  }).join("");
+  // ---- 4th to 10th place: everyone who reached 60 after the podium; an open place shows the highest-level character still climbing
+  const all=(g.fame||{}).reached60||[],ORD=["4th","5th","6th","7th","8th","9th","10th"];
+  const who=(m,slug)=>`${ico(m)}<span>${bySlug[slug]?`<a href="/character?c=${encodeURIComponent(slug)}">${esc(both(m))}</a>`:esc(both(m))}</span>`;
+  document.getElementById("racelist").innerHTML=ORD.map((o,k)=>{
+    const pl=k+3,w=all[pl];
+    if(w){const m=bySlug[w.slug]||w;return `<div class="rrow claimed"><span class="rp">${o} Place</span><span class="rn">${who(m,w.slug)}</span><span class="rc" style="color:${w.color}">${esc(w.cls)}</span><span class="rw">Reached 60 on ${dfmt(w.at)}</span></div>`}
+    const c=chasers[pl-all.length];
+    if(!c)return `<div class="rrow open"><span class="rp">${o} Place</span><span class="rn muted">Unclaimed</span><span class="rc"></span><span class="rw"></span></div>`;
+    return `<div class="rrow open"><span class="rp">${o} Place</span><span class="rn">${who(c,slugOf(c))}</span><span class="rc" style="color:${c.color}">${esc(c.cls)}</span><span class="rw">Level ${c.level} · unclaimed</span></div>`;
   }).join("");
   // ---- Awards, all worked out from the guild data
   const top=(items,n=5)=>items.filter(x=>x.v>0).sort((a,b)=>b.v-a.v).slice(0,n);
