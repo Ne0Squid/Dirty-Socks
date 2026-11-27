@@ -216,6 +216,8 @@ const STAT_GROUPS=[
   ["Offense",[["attack_power","Attack power"],["ranged_attack_power","Ranged attack power"],["melee_crit","Melee crit"],["ranged_crit","Ranged crit"],["melee_haste","Melee haste"],["spell_power","Spell power"],["spell_crit","Spell crit"],["spell_haste","Spell haste"],["spell_penetration","Spell penetration"],["mana_regen","Mana regen"]]],
   ["Defense",[["armor","Armor"],["dodge","Dodge"],["parry","Parry"],["block","Block"]]]
 ];
+// Figures that are only worth a row once they are above zero (haste, ranged power, parry and block for classes without them...).
+const OPT0=new Set(["ranged_attack_power","melee_haste","spell_haste","spell_penetration","parry","block"]);
 const nice=k=>k.replace(/_/g," ").replace(/^./,c=>c.toUpperCase());
 const fmtStat=(k,v)=>PCT.has(k)?v.toFixed(2)+"%":Math.round(v).toLocaleString("en-US");
 function statsHtml(){
@@ -227,7 +229,7 @@ function statsHtml(){
   if(typeof st.power==="number"){top.push([st.powerType||"Power",Math.round(st.power).toLocaleString("en-US")]);used.add("power")}
   if(top.length)groups.push(["Vitals",top]);
   STAT_GROUPS.forEach(([title,defs])=>{
-    const rows=defs.filter(([k])=>typeof st[k]==="number").map(([k,l])=>{used.add(k);return[l,fmtStat(k,st[k])]});
+    const rows=defs.filter(([k])=>typeof st[k]==="number"&&!(st[k]===0&&OPT0.has(k))).map(([k,l])=>{used.add(k);return[l,fmtStat(k,st[k])]});
     if(rows.length)groups.push([title,rows]);
   });
   const rest=Object.keys(st).filter(k=>!used.has(k)&&typeof st[k]==="number"&&st[k]!==0);
