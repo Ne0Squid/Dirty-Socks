@@ -37,6 +37,24 @@ Not announced: edits to an existing sign-up, and officers approving, declining, 
 Messages cannot ping anyone (mentions are switched off and player text is escaped), and each account can trigger at most 8 alerts an hour.
 If Discord is down or the address is wrong the sign-up itself is unaffected. To stop the alerts, delete the secret and the webhook, then re-run the deploy.
 
+## News on the home page (Web Admins)
+The home page has a **News** section above Race to 60 (latest 3 posts, older ones behind a button; it hides itself while there are none).
+Everyone can read it. Only **Web Admins** can post, edit or delete, from the form that appears on the home page when they are signed in.
+Officers are a separate group: being an officer does not allow posting, and being a Web Admin does not give officer powers (someone can be both).
+
+The Web Admin group is deliberately invisible. The people in it live in the `WEB_ADMIN_SUBS` **secret** (Blizzard account ids, comma separated, same ids
+as `OFFICER_SUBS`), not in the repo. The site and the public feed never show a rank, a label, an author or who posted; the post form and Edit/Delete buttons
+simply appear for those accounts.
+- To add or remove a Web Admin: change the `WEB_ADMIN_SUBS` secret in GitHub (*Settings -> Secrets and variables -> Actions*), then *Actions -> Deploy login worker -> Run workflow*.
+- Posts are plain text (tags are stripped), 120 characters for the title and 2000 for the message. Pinned posts stay on top.
+- API: public `GET /api/news`; Web Admins only: `POST /api/news`, `PUT /api/news?id=...`, `DELETE /api/news?id=...`.
+
+### Discord alert for new posts (optional)
+Same idea as the sign-up alerts, with its own channel: create a webhook in the channel that should get the announcements, add it as the GitHub secret
+`DISCORD_NEWS_WEBHOOK_URL`, then run the deploy workflow (it posts one "connected" message). Each **new** post is sent as a message with the title and text and a link
+to the news section; edits and deletes are not sent. Nobody can be pinged (mentions are off and Discord formatting in posts is escaped), nothing identifies the author,
+and one admin can send at most 10 messages an hour (posts are still saved). It is separate from `DISCORD_WEBHOOK_URL`, so the two can go to different channels.
+
 ## Roster slots (the Raid Roster on Recruitment)
 In the Raid line-up on /signup, officers get a slot picker on every row: Main Tank, Off Tank, Healer, DPS, or a
 Backup tagged Tank / Healer / DPS (so a healer on the bench shows as "Backup · Healer"). Picking a slot also approves that raid,

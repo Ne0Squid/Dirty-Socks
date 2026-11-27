@@ -16,6 +16,8 @@ const accounts = {
   codeA: { sub: "1001", battletag: "Squid#1234", chars: [{ name: "Squid", surname: "Zero", id: 1, level: 60, playable_class: { name: "Druid" }, faction: { name: "Horde" } }, { name: "Neo", surname: "Squid", id: 2, level: 12, playable_class: { name: "Rogue" } }] },
   codeB: { sub: "1002", battletag: "NoProfile#9999", chars: null },
   codeO: { sub: "2000", battletag: "Officer#0001", chars: [{ name: "Scott", surname: "Frost", id: 3, level: 58, playable_class: { name: "Paladin" } }] },
+  codeW: { sub: "3000", battletag: "WebAdmin#0003", chars: [{ name: "Tiny", surname: "Alt", id: 4, level: 5, playable_class: { name: "Mage" } }] },
+  codeX: { sub: "4000", battletag: "Both#0004", chars: [{ name: "Needmore", surname: "Beers", id: 5, level: 57, playable_class: { name: "Warrior" } }] },
 };
 const bz = mockBlizzard(accounts, { roster });
 const env = makeEnv({ OFFICER_SUBS: "2000" });
@@ -327,6 +329,87 @@ console.log("discord sign-up alerts");
   await unv(req("/api/signup", { method: "PUT", token: tU, body: body({ character: "Scott Frost", raid: "hyjal", roles: ["Tank"], nights: ["thursday"] }) })); await flush();
   const eu = posts[posts.length - 1].body.embeds[0];
   ok(posts.length === 9 && eu.footer.text.startsWith("Not verified") && eu.description === "**Scott Frost**", "unverified sign-up is flagged for the officers", eu);
+  globalThis.fetch = baseFetch;
+}
+
+console.log("news + web admins");
+{
+  const posts = [], pending = [], ctx = { waitUntil: (p) => pending.push(p) };
+  const baseFetch = globalThis.fetch;
+  globalThis.fetch = async (input, init = {}) => {
+    const u = new URL(typeof input === "string" ? input : input.url ?? String(input));
+    if (u.hostname === "discord.com") { posts.push({ url: String(u), body: JSON.parse(init.body) }); return new Response(null, { status: 204 }); }
+    return baseFetch(input, init);
+  };
+  const SIGNUP_HOOK = "https://discord.com/api/webhooks/111111111111111111/signup-hook", NEWS_HOOK = "https://discord.com/api/webhooks/222222222222222222/news-hook";
+  const e = makeEnv({ OFFICER_SUBS: "2000,4000", WEB_ADMIN_SUBS: "3000,4000", DISCORD_WEBHOOK_URL: SIGNUP_HOOK, DISCORD_NEWS_WEBHOOK_URL: NEWS_HOOK });
+  const fw = (r) => worker.fetch(r, e, ctx), flush = async () => { await Promise.all(pending.splice(0)); };
+  const login = async (code) => {
+    const l = await fw(req("/auth/login")), state = new URL(l.headers.get("Location")).searchParams.get("state");
+    const cb = await fw(req(`/auth/callback?code=${code}&state=${encodeURIComponent(state)}`, { origin: null }));
+    return ((cb.headers.get("Location") || "").match(/#session=(.+)$/) || [])[1];
+  };
+  const [tP, tO, tW, tX] = [await login("codeA"), await login("codeO"), await login("codeW"), await login("codeX")];
+  const post = (t, b) => fw(req("/api/news", { method: "POST", token: t, body: b }));
+  const feed = async () => (await (await fw(req("/api/news", { origin: SITE }))).json()).news;
+
+  ok((await fw(req("/api/news", { origin: null }))).status === 200 && (await feed()).length === 0, "the news feed is public and starts empty");
+  ok((await post(null, { title: "x" })).status === 401, "posting without signing in -> 401");
+  ok((await post(tP, { title: "Hi" })).status === 403, "a normal player cannot post");
+  ok((await post(tO, { title: "Hi" })).status === 403, "an officer who is not a Web Admin cannot post");
+  ok((await feed()).length === 0 && posts.length === 0, "refused posts leave nothing behind and send nothing");
+
+  const r1 = await post(tW, { title: "  Raid night <b>moved</b>  ", body: "Line one\r\nLine two   spaced\n\n\n\nLine three", pinned: false });
+  const j1 = await r1.json();
+  ok(r1.status === 200 && j1.ok && j1.post.title === "Raid night bmoved/b" && j1.post.body === "Line one\nLine two spaced\n\nLine three", "a Web Admin can post; text is cleaned, line breaks kept, tags removed", j1);
+  ok((await post(tW, { title: "   ", body: "x" })).status === 400, "a post needs a title");
+  const long = await (await post(tW, { title: "T".repeat(300), body: "b".repeat(5000) })).json();
+  ok(long.post.title.length === 120 && long.post.body.length === 2000, "title and body are length-limited");
+  await post(tX, { title: "Pinned one", body: "stays on top", pinned: true });
+  const order = (await feed()).map((p) => p.title);
+  ok(order[0] === "Pinned one" && order.length === 3 && order[1].startsWith("TTT"), "pinned posts come first, then newest", order);
+  const raw = JSON.stringify(await feed());
+  ok(!/"by"|3000|4000|WebAdmin|Both#|admin/i.test(raw), "the public feed never shows who posted or any admin information", raw.slice(0, 200));
+
+  const meW = await (await fw(req("/api/me", { token: tW }))).json(), meO = await (await fw(req("/api/me", { token: tO }))).json(), meP = await (await fw(req("/api/me", { token: tP }))).json(), meX = await (await fw(req("/api/me", { token: tX }))).json();
+  ok(meW.webAdmin === true && meW.officer === false, "a Web Admin sees the post form (webAdmin flag only for themselves)");
+  ok(!("webAdmin" in meO) && !("webAdmin" in meP) && !JSON.stringify(meO).includes("webAdmin"), "officers and players get no webAdmin flag at all");
+  ok(meX.webAdmin === true && meX.officer === true, "someone can be an officer and a Web Admin at once");
+  ok((await fw(req(`/api/signup/status`, { method: "POST", token: tW, body: { sub: "1", character: "x", status: "approved" } }))).status === 403, "being a Web Admin does not make you an officer");
+
+  const id = j1.post.id;
+  ok((await fw(req(`/api/news?id=${id}`, { method: "PUT", token: tP, body: { title: "Hacked" } }))).status === 403 && (await fw(req(`/api/news?id=${id}`, { method: "DELETE", token: tO }))).status === 403, "players and officers cannot edit or delete");
+  const ed = await (await fw(req(`/api/news?id=${id}`, { method: "PUT", token: tW, body: { title: "Raid night moved", body: "Thursday instead", pinned: true } }))).json();
+  ok(ed.ok && ed.post.title === "Raid night moved" && ed.post.pinned === true && ed.post.edited > 0 && ed.post.at === j1.post.at, "a Web Admin can edit (keeps the original date)", ed);
+  ok((await fw(req(`/api/news?id=nope1234`, { method: "PUT", token: tW, body: { title: "x" } }))).status === 404 && (await fw(req(`/api/news?id=!!`, { method: "DELETE", token: tW }))).status === 400, "unknown or malformed ids are refused");
+
+  await flush();
+  const newsPosts = posts.filter((p) => p.url === NEWS_HOOK);
+  ok(newsPosts.length === 3 && posts.every((p) => p.url === NEWS_HOOK), "each NEW post went to the news webhook (edits did not), and nothing went to the sign-up one", posts.map((p) => p.url));
+  const em = newsPosts[0].body.embeds[0];
+  ok(em.title === "Raid night bmoved/b" && em.description === "Line one\nLine two spaced\n\nLine three" && em.url === SITE + "/#news" && newsPosts[0].body.allowed_mentions.parse.length === 0, "Discord message: title, body with line breaks, link to the news section, no pings", em);
+  ok(!JSON.stringify(newsPosts).match(/3000|4000|WebAdmin|Both#|admin/i), "no author or admin information goes to Discord either");
+  const sneaky = await (await post(tW, { title: "Hello @everyone", body: "**bold** [click](https://evil.example)" })).json(); await flush();
+  const sd = posts[posts.length - 1].body.embeds[0];
+  ok(sneaky.ok && sd.title.includes("\\@everyone") && !/(^|[^\\])\*\*/.test(sd.description) && !/(^|[^\\])\]\(/.test(sd.description), "Discord formatting and links in a post are escaped", sd);
+
+  const del = await fw(req(`/api/news?id=${id}`, { method: "DELETE", token: tW })); await flush();
+  ok(del.status === 200, "a Web Admin can delete");
+  ok(!(await feed()).some((p) => p.id === id), "the deleted post is gone from the feed");
+
+  // flood guard: 10 Discord messages an hour per admin, but every post is still saved
+  const before = (await feed()).length, sentBefore = posts.length;
+  for (let i = 0; i < 14; i++) await post(tX, { title: "Bulk " + i, body: "" });
+  await flush();
+  ok((await feed()).length === Math.min(before + 14, 30) && posts.length - sentBefore <= 10, "at most 10 Discord messages an hour per admin; posts are still saved", [posts.length - sentBefore]);
+
+  // no news webhook configured -> posting still works, nothing is sent
+  const e2 = makeEnv({ WEB_ADMIN_SUBS: "3000" }), fw2 = (r) => worker.fetch(r, e2, ctx);
+  const l2 = await fw2(req("/auth/login")), st2 = new URL(l2.headers.get("Location")).searchParams.get("state");
+  const cb2 = await fw2(req(`/auth/callback?code=codeW&state=${encodeURIComponent(st2)}`, { origin: null })), t2 = (cb2.headers.get("Location").match(/#session=(.+)$/) || [])[1];
+  const n0 = posts.length;
+  ok((await fw2(req("/api/news", { method: "POST", token: t2, body: { title: "Quiet" } }))).status === 200, "posting works with no Discord webhook"); await flush();
+  ok(posts.length === n0, "and nothing is sent");
   globalThis.fetch = baseFetch;
 }
 bz.restore();

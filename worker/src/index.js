@@ -2,7 +2,8 @@
 // Runs on Cloudflare Workers with no dependencies. Flow:
 //   site -> /auth/login -> Battle.net -> /auth/callback -> site#session=<signed token>
 //   site then calls /api/* with "Authorization: Bearer <token>".
-// Secrets: BLIZZARD_CLIENT_ID, BLIZZARD_CLIENT_SECRET, SESSION_SECRET, and optionally DISCORD_WEBHOOK_URL (sign-up alerts). Settings live in wrangler.toml.
+// Secrets: BLIZZARD_CLIENT_ID, BLIZZARD_CLIENT_SECRET, SESSION_SECRET, and optionally DISCORD_WEBHOOK_URL (sign-up alerts),
+// DISCORD_NEWS_WEBHOOK_URL (new news posts) and WEB_ADMIN_SUBS (who may post news; kept secret so the group stays hidden). Settings live in wrangler.toml.
 
 const RAIDS = { barrow: 10, hyjal: 20, both: 0 };
 const ROLES = ["Tank", "Healer", "DPS"];
@@ -89,6 +90,8 @@ const clean = (s, n) => String(s ?? "").replace(/[\u0000-\u001f<>]/g, "").trim()
 const full = (c) => (c.surname ? `${c.name} ${c.surname}` : c.name);
 const key = (name) => name.toLowerCase().replace(/\s+/g, " ");
 const isOfficer = (env, sub) => (env.OFFICER_SUBS || "").split(",").map((s) => s.trim()).filter(Boolean).includes(String(sub));
+// Web Admins may post news. The list is a secret (not in the repo) and the group is never shown to anyone: it only turns on the post form for them.
+const isWebAdmin = (env, sub) => (env.WEB_ADMIN_SUBS || "").split(",").map((s) => s.trim()).filter(Boolean).includes(String(sub));
 
 async function me(req, env) {
   const m = (req.headers.get("Authorization") || "").match(/^Bearer (.+)$/);
@@ -193,25 +196,46 @@ function signupEmbed(env, kind, s, info, extra = {}) {
   return { username: "Dirty Socks Sign-ups", allowed_mentions: { parse: [] }, embeds: [embed] };
 }
 
-async function allowAlert(store, sub, now) {
-  const k = `alerts:${sub}`, a = (await store.get(k)) || { start: now, n: 0 };
+async function allowAlert(store, who, now, max = ALERTS_PER_HOUR) {
+  const k = `alerts:${who}`, a = (await store.get(k)) || { start: now, n: 0 };
   if (now - a.start > 3600e3) { a.start = now; a.n = 0; }
-  if (a.n >= ALERTS_PER_HOUR) return false;
+  if (a.n >= max) return false;
   a.n++; await store.put(k, a);
   return true;
 }
 
 // Fire and forget: runs after the response has been sent when the platform allows it.
-function alertDiscord(ctx, env, store, sub, build) {
-  const url = env.DISCORD_WEBHOOK_URL;
+function alertDiscord(ctx, env, store, sub, build, url = env.DISCORD_WEBHOOK_URL, max = ALERTS_PER_HOUR) {
   if (!url || !WEBHOOK_RE.test(url)) return;
   const job = (async () => {
     try {
-      if (!(await allowAlert(store, sub, Date.now()))) return;
+      if (!(await allowAlert(store, sub, Date.now(), max))) return;
       await fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(build()) });
     } catch { /* a Discord hiccup must never touch the sign-up itself */ }
   })();
   if (ctx && typeof ctx.waitUntil === "function") ctx.waitUntil(job);
+}
+
+// ---- News (home page) ------------------------------------------------------------------------------
+// Anyone can read the feed. Only Web Admins can post, edit or delete. Posts are plain text; the author is stored
+// for the record but never sent to the site or to Discord, so nothing shows who (or what group) wrote a post.
+const NEWS_ID = /^[a-z0-9]{6,40}$/;
+const NEWS_FEED_MAX = 30, NEWS_STORE_MAX = 200, NEWS_ALERTS_PER_HOUR = 10;
+const lines = (s, n) => String(s ?? "").replace(/\r\n?/g, "\n").replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f<>]/g, "").replace(/[ \t]+/g, " ").replace(/ ?\n ?/g, "\n").replace(/\n{3,}/g, "\n\n").trim().slice(0, n);
+const publicPost = (p) => ({ id: p.id, title: p.title, body: p.body, pinned: !!p.pinned, at: p.at, ...(p.edited ? { edited: p.edited } : {}) });
+
+async function publicNews(env) {
+  const posts = (await db(env).list("news:")).map(({ value }) => value);
+  posts.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b.at - a.at);
+  return json({ news: posts.slice(0, NEWS_FEED_MAX).map(publicPost) }, 200, { "Cache-Control": "public, max-age=15", Vary: "Origin" });
+}
+
+function newsEmbed(env, post) {
+  const site = String(env.SITE_ORIGIN || "").replace(/\/+$/, "");
+  const embed = { title: plain(post.title, 250), color: 0xd9534f, timestamp: new Date(post.at).toISOString(), footer: { text: "Dirty Socks news" } };
+  if (post.body) embed.description = post.body.replace(/[\\`*_~|>[\]()<@]/g, "\\$&").slice(0, 3800);
+  if (site) embed.url = `${site}/#news`;
+  return { username: "Dirty Socks News", allowed_mentions: { parse: [] }, embeds: [embed] };
 }
 
 async function publicRoster(env) {
@@ -226,7 +250,7 @@ async function handleApi(req, url, env, who, ctx) {
 
   if (path === "/api/me" && method === "GET") {
     const c = (await store.get(`chars:${who.sub}`)) || { list: [], status: null };
-    return json({ sub: who.sub, battletag: who.bt, officer, characters: c.list, source: c.list.length ? "blizzard" : "none", charsStatus: c.status });
+    return json({ sub: who.sub, battletag: who.bt, officer, ...(isWebAdmin(env, who.sub) ? { webAdmin: true } : {}), characters: c.list, source: c.list.length ? "blizzard" : "none", charsStatus: c.status });
   }
 
   if (path === "/api/signups" && method === "GET") {
@@ -331,6 +355,32 @@ async function handleApi(req, url, env, who, ctx) {
     await store.put(k, { ...rest, statuses: cur, slots, updated: Date.now() });
     return json({ ok: true });
   }
+  if (path === "/api/news" && (method === "POST" || method === "PUT" || method === "DELETE")) {
+    if (!isWebAdmin(env, who.sub)) return json({ error: "Not allowed." }, 403);
+    const id = url.searchParams.get("id") || "";
+    if (method === "DELETE") {
+      if (!NEWS_ID.test(id)) return json({ error: "bad id" }, 400);
+      await store.del(`news:${id}`);
+      return json({ ok: true });
+    }
+    let b; try { b = await req.json(); } catch { return json({ error: "bad request" }, 400); }
+    const title = clean(b.title, 120), body = lines(b.body, 2000);
+    if (!title) return json({ error: "Give the post a title." }, 400);
+    if (method === "PUT") {
+      if (!NEWS_ID.test(id)) return json({ error: "bad id" }, 400);
+      const prev = await store.get(`news:${id}`);
+      if (!prev) return json({ error: "Post not found." }, 404);
+      const post = { ...prev, title, body, pinned: !!b.pinned, edited: Date.now() };
+      await store.put(`news:${id}`, post);
+      return json({ ok: true, post: publicPost(post) });
+    }
+    if ((await store.list("news:")).length >= NEWS_STORE_MAX) return json({ error: "That is a lot of news. Delete some old posts first." }, 400);
+    const now = Date.now(), nid = now.toString(36) + Array.from(crypto.getRandomValues(new Uint8Array(3)), (x) => x.toString(36).padStart(2, "0")).join("");
+    const post = { id: nid, title, body, pinned: !!b.pinned, at: now, by: who.sub };
+    await store.put(`news:${nid}`, post);
+    alertDiscord(ctx, env, store, `news:${who.sub}`, () => newsEmbed(env, post), env.DISCORD_NEWS_WEBHOOK_URL, NEWS_ALERTS_PER_HOUR);   // new posts only, not edits
+    return json({ ok: true, post: publicPost(post) });
+  }
   return json({ error: "not found" }, 404);
 }
 
@@ -343,6 +393,7 @@ export default {
       if (url.pathname === "/auth/login") res = await login(url, env);
       else if (url.pathname === "/auth/callback") res = await callback(url, env);
       else if (url.pathname === "/api/roster" && req.method === "GET") res = await publicRoster(env);
+      else if (url.pathname === "/api/news" && req.method === "GET") res = await publicNews(env);
       else if (url.pathname.startsWith("/api/")) {
         const who = await me(req, env);
         res = who ? await handleApi(req, url, env, who, ctx) : json({ error: "Please sign in." }, 401);

@@ -18,6 +18,8 @@ jobs:
     env:
       CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}   # optional: sign-up alerts (worker/README.md)
+      DISCORD_NEWS_WEBHOOK_URL: ${{ secrets.DISCORD_NEWS_WEBHOOK_URL }}   # optional: new news posts
+      WEB_ADMIN_SUBS: ${{ secrets.WEB_ADMIN_SUBS }}   # optional: who may post news (kept secret)
     steps:
       - uses: actions/checkout@v4
 
@@ -46,6 +48,8 @@ jobs:
             echo BLIZZARD_CLIENT_SECRET
             echo SESSION_SECRET
             if [ -n "$DISCORD_WEBHOOK_URL" ]; then echo DISCORD_WEBHOOK_URL; fi
+            if [ -n "$DISCORD_NEWS_WEBHOOK_URL" ]; then echo DISCORD_NEWS_WEBHOOK_URL; fi
+            if [ -n "$WEB_ADMIN_SUBS" ]; then echo WEB_ADMIN_SUBS; fi
             echo EOF
           } >> "$GITHUB_OUTPUT"
 
@@ -62,6 +66,8 @@ jobs:
           BLIZZARD_CLIENT_SECRET: ${{ secrets.BLIZZARD_CLIENT_SECRET }}
           SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_NEWS_WEBHOOK_URL: ${{ secrets.DISCORD_NEWS_WEBHOOK_URL }}
+          WEB_ADMIN_SUBS: ${{ secrets.WEB_ADMIN_SUBS }}
 
       # Running the workflow by hand (Actions -> Deploy login worker -> Run workflow) also posts one test message.
       - name: Send a test message to Discord
@@ -70,3 +76,10 @@ jobs:
           curl -fsS -H "Content-Type: application/json" \
             -d '{"username":"Dirty Socks Sign-ups","content":"✅ Sign-up alerts are connected. New raid sign-ups will show up in this channel."}' \
             "$DISCORD_WEBHOOK_URL"
+
+      - name: Send a test message to the news channel
+        if: github.event_name == 'workflow_dispatch' && steps.cfg.outputs.ready == 'true' && env.DISCORD_NEWS_WEBHOOK_URL != ''
+        run: |
+          curl -fsS -H "Content-Type: application/json" \
+            -d '{"username":"Dirty Socks News","content":"✅ News alerts are connected. New posts from the website will show up in this channel."}' \
+            "$DISCORD_NEWS_WEBHOOK_URL"

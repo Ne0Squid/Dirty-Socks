@@ -40,6 +40,28 @@ a{color:var(--accent)}
 .hero p{color:var(--muted);max-width:520px;margin:12px auto 26px}
 .btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:10px 22px;border-radius:6px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-size:.95rem}
 section{padding:44px 0}
+/* News */
+#news{padding-bottom:8px;scroll-margin-top:72px}
+.nlist{display:grid;gap:14px}.nlist[hidden]{display:none}
+.npost{border-left:4px solid var(--line)}.npost.pinned{border-left-color:var(--accent)}
+.nmeta{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;font-size:.82rem;color:var(--muted);margin-bottom:4px}
+.npin{color:var(--accent);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.72rem}
+.npost h3{font-size:1.25rem;margin:0 0 6px;overflow-wrap:anywhere}
+.nbody{margin:0;white-space:pre-line;overflow-wrap:anywhere}
+.ntools{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;margin-top:12px;font-size:.85rem;color:var(--muted)}
+.ntools button,.nmore{font:inherit;font-size:.85rem;color:var(--muted);background:none;border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer}
+.ntools button:hover,.nmore:hover{color:var(--accent);border-color:var(--accent)}
+.ntools button.danger{color:#ff7b72;border-color:#ff7b72}
+.nmore{margin-top:12px;border:0;padding:6px 0}
+.nform{display:grid;gap:12px;margin-bottom:14px}.nform h3{font-size:1.15rem;margin:0}
+.nform label{display:grid;gap:4px;font-size:.85rem;color:var(--muted)}
+.nform input[type=text],.nform textarea{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 11px;width:100%}
+.nform input[type=text]:focus-visible,.nform textarea:focus-visible,.nmore:focus-visible,.ntools button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nform textarea{resize:vertical;min-height:96px}
+.nform label.chk{display:flex;align-items:center;gap:8px}
+.nerr{margin:0;color:#ff7b72;font-size:.9rem}
+.nbtns{display:flex;flex-wrap:wrap;gap:10px}
+.btn.ghost{background:none;color:var(--text);border:1px solid var(--line)}
 h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
 .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
@@ -111,6 +133,7 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 </head>
 <body>
 <nav></nav>
+<script src="auth-config.js"></script>
 <script src="nav.js"></script>
 
 <section class="splash" aria-label="Welcome">
@@ -135,6 +158,12 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
   <h2>About Us</h2>
   <div class="card"><p>Dirty Socks is a Horde guild on WoW Forever (North America). Tell visitors here what makes the guild special: your playstyle, goals, and the kind of players you’re looking for.</p></div>
 </section>-->
+
+<section id="news" hidden aria-label="News">
+  <h2>News</h2>
+  <div id="newsform"></div>
+  <div id="newslist"></div>
+</section>
 
 <section id="race">
   <h2>Race to 60</h2>
@@ -318,6 +347,91 @@ fetch("guild-data.json",{cache:"no-cache"})
   .then(r=>r.ok?r.json():Promise.reject())
   .then(j=>{render({generated:j.generated,founded:(j.raw&&j.raw.guild&&j.raw.guild.created_timestamp)||fallback.founded,roster:j.roster,history:j.history,icons:j.professionIcons,classIcons:j.classIcons,recipes:j.recipes});drawDungeons(j.bossKills);drawRaids(j.bossKills)})
   .catch(()=>render({...fallback,saved:true}));
+</script>
+<script>
+// News: everyone can read it; the post form and the Edit / Delete buttons only appear for people the service lets post.
+// (The page never says who those people are or what group they belong to.)
+(function(){
+  var sec=document.getElementById("news"),formBox=document.getElementById("newsform"),listBox=document.getElementById("newslist");
+  if(!sec)return;
+  var Q=new URLSearchParams(location.search);
+  var API=String((location.hostname==="localhost"&&Q.get("api"))||window.DS_API||"").replace(/\/+$/,"");
+  if(!API)return;
+  var tok=null;try{tok=localStorage.getItem("ds-session")}catch(e){}
+  var posts=[],admin=false,showAll=false,editing=null,confirming=null,loaded=false,SHOW=3;
+  var esc=function(x){return String(x==null?"":x).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
+  var day=function(t){return new Date(t).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})};
+  var auth=function(extra){var h={Authorization:"Bearer "+tok};for(var k in extra)h[k]=extra[k];return h};
+
+  function formHtml(p){
+    var id=p?p.id:"new";
+    return '<form class="card nform" data-form="'+esc(id)+'" novalidate>'+(p?"":'<h3>Post news</h3>')
+      +'<label>Title<input type="text" name="title" maxlength="120" required value="'+esc(p?p.title:"")+'"></label>'
+      +'<label>Message<textarea name="body" rows="4" maxlength="2000">'+esc(p?p.body:"")+'</textarea></label>'
+      +'<label class="chk"><input type="checkbox" name="pinned"'+(p&&p.pinned?" checked":"")+'> Pin to the top</label>'
+      +'<p class="nerr" role="alert" hidden></p>'
+      +'<div class="nbtns"><button class="btn" type="submit">'+(p?"Save changes":"Post news")+'</button>'+(p?'<button class="btn ghost" type="button" data-a="cancel">Cancel</button>':"")+'</div>'
+      +(p?"":'<p class="muted" style="margin:0">Plain text. Line breaks are kept.</p>')+'</form>';
+  }
+  function postHtml(p){
+    if(editing===p.id)return formHtml(p);
+    var tools="";
+    if(admin)tools='<div class="ntools">'+(confirming===p.id
+      ?'<span>Delete this post?</span><button type="button" class="danger" data-a="del-yes" data-id="'+esc(p.id)+'">Yes, delete</button><button type="button" data-a="del-no">Cancel</button>'
+      :'<button type="button" data-a="edit" data-id="'+esc(p.id)+'">Edit</button><button type="button" data-a="del" data-id="'+esc(p.id)+'">Delete</button>')+'</div>';
+    return '<article class="card npost'+(p.pinned?" pinned":"")+'"><div class="nmeta">'+(p.pinned?'<span class="npin">Pinned</span>':"")+'<span>'+esc(day(p.at))+(p.edited?" · edited":"")+'</span></div>'
+      +'<h3>'+esc(p.title)+'</h3>'+(p.body?'<p class="nbody">'+esc(p.body)+'</p>':"")+tools+'</article>';
+  }
+  function drawList(){
+    var top=posts.slice(0,SHOW),more=posts.slice(SHOW);
+    var html='<div class="nlist">'+top.map(postHtml).join("")+'</div>';
+    if(more.length)html+='<div class="nlist" id="newsmore" style="margin-top:14px"'+(showAll?"":" hidden")+'>'+more.map(postHtml).join("")+'</div>'
+      +'<button type="button" class="nmore" data-a="more" aria-expanded="'+showAll+'" aria-controls="newsmore">'+(showAll?"\u25B4 Show less":"\u25BE Show "+more.length+" older post"+(more.length===1?"":"s"))+'</button>';
+    listBox.innerHTML=html;
+    sec.hidden=!(posts.length||admin);
+  }
+  function drawForm(){formBox.innerHTML=admin?formHtml(null):""}
+  function reload(){
+    return fetch(API+"/api/news?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.json():null}).then(function(j){
+      if(!j||!Array.isArray(j.news))return;
+      posts=j.news;drawList();
+      if(!loaded){loaded=true;if(location.hash==="#news"&&!sec.hidden)sec.scrollIntoView()}
+    }).catch(function(){});
+  }
+  function showErr(form,msg){var e=form.querySelector(".nerr");e.textContent=msg;e.hidden=!msg}
+  function save(form){
+    var id=form.getAttribute("data-form"),isNew=id==="new",f=new FormData(form),btn=form.querySelector("button[type=submit]");
+    var title=String(f.get("title")||"").trim();
+    if(!title){showErr(form,"Give the post a title.");return}
+    showErr(form,"");btn.disabled=true;
+    fetch(API+"/api/news"+(isNew?"":"?id="+encodeURIComponent(id)),{method:isNew?"POST":"PUT",headers:auth({"Content-Type":"application/json"}),body:JSON.stringify({title:title,body:String(f.get("body")||""),pinned:!!f.get("pinned")})})
+      .then(function(r){return r.json().catch(function(){return{}}).then(function(j){return{ok:r.ok,status:r.status,j:j}})})
+      .then(function(res){
+        btn.disabled=false;
+        if(!res.ok){showErr(form,res.status===401?"Your login expired. Log in again to post.":(res.j&&res.j.error)||"Could not save that. Try again.");return}
+        editing=null;if(isNew)form.reset();
+        return reload();
+      }).catch(function(){btn.disabled=false;showErr(form,"Could not reach the server. Try again.")});
+  }
+  document.getElementById("news").addEventListener("submit",function(e){var f=e.target.closest&&e.target.closest("form[data-form]");if(!f)return;e.preventDefault();if(admin)save(f)});
+  document.getElementById("news").addEventListener("click",function(e){
+    var b=e.target.closest&&e.target.closest("[data-a]");if(!b)return;
+    var a=b.getAttribute("data-a"),id=b.getAttribute("data-id");
+    if(a==="more"){showAll=!showAll;drawList();if(!showAll)b=document.querySelector(".nmore"),b&&b.scrollIntoView({block:"nearest"});return}
+    if(!admin)return;
+    if(a==="edit"){editing=id;confirming=null;drawList()}
+    else if(a==="cancel"){editing=null;drawList()}
+    else if(a==="del"){confirming=id;editing=null;drawList()}
+    else if(a==="del-no"){confirming=null;drawList()}
+    else if(a==="del-yes"){
+      fetch(API+"/api/news?id="+encodeURIComponent(confirming),{method:"DELETE",headers:auth()}).then(function(){confirming=null;return reload()}).catch(function(){confirming=null;drawList()});
+    }
+  });
+  reload();
+  if(tok)fetch(API+"/api/me",{headers:auth()}).then(function(r){return r.ok?r.json():null}).then(function(m){
+    if(m&&m.webAdmin===true){admin=true;drawForm();drawList()}
+  }).catch(function(){});
+})();
 </script>
 </body>
 </html>
