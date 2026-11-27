@@ -88,7 +88,73 @@ export function parseProfile(p) {
   return Object.keys(out).length ? out : null;
 }
 
-const SECTIONS = ["profile", "media", "equipment", "stats", "kills"];
+const num = (v) => (typeof v === "number" && Number.isFinite(v) ? v : null);
+
+// PvP: honorable kills and honor rank from the pvp-summary, battleground records from its per-map list,
+// and the per-map honorable kills / deaths from the character statistics. Any part Blizzard leaves out is simply absent.
+export function parsePvp(pvp, ast) {
+  const out = {};
+  const maps = new Map();
+  const at = (n) => maps.get(n) ?? maps.set(n, { n }).get(n);
+  if (num(pvp?.honorable_kills) != null) out.hk = pvp.honorable_kills;
+  if (num(pvp?.pvp_rank) != null) out.rank = pvp.pvp_rank;
+  for (const m of list(pvp?.pvp_map_statistics)) {
+    const n = text(m?.world_map?.name, 40), s = m?.match_statistics;
+    if (!n || !s) continue;
+    const e = at(n);
+    if (num(s.played) != null) e.played = s.played;
+    if (num(s.won) != null) e.won = s.won;
+    if (num(s.lost) != null) e.lost = s.lost;
+  }
+  const fromStats = new Map(); // map -> { battles, victories }
+  const walk = (cat, path) => {
+    const here = [...path, cat?.name ?? ""];
+    const p = here.join(" > ");
+    for (const x of list(cat?.statistics)) {
+      const name = text(x?.name, 80), q = num(x?.quantity);
+      if (!name || q == null) continue;
+      let m;
+      if (/Kills\s*>\s*Honorable Kills/i.test(p)) {
+        if (/^Total Honorable Kills$/i.test(name)) { if (out.hk == null) out.hk = q; }
+        else if (/^World Honorable Kills$/i.test(name)) out.world = q;
+        else if (/^Battlegrounds? Honorable Kills$/i.test(name)) out.bg = q;
+        else if ((m = name.match(/^(.+) Honorable Kills$/)) && !/^(Total|World|Battleground|Continent)/i.test(m[1])) at(m[1]).hk = q;
+      } else if (/Deaths\s*>\s*Battlegrounds/i.test(p) && (m = name.match(/^Deaths in (.+)$/i))) at(m[1]).deaths = q;
+      else if (/Player vs\. Player\s*>\s*Battlegrounds/i.test(p) && (m = name.match(/^(.+) (battles|victories)$/i))) {
+        const f = fromStats.get(m[1]) ?? fromStats.set(m[1], {}).get(m[1]);
+        f[m[2].toLowerCase()] = q;
+      }
+    }
+    for (const sub of list(cat?.sub_categories)) walk(sub, here);
+  };
+  for (const c of list(ast?.categories)) walk(c, []);
+  // The statistics can fill in a battleground record the pvp-summary didn't list.
+  for (const [n, f] of fromStats) {
+    const e = at(n);
+    if (e.played == null && f.battles != null) { e.played = f.battles; e.won = f.victories ?? 0; e.lost = Math.max(0, f.battles - (f.victories ?? 0)); }
+  }
+  const list2 = [...maps.values()].filter((e) => e.played != null || e.hk != null || e.deaths != null).sort((a, b) => (b.played ?? 0) - (a.played ?? 0) || a.n.localeCompare(b.n));
+  if (list2.length) out.maps = list2;
+  return Object.keys(out).length ? out : null;
+}
+
+// Reputations: faction, standing name and tier, and progress inside the tier (value of max). Most-trusted first.
+export function parseReputations(rep) {
+  if (!rep || !Array.isArray(rep.reputations)) return null;
+  const out = [];
+  for (const r of rep.reputations) {
+    const n = text(r?.faction?.name, 60), s = r?.standing;
+    if (!n || !s || typeof s !== "object") continue;
+    const e = { n, t: num(s.tier), s: text(s.name, 20) };
+    if (num(s.value) != null) e.v = s.value;
+    if (num(s.max) != null) e.m = s.max;
+    out.push(e);
+  }
+  out.sort((a, b) => (b.t ?? -1) - (a.t ?? -1) || (b.v ?? 0) - (a.v ?? 0) || a.n.localeCompare(b.n));
+  return out.length ? out : null;
+}
+
+const SECTIONS = ["profile", "media", "equipment", "stats", "kills", "pvp", "rep"];
 const nonEmpty = (v) => (Array.isArray(v) ? v.length > 0 : v != null && (typeof v !== "object" || Object.keys(v).length > 0));
 
 // Combine this run's answers with last run's file: a section Blizzard didn't answer keeps its last good value,

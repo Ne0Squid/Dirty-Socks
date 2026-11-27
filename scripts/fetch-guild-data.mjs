@@ -5,7 +5,7 @@
 // Writes guild-data.json next to this script.
 
 import { writeFileSync, readFileSync, existsSync, mkdirSync, readdirSync } from "node:fs";
-import { parseEquipment, parseStats, parseMedia, parseProfile, mergeCharacter, finalize, fillIcons } from "./character-data.mjs";
+import { parseEquipment, parseStats, parseMedia, parseProfile, parsePvp, parseReputations, mergeCharacter, finalize, fillIcons } from "./character-data.mjs";
 
 const REGION = "us";
 const GUILD_SLUG = "dirty-socks"; // Forever guilds are realmless, so only the slug is needed
@@ -196,7 +196,7 @@ for (let i = 0; i < members.length; i += 5) {
     checked++;
     if (p.level > (m.level ?? 0)) { m.level = p.level; raised++; }
     const base = `/profile/wow/character/${encodeURIComponent(slugOf(m))}`;
-    const [sp, pr, eq, ast, pvp, stt, med] = await Promise.all([
+    const [sp, pr, eq, ast, pvp, stt, med, rep] = await Promise.all([
       get(`${base}/specializations`, accessToken),
       get(`${base}/professions`, accessToken),
       get(`${base}/equipment`, accessToken),
@@ -204,6 +204,7 @@ for (let i = 0; i < members.length; i += 5) {
       get(`${base}/pvp-summary`, accessToken),
       get(`${base}/statistics`, accessToken).catch(() => null), // stats and portrait are only for the character page,
       get(`${base}/character-media`, accessToken).catch(() => null), // so a failure here never affects the rest
+      get(`${base}/reputations`, accessToken).catch(() => null),
     ]);
     for (const [name, qty, ts] of bossKillStats(ast)) {
       if (qty <= 0) continue;
@@ -229,6 +230,7 @@ for (let i = 0; i < members.length; i += 5) {
         slug: slugOf(m), name: m.name, surname: m.surname, cls: m.cls, level: m.level, spec: m.spec,
         profile: parseProfile(p), media: parseMedia(med), equipment: parseEquipment(eq), stats: parseStats(stt),
         kills: ast ? bossKillStats(ast).filter(([, q]) => q > 0) : null,
+        pvp: parsePvp(pvp, ast), rep: parseReputations(rep),
       });
     } catch (e) { console.warn(`  character details for ${slugOf(m)} failed: ${e.message}`); }
   }));
@@ -325,7 +327,7 @@ try {
     if (changed) { writeFileSync(new URL(`${m.slug}.json`, dir), JSON.stringify(file)); wrote++; }
   }
   const have = (k) => merged.filter((m) => m[k]).length;
-  console.log(`Character pages: ${merged.length} characters, ${wrote} files changed; gear ${have("equipment")}, stats ${have("stats")}, portraits ${have("media")}, kills ${have("kills")}`);
+  console.log(`Character pages: ${merged.length} characters, ${wrote} files changed; gear ${have("equipment")}, stats ${have("stats")}, portraits ${have("media")}, kills ${have("kills")}, pvp ${have("pvp")}, reputation ${have("rep")}`);
   console.log(`Item icons: ${icons.found} of ${icons.looked} newly looked up`);
 } catch (e) { console.warn(`Character pages skipped: ${e.message}`); }
 

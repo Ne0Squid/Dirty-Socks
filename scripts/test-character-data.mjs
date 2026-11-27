@@ -1,6 +1,6 @@
 // Checks for scripts/character-data.mjs using sample payloads shaped like Blizzard's character endpoints.
 // Usage: node scripts/test-character-data.mjs
-import { parseEquipment, parseStats, parseMedia, parseProfile, mergeCharacter, finalize, fillIcons } from "./character-data.mjs";
+import { parseEquipment, parseStats, parseMedia, parseProfile, parsePvp, parseReputations, mergeCharacter, finalize, fillIcons } from "./character-data.mjs";
 let bad = 0;
 const ok = (c, n, x = "") => { console.log((c ? "  ok   " : " FAIL ") + n + (c ? "" : "  " + JSON.stringify(x))); if (!c) bad++; };
 
@@ -34,6 +34,44 @@ const st = parseStats({ health: 1234, power: 800, power_type: { name: "Mana" }, 
 ok(st.health === 1234 && st.strength === 55 && st.melee_crit === 4.52 && st.armor === 410 && st.dodge === 3.1 && st.powerType === "Mana", "stats flattened", st);
 ok(!("weird" in st) && !("_links" in st), "non-numbers and links dropped");
 ok(parseStats(null) === null && parseStats({ _links: {} }) === null, "no stats -> null");
+
+
+// PvP and reputation, shaped like Blizzard's real answers for Forever (captured by the probe run).
+const pvpSummary = { honorable_kills: 125, pvp_rank: 0, character: { name: "Capo" }, pvp_map_statistics: [
+  { world_map: { name: "Warsong Gulch", id: 489 }, match_statistics: { played: 1, won: 1, lost: 0 } },
+  { world_map: { name: "Arathi Basin", id: 529 }, match_statistics: { played: 1, won: 0, lost: 1 } } ] };
+const pvpStats = { categories: [
+  { name: "Player vs. Player", sub_categories: [{ name: "Battlegrounds", statistics: [{ name: "Battlegrounds played", quantity: 2 }, { name: "Arathi Basin battles", quantity: 1 }, { name: "Warsong Gulch victories", quantity: 1 }] }] },
+  { name: "Kills", sub_categories: [{ name: "Honorable Kills", statistics: [{ name: "Total Honorable Kills", quantity: 125 }, { name: "World Honorable Kills", quantity: 6 }, { name: "Continent with the most Honorable Kills", quantity: 4 },
+    { name: "Battleground Honorable Kills", quantity: 119 }, { name: "Battleground with the most Honorable Kills", quantity: 63 }, { name: "Arathi Basin Honorable Kills", quantity: 56 }, { name: "Warsong Gulch Honorable Kills", quantity: 63 }] }] },
+  { name: "Deaths", sub_categories: [{ name: "Battlegrounds", statistics: [{ name: "Deaths in Arathi Basin", quantity: 6 }, { name: "Deaths in Warsong Gulch", quantity: 5 }] }] } ] };
+const pv = parsePvp(pvpSummary, pvpStats);
+ok(pv.hk === 125 && pv.rank === 0 && pv.world === 6 && pv.bg === 119, "pvp totals: kills, rank, world and battleground kills", pv);
+ok(pv.maps.length === 2 && !pv.maps.some((m) => /Continent|Total|World|Battleground/.test(m.n)), "only real battlegrounds listed as maps", pv.maps);
+const wsg = pv.maps.find((m) => m.n === "Warsong Gulch"), ab = pv.maps.find((m) => m.n === "Arathi Basin");
+ok(wsg.played === 1 && wsg.won === 1 && wsg.lost === 0 && wsg.hk === 63 && wsg.deaths === 5, "battleground record, kills and deaths", wsg);
+ok(ab.won === 0 && ab.lost === 1 && ab.hk === 56 && ab.deaths === 6, "second battleground", ab);
+const noBg = parsePvp({ honorable_kills: 8, pvp_rank: 0 }, { categories: [{ name: "Kills", sub_categories: [{ name: "Honorable Kills", statistics: [{ name: "Total Honorable Kills", quantity: 8 }, { name: "World Honorable Kills", quantity: 8 }] }] }] });
+ok(noBg.hk === 8 && noBg.world === 8 && !noBg.maps, "no battlegrounds played -> no map list", noBg);
+const statsOnly = parsePvp(null, pvpStats);
+ok(statsOnly.hk === 125 && statsOnly.maps.find((m) => m.n === "Arathi Basin").played === 1 && statsOnly.maps.find((m) => m.n === "Arathi Basin").lost === 1, "kills and records fall back to the statistics when pvp-summary is missing", statsOnly);
+ok(parsePvp(null, null) === null && parsePvp({}, {}) === null, "no pvp data -> null");
+
+const rep = { reputations: [
+  { faction: { name: "Everlook", id: 577 }, standing: { raw: 2230, value: 2230, max: 3000, tier: 3, name: "Neutral" } },
+  { faction: { name: "Thunder Bluff", id: 81 }, standing: { raw: 9537, value: 537, max: 12000, tier: 5, name: "Honored" } },
+  { faction: { name: "Bloodsail Buccaneers", id: 87 }, standing: { raw: -9750, value: 32250, max: 36000, tier: 0, name: "Hated" } },
+  { faction: { name: "Orgrimmar", id: 76 }, standing: { raw: 42999, value: 999, max: 1000, tier: 7, name: "Exalted" } },
+  { faction: { name: "Ratchet", id: 470 }, standing: { raw: 3230, value: 230, max: 6000, tier: 4, name: "Friendly" } },
+  { faction: { name: "No standing" } } ] };
+const rp = parseReputations(rep);
+ok(rp.length === 5, "factions without a standing are skipped", rp.length);
+ok(rp.map((r) => r.n).join("|") === "Orgrimmar|Thunder Bluff|Ratchet|Everlook|Bloodsail Buccaneers", "most-trusted first", rp.map((r) => r.n));
+ok(rp[1].s === "Honored" && rp[1].t === 5 && rp[1].v === 537 && rp[1].m === 12000, "standing name, tier and progress", rp[1]);
+ok(JSON.stringify(parseReputations(rep)) === JSON.stringify(rp), "output order is stable (no churn in the hourly files)");
+ok(parseReputations(null) === null && parseReputations({}) === null && parseReputations({ reputations: [] }) === null, "no reputations -> null");
+const mergedPr = mergeCharacter({ slug: "a-b", name: "A", pvp: { hk: 5 }, rep: [{ n: "X", t: 3 }] }, { slug: "a-b", name: "A", pvp: null, rep: null });
+ok(mergedPr.pvp.hk === 5 && mergedPr.rep.length === 1, "pvp and reputation keep their last good value when Blizzard doesn't answer", mergedPr);
 
 const md = parseMedia({ assets: [{ key: "avatar", value: "a.jpg" }, { key: "inset", value: "i.jpg" }, { key: "main-raw", value: "m.png" }] });
 ok(md.main === "m.png" && md.inset === "i.jpg" && md.avatar === "a.jpg", "portrait assets", md);

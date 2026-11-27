@@ -67,7 +67,7 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 </style>
 <style>
 .crumbs{margin:0 0 14px;font-size:.9rem}.crumbs a{color:var(--muted);text-decoration:none}.crumbs a:hover{color:var(--accent)}
-.hero-card{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 26px;align-items:center;padding:20px 24px;overflow:hidden}
+.hero-card{display:grid;grid-template-columns:auto minmax(0,1.05fr) minmax(0,1fr);gap:8px 26px;align-items:center;padding:20px 24px;overflow:hidden}
 .portrait{width:190px;height:230px;display:grid;place-items:center;border-radius:12px;background:radial-gradient(ellipse at 50% 38%,rgba(255,255,255,.09),rgba(255,255,255,0) 70%),var(--bg);border:1px solid var(--line);overflow:hidden}
 .portrait img{width:100%;height:100%;object-fit:contain;display:block}
 /* Blizzard's full-body render leaves the character small in the middle of a big frame, so zoom in on it (the class-icon fallback is not zoomed). */
@@ -87,7 +87,8 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 .layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;align-items:start;margin-top:18px}
 .stack{display:grid;gap:18px;min-width:0}
 @media (max-width:920px){.layout{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:620px){.hero-card{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;padding:18px}.ch-links,.alts{justify-content:center}.portrait{width:160px;height:190px}}
+@media (max-width:960px){.hero-card{grid-template-columns:auto minmax(0,1fr)}.pvp{grid-column:1/-1;padding-left:0;border-left:0;border-top:1px solid var(--line);padding-top:16px;margin-top:6px}}
+@media (max-width:620px){.hero-card{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;padding:18px}.pvp{width:100%;text-align:left}.ch-links,.alts{justify-content:center}.portrait{width:160px;height:190px}}
 .card h3.t{font-size:1.15rem;margin:0 0 12px}
 .card h3.t small{font-family:Inter,system-ui,sans-serif;font-weight:400;color:var(--muted);font-size:.8rem;margin-left:8px}
 .gear{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7px 14px}
@@ -105,6 +106,23 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 .tip2[hidden]{display:none}.tip2 .tn{font-weight:700;font-size:.95rem;margin-bottom:2px;color:var(--qc,#fff)}
 .tip2 .tl{display:flex;justify-content:space-between;gap:16px}.tip2 .g{color:#1eff00}.tip2 .y{color:#ffd100}.tip2 .m{color:#9aa0b4}
 .nogear{color:var(--muted);font-size:.9rem;margin:10px 0 0}
+/* PvP panel, to the right of the name and level */
+.pvp{align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:12px;min-width:0;padding-left:26px;border-left:1px solid var(--line)}
+.pvp h3{margin:0;font-family:Inter,system-ui,sans-serif;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.pv-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:10px}
+.pv-tile{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
+.pv-tile b{display:block;font-size:1.45rem;line-height:1.15;font-weight:700;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.pv-tile b small{font-size:1rem;color:var(--muted);font-weight:600}.pv-tile b.sm{font-size:1.05rem;padding:.2em 0}
+.pv-tile span{display:block;margin-top:3px;font-size:.76rem;color:var(--muted)}
+.pv-maps{display:grid;gap:0}.pv-map{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 14px;align-items:baseline;padding:6px 0;border-top:1px solid var(--line);font-size:.9rem}
+.pv-map:first-child{border-top:0}.pv-map .nm{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pv-map .muted{font-size:.82rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pv-note{margin:0;font-size:.88rem;color:var(--muted)}
+.pv-win{color:#4cc35a}.pv-loss{color:#d64541}
+/* Reputation card */
+.rep{padding:8px 0;border-top:1px solid var(--line)}.rep:first-of-type{border-top:0;padding-top:0}
+.rep .hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px}.rep .nm{font-weight:600;min-width:0;overflow-wrap:anywhere}
+.rep .st{font-size:.84rem;font-weight:600;color:var(--rc,var(--muted));white-space:nowrap}
+.rep .bar{height:6px;margin:6px 0 2px}.rep .bar span{background:var(--rc,var(--accent))}.rep .num{font-size:.76rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .sg{margin:0 0 14px}.sg:last-child{margin-bottom:0}.sg h4{margin:0 0 4px;font-family:Inter,system-ui,sans-serif;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .sr2{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-top:1px solid var(--line);font-size:.92rem}.sg h4+.sr2{border-top:0}.sr2 span:first-child{color:var(--muted)}.sr2 b{font-weight:600;font-variant-numeric:tabular-nums}
 .pro{padding:9px 0;border-top:1px solid var(--line)}.pro:first-of-type{border-top:0;padding-top:0}
@@ -251,6 +269,39 @@ function profHtml(m,slug){
       +(rs.length?`<details class="rec"><summary>${rs.length} recipe${rs.length===1?"":"s"}</summary><ul>${rs.map(r=>`<li>${esc(r)}</li>`).join("")}</ul></details>`:"")+`</div>`;
   }).join("");
 }
+// ---- PvP and reputation ------------------------------------------------------------------------
+const RANKS={Horde:["Scout","Grunt","Sergeant","Senior Sergeant","First Sergeant","Stone Guard","Blood Guard","Legionnaire","Centurion","Champion","Lieutenant General","General","Warlord","High Warlord"],
+  Alliance:["Private","Corporal","Sergeant","Master Sergeant","Sergeant Major","Knight","Knight-Lieutenant","Knight-Captain","Knight-Champion","Lieutenant Commander","Commander","Marshal","Field Marshal","Grand Marshal"]};
+const nf=n=>Math.round(n).toLocaleString("en-US");
+function pvpHtml(m,faction){
+  const P=C&&C.pvp||null,hk=P&&typeof P.hk==="number"?P.hk:(typeof m.hk==="number"?m.hk:null);
+  if(hk==null&&!P)return"";
+  const maps=(P&&P.maps||[]).filter(x=>x.played!=null||x.hk!=null);
+  const played=maps.reduce((a,x)=>a+(x.played||0),0),won=maps.reduce((a,x)=>a+(x.won||0),0);
+  const rank=P&&typeof P.rank==="number"?P.rank:null,names=RANKS[/alliance/i.test(faction)?"Alliance":"Horde"];
+  const rankName=rank>0?(names[rank-1]||"Rank "+rank):"Unranked";
+  const tiles=[`<div class="pv-tile"><b>${hk==null?"–":nf(hk)}</b><span>Honorable kills</span></div>`,
+    `<div class="pv-tile"><b class="sm">${esc(rankName)}</b><span>${rank>0?"Honor rank "+rank:"Honor rank"}</span></div>`];
+  if(played)tiles.push(`<div class="pv-tile"><b>${won}<small> / ${played}</small></b><span>Battlegrounds won · ${Math.round(won/played*100)}%</span></div>`);
+  let body="";
+  if(maps.length)body=`<div class="pv-maps">${maps.map(x=>{
+    const rec=x.played!=null?`<span class="muted"><span class="pv-win">${x.won||0}W</span> – <span class="pv-loss">${x.lost||0}L</span></span>`:`<span></span>`;
+    const k=x.hk!=null?`<span class="muted">${nf(x.hk)} HK</span>`:`<span></span>`;
+    return`<div class="pv-map"><span class="nm">${esc(x.n)}</span>${rec}${k}</div>`}).join("")}</div>`;
+  else if(P)body=`<p class="pv-note">No battlegrounds played yet.</p>`;
+  return`<div class="pvp"><h3>PvP</h3><div class="pv-tiles">${tiles.join("")}</div>${body}</div>`;
+}
+const REPCOL=["#d64541","#d64541","#e8803a","#e0c040","#7fcf4a","#4cc35a","#2fb67a","#2ec4b6"];
+function repHtml(){
+  const R=C&&C.rep;
+  if(!R||!R.length)return`<p class="empty-note">${C?"Blizzard isn’t sharing this character’s reputations right now.":"Reputations show up after the next hourly update."}</p>`;
+  const row=r=>{
+    const t=typeof r.t==="number"?r.t:3,full=t>=7||!r.m,pct=full?100:Math.max(0,Math.min(100,(r.v||0)/r.m*100));
+    return`<div class="rep" style="--rc:${REPCOL[Math.max(0,Math.min(7,t))]}"><div class="hd"><span class="nm">${esc(r.n)}</span><span class="st">${esc(r.s||"")}</span></div>`
+      +`<div class="bar"><span style="width:${pct}%"></span></div>`+(full?"":`<div class="num">${nf(r.v||0)} / ${nf(r.m)}</div>`)+`</div>`};
+  const top=R.slice(0,10),more=R.slice(10);
+  return top.map(row).join("")+(more.length?`<details class="rec"><summary>Show ${more.length} more faction${more.length===1?"":"s"}</summary>${more.map(row).join("")}</details>`:"");
+}
 const RAIDNAMES=["the barrow deeps","hyjal summit","onyxias lair"];
 const placeKey=n=>String(n).toLowerCase().replace(/[’']/g,"").trim();
 const fmtDay=t=>{if(t==null)return"";const d=new Date(t),y=d.getFullYear()!==new Date().getFullYear();return d.toLocaleDateString("en-US",y?{month:"short",day:"numeric",year:"numeric"}:{month:"short",day:"numeric"})};
@@ -318,10 +369,11 @@ function paint(){
     +`<p class="ch-line"><b>Level ${esc(m.level)}</b> ${esc(m.spec?m.spec+" ":"")}<span style="color:${esc(color)}">${esc(m.cls)}</span></p>`
     +`<p class="ch-meta">${esc(meta)} · &lt;Dirty Socks&gt;</p>`
     +`<div class="ch-links"><span class="muted">Updated ${esc(ago(G.generated))}</span></div>`
-    +altsHtml(m)+`</div></div>`
+    +altsHtml(m)+`</div>${pvpHtml(m,pr.faction||(G.guild&&G.guild.faction)||"")}</div>`
     +signupHtml(m)
     +`<div class="layout"><div class="stack"><section class="card"><h3 class="t">Gear</h3>${gearHtml()}</section>`
-    +`<section class="card"><h3 class="t">Professions</h3>${profHtml(m,slug)}</section></div>`
+    +`<section class="card"><h3 class="t">Professions</h3>${profHtml(m,slug)}</section>`
+    +`<section class="card"><h3 class="t">Reputation</h3>${repHtml()}</section></div>`
     +`<div class="stack"><section class="card"><h3 class="t">Stats</h3>${statsHtml()}</section>`
     +`<section class="card"><h3 class="t">Dungeon &amp; raid kills</h3>${killsHtml(slug)}</section></div></div>`;
 }
