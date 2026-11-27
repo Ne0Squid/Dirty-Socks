@@ -351,7 +351,7 @@ async function boot(){
   }
   render();
 }
-function signOut(){S.token=null;S.me=null;S.demoIn=false;S.pick=null;S.form=null;S.signups=[];try{localStorage.removeItem(SKEY)}catch(_){}}
+function signOut(){S.token=null;S.me=null;S.demoIn=false;S.pick=null;S.form=null;S.signups=[];try{localStorage.removeItem(SKEY)}catch(_){}window.dispatchEvent(new Event("ds-auth"))}
 function readForm(){
   const f=document.getElementById("suform");if(!f)return;
   S.form={raid:f.querySelector("#su-raid").value,roles:[...f.querySelectorAll("[name=su-role]:checked")].map(x=>x.value),nights:[...f.querySelectorAll("[name=su-night]:checked")].map(x=>x.value),note:f.querySelector("#su-note").value};
