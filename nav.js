@@ -34,4 +34,12 @@
   btn.addEventListener("click",function(){set(!nav.classList.contains("open"))});
   nav.addEventListener("click",function(e){if(e.target.closest(".navlinks a"))set(false)});
 })();
-(function(){var l=document.createElement("link");l.rel="stylesheet";l.href="christmas.css";document.head.appendChild(l);var j=document.createElement("script");j.src="christmas.js";document.body.appendChild(j)})();
+// Seasonal theme: Winter Veil / Christmas. Auto-on Dec 1 - Jan 3; ?xmas=1 forces it, ?xmas=off hides it.
+// XMAS_PREVIEW keeps it on while the theme is being previewed; delete that line to enable the date switch.
+(function(){
+  var XMAS_PREVIEW=true,q=location.search,n=new Date(),m=n.getMonth(),dd=n.getDate();
+  var season=m===11||(m===0&&dd<=3);
+  if(/xmas=off/.test(q)||!(XMAS_PREVIEW||season||/xmas=1/.test(q)))return;
+  var l=document.createElement("link");l.rel="stylesheet";l.href="christmas.css";document.head.appendChild(l);
+  var j=document.createElement("script");j.src="christmas.js";document.body.appendChild(j);
+})();

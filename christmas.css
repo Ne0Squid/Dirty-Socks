@@ -1,37 +1,83 @@
-/* Winter Veil / Christmas theme — preview branch only */
-:root{--xr:#c8372d;--xg:#2f8f4e;--xgold:#f2c14e;--xsnow:#eaf3ff}
-html[data-xmas] body{--accent:var(--xr)}
-html[data-xmas][data-faction="alliance"] body{--accent:#4f9a64}
-/* string lights under the nav */
-html[data-xmas] nav::after{content:"";position:absolute;left:0;right:0;top:100%;height:26px;pointer-events:none;
- background:
-  radial-gradient(circle at 50% 14px,var(--xr) 0 4px,transparent 5px) 0 0/90px 26px repeat-x,
-  radial-gradient(circle at 50% 14px,var(--xgold) 0 4px,transparent 5px) 18px 0/90px 26px repeat-x,
-  radial-gradient(circle at 50% 14px,var(--xg) 0 4px,transparent 5px) 36px 0/90px 26px repeat-x,
-  radial-gradient(circle at 50% 14px,#4aa3ff 0 4px,transparent 5px) 54px 0/90px 26px repeat-x,
-  radial-gradient(circle at 50% 14px,var(--xr) 0 4px,transparent 5px) 72px 0/90px 26px repeat-x;
- filter:drop-shadow(0 0 5px rgba(255,220,150,.55));animation:xtwinkle 2.4s ease-in-out infinite alternate}
-html[data-xmas] nav::before{content:"";position:absolute;left:0;right:0;top:100%;height:14px;pointer-events:none;
- background:radial-gradient(ellipse 50% 100% at 50% 0,transparent 62%,rgba(255,255,255,.0) 63%);border-top:0}
-@keyframes xtwinkle{from{opacity:.65}to{opacity:1}}
+/* Dirty Socks — Winter Veil / Christmas theme (preview branch). Loaded by nav.js, built by christmas.js */
+:root{
+  --xr:#d23a30;--xr2:#8e1f19;--xg:#2f8f4e;--xgold:#f2c14e;--xsnow:#eef5ff;
+  --sf:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg stroke='black' stroke-width='2' stroke-linecap='round' fill='none'%3E%3Cpath d='M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7'/%3E%3Cpath d='M9.5 3.8L12 6.3l2.5-2.5M9.5 20.2L12 17.7l2.5 2.5M3 9.8l3.4.9-.9 3.4M21 14.2l-3.4-.9.9-3.4M3 14.2l3.4-.9-.9-3.4M21 9.8l-3.4.9.9 3.4'/%3E%3C/g%3E%3C/svg%3E")}
+.xsf{display:inline-block;width:1em;height:1em;background:currentColor;-webkit-mask:var(--sf) center/contain no-repeat;mask:var(--sf) center/contain no-repeat;vertical-align:-.14em}
+
+/* accent: Horde = Christmas red, Alliance = holly green */
+html[data-xmas] body{--accent:var(--xr);--accent-text:#fff}
+html[data-xmas][data-faction="alliance"] body{--accent:#3f9d5f;--accent-text:#04140a}
+html[data-xmas] ::selection{background:var(--xr);color:#fff}
+
 /* ribbon */
-.xribbon{background:linear-gradient(90deg,#8e1f19,#c8372d 50%,#8e1f19);color:#fff;text-align:center;font-family:Cinzel,Georgia,serif;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-bottom:2px solid var(--xgold)}
-/* candy-cane borders on cards/sections */
-html[data-xmas] .card,html[data-xmas] .box,html[data-xmas] section.panel{border-top:3px solid transparent;border-image:repeating-linear-gradient(135deg,var(--xr) 0 10px,#fff 10px 20px) 3}
-/* buttons */
-html[data-xmas] .btn{box-shadow:0 0 0 2px rgba(242,193,78,.55)}
-html[data-xmas] .splash .pill{border-color:var(--xgold);color:var(--xgold)}
-/* cold hero tint + snow drift */
-html[data-xmas] .splash::after{content:"";position:absolute;left:0;right:0;bottom:-40px;height:90px;z-index:-1;pointer-events:none;
- background:radial-gradient(ellipse 60% 100% at 25% 100%,#eaf3ff 0 40%,transparent 41%),radial-gradient(ellipse 55% 100% at 75% 100%,#eaf3ff 0 38%,transparent 39%);opacity:.0}
-html[data-xmas] .splash::before{filter:saturate(.9) hue-rotate(-8deg)}
-/* santa hat */
-.xhat{position:absolute;width:38%;max-width:100px;aspect-ratio:1;pointer-events:none;left:50%;transform:translate(-30%,-4%) rotate(14deg);top:0}
+.xribbon{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;background:linear-gradient(180deg,#a82a22,#7d1a14);color:#fff;text-align:center;font-family:Cinzel,Georgia,serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-bottom:2px solid var(--xgold);box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.xribbon b{font-weight:600;color:var(--xgold)}
+.xribbon .xsf{color:var(--xgold);font-size:.95rem}
+.xribbon .xd{opacity:.9;letter-spacing:.1em}
+@media (max-width:640px){.xribbon{font-size:.66rem;letter-spacing:.08em;gap:8px;padding:6px 10px}.xribbon .xd{display:none}}
+
+/* nav + hanging lights */
+html[data-xmas] nav{border-bottom-color:rgba(242,193,78,.4)}
+.xlights{position:absolute;left:0;right:0;top:100%;height:56px;background:linear-gradient(rgba(11,13,17,.8),rgba(11,13,17,0) 75%);pointer-events:none;z-index:2;overflow:hidden}
+.xlights svg{display:block}
+.xlights .xw{fill:none;stroke:#10261a;stroke-width:1.7;stroke-linecap:round}
+.xb{animation:xtw 1.8s ease-in-out infinite alternate}
+.xb.k1{animation-duration:2.4s;animation-delay:-1.1s}
+.xb.k2{animation-duration:2s;animation-delay:-.5s}
+.xb.k3{animation-duration:2.9s;animation-delay:-1.7s}
+@keyframes xtw{from{opacity:.5}to{opacity:1}}
+.xo{animation:xsw 4.2s ease-in-out infinite alternate}
+.xo.k1{animation-duration:5.1s;animation-delay:-2s}
+.xo.k2{animation-duration:3.6s;animation-delay:-1s}
+@keyframes xsw{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+
+/* hero */
+html[data-xmas] .splash::before{filter:saturate(.92) hue-rotate(-6deg)}
+.xback,.xfront{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.xback{z-index:-1;inset:0 0 -40px 0;overflow:hidden;
+  background:
+   radial-gradient(ellipse 34% 42% at 50% 34%,rgba(255,190,105,.20),rgba(255,190,105,0) 70%),
+   radial-gradient(ellipse 85% 75% at 50% 42%,rgba(120,175,240,0) 55%,rgba(120,175,240,.2) 100%)}
+.xfront{z-index:2}
+.xdrift{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(54px,7vw,100px);display:block;-webkit-mask:linear-gradient(#000 0,#000 50%,transparent 100%);mask:linear-gradient(#000 0,#000 50%,transparent 100%)}
+.xg{position:absolute;top:-6px;width:clamp(170px,31vw,500px);height:auto;filter:drop-shadow(0 6px 8px rgba(0,0,0,.45))}
+.xg.l{left:-4px}.xg.r{right:-4px;transform:scaleX(-1)}
+.xtw{animation:xtw 1.6s ease-in-out infinite alternate}
+.xtw.k1{animation-duration:2.2s;animation-delay:-.8s}.xtw.k2{animation-duration:1.9s;animation-delay:-1.3s}
+
+/* santa hats */
 .xlogo{position:relative;display:inline-block;line-height:0}
-html:root:not([data-faction="alliance"]) .splash .xlogo.sl-alliance,html:root[data-faction="alliance"] .splash .xlogo.sl-horde{display:none}
+html:root:not([data-faction="alliance"]) .xlogo.logo-alliance,html:root:not([data-faction="alliance"]) .splash .xlogo.sl-alliance,html:root[data-faction="alliance"] .xlogo.logo-horde,html:root[data-faction="alliance"] .splash .xlogo.sl-horde{display:none}
+.xhat{position:absolute;pointer-events:none;width:58%;left:30%;bottom:74%;transform:rotate(9deg);transform-origin:20% 90%;filter:drop-shadow(0 3px 3px rgba(0,0,0,.55))}
+nav .xhat{width:62%;left:34%;bottom:70%}
+nav .xlogo{display:block}
+
+/* headings + cards */
+html[data-xmas] h2::before{content:"";display:inline-block;width:.72em;height:.72em;margin-right:.45em;vertical-align:-.04em;background:var(--xgold);-webkit-mask:var(--sf) center/contain no-repeat;mask:var(--sf) center/contain no-repeat}
+html[data-xmas] .card{background-image:repeating-linear-gradient(135deg,var(--xr) 0 7px,#f4f4f4 7px 14px),linear-gradient(180deg,rgba(150,195,255,.07),rgba(150,195,255,0) 45%);background-size:100% 4px,100% 100%;background-repeat:no-repeat;background-position:top left,0 0}
+html[data-xmas][data-faction="alliance"] .card{background-image:repeating-linear-gradient(135deg,#3f9d5f 0 7px,#f4f4f4 7px 14px),linear-gradient(180deg,rgba(150,195,255,.07),rgba(150,195,255,0) 45%)}
+html[data-xmas] .btn{box-shadow:0 0 0 2px rgba(242,193,78,.6),0 4px 14px rgba(0,0,0,.35);position:relative;overflow:hidden}
+html[data-xmas] .btn::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);animation:xshine 5s ease-in-out infinite}
+@keyframes xshine{0%,70%{left:-60%}100%{left:130%}}
+html[data-xmas] .splash .pill{border-color:var(--xgold);color:var(--xgold);box-shadow:0 0 18px rgba(242,193,78,.18)}
+
 /* footer */
-html[data-xmas] footer{border-top:3px solid transparent;border-image:repeating-linear-gradient(135deg,var(--xr) 0 10px,#fff 10px 20px,var(--xg) 20px 30px,#fff 30px 40px) 3}
-html[data-xmas] .fbrand i,html[data-xmas] .fbrand em{color:var(--xgold)}
-/* snow canvas */
+html[data-xmas] footer{position:relative;margin-top:26px;border-top:4px solid transparent;border-image:repeating-linear-gradient(135deg,var(--xr) 0 11px,#f4f4f4 11px 22px,var(--xg) 22px 33px,#f4f4f4 33px 44px) 4}
+html[data-xmas] footer::before{content:"";position:absolute;left:0;right:0;top:-24px;height:20px;pointer-events:none;
+  background:
+   radial-gradient(circle at 14px 20px,var(--xsnow) 0 12px,transparent 13px) 0 0/34px 20px repeat-x,
+   radial-gradient(circle at 20px 20px,#d4e4f7 0 16px,transparent 17px) 9px 0/53px 20px repeat-x,
+   radial-gradient(circle at 10px 20px,var(--xsnow) 0 9px,transparent 10px) 21px 0/27px 20px repeat-x}
+.xftag{margin-top:6px;color:var(--xgold);font-size:.82rem;font-family:Cinzel,Georgia,serif;letter-spacing:.06em}
+.xftag .xsf{margin:0 .35em}
+
+/* snow + toggle */
 #xsnow{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:40}
-@media (prefers-reduced-motion:reduce){html[data-xmas] nav::after{animation:none}#xsnow{display:none}}
+.xtoggle{position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:60;width:40px;height:40px;border-radius:50%;border:1px solid rgba(242,193,78,.55);background:rgba(11,13,17,.82);color:var(--xsnow);display:grid;place-items:center;cursor:pointer;padding:0;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.xtoggle .xsf{font-size:20px;vertical-align:0}
+.xtoggle[aria-pressed="false"]{color:#6b7280;border-color:var(--line)}
+.xtoggle:hover{border-color:var(--xgold)}
+.xtoggle:focus-visible{outline:2px solid var(--xgold);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){#xsnow{display:none}.xb,.xo,.xtw,html[data-xmas] .btn::after{animation:none}.xtoggle{display:none}}
+/* small repeating cards (roster tiles): no candy cane, just a snowy rim */
+html[data-xmas] .grow .card{background-image:linear-gradient(180deg,rgba(150,195,255,.09),rgba(150,195,255,0) 45%);background-size:100% 100%;border-top-color:rgba(238,245,255,.55)}
