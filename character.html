@@ -161,7 +161,6 @@ const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;"
 const slugOf=m=>(m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-");
 const full=m=>m.surname?m.name+" "+m.surname:m.name;
 const key=s=>String(s).toLowerCase().replace(/\s+/g," ");
-const armoryUrl=m=>"https://worldofwarcraft.blizzard.com/en-us/forever/us/armory/character/"+encodeURIComponent(slugOf(m));
 const RANK={0:"Guild Master",1:"Officer"};
 const SHORT={barrow:"Barrow",hyjal:"Hyjal"};
 const RAIDS={barrow:"The Barrow Deeps (10)",hyjal:"Hyjal Summit (20)",both:"Both raids"};
@@ -318,7 +317,7 @@ function paint(){
     +(title?`<p class="ch-title">${esc(title)}</p>`:"")
     +`<p class="ch-line"><b>Level ${esc(m.level)}</b> ${esc(m.spec?m.spec+" ":"")}<span style="color:${esc(color)}">${esc(m.cls)}</span></p>`
     +`<p class="ch-meta">${esc(meta)} · &lt;Dirty Socks&gt;</p>`
-    +`<div class="ch-links"><a href="${armoryUrl(m)}" target="_blank" rel="noopener">View on the Blizzard Armory ↗</a><span class="muted">Updated ${esc(ago(G.generated))}</span></div>`
+    +`<div class="ch-links"><span class="muted">Updated ${esc(ago(G.generated))}</span></div>`
     +altsHtml(m)+`</div></div>`
     +signupHtml(m)
     +`<div class="layout"><div class="stack"><section class="card"><h3 class="t">Gear</h3>${gearHtml()}</section>`
