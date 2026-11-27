@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-27T08:26:39.622Z",
+  "generated": "2026-11-27T09:55:13.165Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -1096,8 +1096,8 @@
         "capo-shoots",
         "capo-shoots",
         "mrs-capo",
-        "hotdog-nomustard",
         "rowdy-highland",
+        "hotdog-nomustard",
         "the-parttimedad"
       ],
       "Smelt Silver": [
@@ -1123,8 +1123,8 @@
         "needmore-beers",
         "capo-shoots",
         "mrs-capo",
-        "hotdog-nomustard",
         "rowdy-highland",
+        "hotdog-nomustard",
         "the-parttimedad"
       ],
       "Smelt Mithril": [
@@ -1308,55 +1308,55 @@
       "Charred Wolf Meat": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots",
         "cameron-croucher",
-        "emo-erling",
+        "pope-feratu",
+        "capo-shoots",
+        "canigeta-summon",
+        "plucky-recks",
         "mrs-capo",
         "mr-capo",
         "rowdy-highland",
+        "emo-erling",
+        "udderly-baked",
         "thick-hogs",
         "zeik-soulfly",
-        "udderly-baked",
-        "ember-highland",
-        "neo-squid"
+        "neo-squid",
+        "ember-highland"
       ],
       "Spiced Wolf Meat": [
         "scott-frost",
         "squid-zero",
         "orken-magorken",
-        "plucky-recks",
-        "pope-feratu",
         "cameron-croucher",
+        "pope-feratu",
+        "plucky-recks",
         "rowdy-highland",
-        "zeik-soulfly",
-        "udderly-baked"
+        "udderly-baked",
+        "zeik-soulfly"
       ],
       "Roasted Boar Meat": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots",
         "cameron-croucher",
-        "emo-erling",
+        "pope-feratu",
+        "capo-shoots",
+        "canigeta-summon",
+        "plucky-recks",
         "mrs-capo",
         "mr-capo",
         "rowdy-highland",
+        "emo-erling",
+        "udderly-baked",
         "thick-hogs",
         "zeik-soulfly",
-        "udderly-baked",
-        "ember-highland",
-        "neo-squid"
+        "neo-squid",
+        "ember-highland"
       ],
       "Coyote Steak": [
         "scott-frost",
@@ -1383,9 +1383,9 @@
         "scott-frost",
         "squid-zero",
         "needmore-beers",
-        "plucky-recks",
         "pope-feratu",
         "canigeta-summon",
+        "plucky-recks",
         "udderly-baked"
       ],
       "Slitherskin Mackerel": [
@@ -1424,23 +1424,23 @@
       "Herb Baked Egg": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots",
         "cameron-croucher",
-        "emo-erling",
+        "pope-feratu",
+        "capo-shoots",
+        "canigeta-summon",
+        "plucky-recks",
         "mrs-capo",
         "mr-capo",
         "rowdy-highland",
+        "emo-erling",
+        "udderly-baked",
         "thick-hogs",
         "zeik-soulfly",
-        "udderly-baked",
-        "ember-highland",
-        "neo-squid"
+        "neo-squid",
+        "ember-highland"
       ],
       "Smoked Bear Meat": [
         "scott-frost",
@@ -1449,23 +1449,23 @@
       "Basic Campfire": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots",
         "cameron-croucher",
-        "emo-erling",
+        "pope-feratu",
+        "capo-shoots",
+        "canigeta-summon",
+        "plucky-recks",
         "mrs-capo",
         "mr-capo",
         "rowdy-highland",
+        "emo-erling",
+        "udderly-baked",
         "thick-hogs",
         "zeik-soulfly",
-        "udderly-baked",
-        "ember-highland",
-        "neo-squid"
+        "neo-squid",
+        "ember-highland"
       ],
       "Steaming Stag Steak": [
         "scott-frost"
@@ -1553,12 +1553,12 @@
         "squid-zero",
         "needmore-beers",
         "orken-magorken",
-        "plucky-recks",
+        "cameron-croucher",
         "pope-feratu",
         "canigeta-summon",
-        "cameron-croucher",
-        "zeik-soulfly",
-        "udderly-baked"
+        "plucky-recks",
+        "udderly-baked",
+        "zeik-soulfly"
       ],
       "Fish Bowl": [
         "scott-frost",
@@ -1566,8 +1566,8 @@
         "needmore-beers",
         "orken-magorken",
         "pope-feratu",
-        "zeik-soulfly",
-        "udderly-baked"
+        "udderly-baked",
+        "zeik-soulfly"
       ]
     },
     "First Aid": {
@@ -1576,9 +1576,9 @@
         "squid-zero",
         "needmore-beers",
         "orken-magorken",
+        "cameron-croucher",
         "pope-feratu",
-        "capo-shoots",
-        "cameron-croucher"
+        "capo-shoots"
       ],
       "Heavy Silk Bandage": [
         "scott-frost",
@@ -1593,44 +1593,44 @@
         "squid-zero",
         "needmore-beers",
         "orken-magorken",
-        "plucky-recks",
+        "cameron-croucher",
         "pope-feratu",
         "capo-shoots",
-        "cameron-croucher",
-        "emo-erling",
+        "plucky-recks",
         "mrs-capo",
-        "hotdog-nomustard",
         "mr-capo",
         "rowdy-highland",
-        "zeik-soulfly",
+        "hotdog-nomustard",
+        "emo-erling",
         "the-parttimedad",
-        "ember-highland",
-        "neo-squid"
+        "zeik-soulfly",
+        "neo-squid",
+        "ember-highland"
       ],
       "Heavy Linen Bandage": [
         "scott-frost",
         "squid-zero",
         "needmore-beers",
         "orken-magorken",
-        "plucky-recks",
+        "cameron-croucher",
         "pope-feratu",
         "capo-shoots",
-        "cameron-croucher",
+        "plucky-recks",
         "mrs-capo",
-        "hotdog-nomustard",
         "rowdy-highland",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "hotdog-nomustard",
+        "the-parttimedad",
+        "zeik-soulfly"
       ],
       "Wool Bandage": [
         "scott-frost",
         "squid-zero",
         "needmore-beers",
         "orken-magorken",
-        "plucky-recks",
+        "cameron-croucher",
         "pope-feratu",
         "capo-shoots",
-        "cameron-croucher",
+        "plucky-recks",
         "hotdog-nomustard",
         "zeik-soulfly"
       ],
@@ -1639,10 +1639,10 @@
         "squid-zero",
         "needmore-beers",
         "orken-magorken",
-        "plucky-recks",
+        "cameron-croucher",
         "pope-feratu",
         "capo-shoots",
-        "cameron-croucher",
+        "plucky-recks",
         "hotdog-nomustard"
       ],
       "Runecloth Bandage": [
@@ -1670,13 +1670,13 @@
         "squid-zero",
         "needmore-beers",
         "orken-magorken",
-        "plucky-recks",
+        "cameron-croucher",
         "pope-feratu",
         "capo-shoots",
-        "cameron-croucher",
+        "plucky-recks",
         "mrs-capo",
-        "hotdog-nomustard",
         "mr-capo",
+        "hotdog-nomustard",
         "zeik-soulfly"
       ],
       "Minor Healing Potion": [
@@ -1686,8 +1686,8 @@
         "orken-magorken",
         "pope-feratu",
         "emo-erling",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "the-parttimedad",
+        "zeik-soulfly"
       ],
       "Lesser Healing Potion": [
         "scott-frost",
@@ -2360,10 +2360,10 @@
         "orken-magorken",
         "pope-feratu",
         "capo-shoots",
-        "emo-erling",
         "mrs-capo",
-        "the-parttimedad",
+        "emo-erling",
         "udderly-baked",
+        "the-parttimedad",
         "ember-highland"
       ],
       "Camp Chair": [
@@ -2371,10 +2371,10 @@
         "orken-magorken",
         "pope-feratu",
         "capo-shoots",
-        "emo-erling",
         "mrs-capo",
-        "the-parttimedad",
-        "udderly-baked"
+        "emo-erling",
+        "udderly-baked",
+        "the-parttimedad"
       ],
       "Field Guide": [
         "pope-feratu"
@@ -2391,13 +2391,13 @@
       ],
       "Crimson Silk Vest": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Crimson Silk Pantaloons": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Black Mageweave Headband": [
         "annie-turvy",
@@ -2405,8 +2405,8 @@
       ],
       "Black Mageweave Shoulders": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Simple Black Dress": [
         "annie-turvy",
@@ -2414,13 +2414,13 @@
       ],
       "Novice Arcanist's Sash": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Simple Linen Pants": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs"
       ],
       "Cindercloth Boots": [
@@ -2455,8 +2455,8 @@
       ],
       "Brown Linen Shirt": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs"
       ],
       "Black Mageweave Vest": [
@@ -2465,8 +2465,8 @@
       ],
       "Black Mageweave Leggings": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Black Mageweave Robe": [
         "annie-turvy",
@@ -2494,8 +2494,8 @@
       ],
       "Linen Belt": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Azure Silk Pants": [
         "annie-turvy",
@@ -2507,8 +2507,8 @@
       ],
       "Silk Headband": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Earthen Vest": [
         "annie-turvy",
@@ -2532,14 +2532,14 @@
       ],
       "Bolt of Linen Cloth": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs"
       ],
       "Linen Cloak": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs"
       ],
       "Brown Linen Vest": [
@@ -2564,8 +2564,8 @@
       ],
       "Reinforced Linen Cape": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Barbaric Linen Vest": [
         "annie-turvy",
@@ -2577,13 +2577,13 @@
       ],
       "Bolt of Woolen Cloth": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Woolen Cape": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Green Woolen Vest": [
         "annie-turvy",
@@ -2591,8 +2591,8 @@
       ],
       "Woolen Boots": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Gray Woolen Shirt": [
         "annie-turvy",
@@ -2600,23 +2600,23 @@
       ],
       "Bolt of Silk Cloth": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Bolt of Mageweave": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Heavy Linen Gloves": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Green Linen Bracers": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Handstitched Linen Britches": [
         "annie-turvy",
@@ -2632,8 +2632,8 @@
       ],
       "Double-stitched Woolen Shoulders": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Heavy Woolen Pants": [
         "annie-turvy",
@@ -2641,8 +2641,8 @@
       ],
       "Gloves of Meditation": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Spidersilk Boots": [
         "annie-turvy",
@@ -2658,13 +2658,13 @@
       ],
       "Bolt of Runecloth": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Runecloth Belt": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Runecloth Bag": [
         "annie-turvy"
@@ -2685,24 +2685,24 @@
       ],
       "Linen Bag": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs"
       ],
       "Woolen Bag": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Small Silk Pack": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Red Woolen Bag": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Lesser Wizard's Robe": [
         "annie-turvy",
@@ -2713,8 +2713,8 @@
       ],
       "Red Mageweave Bag": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Red Swashbuckler's Shirt": [
         "annie-turvy",
@@ -2754,8 +2754,8 @@
       ],
       "Faction Banner": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs"
       ],
       "Novice Ardent's Sash": [
@@ -2794,62 +2794,16 @@
       ],
       "Linen Reagent Bag": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Woolen Reagent Bag": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
-      ],
-      "Red Mageweave Vest": [
+        "canigeta-summon",
         "plucky-recks"
       ],
       "Green Silk Armor": [
-        "plucky-recks",
-        "canigeta-summon"
-      ],
-      "Azure Shoulders": [
-        "plucky-recks"
-      ],
-      "Red Linen Robe": [
-        "plucky-recks",
-        "thick-hogs"
-      ],
-      "Reinforced Woolen Shoulders": [
-        "plucky-recks"
-      ],
-      "Runecloth Robe": [
-        "plucky-recks"
-      ],
-      "Runecloth Cloak": [
-        "plucky-recks"
-      ],
-      "Frostweave Gloves": [
-        "plucky-recks"
-      ],
-      "Brightcloth Gloves": [
-        "plucky-recks"
-      ],
-      "Brightcloth Robe": [
-        "plucky-recks"
-      ],
-      "Black Silk Pack": [
-        "plucky-recks"
-      ],
-      "Filigreed Pristine Gown": [
-        "plucky-recks"
-      ],
-      "Filigreed Silky Leggings": [
-        "plucky-recks"
-      ],
-      "Fiery Cord": [
-        "plucky-recks"
-      ],
-      "Black Cord": [
-        "plucky-recks"
-      ],
-      "Golden Cord": [
+        "canigeta-summon",
         "plucky-recks"
       ],
       "Crimson Silk Cloak": [
@@ -2905,18 +2859,64 @@
       ],
       "Filigreed Shadow Circlet": [
         "canigeta-summon"
+      ],
+      "Red Mageweave Vest": [
+        "plucky-recks"
+      ],
+      "Azure Shoulders": [
+        "plucky-recks"
+      ],
+      "Red Linen Robe": [
+        "plucky-recks",
+        "thick-hogs"
+      ],
+      "Reinforced Woolen Shoulders": [
+        "plucky-recks"
+      ],
+      "Runecloth Robe": [
+        "plucky-recks"
+      ],
+      "Runecloth Cloak": [
+        "plucky-recks"
+      ],
+      "Frostweave Gloves": [
+        "plucky-recks"
+      ],
+      "Brightcloth Gloves": [
+        "plucky-recks"
+      ],
+      "Brightcloth Robe": [
+        "plucky-recks"
+      ],
+      "Black Silk Pack": [
+        "plucky-recks"
+      ],
+      "Filigreed Pristine Gown": [
+        "plucky-recks"
+      ],
+      "Filigreed Silky Leggings": [
+        "plucky-recks"
+      ],
+      "Fiery Cord": [
+        "plucky-recks"
+      ],
+      "Black Cord": [
+        "plucky-recks"
+      ],
+      "Golden Cord": [
+        "plucky-recks"
       ]
     },
     "Enchanting": {
       "Enchant Boots - Minor Stamina": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Boots - Minor Agility": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Bracer - Strength": [
         "annie-turvy",
@@ -2924,8 +2924,8 @@
       ],
       "Enchant Chest - Greater Intellect": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Boots - Lesser Spirit": [
         "annie-turvy"
@@ -2972,8 +2972,8 @@
       ],
       "Runed Golden Rod": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Shield - Lesser Stamina": [
         "annie-turvy",
@@ -2985,8 +2985,8 @@
       ],
       "Enchant Boots - Lesser Agility": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Chest - Greater Stamina": [
         "annie-turvy",
@@ -3024,8 +3024,8 @@
       ],
       "Enchant Cloak - Greater Defense": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Cloak - Resistance": [
         "annie-turvy",
@@ -3060,8 +3060,8 @@
       ],
       "Enchant Boots - Minor Speed": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Weapon - Fiery Weapon": [
         "annie-turvy",
@@ -3108,15 +3108,15 @@
       ],
       "Lesser Magic Wand": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs",
         "neo-squid"
       ],
       "Greater Magic Wand": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Lesser Mystic Wand": [
         "annie-turvy",
@@ -3134,16 +3134,16 @@
       ],
       "Enchant Chest - Lesser Stamina": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Bracer - Minor Spirit": [
         "annie-turvy"
       ],
       "Enchant Cloak - Minor Protection": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Chest - Lesser Intellect": [
         "annie-turvy"
@@ -3172,8 +3172,8 @@
       ],
       "Runed Silver Rod": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Chest - Stamina": [
         "annie-turvy",
@@ -3240,13 +3240,13 @@
       ],
       "Runed Truesilver Rod": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Gloves - Agility": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Chest - Superior Stamina": [
         "annie-turvy",
@@ -3266,8 +3266,8 @@
       ],
       "Disenchant": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs",
         "neo-squid"
       ],
@@ -3287,32 +3287,32 @@
       ],
       "Enchant Bracer - Inferior Stamina": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs",
         "neo-squid"
       ],
       "Enchant Chest - Inferior Stamina": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Runed Copper Rod": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs",
         "neo-squid"
       ],
       "Enchant Chest - Minor Absorption": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Bracer - Minor Deflect": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs",
         "neo-squid"
       ],
@@ -3322,31 +3322,31 @@
       ],
       "Enchant Cloak - Minor Resistance": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchant Bracer - Minor Stamina": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Enchanted Lute": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs"
       ],
       "Dust to Motes": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs",
         "neo-squid"
       ],
       "Novice's Practice Wand": [
         "annie-turvy",
-        "plucky-recks",
         "canigeta-summon",
+        "plucky-recks",
         "thick-hogs",
         "neo-squid"
       ],
@@ -3358,8 +3358,8 @@
       ],
       "Enchant Weapon - Revelation": [
         "annie-turvy",
-        "plucky-recks",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Orb of Mystic Insight": [
         "annie-turvy",
@@ -3380,29 +3380,29 @@
       "Enchant Gloves - Advanced Skinning": [
         "annie-turvy"
       ],
-      "Minor Mana Oil": [
-        "plucky-recks",
+      "Minor Wizard Oil": [
         "canigeta-summon"
+      ],
+      "Minor Mana Oil": [
+        "canigeta-summon",
+        "plucky-recks"
+      ],
+      "Lesser Wizard Oil": [
+        "canigeta-summon",
+        "plucky-recks"
+      ],
+      "Enchant Cloak - Minor Agility": [
+        "canigeta-summon"
+      ],
+      "Glimmering Staff": [
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "Lesser Mana Oil": [
         "plucky-recks"
       ],
-      "Lesser Wizard Oil": [
-        "plucky-recks",
-        "canigeta-summon"
-      ],
       "Wizard Oil": [
         "plucky-recks"
-      ],
-      "Glimmering Staff": [
-        "plucky-recks",
-        "canigeta-summon"
-      ],
-      "Minor Wizard Oil": [
-        "canigeta-summon"
-      ],
-      "Enchant Cloak - Minor Agility": [
-        "canigeta-summon"
       ]
     },
     "Herbalism": {
@@ -3480,13 +3480,13 @@
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
         "pope-feratu",
+        "capo-shoots",
         "canigeta-summon",
-        "capo-shoots"
+        "plucky-recks"
       ],
       "first": 1794550690000,
       "seen": null
@@ -3496,10 +3496,10 @@
       "members": [
         "scott-frost",
         "squid-zero",
-        "needmore-beers",
         "annie-turvy",
-        "plucky-recks",
+        "needmore-beers",
         "canigeta-summon",
+        "plucky-recks",
         "hotdog-nomustard"
       ],
       "first": 1794073195000,
@@ -3510,13 +3510,13 @@
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
+        "cameron-croucher",
         "pope-feratu",
         "canigeta-summon",
-        "cameron-croucher",
+        "plucky-recks",
         "the-parttimedad"
       ],
       "first": 1793920466000,
@@ -3526,14 +3526,14 @@
       "total": 9,
       "members": [
         "scott-frost",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
+        "cameron-croucher",
         "pope-feratu",
-        "canigeta-summon",
         "capo-shoots",
-        "cameron-croucher"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "first": 1794299959000,
       "seen": null
@@ -3543,9 +3543,9 @@
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
         "pope-feratu",
         "canigeta-summon"
       ],
@@ -3557,20 +3557,20 @@
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots",
         "cameron-croucher",
+        "pope-feratu",
+        "capo-shoots",
+        "canigeta-summon",
+        "plucky-recks",
         "mrs-capo",
-        "hotdog-nomustard",
         "mr-capo",
+        "hotdog-nomustard",
         "thick-hogs",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "the-parttimedad",
+        "zeik-soulfly"
       ],
       "first": 1793898057000,
       "seen": null
@@ -3580,19 +3580,19 @@
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots",
         "cameron-croucher",
+        "pope-feratu",
+        "capo-shoots",
+        "canigeta-summon",
+        "plucky-recks",
         "mrs-capo",
-        "hotdog-nomustard",
         "mr-capo",
-        "zeik-soulfly",
-        "the-parttimedad"
+        "hotdog-nomustard",
+        "the-parttimedad",
+        "zeik-soulfly"
       ],
       "first": 1794087023000,
       "seen": null
@@ -3601,14 +3601,14 @@
       "total": 10,
       "members": [
         "scott-frost",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots",
         "cameron-croucher",
+        "pope-feratu",
+        "capo-shoots",
+        "canigeta-summon",
+        "plucky-recks",
         "the-parttimedad"
       ],
       "first": 1793948659000,
@@ -3618,12 +3618,12 @@
       "total": 9,
       "members": [
         "scott-frost",
-        "needmore-beers",
         "annie-turvy",
-        "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots",
+        "needmore-beers",
         "cameron-croucher",
+        "pope-feratu",
+        "capo-shoots",
+        "canigeta-summon",
         "hotdog-nomustard",
         "the-parttimedad"
       ],
@@ -3634,14 +3634,14 @@
       "total": 10,
       "members": [
         "scott-frost",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon",
-        "capo-shoots",
         "cameron-croucher",
+        "pope-feratu",
+        "capo-shoots",
+        "canigeta-summon",
+        "plucky-recks",
         "udderly-baked"
       ],
       "first": 1794175389000,
@@ -3651,12 +3651,12 @@
       "total": 7,
       "members": [
         "scott-frost",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
+        "cameron-croucher",
         "pope-feratu",
-        "canigeta-summon",
-        "cameron-croucher"
+        "canigeta-summon"
       ],
       "first": 1794421901000,
       "seen": null
@@ -3666,9 +3666,9 @@
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
         "pope-feratu",
         "canigeta-summon"
       ],
@@ -3680,13 +3680,13 @@
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
         "pope-feratu",
+        "capo-shoots",
         "canigeta-summon",
-        "capo-shoots"
+        "plucky-recks"
       ],
       "first": 1794550690000,
       "seen": null
@@ -3696,12 +3696,12 @@
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
         "pope-feratu",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "first": 1794883170000,
       "seen": null
@@ -3711,12 +3711,12 @@
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
         "pope-feratu",
-        "canigeta-summon"
+        "canigeta-summon",
+        "plucky-recks"
       ],
       "first": 1795380089000,
       "seen": "2026-11-19T05:51:33.057Z"
@@ -3726,9 +3726,9 @@
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
         "pope-feratu",
         "canigeta-summon"
       ],
@@ -3736,16 +3736,16 @@
       "seen": "2026-11-19T19:53:55.057Z"
     },
     "Shade of Eranikus kills (Sunken Temple)": {
-      "total": 14,
+      "total": 15,
       "members": [
         "scott-frost",
         "squid-zero",
+        "annie-turvy",
         "needmore-beers",
         "orken-magorken",
-        "annie-turvy",
-        "plucky-recks",
         "pope-feratu",
         "canigeta-summon",
+        "plucky-recks",
         "udderly-baked"
       ],
       "first": 1795492977000,
@@ -3755,10 +3755,10 @@
       "total": 5,
       "members": [
         "annie-turvy",
+        "cameron-croucher",
         "pope-feratu",
-        "canigeta-summon",
         "capo-shoots",
-        "cameron-croucher"
+        "canigeta-summon"
       ],
       "first": 1794298578000,
       "seen": "2026-11-19T04:52:37.945Z"
