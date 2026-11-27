@@ -69,7 +69,7 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
 .pod.open{opacity:.9;border-top-style:dashed}
 .pod .bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin:10px 0 4px}.pod .bar span{display:block;height:100%;background:var(--m)}
 .cico{width:34px;height:34px;border-radius:8px;border:2px solid;object-fit:cover;vertical-align:middle}
-.awards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
 .award .ico{font-size:1.5rem}.award h3{font-size:1.05rem;margin:4px 0 2px}.award .desc{margin:0 0 12px}
 .win{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.win strong{font-size:1.05rem}.win .val{margin-left:auto;font-family:Cinzel,Georgia,serif;font-weight:800;font-size:.95rem;white-space:nowrap;color:var(--accent)}
 .runner{display:flex;gap:8px;justify-content:space-between;padding:5px 0;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
@@ -96,7 +96,8 @@ html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data
   <h2>Guild Awards</h2>
   <div class="awards" id="awards"></div>
 </section>
-<section style="padding-top:8px">
+<!-- Guild Firsts is parked until we have better categories: delete the "hidden" attribute to show it again. -->
+<section style="padding-top:8px" hidden>
   <h2>Guild Firsts</h2>
   <div class="card"><table class="firsts" id="firsts"></table></div>
   <p class="muted" style="margin-top:12px">Dates are the earliest kill recorded by the Armory for each boss. Raid firsts will be added when the raids unlock on December 9, 2026.</p>
@@ -126,7 +127,7 @@ function draw(g){
   const bySlug={};roster.forEach(m=>bySlug[slugOf(m)]=m);
   // ---- Race to 60 podium: locked winners first, then the current leaders chasing the open spots
   const won=((g.fame||{}).reached60||[]).slice(0,3),wonSlugs=new Set(won.map(w=>w.slug));
-  const chasers=roster.filter(m=>m.level<60&&!wonSlugs.has(slugOf(m))).sort((a,b)=>b.level-a.level||(b.ilvl||0)-(a.ilvl||0));
+  const chasers=roster.filter(m=>m.level<60&&!wonSlugs.has(slugOf(m))).sort((a,b)=>b.level-a.level);
   document.getElementById("podium").innerHTML=[0,1,2].map(i=>{
     const [medal,label,col]=MEDALS[i],w=won[i];
     if(w){const m=bySlug[w.slug]||w;return `<div class="card pod p${i+1}" style="--m:${col}"><div class="medal">${medal}</div><div class="place">${label}</div>${ico(m)}<h3>${esc(both(m))}</h3><div class="muted" style="color:${w.color}">${esc(w.cls)}</div><div class="muted when">Reached 60 on ${dfmt(w.at)}</div></div>`}
@@ -140,7 +141,8 @@ function draw(g){
   const recipeCount={};Object.values(g.recipes||{}).forEach(p=>Object.values(p).forEach(who=>who.forEach(s=>recipeCount[s]=(recipeCount[s]||0)+1)));
   const totalBosses=Object.keys(g.bossKills||{}).length;
   const A=[
-    ["Best Geared","Highest item level in the guild.",top(roster.map(m=>({m,v:m.ilvl||0}))),v=>"iLvl "+v],
+    // "Best Geared" is parked: Blizzard stopped sending item levels on Nov 24, 2026. Put this line back when they return:
+    // ["Best Geared","Highest item level in the guild.",top(roster.map(m=>({m,v:m.ilvl||0}))),v=>"iLvl "+v],
     ["Dungeon Delver","Most different dungeon bosses defeated.",top(roster.map(m=>({m,v:bossCount[slugOf(m)]||0}))),v=>v+(totalBosses?" / "+totalBosses:"")+" bosses"],
     ["Master Crafter","Knows the most profession recipes.",top(roster.map(m=>({m,v:recipeCount[slugOf(m)]||0}))),v=>v+" recipes"],
     ["Most Honorable Kills","Most honorable kills in PvP.",top(roster.map(m=>({m,v:m.hk||0}))),v=>v.toLocaleString("en-US")+" kills"]

@@ -258,7 +258,7 @@ function charCards(){
     const lvl=m?m.level:c.level, cls=m?m.cls:c.cls;
     return`<label class="ch"><input type="radio" name="pick" value="${esc(n)}"${sel?" checked":""}><div class="card">
       <b><span class="dot" style="background:${esc(m&&m.color||"var(--muted)")}"></span>${esc(n)}</b>
-      <small>Level ${esc(lvl)} ${esc((m&&m.spec?m.spec+" ":"")+(cls||""))}${m&&m.ilvl?" · iLvl "+m.ilvl:""}</small>
+      <small>Level ${esc(lvl)} ${esc((m&&m.spec?m.spec+" ":"")+(cls||""))}</small>
       <div class="chips">${m?'<span class="chip ok">In Dirty Socks</span>':'<span class="chip warn">Not in the guild yet</span>'}${profChips(m)}</div>
     </div></label>`}).join("")+`</div>`;
 }
@@ -269,7 +269,7 @@ function claimPicker(){
 }
 function formView(){
   const m=S.byName[key(S.pick)],f=S.form,mine=S.signups.find(s=>s.mine&&key(s.character)===key(S.pick));
-  const stats=m?`<div class="stats"><span>Level <b>${m.level}</b></span><span>Item level <b>${m.ilvl||"–"}</b></span><span><b>${esc((m.spec?m.spec+" ":"")+m.cls)}</b></span>${profChips(m)?'<span style="display:flex;gap:6px">'+profChips(m)+"</span>":""}</div>`
+  const stats=m?`<div class="stats"><span>Level <b>${m.level}</b></span><span><b>${esc((m.spec?m.spec+" ":"")+m.cls)}</b></span>${profChips(m)?'<span style="display:flex;gap:6px">'+profChips(m)+"</span>":""}</div>`
     :`<div class="stats"><span>This character is not on the Dirty Socks roster yet. The officers will see that on your sign-up.</span></div>`;
   return`<form class="card rq" id="suform" novalidate>
     <h3 style="font-family:Cinzel,Georgia,serif;margin:0 0 4px">${esc(S.pick)}</h3>${stats}

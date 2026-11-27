@@ -236,7 +236,7 @@ function render(d){
   const hist=(d.history&&d.history.days)||{},histDays=Object.keys(hist).sort();
   const doneOn=m=>{const s=slugOf(m);return histDays.find(k=>hist[k][s]>=60)||""};
   const finished=roster.filter(m=>m.level>=60).sort((a,b)=>doneOn(a).localeCompare(doneOn(b))||a.name.localeCompare(b.name));
-  const byLevel=(a,b)=>b.level-a.level||(b.ilvl||0)-(a.ilvl||0)||a.name.localeCompare(b.name);
+  const byLevel=(a,b)=>b.level-a.level||a.name.localeCompare(b.name);
   const leaders=finished.length?[finished[0]]:roster.filter(m=>m.level===maxLevel);
   const cardNote=m=>{if(m.level>=60){const k=doneOn(m);return "Won the race to 60"+(k?" · "+fmtDayUTC(k):"")}return leaders.length>1?"Tied for the lead":"Leading the race"};
   document.getElementById("leaders").innerHTML=leaders.map(m=>`<div class="card leader" style="border-top:4px solid ${m.color}"><div class="muted">${cardNote(m)}</div><h3>${nameLink(m)}</h3><div class="muted">${m.cls}</div><div class="lvl">Level ${m.level}</div><div class="bar"><span style="width:${Math.min(100,m.level/60*100)}%"></span></div><span class="muted">${m.level>=60?"Max level":(60-m.level)+" levels to go"}</span></div>`).join("");

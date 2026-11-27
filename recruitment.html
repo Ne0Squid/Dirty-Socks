@@ -145,7 +145,7 @@ document.getElementById("yr").textContent=new Date().getFullYear();
 // Who fills each slot comes from two places:
 //  - raid-roster.json pins a character to a slot number by hand (always wins), and
 //  - the sign-up service: officers place approved players in a slot (main / off / heal / dps / backup-by-role).
-// Everything else (class, spec, item level) comes from the guild data. The last number in each slot row is its "cat" in the service (keep in step with LAYOUT in worker/src/index.js).
+// Everything else (class, spec) comes from the guild data. The last number in each slot row is its "cat" in the service (keep in step with LAYOUT in worker/src/index.js).
 const RAIDS=[
   {id:"barrow",name:"The Barrow Deeps",size:10,slots:[["Main Tank","tank",1,"main"],["Off Tank","tank",1,"off"],["Healer","heal",2,"heal"],["DPS","dps",6,"dps"],["Backup","bak",2,"bak"]]},
   {id:"hyjal",name:"Hyjal Summit",size:20,slots:[["Main Tank","tank",1,"main"],["Off Tank","tank",1,"off"],["Healer","heal",4,"heal"],["DPS","dps",14,"dps"],["Backup","bak",4,"bak"]]}
@@ -171,15 +171,15 @@ function draw(guild,assign,placed){
       const f=fill[n],who=a[n]||(f&&f.name),m=who?find(who):null;
       let tag=`<span class="role ${cls}">${esc(label)}</span>`;
       if(f&&BAKROLE[f.slot])tag+=` <span class="role ${BAKROLE[f.slot][1]}">${BAKROLE[f.slot][0]}</span>`;
-      if(!who)return `<tr><td class="num">${n}</td><td>${tag}</td><td class="open" colspan="4">Open</td></tr>`;
+      if(!who)return `<tr><td class="num">${n}</td><td>${tag}</td><td class="open" colspan="3">Open</td></tr>`;
       if(cls!=="bak")filled++;
-      if(!m)return `<tr><td class="num">${n}</td><td>${tag}</td><td><strong>${esc(who)}</strong></td><td class="open" colspan="3">Not found in guild roster</td></tr>`;
+      if(!m)return `<tr><td class="num">${n}</td><td>${tag}</td><td><strong>${esc(who)}</strong></td><td class="open" colspan="2">Not found in guild roster</td></tr>`;
       const ico=icons[m.cls]?`<img class="cico" src="${esc(icons[m.cls])}" alt="" style="border-color:${m.color}" loading="lazy">`:`<span class="dot" style="background:${m.color}"></span>`;
-      return `<tr><td class="num">${n}</td><td>${tag}</td><td><strong>${esc(m.name)}</strong></td><td><span class="cls">${ico}<span style="color:${m.color}">${esc(m.cls)}</span></span></td><td>${esc(m.spec||"–")}</td><td>${m.ilvl||"–"}</td></tr>`;
+      return `<tr><td class="num">${n}</td><td>${tag}</td><td><strong>${esc(m.name)}</strong></td><td><span class="cls">${ico}<span style="color:${m.color}">${esc(m.cls)}</span></span></td><td>${esc(m.spec||"–")}</td></tr>`;
     }).join("");
     const open=document.getElementById("raid"+ri)?document.getElementById("raid"+ri).open:false; // collapsed by default
     return `<details class="card raid" id="raid${ri}"${open?" open":""}><summary><span class="t">${esc(r.name)}</span><span class="n">${filled} / ${r.size} filled</span></summary>
-    <div class="rwrap"><table class="rtable"><thead><tr><th>#</th><th>Role</th><th>Player</th><th>Class</th><th>Spec</th><th>iLvl</th></tr></thead><tbody>${rows}</tbody></table></div>${extra.length?`<p class="muted rnote">Confirmed, waiting for a free slot: ${extra.map(esc).join(", ")}</p>`:""}</details>`;
+    <div class="rwrap"><table class="rtable"><thead><tr><th>#</th><th>Role</th><th>Player</th><th>Class</th><th>Spec</th></tr></thead><tbody>${rows}</tbody></table></div>${extra.length?`<p class="muted rnote">Confirmed, waiting for a free slot: ${extra.map(esc).join(", ")}</p>`:""}</details>`;
   }).join("");
 }
 // Confirmed players from the sign-up service. If it cannot be reached the roster simply shows the hand-pinned names.

@@ -151,14 +151,14 @@ function drawGlance(roster,acc){
   acc=acc||{};const groups=acc.groups||[];
   const over={};Object.keys(acc.roleOverrides||{}).forEach(k=>{const v=String(acc.roleOverrides[k]).toLowerCase();over[k.trim().toLowerCase()]=/tank/.test(v)?"Tank":/heal/.test(v)?"Healer":/range/.test(v)?"Ranged":"Melee"});
   const avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):"–";
-  const lvls=roster.filter(m=>m.level>=10).map(m=>m.level),ilvls=roster.filter(m=>m.level>=10&&m.ilvl>0).map(m=>m.ilvl);
+  const lvls=roster.filter(m=>m.level>=10).map(m=>m.level);
   const key=m=>(m.name+" "+(m.surname||"")).trim().toLowerCase();
   const known=new Set(roster.map(key));
   let extra=0;
   groups.forEach(g=>{const n=[...new Set((g||[]).map(x=>String(x).trim().toLowerCase()))].filter(x=>known.has(x)).length;if(n>1)extra+=n-1});
   const top=[];
   if(groups.length)top.push([roster.length-extra,"Players"]);
-  top.push([roster.length,"Characters"],[avg(lvls),"Average level"],[avg(ilvls),"Average item level"]);
+  top.push([roster.length,"Characters"],[avg(lvls),"Average level"]);
   const rc={Tank:0,Healer:0,Melee:0,Ranged:0};
   roster.forEach(m=>{const r=roleOf(m,over);if(r)rc[r]++});
   const box=c=>`<div class="stat"><b>${c[0]}</b><span class="muted">${c[1]}</span></div>`;
@@ -178,7 +178,7 @@ function showRoster(c,pg){
   const pages=Math.max(1,Math.ceil(list.length/PER_PAGE));
   const cur=Math.min(Math.max(1,pg||1),pages);
   document.getElementById("filters").innerHTML=gTabs.map(t=>`<button class="${t===c?"on":""}" data-c="${esc(t)}">${esc(t)}</button>`).join("");
-  document.getElementById("members").innerHTML=list.slice((cur-1)*PER_PAGE,cur*PER_PAGE).map(m=>`<div class="card member">${cico(m)}<div><strong>${nameLink(m)}</strong><div class="muted">Level ${m.level}${m.ilvl?" · iLvl "+m.ilvl:""}</div><div class="muted">${m.spec?m.spec+" ":""}${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
+  document.getElementById("members").innerHTML=list.slice((cur-1)*PER_PAGE,cur*PER_PAGE).map(m=>`<div class="card member">${cico(m)}<div><strong>${nameLink(m)}</strong><div class="muted">Level ${m.level}</div><div class="muted">${m.spec?m.spec+" ":""}${m.cls}</div></div><span class="tag">${rankNames[m.rank]||"Rank "+m.rank}</span></div>`).join("");
   const pagerEl=document.getElementById("pager");
   if(pages<=1){pagerEl.innerHTML="";return}
   let h=`<button data-p="${cur-1}" ${cur===1?"disabled":""}>‹ Prev</button>`;
