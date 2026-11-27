@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Characters – Dirty Socks</title>
+<meta name="description" content="Gear, stats, professions and boss kills for the characters of the Dirty Socks guild on WoW Forever.">
+<meta name="theme-color" content="#0b0d11">
+<link rel="icon" href="images/favicon.png?v=2" type="image/png">
+<link rel="icon" href="images/favicon.ico?v=2" sizes="any">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png?v=2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dirty Socks">
+<meta property="og:title" content="Characters – Dirty Socks">
+<meta property="og:description" content="Gear, stats, professions and boss kills for the characters of the Dirty Socks guild.">
+<meta property="og:url" content="https://www.dirtysocks.net/character">
+<link rel="canonical" href="https://www.dirtysocks.net/character">
+<meta property="og:image" content="https://www.dirtysocks.net/images/og-image.jpg?v=3">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Characters – Dirty Socks">
+<meta name="twitter:description" content="Gear, stats, professions and boss kills for the characters of the Dirty Socks guild.">
+<meta name="twitter:image" content="https://www.dirtysocks.net/images/og-image.jpg?v=3">
+<script src="faction.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#f3ead7;--surface:#fffaf0;--text:#2a2118;--muted:#6b5b45;--accent:#a3171b;--accent-text:#fffaf0;--line:#d9c9a5;--hero:#e8d9b5;--blue:#2f6fa8;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b0d11;--surface:#10151c;--text:#ece6d8;--muted:#9a9484;--accent:#db433b;--accent-text:#0b0807;--line:#232732;--hero:#191011;--blue:#6aa9e0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b0d11;--surface:#10151c;--text:#ece6d8;--muted:#9a9484;--accent:#db433b;--accent-text:#0b0807;--line:#232732;--hero:#191011;--blue:#6aa9e0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.6}
+h1,h2,h3{font-family:Cinzel,Georgia,serif;margin:0}
+a{color:var(--accent)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+main.wrap{padding-top:34px}
+.hero{background:var(--hero);border-bottom:1px solid var(--line)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+section{padding:44px 0}
+h2{font-size:1.6rem;color:var(--accent);margin-bottom:16px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.tag{margin-left:auto;font-size:.75rem;color:var(--muted);text-align:right;white-space:nowrap}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}
+#glancebox{padding:4px 0}
+.grow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}
+.grow+.grow{border-top:1px solid var(--line)}
+.grow.roles{display:flex;flex-wrap:wrap;gap:4px 28px;padding:12px 22px;align-items:baseline}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.muted{color:var(--muted);font-size:.9rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-text);padding:9px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:.9rem;border:0;cursor:pointer;font-family:inherit}
+#entries{display:grid;gap:14px;margin-top:18px}
+#more{margin:16px auto 0;display:block}
+footer{padding:0 max(20px,calc((100% - 1200px)/2));color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+footer a{color:var(--accent);text-decoration:none;font-weight:600}footer a:hover{text-decoration:underline}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px 40px;padding:36px 0 30px}
+.fcol h3{font-family:Cinzel,Georgia,serif;font-size:.95rem;letter-spacing:.06em;color:var(--text);margin:0 0 12px}
+.fcol ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.fcol li a{color:var(--muted);font-weight:400;font-size:.92rem}.fcol li a:hover{color:var(--accent);text-decoration:none}
+.fbrandlink{display:inline-flex;align-items:center;gap:12px;color:var(--accent);font-family:Cinzel,Georgia,serif;font-weight:800;font-size:1.25rem;letter-spacing:.03em}.fbrandlink:hover{text-decoration:none}
+.fbrandlink img{height:54px;width:auto;display:block}
+.ftag{margin:10px 0 0;color:var(--muted);font-size:.92rem;font-style:italic}
+html:root:not([data-faction="alliance"]) .fbrandlink .fl-alliance,html:root[data-faction="alliance"] .fbrandlink .fl-horde{display:none}
+.fbase{display:flex;justify-content:space-between;align-items:center;gap:8px 28px;flex-wrap:wrap;padding:18px 0 24px;border-top:1px solid var(--line)}
+.fbase .tm{text-align:right}
+@media (max-width:760px){.fgrid{grid-template-columns:1fr 1fr;padding:28px 0 22px}.fbrand{grid-column:1/-1}.fbase{justify-content:center;text-align:center}.fbase .tm{text-align:center}}
+</style>
+<style>
+.crumbs{margin:0 0 14px;font-size:.9rem}.crumbs a{color:var(--muted);text-decoration:none}.crumbs a:hover{color:var(--accent)}
+.hero-card{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 26px;align-items:center;padding:20px 24px;overflow:hidden}
+.portrait{width:190px;height:230px;display:grid;place-items:center;border-radius:12px;background:radial-gradient(ellipse at 50% 38%,rgba(255,255,255,.09),rgba(255,255,255,0) 70%),var(--bg);border:1px solid var(--line);overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:contain;display:block}.portrait img.cls{width:84px;height:84px;border-radius:14px;border:3px solid var(--cc,#777);object-fit:cover}
+.ch-name{font-size:clamp(1.7rem,5.2vw,2.7rem);line-height:1.1;margin:0}
+.ch-title{color:var(--muted);font-style:italic;margin:2px 0 0}
+.ch-line{margin:8px 0 0;font-size:1.05rem}.ch-line b{font-weight:600}
+.ch-meta{margin:6px 0 0;color:var(--muted);font-size:.92rem}
+.ch-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:.9rem}
+.badge{display:inline-block;font-size:.74rem;font-weight:600;border:1px solid var(--accent);color:var(--accent);border-radius:999px;padding:2px 10px;vertical-align:.25em;margin-left:8px;font-family:Inter,system-ui,sans-serif}
+.alts{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 0}
+.alts .lbl{font-size:.85rem;color:var(--muted);margin-right:2px}
+.alt{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);text-decoration:none;font-size:.86rem;font-weight:600}
+.alt:hover{border-color:var(--accent)}.alt.here{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}.alt.off{opacity:.55;cursor:default}.alt.off:hover{border-color:var(--line)}
+.alt small{color:var(--muted);font-weight:400}
+.dot{width:10px;height:10px;border-radius:50%;flex:none;display:inline-block}
+.layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;align-items:start;margin-top:18px}
+.stack{display:grid;gap:18px;min-width:0}
+@media (max-width:920px){.layout{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:620px){.hero-card{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center;padding:18px}.ch-links,.alts{justify-content:center}.portrait{width:160px;height:190px}}
+.card h3.t{font-size:1.15rem;margin:0 0 12px}
+.card h3.t small{font-family:Inter,system-ui,sans-serif;font-weight:400;color:var(--muted);font-size:.8rem;margin-left:8px}
+.gear{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7px 14px}
+.gcol{display:grid;gap:7px;align-content:start;min-width:0}
+.gweap{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:7px}
+@media (max-width:520px){.gear{grid-template-columns:minmax(0,1fr)}}
+.slot{display:flex;align-items:center;gap:10px;padding:6px 8px;border:1px solid var(--line);border-radius:9px;background:var(--bg);min-width:0;font:inherit;color:inherit;text-align:left;width:100%;cursor:default}
+.slot[data-i]{cursor:help}.slot[data-i]:hover,.slot[data-i]:focus-visible{border-color:var(--qc,var(--accent));outline:0}
+.slot .ic{width:40px;height:40px;border-radius:6px;border:2px solid var(--qc,var(--line));background:#0004 center/cover no-repeat;flex:none;display:grid;place-items:center;font-size:.62rem;color:var(--muted);text-align:center;line-height:1.05;overflow:hidden}
+.slot .tx{min-width:0}.slot b{display:block;font-size:.86rem;font-weight:600;color:var(--qc,var(--text));overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.slot small{display:block;color:var(--muted);font-size:.74rem}
+.slot.empty{opacity:.5;border-style:dashed}.slot.empty .ic{border-style:dashed}
+.q-POOR{--qc:#9d9d9d}.q-COMMON{--qc:#e8e2d2}.q-UNCOMMON{--qc:#1eff00}.q-RARE{--qc:#4a9bff}.q-EPIC{--qc:#c06bff}.q-LEGENDARY{--qc:#ff8000}.q-ARTIFACT{--qc:#e6cc80}
+.tip2{position:fixed;z-index:80;max-width:min(340px,calc(100vw - 24px));background:#0b0d14;border:1px solid #3a3f52;border-radius:6px;padding:10px 12px;box-shadow:0 8px 28px rgba(0,0,0,.6);font-size:.82rem;line-height:1.45;pointer-events:none;color:#e8e2d2}
+.tip2[hidden]{display:none}.tip2 .tn{font-weight:700;font-size:.95rem;margin-bottom:2px;color:var(--qc,#fff)}
+.tip2 .tl{display:flex;justify-content:space-between;gap:16px}.tip2 .g{color:#1eff00}.tip2 .y{color:#ffd100}.tip2 .m{color:#9aa0b4}
+.nogear{color:var(--muted);font-size:.9rem;margin:10px 0 0}
+.sg{margin:0 0 14px}.sg:last-child{margin-bottom:0}.sg h4{margin:0 0 4px;font-family:Inter,system-ui,sans-serif;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.sr2{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-top:1px solid var(--line);font-size:.92rem}.sg h4+.sr2{border-top:0}.sr2 span:first-child{color:var(--muted)}.sr2 b{font-weight:600;font-variant-numeric:tabular-nums}
+.pro{padding:9px 0;border-top:1px solid var(--line)}.pro:first-of-type{border-top:0;padding-top:0}
+.pro .hd{display:flex;align-items:center;gap:10px;justify-content:space-between}.pro .nm{display:flex;align-items:center;gap:9px;font-weight:600}
+.pro img{width:26px;height:26px;border-radius:5px;object-fit:cover}.pro .ph{width:26px;height:26px;border-radius:5px;background:var(--bg);border:1px solid var(--line);display:inline-block}
+.bar{height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin:7px 0 2px}.bar span{display:block;height:100%;background:var(--accent)}
+.rec{margin:8px 0 0}.rec summary{cursor:pointer;color:var(--muted);font-size:.85rem}.rec ul{margin:6px 0 0;padding-left:18px;columns:2;column-gap:22px;font-size:.86rem}.rec li{break-inside:avoid;margin:1px 0}
+@media (max-width:520px){.rec ul{columns:1}}
+.place{border-top:1px solid var(--line);padding:2px 0}.place:first-of-type{border-top:0}
+.place>summary{cursor:pointer;display:flex;justify-content:space-between;gap:10px;padding:8px 0;font-weight:600;list-style:none}.place>summary::-webkit-details-marker{display:none}
+.place>summary::before{content:"";width:0;height:0;border-left:6px solid var(--accent);border-top:4px solid transparent;border-bottom:4px solid transparent;margin-right:10px;align-self:center;transition:transform .15s}.place[open]>summary::before{transform:rotate(90deg)}
+.place>summary .t2{flex:1}.place>summary .n{color:var(--muted);font-weight:400;font-size:.85rem}
+.place ul{list-style:none;margin:0 0 8px;padding:0 0 0 16px}.place li{display:flex;justify-content:space-between;gap:12px;padding:3px 0;font-size:.9rem}.place li span:last-child{color:var(--muted);white-space:nowrap}
+.pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.pick a{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);text-decoration:none;font-weight:600}.pick a:hover{border-color:var(--accent)}
+.pick small{display:block;color:var(--muted);font-weight:400;font-size:.8rem}
+.su{list-style:none;margin:0;padding:0}.su li{padding:10px 0;border-top:1px solid var(--line)}.su li:first-child{border-top:0;padding-top:0}
+.st{font-size:.74rem;font-weight:600;border-radius:999px;padding:1px 9px;border:1px solid var(--line);text-transform:capitalize;display:inline-block;margin:2px 4px 2px 0}
+.st.approved{color:#5fd38d;border-color:#5fd38d55}.st.pending{color:#e0b341;border-color:#e0b34155}.st.declined{color:var(--muted);text-decoration:line-through}
+.role{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.78rem;font-weight:600;border:1px solid var(--line);margin-right:4px}
+.role.tank{color:#629df5;border-color:#629df555}.role.heal{color:#5fd38d;border-color:#5fd38d55}.role.dps{color:#ff7a66;border-color:#ff7a6655}
+.btn.sm{padding:7px 14px;font-size:.85rem}
+.empty-note{color:var(--muted);margin:0}
+.err{padding:30px 0}
+</style>
+</head>
+<body>
+<nav></nav>
+<script src="nav.js"></script>
+<main class="wrap">
+<section>
+  <p class="crumbs"><a href="/roster">← Roster</a></p>
+  <div id="view"><p class="muted">Loading…</p></div>
+</section>
+</main>
+<div class="tip2" id="tip" role="tooltip" hidden></div>
+<footer>
+  <div class="fgrid">
+    <div class="fcol fbrand"><div class="fbrandlink"><img class="fl-horde" src="images/logo-horde-sm.png" alt="" width="52" height="54"><img class="fl-alliance" src="images/logo-alliance-sm.png" alt="" width="52" height="54"><span>Dirty Socks</span></div><p class="ftag">Socks ain’t clean</p></div>
+    <div class="fcol"><h3>Navigation</h3><ul><li><a href="/">Home</a></li><li><a href="/roster">Roster</a></li><li><a href="/hall-of-fame">Hall of Fame</a></li><li><a href="/recruitment">Recruitment</a></li></ul></div>
+    <div class="fcol"><h3>Tools</h3><ul><li><a href="/bis">Pre-Raid BiS</a></li><li><a href="/dungeon-loot">Dungeon Loot</a></li><li><a href="/patch-notes">Patch Notes</a></li></ul></div>
+  </div>
+  <div class="fbase"><span>© <span id="yr"></span> <a href="/">Dirty Socks</a></span><span class="tm">World of Warcraft® is a registered trademark of Blizzard Entertainment, Inc.</span></div>
+</footer>
+<script src="auth-config.js"></script>
+<script>
+(function(){
+"use strict";
+const Q=new URLSearchParams(location.search);
+const API=((location.hostname==="localhost"&&Q.get("api"))||window.DS_API||"").replace(/\/+$/,"");
+const SKEY="ds-session";
+const view=document.getElementById("view"),tipEl=document.getElementById("tip");
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const slugOf=m=>(m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-");
+const full=m=>m.surname?m.name+" "+m.surname:m.name;
+const key=s=>String(s).toLowerCase().replace(/\s+/g," ");
+const armoryUrl=m=>"https://worldofwarcraft.blizzard.com/en-us/forever/us/armory/character/"+encodeURIComponent(slugOf(m));
+const RANK={0:"Guild Master",1:"Officer"};
+const SHORT={barrow:"Barrow",hyjal:"Hyjal"};
+const RAIDS={barrow:"The Barrow Deeps (10)",hyjal:"Hyjal Summit (20)",both:"Both raids"};
+const NIGHTS={wednesday:"Wednesday",thursday:"Thursday"};
+const SLOT_LABEL={main:"Main Tank",off:"Off Tank",heal:"Healer",dps:"DPS","bak-tank":"Backup · Tank","bak-heal":"Backup · Healer","bak-dps":"Backup · DPS"};
+const roleClass={Tank:"tank",Healer:"heal",DPS:"dps"};
+const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+const errBox=t=>`<div class="card err"><p class="empty-note">${t}</p><p style="margin:14px 0 0"><a class="btn sm" href="/character">See all characters</a></p></div>`;
+
+let G=null,roster=[],C=null,ME=null,SU=null,cur=null;
+
+// ---- gear layout ------------------------------------------------------------------------------
+const LEFT=[["HEAD","Head"],["NECK","Neck"],["SHOULDER","Shoulders"],["BACK","Back"],["CHEST","Chest"],["SHIRT","Shirt",1],["TABARD","Tabard",1],["WRIST","Wrists"]];
+const RIGHT=[["HANDS","Hands"],["WAIST","Waist"],["LEGS","Legs"],["FEET","Feet"],["FINGER_1","Ring"],["FINGER_2","Ring"],["TRINKET_1","Trinket"],["TRINKET_2","Trinket"]];
+const WEAP=[["MAIN_HAND","Main hand"],["OFF_HAND","Off hand",1],["RANGED","Ranged",1]]; // third value: only shown when something is equipped
+const KNOWN=new Set([...LEFT,...RIGHT,...WEAP].map(x=>x[0]));
+const abbr=l=>l.replace(/[^A-Za-z ]/g,"").split(" ").map(w=>w.slice(0,3)).join(" ").slice(0,7);
+
+function slotTile(def,item,idx){
+  const [type,label,optional]=def;
+  if(!item){return optional?"":`<div class="slot empty"><span class="ic">${esc(abbr(label))}</span><span class="tx"><b style="color:var(--muted)">${esc(label)}</b><small>Empty</small></span></div>`}
+  const icon=item.icon?`<img src="${esc(item.icon)}" alt="" width="40" height="40" loading="lazy" data-ab="${esc(abbr(label))}">`:esc(abbr(label));
+  return`<button type="button" class="slot q-${esc(item.q||"COMMON")}" data-i="${idx}"><span class="ic">${icon}</span><span class="tx"><b>${esc(item.name)}</b><small>${esc(item.sub||item.inv||label)}</small></span></button>`;
+}
+function gearHtml(){
+  const eq=C&&C.equipment;
+  if(!eq||!eq.length){
+    return`<p class="nogear">${C?"Blizzard isn’t sharing this character’s gear right now. It shows up after the character logs out and the next hourly update runs.":"Gear, stats and the portrait show up after the next hourly update."}</p>`;
+  }
+  const by={};eq.forEach((it,i)=>{by[it.slot]=[it,i]});
+  const tile=d=>by[d[0]]?slotTile(d,by[d[0]][0],by[d[0]][1]):slotTile(d,null);
+  const extra=eq.map((it,i)=>[it,i]).filter(([it])=>!KNOWN.has(it.slot)).map(([it,i])=>slotTile([it.slot,it.slotName||it.slot],it,i));
+  return`<div class="gear"><div class="gcol">${LEFT.map(tile).join("")}</div><div class="gcol">${RIGHT.map(tile).join("")}</div><div class="gweap">${WEAP.map(tile).join("")}${extra.join("")}</div></div>`;
+}
+function tipHtml(it){
+  const L=[`<div class="tn">${esc(it.name)}</div>`],d=(c,t)=>t?`<div${c?` class="${c}"`:""}>${esc(t)}</div>`:"";
+  L.push(d("",it.bind),d("",it.unique&&"Unique-Equipped"));
+  if(it.inv||it.sub)L.push(`<div class="tl"><span>${esc(it.inv||"")}</span><span>${esc(it.sub||"")}</span></div>`);
+  if(it.weapon){L.push(`<div class="tl"><span>${esc(it.weapon.dmg||"")}</span><span>${esc(it.weapon.speed||"")}</span></div>`);L.push(d("",it.weapon.dps))}
+  L.push(d("",it.armor));
+  (it.stats||[]).forEach(s=>L.push(d("",s)));
+  (it.enchants||[]).forEach(s=>L.push(d("g",s)));
+  (it.sockets||[]).forEach(s=>L.push(d("m",s)));
+  (it.spells||[]).forEach(s=>L.push(d("g",s)));
+  if(it.set){L.push(`<div class="y" style="margin-top:6px">${esc(it.set.name)}</div>`);(it.set.effects||[]).forEach(e=>L.push(d(e.on?"g":"m",e.t)))}
+  L.push(d("",it.req),d("",it.dur));
+  return L.join("");
+}
+
+// ---- stats ------------------------------------------------------------------------------------
+const PCT=new Set(["melee_crit","ranged_crit","spell_crit","dodge","parry","block","melee_haste","ranged_haste","spell_haste"]);
+const STAT_GROUPS=[
+  ["Attributes",[["strength","Strength"],["agility","Agility"],["stamina","Stamina"],["intellect","Intellect"],["spirit","Spirit"]]],
+  ["Offense",[["attack_power","Attack power"],["ranged_attack_power","Ranged attack power"],["melee_crit","Melee crit"],["ranged_crit","Ranged crit"],["melee_haste","Melee haste"],["spell_power","Spell power"],["spell_crit","Spell crit"],["spell_haste","Spell haste"],["spell_penetration","Spell penetration"],["mana_regen","Mana regen"]]],
+  ["Defense",[["armor","Armor"],["dodge","Dodge"],["parry","Parry"],["block","Block"]]]
+];
+const nice=k=>k.replace(/_/g," ").replace(/^./,c=>c.toUpperCase());
+const fmtStat=(k,v)=>PCT.has(k)?v.toFixed(2)+"%":Math.round(v).toLocaleString("en-US");
+function statsHtml(){
+  const st=C&&C.stats;
+  if(!st)return`<p class="nogear">${C?"Blizzard isn’t sharing this character’s stats right now.":"Stats show up after the next hourly update."}</p>`;
+  const used=new Set(["powerType"]),groups=[];
+  const top=[];
+  if(typeof st.health==="number"){top.push(["Health",Math.round(st.health).toLocaleString("en-US")]);used.add("health")}
+  if(typeof st.power==="number"){top.push([st.powerType||"Power",Math.round(st.power).toLocaleString("en-US")]);used.add("power")}
+  if(top.length)groups.push(["Vitals",top]);
+  STAT_GROUPS.forEach(([title,defs])=>{
+    const rows=defs.filter(([k])=>typeof st[k]==="number").map(([k,l])=>{used.add(k);return[l,fmtStat(k,st[k])]});
+    if(rows.length)groups.push([title,rows]);
+  });
+  const rest=Object.keys(st).filter(k=>!used.has(k)&&typeof st[k]==="number"&&st[k]!==0);
+  if(!groups.length||rest.length&&groups.length<2)groups.push(["Other",rest.map(k=>[nice(k),fmtStat(k,st[k])])]);
+  return groups.map(([t,rows])=>`<div class="sg"><h4>${esc(t)}</h4>${rows.map(([l,v])=>`<div class="sr2"><span>${esc(l)}</span><b>${esc(v)}</b></div>`).join("")}</div>`).join("");
+}
+
+// ---- professions, kills -----------------------------------------------------------------------
+function profHtml(m,slug){
+  const list=(m.professions||[]).slice().sort((a,b)=>(b.primary-a.primary));
+  if(!list.length)return`<p class="empty-note">No professions yet.</p>`;
+  const rec={};
+  for(const p in (G.recipes||{}))for(const r in G.recipes[p])if((G.recipes[p][r]||[]).includes(slug))(rec[p]=rec[p]||[]).push(r);
+  return list.map(p=>{
+    const ic=(G.professionIcons||{})[p.name],pct=p.max?Math.min(100,(p.skill||0)/p.max*100):0,rs=(rec[p.name]||[]).sort((a,b)=>a.localeCompare(b));
+    return`<div class="pro"><div class="hd"><span class="nm">${ic?`<img src="${esc(ic)}" alt="" loading="lazy">`:`<span class="ph"></span>`}${esc(p.name)}</span><span class="muted">${p.skill!=null?p.skill+(p.max?" / "+p.max:""):"–"}</span></div>`
+      +(p.max?`<div class="bar"><span style="width:${pct}%"></span></div>`:"")
+      +(rs.length?`<details class="rec"><summary>${rs.length} recipe${rs.length===1?"":"s"}</summary><ul>${rs.map(r=>`<li>${esc(r)}</li>`).join("")}</ul></details>`:"")+`</div>`;
+  }).join("");
+}
+const RAIDNAMES=["the barrow deeps","hyjal summit","onyxias lair"];
+const placeKey=n=>String(n).toLowerCase().replace(/[’']/g,"").trim();
+const fmtDay=t=>{if(t==null)return"";const d=new Date(t),y=d.getFullYear()!==new Date().getFullYear();return d.toLocaleDateString("en-US",y?{month:"short",day:"numeric",year:"numeric"}:{month:"short",day:"numeric"})};
+function killsHtml(slug){
+  let rows=[];
+  if(C&&C.kills&&C.kills.length)rows=C.kills.map(([n,q,t])=>({n,q,t}));
+  else rows=Object.entries(G.bossKills||{}).filter(([,e])=>(e.members||[]).includes(slug)).map(([n])=>({n,q:null,t:null}));
+  const places={};
+  rows.forEach(r=>{const x=r.n.match(/^(.*?)\s+kills?\s*\((.+)\)\s*$/i);const boss=x?x[1]:r.n,place=x?x[2]:"Other";(places[place]=places[place]||[]).push({boss,q:r.q,t:r.t})});
+  const names=Object.keys(places);
+  if(!names.length)return`<p class="empty-note">No dungeon or raid boss kills recorded yet.</p>`;
+  const isRaid=p=>RAIDNAMES.includes(placeKey(p).replace(/^the\s+(?!barrow)/,""))||RAIDNAMES.includes(placeKey(p));
+  names.sort((a,b)=>isRaid(b)-isRaid(a)||a.localeCompare(b));
+  const total=rows.reduce((n,r)=>n+(r.q||1),0);
+  return`<p class="muted" style="margin:0 0 8px">${rows.length} boss${rows.length===1?"":"es"} killed across ${names.length} place${names.length===1?"":"s"}${C&&C.kills?" · "+total+" kills":""}</p>`
+    +names.map(p=>{const b=places[p].sort((x,y)=>x.boss.localeCompare(y.boss)),n=b.reduce((s,x)=>s+(x.q||1),0);
+      return`<details class="place"><summary><span class="t2">${esc(p)}</span><span class="n">${b.length} boss${b.length===1?"":"es"}</span></summary><ul>${b.map(x=>`<li><span>${esc(x.boss)}</span><span>${x.q!=null?"×"+x.q:"✓"}${x.t?" · "+esc(fmtDay(x.t)):""}</span></li>`).join("")}</ul></details>`}).join("");
+}
+
+// ---- who is looking ----------------------------------------------------------------------------
+const mineRows=m=>{
+  if(!SU||!SU.signups||!ME)return[];
+  return SU.signups.filter(s=>key(s.character)===key(full(m))&&(s.mine||ME.officer));
+};
+const isOwner=m=>!!(ME&&(ME.characters||[]).some(c=>slugOf(c)===slugOf(m)));
+function signupHtml(m){
+  const owner=isOwner(m),rows=mineRows(m);
+  if(!owner&&!rows.length)return"";
+  const items=rows.map(s=>{
+    const raids=s.raid==="both"?["barrow","hyjal"]:[s.raid];
+    return`<li><div><b>${esc(s.character)}</b> ${(s.roles||[]).map(r=>`<span class="role ${roleClass[r]||""}">${esc(r)}</span>`).join("")}<span class="muted">${esc(RAIDS[s.raid]||s.raid)} · ${(s.nights||[]).map(n=>esc(NIGHTS[n]||n)).join(" & ")}</span></div>`
+      +`<div>${raids.map(r=>{const st=(s.statuses&&s.statuses[r])||"pending",sl=s.slots&&s.slots[r];return`<span class="st ${esc(st)}">${esc(SHORT[r])}: ${esc(st)}</span>${sl?`<span class="muted" style="margin-right:8px">${esc(SLOT_LABEL[sl]||sl)}</span>`:""}`}).join("")}</div>`
+      +(!s.mine&&s.battletag?`<div class="muted">${esc(s.battletag)}${s.verified?"":" · unverified"}</div>`:"")
+      +(s.note?`<div class="muted">“${esc(s.note)}”</div>`:"")+`</li>`;
+  }).join("");
+  return`<section class="card" id="signupcard"><h3 class="t">Raid sign-up<small>${owner?"only you and officers can see this":"officer view"}</small></h3>`
+    +(items?`<ul class="su">${items}</ul><p style="margin:12px 0 0"><a class="btn sm" href="/signup">${owner?"Edit on the sign-up page":"Open the line-up"}</a></p>`
+      :`<p class="empty-note">You haven’t signed this character up for a raid yet.</p><p style="margin:12px 0 0"><a class="btn sm" href="/signup">Sign up for raids</a></p>`)
+    +`</section>`;
+}
+function altsHtml(m){
+  if(!isOwner(m)||(ME.characters||[]).length<2)return"";
+  const by={};roster.forEach(x=>by[slugOf(x)]=x);
+  const chips=ME.characters.slice().sort((a,b)=>(b.level||0)-(a.level||0)).map(c=>{
+    const x=by[slugOf(c)],dot=`<span class="dot" style="background:${esc(x?x.color:"var(--muted)")}"></span>`,lv=x?x.level:c.level;
+    const inner=`${dot}${esc(full(c))} <small>Lv ${esc(lv)}</small>`;
+    return x&&x.level>=10?`<a class="alt${slugOf(c)===slugOf(m)?" here":""}" href="/character?c=${encodeURIComponent(slugOf(c))}"${slugOf(c)===slugOf(m)?' aria-current="page"':""}>${inner}</a>`:`<span class="alt off" title="Not in Dirty Socks yet, or below level 10">${inner}</span>`;
+  }).join("");
+  return`<div class="alts"><span class="lbl">Your characters</span>${chips}</div>`;
+}
+
+// ---- page ---------------------------------------------------------------------------------------
+const ago=t=>{const m=Math.max(0,Math.round((Date.now()-new Date(t))/6e4));return m<1?"just now":m<60?m+" min ago":m<1440?Math.round(m/60)+" hr ago":Math.round(m/1440)+" days ago"};
+function paint(){
+  const m=cur,slug=slugOf(m),color=m.color||"#999",cls=G.classIcons&&G.classIcons[m.cls];
+  const pic=C&&C.media&&(C.media.main||C.media.inset||C.media.avatar);
+  const portrait=pic?`<img src="${esc(pic)}" alt="${esc(full(m))}" data-fb="1">`:cls?`<img class="cls" src="${esc(cls)}" alt="${esc(m.cls)}" style="--cc:${esc(color)}">`:"";
+  const pr=C&&C.profile||{},title=pr.title?String(pr.title).replace("{name}",m.name):"";
+  const meta=[pr.race,pr.faction||(G.guild&&G.guild.faction),RANK[m.rank]||"Member"].filter(Boolean).join(" · ");
+  document.title=full(m)+" – Dirty Socks";
+  view.innerHTML=
+    `<div class="card hero-card" style="border-top:4px solid ${esc(color)}"><div class="portrait">${portrait}</div><div>`
+    +`<h1 class="ch-name" style="color:${esc(color)}">${esc(full(m))}${isOwner(m)?'<span class="badge">You</span>':""}</h1>`
+    +(title?`<p class="ch-title">${esc(title)}</p>`:"")
+    +`<p class="ch-line"><b>Level ${esc(m.level)}</b> ${esc(m.spec?m.spec+" ":"")}<span style="color:${esc(color)}">${esc(m.cls)}</span></p>`
+    +`<p class="ch-meta">${esc(meta)} · &lt;Dirty Socks&gt;</p>`
+    +`<div class="ch-links"><a href="${armoryUrl(m)}" target="_blank" rel="noopener">View on the Blizzard Armory ↗</a><span class="muted">Updated ${esc(ago(G.generated))}</span></div>`
+    +altsHtml(m)+`</div></div>`
+    +signupHtml(m)
+    +`<div class="layout"><div class="stack"><section class="card"><h3 class="t">Gear</h3>${gearHtml()}</section></div>`
+    +`<div class="stack"><section class="card"><h3 class="t">Stats</h3>${statsHtml()}</section>`
+    +`<section class="card"><h3 class="t">Professions</h3>${profHtml(m,slug)}</section>`
+    +`<section class="card"><h3 class="t">Dungeon &amp; raid kills</h3>${killsHtml(slug)}</section></div></div>`;
+}
+function pickView(){
+  document.title="Characters – Dirty Socks";
+  const list=roster.filter(m=>m.level>=10).sort((a,b)=>(a.rank-b.rank)||(b.level-a.level)||full(a).localeCompare(full(b)));
+  view.innerHTML=`<h2>Characters</h2><p class="muted" style="margin:-6px 0 16px">Gear, stats, professions and boss kills for everyone in the guild. Characters appear here once they reach level 10.</p>`
+    +`<div class="pick">${list.map(m=>`<a href="/character?c=${encodeURIComponent(slugOf(m))}"><span class="dot" style="background:${esc(m.color)}"></span><span>${esc(full(m))}<small>Level ${esc(m.level)} ${esc(m.spec?m.spec+" ":"")}${esc(m.cls)}</small></span></a>`).join("")}</div>`;
+}
+
+// ---- tooltips and image fallbacks ---------------------------------------------------------------
+const slotEl=e=>e.target.closest&&e.target.closest(".slot[data-i]");
+function showTip(el,x,y){
+  const it=C&&C.equipment&&C.equipment[+el.dataset.i];if(!it)return;
+  tipEl.className="tip2 q-"+(it.q||"COMMON");tipEl.innerHTML=tipHtml(it);tipEl.hidden=false;
+  const r=tipEl.getBoundingClientRect();let left=x+16,top=y+16;
+  if(left+r.width>innerWidth-8)left=Math.max(8,x-r.width-16);
+  if(top+r.height>innerHeight-8)top=Math.max(8,innerHeight-r.height-8);
+  tipEl.style.left=left+"px";tipEl.style.top=top+"px";
+}
+// Mouse and keyboard: show while hovering or focused. Touch screens only get the tap handler below
+// (they also send fake mouse events, which would hide the tooltip again straight away).
+if(!matchMedia("(hover:none)").matches){
+  document.addEventListener("mousemove",e=>{const t=slotEl(e);if(t)showTip(t,e.clientX,e.clientY);else tipEl.hidden=true});
+  document.documentElement.addEventListener("mouseleave",()=>{tipEl.hidden=true});
+  view.addEventListener("focusin",e=>{const t=slotEl(e);if(t){const r=t.getBoundingClientRect();showTip(t,r.left+40,r.bottom-12)}});
+  view.addEventListener("focusout",()=>{tipEl.hidden=true});
+}
+view.addEventListener("click",e=>{const t=slotEl(e);if(t&&matchMedia("(hover:none)").matches){const r=t.getBoundingClientRect();showTip(t,r.left+20,r.bottom-20);clearTimeout(window._tt);window._tt=setTimeout(()=>{tipEl.hidden=true},4000)}else if(!t)tipEl.hidden=true});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")tipEl.hidden=true});
+addEventListener("scroll",()=>{tipEl.hidden=true},{passive:true});
+view.addEventListener("error",e=>{
+  const im=e.target;if(!im||im.tagName!=="IMG")return;
+  if(im.dataset.ab!=null){im.replaceWith(document.createTextNode(im.dataset.ab));return}
+  if(im.dataset.fb){const cls=G&&cur&&G.classIcons&&G.classIcons[cur.cls];if(cls){im.removeAttribute("data-fb");im.className="cls";im.style.setProperty("--cc",cur.color||"#777");im.src=cls}else im.remove()}
+},true);
+
+// ---- start --------------------------------------------------------------------------------------
+async function loadMe(){
+  const tok=lsGet(SKEY);if(!tok||!API)return;
+  try{
+    const h={Authorization:"Bearer "+tok};
+    const [a,b]=await Promise.all([fetch(API+"/api/me",{headers:h}),fetch(API+"/api/signups",{headers:h})]);
+    if(a.ok)ME=await a.json();
+    if(b.ok)SU=await b.json();
+  }catch(e){}
+  if(ME&&cur)paint();
+}
+async function boot(){
+  try{const r=await fetch("guild-data.json");if(!r.ok)throw 0;G=await r.json()}catch(e){view.innerHTML=errBox("The roster couldn’t be loaded. Please try again in a moment.");return}
+  roster=(G.roster||[]).filter(m=>m.surname);
+  const want=(Q.get("c")||Q.get("name")||"").toLowerCase().trim().replace(/\s+/g,"-");
+  if(!want){pickView();loadMe();return}
+  cur=roster.find(m=>slugOf(m)===want)||null;
+  if(!cur){view.innerHTML=errBox("There’s no character called “"+esc(want.replace(/-/g," "))+"” on the Dirty Socks roster.");return}
+  if(cur.level<10){view.innerHTML=errBox(esc(full(cur))+" will get a character page once they reach level 10.");return}
+  paint();
+  const slug=slugOf(cur);
+  fetch("characters/"+encodeURIComponent(slug)+".json").then(r=>r.ok?r.json():null).catch(()=>null).then(j=>{if(j){C=j;paint()}});
+  loadMe();
+}
+boot();
+})();
+</script>
+</body>
+</html>

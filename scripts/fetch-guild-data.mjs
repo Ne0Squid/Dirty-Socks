@@ -4,7 +4,8 @@
 // Get a client at https://develop.battle.net/access/clients (keep the secret private).
 // Writes guild-data.json next to this script.
 
-import { writeFileSync, readFileSync, existsSync } from "node:fs";
+import { writeFileSync, readFileSync, existsSync, mkdirSync, readdirSync } from "node:fs";
+import { parseEquipment, parseStats, parseMedia, parseProfile, mergeCharacter, finalize, fillIcons } from "./character-data.mjs";
 
 const REGION = "us";
 const GUILD_SLUG = "dirty-socks"; // Forever guilds are realmless, so only the slug is needed
@@ -174,6 +175,8 @@ function itemLevel(profile, eq) {
   return levels.length ? Math.round(levels.reduce((a, b) => a + b, 0) / levels.length) : null;
 }
 
+// Per-character details for the site's /character page (gear, stats, portrait, kills), written to characters/<slug>.json below.
+const details = new Map();
 let checked = 0, raised = 0, unavailable = 0, specFound = 0, specMissing = 0, profFound = 0, ilvlFound = 0, hkFound = 0;
 for (let i = 0; i < members.length; i += 5) {
   await Promise.all(members.slice(i, i + 5).map(async (m) => {
@@ -193,12 +196,14 @@ for (let i = 0; i < members.length; i += 5) {
     checked++;
     if (p.level > (m.level ?? 0)) { m.level = p.level; raised++; }
     const base = `/profile/wow/character/${encodeURIComponent(slugOf(m))}`;
-    const [sp, pr, eq, ast, pvp] = await Promise.all([
+    const [sp, pr, eq, ast, pvp, stt, med] = await Promise.all([
       get(`${base}/specializations`, accessToken),
       get(`${base}/professions`, accessToken),
       get(`${base}/equipment`, accessToken),
       get(`${base}/achievements/statistics`, accessToken),
       get(`${base}/pvp-summary`, accessToken),
+      get(`${base}/statistics`, accessToken).catch(() => null), // stats and portrait are only for the character page,
+      get(`${base}/character-media`, accessToken).catch(() => null), // so a failure here never affects the rest
     ]);
     for (const [name, qty, ts] of bossKillStats(ast)) {
       if (qty <= 0) continue;
@@ -219,6 +224,13 @@ for (let i = 0; i < members.length; i += 5) {
     m.ilvl = itemLevel(p, eq) ?? old?.ilvl ?? null;
     if (m.ilvl) ilvlFound++;
     if (!sp || !pr || !eq || !ast) carried++;
+    try {
+      details.set(slugOf(m), {
+        slug: slugOf(m), name: m.name, surname: m.surname, cls: m.cls, level: m.level, spec: m.spec,
+        profile: parseProfile(p), media: parseMedia(med), equipment: parseEquipment(eq), stats: parseStats(stt),
+        kills: ast ? bossKillStats(ast).filter(([, q]) => q > 0) : null,
+      });
+    } catch (e) { console.warn(`  character details for ${slugOf(m)} failed: ${e.message}`); }
   }));
 }
 console.log(`Specializations: ${specFound} found, ${specMissing} without a spec`);
@@ -293,6 +305,29 @@ try {
   }));
 } catch (e) { console.warn(`  class icons failed: ${e.message}`); }
 console.log(`Class icons: ${Object.keys(classIcons).length}`);
+
+// Character pages: one small file per character (characters/<slug>.json). Anything that goes wrong here is
+// reported and skipped, so it can never stop guild-data.json from updating.
+try {
+  const dir = new URL("../characters/", import.meta.url);
+  mkdirSync(dir, { recursive: true });
+  const readOld = (slug) => { try { return JSON.parse(readFileSync(new URL(`${slug}.json`, dir), "utf8")); } catch { return null; } };
+  const known = new Map(); // item id -> icon url, from earlier runs
+  for (const f of readdirSync(dir)) if (f.endsWith(".json")) for (const it of readOld(f.slice(0, -5))?.equipment ?? []) if (it.icon) known.set(it.id, it.icon);
+  const merged = [...details.values()].map((d) => mergeCharacter(readOld(d.slug), d));
+  const icons = await fillIcons(merged, known, async (href) => {
+    const res = await fetch(new URL(href), { headers: { Authorization: `Bearer ${accessToken}` } });
+    return res.ok ? ((await res.json()).assets?.find((a) => a.key === "icon")?.value ?? null) : null;
+  });
+  let wrote = 0;
+  for (const m of merged) {
+    const { file, changed } = finalize(readOld(m.slug), m, new Date().toISOString());
+    if (changed) { writeFileSync(new URL(`${m.slug}.json`, dir), JSON.stringify(file)); wrote++; }
+  }
+  const have = (k) => merged.filter((m) => m[k]).length;
+  console.log(`Character pages: ${merged.length} characters, ${wrote} files changed; gear ${have("equipment")}, stats ${have("stats")}, portraits ${have("media")}, kills ${have("kills")}`);
+  console.log(`Item icons: ${icons.found} of ${icons.looked} newly looked up`);
+} catch (e) { console.warn(`Character pages skipped: ${e.message}`); }
 
 // Level history: one snapshot per day (the latest run of that day), kept for 35 days.
 // It lives inside guild-data.json so the workflow needs no changes.

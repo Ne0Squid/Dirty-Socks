@@ -168,9 +168,8 @@ function drawGlance(roster,acc){
 const rankNames={0:"Guild Master",1:"Officer"}; // Blizzard returns numbers only; add titles like 2:"Raider"
 let gSorted=[],gTabs=[],classIcons={},curClass="All";
 const PER_PAGE=20;
-const armoryUrl=m=>"https://worldofwarcraft.blizzard.com/en-us/forever/us/armory/character/"+encodeURIComponent((m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-"));
-// Armory pages only exist for characters level 10 and up, so lower levels stay plain text.
-const nameLink=m=>{const t=m.name+" "+(m.surname||"");return m.level>=10?`<a href="${armoryUrl(m)}" target="_blank" rel="noopener">${t}</a>`:t};
+// Character pages are built for level 10 and up (as on Blizzard's armory), so lower levels stay plain text.
+const nameLink=m=>{const t=m.name+" "+(m.surname||"");return m.level>=10?`<a href="/character?c=${encodeURIComponent((m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-"))}">${t}</a>`:t};
 const cico=m=>classIcons[m.cls]?`<img class="cico" src="${esc(classIcons[m.cls])}" alt="${esc(m.cls)}" style="border-color:${m.color}" loading="lazy" onerror="this.outerHTML='<span class=&quot;dot&quot; style=&quot;background:${m.color}&quot;></span>'">`:`<span class="dot" style="background:${m.color}"></span>`;
 function showRoster(c,pg){
   curClass=c;

@@ -83,6 +83,7 @@
         :'<span class="acct-name">'+esc(bt?bt.split("#")[0]:"Signed in")+'</span>';
       box.innerHTML='<button type="button" class="acct-btn" data-a="menu" aria-haspopup="true" aria-expanded="false">'+label+'</button>'
         +'<div class="acct-menu" role="menu"><div class="acct-who">Signed in as<b>'+esc(bt||"your Battle.net account")+'</b>'+(c.officer?'<span>Officer</span>':'')+'</div>'
+        +(ch?'<a href="/character?c='+encodeURIComponent(String(ch.n).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-"))+(location.hostname==="localhost"&&Q.get("api")?"&api="+encodeURIComponent(Q.get("api")):"")+'" role="menuitem">My character</a>':'')
         +'<a href="/signup" role="menuitem">Raid sign-up</a><button type="button" role="menuitem" data-a="out">Sign out</button></div>';
     }
     function refresh(){
