@@ -98,6 +98,7 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
 .join .steps{margin:12px 0 18px;padding-left:20px;color:var(--muted)}.join .steps li{margin:4px 0}
 .join .btn{display:inline-flex;align-items:center;gap:10px;padding:11px 22px;font-size:1rem}
 .join .alt{margin:14px 0 0}
+.join[hidden]{display:none}
 .rnote{margin:0;padding:10px 18px 14px;font-size:.9rem}
 </style>
 </head>
@@ -119,8 +120,13 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
   <div id="raids"></div>
 </section>
 <section id="request" style="padding-top:8px">
-  <h2>Request a Raid Spot</h2>
-  <div class="card join">
+  <h2 id="req-h">Request a Raid Spot</h2>
+  <div class="card join" id="req-in" hidden>
+    <h3>You are signed in</h3>
+    <p class="muted" style="margin:0 0 16px">Pick your character and your raids on the sign-up page. The officers confirm every spot and place you in the roster above.</p>
+    <a class="btn" href="/signup">Go to raid sign-up</a>
+  </div>
+  <div class="card join" id="req-out">
     <h3>Sign up with Battle.net</h3>
     <p class="muted" style="margin:0">Sign in and your characters, levels and gear come with you. The officers confirm every spot and place you in the roster above.</p>
     <ol class="steps"><li>Sign in with your Battle.net account.</li><li>Pick the character you want to bring.</li><li>Choose a raid and your nights.</li></ol>
@@ -128,6 +134,20 @@ details.raid>summary .n{font-family:Inter,system-ui,sans-serif;font-weight:600;f
     <p class="muted alt">Prefer not to sign in? <a href="https://forms.gle/wESFMshow64SfqLF6" target="_blank" rel="noopener">Use the Google request form</a> instead.</p>
   </div>
 </section>
+<script>
+// Signed in? Then there is nothing to request here: send them to the sign-up page instead. (The login keeps its session in ds-session; nav.js clears it when it ends.)
+(function(){
+  function draw(){
+    var on=false;try{on=!!localStorage.getItem("ds-session")}catch(e){}
+    if(!on&&/(^|[#&])session=/.test(location.hash))on=true;   // just back from Battle.net
+    document.getElementById("req-in").hidden=!on;document.getElementById("req-out").hidden=on;
+    document.getElementById("req-h").textContent=on?"Raid Sign-up":"Request a Raid Spot";
+  }
+  draw();
+  window.addEventListener("ds-session-end",draw);window.addEventListener("storage",function(e){if(e.key==="ds-session")draw()});
+  document.addEventListener("DOMContentLoaded",draw);
+})();
+</script>
 </main>
 
 <footer>

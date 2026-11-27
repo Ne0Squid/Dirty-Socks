@@ -94,7 +94,7 @@
       var c=cached(tok);if(c&&Date.now()-c.at<TTL&&"wa" in c)return;   // an older saved copy without the posting flag is refreshed once
       var head={Authorization:"Bearer "+tok};
       fetch(API+"/api/me",{headers:head}).then(function(r){
-        if(r.status===401){ls.del(KEY);ls.del(CKEY);draw();return null}
+        if(r.status===401){ls.del(KEY);ls.del(CKEY);draw();window.dispatchEvent(new Event("ds-session-end"));return null}
         return r.ok?r.json():null;
       }).then(function(m){
         if(!m)return;
@@ -120,7 +120,7 @@
       }else if(a==="menu"){
         var open=!box.classList.contains("open");box.classList.toggle("open",open);b.setAttribute("aria-expanded",String(open));
       }else if(a==="out"){
-        ls.del(KEY);ls.del(CKEY);
+        ls.del(KEY);ls.del(CKEY);window.dispatchEvent(new Event("ds-session-end"));
         if(onSignup||/\/post-news(\.html)?\/?$/.test(location.pathname)){location.reload();return}   // these pages change completely when signed out
         draw();
       }
