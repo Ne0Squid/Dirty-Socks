@@ -226,7 +226,7 @@ const publicPost = (p) => ({ id: p.id, title: p.title, body: p.body, pinned: !!p
 
 async function publicNews(env) {
   const posts = (await db(env).list("news:")).map(({ value }) => value);
-  posts.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b.at - a.at);
+  posts.sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b.at - a.at || (a.id < b.id ? 1 : a.id > b.id ? -1 : 0));   // equal timestamps: stable order
   return json({ news: posts.slice(0, NEWS_FEED_MAX).map(publicPost) }, 200, { "Cache-Control": "public, max-age=15", Vary: "Origin" });
 }
 

@@ -350,7 +350,7 @@ console.log("news + web admins");
     return ((cb.headers.get("Location") || "").match(/#session=(.+)$/) || [])[1];
   };
   const [tP, tO, tW, tX] = [await login("codeA"), await login("codeO"), await login("codeW"), await login("codeX")];
-  const post = (t, b) => fw(req("/api/news", { method: "POST", token: t, body: b }));
+  const post = async (t, b) => { await new Promise((r) => setTimeout(r, 4)); return fw(req("/api/news", { method: "POST", token: t, body: b })); };   // a few ms apart so "newest first" is unambiguous
   const feed = async () => (await (await fw(req("/api/news", { origin: SITE }))).json()).news;
 
   ok((await fw(req("/api/news", { origin: null }))).status === 200 && (await feed()).length === 0, "the news feed is public and starts empty");
