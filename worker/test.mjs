@@ -78,7 +78,7 @@ ok((await put(B.token, { ...good, character: "Tiny Alt" })).status === 400, "cla
 {
   const L = await (await fetchW(req("/api/signups", { token: A.token }))).json();
   const mine = L.signups.find((s) => s.character === "Squid Zero"), other = L.signups.find((s) => s.character === "Scott Frost");
-  ok(L.signups.length === 2 && mine.mine === true && mine.verified === true && mine.status === "pending", "list shows both, mine flagged, verified, pending");
+  ok(L.signups.length === 2 && mine.mine === true && mine.verified === true && mine.statuses.barrow === "pending" && Object.keys(mine.statuses).join() === "barrow", "list shows both, mine flagged, verified, pending (barrow only)");
   ok(other.mine === false && other.verified === false && other.battletag === undefined && other.note === undefined && other.sub === undefined, "other players' battletag/note/sub stay private");
   ok(mine.note === "Resto, can off-tank", "my own note is visible to me");
   ok(L.caps.barrow === 10 && L.caps.hyjal === 20, "raid sizes included");
@@ -95,15 +95,45 @@ const O = await signIn("codeO");
   ok(L.signups.every((s) => s.sub && s.battletag), "officer sees battletags + account ids");
   const sq = L.signups.find((s) => s.character === "Squid Zero");
   const st = (token, body) => fetchW(req("/api/signup/status", { method: "POST", token, body }));
-  ok((await st(A.token, { sub: sq.sub, character: "Squid Zero", status: "approved" })).status === 403, "non-officer cannot approve");
-  ok((await st(O.token, { sub: sq.sub, character: "Squid Zero", status: "approved" })).status === 200, "officer can approve");
-  ok((await st(O.token, { sub: sq.sub, character: "Squid Zero", status: "maybe" })).status === 400, "officer: bad status rejected");
-  ok((await st(O.token, { sub: "999", character: "Ghost", status: "approved" })).status === 404, "officer: unknown sign-up -> 404");
-  const after = await (await fetchW(req("/api/signups", { token: A.token }))).json();
-  ok(after.signups.find((s) => s.character === "Squid Zero").status === "approved", "player sees the approval");
-  await put(A.token, { ...good, roles: ["Healer", "DPS"] });
-  const again = await (await fetchW(req("/api/signups", { token: A.token }))).json();
-  ok(again.signups.find((s) => s.character === "Squid Zero").status === "pending", "editing an approved sign-up sends it back to pending");
+  ok((await st(A.token, { sub: sq.sub, character: "Squid Zero", raid: "barrow", status: "approved" })).status === 403, "non-officer cannot approve");
+  ok((await st(O.token, { sub: sq.sub, character: "Squid Zero", raid: "barrow", status: "maybe" })).status === 400, "officer: bad status rejected");
+  ok((await st(O.token, { sub: "999", character: "Ghost", raid: "barrow", status: "approved" })).status === 404, "officer: unknown sign-up -> 404");
+  const get = async (name) => (await (await fetchW(req("/api/signups", { token: A.token }))).json()).signups.find((s) => s.character === name);
+  ok(sq.raid === "both" && sq.statuses.barrow === "pending" && sq.statuses.hyjal === "pending", "a both-raids sign-up starts pending in each raid");
+
+  ok((await st(O.token, { sub: sq.sub, character: "Squid Zero", raid: "barrow", status: "approved" })).status === 200, "officer approves Barrow only");
+  let z = await get("Squid Zero");
+  ok(z.statuses.barrow === "approved" && z.statuses.hyjal === "pending", "approving Barrow leaves Hyjal pending", JSON.stringify(z.statuses));
+
+  ok((await st(O.token, { sub: sq.sub, character: "Squid Zero", raid: "hyjal", status: "declined" })).status === 200, "officer declines Hyjal only");
+  z = await get("Squid Zero");
+  ok(z.statuses.barrow === "approved" && z.statuses.hyjal === "declined", "declining Hyjal leaves Barrow approved", JSON.stringify(z.statuses));
+
+  ok((await st(O.token, { sub: sq.sub, character: "Squid Zero", raid: "barrow", status: "declined" })).status === 200, "officer can change their mind on one raid");
+  z = await get("Squid Zero");
+  ok(z.statuses.barrow === "declined" && z.statuses.hyjal === "declined", "each raid keeps its own answer", JSON.stringify(z.statuses));
+
+  ok((await st(O.token, { sub: sq.sub, character: "Squid Zero", status: "approved" })).status === 200, "no raid given -> applies to every raid in the sign-up");
+  z = await get("Squid Zero");
+  ok(z.statuses.barrow === "approved" && z.statuses.hyjal === "approved", "approve with no raid covers both", JSON.stringify(z.statuses));
+
+  const sf = L.signups.find((s) => s.character === "Scott Frost");
+  ok((await st(O.token, { sub: sf.sub, character: "Scott Frost", raid: "hyjal", status: "approved" })).status === 400, "cannot approve a raid the player did not sign up for");
+
+  await put(A.token, { ...good, raid: "both", roles: ["Healer", "DPS"] });
+  z = await get("Squid Zero");
+  ok(z.statuses.barrow === "pending" && z.statuses.hyjal === "pending", "editing a sign-up sends every raid back to pending", JSON.stringify(z.statuses));
+
+  // sign-ups saved before per-raid statuses existed still read correctly
+  await env.STORE.get(env.STORE.idFromName("main")).fetch("https://store/", { method: "POST", body: JSON.stringify({ op: "put", key: "signup:1001:legacy one", value: { sub: "1001", battletag: "Squid#1234", character: "Legacy One", raid: "both", roles: ["DPS"], nights: ["wednesday"], note: "", verified: true, status: "approved", created: 1, updated: 1 } }) });
+  {
+    const lg = await get("Legacy One");
+    ok(lg && lg.statuses.barrow === "approved" && lg.statuses.hyjal === "approved", "old single-status sign-ups show their status for each raid", JSON.stringify(lg && lg.statuses));
+    await st(O.token, { sub: "1001", character: "Legacy One", raid: "hyjal", status: "declined" });
+    const lg2 = await get("Legacy One");
+    ok(lg2.statuses.barrow === "approved" && lg2.statuses.hyjal === "declined", "an old sign-up upgrades cleanly on first per-raid change", JSON.stringify(lg2.statuses));
+    await fetchW(req("/api/signup?character=Legacy%20One", { method: "DELETE", token: A.token }));
+  }
 }
 
 console.log("withdraw + limits");

@@ -8,6 +8,9 @@ const RAIDS = { barrow: 10, hyjal: 20, both: 0 };
 const ROLES = ["Tank", "Healer", "DPS"];
 const NIGHTS = ["wednesday", "thursday"];
 const STATUSES = ["pending", "approved", "declined"];
+// A "both" sign-up is two separate requests: each raid keeps its own status.
+const raidsOf = (raid) => (raid === "both" ? ["barrow", "hyjal"] : [raid]);
+const statusesOf = (s) => Object.fromEntries(raidsOf(s.raid).map((r) => [r, STATUSES.includes(s.statuses?.[r]) ? s.statuses[r] : (STATUSES.includes(s.status) ? s.status : "pending")]));
 const MAX_PER_ACCOUNT = 6;
 const SESSION_DAYS = 7;
 
@@ -158,7 +161,7 @@ async function handleApi(req, url, env, who) {
   if (path === "/api/signups" && method === "GET") {
     const items = await store.list("signup:");
     const out = items.map(({ value: s }) => {
-      const row = { character: s.character, raid: s.raid, roles: s.roles, nights: s.nights, status: s.status, verified: s.verified, mine: s.sub === who.sub, updated: s.updated };
+      const row = { character: s.character, raid: s.raid, roles: s.roles, nights: s.nights, statuses: statusesOf(s), verified: s.verified, mine: s.sub === who.sub, updated: s.updated };
       if (officer || s.sub === who.sub) { row.note = s.note; row.battletag = s.battletag; }
       if (officer) row.sub = s.sub;
       return row;
@@ -171,7 +174,7 @@ async function handleApi(req, url, env, who) {
     const character = clean(b.character, 80), note = clean(b.note, 300);
     const roles = [...new Set(Array.isArray(b.roles) ? b.roles : [])], nights = [...new Set(Array.isArray(b.nights) ? b.nights : [])];
     if (!character) return json({ error: "Choose a character." }, 400);
-    if (!(b.raid in RAIDS)) return json({ error: "Choose a raid." }, 400);
+    if (!Object.hasOwn(RAIDS, b.raid)) return json({ error: "Choose a raid." }, 400);
     if (!roles.length || !roles.every((r) => ROLES.includes(r))) return json({ error: "Pick at least one role." }, 400);
     if (!nights.length || !nights.every((n) => NIGHTS.includes(n))) return json({ error: "Pick at least one night." }, 400);
 
@@ -190,7 +193,7 @@ async function handleApi(req, url, env, who) {
       if (mine >= MAX_PER_ACCOUNT) return json({ error: `You can have up to ${MAX_PER_ACCOUNT} sign-ups. Withdraw one first.` }, 400);
     }
     const now = Date.now();
-    await store.put(k, { sub: who.sub, battletag: who.bt, character, raid: b.raid, roles, nights, note, verified, status: "pending", created: prev ? prev.created : now, updated: now });
+    await store.put(k, { sub: who.sub, battletag: who.bt, character, raid: b.raid, roles, nights, note, verified, statuses: Object.fromEntries(raidsOf(b.raid).map((r) => [r, "pending"])), created: prev ? prev.created : now, updated: now });
     return json({ ok: true });
   }
 
@@ -206,7 +209,13 @@ async function handleApi(req, url, env, who) {
     if (!STATUSES.includes(b.status)) return json({ error: "bad status" }, 400);
     const k = `signup:${String(b.sub)}:${key(clean(b.character, 80))}`, s = await store.get(k);
     if (!s) return json({ error: "Sign-up not found." }, 404);
-    await store.put(k, { ...s, status: b.status, updated: Date.now() });
+    const raids = raidsOf(s.raid), cur = statusesOf(s);
+    if (b.raid !== undefined && b.raid !== null && b.raid !== "") {
+      if (!raids.includes(b.raid)) return json({ error: "That sign-up is not for that raid." }, 400);
+      cur[b.raid] = b.status;   // one raid only: the other keeps its own answer
+    } else for (const r of raids) cur[r] = b.status;
+    const { status: _legacy, ...rest } = s;
+    await store.put(k, { ...rest, statuses: cur, updated: Date.now() });
     return json({ ok: true });
   }
   return json({ error: "not found" }, 404);

@@ -26,7 +26,7 @@ Signed-in players see an *account ID* next to their BattleTag. Put officers' ids
 
 ## What it stores
 BattleTag, Blizzard account id, the character list Battle.net shares (kept 7 days), and each player's sign-ups
-(character, raid, roles, nights, note, status). Players can withdraw a sign-up themselves at any time.
+(character, raid, roles, nights, note, and an approval status for each raid they asked for). Players can withdraw a sign-up themselves at any time.
 No passwords, no Battle.net tokens are stored: the Battle.net access token is used once during login and then discarded.
 
 ## Characters: verified or claimed

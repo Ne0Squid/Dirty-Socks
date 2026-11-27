@@ -152,10 +152,14 @@ h3.sec{font-size:1.15rem;margin:26px 0 12px}
 document.getElementById("yr").textContent=new Date().getFullYear();
 (function(){
 const Q=new URLSearchParams(location.search);
-const API=(window.DS_API||(location.hostname==="localhost"&&Q.get("api"))||"").replace(/\/+$/,"");
+const API=((location.hostname==="localhost"&&Q.get("api"))||window.DS_API||"").replace(/\/+$/,"");
 const DEMO=!API||Q.has("demo");
 const SKEY="ds-session";
 const RAIDS={barrow:"The Barrow Deeps (10)",hyjal:"Hyjal Summit (20)",both:"Both raids"};
+const SHORT={barrow:"Barrow",hyjal:"Hyjal"};
+// "Both raids" is really two requests: each raid has its own status (approve Barrow, decline Hyjal, ...)
+const raidList=r=>r==="both"?["barrow","hyjal"]:[r];
+const stOf=(s,raid)=>(s.statuses&&s.statuses[raid])||s.status||"pending";
 const NIGHTS={wednesday:"Wednesday (8PM-12AM EST)",thursday:"Thursday (8PM-12AM EST)"};
 const view=document.getElementById("view");
 const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -190,7 +194,7 @@ let demoRows=null;
 function demoSeed(){
   const top=S.roster.filter(m=>m.level>=10).sort((a,b)=>b.level-a.level);
   const others=top.slice(3,9);
-  demoRows=others.map((m,i)=>({character:full(m),raid:i%3===2?"both":i%2?"hyjal":"barrow",roles:[roleOf(m)],nights:["wednesday","thursday"],status:i<3?"approved":"pending",verified:true,mine:false,sub:"d"+i,battletag:"Player"+i+"#"+(1000+i),updated:i}));
+  demoRows=others.map((m,i)=>({character:full(m),raid:i%3===2?"both":i%2?"hyjal":"barrow",roles:[roleOf(m)],nights:["wednesday","thursday"],statuses:Object.fromEntries(raidList(i%3===2?"both":i%2?"hyjal":"barrow").map(r=>[r,i<3&&r!=="hyjal"||i===1?"approved":"pending"])),verified:true,mine:false,sub:"d"+i,battletag:"Player"+i+"#"+(1000+i),updated:i}));
 }
 const demo={
   async me(){
@@ -202,11 +206,11 @@ const demo={
   async put(b){
     if(!demoRows)demoSeed();
     const i=demoRows.findIndex(r=>r.mine&&key(r.character)===key(b.character));
-    const row={...b,status:"pending",verified:true,mine:true,sub:"demo",battletag:"YourName#1234",updated:Date.now()};
+    const row={...b,statuses:Object.fromEntries(raidList(b.raid).map(r=>[r,"pending"])),verified:true,mine:true,sub:"demo",battletag:"YourName#1234",updated:Date.now()};
     if(i<0)demoRows.push(row);else demoRows[i]=row;return{ok:true};
   },
   async del(c,sub){if(!demoRows)demoSeed();demoRows=demoRows.filter(r=>!(key(r.character)===key(c)&&(sub?r.sub===sub:r.mine)));return{ok:true}},
-  async status(b){const r=demoRows.find(r=>r.sub===b.sub&&key(r.character)===key(b.character));if(r)r.status=b.status;return{ok:true}}
+  async status(b){const r=demoRows.find(r=>r.sub===b.sub&&key(r.character)===key(b.character));if(r)for(const x of(b.raid?[b.raid]:raidList(r.raid)))r.statuses[x]=b.status;return{ok:true}}
 };
 const api=DEMO?demo:real;
 
@@ -267,14 +271,14 @@ function formView(){
 function mySignups(){
   const mine=S.signups.filter(s=>s.mine);
   if(!mine.length)return"";
-  return`<h3 class="sec">Your sign-ups</h3><div class="card"><ul class="lu">`+mine.map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="muted">${esc(RAIDS[s.raid])} · ${s.nights.map(n=>esc(NIGHTS[n].split(" ")[0])).join(" & ")}</span><span class="st ${s.status}">${s.status}</span><span class="sp"><button class="mini" data-edit="${esc(s.character)}" type="button">Edit</button><button class="mini" data-del="${esc(s.character)}" type="button">Withdraw</button></span></li>`).join("")+`</ul></div>`;
+  return`<h3 class="sec">Your sign-ups</h3><div class="card"><ul class="lu">`+mine.map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="muted">${esc(RAIDS[s.raid])} · ${s.nights.map(n=>esc(NIGHTS[n].split(" ")[0])).join(" & ")}</span>${raidList(s.raid).map(r=>`<span class="st ${stOf(s,r)}">${s.raid==="both"?SHORT[r]+" · ":""}${stOf(s,r)}</span>`).join("")}<span class="sp"><button class="mini" data-edit="${esc(s.character)}" type="button">Edit</button><button class="mini" data-del="${esc(s.character)}" type="button">Withdraw</button></span></li>`).join("")+`</ul></div>`;
 }
 function lineup(){
   const col=raid=>{
     const rows=S.signups.filter(s=>s.raid===raid||s.raid==="both"),cap=S.caps[raid];
-    const ok=rows.filter(s=>s.status==="approved").length,wait=rows.filter(s=>s.status==="pending").length;
+    const ok=rows.filter(s=>stOf(s,raid)==="approved").length,wait=rows.filter(s=>stOf(s,raid)==="pending").length;
     return`<div class="card"><h3>${esc(RAIDS[raid])}</h3><span class="muted">${ok} of ${cap} confirmed${wait?" · "+wait+" waiting":""}</span>
-      ${rows.length?`<ul class="lu">`+rows.filter(s=>s.status!=="declined"||S.me.officer).map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="st ${s.status}">${s.status}</span>${s.verified?"":'<span class="chip warn" title="Claimed from the roster, not confirmed by Battle.net">unverified</span>'}${S.me.officer?`<span class="sp"><button class="mini" data-set="approved" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Approve</button><button class="mini" data-set="declined" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Decline</button><button class="mini" data-del="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Remove</button></span>`:""}</li>`).join("")+`</ul>`:`<p class="muted" style="margin:10px 0 0">Nobody yet. Be the first!</p>`}</div>`;
+      ${rows.length?`<ul class="lu">`+rows.filter(s=>stOf(s,raid)!=="declined"||S.me.officer).map(s=>`<li><span class="nm">${esc(s.character)}</span>${s.roles.map(roleChip).join("")}<span class="st ${stOf(s,raid)}">${stOf(s,raid)}</span>${s.raid==="both"?`<span class="muted" title="This player signed up for both raids. Each raid is approved on its own.">+ ${esc(SHORT[raid==="barrow"?"hyjal":"barrow"])}</span>`:""}${s.verified?"":'<span class="chip warn" title="Claimed from the roster, not confirmed by Battle.net">unverified</span>'}${S.me.officer?`<span class="sp"><button class="mini" data-set="approved" data-raid="${raid}" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Approve</button><button class="mini" data-set="declined" data-raid="${raid}" data-c="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button">Decline</button><button class="mini" data-del="${esc(s.character)}" data-sub="${esc(s.sub)}" type="button"${s.raid==="both"?' title="Removes the whole sign-up, both raids. Use Decline to turn down just this raid."':""}>Remove</button></span>`:""}</li>`).join("")+`</ul>`:`<p class="muted" style="margin:10px 0 0">Nobody yet. Be the first!</p>`}</div>`;
   };
   return`<h3 class="sec">Raid line-up</h3><div class="lineup">${col("barrow")}${col("hyjal")}</div>`;
 }
@@ -344,7 +348,7 @@ view.addEventListener("click",async e=>{
       if(S.pick&&key(S.pick)===key(t.dataset.del)){pickChar(S.pick)}
       S.msg="";render();return
     }
-    if(t.dataset.set){await api.status({sub:t.dataset.sub,character:t.dataset.c,status:t.dataset.set});await refresh();render()}
+    if(t.dataset.set){await api.status({sub:t.dataset.sub,character:t.dataset.c,raid:t.dataset.raid,status:t.dataset.set});await refresh();render()}
   }catch(err){if(err.message!=="auth"){S.notice=err.message}render()}
 });
 view.addEventListener("change",e=>{
