@@ -35,7 +35,9 @@ jobs:
 
       - name: Test the worker
         if: steps.cfg.outputs.ready == 'true'
-        run: node worker/test.mjs
+        run: |
+          node worker/test.mjs
+          node scripts/test-news-format.mjs
 
       # The Discord secret is only uploaded when it exists, so deploys keep working before it is added.
       - name: Pick the secrets to upload

@@ -46,13 +46,24 @@ The Web Admin group is deliberately invisible. The people in it live in the `WEB
 as `OFFICER_SUBS`), not in the repo. The site and the public feed never show a rank, a label, an author or who posted; the post form and Edit/Delete buttons
 simply appear for those accounts.
 - To add or remove a Web Admin: change the `WEB_ADMIN_SUBS` secret in GitHub (*Settings -> Secrets and variables -> Actions*), then *Actions -> Deploy login worker -> Run workflow*.
-- Posts are plain text (tags are stripped), 120 characters for the title and 2000 for the message. Pinned posts stay on top.
-- API: public `GET /api/news`; Web Admins only: `POST /api/news`, `PUT /api/news?id=...`, `DELETE /api/news?id=...`.
+- Posts can be formatted and carry pictures (below). 120 characters for the title and 8000 for the message. Pinned posts stay on top.
+- API: public `GET /api/news` and `GET /api/news/img/<id>`; Web Admins only: `POST /api/news`, `PUT /api/news?id=...`, `DELETE /api/news?id=...`, `POST /api/news/image`.
+
+### Formatting and pictures
+The post form has a toolbar (bold, italic, heading, bullet and numbered lists, quote, link, divider, picture) and a Write / Preview switch. Under the hood a post is a small,
+safe Markdown: `**bold**`, `*italic*`, `~~strike~~`, `` `code` ``, `## heading`, `- list`, `1. list`, `> quote`, `---`, `[text](https://link)`, bare `https://` links and
+`![caption](img:ID)`. `news-format.js` (in the site root) turns it into HTML and escapes everything else, so a post cannot run script or load anything from another site; the same
+file renders the editor preview. `node scripts/test-news-format.mjs` checks it, including a fuzz run of hostile input. Posts written before formatting existed stay plain text.
+- **Pictures:** the Picture button (or paste / drag into the box) shrinks the picture in the browser (longest side 1600px, WebP under about 780 KB; small ones and GIFs are kept as they are),
+  uploads it, and adds a `![](img:ID)` line. Type a caption between the `[ ]`. The Worker accepts JPEG, PNG, WebP and GIF only, checks the real file bytes, caps a picture at 800 KB,
+  a post at 12 pictures, the library at 120 pictures and an admin at 40 uploads an hour, and serves them publicly (cached for a year, no scripts possible). SVG is refused.
+- **Cleanup:** taking a picture out of the text, or deleting the post, deletes the picture. A picture that never made it into a post is removed after a day.
+- Unposted work is kept as a draft in that browser, so a refresh does not lose it.
 
 ### Discord alert for new posts (optional)
 Same idea as the sign-up alerts, with its own channel: create a webhook in the channel that should get the announcements, add it as the GitHub secret
-`DISCORD_NEWS_WEBHOOK_URL`, then run the deploy workflow (it posts one "connected" message). Each **new** post is sent as a message with the title and text and a link
-to the news section; edits and deletes are not sent. Nobody can be pinged (mentions are off and Discord formatting in posts is escaped), nothing identifies the author,
+`DISCORD_NEWS_WEBHOOK_URL`, then run the deploy workflow (it posts one "connected" message). Each **new** post is sent as a message with the title and text (Discord shows the bold, lists, quotes and links) and a link
+to the news section; the post's first picture is shown in the message. Edits and deletes are not sent. Nobody can be pinged (mentions are off), only http(s) links go across, nothing identifies the author,
 and one admin can send at most 10 messages an hour (posts are still saved). It is separate from `DISCORD_WEBHOOK_URL`, so the two can go to different channels.
 
 ## Roster slots (the Raid Roster on Recruitment)

@@ -46,6 +46,12 @@ const json = (o, status = 200, headers = {}) => new Response(JSON.stringify(o), 
 export class Store {
   constructor(state) { this.s = state.storage; }
   async fetch(req) {
+    if (new URL(req.url).pathname === "/bin") {   // raw bytes (news pictures): stored as they are, so no text conversion on the way in or out
+      const k = new URL(req.url).searchParams.get("key");
+      if (req.method === "PUT") { await this.s.put(k, { v: await req.arrayBuffer(), exp: 0 }); return json({ ok: true }); }
+      const r = await this.s.get(k);
+      return r ? new Response(r.v) : json({ error: "not found" }, 404);
+    }
     const b = await req.json(), now = Date.now();
     if (b.op === "get") {
       const r = await this.s.get(b.key);
@@ -70,6 +76,8 @@ function db(env) {
     put: (k, v, ttl) => call({ op: "put", key: k, value: v, ttl }),
     del: (k) => call({ op: "del", key: k }),
     list: async (p) => (await call({ op: "list", prefix: p })).items,
+    putBin: async (k, bytes) => (await stub.fetch("https://store/bin?key=" + encodeURIComponent(k), { method: "PUT", body: bytes })).json(),
+    getBin: async (k) => { const r = await stub.fetch("https://store/bin?key=" + encodeURIComponent(k)); return r.status === 200 ? new Uint8Array(await r.arrayBuffer()) : null; },
   };
 }
 
@@ -217,12 +225,29 @@ function alertDiscord(ctx, env, store, sub, build, url = env.DISCORD_WEBHOOK_URL
 }
 
 // ---- News (home page) ------------------------------------------------------------------------------
-// Anyone can read the feed. Only Web Admins can post, edit or delete. Posts are plain text; the author is stored
-// for the record but never sent to the site or to Discord, so nothing shows who (or what group) wrote a post.
+// Anyone can read the feed. Only Web Admins can post, edit or delete. The body is a small, safe Markdown (bold, italic, headings,
+// lists, quotes, links, pictures); the site turns it into HTML itself and escapes everything else. The author is stored for the
+// record but never sent to the site or to Discord, so nothing shows who (or what group) wrote a post.
+// Pictures are uploaded first (POST /api/news/image), then pointed at from the body as ![caption](img:ID).
 const NEWS_ID = /^[a-z0-9]{6,40}$/;
-const NEWS_FEED_MAX = 30, NEWS_STORE_MAX = 200, NEWS_ALERTS_PER_HOUR = 10;
-const lines = (s, n) => String(s ?? "").replace(/\r\n?/g, "\n").replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f<>]/g, "").replace(/[ \t]+/g, " ").replace(/ ?\n ?/g, "\n").replace(/\n{3,}/g, "\n\n").trim().slice(0, n);
-const publicPost = (p) => ({ id: p.id, title: p.title, body: p.body, pinned: !!p.pinned, at: p.at, ...(p.edited ? { edited: p.edited } : {}) });
+const NEWS_FEED_MAX = 30, NEWS_STORE_MAX = 200, NEWS_ALERTS_PER_HOUR = 10, NEWS_BODY_MAX = 8000;
+const NEWS_IMG_MAX = 800_000, NEWS_IMG_PER_POST = 12, NEWS_IMG_STORE_MAX = 120, NEWS_IMG_PER_HOUR = 40, NEWS_IMG_ORPHAN_MS = 24 * 3600e3;
+const lines = (s, n) => String(s ?? "").replace(/\r\n?/g, "\n").replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f<]/g, "").replace(/[ \t]+/g, " ").replace(/ ?\n ?/g, "\n").replace(/\n{3,}/g, "\n\n").trim().slice(0, n);
+const publicPost = (p) => ({ id: p.id, title: p.title, body: p.body, ...(p.md ? { md: true } : {}), pinned: !!p.pinned, at: p.at, ...(p.edited ? { edited: p.edited } : {}) });
+const IMG_TOKEN = /!\[([^\]\n]*)\]\(img:([a-z0-9]{6,40})\)/g;
+const newsImageIds = (body) => [...new Set([...String(body ?? "").matchAll(IMG_TOKEN)].map((m) => m[2]))];
+const randId = (n) => Array.from(crypto.getRandomValues(new Uint8Array(n)), (x) => x.toString(36).padStart(2, "0")).join("");
+const IMG_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
+// What the bytes really are, so a renamed file can never be stored or served as a picture.
+function sniffImage(b) {
+  const at = (i, s) => [...s].every((c, k) => b[i + k] === c.charCodeAt(0));
+  if (b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff) return "image/jpeg";
+  if (b[0] === 0x89 && at(1, "PNG") && b[4] === 0x0d && b[5] === 0x0a && b[6] === 0x1a && b[7] === 0x0a) return "image/png";
+  if (at(0, "GIF87a") || at(0, "GIF89a")) return "image/gif";
+  if (at(0, "RIFF") && at(8, "WEBP")) return "image/webp";
+  return null;
+}
+async function dropImage(store, id) { await store.del(`imgmeta:${id}`); await store.del(`imgdata:${id}`); }
 
 async function publicNews(env) {
   const posts = (await db(env).list("news:")).map(({ value }) => value);
@@ -230,12 +255,46 @@ async function publicNews(env) {
   return json({ news: posts.slice(0, NEWS_FEED_MAX).map(publicPost) }, 200, { "Cache-Control": "public, max-age=15", Vary: "Origin" });
 }
 
-function newsEmbed(env, post) {
+// Discord already understands the same Markdown, so the text goes across as written. Pictures cannot sit inside an embed's text, so the
+// first one becomes the embed's picture and the rest are left for the site. Links keep only http(s) targets. No pings either way.
+function discordBody(body, site) {
+  let first = null;
+  const kept = [];
+  for (const l of String(body ?? "").split("\n")) {
+    let out = l.replace(IMG_TOKEN, (m, alt, id) => { first ??= id; return ""; });
+    if (out !== l && !out.trim()) continue;   // a line that was only a picture
+    if (/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(out)) out = "";
+    out = out.replace(/\[([^\]\n]+)\]\(([^)\s]*)\)/g, (m, t, u) => (/^https?:\/\/[^\s<>]+$/i.test(u) ? m : t));
+    kept.push(out);
+  }
+  let text = kept.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+  if (text.length > 3500) {
+    const cut = text.lastIndexOf("\n", 3500);
+    text = text.slice(0, cut > 1500 ? cut : 3500).trimEnd() + "\n\n" + (site ? `[Read the rest on the site](${site}/#news)` : "…");
+  }
+  return { text, image: first };
+}
+
+function newsEmbed(env, post, apiOrigin) {
   const site = String(env.SITE_ORIGIN || "").replace(/\/+$/, "");
   const embed = { title: plain(post.title, 250), color: 0xd9534f, timestamp: new Date(post.at).toISOString(), footer: { text: "Dirty Socks news" } };
-  if (post.body) embed.description = post.body.replace(/[\\`*_~|>[\]()<@]/g, "\\$&").slice(0, 3800);
+  const { text, image } = discordBody(post.body, site);
+  if (text) embed.description = text;
+  if (image && apiOrigin) embed.image = { url: `${apiOrigin}/api/news/img/${image}` };
   if (site) embed.url = `${site}/#news`;
   return { username: "Dirty Socks News", allowed_mentions: { parse: [] }, embeds: [embed] };
+}
+
+// Public: pictures are served to anyone (the home page and Discord both fetch them). Only bytes that passed the upload checks are here.
+async function newsImage(env, id) {
+  const store = db(env);
+  if (!NEWS_ID.test(id)) return json({ error: "not found" }, 404);
+  const meta = await store.get(`imgmeta:${id}`), data = meta && (await store.getBin(`imgdata:${id}`));
+  if (!meta || !data || !IMG_TYPES.includes(meta.type)) return json({ error: "not found" }, 404);
+  return new Response(data, { status: 200, headers: {
+    "Content-Type": meta.type, "Cache-Control": "public, max-age=31536000, immutable", "X-Content-Type-Options": "nosniff",
+    "Content-Security-Policy": "default-src 'none'; sandbox", "Cross-Origin-Resource-Policy": "cross-origin",
+  } });
 }
 
 async function publicRoster(env) {
@@ -355,30 +414,64 @@ async function handleApi(req, url, env, who, ctx) {
     await store.put(k, { ...rest, statuses: cur, slots, updated: Date.now() });
     return json({ ok: true });
   }
+  if (path === "/api/news/image" && method === "POST") {
+    if (!isWebAdmin(env, who.sub)) return json({ error: "Not allowed." }, 403);
+    const type = (req.headers.get("Content-Type") || "").split(";")[0].trim().toLowerCase(), tooBig = `That picture is over ${NEWS_IMG_MAX / 1000} KB. Try a smaller one.`;
+    if (!IMG_TYPES.includes(type)) return json({ error: "Use a JPEG, PNG, WebP or GIF picture." }, 400);
+    if (Number(req.headers.get("Content-Length") || 0) > NEWS_IMG_MAX) return json({ error: tooBig }, 413);
+    const bytes = new Uint8Array(await req.arrayBuffer());
+    if (!bytes.length) return json({ error: "That picture is empty." }, 400);
+    if (bytes.length > NEWS_IMG_MAX) return json({ error: tooBig }, 413);
+    if (sniffImage(bytes) !== type) return json({ error: "That file is not a real picture of that type." }, 400);
+    const now = Date.now();
+    if (!(await allowAlert(store, `img:${who.sub}`, now, NEWS_IMG_PER_HOUR))) return json({ error: "That is a lot of pictures in an hour. Try again in a bit." }, 429);
+    let live = 0;   // pictures that never made it into a post are cleared after a day
+    for (const { value: m } of await store.list("imgmeta:")) { if (!m.post && now - m.at > NEWS_IMG_ORPHAN_MS) await dropImage(store, m.id); else live++; }
+    if (live >= NEWS_IMG_STORE_MAX) return json({ error: "The picture library is full. Delete some old posts first." }, 400);
+    const id = now.toString(36) + randId(6);
+    await store.putBin(`imgdata:${id}`, bytes);
+    await store.put(`imgmeta:${id}`, { id, type, size: bytes.length, at: now, by: who.sub, post: null });
+    return json({ ok: true, id, url: `/api/news/img/${id}` });
+  }
+
   if (path === "/api/news" && (method === "POST" || method === "PUT" || method === "DELETE")) {
     if (!isWebAdmin(env, who.sub)) return json({ error: "Not allowed." }, 403);
     const id = url.searchParams.get("id") || "";
     if (method === "DELETE") {
       if (!NEWS_ID.test(id)) return json({ error: "bad id" }, 400);
+      const gone = await store.get(`news:${id}`);
       await store.del(`news:${id}`);
+      if (gone) for (const r of newsImageIds(gone.body)) await dropImage(store, r);
       return json({ ok: true });
     }
     let b; try { b = await req.json(); } catch { return json({ error: "bad request" }, 400); }
-    const title = clean(b.title, 120), body = lines(b.body, 2000);
+    const title = clean(b.title, 120), body = lines(b.body, NEWS_BODY_MAX);
     if (!title) return json({ error: "Give the post a title." }, 400);
+    let prev = null, nid = id;
     if (method === "PUT") {
       if (!NEWS_ID.test(id)) return json({ error: "bad id" }, 400);
-      const prev = await store.get(`news:${id}`);
+      prev = await store.get(`news:${id}`);
       if (!prev) return json({ error: "Post not found." }, 404);
-      const post = { ...prev, title, body, pinned: !!b.pinned, edited: Date.now() };
-      await store.put(`news:${id}`, post);
-      return json({ ok: true, post: publicPost(post) });
+    } else {
+      if ((await store.list("news:")).length >= NEWS_STORE_MAX) return json({ error: "That is a lot of news. Delete some old posts first." }, 400);
+      nid = Date.now().toString(36) + randId(3);
     }
-    if ((await store.list("news:")).length >= NEWS_STORE_MAX) return json({ error: "That is a lot of news. Delete some old posts first." }, 400);
-    const now = Date.now(), nid = now.toString(36) + Array.from(crypto.getRandomValues(new Uint8Array(3)), (x) => x.toString(36).padStart(2, "0")).join("");
-    const post = { id: nid, title, body, pinned: !!b.pinned, at: now, by: who.sub };
+    // Every picture the body points at must exist and not belong to some other post.
+    const refs = newsImageIds(body), metas = [];
+    if (refs.length > NEWS_IMG_PER_POST) return json({ error: `Up to ${NEWS_IMG_PER_POST} pictures per post.` }, 400);
+    for (const r of refs) {
+      const m = await store.get(`imgmeta:${r}`);
+      if (!m) return json({ error: "A picture in this post is no longer available. Add it again." }, 400);
+      if (m.post && m.post !== nid) return json({ error: "A picture in this post belongs to a different post." }, 400);
+      metas.push(m);
+    }
+    const now = Date.now(), post = prev
+      ? { ...prev, title, body, md: true, pinned: !!b.pinned, edited: now }
+      : { id: nid, title, body, md: true, pinned: !!b.pinned, at: now, by: who.sub };
     await store.put(`news:${nid}`, post);
-    alertDiscord(ctx, env, store, `news:${who.sub}`, () => newsEmbed(env, post), env.DISCORD_NEWS_WEBHOOK_URL, NEWS_ALERTS_PER_HOUR);   // new posts only, not edits
+    for (const m of metas) if (m.post !== nid) await store.put(`imgmeta:${m.id}`, { ...m, post: nid });
+    if (prev) for (const r of newsImageIds(prev.body)) if (!refs.includes(r)) await dropImage(store, r);   // pictures taken out of the text are deleted
+    if (!prev) alertDiscord(ctx, env, store, `news:${who.sub}`, () => newsEmbed(env, post, url.origin), env.DISCORD_NEWS_WEBHOOK_URL, NEWS_ALERTS_PER_HOUR);   // new posts only, not edits
     return json({ ok: true, post: publicPost(post) });
   }
   return json({ error: "not found" }, 404);
@@ -394,6 +487,7 @@ export default {
       else if (url.pathname === "/auth/callback") res = await callback(url, env);
       else if (url.pathname === "/api/roster" && req.method === "GET") res = await publicRoster(env);
       else if (url.pathname === "/api/news" && req.method === "GET") res = await publicNews(env);
+      else if (url.pathname.startsWith("/api/news/img/") && req.method === "GET") res = await newsImage(env, url.pathname.slice("/api/news/img/".length));
       else if (url.pathname.startsWith("/api/")) {
         const who = await me(req, env);
         res = who ? await handleApi(req, url, env, who, ctx) : json({ error: "Please sign in." }, 401);

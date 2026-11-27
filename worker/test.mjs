@@ -363,8 +363,8 @@ console.log("news + web admins");
   const j1 = await r1.json();
   ok(r1.status === 200 && j1.ok && j1.post.title === "Raid night bmoved/b" && j1.post.body === "Line one\nLine two spaced\n\nLine three", "a Web Admin can post; text is cleaned, line breaks kept, tags removed", j1);
   ok((await post(tW, { title: "   ", body: "x" })).status === 400, "a post needs a title");
-  const long = await (await post(tW, { title: "T".repeat(300), body: "b".repeat(5000) })).json();
-  ok(long.post.title.length === 120 && long.post.body.length === 2000, "title and body are length-limited");
+  const long = await (await post(tW, { title: "T".repeat(300), body: "b".repeat(9000) })).json();
+  ok(long.post.title.length === 120 && long.post.body.length === 8000, "title and body are length-limited");
   await post(tX, { title: "Pinned one", body: "stays on top", pinned: true });
   const order = (await feed()).map((p) => p.title);
   ok(order[0] === "Pinned one" && order.length === 3 && order[1].startsWith("TTT"), "pinned posts come first, then newest", order);
@@ -389,9 +389,10 @@ console.log("news + web admins");
   const em = newsPosts[0].body.embeds[0];
   ok(em.title === "Raid night bmoved/b" && em.description === "Line one\nLine two spaced\n\nLine three" && em.url === SITE + "/#news" && newsPosts[0].body.allowed_mentions.parse.length === 0, "Discord message: title, body with line breaks, link to the news section, no pings", em);
   ok(!JSON.stringify(newsPosts).match(/3000|4000|WebAdmin|Both#|admin/i), "no author or admin information goes to Discord either");
-  const sneaky = await (await post(tW, { title: "Hello @everyone", body: "**bold** [click](https://evil.example)" })).json(); await flush();
-  const sd = posts[posts.length - 1].body.embeds[0];
-  ok(sneaky.ok && sd.title.includes("\\@everyone") && !/(^|[^\\])\*\*/.test(sd.description) && !/(^|[^\\])\]\(/.test(sd.description), "Discord formatting and links in a post are escaped", sd);
+  const sneaky = await (await post(tW, { title: "Hello @everyone", body: "**bold** [ok](https://good.example) [bad](javascript:alert(1)) [odd](ftp://x.example) @everyone" })).json(); await flush();
+  const sd = posts[posts.length - 1].body.embeds[0], sb = posts[posts.length - 1].body;
+  ok(sneaky.ok && sd.title.includes("\\@everyone") && sd.description.includes("**bold**") && sd.description.includes("[ok](https://good.example)") && !/javascript|ftp:/.test(sd.description) && sb.allowed_mentions.parse.length === 0,
+    "Discord keeps bold and https links, drops other link targets, and never pings anyone", sd);
 
   const del = await fw(req(`/api/news?id=${id}`, { method: "DELETE", token: tW })); await flush();
   ok(del.status === 200, "a Web Admin can delete");
@@ -402,6 +403,66 @@ console.log("news + web admins");
   for (let i = 0; i < 14; i++) await post(tX, { title: "Bulk " + i, body: "" });
   await flush();
   ok((await feed()).length === Math.min(before + 14, 30) && posts.length - sentBefore <= 10, "at most 10 Discord messages an hour per admin; posts are still saved", [posts.length - sentBefore]);
+
+  // ---- formatting, pictures ----------------------------------------------------------------------
+  const bin = (type, bytes) => new Uint8Array(bytes);
+  const PNG = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, ...Array.from({ length: 40 }, (_, i) => i)];
+  const JPG = [0xff, 0xd8, 0xff, 0xe0, ...Array.from({ length: 40 }, (_, i) => i)];
+  const WEBP = [0x52, 0x49, 0x46, 0x46, 1, 2, 3, 4, 0x57, 0x45, 0x42, 0x50, ...Array.from({ length: 30 }, (_, i) => i)];
+  const GIF = [...Buffer.from("GIF89a"), ...Array.from({ length: 30 }, (_, i) => i)];
+  const up = (t, type, bytes, h = {}) => fw(new Request(API + "/api/news/image", { method: "POST", headers: { ...(t ? { Authorization: "Bearer " + t } : {}), Origin: SITE, "Content-Type": type, ...h }, body: bytes }));
+  const img = (id) => fw(new Request(API + "/api/news/img/" + id, { headers: { Origin: null } }));
+
+  ok((await up(null, "image/png", bin("", PNG))).status === 401 && (await up(tP, "image/png", bin("", PNG))).status === 403 && (await up(tO, "image/png", bin("", PNG))).status === 403, "only Web Admins can upload pictures");
+  const u1 = await up(tW, "image/png", bin("", PNG)), uj1 = await u1.json();
+  ok(u1.status === 200 && uj1.ok && /^[a-z0-9]{6,40}$/.test(uj1.id) && uj1.url === "/api/news/img/" + uj1.id, "a Web Admin can upload a PNG", uj1);
+  for (const [t, b] of [["image/jpeg", JPG], ["image/webp", WEBP], ["image/gif", GIF]]) ok((await up(tW, t, bin("", b))).status === 200, "upload accepted: " + t);
+  const g1 = await img(uj1.id);
+  ok(g1.status === 200 && g1.headers.get("Content-Type") === "image/png" && /immutable/.test(g1.headers.get("Cache-Control")) && g1.headers.get("X-Content-Type-Options") === "nosniff" && /sandbox/.test(g1.headers.get("Content-Security-Policy")), "pictures are public, cached for a year, and served with locked-down headers");
+  ok(Buffer.compare(Buffer.from(await g1.arrayBuffer()), Buffer.from(PNG)) === 0, "the bytes come back exactly as uploaded");
+  ok((await img("nothere1234")).status === 404 && (await img("..%2Fsecret")).status === 404 && (await fw(req("/api/news/img/" + uj1.id + "/x"))).status !== 200, "unknown or malformed picture ids are 404");
+  ok((await up(tW, "text/html", Buffer.from("<script>x</script>"))).status === 400 && (await up(tW, "image/svg+xml", Buffer.from("<svg onload=alert(1)/>"))).status === 400, "HTML and SVG are refused");
+  ok((await up(tW, "image/png", Buffer.from("<script>alert(1)</script>"))).status === 400 && (await up(tW, "image/png", bin("", JPG))).status === 400, "a file that only claims to be a picture is refused (checked by its bytes)");
+  ok((await up(tW, "image/png", new Uint8Array(0))).status === 400, "an empty upload is refused");
+  const big = new Uint8Array(800_001); big.set(PNG);
+  ok((await up(tW, "image/png", big)).status === 413 && (await up(tW, "image/png", bin("", PNG), { "Content-Length": "900000" })).status === 413, "pictures over 800 KB are refused");
+
+  // a post that uses the picture
+  const withImg = await (await post(tW, { title: "With picture", body: `# Big news\n**Bold** and *italic*\n\n![The raid](img:${uj1.id})\n\n- one\n- two` })).json();
+  ok(withImg.ok && withImg.post.md === true && withImg.post.body.includes(`img:${uj1.id}`), "a post can use an uploaded picture and keeps its formatting (> and # survive)", withImg);
+  const quoted = await (await post(tW, { title: "Quote", body: "> wise words\n\na < b" })).json();
+  ok(quoted.post.body === "> wise words\n\na b", "quotes keep their > marker but < is still stripped", quoted.post.body);
+  await flush();
+  const wd = posts[posts.length - 2].body.embeds[0];
+  ok(wd.description === "# Big news\n**Bold** and *italic*\n\n- one\n- two" && wd.image.url === `https://login.test/api/news/img/${uj1.id}`, "Discord gets the formatted text, with the first picture as the embed image and no stray picture markup", wd);
+  ok((await post(tW, { title: "Ghost", body: "![x](img:doesnotexist1)" })).status === 400, "a post cannot point at a picture that does not exist");
+  ok((await post(tW, { title: "Steal", body: `![x](img:${uj1.id})` })).status === 400, "a picture already used by one post cannot be reused by another");
+  const many = []; for (let i = 0; i < 13; i++) many.push(`![](img:aaaa${String(i).padStart(4, "0")})`);
+  ok((await post(tW, { title: "Too many", body: many.join("\n") })).status === 400, "at most 12 pictures per post");
+
+  // removing a picture from the text, or deleting the post, deletes the picture
+  const u2 = await (await up(tW, "image/jpeg", bin("", JPG))).json(), u3 = await (await up(tW, "image/webp", bin("", WEBP))).json();
+  const p2 = await (await post(tW, { title: "Two pics", body: `![a](img:${u2.id})\n![b](img:${u3.id})` })).json();
+  ok(p2.ok && (await img(u2.id)).status === 200 && (await img(u3.id)).status === 200, "both pictures are kept while the post uses them");
+  const e2x = await fw(req(`/api/news?id=${p2.post.id}`, { method: "PUT", token: tW, body: { title: "Two pics", body: `![b](img:${u3.id})` } }));
+  ok(e2x.status === 200 && (await img(u2.id)).status === 404 && (await img(u3.id)).status === 200, "editing a picture out of the text deletes it, the other stays");
+  const e2y = await fw(req(`/api/news?id=${p2.post.id}`, { method: "PUT", token: tW, body: { title: "Two pics", body: `![b](img:${u3.id}) and another` } }));
+  ok(e2y.status === 200, "an edit can keep the picture it already owns");
+  await fw(req(`/api/news?id=${p2.post.id}`, { method: "DELETE", token: tW }));
+  ok((await img(u3.id)).status === 404, "deleting the post deletes its pictures");
+
+  // pictures that never made it into a post are cleared after a day
+  const orphan = await (await up(tW, "image/png", bin("", PNG))).json();
+  ok((await img(orphan.id)).status === 200, "an unattached picture is kept for now");
+  const realNow = Date.now; Date.now = () => realNow() + 25 * 3600e3;
+  const trigger = await up(tW, "image/gif", bin("", GIF)); Date.now = realNow;
+  ok(trigger.status === 200 && (await img(orphan.id)).status === 404 && (await img(uj1.id)).status === 200, "unused pictures older than a day are swept away; ones in posts stay");
+
+  // upload flood guard
+  let last = 200;
+  for (let i = 0; i < 45 && last === 200; i++) last = (await up(tX, "image/png", bin("", PNG))).status;
+  ok(last === 429, "an admin can upload at most 40 pictures an hour", last);
+  ok(!JSON.stringify(await feed()).match(/"by"|3000|4000|imgmeta|imgdata/), "the feed still carries no author or storage details");
 
   // no news webhook configured -> posting still works, nothing is sent
   const e2 = makeEnv({ WEB_ADMIN_SUBS: "3000" }), fw2 = (r) => worker.fetch(r, e2, ctx);
