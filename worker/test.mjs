@@ -551,6 +551,37 @@ console.log("news + web admins");
   ok(posts.length === n0, "and nothing is sent");
   globalThis.fetch = baseFetch;
 }
+
+console.log("BiS checklist (private ticks)");
+{
+  const eb = makeEnv({}), fb = (r) => worker.fetch(r, eb);
+  const login = async (code) => { const l = await fb(req("/auth/login")), st = new URL(l.headers.get("Location")).searchParams.get("state"); return ((await fb(req(`/auth/callback?code=${code}&state=${encodeURIComponent(st)}`, { origin: null }))).headers.get("Location").match(/#session=(.+)$/) || [])[1]; };
+  const ta = await login("codeA"), tb = await login("codeB");
+  const put = (token, body, extra = {}) => fb(req("/api/bis", { method: "PUT", token, body, ...extra }));
+  ok((await fb(req("/api/bis"))).status === 401 && (await fb(req("/api/bis", { method: "PUT", body: { spec: "x", have: [] } }))).status === 401, "signed-out visitors cannot read or save ticks");
+  ok(JSON.stringify(await (await fb(req("/api/bis", { token: ta }))).json()) === '{"specs":{}}', "a new account starts with nothing ticked");
+  const r1 = await put(ta, { spec: "resto-druid", have: ["i:Head", "e:Head", "a:Neck:Heart of the Fiend", "i:Head"] });
+  ok(r1.status === 200 && (await r1.json()).have.length === 3, "saves ticks for a list (duplicates dropped)");
+  await put(ta, { spec: "balance-druid", have: ["i:Back"] });
+  const g1 = await (await fb(req("/api/bis", { token: ta }))).json();
+  ok(JSON.stringify(g1.specs["resto-druid"]) === '["i:Head","e:Head","a:Neck:Heart of the Fiend"]' && g1.specs["balance-druid"].length === 1, "reads them back, one list per spec");
+  ok(Object.keys((await (await fb(req("/api/bis", { token: tb }))).json()).specs).length === 0, "another account sees none of them (private)");
+  await put(ta, { spec: "resto-druid", have: ["i:Chest"] });
+  ok(JSON.stringify((await (await fb(req("/api/bis", { token: ta }))).json()).specs["resto-druid"]) === '["i:Chest"]', "a save replaces that list only");
+  await put(ta, { spec: "resto-druid", have: [] });
+  const g2 = (await (await fb(req("/api/bis", { token: ta }))).json()).specs;
+  ok(!("resto-druid" in g2) && "balance-druid" in g2, "saving an empty list clears just that spec");
+  ok((await put(ta, { spec: "Bad Spec!", have: [] })).status === 400 && (await put(ta, { spec: "../x", have: [] })).status === 400 && (await put(ta, { spec: "x" })).status === 400 && (await put(ta, { spec: "x", have: "no" })).status === 400, "odd spec names or shapes are refused");
+  const weird = await (await put(ta, { spec: "fury-warrior", have: ["<b>x</b>", 5, null, {}, "  ", "i:" + "a".repeat(300), "ok\u0000key", ...Array.from({ length: 400 }, (_, i) => "k" + i)] })).json();
+  ok(weird.have.length === 150 && weird.have.every((k) => typeof k === "string" && k.length <= 100 && !/[<>\u0000]/.test(k)), "keys are cleaned (no markup or control characters), shortened and capped at 150", weird.have.length);
+  ok((await fb(req("/api/bis", { method: "PUT", token: ta, body: { spec: "x", have: ["y".repeat(50000)] } }))).status === 413, "an oversized save is refused");
+  const manyEnv = makeEnv({}), fm = (r) => worker.fetch(r, manyEnv);
+  const lm = await fm(req("/auth/login")), stm = new URL(lm.headers.get("Location")).searchParams.get("state"), tm = ((await fm(req(`/auth/callback?code=codeA&state=${encodeURIComponent(stm)}`, { origin: null }))).headers.get("Location").match(/#session=(.+)$/) || [])[1];
+  let lastStatus = 0; for (let i = 0; i < 41; i++) lastStatus = (await fm(req("/api/bis", { method: "PUT", token: tm, body: { spec: "s" + i, have: ["i:Head"] } }))).status;
+  ok(lastStatus === 400 && Object.keys((await (await fm(req("/api/bis", { token: tm }))).json()).specs).length === 40, "at most 40 lists per account");
+  let limited = 0; for (let i = 0; i < 300; i++) if ((await fm(req("/api/bis", { method: "PUT", token: tm, body: { spec: "s1", have: ["i:Head"] } }))).status === 429) limited++;
+  ok(limited > 0, "saves are limited per hour per account");
+}
 bz.restore();
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

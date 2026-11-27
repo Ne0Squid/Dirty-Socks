@@ -325,12 +325,48 @@ async function publicRoster(env) {
   return json({ raids, layout: LAYOUT }, 200, { "Cache-Control": "public, max-age=15", Vary: "Origin" });
 }
 
+// ---- BiS checklist: the gear a player has ticked off on the Pre-Raid BiS page. Private: only the owner can read or change it. ----
+// Stored per account as { specs: { "resto-druid": ["i:Head", "e:Head", "a:Head:Bad Hat", ...] } }. The worker does not need to know the lists (they live on the site),
+// it only keeps short, cleaned text keys and caps how many of them there can be.
+const BIS_SPECS_MAX = 40, BIS_TICKS_MAX = 150, BIS_KEY_LEN = 100, BIS_WRITES_PER_HOUR = 300;
+const bisSpec = (s) => (typeof s === "string" && /^[a-z0-9][a-z0-9-]{0,39}$/.test(s) ? s : null);
+function bisTicks(list) {
+  const out = [];
+  for (const k of Array.isArray(list) ? list : []) {
+    const t = typeof k === "string" ? clean(k, BIS_KEY_LEN) : "";
+    if (t && !out.includes(t)) out.push(t);
+    if (out.length >= BIS_TICKS_MAX) break;
+  }
+  return out;
+}
+
 async function handleApi(req, url, env, who, ctx) {
   const store = db(env), officer = isOfficer(env, who.sub), method = req.method, path = url.pathname;
 
   if (path === "/api/me" && method === "GET") {
     const c = (await store.get(`chars:${who.sub}`)) || { list: [], status: null };
     return json({ sub: who.sub, battletag: who.bt, officer, ...(isWebAdmin(env, who.sub) ? { webAdmin: true } : {}), characters: c.list, source: c.list.length ? "blizzard" : "none", charsStatus: c.status });
+  }
+
+  if (path === "/api/bis" && method === "GET") {
+    const b = (await store.get(`bis:${who.sub}`)) || { specs: {} };
+    return json({ specs: b.specs }, 200, { "Cache-Control": "no-store" });
+  }
+
+  if (path === "/api/bis" && method === "PUT") {
+    if (Number(req.headers.get("Content-Length") || 0) > 40_000) return json({ error: "That is too much to save." }, 413);
+    const raw = await req.text();
+    if (raw.length > 40_000) return json({ error: "That is too much to save." }, 413);
+    let b; try { b = JSON.parse(raw); } catch { return json({ error: "bad request" }, 400); }
+    const spec = bisSpec(b && b.spec);
+    if (!spec || !Array.isArray(b.have)) return json({ error: "bad request" }, 400);
+    const have = bisTicks(b.have.slice(0, BIS_TICKS_MAX * 3));
+    if (!(await allowAlert(store, `bis:${who.sub}`, Date.now(), BIS_WRITES_PER_HOUR))) return json({ error: "That is a lot of saves in an hour. Try again in a bit." }, 429);
+    const specs = { ...(((await store.get(`bis:${who.sub}`)) || {}).specs || {}) };
+    if (have.length) specs[spec] = have; else delete specs[spec];
+    if (Object.keys(specs).length > BIS_SPECS_MAX) return json({ error: "Too many lists saved." }, 400);
+    await store.put(`bis:${who.sub}`, { specs, at: Date.now() });
+    return json({ ok: true, spec, have });
   }
 
   if (path === "/api/signups" && method === "GET") {

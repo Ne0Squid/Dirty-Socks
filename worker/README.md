@@ -97,9 +97,19 @@ file's entries once you place everyone from the sign-up page, otherwise a pinned
 If the feed cannot be reached the page simply shows the pinned names. Slot counts live in `LAYOUT` in `src/index.js` and in
 `RAIDS` in `recruitment.html`; change both together if a raid size changes.
 
+## BiS checklist (private ticks on the Pre-Raid BiS page)
+When a player is logged in, every BiS item, enchant and alternative on /bis gets a tick box, with progress bars on top
+(BiS items, Enchants, and Slots covered by a BiS item or an alternative).
+- **Private.** Ticks are stored under the player's own login and `GET /api/bis` only ever returns the caller's own data. Officers and Web Admins cannot see them either.
+- **Saved as you tick.** `PUT /api/bis` with `{spec, have:[keys]}` replaces one spec's list (an empty list removes it). Keys are `i:<slot>` (BiS item), `e:<slot>` (enchant) and `a:<slot>:<alternative name>`. Limits: 40 specs per player, 150 ticks per spec, 300 saves an hour, 40 KB per save.
+- **Gear that is worn ticks itself.** The page reads the character files the site already publishes (`characters/<name>.json`, refreshed about every hour) for the logged-in player's characters (level 10+, in the guild roster) and ticks any BiS item or alternative that matches by name. Those boxes are locked and show an "Equipped" badge. It can lag by up to an hour, and items sitting in the bank or bags are ticked by hand.
+- **Enchants are always by hand.** The Armory only gives enchants as stat text ("Enchanted: Agility +4"), which cannot be matched to the enchant names on the list.
+- **Clear my ticks** removes the manual ticks for the open spec after an inline "Yes, clear" confirm; worn gear stays ticked.
+
 ## What it stores
 BattleTag, Blizzard account id, the character list Battle.net shares (kept 7 days), and each player's sign-ups
 (character, raid, roles, nights, note, and an approval status for each raid they asked for). Players can withdraw a sign-up themselves at any time.
+Their BiS checklist ticks are stored too (private to them, see above).
 No passwords, no Battle.net tokens are stored: the Battle.net access token is used once during login and then discarded.
 
 ## Characters: verified or claimed

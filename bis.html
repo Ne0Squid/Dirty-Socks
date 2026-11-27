@@ -82,6 +82,25 @@ table.bis{width:100%;border-collapse:collapse;font-size:.92rem;min-width:760px}
 .bis .item{font-weight:600}
 .bis .alt{color:var(--muted)}.bis .alt div+div{margin-top:4px}
 .note{margin-top:14px}
+/* ticking off gear (logged-in players) */
+:root{--ok:#2f9d5c}
+.ar{display:flex;gap:9px;align-items:flex-start}.ar+.ar{margin-top:5px}.ar>div{min-width:0}
+.tk{display:inline-flex;flex:none;padding-top:1px}
+.tk input{width:18px;height:18px;margin:0;accent-color:var(--ok);cursor:pointer}
+.tk input:disabled{cursor:default}.tk input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.eq{display:inline-block;margin-left:8px;font-size:.64rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ok);border:1px solid color-mix(in srgb,var(--ok) 45%,transparent);border-radius:999px;padding:1px 8px;vertical-align:middle;white-space:nowrap}
+.bis tr.got{background:color-mix(in srgb,var(--ok) 9%,transparent)}
+.bis tr.part{background:color-mix(in srgb,#d9a441 8%,transparent)}
+.prog{margin:0 0 14px;display:grid;gap:14px}
+.pst-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px 26px}
+.pst b{font-family:Cinzel,Georgia,serif;font-size:1.3rem}.pst span{display:block;color:var(--muted);font-size:.8rem}
+.pbar{height:8px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:7px}.pbar i{display:block;height:100%;background:var(--ok);transition:width .25s}
+.pfoot{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between}
+.pfoot .muted{margin:0;flex:1 1 300px}
+.pstat{min-height:1.3em;font-size:.85rem;color:var(--muted)}.pstat.bad{color:var(--accent)}
+.ghostbtn{background:none;border:1px solid var(--line);color:var(--text);border-radius:6px;padding:6px 12px;font:inherit;font-size:.85rem;cursor:pointer}.ghostbtn:hover{border-color:var(--accent);color:var(--accent)}
+.ghostbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.askrow{display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap}.askrow p{margin:0;flex:1 1 280px}
 @media (max-width:760px){
   .bwrap{overflow:visible}
   table.bis{min-width:0}.bis thead{display:none}
@@ -89,6 +108,7 @@ table.bis{width:100%;border-collapse:collapse;font-size:.92rem;min-width:760px}
   .bis td{border:0;padding:0}
   .bis td[data-l]:not(.item):not(.slot)::before{content:attr(data-l) ": ";color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.05em}
   .bis td:empty{display:none}
+  .bis tr.got,.bis tr.part{margin:0 -10px;padding:12px 10px}
 }
 </style>
 </head>
@@ -118,6 +138,7 @@ table.bis{width:100%;border-collapse:collapse;font-size:.92rem;min-width:760px}
   <div class="fbase"><span>© <span id="yr"></span> <a href="/">Dirty Socks</a></span><span class="tm">World of Warcraft® is a registered trademark of Blizzard Entertainment, Inc.</span></div>
 </footer>
 
+<script src="auth-config.js"></script>
 <script src="tooltips.js"></script>
 <script>
 document.getElementById("yr").textContent=new Date().getFullYear();
@@ -134,15 +155,112 @@ function pick(id,fromHash){
   document.getElementById("specs").innerHTML=DATA.filter(x=>x.cls===s.cls).map(x=>`<button type="button" class="chip" style="--c:${COLORS[x.cls]}" aria-pressed="${x.id===s.id}" data-id="${x.id}"><i></i>${esc(x.label)}</button>`).join("");
   draw(s);
 }
+// ---- Ticking off gear: only for logged-in players. Ticks are saved to their login (private); gear their characters are wearing is ticked automatically. ----
+const API=((location.hostname==="localhost"&&new URLSearchParams(location.search).get("api"))||window.DS_API||"").replace(/\/+$/,"");
+const tok=()=>{try{return localStorage.getItem("ds-session")}catch(_){return null}};
+const ticks={state:tok()&&API?"loading":"out",specs:{},eq:{},stat:"",bad:false,confirm:false};   // eq: class -> Map(item name -> the character wearing it)
+const slugOf=m=>(m.name+"-"+(m.surname||"")).toLowerCase().replace(/['’]/g,"").replace(/\s+/g,"-");
+const norm=n=>String(n).toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();
+// "A / B", "A (where it drops)", "A (Horde: B)": every item name a line could mean
+const itemNames=str=>{const out=[];String(str).split(" / ").forEach(p=>{const m=p.match(/^[^(]+/);if(m)out.push(m[0]);const h=p.match(/\(Horde: ([^)]+)\)/);if(h)out.push(h[1])});return out.map(norm).filter(Boolean)};
+const altName=a=>String(a).split(/ \/ | \(/)[0].trim();
+const kI=it=>"i:"+it.slot,kE=it=>"e:"+it.slot,kA=(it,a)=>"a:"+it.slot+":"+altName(a);
+const worn=(s,str)=>{const m=ticks.eq[s.cls];if(!m)return "";for(const n of itemNames(str)){if(m.has(n))return m.get(n)}return ""};
+const haveOf=s=>new Set(ticks.state==="in"?ticks.specs[s.id]||[]:[]);
+function calc(s){
+  const have=haveOf(s);let it=0,en=0,enT=0,cov=0;
+  s.items.forEach(x=>{
+    const got=have.has(kI(x))||!!worn(s,x.item);if(got)it++;
+    if(s.enchants&&x.enchant){enT++;if(have.has(kE(x)))en++}
+    if(got||x.alts.some(a=>have.has(kA(x,a))||worn(s,a)))cov++;
+  });
+  return{it,total:s.items.length,en,enT,cov};
+}
+const box=(key,on,auto,label)=>`<span class="tk"><input type="checkbox" data-k="${esc(key)}"${on||auto?" checked":""}${auto?" disabled":""} aria-label="${esc(label)}"></span>`;
+const eqTag=who=>who?`<span class="eq" title="Worn by ${esc(who)} right now (from the Armory, updated about every hour)">Equipped</span>`:"";
+function progHtml(s){
+  const c=calc(s),pc=n=>Math.round(100*n/Math.max(1,c.total));
+  const st=(big,label,n,t)=>`<div class="pst"><b>${big}</b><span>${label}</span><div class="pbar"><i style="width:${Math.round(100*n/Math.max(1,t))}%"></i></div></div>`;
+  const cleared=(ticks.specs[s.id]||[]).length;
+  return `<div class="pst-row">${st(`${c.it} / ${c.total}`,"BiS items",c.it,c.total)}${c.enT?st(`${c.en} / ${c.enT}`,"Enchants",c.en,c.enT):""}${st(`${c.cov} / ${c.total}`,"Slots covered (BiS or an alternative)",c.cov,c.total)}</div>
+  <div class="pfoot"><p class="muted">Tick what you already have, bank and bags included. ${ticks.eq[s.cls]?`Gear your ${esc(s.cls)} is wearing is ticked for you.`:""} Your ticks are private and follow you to any device.</p>
+  ${ticks.confirm?`<span class="askrow"><span>Clear your ${cleared} tick${cleared==1?"":"s"} on this list?</span><button type="button" class="ghostbtn" data-clear="yes">Yes, clear</button><button type="button" class="ghostbtn" data-clear="no">Keep them</button></span>`:cleared?`<button type="button" class="ghostbtn" data-clear="ask">Clear my ticks</button>`:""}</div>
+  <div class="pstat${ticks.bad?" bad":""}" role="status">${esc(ticks.stat)}</div>`;
+}
+function paint(s){   // refresh the progress card and the row colors without redrawing the table
+  const p=document.getElementById("prog");if(!p||ticks.state!=="in")return;
+  p.innerHTML=progHtml(s);
+  const have=haveOf(s);
+  document.querySelectorAll("#view tr[data-slot]").forEach(tr=>{
+    const it=s.items.find(x=>x.slot===tr.dataset.slot);if(!it)return;
+    const got=have.has(kI(it))||!!worn(s,it.item),part=!got&&it.alts.some(a=>have.has(kA(it,a))||worn(s,a));
+    tr.classList.toggle("got",got);tr.classList.toggle("part",part);
+  });
+}
 function draw(s){
   const members=GUILD.filter(m=>m.cls===s.cls&&m.spec&&s.specs.some(n=>m.spec.toLowerCase().includes(n.toLowerCase())));
+  const on=ticks.state==="in",have=haveOf(s);
+  const top=on?`<div class="card prog" id="prog"></div>`:ticks.state==="out"&&API?`<div class="card prog"><div class="askrow"><p class="muted">Log in with Battle.net to tick off the gear you already have. Your ticks are private, saved to your login, and follow you to any device.</p><button type="button" class="btn" data-login>Log in</button></div></div>`:"";
+  const row=it=>{
+    const w=on?worn(s,it.item):"",gotI=have.has(kI(it))||!!w,part=on&&!gotI&&it.alts.some(a=>have.has(kA(it,a))||worn(s,a));
+    const item=on?`<div class="ar">${box(kI(it),have.has(kI(it)),!!w,"I have "+it.item)}<div>${DSTips.line(it.item)}${eqTag(w)}</div></div>`:DSTips.line(it.item);
+    const ench=!s.enchants?"":`<td data-l="Enchant">${on&&it.enchant?`<div class="ar">${box(kE(it),have.has(kE(it)),false,"I have the enchant on my "+it.slot)}<div>${esc(it.enchant)}</div></div>`:esc(it.enchant||"")}</td>`;
+    const alts=it.alts.map(a=>{const aw=on?worn(s,a):"";return on?`<div class="ar">${box(kA(it,a),have.has(kA(it,a)),!!aw,"I am using "+altName(a)+" for "+it.slot)}<div>${DSTips.line(a)}${eqTag(aw)}</div></div>`:`<div>${DSTips.line(a)}</div>`}).join("");
+    return `<tr data-slot="${esc(it.slot)}"${gotI?' class="got"':part?' class="part"':""}><td class="slot" data-l="Slot">${esc(it.slot)}</td><td class="item" data-l="BiS">${item}</td><td data-l="From">${esc(it.where||"")}</td>${ench}<td class="alt" data-l="Alternatives">${alts}</td></tr>`;
+  };
   document.getElementById("view").innerHTML=`<div class="head"><h3 style="color:${COLORS[s.cls]}">${esc(s.label)} ${s.cls}</h3></div>
   ${members.length?`<div class="who"><span class="muted">In the guild:</span>${members.map(m=>`<span class="tag" style="color:${COLORS[m.cls]};border-color:${COLORS[m.cls]}55">${esc(fullName(m))}</span>`).join("")}</div>`:""}
-  <div class="card bwrap"><table class="bis"><thead><tr><th>Slot</th><th>BiS item</th><th>Where to get it</th>${s.enchants?"<th>Enchant</th>":""}<th>Alternatives</th></tr></thead><tbody>
-  ${s.items.map(it=>`<tr><td class="slot" data-l="Slot">${esc(it.slot)}</td><td class="item" data-l="BiS">${DSTips.line(it.item)}</td><td data-l="From">${esc(it.where||"")}</td>${s.enchants?`<td data-l="Enchant">${esc(it.enchant||"")}</td>`:""}<td class="alt" data-l="Alternatives">${it.alts.map(a=>`<div>${DSTips.line(a)}</div>`).join("")}</td></tr>`).join("")}
+  ${top}<div class="card bwrap"><table class="bis"><thead><tr><th>Slot</th><th>BiS item</th><th>Where to get it</th>${s.enchants?"<th>Enchant</th>":""}<th>Alternatives</th></tr></thead><tbody>
+  ${s.items.map(row).join("")}
   </tbody></table></div>
   <p class="muted note">Source: ${esc(s.source)}</p>`;
+  if(on)paint(s);
 }
+// saving: a short pause after the last tick, then the whole list for that spec goes to the login service
+const timers={};
+const setStat=(t,bad)=>{ticks.stat=t;ticks.bad=!!bad;const e=document.querySelector("#prog .pstat");if(e){e.textContent=t;e.classList.toggle("bad",!!bad)}};
+function queueSave(id){clearTimeout(timers[id]);setStat("Saving…");timers[id]=setTimeout(()=>save(id),500)}
+async function save(id,keep){
+  clearTimeout(timers[id]);delete timers[id];
+  try{
+    const r=await fetch(API+"/api/bis",{method:"PUT",keepalive:!!keep,headers:{Authorization:"Bearer "+tok(),"Content-Type":"application/json"},body:JSON.stringify({spec:id,have:ticks.specs[id]||[]})});
+    if(r.status===401){ticks.state="out";if(cur)draw(cur);return}
+    if(!r.ok){setStat((await r.json().catch(()=>({}))).error||"Could not save that. Try again.",true);return}
+    if(!timers[id])setStat("Saved ✓");
+  }catch(_){setStat("Could not save. Check your connection and tick it again.",true)}
+}
+addEventListener("pagehide",()=>Object.keys(timers).forEach(id=>save(id,true)));
+function loadTicks(){
+  const t=tok();
+  if(!t||!API){ticks.state="out";return Promise.resolve()}
+  const head={Authorization:"Bearer "+t};
+  return Promise.all([fetch(API+"/api/bis",{headers:head}),fetch(API+"/api/me",{headers:head})]).then(async([b,m])=>{
+    if(!b.ok)throw 0;
+    ticks.specs=(await b.json()).specs||{};ticks.state="in";
+    const chars=m.ok?((await m.json()).characters||[]):[];
+    // gear they are wearing: the character pages the site already keeps for guild members (refreshed hourly)
+    const mine=GUILD.filter(g=>g.level>=10&&chars.some(c=>slugOf(c)===slugOf(g)));
+    await Promise.all(mine.map(g=>fetch("characters/"+slugOf(g)+".json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null).then(j=>{
+      if(!j||!Array.isArray(j.equipment))return;
+      const map=ticks.eq[g.cls]||(ticks.eq[g.cls]=new Map());
+      j.equipment.forEach(e=>{if(e&&e.name&&!map.has(norm(e.name)))map.set(norm(e.name),fullName(g))});
+    })));
+  }).catch(()=>{ticks.state="out"});
+}
+addEventListener("ds-session-end",()=>{ticks.state="out";ticks.specs={};ticks.eq={};if(cur)draw(cur)});
+document.getElementById("view").addEventListener("change",e=>{
+  const c=e.target.closest&&e.target.closest("input[data-k]");if(!c||ticks.state!=="in"||c.disabled||!cur)return;
+  const set=new Set(ticks.specs[cur.id]||[]);c.checked?set.add(c.dataset.k):set.delete(c.dataset.k);
+  ticks.specs[cur.id]=[...set];ticks.confirm=false;paint(cur);queueSave(cur.id);
+});
+document.getElementById("view").addEventListener("click",e=>{
+  if(e.target.closest("[data-login]")){const b=document.querySelector(".acct-btn[data-a=login]");if(b)b.click();return}
+  const k=e.target.closest("[data-clear]");if(!k||!cur)return;
+  const v=k.dataset.clear;
+  if(v==="ask"){ticks.confirm=true;paint(cur)}
+  else if(v==="no"){ticks.confirm=false;paint(cur)}
+  else{ticks.confirm=false;ticks.specs[cur.id]=[];paint(cur);draw(cur);queueSave(cur.id)}
+});
 document.getElementById("classes").addEventListener("click",e=>{const b=e.target.closest("[data-cls]");if(!b)return;const first=DATA.find(x=>x.cls===b.dataset.cls);pick(first.id)});
 document.getElementById("specs").addEventListener("click",e=>{const b=e.target.closest("[data-id]");if(b)pick(b.dataset.id)});
 window.addEventListener("hashchange",()=>{const id=location.hash.slice(1);if(DATA.some(x=>x.id===id))pick(id,true)});
@@ -151,6 +269,7 @@ Promise.all([fetch("bis.json").then(r=>r.json()),fetch("guild-data.json",{cache:
   const h=location.hash.slice(1),last=store.get("ds-bis-last");
   pick(DATA.some(x=>x.id===h)?h:DATA.some(x=>x.id===last)?last:"resto-druid",true);
   DSTips.ready(()=>{if(cur)draw(cur)});
+  return loadTicks().then(()=>{if(cur)draw(cur)});
 }).catch(()=>{document.getElementById("view").innerHTML='<p class="muted">Could not load the gear lists. Try refreshing the page.</p>'});
 </script>
 </body>
