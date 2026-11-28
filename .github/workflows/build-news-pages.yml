@@ -1,0 +1,37 @@
+name: Build news pages
+
+# Makes a real page for every news post (dirtysocks.net/news/<title>) so links shared in Discord and found on Google show the post's
+# own title, text and cover photo. Runs every night at midnight guild time (Eastern). To publish a brand-new post's page right away:
+# Actions tab -> "Build news pages" -> Run workflow.
+on:
+  schedule:
+    - cron: "0 0 * * *"
+      timezone: "America/New_York"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Never let two runs overlap
+concurrency:
+  group: build-news-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # the sitemap's "last changed" dates come from the page history
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build a page for every news post
+        run: node scripts/build-news.mjs
+      - name: Commit changed pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A news sitemap.xml
+          git diff --cached --quiet || (git commit -m "Build news pages" && git pull --rebase origin main && git push)

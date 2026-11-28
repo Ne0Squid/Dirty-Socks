@@ -59,10 +59,16 @@ simply appear for those accounts.
 - **Addresses:** a new post gets its address from the title when it is created (lower case, accents and symbols dropped, at most 60 characters; two posts with the same title get `-2`, `-3`, ...).
   **Editing the title does not change the address**, so links that were already shared keep working. Posts from before this existed use the title plus the last 5 characters of their id.
   The lookup ignores capital letters and stray characters, so `/news/Raid-Night-Moved` also opens it.
-- **How the page is drawn:** GitHub Pages only serves files that exist in the repo, and a new post is not a file. So `/news/<title>` falls through to `404.html`, which loads `news-post.js`; that
-  recognises the address, fetches the post from the Worker and draws it in place (title, cover, message, "More news", copy link), and shows the normal not-found page if there is no such post.
-  **Side effect:** the browser gets these pages with HTTP status 404 even though the visitor sees the post. Visitors never notice, but search engines will not index individual posts and link previews
-  (Discord, Facebook, ...) show the generic site card. If that ever matters, a GitHub Action can write a real `news/<title>.html` file for each post (static generation).
+- **Real pages, built every night.** The GitHub Action **Build news pages** (`.github/workflows/build-news-pages.yml`) runs at midnight Eastern, reads the posts from the Worker and writes
+  `news/<title>.html` for each one with `scripts/build-news.mjs`. Those pages answer with a normal 200, carry the post's own title, teaser and cover photo for link previews (Discord, Google,
+  Facebook) and are listed in `sitemap.xml`. The same job also keeps the sitemap's "last changed" dates up to date. Deleted posts lose their page, edited posts are rewritten.
+  **A brand-new post** does not have a page until the next build, so right after posting you can build it at once: GitHub -> Actions -> *Build news pages* -> *Run workflow* (about a minute).
+  Until then `/news/<title>` still works, but through the fallback below.
+- **The fallback, and keeping built pages honest.** A post with no built page falls through to `404.html`, which loads `news-post.js`; that recognises `/news/<title>`, fetches the post from the Worker and
+  draws it in place (so it works the second you post it). Side effect: that fallback is served with status 404, so search engines skip it and link previews show the generic site card until the page is built.
+  Built pages also run `news-post.js`: it asks the Worker whether the post changed since the build and, if so, shows the new version; if the post was deleted it says so.
+  The layout of a built page is `404.html` itself and the post is drawn by `news-format.js` (`page()`), so the menu, footer and holiday theme never drift. If `404.html` is rearranged so the builder can
+  no longer find its markers, the job fails loudly (GitHub emails you) instead of writing broken pages. Tests: `node scripts/test-build-news.mjs`.
 - **Cover photo:** a separate section under the title on the Post-News page. Pick or drag in a wide photo (shrunk to at most 1920px / 800 KB), see the slide exactly as it will look on a computer
   or on a phone, and use the two sliders to choose which part stays in view (the site crops the picture to fit; the choice is saved as `fx`/`fy`, 0-100). Without a cover the slide shows the guild crest.
   A replaced or removed cover is deleted from storage. The cover is also the picture in the Discord alert (if there is none, the first picture in the text).

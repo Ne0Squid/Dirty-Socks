@@ -116,5 +116,30 @@
     var btn = href ? '<a class="nsbtn" href="' + esc(href) + '">Read More ' + ARROW + "</a>" : '<span class="nsbtn">Read More ' + ARROW + "</span>";
     return '<article class="nslide' + (p.cover ? "" : " nocover") + '">' + bg + '<div class="nshade"></div><div class="ncap"><h3 class="nstitle">' + esc(p.title) + '</h3><p class="nsex">' + esc(excerpt(p.body)) + "</p>" + btn + "</div></article>";
   }
-  return { render: render, esc: esc, excerpt: excerpt, slide: slide };
+
+  // ---- A post's own page and the cards that link to it. Shared by the browser (news.html, a post opened before its page was built)
+  // and by scripts/build-news.mjs (the real pages), so both draw exactly the same thing. o = { api, keep } ----
+  // Dates are the guild's own time (Eastern), so a post says the same day to everyone and in the built page.
+  function day(t) { return new Date(t).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "America/New_York" }); }
+  function focus(p) { return "object-position:" + (+p.fx >= 0 ? +p.fx : 50) + "% " + (+p.fy >= 0 ? +p.fy : 50) + "%"; }
+  function imgUrl(p, o) { return String((o && o.api) || "").replace(/\/+$/, "") + "/api/news/img/" + p.cover; }
+  var CREST = '<img class="lh" src="/images/logo-horde.png" alt="" width="487" height="512"><img class="la" src="/images/logo-alliance.png" alt="" width="487" height="512">';
+  function card(p, o) {
+    var pic = p.cover ? '<img src="' + esc(imgUrl(p, o)) + '" alt="" loading="lazy" decoding="async" style="' + focus(p) + '">' : '<span class="ncnone" aria-hidden="true">' + CREST + "</span>";
+    return '<a class="ncard" href="/news/' + encodeURIComponent(p.slug) + ((o && o.keep) || "") + '"><span class="ncimg">' + pic + '</span><span class="nctext"><span class="ncdate">' + esc(day(p.at)) + "</span>"
+      + '<strong class="nctitle">' + esc(p.title) + '</strong><span class="ncex">' + esc(excerpt(p.body, 200)) + '</span><span class="ncgo">Read more &rarr;</span></span></a>';
+  }
+  function cards(list, o) { return '<div class="ngrid">' + list.map(function (p) { return card(p, o); }).join("") + "</div>"; }
+  function page(p, others, o) {
+    var keep = (o && o.keep) || "", api = (o && o.api) || "";
+    var cap = '<div class="ncap"><div class="npdate">' + esc(day(p.at)) + (p.edited ? " · updated " + esc(day(p.edited)) : "") + '</div><h1 class="nstitle">' + esc(p.title) + "</h1></div>";
+    var head = p.cover
+      ? '<header class="nphead"><img class="nbg" src="' + esc(imgUrl(p, o)) + '" alt="" style="' + focus(p) + '" fetchpriority="high" decoding="async"><div class="nshade"></div>' + cap + "</header>"
+      : '<header class="nphead nocover"><div class="nbg nbg-none" aria-hidden="true">' + CREST + '</div><div class="nshade"></div>' + cap + "</header>";
+    return '<article class="npage"><a class="nback" href="/news' + keep + '">&larr; All news</a>' + head
+      + (p.body ? '<div class="npbody nmd">' + (p.md ? render(p.body, api) : "<p>" + esc(p.body).replace(/\n/g, "<br>") + "</p>") + "</div>" : "")
+      + '<div class="npactions"><button type="button" class="btn ghost" data-copy>Copy link</button></div>'
+      + (others.length ? '<section class="npmore"><h2>More news</h2>' + cards(others.slice(0, 3), o) + '<p><a class="nall" href="/news' + keep + '">All news &rarr;</a></p></section>' : "") + "</article>";
+  }
+  return { render: render, esc: esc, excerpt: excerpt, slide: slide, day: day, card: card, cards: cards, page: page };
 });
