@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-28T06:53:49.145Z",
+  "generated": "2026-11-28T08:07:47.886Z",
   "guild": {
     "name": "Dirty Socks",
     "faction": "Horde"
@@ -99,7 +99,7 @@
       "color": "#c79c6e",
       "rank": 1,
       "hk": 11,
-      "spec": "Arms",
+      "spec": "Protection",
       "professions": [
         {
           "name": "Mining",
@@ -121,7 +121,7 @@
         },
         {
           "name": "Fishing",
-          "skill": 150,
+          "skill": 152,
           "max": 225,
           "primary": false
         },
@@ -649,7 +649,7 @@
     {
       "name": "The",
       "surname": "Parttimedad",
-      "level": 30,
+      "level": 31,
       "cls": "Hunter",
       "color": "#abd473",
       "rank": 4,
@@ -658,7 +658,7 @@
       "professions": [
         {
           "name": "Skinning",
-          "skill": 192,
+          "skill": 196,
           "max": 225,
           "primary": true
         },
@@ -1046,7 +1046,7 @@
         "capos-bank": 1,
         "thick-hogs": 16,
         "udderly-baked": 60,
-        "the-parttimedad": 30,
+        "the-parttimedad": 31,
         "zeik-soulfly": 20,
         "ember-highland": 13,
         "neo-squid": 11,
@@ -1120,6 +1120,1112 @@
     "Alchemy": "https://render.worldofwarcraft.com/forever-us/icons/56/136240.jpg"
   },
   "recipes": {
+    "Leatherworking": {
+      "Quickdraw Quiver": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Thick Leather Ammo Pouch": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Wicked Leather Gauntlets": [
+        "squid-zero",
+        "orken-magorken"
+      ],
+      "Handstitched Leather Boots": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked",
+        "neo-squid"
+      ],
+      "Handstitched Leather Pants": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked",
+        "neo-squid"
+      ],
+      "Light Armor Kit": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked",
+        "neo-squid"
+      ],
+      "Fine Leather Cloak": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Embossed Leather Vest": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Embossed Leather Boots": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Embossed Leather Cloak": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Medium Armor Kit": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Toughened Leather Armor": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Gray Leather Boots": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Dark Leather Cloak": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Light Leather": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked",
+        "neo-squid"
+      ],
+      "Handstitched Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Embossed Leather Gloves": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Embossed Leather Pants": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Hillman's Cloak": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Fine Leather Tunic": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Turtle Scale Breastplate": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Nightscape Pants": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Turtle Scale Helm": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Handstitched Leather Cloak": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked",
+        "neo-squid"
+      ],
+      "Handstitched Leather Bracers": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked",
+        "neo-squid"
+      ],
+      "Light Leather Quiver": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Small Leather Ammo Pouch": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Light Leather Bracers": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Light Leather Pants": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Nimble Leather Gloves": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Fletcher's Gloves": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Heavy Quiver": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Heavy Leather Ammo Pouch": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Frost Leather Cloak": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Dusky Bracers": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Dusky Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Fine Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Hillman's Leather Gloves": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Dark Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Hillman's Shoulders": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Toughened Leather Gloves": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Green Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Green Leather Bracers": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Cured Light Hide": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Cured Medium Hide": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Cured Heavy Hide": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Heavy Armor Kit": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Medium Leather": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Heavy Leather": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Thick Leather": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Barbaric Harness": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Cured Thick Hide": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Thick Armor Kit": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Nightscape Tunic": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Nightscape Headband": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Turtle Scale Bracers": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Dusky Leather Armor": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Handstitched Leather Vest": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked",
+        "neo-squid"
+      ],
+      "Dark Leather Pants": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Guardian Pants": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Barbaric Shoulders": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Guardian Gloves": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Camp Tent": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked",
+        "neo-squid"
+      ],
+      "Mender's Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Skycaller's Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Skirmisher's Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Warden's Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Stalker's Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Skulker's Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Prowler's Leather Belt": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Moonglow Boots": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Murloc Scale Shoes": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Dark Leather Boots": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Black Whelp Slippers": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Cured Rugged Hide": [
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Runic Leather Headband": [
+        "orken-magorken"
+      ],
+      "Rugged Leather": [
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Tough Scorpid Helm": [
+        "orken-magorken"
+      ],
+      "Rugged Armor Kit": [
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Tough Scorpid Shoulders": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Turtle Scale Leggings": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Nightscape Boots": [
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Earthen Leather Shoulders": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Swift Boots": [
+        "orken-magorken"
+      ],
+      "Guardian Leather Bracers": [
+        "orken-magorken"
+      ],
+      "Murloc Scale Belt": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Murloc Scale Breastplate": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Tough Scorpid Leggings": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Mender's Mail Gauntlets": [
+        "orken-magorken"
+      ],
+      "Skycaller's Mail Gauntlets": [
+        "orken-magorken"
+      ],
+      "Skycaller's Mail Boots": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Blue Suede Shoes": [
+        "orken-magorken"
+      ],
+      "Skycaller's Leather Shoes": [
+        "orken-magorken"
+      ],
+      "Warden's Leather Shoes": [
+        "orken-magorken",
+        "udderly-baked"
+      ],
+      "Light Leather Reagent Bag": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Deviate Scale Belt": [
+        "pope-feratu"
+      ],
+      "Dark Leather Tunic": [
+        "pope-feratu"
+      ],
+      "Wild Leather Leggings": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Wild Leather Boots": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Feathered Breastplate": [
+        "pope-feratu"
+      ],
+      "Hillman's Leather Vest": [
+        "pope-feratu"
+      ],
+      "Turtle Scale Gloves": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Wild Leather Shoulders": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Big Voodoo Mask": [
+        "pope-feratu"
+      ],
+      "Tough Scorpid Gloves": [
+        "pope-feratu"
+      ],
+      "Wild Leather Vest": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Wolfshead Helm": [
+        "pope-feratu"
+      ],
+      "Green Whelp Bracers": [
+        "pope-feratu"
+      ],
+      "Kodo Hide Bag": [
+        "pope-feratu"
+      ],
+      "Dusky Leather Leggings": [
+        "pope-feratu"
+      ],
+      "Big Voodoo Robe": [
+        "pope-feratu"
+      ],
+      "Wild Leather Helmet": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Wild Leather Cloak": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Guardian Cloak": [
+        "pope-feratu"
+      ],
+      "Defender's Leather Kilt": [
+        "pope-feratu"
+      ],
+      "Defender's Leather Helm": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Forceful Heavy Armor Kit": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Mystic Heavy Armor Kit": [
+        "pope-feratu"
+      ],
+      "Defender's Leather Tunic": [
+        "pope-feratu"
+      ],
+      "Brawler's Leather Hood": [
+        "pope-feratu"
+      ],
+      "Forceful Medium Armor Kit": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Mystic Medium Armor Kit": [
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Brawler's Leather Gloves": [
+        "pope-feratu"
+      ],
+      "Wisdom's Leather Armor": [
+        "pope-feratu"
+      ],
+      "Brawler's Leather Belt": [
+        "pope-feratu"
+      ],
+      "Nightscape Shoulders": [
+        "udderly-baked"
+      ],
+      "Rugged Leather Pants": [
+        "udderly-baked"
+      ],
+      "Dark Leather Gloves": [
+        "udderly-baked"
+      ],
+      "Barbaric Leggings": [
+        "udderly-baked"
+      ],
+      "Prowler's Leather Shoes": [
+        "udderly-baked"
+      ]
+    },
+    "Skinning": {
+      "Skinning": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "capo-shoots",
+        "mrs-capo",
+        "emo-erling",
+        "the-parttimedad",
+        "udderly-baked",
+        "ember-highland"
+      ],
+      "Camp Chair": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "capo-shoots",
+        "mrs-capo",
+        "emo-erling",
+        "the-parttimedad",
+        "udderly-baked"
+      ],
+      "Field Guide": [
+        "pope-feratu"
+      ]
+    },
+    "Cooking": {
+      "Charred Wolf Meat": [
+        "squid-zero",
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon",
+        "cameron-croucher",
+        "capo-shoots",
+        "rowdy-highland",
+        "mrs-capo",
+        "emo-erling",
+        "mr-capo",
+        "thick-hogs",
+        "udderly-baked",
+        "zeik-soulfly",
+        "neo-squid",
+        "ember-highland"
+      ],
+      "Spiced Wolf Meat": [
+        "squid-zero",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "cameron-croucher",
+        "rowdy-highland",
+        "udderly-baked",
+        "zeik-soulfly"
+      ],
+      "Roasted Boar Meat": [
+        "squid-zero",
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon",
+        "cameron-croucher",
+        "capo-shoots",
+        "rowdy-highland",
+        "mrs-capo",
+        "emo-erling",
+        "mr-capo",
+        "thick-hogs",
+        "udderly-baked",
+        "zeik-soulfly",
+        "neo-squid",
+        "ember-highland"
+      ],
+      "Coyote Steak": [
+        "squid-zero",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "zeik-soulfly"
+      ],
+      "Crab Cake": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Brilliant Smallfish": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon",
+        "udderly-baked"
+      ],
+      "Longjaw Mud Snapper": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Bristle Whisker Catfish": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Boiled Clams": [
+        "squid-zero",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "zeik-soulfly"
+      ],
+      "Herb Baked Egg": [
+        "squid-zero",
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon",
+        "cameron-croucher",
+        "capo-shoots",
+        "rowdy-highland",
+        "mrs-capo",
+        "emo-erling",
+        "mr-capo",
+        "thick-hogs",
+        "udderly-baked",
+        "zeik-soulfly",
+        "neo-squid",
+        "ember-highland"
+      ],
+      "Basic Campfire": [
+        "squid-zero",
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon",
+        "cameron-croucher",
+        "capo-shoots",
+        "rowdy-highland",
+        "mrs-capo",
+        "emo-erling",
+        "mr-capo",
+        "thick-hogs",
+        "udderly-baked",
+        "zeik-soulfly",
+        "neo-squid",
+        "ember-highland"
+      ],
+      "Mithril Headed Trout": [
+        "needmore-beers",
+        "scott-frost"
+      ],
+      "Spotted Yellowtail": [
+        "needmore-beers",
+        "scott-frost",
+        "pope-feratu"
+      ],
+      "Filet of Redgill": [
+        "needmore-beers"
+      ],
+      "Mightfish Steak": [
+        "needmore-beers"
+      ],
+      "Baked Salmon": [
+        "needmore-beers"
+      ],
+      "Slitherskin Mackerel": [
+        "needmore-beers",
+        "scott-frost",
+        "pope-feratu"
+      ],
+      "Goblin Deviled Clams": [
+        "needmore-beers",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Twice-Spiced Raptor Slice": [
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Briny Seafood Stew": [
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Plain Ol' Paletusk": [
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Tender Wolf Steak": [
+        "scott-frost",
+        "pope-feratu"
+      ],
+      "Big Bear Steak": [
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Hot Lion Chops": [
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked"
+      ],
+      "Soothing Turtle Bisque": [
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Smoked Sagefish": [
+        "scott-frost",
+        "pope-feratu"
+      ],
+      "Sagefish Delight": [
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Journeyman Campfire": [
+        "scott-frost",
+        "pope-feratu"
+      ],
+      "Rainbow Fin Albacore": [
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Smoked Bear Meat": [
+        "scott-frost",
+        "pope-feratu"
+      ],
+      "Steaming Stag Steak": [
+        "scott-frost"
+      ],
+      "Barbecued Buzzard Wing": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Dry Pork Ribs": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Spider Sausage": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Crispy Lizard Tail": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Raging Raptor Ribs": [
+        "orken-magorken"
+      ],
+      "Tasty Raptor Bites": [
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Expert Campfire": [
+        "orken-magorken"
+      ],
+      "Crispy Bat Wing": [
+        "pope-feratu",
+        "canigeta-summon"
+      ],
+      "Scorpid Surprise": [
+        "pope-feratu"
+      ],
+      "Strider Stew": [
+        "pope-feratu"
+      ],
+      "Thistle Tea": [
+        "pope-feratu"
+      ]
+    },
+    "Fishing": {
+      "Fishing": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon",
+        "cameron-croucher",
+        "udderly-baked",
+        "zeik-soulfly"
+      ],
+      "Fish Bowl": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "udderly-baked",
+        "zeik-soulfly"
+      ]
+    },
+    "First Aid": {
+      "Silk Bandage": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "cameron-croucher",
+        "capo-shoots"
+      ],
+      "Heavy Silk Bandage": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "capo-shoots"
+      ],
+      "Anti-Venom": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu",
+        "zeik-soulfly"
+      ],
+      "Linen Bandage": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "cameron-croucher",
+        "capo-shoots",
+        "rowdy-highland",
+        "hotdog-nomustard",
+        "mrs-capo",
+        "emo-erling",
+        "mr-capo",
+        "the-parttimedad",
+        "zeik-soulfly",
+        "neo-squid",
+        "ember-highland"
+      ],
+      "Heavy Linen Bandage": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "cameron-croucher",
+        "capo-shoots",
+        "rowdy-highland",
+        "hotdog-nomustard",
+        "mrs-capo",
+        "the-parttimedad",
+        "zeik-soulfly"
+      ],
+      "Wool Bandage": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "cameron-croucher",
+        "capo-shoots",
+        "hotdog-nomustard",
+        "zeik-soulfly"
+      ],
+      "Heavy Wool Bandage": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "cameron-croucher",
+        "capo-shoots",
+        "hotdog-nomustard"
+      ],
+      "Runecloth Bandage": [
+        "squid-zero",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Heavy Runecloth Bandage": [
+        "squid-zero"
+      ],
+      "Mageweave Bandage": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Heavy Mageweave Bandage": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "First Aid Kit": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "cameron-croucher",
+        "capo-shoots",
+        "hotdog-nomustard",
+        "mrs-capo",
+        "mr-capo",
+        "zeik-soulfly"
+      ],
+      "Minor Healing Potion": [
+        "squid-zero",
+        "needmore-beers",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "emo-erling",
+        "the-parttimedad",
+        "zeik-soulfly"
+      ],
+      "Lesser Healing Potion": [
+        "squid-zero",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "zeik-soulfly"
+      ],
+      "Healing Potion": [
+        "squid-zero",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Major Healing Potion": [
+        "squid-zero",
+        "scott-frost"
+      ],
+      "Woolen Tourniquet": [
+        "squid-zero",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Powerful Poultice": [
+        "squid-zero"
+      ],
+      "Simple Poultice": [
+        "squid-zero",
+        "orken-magorken",
+        "pope-feratu"
+      ],
+      "Strong Anti-Venom": [
+        "pope-feratu"
+      ],
+      "Greater Healing Potion": [
+        "capo-shoots"
+      ]
+    },
     "Mining": {
       "Smelt Gold": [
         "needmore-beers",
@@ -1145,8 +2251,8 @@
         "capo-shoots",
         "capo-shoots",
         "rowdy-highland",
-        "mrs-capo",
         "hotdog-nomustard",
+        "mrs-capo",
         "the-parttimedad"
       ],
       "Smelt Silver": [
@@ -1172,8 +2278,8 @@
         "scott-frost",
         "capo-shoots",
         "rowdy-highland",
-        "mrs-capo",
         "hotdog-nomustard",
+        "mrs-capo",
         "the-parttimedad"
       ],
       "Smelt Mithril": [
@@ -1185,8 +2291,8 @@
         "needmore-beers",
         "scott-frost",
         "capo-shoots",
-        "mrs-capo",
         "hotdog-nomustard",
+        "mrs-capo",
         "the-parttimedad"
       ]
     },
@@ -1322,1112 +2428,6 @@
       ],
       "Justicar's Boots": [
         "scott-frost"
-      ]
-    },
-    "Cooking": {
-      "Mithril Headed Trout": [
-        "needmore-beers",
-        "scott-frost"
-      ],
-      "Charred Wolf Meat": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "annie-turvy",
-        "plucky-recks",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu",
-        "canigeta-summon",
-        "rowdy-highland",
-        "mrs-capo",
-        "mr-capo",
-        "emo-erling",
-        "thick-hogs",
-        "udderly-baked",
-        "zeik-soulfly",
-        "ember-highland",
-        "neo-squid"
-      ],
-      "Roasted Boar Meat": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "annie-turvy",
-        "plucky-recks",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu",
-        "canigeta-summon",
-        "rowdy-highland",
-        "mrs-capo",
-        "mr-capo",
-        "emo-erling",
-        "thick-hogs",
-        "udderly-baked",
-        "zeik-soulfly",
-        "ember-highland",
-        "neo-squid"
-      ],
-      "Spotted Yellowtail": [
-        "needmore-beers",
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Filet of Redgill": [
-        "needmore-beers"
-      ],
-      "Mightfish Steak": [
-        "needmore-beers"
-      ],
-      "Baked Salmon": [
-        "needmore-beers"
-      ],
-      "Brilliant Smallfish": [
-        "needmore-beers",
-        "scott-frost",
-        "squid-zero",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon",
-        "udderly-baked"
-      ],
-      "Slitherskin Mackerel": [
-        "needmore-beers",
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Longjaw Mud Snapper": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Bristle Whisker Catfish": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Goblin Deviled Clams": [
-        "needmore-beers",
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Herb Baked Egg": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "annie-turvy",
-        "plucky-recks",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu",
-        "canigeta-summon",
-        "rowdy-highland",
-        "mrs-capo",
-        "mr-capo",
-        "emo-erling",
-        "thick-hogs",
-        "udderly-baked",
-        "zeik-soulfly",
-        "ember-highland",
-        "neo-squid"
-      ],
-      "Basic Campfire": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "annie-turvy",
-        "plucky-recks",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu",
-        "canigeta-summon",
-        "rowdy-highland",
-        "mrs-capo",
-        "mr-capo",
-        "emo-erling",
-        "thick-hogs",
-        "udderly-baked",
-        "zeik-soulfly",
-        "ember-highland",
-        "neo-squid"
-      ],
-      "Twice-Spiced Raptor Slice": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Briny Seafood Stew": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Plain Ol' Paletusk": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Barbecued Buzzard Wing": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Big Bear Steak": [
-        "orken-magorken",
-        "scott-frost",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Hot Lion Chops": [
-        "orken-magorken",
-        "scott-frost",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Soothing Turtle Bisque": [
-        "orken-magorken",
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Spiced Wolf Meat": [
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "plucky-recks",
-        "cameron-croucher",
-        "pope-feratu",
-        "rowdy-highland",
-        "udderly-baked",
-        "zeik-soulfly"
-      ],
-      "Coyote Steak": [
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu",
-        "zeik-soulfly"
-      ],
-      "Crab Cake": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Dry Pork Ribs": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Spider Sausage": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Sagefish Delight": [
-        "orken-magorken",
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Crispy Lizard Tail": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Rainbow Fin Albacore": [
-        "orken-magorken",
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Boiled Clams": [
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu",
-        "zeik-soulfly"
-      ],
-      "Raging Raptor Ribs": [
-        "orken-magorken"
-      ],
-      "Tasty Raptor Bites": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Expert Campfire": [
-        "orken-magorken"
-      ],
-      "Tender Wolf Steak": [
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Smoked Sagefish": [
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Journeyman Campfire": [
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Smoked Bear Meat": [
-        "scott-frost",
-        "pope-feratu"
-      ],
-      "Steaming Stag Steak": [
-        "scott-frost"
-      ],
-      "Crispy Bat Wing": [
-        "pope-feratu",
-        "canigeta-summon"
-      ],
-      "Scorpid Surprise": [
-        "pope-feratu"
-      ],
-      "Strider Stew": [
-        "pope-feratu"
-      ],
-      "Thistle Tea": [
-        "pope-feratu"
-      ]
-    },
-    "Fishing": {
-      "Fishing": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "plucky-recks",
-        "cameron-croucher",
-        "pope-feratu",
-        "canigeta-summon",
-        "udderly-baked",
-        "zeik-soulfly"
-      ],
-      "Fish Bowl": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked",
-        "zeik-soulfly"
-      ]
-    },
-    "First Aid": {
-      "Silk Bandage": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu"
-      ],
-      "Heavy Silk Bandage": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "capo-shoots",
-        "pope-feratu"
-      ],
-      "Linen Bandage": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "plucky-recks",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu",
-        "rowdy-highland",
-        "mrs-capo",
-        "mr-capo",
-        "hotdog-nomustard",
-        "emo-erling",
-        "the-parttimedad",
-        "zeik-soulfly",
-        "ember-highland",
-        "neo-squid"
-      ],
-      "Heavy Linen Bandage": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "plucky-recks",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu",
-        "rowdy-highland",
-        "mrs-capo",
-        "hotdog-nomustard",
-        "the-parttimedad",
-        "zeik-soulfly"
-      ],
-      "Wool Bandage": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "plucky-recks",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu",
-        "hotdog-nomustard",
-        "zeik-soulfly"
-      ],
-      "Heavy Wool Bandage": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "plucky-recks",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu",
-        "hotdog-nomustard"
-      ],
-      "Mageweave Bandage": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Heavy Mageweave Bandage": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "First Aid Kit": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "plucky-recks",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu",
-        "mrs-capo",
-        "mr-capo",
-        "hotdog-nomustard",
-        "zeik-soulfly"
-      ],
-      "Minor Healing Potion": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu",
-        "emo-erling",
-        "the-parttimedad",
-        "zeik-soulfly"
-      ],
-      "Anti-Venom": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "zeik-soulfly"
-      ],
-      "Runecloth Bandage": [
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Lesser Healing Potion": [
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu",
-        "zeik-soulfly"
-      ],
-      "Healing Potion": [
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Woolen Tourniquet": [
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Simple Poultice": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Major Healing Potion": [
-        "scott-frost",
-        "squid-zero"
-      ],
-      "Heavy Runecloth Bandage": [
-        "squid-zero"
-      ],
-      "Powerful Poultice": [
-        "squid-zero"
-      ],
-      "Greater Healing Potion": [
-        "capo-shoots"
-      ],
-      "Strong Anti-Venom": [
-        "pope-feratu"
-      ]
-    },
-    "Leatherworking": {
-      "Quickdraw Quiver": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Thick Leather Ammo Pouch": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Cured Rugged Hide": [
-        "orken-magorken",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Wicked Leather Gauntlets": [
-        "orken-magorken",
-        "squid-zero"
-      ],
-      "Runic Leather Headband": [
-        "orken-magorken"
-      ],
-      "Rugged Leather": [
-        "orken-magorken",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Handstitched Leather Boots": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked",
-        "neo-squid"
-      ],
-      "Handstitched Leather Pants": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked",
-        "neo-squid"
-      ],
-      "Light Armor Kit": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked",
-        "neo-squid"
-      ],
-      "Fine Leather Cloak": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Embossed Leather Vest": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Embossed Leather Boots": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Embossed Leather Cloak": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Medium Armor Kit": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Toughened Leather Armor": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Gray Leather Boots": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Dark Leather Cloak": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Tough Scorpid Helm": [
-        "orken-magorken"
-      ],
-      "Light Leather": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked",
-        "neo-squid"
-      ],
-      "Rugged Armor Kit": [
-        "orken-magorken",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Tough Scorpid Shoulders": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Handstitched Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Embossed Leather Gloves": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Embossed Leather Pants": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Hillman's Cloak": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Fine Leather Tunic": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Turtle Scale Breastplate": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Nightscape Pants": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Turtle Scale Helm": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Turtle Scale Leggings": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Nightscape Boots": [
-        "orken-magorken",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Handstitched Leather Cloak": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked",
-        "neo-squid"
-      ],
-      "Handstitched Leather Bracers": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked",
-        "neo-squid"
-      ],
-      "Light Leather Quiver": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Small Leather Ammo Pouch": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Light Leather Bracers": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Light Leather Pants": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Nimble Leather Gloves": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Fletcher's Gloves": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Earthen Leather Shoulders": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Heavy Quiver": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Heavy Leather Ammo Pouch": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Frost Leather Cloak": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Dusky Bracers": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Dusky Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Swift Boots": [
-        "orken-magorken"
-      ],
-      "Fine Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Hillman's Leather Gloves": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Dark Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Hillman's Shoulders": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Toughened Leather Gloves": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Green Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Green Leather Bracers": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Guardian Leather Bracers": [
-        "orken-magorken"
-      ],
-      "Cured Light Hide": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Cured Medium Hide": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Cured Heavy Hide": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Heavy Armor Kit": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Medium Leather": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Heavy Leather": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Thick Leather": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Barbaric Harness": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Murloc Scale Belt": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Murloc Scale Breastplate": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Cured Thick Hide": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Thick Armor Kit": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Nightscape Tunic": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Nightscape Headband": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Turtle Scale Bracers": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Tough Scorpid Leggings": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Dusky Leather Armor": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Handstitched Leather Vest": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked",
-        "neo-squid"
-      ],
-      "Dark Leather Pants": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Guardian Pants": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Barbaric Shoulders": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Guardian Gloves": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Camp Tent": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked",
-        "neo-squid"
-      ],
-      "Mender's Mail Gauntlets": [
-        "orken-magorken"
-      ],
-      "Skycaller's Mail Gauntlets": [
-        "orken-magorken"
-      ],
-      "Skycaller's Mail Boots": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Blue Suede Shoes": [
-        "orken-magorken"
-      ],
-      "Skycaller's Leather Shoes": [
-        "orken-magorken"
-      ],
-      "Warden's Leather Shoes": [
-        "orken-magorken",
-        "udderly-baked"
-      ],
-      "Mender's Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Skycaller's Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Skirmisher's Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Warden's Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Stalker's Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Skulker's Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Prowler's Leather Belt": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Moonglow Boots": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Murloc Scale Shoes": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Dark Leather Boots": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Black Whelp Slippers": [
-        "orken-magorken",
-        "squid-zero",
-        "pope-feratu"
-      ],
-      "Light Leather Reagent Bag": [
-        "orken-magorken",
-        "pope-feratu"
-      ],
-      "Deviate Scale Belt": [
-        "pope-feratu"
-      ],
-      "Dark Leather Tunic": [
-        "pope-feratu"
-      ],
-      "Wild Leather Leggings": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Wild Leather Boots": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Feathered Breastplate": [
-        "pope-feratu"
-      ],
-      "Hillman's Leather Vest": [
-        "pope-feratu"
-      ],
-      "Turtle Scale Gloves": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Wild Leather Shoulders": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Big Voodoo Mask": [
-        "pope-feratu"
-      ],
-      "Tough Scorpid Gloves": [
-        "pope-feratu"
-      ],
-      "Wild Leather Vest": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Wolfshead Helm": [
-        "pope-feratu"
-      ],
-      "Green Whelp Bracers": [
-        "pope-feratu"
-      ],
-      "Kodo Hide Bag": [
-        "pope-feratu"
-      ],
-      "Dusky Leather Leggings": [
-        "pope-feratu"
-      ],
-      "Big Voodoo Robe": [
-        "pope-feratu"
-      ],
-      "Wild Leather Helmet": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Wild Leather Cloak": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Guardian Cloak": [
-        "pope-feratu"
-      ],
-      "Defender's Leather Kilt": [
-        "pope-feratu"
-      ],
-      "Defender's Leather Helm": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Forceful Heavy Armor Kit": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Mystic Heavy Armor Kit": [
-        "pope-feratu"
-      ],
-      "Defender's Leather Tunic": [
-        "pope-feratu"
-      ],
-      "Brawler's Leather Hood": [
-        "pope-feratu"
-      ],
-      "Forceful Medium Armor Kit": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Mystic Medium Armor Kit": [
-        "pope-feratu",
-        "udderly-baked"
-      ],
-      "Brawler's Leather Gloves": [
-        "pope-feratu"
-      ],
-      "Wisdom's Leather Armor": [
-        "pope-feratu"
-      ],
-      "Brawler's Leather Belt": [
-        "pope-feratu"
-      ],
-      "Nightscape Shoulders": [
-        "udderly-baked"
-      ],
-      "Rugged Leather Pants": [
-        "udderly-baked"
-      ],
-      "Dark Leather Gloves": [
-        "udderly-baked"
-      ],
-      "Barbaric Leggings": [
-        "udderly-baked"
-      ],
-      "Prowler's Leather Shoes": [
-        "udderly-baked"
-      ]
-    },
-    "Skinning": {
-      "Skinning": [
-        "orken-magorken",
-        "squid-zero",
-        "capo-shoots",
-        "pope-feratu",
-        "mrs-capo",
-        "emo-erling",
-        "the-parttimedad",
-        "udderly-baked",
-        "ember-highland"
-      ],
-      "Camp Chair": [
-        "orken-magorken",
-        "squid-zero",
-        "capo-shoots",
-        "pope-feratu",
-        "mrs-capo",
-        "emo-erling",
-        "the-parttimedad",
-        "udderly-baked"
-      ],
-      "Field Guide": [
-        "pope-feratu"
       ]
     },
     "Tailoring": {
@@ -3543,15 +3543,15 @@
     "Scarlet Commander Mograine kills (Scarlet Monastery)": {
       "total": 13,
       "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
         "squid-zero",
+        "needmore-beers",
         "annie-turvy",
-        "plucky-recks",
-        "capo-shoots",
+        "scott-frost",
+        "orken-magorken",
         "pope-feratu",
-        "canigeta-summon"
+        "plucky-recks",
+        "canigeta-summon",
+        "capo-shoots"
       ],
       "first": 1794550690000,
       "seen": null
@@ -3559,10 +3559,10 @@
     "Edwin VanCleef Kills (Deadmines)": {
       "total": 7,
       "members": [
-        "needmore-beers",
-        "scott-frost",
         "squid-zero",
+        "needmore-beers",
         "annie-turvy",
+        "scott-frost",
         "plucky-recks",
         "canigeta-summon",
         "hotdog-nomustard"
@@ -3573,44 +3573,28 @@
     "Rath'mael Kills (Ruins of Lordaeron)": {
       "total": 10,
       "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
         "squid-zero",
+        "needmore-beers",
         "annie-turvy",
-        "plucky-recks",
-        "cameron-croucher",
+        "scott-frost",
+        "orken-magorken",
         "pope-feratu",
+        "plucky-recks",
         "canigeta-summon",
+        "cameron-croucher",
         "the-parttimedad"
       ],
       "first": 1793920466000,
       "seen": null
     },
-    "Shade of the Archmage Kills (City of Dalaran)": {
-      "total": 9,
-      "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "annie-turvy",
-        "plucky-recks",
-        "cameron-croucher",
-        "capo-shoots",
-        "pope-feratu",
-        "canigeta-summon"
-      ],
-      "first": 1794299959000,
-      "seen": null
-    },
     "Blazeroar Kills (Alcaz Prison)": {
       "total": 9,
       "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
         "squid-zero",
+        "needmore-beers",
         "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
         "pope-feratu",
         "canigeta-summon"
       ],
@@ -3620,19 +3604,19 @@
     "Bazzalan kills (Ragefire Chasm)": {
       "total": 22,
       "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
         "squid-zero",
+        "needmore-beers",
         "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
         "plucky-recks",
+        "canigeta-summon",
         "cameron-croucher",
         "capo-shoots",
-        "pope-feratu",
-        "canigeta-summon",
+        "hotdog-nomustard",
         "mrs-capo",
         "mr-capo",
-        "hotdog-nomustard",
         "thick-hogs",
         "the-parttimedad",
         "zeik-soulfly"
@@ -3643,37 +3627,145 @@
     "Mutanus the Devourer kills (Wailing Caverns)": {
       "total": 22,
       "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
         "squid-zero",
+        "needmore-beers",
         "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
         "plucky-recks",
+        "canigeta-summon",
         "cameron-croucher",
         "capo-shoots",
-        "pope-feratu",
-        "canigeta-summon",
+        "hotdog-nomustard",
         "mrs-capo",
         "mr-capo",
-        "hotdog-nomustard",
         "the-parttimedad",
         "zeik-soulfly"
       ],
       "first": 1794087023000,
       "seen": null
     },
+    "Amnennar the Coldbringer kills (Razorfen Downs)": {
+      "total": 9,
+      "members": [
+        "squid-zero",
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "canigeta-summon",
+        "cameron-croucher"
+      ],
+      "first": 1794540894000,
+      "seen": null
+    },
+    "High Inquisitor Whitemane kills (Scarlet Monastery)": {
+      "total": 13,
+      "members": [
+        "squid-zero",
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon",
+        "capo-shoots"
+      ],
+      "first": 1794550690000,
+      "seen": null
+    },
+    "Archaedas kills (Uldaman)": {
+      "total": 21,
+      "members": [
+        "squid-zero",
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon"
+      ],
+      "first": 1794883170000,
+      "seen": null
+    },
+    "Chief Ukorz Sandscalp kills (Zul'Farrak)": {
+      "total": 14,
+      "members": [
+        "squid-zero",
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon"
+      ],
+      "first": 1795380089000,
+      "seen": "2026-11-19T05:51:33.057Z"
+    },
+    "Princess Theradras kills (Maraudon)": {
+      "total": 8,
+      "members": [
+        "squid-zero",
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "canigeta-summon"
+      ],
+      "first": 1795115127000,
+      "seen": "2026-11-19T19:53:55.057Z"
+    },
+    "Shade of Eranikus kills (Sunken Temple)": {
+      "total": 15,
+      "members": [
+        "squid-zero",
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon",
+        "udderly-baked"
+      ],
+      "first": 1795492977000,
+      "seen": "2026-11-24T04:54:55.483Z"
+    },
+    "Shade of the Archmage Kills (City of Dalaran)": {
+      "total": 10,
+      "members": [
+        "needmore-beers",
+        "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
+        "plucky-recks",
+        "canigeta-summon",
+        "cameron-croucher",
+        "capo-shoots",
+        "the-parttimedad"
+      ],
+      "first": 1794299959000,
+      "seen": null
+    },
     "Archmage Arugal kills (Shadowfang Keep)": {
       "total": 10,
       "members": [
         "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
         "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
         "plucky-recks",
+        "canigeta-summon",
         "cameron-croucher",
         "capo-shoots",
-        "pope-feratu",
-        "canigeta-summon",
         "the-parttimedad"
       ],
       "first": 1793948659000,
@@ -3683,12 +3775,12 @@
       "total": 9,
       "members": [
         "needmore-beers",
-        "scott-frost",
         "annie-turvy",
-        "cameron-croucher",
-        "capo-shoots",
+        "scott-frost",
         "pope-feratu",
         "canigeta-summon",
+        "cameron-croucher",
+        "capo-shoots",
         "hotdog-nomustard",
         "the-parttimedad"
       ],
@@ -3699,14 +3791,14 @@
       "total": 10,
       "members": [
         "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
         "annie-turvy",
+        "scott-frost",
+        "orken-magorken",
+        "pope-feratu",
         "plucky-recks",
+        "canigeta-summon",
         "cameron-croucher",
         "capo-shoots",
-        "pope-feratu",
-        "canigeta-summon",
         "udderly-baked"
       ],
       "first": 1794175389000,
@@ -3716,115 +3808,24 @@
       "total": 7,
       "members": [
         "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
         "annie-turvy",
-        "cameron-croucher",
+        "scott-frost",
+        "orken-magorken",
         "pope-feratu",
-        "canigeta-summon"
+        "canigeta-summon",
+        "cameron-croucher"
       ],
       "first": 1794421901000,
       "seen": null
-    },
-    "Amnennar the Coldbringer kills (Razorfen Downs)": {
-      "total": 9,
-      "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "annie-turvy",
-        "cameron-croucher",
-        "pope-feratu",
-        "canigeta-summon"
-      ],
-      "first": 1794540894000,
-      "seen": null
-    },
-    "High Inquisitor Whitemane kills (Scarlet Monastery)": {
-      "total": 13,
-      "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "annie-turvy",
-        "plucky-recks",
-        "capo-shoots",
-        "pope-feratu",
-        "canigeta-summon"
-      ],
-      "first": 1794550690000,
-      "seen": null
-    },
-    "Archaedas kills (Uldaman)": {
-      "total": 21,
-      "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon"
-      ],
-      "first": 1794883170000,
-      "seen": null
-    },
-    "Chief Ukorz Sandscalp kills (Zul'Farrak)": {
-      "total": 14,
-      "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon"
-      ],
-      "first": 1795380089000,
-      "seen": "2026-11-19T05:51:33.057Z"
-    },
-    "Princess Theradras kills (Maraudon)": {
-      "total": 8,
-      "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "annie-turvy",
-        "pope-feratu",
-        "canigeta-summon"
-      ],
-      "first": 1795115127000,
-      "seen": "2026-11-19T19:53:55.057Z"
-    },
-    "Shade of Eranikus kills (Sunken Temple)": {
-      "total": 15,
-      "members": [
-        "needmore-beers",
-        "orken-magorken",
-        "scott-frost",
-        "squid-zero",
-        "annie-turvy",
-        "plucky-recks",
-        "pope-feratu",
-        "canigeta-summon",
-        "udderly-baked"
-      ],
-      "first": 1795492977000,
-      "seen": "2026-11-24T04:54:55.483Z"
     },
     "Lyn the Ignored Kills (City of Dalaran)": {
       "total": 5,
       "members": [
         "annie-turvy",
-        "cameron-croucher",
-        "capo-shoots",
         "pope-feratu",
-        "canigeta-summon"
+        "canigeta-summon",
+        "cameron-croucher",
+        "capo-shoots"
       ],
       "first": 1794298578000,
       "seen": "2026-11-19T04:52:37.945Z"
@@ -3881,7 +3882,7 @@
       "seen": "2026-11-26T00:48:37.922Z"
     },
     "Baron Rivendare kills (Stratholme)": {
-      "total": 7,
+      "total": 8,
       "members": [
         "annie-turvy",
         "udderly-baked"
