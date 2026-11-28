@@ -240,15 +240,20 @@ function render(d){
   // Finish order: the day each character first shows level 60 in the saved daily history (same-day finishes sort by name).
   const hist=(d.history&&d.history.days)||{},histDays=Object.keys(hist).sort();
   const doneOn=m=>{const s=slugOf(m);return histDays.find(k=>hist[k][s]>=60)||""};
-  const finished=roster.filter(m=>m.level>=60).sort((a,b)=>doneOn(a).localeCompare(doneOn(b))||a.name.localeCompare(b.name));
+  // The Hall of Fame list (guild-data.json "fame") is the real finish order and date (US Eastern, like the Hall of Fame page); the daily history above is only the fallback.
+  const famePos={},fameAt={};((d.fame&&d.fame.reached60)||[]).forEach((w,i)=>{famePos[w.slug]=i;fameAt[w.slug]=w.at});
+  const fmtDayET=t=>new Date(t).toLocaleDateString("en-US",{month:"short",day:"numeric",timeZone:"America/New_York"});
+  const doneLabel=m=>{const a=fameAt[slugOf(m)];if(a)return fmtDayET(a);const k=doneOn(m);return k?fmtDayUTC(k):""};
+  const place=m=>{const p=famePos[slugOf(m)];return p==null?1e6:p};
+  const finished=roster.filter(m=>m.level>=60).sort((a,b)=>place(a)-place(b)||doneOn(a).localeCompare(doneOn(b))||a.name.localeCompare(b.name));
   const byLevel=(a,b)=>b.level-a.level||a.name.localeCompare(b.name);
   const leaders=finished.length?[finished[0]]:roster.filter(m=>m.level===maxLevel);
-  const cardNote=m=>{if(m.level>=60){const k=doneOn(m);return "Won the race to 60"+(k?" · "+fmtDayUTC(k):"")}return leaders.length>1?"Tied for the lead":"Leading the race"};
+  const cardNote=m=>{if(m.level>=60){const k=doneLabel(m);return "Won the race to 60"+(k?" · "+k:"")}return leaders.length>1?"Tied for the lead":"Leading the race"};
   document.getElementById("leaders").innerHTML=leaders.map(m=>`<div class="card leader" style="border-top:4px solid ${m.color}"><div class="muted">${cardNote(m)}</div><h3>${nameLink(m)}</h3><div class="muted">${m.cls}</div><div class="lvl">Level ${m.level}</div><div class="bar"><span style="width:${Math.min(100,m.level/60*100)}%"></span></div><span class="muted">${m.level>=60?"Max level":(60-m.level)+" levels to go"}</span></div>`).join("");
   const rest=finished.length?[...finished.slice(1),...roster.filter(m=>m.level<60).sort(byLevel)]:roster.filter(m=>m.level<maxLevel).sort(byLevel);
   const chase=rest.slice(0,Math.max(4,finished.length>1?finished.length-1:0));
   document.getElementById("chasers").hidden=!chase.length;
-  document.getElementById("chasebody").innerHTML=chase.map((m,i)=>{const k=m.level>=60?doneOn(m):"";return `<div class="lbrow"><span class="lbpos">${i+2}</span>${cico(m)}<span><strong>${nameLink(m)}</strong><small>${esc(m.spec?m.spec+" ":"")}${esc(m.cls)}</small></span><span class="lbval">${m.level>=60?"Reached 60"+(k?" · "+fmtDayUTC(k):""):"Level "+m.level}</span></div>`}).join("");
+  document.getElementById("chasebody").innerHTML=chase.map((m,i)=>{const k=m.level>=60?doneLabel(m):"";return `<div class="lbrow"><span class="lbpos">${i+2}</span>${cico(m)}<span><strong>${nameLink(m)}</strong><small>${esc(m.spec?m.spec+" ":"")}${esc(m.cls)}</small></span><span class="lbval">${m.level>=60?"Reached 60"+(k?" · "+k:""):"Level "+m.level}</span></div>`}).join("");
   sorted=roster.filter(m=>m.level>=10).sort((a,b)=>a.rank-b.rank||b.level-a.level); // characters under level 10 stay hidden
   lvlHistory=d.history||null;
 }
@@ -327,7 +332,7 @@ function drawRaids(bk){
 drawRaids(null);
 fetch("guild-data.json",{cache:"no-cache"})
   .then(r=>r.ok?r.json():Promise.reject())
-  .then(j=>{render({generated:j.generated,founded:(j.raw&&j.raw.guild&&j.raw.guild.created_timestamp)||fallback.founded,roster:j.roster,history:j.history,icons:j.professionIcons,classIcons:j.classIcons,recipes:j.recipes});drawDungeons(j.bossKills);drawRaids(j.bossKills)})
+  .then(j=>{render({generated:j.generated,founded:(j.raw&&j.raw.guild&&j.raw.guild.created_timestamp)||fallback.founded,roster:j.roster,history:j.history,fame:j.fame,icons:j.professionIcons,classIcons:j.classIcons,recipes:j.recipes});drawDungeons(j.bossKills);drawRaids(j.bossKills)})
   .catch(()=>render({...fallback,saved:true}));
 </script>
 </body>
