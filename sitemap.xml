@@ -7,12 +7,12 @@
   </url>
   <url>
     <loc>https://www.dirtysocks.net/roster</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.dirtysocks.net/recruitment</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -22,27 +22,37 @@
   </url>
   <url>
     <loc>https://www.dirtysocks.net/hall-of-fame</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dirtysocks.net/bis</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.dirtysocks.net/dungeon-loot</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.dirtysocks.net/patch-notes</loc>
-    <lastmod>2026-11-26</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.dirtysocks.net/news</loc>
     <lastmod>2026-11-27</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.dirtysocks.net/news/pre-raid-best-in-slot-and-dungeon-loot-now-live</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.dirtysocks.net/news/website-v1-0-is-now-live</loc>
+    <lastmod>2026-11-27</lastmod>
+    <priority>0.5</priority>
   </url>
 </urlset>
